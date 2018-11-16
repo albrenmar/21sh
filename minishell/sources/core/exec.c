@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 17:20:04 by mjose             #+#    #+#             */
-/*   Updated: 2018/11/08 17:44:11 by mjose            ###   ########.fr       */
+/*   Updated: 2018/11/13 08:51:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	exec_command(t_env *env, t_prompt *prompt, t_com *com, t_proc *proc)
 		{
 			ft_putchar('\n');
 			put_prompt(env, prompt);
-				signal(SIGINT, SIG_DFL);
+			signal(SIGINT, SIG_DFL);
 		}
 		else if (WIFEXITED(proc->stat_process))
 			put_prompt(env, prompt);
