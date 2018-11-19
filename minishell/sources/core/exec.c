@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 17:20:04 by mjose             #+#    #+#             */
-/*   Updated: 2018/11/13 08:51:31 by mjose            ###   ########.fr       */
+/*   Updated: 2018/11/16 20:46:06 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	exec_child_command_path(t_com *com, t_env *env, t_proc *proc)
 				if ((father = fork()) == 0)
 					execve(tmp_path, com->tab_command, env->tab_env);
 				signal(SIGINT, SIG_IGN);
+				signal(SIGTSTP, SIG_IGN);
 				wait(&proc->stat_process);
 //				if (WIFSIGNALED(proc->stat_process))
 //					ft_putchar_fd('\n', STDIN_FILENO);
@@ -109,6 +110,7 @@ void	exec_command(t_env *env, t_prompt *prompt, t_com *com, t_proc *proc)
 			ft_putchar('\n');
 			put_prompt(env, prompt);
 			signal(SIGINT, SIG_DFL);
+			signal(SIGTSTP, SIG_DFL);
 		}
 		else if (WIFEXITED(proc->stat_process))
 			put_prompt(env, prompt);
