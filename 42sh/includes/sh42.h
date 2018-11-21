@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2018/10/30 15:28:13 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/11/19 15:59:16 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,16 @@
 # define K_RIGHT	"\x1b\x5b\x43"
 # define K_DOWN		"\x1b\x5b\x42"
 # define K_UP		"\x1b\x5b\x41"
-# define K_RTN		"\x0a"
-# define K_RT		"\x0d"
-# define K_ESC		27
+# define K_RTN		10
+# define K_RT		13
 # define K_SPC		32
-# define K_ESC		27
-# define K_DEL		2117294875L
-# define K_BSP		127
+# define K_BKSP		127
+# define K_DEL		"\x1b\x5b\x33\x7e"
 
 typedef struct	s_cursor
 {
-	int		strsize;
+	int		prompt;
+	int		abs;
 	int		x;
 	int		y;
 }				t_cursor;
@@ -94,4 +93,7 @@ int				utf_byte(char c);
 
 int				utf_strlen(char *str);
 
+int				get_nb_char(unsigned char c);
+
+int				utf_goto(char *str, int j);
 #endif

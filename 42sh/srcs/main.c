@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 18:12:58 by bsiche            #+#    #+#             */
-/*   Updated: 2018/10/20 02:11:35 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/11/20 22:41:02 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ void	init_key_list(void)
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_RIGHT));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_DOWN));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_UP));
-	lstcontainer_add(g_tracking.key_list, ft_strdup(K_RT));
-	lstcontainer_add(g_tracking.key_list, ft_strdup(K_RTN));
+	lstcontainer_add(g_tracking.key_list, ft_strdup(K_DEL));
 }
 
 void	cursorinit(void)
@@ -37,14 +36,13 @@ void	cursorinit(void)
 		ft_putendl("Failled to allocate memory");
 		exit(EXIT_FAILURE);
 	}
-	g_tracking.pos->x = 1;
-	g_tracking.pos->y = 0;
-	if ((g_tracking.str = ft_strnew(1024)) == NULL)
-	{
-		ft_putendl("Failled to allocate memory");
-		exit(EXIT_FAILURE);
-	}
-	g_tracking.str = ft_strnew(0);
+	g_tracking.pos->abs = 0;
+	g_tracking.pos->prompt = 1;
+//	if ((g_tracking.str = ft_strnew(1024)) == NULL)
+//	{
+//		ft_putendl("Failled to allocate memory");
+//		exit(EXIT_FAILURE);
+//	}
 	init_key_list();
 }
 
@@ -53,6 +51,7 @@ int		main(void)
 	char	*prompt;
 
 	cursorinit();
+	ft_siginit();
 	ft_putstr(">");
 	get_term();
 	get_key();

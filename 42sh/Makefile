@@ -6,11 +6,11 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/25 18:18:05 by bsiche            #+#    #+#              #
-#    Updated: 2018/10/30 15:27:39 by bsiche           ###   ########.fr        #
+#    Updated: 2018/11/20 22:40:06 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAG = -Wall -Werror -Wextra -g -fsanitize=address
+CFLAG = -Wall -Werror -Wextra -g3 -fsanitize=address
 
 CC = gcc
 

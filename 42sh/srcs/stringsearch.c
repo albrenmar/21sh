@@ -6,38 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2018/10/30 17:15:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/11/19 13:27:18 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
-
-void		multi_line(void)
-{
-	int 	size;
-	int		win;
-
-	size = g_tracking.pos->x;
-	win = g_tracking.terminfo->sizex;
-	if (size >= win)
-	{
-		g_tracking.pos->y++;
-		g_tracking.pos->x = 0;
-	}
-}
-
-int		get_pos(void)
-{
-	int i;
-
-	i = 0;
-	if (g_tracking.pos->y == 0)
-		return (g_tracking.pos->x - 1);
-	i = g_tracking.pos->y * g_tracking.terminfo->sizex;
-	i -= g_tracking.pos->y;
-	i = g_tracking.pos->x + i;
-	return (i);
-}
 
 void		add_to_str(char *str)
 {
@@ -48,51 +21,39 @@ void		add_to_str(char *str)
 
 	if (str != NULL)
 	{
-		a = 0;
 		i = utf_strlen(str);
-		a = get_pos();
-		start = ft_strsub(g_tracking.str, 0, a, 0);
-		end = ft_strsub(g_tracking.str, a, utf_strlen(g_tracking.str), 0);
-		start = ft_strjoin(start, str, 3);
-		free(g_tracking.str);
-		g_tracking.str = ft_strjoin(start, end, 3);
-		multi_line();
-		g_tracking.pos->x += i;
-		clear_screen2();
-		ft_putstr(">");
-		ft_putstr(g_tracking.str);
+		a = g_tracking.pos->abs;
+		if (!g_tracking.str)
+			g_tracking.str = ft_strdup(str);
+		else
+		{
+			a = utf_goto(g_tracking.str, a);
+			start = ft_strsub(g_tracking.str, 0, a, 0);
+			end = ft_strsub(g_tracking.str, a, ft_strlen(g_tracking.str), 0);
+			start = ft_strjoin(start, str, 3);
+			free(g_tracking.str);
+			g_tracking.str = ft_strjoin(start, end, 3);
+		}
+		g_tracking.pos->abs += i;
 	}
-}
-
-void		ft_clean(void)
-{
-	int		i;
-	int		a;
-	char	*dup;
-
-	a = 0;
-	i = ft_strlen(g_tracking.str);
-	dup = ft_strnew(i);
-	while (a < i - 1)
-	{
-		dup[a] = g_tracking.str[a];
-		a++;
-	}
-	dup[a] = '\0';
-	free(g_tracking.str);
-	g_tracking.str = dup;
 }
 
 void		rem_from_str(void)
 {
-	if (g_tracking.str)
+	int		a;
+	int		b;
+	char	*start;
+	char	*end;
+
+	b = g_tracking.pos->abs;
+	a = b - 1;
+	if (g_tracking.str != NULL && b > 0)
 	{
-		ft_clean();
+		a = utf_goto(g_tracking.str, a);
+		b = utf_goto(g_tracking.str, b);
+		start = ft_strsub(g_tracking.str, 0, a, 0);
+		end = ft_strsub(g_tracking.str, b, ft_strlen(g_tracking.str), 0);
+		g_tracking.str = ft_strjoin(start, end, 3);
+		g_tracking.pos->abs -= 1;
 	}
-	if (ft_strlen(g_tracking.str) == 0)
-	{
-		free(g_tracking.str);
-		g_tracking.str = NULL;
-	}
-	g_tracking.pos->x = g_tracking.pos->x - 1;
 }
