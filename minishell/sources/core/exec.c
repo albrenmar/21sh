@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 17:20:04 by mjose             #+#    #+#             */
-/*   Updated: 2018/11/16 20:46:06 by mjose            ###   ########.fr       */
+/*   Updated: 2018/11/20 20:52:38 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ int		test_existence_and_clean(t_proc *proc, char *tmp_path, char *tmp_com)
 	return (0);
 }
 
-int		exit_proc(pid_t father)
+void	stop_child(int father)
 {
-	kill(father, SIGINT);
-	return (0);
+	kill(father, SIGTSTP);
 }
 
 void	exec_child_command_path(t_com *com, t_env *env, t_proc *proc)
@@ -50,7 +49,7 @@ void	exec_child_command_path(t_com *com, t_env *env, t_proc *proc)
 				if ((father = fork()) == 0)
 					execve(tmp_path, com->tab_command, env->tab_env);
 				signal(SIGINT, SIG_IGN);
-				signal(SIGTSTP, SIG_IGN);
+				signal(SIGTSTP, &stop_child);
 				wait(&proc->stat_process);
 //				if (WIFSIGNALED(proc->stat_process))
 //					ft_putchar_fd('\n', STDIN_FILENO);
@@ -105,12 +104,14 @@ void	exec_command(t_env *env, t_prompt *prompt, t_com *com, t_proc *proc)
 		exec_child(com, env, proc);
 		prompt->have_line = 0;
 		ft_strdel(&prompt->line);
-		if (WIFSIGNALED(proc->stat_process))
+		if (WIFSIGNALED(proc->stat_process) || WIFSTOPPED(proc->stat_process))
 		{
 			ft_putchar('\n');
 			put_prompt(env, prompt);
 			signal(SIGINT, SIG_DFL);
 			signal(SIGTSTP, SIG_DFL);
+			if (WIFSTOPPED(proc->stat_process))
+				ft_putendl("Hemos presionado CTRL+Z");
 		}
 		else if (WIFEXITED(proc->stat_process))
 			put_prompt(env, prompt);
