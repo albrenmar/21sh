@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/11/16 14:45:47 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/11/24 12:36:55 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,20 +109,64 @@ void	test_exist_fonction(t_tab *st_tab, char **line, t_env *st_env)
 	return ;
 }
 
-void	ft_create_tree(t_cmd *cmd)
+int		search_symbol(char *cmd)
 {
+	int		i;
 
+	i = 0;
+	while (cmd[i])
+	{
+		if (cmd[i] == '>' || cmd[i] == '<' || cmd[i] == '|' || cmd[i] == '&')
+		{
+			printf("Creation arbre pour ==>   %s   <==\n", cmd);
+			//ft_create_tree(cmd);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+t_tree	*ft_create_tree(char *cmd, t_tree *tree)
+{
+	int		i;
+
+	i = 0;
+	while (cmd[i] != '>' && cmd[i] != '<' && cmd[i] != '|' && cmd[i] != '&')
+		i++;
+
+	tree->str1 = ft_strndup(cmd, i);
+	tree->symbol = cmd[i++];
+	tree->str2 = ft_strdup(&cmd[i]);
+	printf("str1 = %s\n", tree->str1);
+	printf("str2 = %s\n", tree->str2);
+	printf("symbole = %c\n", tree->symbol);
+	printf("\n");
+	printf("-----------------------------------------\n");
+	printf("\n");
+	if (search_symbol(tree->str2))
+	{
+		tree->right = ft_memalloc(sizeof(t_tree));
+		tree->right = ft_create_tree(tree->str2, tree->right);
+	}
+	return (tree);
 }
 
 void	apply_cmd(t_cmd *cmd)
 {
+	t_tree	*tree;
+
+	tree = ft_memalloc(sizeof(t_tree));
 	while (cmd->beginlist->name)
 	{
 		if (search_symbol(cmd->beginlist->name))
-			ft_create_tree(cmd->beginlist->name);
+			tree = ft_create_tree(cmd->beginlist->name, tree);
 		else
-			apply_builtin(cmd->beginlist->name);
-		free();
+		{
+			printf("la commande a lancer est : %s\n", cmd->beginlist->name);
+			//apply_builtin(cmd->beginlist->name);
+		}
+		cmd->beginlist = cmd->beginlist->next;
 	}
 }
 

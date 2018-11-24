@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/11/16 14:42:00 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/11/24 08:46:35 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct	s_tree
 {
 	char	*str1;
 	char	*str2;
-	char	*symbol;
+	char	symbol;
 	struct s_tree	*left;
 	struct s_tree	*right;
 }				t_tree;
@@ -64,6 +64,7 @@ int				ft_strcmp(const char *s1, const char *s2);
 int				nb_env(char **env);
 int				check_is_env(char *str);
 void			forfree(char **tab);
+t_tree			*ft_create_tree(char *cmd, t_tree *tree);
 int				verif_char(char *line);
 void			search_and_affich_env(char *tab, char **env);
 char			*recup_path(char **env, char *str);

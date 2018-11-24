@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/11/14 22:55:34 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/11/21 09:17:20 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*recup_cmd(char *line, int *i, int nb)
 		{
 			nb++;
 			test = ft_strndup(line, nb - 1);
-			*i = nb + *i;
+			(*i) = nb + *i;
 			return (test) ;
 		}
 		else if (line[nb] == ';' && par == 1 && gui == 0)
