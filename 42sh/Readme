@@ -52,7 +52,7 @@ ensuite vous allez dans get_key, et vous trouvez
 		return (1);
 	}
 
-Dans le code au lieu de lolwut vous mettez "add_to_str("la string d'autoomplete")
+Dans le code au lieu du putendl de lolwut et du sleep vous mettez "add_to_str("la string d'autoomplete")
 
 elle ira se foutre toute seule a l.emplacement du curseur.
 
