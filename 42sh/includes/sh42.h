@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2018/11/19 15:59:16 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/11/25 16:37:32 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define K_RT		13
 # define K_SPC		32
 # define K_BKSP		127
+# define K_TAB		9
 # define K_DEL		"\x1b\x5b\x33\x7e"
 
 typedef struct	s_cursor
@@ -39,6 +40,7 @@ typedef struct	s_cursor
 	int		abs;
 	int		x;
 	int		y;
+	int		legacy;
 }				t_cursor;
 
 typedef struct	s_term_data
@@ -54,7 +56,9 @@ typedef struct	s_tracking
 	struct termios		myterm;
 	struct s_term_data	*terminfo;
 	char				*str;
+	char				*cmd;
 	t_lstcontainer		*key_list;
+	int					swi;
 }				t_tracking;
 
 t_tracking		g_tracking;
@@ -96,4 +100,8 @@ int				utf_strlen(char *str);
 int				get_nb_char(unsigned char c);
 
 int				utf_goto(char *str, int j);
+
+void		    print_line(void);
+
+void			correct_pos(void);
 #endif

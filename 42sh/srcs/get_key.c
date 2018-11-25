@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2018/11/21 15:40:19 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/11/25 16:41:47 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,71 +14,41 @@
 
 void	ft_return(void)
 {
-	ft_putchar('\n');
-	ft_putstr(">");
-	ft_putstr("Danger zone");
+	g_tracking.swi = 1;
+	g_tracking.cmd = ft_strdup(g_tracking.str);
 	free(g_tracking.str);
-	g_tracking.pos->abs = 0;
+	clear_screen2();
 	g_tracking.str = ft_strnew(0);
-}
-
-void	correct_pos(void) 
-{
-	int		x;
-	int		y;
-	int		ab;
-
-	ab = g_tracking.pos->abs + g_tracking.pos->prompt;
-	g_tracking.pos->x = ab % g_tracking.terminfo->sizex;
-	g_tracking.pos->y = ab / g_tracking.terminfo->sizex;
-}
-
-void	update_pos(void)
-{
-	int		x;
-	int		y;
-	char	*test;
-
-	test = tgetstr("cm", NULL);
-	correct_pos();
-	x = g_tracking.pos->x;
-	y = g_tracking.pos->y;
-	tputs(tgoto(test, x, y), 1, yan_putchar);
-}
-
-int		ft_cursor(char *str)
-{
-	if (ft_strcmp(str, K_LEFT) == 0)
-		if (g_tracking.pos->abs > 0)
-		{
-			g_tracking.pos->abs -= 1;
-			ft_putnbr(g_tracking.pos->abs);
-			sleep(1);
-		}
-	if (K_RIGHT)
-		if ((g_tracking.pos->abs) <= ft_strlen(g_tracking.str))
-			g_tracking.pos->abs += 1;
-	if (K_DOWN)
-		ft_putendl("down");
-	if (K_UP)
-		ft_putendl("UP");
-	return (1);
+	ft_putendl(g_tracking.cmd);
+	g_tracking.pos->abs = 0;
+	g_tracking.pos->legacy += g_tracking.pos->y;
+	sleep(3);
 }
 
 int		ft_exec_key(char *str)
 {
 	if (ft_strcmp(str, K_LEFT) == 0)
 		if (g_tracking.pos->abs > 0)
+		{
 			g_tracking.pos->abs -= 1;
+			correct_pos();
+		}
 	if (ft_strcmp(str, K_RIGHT) == 0)
 		if ((g_tracking.pos->abs) < utf_strlen(g_tracking.str))
+		{
 			g_tracking.pos->abs += 1;
+			correct_pos();
+		}
 	if (ft_strcmp(str, K_UP) == 0)
-		if ((g_tracking.pos->y) > 0)
-			g_tracking.pos->y -= 1;
+	{
+		g_tracking.pos->abs -= g_tracking.terminfo->sizex;
+		update_pos();
+	}
 	if (ft_strcmp(str, K_DOWN) == 0)
-		if ((g_tracking.pos->y) < 10)
-			g_tracking.pos->y += 1;
+	{
+		g_tracking.pos->abs += g_tracking.terminfo->sizex;
+		update_pos();
+	}
 	if (ft_strcmp(str, K_DEL) == 0)
 		rem_from_str();
 	return (1);
@@ -118,6 +88,12 @@ int	single_key(char c)
 		ft_return();
 		return (1);
 	}
+	if (c == K_TAB)
+	{
+		ft_putendl("LOLWUT");
+		sleep(2);
+		return (1);
+	}
 	return (0);
 }
 
@@ -154,12 +130,11 @@ int		get_key(void)
 	char	*test;
 
 	ft_putstr(">");
-	while (1)
+	while (g_tracking.swi == 0)
 	{
 		readloop();
-		clear_screen2();
-		ft_putstr(">");
-		ft_putstr(g_tracking.str);
+		clear_screen3();
+		print_line();
 		update_pos();
 	}
 	return (0);

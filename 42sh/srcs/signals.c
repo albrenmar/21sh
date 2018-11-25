@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 14:00:48 by bsiche            #+#    #+#             */
-/*   Updated: 2018/11/16 16:53:41 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/11/25 16:33:09 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ void		handle_sin(int sino)
 	if (sino == SIGWINCH)
 	{
 		g_tracking.pos->y = 0;
-		clear_screen2();
+		clear_screen3();
 		get_size();
 		ft_putstr(">");
-		ft_putstr(g_tracking.str);
+		if (g_tracking.str)
+			ft_putstr(g_tracking.str);
 		update_pos();
 	}
 }

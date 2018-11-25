@@ -6,11 +6,11 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/25 18:18:05 by bsiche            #+#    #+#              #
-#    Updated: 2018/11/20 22:40:06 by bsiche           ###   ########.fr        #
+#    Updated: 2018/11/25 16:31:35 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAG = -Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAG = -Wall -Werror -Wextra
 
 CC = gcc
 
@@ -28,8 +28,11 @@ SRC =	main.c \
 		term_setup.c \
 		stringsearch.c \
 		signals.c \
+		init_term.c \
+		cursor_pos.c \
 		term_size.c \
 		lib_utf.c \
+		print_line.c \
 		get_key.c
 
 OBJ = $(SRC:.c=.o)
@@ -56,12 +59,12 @@ COL_WHITE		= \033[1;37m
 all : complib $(OBJDIR) $(NAME)
 
 $(NAME): $(OBJP)
-			@$(CC) $(CFLAGS) -o $@ $^ $(INCP) $(LIBFT) -ltermcap
+			@$(CC) -g $(CFLAGS) -o $@ $^ $(INCP) $(LIBFT) -ltermcap
 			@echo -e "$(CLEAR_LINE)$(COL_CYAN)All done $(COL_END)ᕦ(ò_óˇ)ᕤ"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 			@echo -e "$(CLEAR_LINE)$(COL_VIOLET)$(NAME)$(COL_END)........................ $(COL_YELLOW)$<$(COL_END)$(BEGIN_LINE)"
-			@$(CC) $(CFLAGS) -c -o $@ $^ $(INCP)
+			@$(CC) -g $(CFLAGS) -c -o $@ $^ $(INCP)
 
 $(OBJDIR):
 			@echo -e "$(CLEAR_LINE)$(COL_BLUE)building $(NAME)$(COL_END)"

@@ -88,6 +88,43 @@ char	*remfrom(char *s2, int j)
 	return s2;
 }
 
+void	split_to_lst(char *str)
+{
+		int		end;
+		int		a;
+		int		i;
+		int		j;
+
+		a = 0;
+		i = 7;
+		j = 0;
+		end = ft_strlen(str);
+		while (str[j])
+		{
+			while (a < i && str[j])
+			{
+				a -= get_nb_char(str[j]);
+				ft_putchar(str[j]);
+				j++;
+				a++;
+			}
+			ft_putchar('\n');
+			a = 0;
+		}
+}
+
+void	printlist(t_lstcontainer *new)
+{
+	t_list	*tmp;
+
+	tmp = ft_lstgetfirst(new->firstelement);
+	while (tmp)
+	{
+		ft_putendl(tmp->content);
+		tmp = tmp->next;
+	}
+}
+
 char	*addto(char *str, char *s2, int j)
 {
 	int		i;
@@ -119,8 +156,8 @@ int		main(int argc, char **argv)
 	char *test;
 
 
-    str = ft_strdup("Demain, dès l’aube, à l’heure où blanchit la campagne,");
-	str = remfrom(str, 18);
+	str = ft_strdup("Demain, dès l'aube, à l'heure où blanchit la campagne, Je partirai. Vois-tu");
+	split_to_lst(str);
 	ft_putendl(str);
 	ft_putchar('\n');
     ft_putchar('\n');
