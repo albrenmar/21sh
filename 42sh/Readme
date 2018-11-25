@@ -24,7 +24,7 @@ Apres chaque deplacement du curseur, j'apelle void	correct_pos(void).
 
 Donc mon int AB c'est la longueur totale de ma ligne + mon prompt. terminfo->sizex c'est le nombre de colones dans mon terminal.
 
-Genre si mon terminal fait 10 colones, et que ma ligne en fait 30(prompt inclus) je sais que 30/10 9a fera 3, donc 3 ligne.
+Genre si mon terminal fait 10 colones, et que ma ligne en fait 30(prompt inclus) je sais que 30/10 ça fera 3, donc 3 ligne.
 
 Si mon curseur est en position 34 de ma string, j'ai mon y, et pour le x je fais un modulo. donc j;ai la position X et Y de mon
 curseur(ligne 3, position 4);
