@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/25 18:18:05 by bsiche            #+#    #+#              #
-#    Updated: 2018/11/25 16:31:35 by bsiche           ###   ########.fr        #
+#    Updated: 2018/12/02 04:50:39 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC =	main.c \
 		signals.c \
 		init_term.c \
 		cursor_pos.c \
+		cursor_arrows.c \
 		term_size.c \
 		lib_utf.c \
 		print_line.c \

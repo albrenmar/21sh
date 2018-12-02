@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/01 05:59:12 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/02 04:51:07 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,7 @@ void	ft_return(void)
 	g_tracking.swi = 1;
 	g_tracking.cmd = ft_strdup(g_tracking.str);
 	free(g_tracking.str);
-	clear_screen2();
 	g_tracking.str = ft_strnew(0);
-	ft_putendl(g_tracking.cmd);
-	g_tracking.pos->abs = 0;
-	g_tracking.pos->legacy += g_tracking.pos->y;
-	sleep(3);
 }
 
 int		ft_exec_key(char *str)
@@ -30,12 +25,7 @@ int		ft_exec_key(char *str)
 	if (ft_strcmp(str, K_LEFT) == 0)
 		move_left();
 	if (ft_strcmp(str, K_RIGHT) == 0)
-		if ((g_tracking.pos->abs) <= utf_strlen(g_tracking.str))
-		{
-			tputs(tgetstr("nd ", NULL), 1, yan_putchar);
-			g_tracking.pos->abs = 10;
-	//		go_to_pos();
-		}
+		move_right();
 	if (ft_strcmp(str, K_UP) == 0)
 	{
 		g_tracking.pos->abs -= g_tracking.terminfo->sizex;

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/01 04:36:33 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/02 04:50:56 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ void			correct_pos(void);
 void			back_to_pos(void);
 
 void			move_left(void);
+
+void			move_right(void);
 
 void			back_home(void);
 
