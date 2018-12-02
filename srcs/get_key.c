@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/02 04:51:07 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/02 05:23:02 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_return(void)
 {
-	g_tracking.swi = 1;
 	g_tracking.cmd = ft_strdup(g_tracking.str);
 	free(g_tracking.str);
+	cursor_reset();
 	g_tracking.str = ft_strnew(0);
 }
 
@@ -71,11 +71,12 @@ int	single_key(char c)
 	if (c == 10 || c == 13)
 	{
 		ft_return();
+		g_tracking.swi = 1;
 		return (1);
 	}
 	if (c == K_TAB)
 	{
-		ft_putnbr(g_tracking.pos->y);
+		ft_putnbr(g_tracking.swi);
 		sleep(2);
 		return (1);
 	}
@@ -114,11 +115,10 @@ int		get_key(void)
 {
 	char	*test;
 
-	ft_putstr(">");
+	ft_putstr(g_tracking.prompt);
 	while (g_tracking.swi == 0)
 	{
 		readloop();
-	//	update_pos();
 	}
-	return (0);
+	return (1);
 }

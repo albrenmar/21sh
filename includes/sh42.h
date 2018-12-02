@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/02 04:50:56 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/02 05:18:17 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct	s_tracking
 	struct s_term_data	*terminfo;
 	char				*str;
 	char				*cmd;
+	char				*prompt;
 	t_lstcontainer		*key_list;
 	int					swi;
 }				t_tracking;
@@ -117,4 +118,8 @@ void			move_right(void);
 void			back_home(void);
 
 void			go_to_pos(void);
+
+void			cursorinit(void);
+
+void			cursor_reset(void);
 #endif

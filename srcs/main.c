@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 18:12:58 by bsiche            #+#    #+#             */
-/*   Updated: 2018/11/28 23:26:37 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/02 05:21:59 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,25 @@
 int		main(void)
 {
 	char	*prompt;
-	pid_t	father;
-	char 	*argv[]={"ls",NULL};
+	char	*cmd;
 	int		i;
 
 	cursorinit();
+	prompt = ft_strdup("Fake minishell >");
+	g_tracking.prompt = ft_strdup(prompt);
+	g_tracking.pos->prompt = ft_strlen(prompt);
 	ft_siginit();
-//	ft_putstr(">");
 	get_term();
-	get_key();
+	while (get_key() > 0)
+	{
+		cmd = ft_strdup(g_tracking.cmd);
+		ft_putchar('\n');
+		ft_putstr("Execution de la commande");
+		ft_putchar('"');
+		ft_putstr(cmd);
+		ft_putchar('"');
+		g_tracking.swi = 0;
+		ft_putchar('\n');
+	}
 	return (0);
 }
