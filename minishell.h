@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/11/24 08:46:35 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/03 11:06:48 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct	s_tree
 {
 	char	*str1;
 	char	*str2;
-	char	symbol;
+	char	*symbol;
 	struct s_tree	*left;
 	struct s_tree	*right;
 }				t_tree;

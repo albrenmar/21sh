@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/11/27 05:18:22 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/03 15:18:51 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,20 +130,26 @@ int		search_symbol(char *cmd)
 t_tree	*ft_create_tree(char *cmd, t_tree *tree)
 {
 	int		i;
+	int		mode;
 
 	i = 0;
+	mode = 1;
 	while (cmd[i] != '>' && cmd[i] != '<' && cmd[i] != '|' && cmd[i] != '&')
+	{
 		i++;
-
+		if ((cmd[i] == '>' && cmd[i + 1] == '>') || (cmd[i] == '<' && cmd[i + 1] == '<') || (cmd[i] == '|' && cmd[i + 1] == '|') || (cmd[i] == '&' && cmd[i + 1] == '&'))
+			mode++;
+	}
 	tree->str1 = ft_strndup(cmd, i);
-	tree->symbol = cmd[i++];
+	tree->symbol = ft_strndup(&cmd[i], mode);
+	i = i + mode;
 	tree->str2 = ft_strdup(&cmd[i]);
-	printf("str1 = %s\n", tree->str1);
-	printf("str2 = %s\n", tree->str2);
-	printf("symbole = %c\n", tree->symbol);
-	printf("\n");
-	printf("-----------------------------------------\n");
-	printf("\n");
+	/*printf("str1 = %s\n", tree->str1);
+	  printf("str2 = %s\n", tree->str2);
+	  printf("symbole = %s\n", tree->symbol);
+	  printf("\n");
+	  printf("-----------------------------------------\n");
+	  printf("\n");*/
 	if (search_symbol(tree->str2))
 	{
 		tree->right = ft_memalloc(sizeof(t_tree));
@@ -152,7 +158,20 @@ t_tree	*ft_create_tree(char *cmd, t_tree *tree)
 	return (tree);
 }
 
-void	apply_cmd(t_cmd *cmd)
+void	apply_builtin(t_tab *st_tab, t_env *st_env, char *cmd, char **env)
+{
+		if (ft_strcmp(cmd, "") != 0 && verif_char(cmd) == 1)
+		{
+			recup_argument(st_tab, st_env, &cmd);
+			if (!check_is_builtins(st_tab))
+				test_exist_fonction(st_tab, &cmd, st_env);
+			else if (check_is_builtins(st_tab))
+				realize_built(st_tab, st_env, &cmd, env);
+			forfree(st_tab->tab_word);
+		}
+}
+
+void	apply_cmd(t_tab *st_tab, t_env *st_env, t_cmd *cmd, char **env)
 {
 	t_tree	*tree;
 
@@ -161,11 +180,11 @@ void	apply_cmd(t_cmd *cmd)
 	{
 		if (search_symbol(cmd->beginlist->name))
 			tree = ft_create_tree(cmd->beginlist->name, tree);
-			//SUITE
+		//SUITE
 		else
 		{
-			printf("la commande a lancer est : %s\n", cmd->beginlist->name);
-			//apply_builtin(cmd->beginlist->name);
+			//printf("la commande a lancer est : %s\n", cmd->beginlist->name);
+			apply_builtin(st_tab, st_env, cmd->beginlist->name, env);
 		}
 		cmd->beginlist = cmd->beginlist->next;
 	}
@@ -187,20 +206,7 @@ int		main(int argc, char **argv, char **env)
 		if (get_next_line(0, &line) < 1)
 			exit(0);
 		cmd = ft_analize(line);
-		apply_cmd(cmd);
-		/*while (cmd->beginlist->name)
-		{
-			if (ft_strcmp(cmd->beginlist->name, "") != 0 && verif_char(cmd->beginlist->name) == 1)
-			{
-				recup_argument(&st_tab, &st_env, &cmd->beginlist->name);
-				if (!check_is_builtins(&st_tab))
-					test_exist_fonction(&st_tab, &cmd->beginlist->name, &st_env);
-				else if (check_is_builtins(&st_tab))
-					realize_built(&st_tab, &st_env, &cmd->beginlist->name, env);
-				forfree(st_tab.tab_word);
-			}
-			cmd->beginlist = cmd->beginlist->next;
-		}*/
+		apply_cmd(&st_tab, &st_env, cmd, env);
 		free(line);
 		/*while (list->next != NULL)
 		  {

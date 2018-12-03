@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/11/21 09:17:20 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/03 14:06:07 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,14 @@ char	*recup_cmd(char *line, int *i, int nb)
 			nb++;
 			test = ft_strndup(line, nb - 1);
 			(*i) = nb + *i;
-			return (test) ;
+			return (test);
+		}
+		else if (line[nb] == '&' && line[nb + 1] == '&')
+		{
+			nb = nb + 2;
+			test = ft_strndup(line, nb - 2);
+			(*i) = nb + *i;
+			return (test);
 		}
 		else if (line[nb] == ';' && par == 1 && gui == 0)
 		{
@@ -104,7 +111,7 @@ t_cmd	*ft_analize(char *line)
 		templist = templist->next;
 	}
 	templist = cmd->beginlist;
-	while (cmd->beginlist->name)
+	/*while (cmd->beginlist->name)
 	{
 		printf("Commande[%d] = %s\n", j, cmd->beginlist->name);
 		cmd->beginlist = cmd->beginlist->next;
@@ -112,6 +119,6 @@ t_cmd	*ft_analize(char *line)
 	}
 	cmd->beginlist = templist;
 	printf("----------------------------------\n");
-	printf("----------------------------------\n");
+	printf("----------------------------------\n");*/
 	return (cmd);
 }
