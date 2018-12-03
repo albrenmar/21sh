@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/02 05:18:17 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/03 02:59:34 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,14 @@
 # include <sys/stat.h>
 # include <time.h>
 
-# define K_LEFT		"\x1b\x5b\x44"	
+# define K_LEFT		"\x1b\x5b\x44"
 # define K_RIGHT	"\x1b\x5b\x43"
 # define K_DOWN		"\x1b\x5b\x42"
 # define K_UP		"\x1b\x5b\x41"
+# define K_LUP		"\x1b\x5b\x31\x3b\x32\x41"
+# define K_LDOWN	"\x1b\x5b\x31\x3b\x32\x42"
+# define K_WLEFT	"\x1b\x5b\x31\x3b\x32\x44"
+# define K_WRIGHT	"\x1b\x5b\x31\x3b\x32\x43"
 # define K_RTN		10
 # define K_RT		13
 # define K_SPC		32
@@ -122,4 +126,16 @@ void			go_to_pos(void);
 void			cursorinit(void);
 
 void			cursor_reset(void);
+
+void			move_up(void);
+
+int				check_up(void);
+
+void			move_down(void);
+
+int				check_down(void);
+
+void			next_word(void);
+
+void			prev_word();
 #endif

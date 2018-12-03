@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 05:23:25 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/01 04:36:24 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/03 02:20:20 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		clear_screen3(void)
 	if ((res = tgetstr("cd", NULL)) == NULL)
 		return (-1);
 	tputs(res, 1, yan_putchar);
+	return (0);
 }
 
 int		clear_screen2(void)

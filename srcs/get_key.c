@@ -6,11 +6,12 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/02 05:23:02 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/03 02:50:27 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
+#include "stdio.h"
 
 void	ft_return(void)
 {
@@ -20,20 +21,55 @@ void	ft_return(void)
 	g_tracking.str = ft_strnew(0);
 }
 
+
+void	test_read(void)
+{
+	char	c[6];
+	char	*str;
+	int		i;
+
+	i = 0;
+	read(STDERR_FILENO, &c, 6);
+	while (c[i])
+	{
+		printf("0x%x\n", c[i]);
+		if (i != 6)
+			ft_putchar('.');
+		else
+			ft_putchar('\n');
+		i++;
+	}
+}
+
+void	test_read2(char *str)
+{
+	int		i;
+
+	i = 0;
+	ft_putchar('\n');
+	while (str[i])
+	{
+		printf("0x%x\n", str[i]);
+		i++;
+	}
+}
+
+
+
 int		ft_exec_key(char *str)
 {
 	if (ft_strcmp(str, K_LEFT) == 0)
 		move_left();
 	if (ft_strcmp(str, K_RIGHT) == 0)
 		move_right();
-	if (ft_strcmp(str, K_UP) == 0)
-	{
-		g_tracking.pos->abs -= g_tracking.terminfo->sizex;
-	}
-	if (ft_strcmp(str, K_DOWN) == 0)
-	{
-		g_tracking.pos->abs += g_tracking.terminfo->sizex;
-	}
+	if (ft_strcmp(str, K_WRIGHT) == 0)
+		next_word();
+	if (ft_strcmp(str, K_WLEFT) == 0)
+		prev_word();
+	if (ft_strcmp(str, K_LUP) == 0)
+		move_up();
+	if (ft_strcmp(str, K_LDOWN) == 0)
+		move_down();
 	if (ft_strcmp(str, K_DEL) == 0)
 		rem_from_str();
 	return (1);
@@ -53,11 +89,13 @@ int		is_cmd(char *str)
 		if (ft_strncmp(str, tmp->content, i) == 0)
 			flag++;
 		if (strlen(tmp->content) == i && ft_strncmp(str, tmp->content, i) == 0)
+		{
 			return (ft_exec_key(str));
+		}
 		tmp = tmp->next;
 	}
 	if (flag == 0)
-		return (3);
+		return (6);
 	return (0);
 }
 
@@ -101,11 +139,11 @@ void	readloop(void)
 			read(STDERR_FILENO, &c, 1);
 			str = ft_strjoinchar(str, c, 1);
 			i = is_cmd(str);
-			if (i == 3)
+			if (i == 6)
 				break ;
 		}
 	}
-	if (i == 1)
+	if (i != 0)
 		free(str);
 	else
 		add_to_str(str);
@@ -118,6 +156,7 @@ int		get_key(void)
 	ft_putstr(g_tracking.prompt);
 	while (g_tracking.swi == 0)
 	{
+	//	test_read();
 		readloop();
 	}
 	return (1);

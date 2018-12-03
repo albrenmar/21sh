@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/25 18:18:05 by bsiche            #+#    #+#              #
-#    Updated: 2018/12/02 05:14:53 by bsiche           ###   ########.fr        #
+#    Updated: 2018/12/03 02:59:16 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,12 @@ SRC =	main.c \
 		signals.c \
 		init_term.c \
 		cursor_pos.c \
+		cursor_check.c \
 		cursor_arrows.c \
 		term_size.c \
 		lib_utf.c \
 		print_line.c \
+		next_word.c \
 		get_key.c
 
 OBJ = $(SRC:.c=.o)

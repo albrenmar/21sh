@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_line.c                                       :+:      :+:    :+:   */
+/*   cursor_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/30 15:24:45 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/03 02:39:51 by bsiche           ###   ########.fr       */
+/*   Created: 2018/12/03 02:54:31 by bsiche            #+#    #+#             */
+/*   Updated: 2018/12/03 03:01:52 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-void	print_line(void)
+int	check_up(void)
 {
-	int		a;
-	int		i;
-	char	*end;
-	char	*str;
+	int		x;
+	int		ab;
 
-	if (g_tracking.str != NULL)
-	{
-		clear_screen3();
-		ft_putstr(g_tracking.prompt);
-		ft_putstr(g_tracking.str);
-	}
+	ab = g_tracking.pos->abs;
+	x = g_tracking.terminfo->sizex;
+	if (ab - x > 0)
+		return (0);
+	else
+		return (1);
+}
+
+int	check_down(void)
+{
+	int		i;
+	int		x;
+	int		ab;
+
+	ab = g_tracking.pos->abs;
+	x = g_tracking.terminfo->sizex;
+	i = utf_strlen(g_tracking.str);
+	if (ab + x < i)
+		return (0);
+	else
+		return (1);
 }
