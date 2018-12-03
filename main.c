@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/11/24 12:36:55 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/11/27 05:18:22 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ void	apply_cmd(t_cmd *cmd)
 	{
 		if (search_symbol(cmd->beginlist->name))
 			tree = ft_create_tree(cmd->beginlist->name, tree);
+			//SUITE
 		else
 		{
 			printf("la commande a lancer est : %s\n", cmd->beginlist->name);
