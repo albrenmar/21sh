@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/03 02:50:27 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/04 02:38:15 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		ft_exec_key(char *str)
 		move_down();
 	if (ft_strcmp(str, K_DEL) == 0)
 		rem_from_str();
-	return (1);
+	return (6);
 }
 
 int		is_cmd(char *str)
@@ -104,20 +104,27 @@ int	single_key(char c)
 	if (c == K_BKSP)
 	{
 		rem_from_str();
-		return (1);
+		return (12);
 	}
 	if (c == 10 || c == 13)
 	{
 		ft_return();
 		g_tracking.swi = 1;
-		return (1);
+		return (12);
 	}
 	if (c == K_TAB)
 	{
 		ft_putnbr(g_tracking.swi);
 		sleep(2);
-		return (1);
+		return (12);
 	}
+	return (0);
+}
+
+int		check(char *str)
+{
+	if (strncmp(str, "\x1b\x5b", 2) == 0)
+		return (1);
 	return (0);
 }
 
@@ -143,7 +150,7 @@ void	readloop(void)
 				break ;
 		}
 	}
-	if (i != 0)
+	if (check(str) == 1 || i == 12)
 		free(str);
 	else
 		add_to_str(str);
