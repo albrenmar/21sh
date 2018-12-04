@@ -149,20 +149,35 @@ char	*addto(char *str, char *s2, int j)
 	}
 }
 
+char	*memjoin(char *test, char *str, int i)
+{
+	int		j;
+	int		k;
+
+	j = ft_strlen(str);
+	k = ft_strlen(test) - i;
+	memmove(test+(i), str+i , k);
+	while (str[j])
+	{
+		test[i] = str[j];
+		i++;
+		j++;
+	}
+	return (test);
+}
+
 int		main(int argc, char **argv)
 {
     int i;
     char *str;
 	char *test;
+	char c[4];
 
 
 	str = ft_strdup("Demain, dès l'aube, à l'heure où blanchit la campagne, Je partirai. Vois-tu");
-	split_to_lst(str);
-	ft_putendl(str);
-	ft_putchar('\n');
-    ft_putchar('\n');
-	ft_putchar('\n');
-	ft_putstr("test");
-	ft_putstr("\033[6n");
+	test = ft_strdup("new string de plus de 10 caracteres hahaha");
+	i = 10;
+	test = memjoin(test, str, 10);
+	ft_putendl(test);
 	return (0);
 }

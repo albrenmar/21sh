@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 00:52:42 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/03 02:38:00 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/04 02:16:20 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		is_space(char c)
 {
-	if (c == ' ' || c == '\t')
+	if (c == ' ' || c == '\t' || c == ';')
 		return (1);
 	else
 		return (0);
@@ -60,7 +60,7 @@ void	prev_word(void)
 	tmp = g_tracking.str;
 	if (tmp != NULL)
 	{
-		while (is_space(tmp[i]) == 0)
+		if (is_space(tmp[i]) == 0)
 			i--;
 		if (is_space(tmp[i]) == 1)
 		{
