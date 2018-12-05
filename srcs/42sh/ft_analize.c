@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_analize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/04 18:04:27 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/05 16:00:56 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-t_list	*create_new_list(void)
+t_last	*create_new_list(void)
 {
-	t_list	*list;
+	t_last	*list;
 
-	list = malloc(sizeof(t_list));
+	list = malloc(sizeof(t_last));
 	list->name = NULL;
 	list->next = NULL;
 	return (list);
@@ -96,7 +96,7 @@ t_cmd	*ft_analize(char *line)
 	int		i;
 	int		j;
 	t_cmd	*cmd;
-	t_list	*templist;
+	t_last	*templist;
 
 	i = 0;
 	j = 0;
@@ -107,7 +107,7 @@ t_cmd	*ft_analize(char *line)
 	{
 		templist->name = ft_strdup(temp);
 		free(temp);
-		templist->next = ft_memalloc(sizeof(t_list));
+		templist->next = ft_memalloc(sizeof(t_last));
 		templist = templist->next;
 	}
 	templist = cmd->beginlist;

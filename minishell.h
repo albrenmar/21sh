@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/05 16:05:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/05 16:01:07 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,16 @@ typedef struct	s_tree
 	struct s_tree	*right;
 }				t_tree;
 
-typedef struct	s_cmd
-{
-	struct s_last	*beginlist;
-}				t_cmd;
-
 typedef struct	s_last
 {
 	char			*name;
 	struct s_last	*next;
 }				t_last;
 
+typedef struct	s_cmd
+{
+	struct s_last	*beginlist;
+}				t_cmd;
 
 int				ft_strcmp(const char *s1, const char *s2);
 int				nb_env(char **env);

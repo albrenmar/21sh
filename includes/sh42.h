@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/05 15:35:15 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/05 16:09:16 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,4 +138,6 @@ int				check_down(void);
 void			next_word(void);
 
 void			prev_word();
+
+int				ft_dprintf(int fd, const char *format, ...);
 #endif
