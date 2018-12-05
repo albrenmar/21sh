@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/04 17:57:00 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/05 05:01:20 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # define PO line[*i] == '('
 # define PF line[*i] == ')'
 # define GO line[*i] == '"'
+# define READ	0
+# define WRITE	1
+
 
 # include "./includes/ft_printf.h"
 # include <sys/stat.h>
@@ -98,6 +101,8 @@ void			apply_cmd(t_tab *st_tab, t_env *st_env,
 int				search_symbol(char *cmd);
 void			apply_builtin(t_tab *st_tab, t_env *st_env,
 		char *cmd, char **env);
+void			apply_builtin_tree(t_tab *st_tab, t_env *st_env, t_tree *tree, char **env);
+void			test_exist_fonction_pipe(t_tab *st_tab, t_tab *st_tab2 , char **line1, char **line2, t_env *st_env);
 t_cmd			*ft_analize(char *line);
 
 #endif
