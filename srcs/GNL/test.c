@@ -1,4 +1,4 @@
-#include "../libft/libft.h"
+#include "../Libft/libft.h"
 
 int			get_nb_char(unsigned char c)
 {
@@ -83,7 +83,7 @@ char	*remfrom(char *s2, int j)
 		b = utf_goto(s2, j);
 		start = ft_strsub(s2, 0, a, 0);
 		end = ft_strsub(s2, b, ft_strlen(s2), 0);
-		s2 = ft_strjoin(start, end, 3);
+		s2 = ft_strjoinfree(start, end, 3);
 	}
 	return s2;
 }
@@ -141,9 +141,9 @@ char	*addto(char *str, char *s2, int j)
 		{
 			start = ft_strsub(s2, 0, a, 0);
 			end = ft_strsub(s2, a, ft_strlen(s2), 0);
-			start = ft_strjoin(start, str, 3);
+			start = ft_strjoinfree(start, str, 3);
 			free(s2);
-			s2 = ft_strjoin(start, end, 3);
+			s2 = ft_strjoinfree(start, end, 3);
 		}
 		return s2;
 	}
@@ -166,18 +166,39 @@ char	*memjoin(char *test, char *str, int i)
 	return (test);
 }
 
+void strinsert(char *dst, size_t len, const char *src, size_t offset) 
+{
+  size_t iLenDst = ft_strlen(dst),
+         iLenSrc = ft_strlen(src);
+
+  // Some error handling
+  if (iLenDst+iLenSrc+1>len)  
+  {
+    ft_putendl("lol");
+    return;
+  }
+
+  // restrict to max length
+  if (offset>iLenDst)
+    offset = iLenDst;
+
+  // Make room incl. trailing \0
+  ft_memmove(dst+offset+iLenSrc,dst+offset,iLenDst-offset+1);
+  // Insert new
+  ft_memcpy(dst+offset,src,iLenSrc);
+}
+
 int		main(int argc, char **argv)
 {
     int i;
-    char *str;
+    char str[4096];
 	char *test;
 	char c[4];
 
-
-	str = ft_strdup("Demain, dès l'aube, à l'heure où blanchit la campagne, Je partirai. Vois-tu");
+	ft_strcpy(str, "Demain, dès l'aube, à l'heure où blanchit la campagne, Je partirai. Vois-tu");
+	i = utf_goto(str, 10);
 	test = ft_strdup("new string de plus de 10 caracteres hahaha");
-	i = 10;
-	test = memjoin(test, str, 10);
-	ft_putendl(test);
+	strinsert(str, 4096, test, i);
+	ft_putendl(str);
 	return (0);
 }

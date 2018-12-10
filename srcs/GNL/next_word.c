@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 00:52:42 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/05 15:13:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/06 16:07:20 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		is_space(char c)
 void	print_and_go(int i)
 {
 	print_line();
-	g_tracking.pos->abs = utf_goto(g_tracking.str, i);
+	g_tracking.pos->abs = rev_utf_goto(g_tracking.str,(i));
 	back_to_pos();
 }
 
@@ -32,7 +32,7 @@ void	next_word()
 	char	*tmp;
 	int		i;
 
-	i = g_tracking.pos->abs;
+	i = utf_goto(g_tracking.str, g_tracking.pos->abs);
 	tmp = g_tracking.str;
 	if (tmp != NULL)
 	{
@@ -56,7 +56,7 @@ void	prev_word(void)
 	char	*tmp;
 	int		i;
 
-	i = g_tracking.pos->abs;
+	i = utf_goto(g_tracking.str, g_tracking.pos->abs);
 	tmp = g_tracking.str;
 	if (tmp != NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 15:24:45 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/05 15:13:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/06 16:05:13 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,24 @@ int			get_nb_char(unsigned char c)
 		return (1);
 	else
 		return (0);
+}
+
+int			rev_utf_goto(char *str, int j)
+{
+	int		i;
+	int		a;
+
+	i = 0;
+	a = 0;
+	if (!str)
+		return (0);
+	while (i != j)
+	{
+		if ((str[i] & 0xC0) != 0x80)
+			a++;
+		i++;
+	}
+	return (a);
 }
 
 int			utf_goto(char *str, int j)

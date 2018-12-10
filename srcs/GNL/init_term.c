@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:29:52 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/05 15:13:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/10 16:56:07 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		yan_putchar(int c)
 	return (write(STDERR_FILENO, &c, 1));
 }
 
-void	init_key_list()
+void	init_key_list(void)
 {
 	char	*tmp;
 
@@ -50,6 +50,8 @@ void	cursorinit(void)
 		ft_putendl("Failled to allocate memory");
 		exit(EXIT_FAILURE);
 	}
+	g_tracking.buffsize = 10;
+	g_tracking.str = malloc(sizeof(char) * g_tracking.buffsize);
 	cursor_reset();
 	init_key_list();
 }
