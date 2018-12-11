@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2018/12/05 15:16:43 by bsiche           ###   ########.fr        #
+#    Updated: 2018/12/11 15:21:18 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC = srcs/main.c \
 	  srcs/GNL/lib_utf.c \
 	  srcs/GNL/print_line.c \
 	  srcs/GNL/next_word.c \
+	  srcs/GNL/cp_paste.c \
 	  srcs/GNL/get_key.c
 
 
