@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/05 16:09:16 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/11 16:26:56 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # include <sys/stat.h>
 # include <time.h>
 
+# define K_FN1		"\x1b\x4f\x50"
+# define K_FN2		"\x1b\x4f\x51"
+# define K_FN3		"\x1b\x4f\x52"
 # define K_LEFT		"\x1b\x5b\x44"
 # define K_RIGHT	"\x1b\x5b\x43"
 # define K_DOWN		"\x1b\x5b\x42"
@@ -56,17 +59,26 @@ typedef struct	s_term_data
 	int		sizey;
 }				t_term_data;
 
+typedef struct	s_cpaste
+{
+	int		b1;
+	int		b2;
+	char	*line;
+}				t_cpaste;
+
 typedef struct	s_tracking
 {
 	t_cursor			*pos;
 	struct termios		default_term;
 	struct termios		myterm;
 	struct s_term_data	*terminfo;
+	struct s_cpaste		*cpaste;
 	char				*str;
 	char				*cmd;
 	char				*prompt;
 	t_lstcontainer		*key_list;
 	int					swi;
+	int					buffsize;
 }				t_tracking;
 
 t_tracking		g_tracking;
@@ -140,4 +152,12 @@ void			next_word(void);
 void			prev_word();
 
 int				ft_dprintf(int fd, const char *format, ...);
+
+int				rev_utf_goto(char *str, int j);
+
+void			begin_cpy(void);
+
+void			begin_paste(void);
+
+void			print_line_cpy(void);
 #endif
