@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   apply_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 17:52:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/04 17:56:40 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/05 05:14:58 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,3 +121,68 @@ void	apply_builtin(t_tab *st_tab, t_env *st_env, char *cmd, char **env)
 		forfree(st_tab->tab_word);
 	}
 }
+void	test_exist_fonction_pipe(t_tab *st_tab, t_tab *st_tab2 , char **line1, char **line2, t_env *st_env)
+{
+	char	*next_str;
+	int		i;
+	int		test_proc;
+	pid_t	father;
+	int		descrf[2];
+
+	i = 0;
+	if (access(st_tab->tab_word[0], X_OK) == 0 && access(st_tab2->tab_word[0], X_OK) == 0)
+	{
+		pipe(descrf);
+		father = fork();
+		if (father == 0)
+		{
+			close(descrf[READ]);
+			dup2(descrf[WRITE], 1);
+			close(descrf[WRITE]);
+			execve(st_tab->tab_word[0], st_tab->tab_word, st_env->env);
+		}
+		else
+		{
+			close(descrf[WRITE]);
+			dup2(descrf[READ], 0);
+			close(descrf[READ]);
+			execve(st_tab2->tab_word[0], st_tab2->tab_word, st_env->env);
+		}
+		wait(&father);
+		return ;
+	}
+	else
+	{
+		create_tab_path(st_tab, st_env->env);
+		if (test_exist_fonction_two(st_tab, st_env, father, next_str) == 1)
+			return ;
+		forfree(st_tab->tab_path);
+	}
+	ft_dprintf(2, "%s%s\n", "42sh: command not found: ",
+			st_tab->tab_word[0]);
+	return ;
+}
+
+void	apply_builtin_tree(t_tab *st_tab, t_env *st_env, t_tree *tree, char **env)
+{
+	t_tab	st_tab2;
+	char	*cmd1;
+	char	*cmd2;
+
+	cmd1 = tree->str1;
+	cmd2 = tree->str2;
+	if (ft_strcmp(cmd1, "") != 0 && verif_char(cmd1) == 1)
+	{
+		if (ft_strcmp(cmd2, "") != 0 && verif_char(cmd2) == 1)
+		{
+			recup_argument(st_tab, st_env, &cmd1);
+			recup_argument(&st_tab2, st_env, &cmd2);
+		}
+		if (!check_is_builtins(st_tab) && (!check_is_builtins(&st_tab2)))
+			test_exist_fonction_pipe(st_tab, &st_tab2, &cmd1, &cmd2, st_env);
+		else if (check_is_builtins(st_tab))
+			realize_built(st_tab, st_env, &cmd1, env);
+		forfree(st_tab->tab_word);
+	}
+}
+

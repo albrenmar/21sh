@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/10 15:53:35 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/05 05:01:20 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# define PO line[*i] && line[*i] == '('
-# define PF line[*i] && line[*i] == ')'
+# define PO line[*i] == '('
+# define PF line[*i] == ')'
 # define GO line[*i] == '"'
+# define READ	0
+# define WRITE	1
+
 
 # include "./includes/ft_printf.h"
 # include <sys/stat.h>
@@ -94,10 +97,12 @@ void			create_env(char ***env, char *str);
 void			delete_env(char ***env, char *str);
 void			freetab(char **tab);
 void			apply_cmd(t_tab *st_tab, t_env *st_env,
-		t_list *list_cmd, char **env);
+		t_cmd *cmd, char **env);
 int				search_symbol(char *cmd);
 void			apply_builtin(t_tab *st_tab, t_env *st_env,
 		char *cmd, char **env);
-t_list			*ft_analize(char *line);
+void			apply_builtin_tree(t_tab *st_tab, t_env *st_env, t_tree *tree, char **env);
+void			test_exist_fonction_pipe(t_tab *st_tab, t_tab *st_tab2 , char **line1, char **line2, t_env *st_env);
+t_cmd			*ft_analize(char *line);
 
 #endif
