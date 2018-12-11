@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/10 16:54:44 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/10 20:08:34 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		add_to_str(char *str)
 			a = utf_goto(g_tracking.str, a);
 			err_check(a, len_dest, len_src);
 			if (a > utf_strlen(g_tracking.str))
-				a = utf_strlen(g_tracking.str);
+				a = ft_strlen(g_tracking.str);
 			ft_memmove(g_tracking.str+a+len_src, g_tracking.str+a , len_dest- a+1);
   			ft_memcpy(g_tracking.str+a,str,len_src);
 		}

@@ -1,62 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_key.c                                          :+:      :+:    :+:   */
+/*   cp_paste.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/11 16:26:00 by bsiche           ###   ########.fr       */
+/*   Created: 2018/12/10 19:41:54 by bsiche            #+#    #+#             */
+/*   Updated: 2018/12/11 16:28:04 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
-#include "stdio.h"
 
-void	ft_return(void)
-{
-	g_tracking.cmd = ft_strdup(g_tracking.str);
-	free(g_tracking.str);
-	cursor_reset();
-	g_tracking.str = ft_strnew(0);
-}
-
-
-void	test_read(void)
-{
-	char	c[12];
-	char	*str;
-	int		i;
-
-	i = 0;
-	read(STDERR_FILENO, &c, 12);
-	while (c[i])
-	{
-		printf("0x%x\n", c[i]);
-		if (i != 6)
-			ft_putchar('.');
-		else
-			ft_putchar('\n');
-		i++;
-	}
-}
-
-void	test_read2(char *str)
-{
-	int		i;
-
-	i = 0;
-	ft_putchar('\n');
-	while (str[i])
-	{
-		printf("0x%x\n", str[i]);
-		i++;
-	}
-}
-
-
-
-int		ft_exec_key(char *str)
+int		ft_mini_exec_key(char *str)
 {
 	if (ft_strcmp(str, K_LEFT) == 0)
 		move_left();
@@ -70,16 +26,14 @@ int		ft_exec_key(char *str)
 		move_up();
 	if (ft_strcmp(str, K_LDOWN) == 0)
 		move_down();
-	if (ft_strcmp(str, K_DEL) == 0)
-		rem_from_str();
 	if (ft_strcmp(str, K_FN1) == 0)
-		begin_cpy();
-	if (ft_strcmp(str, K_FN3) == 0)
-		begin_paste();
+		return (7);	
+	if (ft_strcmp(str, K_FN2) == 0)
+		return (8);	
 	return (6);
 }
 
-int		is_cmd(char *str)
+int		mini_is_cmd(char *str)
 {
 	int		i;
 	t_list	*tmp;
@@ -94,7 +48,7 @@ int		is_cmd(char *str)
 			flag++;
 		if (strlen(tmp->content) == i && ft_strncmp(str, tmp->content, i) == 0)
 		{
-			return (ft_exec_key(str));
+			return (ft_mini_exec_key(str));
 		}
 		tmp = tmp->next;
 	}
@@ -103,36 +57,8 @@ int		is_cmd(char *str)
 	return (0);
 }
 
-int	single_key(char c)
-{
-	if (c == K_BKSP)
-	{
-		rem_from_str();
-		return (12);
-	}
-	if (c == 10 || c == 13)
-	{
-		ft_return();
-		g_tracking.swi = 1;
-		return (12);
-	}
-	if (c == K_TAB)
-	{
-		ft_putnbr(g_tracking.swi);
-		sleep(2);
-		return (12);
-	}
-	return (0);
-}
 
-int		check(char *str)
-{
-	if (strncmp(str, "\x1b\x5b", 2) == 0 || strncmp(str, "\x1b\x4f", 2) == 0)
-		return (1);
-	return (0);
-}
-
-void	readloop(void)
+int		mini_read(void)
 {
 	char	c;
 	char	*str;
@@ -142,33 +68,63 @@ void	readloop(void)
 	i = 0;
 	read(STDERR_FILENO, &c, 1);
 	str = ft_strjoinchar(str, c, 1);
-	i = single_key(c);
 	if (c < 32)
 	{
-		while (42)
+		while (i == 0)
 		{
 			read(STDERR_FILENO, &c, 1);
 			str = ft_strjoinchar(str, c, 1);
-			i = is_cmd(str);
+			i = mini_is_cmd(str);
 			if (i == 6)
 				break ;
+			if (i > 6)
+				return (i);
 		}
 	}
-	if (check(str) == 1 || i == 12)
-		free(str);
-	else
-		add_to_str(str);
+	return (0);
 }
 
-int		get_key(void)
+void	ft_actual_cpy(void)
 {
-	char	*test;
+	int		start;
+	int		end;
+	int		len;
 
-	ft_putstr(g_tracking.prompt);
-	while (g_tracking.swi == 0)
+	start = g_tracking.cpaste->b1;
+	end = g_tracking.cpaste->b2 + 1;
+	if (end < start)
 	{
-	//	test_read();
-		readloop();
+		start = g_tracking.cpaste->b2;
+		end = g_tracking.cpaste->b1;
 	}
-	return (1);
+	start = utf_goto(g_tracking.str, start);
+	end = utf_goto(g_tracking.str, end);
+	len = end - start;
+	g_tracking.cpaste->line = ft_strsub(g_tracking.str, start, len, 0);
+}
+
+void	begin_cpy(void)
+{
+	int		i;
+
+	i = 0;
+	g_tracking.cpaste->b1 = g_tracking.pos->abs;
+	while (i == 0)
+	{
+		i = mini_read();
+		g_tracking.cpaste->b2 = g_tracking.pos->abs;
+		if (i == 7)
+			break;
+		if (i == 8)
+			ft_actual_cpy();
+		print_line_cpy();
+	}
+	print_line();
+	back_to_pos();
+}
+
+void	begin_paste(void)
+{
+	if (g_tracking.cpaste->line)
+		add_to_str(g_tracking.cpaste->line);
 }
