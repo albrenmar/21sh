@@ -6,7 +6,7 @@
 #    By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2018/12/04 18:02:40 by alsomvil         ###   ########.fr        #
+#    Updated: 2018/12/11 18:17:39 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC = srcs/main.c \
 
 OBJ = $(SRC:.c=.o)
 CC = gcc -g
-FLAGS =  -Wall -Wextra -Werror
+FLAGS =  -Wall -Wextra -Werror -fsanitize=address
 NAME = 42sh
 _GREEN = $ \033[32m
 _YELLOW = $ \033[33m

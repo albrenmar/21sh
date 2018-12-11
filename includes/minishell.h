@@ -6,15 +6,15 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/04 17:57:00 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/10 15:53:35 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# define PO line[*i] == '('
-# define PF line[*i] == ')'
+# define PO line[*i] && line[*i] == '('
+# define PF line[*i] && line[*i] == ')'
 # define GO line[*i] == '"'
 
 # include "./includes/ft_printf.h"
@@ -94,10 +94,10 @@ void			create_env(char ***env, char *str);
 void			delete_env(char ***env, char *str);
 void			freetab(char **tab);
 void			apply_cmd(t_tab *st_tab, t_env *st_env,
-		t_cmd *cmd, char **env);
+		t_list *list_cmd, char **env);
 int				search_symbol(char *cmd);
 void			apply_builtin(t_tab *st_tab, t_env *st_env,
 		char *cmd, char **env);
-t_cmd			*ft_analize(char *line);
+t_list			*ft_analize(char *line);
 
 #endif

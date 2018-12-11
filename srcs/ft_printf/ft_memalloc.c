@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 23:41:59 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/04 16:37:49 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/10 17:39:15 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 void	*ft_memalloc(size_t size)
 {
 	char	*str;
+	size_t	nb;
 
-	if (!(str = malloc(sizeof(char) * size)))
+	nb = 0;
+	if (!(str = malloc(sizeof(char) * (size + 1))))
 		return (NULL);
-	while (size > 0)
+	while (nb < (size + 1))
 	{
-		str[size - 1] = '\0';
-		size--;
+		str[nb] = '\0';
+		nb++;
 	}
 	return (str);
 }
