@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/11 16:26:00 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/14 02:23:29 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	ft_return(void)
 {
 	g_tracking.cmd = ft_strdup(g_tracking.str);
 	free(g_tracking.str);
+	g_tracking.str = NULL;
 	cursor_reset();
-	g_tracking.str = ft_strnew(0);
 }
 
 
@@ -114,7 +114,7 @@ int	single_key(char c)
 	{
 		ft_return();
 		g_tracking.swi = 1;
-		return (12);
+		return (13);
 	}
 	if (c == K_TAB)
 	{
@@ -132,7 +132,7 @@ int		check(char *str)
 	return (0);
 }
 
-void	readloop(void)
+int		readloop(void)
 {
 	char	c;
 	char	*str;
@@ -143,6 +143,8 @@ void	readloop(void)
 	read(STDERR_FILENO, &c, 1);
 	str = ft_strjoinchar(str, c, 1);
 	i = single_key(c);
+	if (i == 13)
+		return (1);
 	if (c < 32)
 	{
 		while (42)
@@ -158,6 +160,7 @@ void	readloop(void)
 		free(str);
 	else
 		add_to_str(str);
+	return (0);
 }
 
 int		get_key(void)
@@ -165,10 +168,8 @@ int		get_key(void)
 	char	*test;
 
 	ft_putstr(g_tracking.prompt);
-	while (g_tracking.swi == 0)
+	while (readloop() == 0)
 	{
-	//	test_read();
-		readloop();
 	}
 	return (1);
 }

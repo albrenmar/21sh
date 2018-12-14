@@ -6,18 +6,18 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/05 16:05:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/14 01:28:26 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# define PO line[*i] == '('
-# define PF line[*i] == ')'
+# define PO line[*i] && line[*i] == '('
+# define PF line[*i] && line[*i] == ')'
 # define GO line[*i] == '"'
 
-# include "./includes/ft_printf.h"
+# include "ft_printf.h"
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <dirent.h>
@@ -49,17 +49,16 @@ typedef struct	s_tree
 	struct s_tree	*right;
 }				t_tree;
 
-typedef struct	s_cmd
-{
-	struct s_last	*beginlist;
-}				t_cmd;
-
 typedef struct	s_last
 {
 	char			*name;
 	struct s_last	*next;
 }				t_last;
 
+typedef struct	s_cmd
+{
+	struct s_list	*beginlist;
+}				t_cmd;
 
 int				ft_strcmp(const char *s1, const char *s2);
 int				nb_env(char **env);
@@ -95,10 +94,10 @@ void			create_env(char ***env, char *str);
 void			delete_env(char ***env, char *str);
 void			freetab(char **tab);
 void			apply_cmd(t_tab *st_tab, t_env *st_env,
-		t_cmd *cmd, char **env);
+		t_last *list_cmd, char **env);
 int				search_symbol(char *cmd);
 void			apply_builtin(t_tab *st_tab, t_env *st_env,
 		char *cmd, char **env);
-t_cmd			*ft_analize(char *line);
+t_last			*ft_analize(char *line);
 
 #endif

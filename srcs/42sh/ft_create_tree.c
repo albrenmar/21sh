@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_tree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 17:26:41 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/04 18:21:56 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/14 01:27:21 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 int		search_symbol(char *cmd)
 {
@@ -45,19 +45,26 @@ t_tree	*ft_create_tree(char *cmd, t_tree *tree)
 	tree->symbol = ft_strndup(&cmd[i], mode);
 	i = i + mode;
 	tree->str2 = ft_strdup(&cmd[i]);
-
-
+	if (search_symbol(tree->str1))
+	{
+		tree->left = ft_memalloc(sizeof(t_tree));
+		tree->left = ft_create_tree(tree->str1, tree->left);
+	}
+	else
+		tree->left = NULL;
+	if (search_symbol(tree->str2))
+	{
+		tree->right = ft_memalloc(sizeof(t_tree));
+		tree->right = ft_create_tree(tree->str2, tree->right);
+	}
+	else
+		tree->right = NULL;
 	/* AJOUT FONCTION MJOSE */
 // Tu peux recuperer ici tree->str1, tree->str2 et tree->symbol pour tes tests
 	/* AJOUT FONCTION MJOSE */
 
 
 	/* FINI DEMAIN */
-//if (search_symbol(tree->str2))
-//{
-//tree->right = ft_memalloc(sizeof(t_tree));
-//tree->right = ft_create_tree(tree->str2, tree->right);
-//}
 	/* FINI DEMAIN */
 
 	return (tree);

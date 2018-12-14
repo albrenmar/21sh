@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/02 18:27:43 by cababou           #+#    #+#              #
-#    Updated: 2018/12/05 15:26:23 by bsiche           ###   ########.fr        #
+#    Updated: 2018/12/14 02:21:15 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,22 +88,45 @@ SRC =		ft_atoi.c \
 	get_next_line.c \
 	listcontainer_fastsize.c
 
-OBJ = $(SRC:.c=.o)
+CLEAR_LINE	= \033[2K
+BEGIN_LINE	= \033[A
+COL_END		= \033[0m
+COL_RED		= \033[1;31m
+COL_GREEN	= \033[1;32m
+COL_YELLOW	= \033[1;33m
+COL_BLUE	= \033[1;34m
+COL_VIOLET	= \033[1;35m
+COL_CYAN	= \033[1;36m
+COL_WHITE	= \033[1;37m
 
-FLAG = -c -Wall -Werror -Wextra
+OBJ := 	$(SRC:.c=.o)
 
-HEADER =	libft.h
+PWD :=		$(shell pwd)
 
-all :		$(NAME)
+OBJDIR := 	obj
 
-$(NAME) : $(OBJ)
-			@ar rc $(NAME) $(OBJ)
+OBJP :=		$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
+ONLYDIR :=	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 
-%.o: %.c
-			@gcc -c $< $(FLAG)
+FLAG := 	-Wall -Wextra -Werror
+
+TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
+CURRENT_FILES = $(shell ls $(PWD)/obj/ 2> /dev/null | wc -l | sed -e 's/ //g')
+
+all : $(NAME)
+
+$(NAME) : $(OBJP)
+			@echo -e "$(CLEAR_LINE)$(COL_RED)lib compilation$(COL_END)"
+			@echo -e "$(CLEAR_LINE)$(COL_GREEN)Done ✓$(COL_END)"
+			@ar rc $(NAME) $(OBJP)
+
+$(OBJDIR)/%.o: %.c
+			@mkdir -p $(ONLYDIR)
+			@gcc -c -Wall -Wextra -Werror $< -o $@
+			@echo "$(CLEAR_LINE)$(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"
 
 clean :
-			@rm -rf $(OBJ)
+			@rm -rf $(OBJDIR)
 
 fclean :	clean
 			@rm -rf $(NAME)

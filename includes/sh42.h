@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/11 16:26:56 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/14 01:39:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define K_RIGHT	"\x1b\x5b\x43"
 # define K_DOWN		"\x1b\x5b\x42"
 # define K_UP		"\x1b\x5b\x41"
+# define K_		"\x1b\x5b\x41"
 # define K_LUP		"\x1b\x5b\x31\x3b\x32\x41"
 # define K_LDOWN	"\x1b\x5b\x31\x3b\x32\x42"
 # define K_WLEFT	"\x1b\x5b\x31\x3b\x32\x44"

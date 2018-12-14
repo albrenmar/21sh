@@ -6,21 +6,12 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/05 16:00:56 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/14 01:27:15 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
-t_last	*create_new_list(void)
-{
-	t_last	*list;
-
-	list = malloc(sizeof(t_last));
-	list->name = NULL;
-	list->next = NULL;
-	return (list);
-}
 
 char	*recup_cmd(char *line, int *i, int nb)
 {
@@ -90,19 +81,27 @@ char	*recup_cmd(char *line, int *i, int nb)
 		return (NULL);
 }
 
-t_cmd	*ft_analize(char *line)
+t_last	*create_new_list(void)
+{
+	t_last	*list;
+
+	list = malloc(sizeof(t_last));
+	list->name = NULL;
+	list->next = NULL;
+	return (list);
+}
+
+t_last	*ft_analize(char *line)
 {
 	char	*temp;
 	int		i;
-	int		j;
-	t_cmd	*cmd;
+	t_last	*list_cmd;
 	t_last	*templist;
 
 	i = 0;
-	j = 0;
-	cmd = ft_memalloc(sizeof(t_cmd));
-	cmd->beginlist = create_new_list();
-	templist = cmd->beginlist;
+	temp = NULL;
+	list_cmd = create_new_list();
+	templist = list_cmd;
 	while ((temp = recup_cmd(&line[i], &i, 0)) != NULL)
 	{
 		templist->name = ft_strdup(temp);
@@ -110,6 +109,6 @@ t_cmd	*ft_analize(char *line)
 		templist->next = ft_memalloc(sizeof(t_last));
 		templist = templist->next;
 	}
-	templist = cmd->beginlist;
-	return (cmd);
+	templist = list_cmd;
+	return (templist);
 }

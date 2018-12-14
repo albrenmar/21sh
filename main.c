@@ -3,46 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/14 02:25:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/11 17:59:55 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "sh42.h"
+#include "includes/minishell.h"
+
+void	free_list(t_list *list_cmd)
+{
+	t_list	*templist;
+
+	while (list_cmd->name)
+	{
+		templist = list_cmd->next;
+		free(list_cmd->name);
+		free(list_cmd);
+		list_cmd = templist;
+	}
+	free(list_cmd);
+}
 
 int		main(int argc, char **argv, char **env)
 {
 	char	*line;
 	t_tab	st_tab;
 	t_env	st_env;
-	t_last	*cmd;
-	char	*prompt;
+	pid_t	father;
+	t_list	*list_cmd;
 
-	line = NULL;
-	argc = 0;
-	argv = NULL;
+	line = argv[1];
 	set_env(&st_env, env);
-	cursorinit();
-	prompt = ft_strdup("Fake minishell > ");
-	g_tracking.prompt = ft_strdup(prompt);
-	g_tracking.pos->prompt = ft_strlen(prompt);
-	ft_siginit();
-	get_term();
-	while (get_key() > 0)
+	while (42)
 	{
+		ft_dprintf(2, "%s", "%> ");
 		/* A REMPLACER PAR FONCTIONS BSICHE */
-		line = ft_strdup(g_tracking.cmd);
-		free(g_tracking.cmd);
-		g_tracking.swi = 0;
-		ft_putchar('\n');
+		if (get_next_line(0, &line) <= 0)
+			exit(0);
 		/* A REMPLACER PAR FONCTIONS BSICHE */
-		cmd = ft_analize(line);
-		apply_cmd(&st_tab, &st_env, cmd, env);
+		list_cmd = ft_analize(line);
 		free(line);
-		line = NULL;
+		apply_cmd(&st_tab, &st_env, list_cmd, env);
+		free_list(list_cmd);
 	}
 	forfree(st_env.env);
 	return (0);
