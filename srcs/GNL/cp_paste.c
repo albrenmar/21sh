@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 19:41:54 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/11 16:28:04 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/14 03:37:41 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,13 @@ int		mini_read(void)
 			if (i == 6)
 				break ;
 			if (i > 6)
+			{
+				free(str);
 				return (i);
+			}
 		}
 	}
+	free(str);
 	return (0);
 }
 
@@ -100,6 +104,8 @@ void	ft_actual_cpy(void)
 	start = utf_goto(g_tracking.str, start);
 	end = utf_goto(g_tracking.str, end);
 	len = end - start;
+//	if (g_tracking.cpaste->line)
+//		free(g_tracking.cpaste->line);
 	g_tracking.cpaste->line = ft_strsub(g_tracking.str, start, len, 0);
 }
 
@@ -125,6 +131,9 @@ void	begin_cpy(void)
 
 void	begin_paste(void)
 {
+	char	*tmp;
+
+	tmp = ft_strdup(g_tracking.cpaste->line);
 	if (g_tracking.cpaste->line)
-		add_to_str(g_tracking.cpaste->line);
+		add_to_str(tmp);
 }

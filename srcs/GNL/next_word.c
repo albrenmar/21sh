@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 00:52:42 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/06 16:07:20 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/14 03:26:52 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		is_space(char c)
 {
-	if (c == ' ' || c == '\t' || c == ';')
+	if (c == ' ' || c == '\t' || c == ';' || c == '\0')
 		return (1);
 	else
 		return (0);
@@ -36,7 +36,7 @@ void	next_word()
 	tmp = g_tracking.str;
 	if (tmp != NULL)
 	{
-		while (tmp[i])
+		while (tmp[i] && tmp[i] < g_tracking.buffsize)
 		{
 			if (is_space(tmp[i]) == 0)
 				i++;
@@ -58,22 +58,22 @@ void	prev_word(void)
 
 	i = utf_goto(g_tracking.str, g_tracking.pos->abs);
 	tmp = g_tracking.str;
-	if (tmp != NULL)
+	if (tmp != NULL && i != 0)
 	{
-		if (is_space(tmp[i]) == 0)
+		if (tmp[i] != '\0' && is_space(tmp[i]) == 0 && i != 0)
 			i--;
-		if (is_space(tmp[i]) == 1)
+		if (tmp[i] != '\0' && is_space(tmp[i]) == 1 && i != 0)
 		{
-			while (is_space(tmp[i]) == 1)
+			while (tmp[i] != '\0' && is_space(tmp[i]) == 1 && i != 0)
 				i--;
 		}
-		while (tmp[i])
+		while (tmp[i] && i != 0)
 		{
-			while (is_space(tmp[i]) == 0)
+			while (tmp[i] != '\0' && is_space(tmp[i]) == 0 && i != 0)
 				i--;
 			break;
 		}
-		if (i < 0)
+		if (i < 1)
 			i = -1;
 		i++;
 		print_and_go(i);

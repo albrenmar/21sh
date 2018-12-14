@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/10 20:08:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/14 03:14:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void		add_to_str(char *str)
 			ft_memmove(g_tracking.str+a+len_src, g_tracking.str+a , len_dest- a+1);
   			ft_memcpy(g_tracking.str+a,str,len_src);
 		}
+		free(str);
 		print_line();
 		g_tracking.pos->abs += i;
 		back_to_pos();
@@ -76,6 +77,7 @@ void		rem_from_str(void)
 		free(g_tracking.str);
 		g_tracking.str = malloc(sizeof(char) * g_tracking.buffsize);
 		g_tracking.str = ft_strcpy(g_tracking.str, end);
+		free(end);
 		print_line();
 		g_tracking.pos->abs -= 1;
 		back_to_pos();

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/14 02:23:29 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/14 03:32:32 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_return(void)
 {
 	g_tracking.cmd = ft_strdup(g_tracking.str);
 	free(g_tracking.str);
+	free(g_tracking.cpaste->line);
+	free(g_tracking.cpaste);
 	g_tracking.str = NULL;
 	cursor_reset();
 }
@@ -138,13 +140,16 @@ int		readloop(void)
 	char	*str;
 	int		i;
 
-	str = ft_strnew(2);
+	str = ft_strnew(0);
 	i = 0;
 	read(STDERR_FILENO, &c, 1);
 	str = ft_strjoinchar(str, c, 1);
 	i = single_key(c);
 	if (i == 13)
+	{
+		free(str);
 		return (1);
+	}
 	if (c < 32)
 	{
 		while (42)

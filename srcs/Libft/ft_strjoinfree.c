@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:26:05 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/05 15:26:07 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/14 03:11:43 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*ft_strjoinchar(char const *s1, char s2, size_t free_level)
 	size_s1 = ft_strlen(s1);
 	if (s1 == NULL || s2 == '\0')
 		return (NULL);
-	if ((nstring = malloc(sizeof(char) * (size_s1 + 1))) == NULL)
+	if ((nstring = malloc(sizeof(char) * (size_s1 + 2))) == NULL)
 		return (NULL);
 	i = 0;
 	while (s1[i])
