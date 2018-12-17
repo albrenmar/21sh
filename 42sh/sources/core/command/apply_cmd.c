@@ -6,11 +6,12 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 17:28:29 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/17 04:30:24 by mjose            ###   ########.fr       */
+/*   Updated: 2018/12/17 04:36:27 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
 
 void	free_tree(t_tree *tree)
 {
@@ -23,17 +24,20 @@ void	free_tree(t_tree *tree)
 		free_tree(tree->right);
 	free(tree->str1);
 	free(tree->str2);
-	ft_strdel(tree->str_command1);
-	ft_strdel(tree->str_command2);
+	ft_strdel(&tree->str_command1);
+	ft_strdel(&tree->str_command2);
 	while (tree->cmd1[i])
 		ft_strdel(&tree->cmd1[i++]);
-	ft_memdel(&tree->cmd1);
+	ft_memdel((void **)tree->cmd1);
+	i = 0;
+	while (tree->cmd1[i])
+		ft_strdel(&tree->cmd2[i++]);
+	ft_memdel((void **)tree->cmd2);
 	free(tree->symbol);
-
 	free(tree);
 }
 
-void	apply_cmd(t_tab *st_tab, t_env *st_env, t_list *list_cmd, char **env)
+void	apply_cmd(/*t_tab *st_tab, t_env2 *st_env, */t_list2 *list_cmd/*, char **env*/)
 {
 	t_tree	*tree;
 
@@ -42,9 +46,9 @@ void	apply_cmd(t_tab *st_tab, t_env *st_env, t_list *list_cmd, char **env)
 		tree = ft_memalloc(sizeof(t_tree));
 		if (search_symbol(list_cmd->name))
 			tree = ft_create_tree(list_cmd->name, tree);
-		else
+/*		else
 			apply_builtin(st_tab, st_env, list_cmd->name, env);
-		list_cmd = list_cmd->next;
+*/		list_cmd = list_cmd->next;
 		free_tree(tree);
 	}
 }
