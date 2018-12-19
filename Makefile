@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2018/12/14 02:28:15 by bsiche           ###   ########.fr        #
+#    Updated: 2018/12/19 00:18:43 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,30 @@ SRC = main.c \
 	  GNL/print_line.c \
 	  GNL/next_word.c \
 	  GNL/cp_paste.c \
-	  GNL/get_key.c
+	  GNL/get_key.c \
+	  GNL/auto_complete.c \
+	  GNL/auto_complete_2.c \
+	  ft_ls/cmdparse.c \
+	  ft_ls/cmdparse_misc.c \
+	  ft_ls/color.c \
+	  ft_ls/free_all.c \
+	  ft_ls/ft_clean.c \
+	  ft_ls/ft_clean_bis.c \
+	  ft_ls/ft_cleanusr.c \
+	  ft_ls/ft_devid.c \
+	  ft_ls/ft_ls.c \
+	  ft_ls/getstat.c \
+	  ft_ls/getusr.c \
+	  ft_ls/info_to_str.c \
+	  ft_ls/main_ls.c \
+	  ft_ls/makelist.c \
+	  ft_ls/mode.c \
+	  ft_ls/mergesort.c \
+	  ft_ls/path.c \
+	  ft_ls/recursive.c \
+	  ft_ls/sortoption.c \
+	  ft_ls/termsize.c \
+	  ft_ls/timesort.c
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A

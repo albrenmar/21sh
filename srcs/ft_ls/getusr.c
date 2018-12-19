@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   listcontainer_size.c                               :+:      :+:    :+:   */
+/*   getusr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/17 05:29:49 by cababou           #+#    #+#             */
-/*   Updated: 2018/12/19 00:51:56 by bsiche           ###   ########.fr       */
+/*   Created: 2018/01/29 22:52:09 by bsiche            #+#    #+#             */
+/*   Updated: 2018/12/18 20:21:06 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "sh42.h"
 
-int		lstcontainer_size(t_lstcontainer *list_container)
+char	*ft_getusr(uid_t pw)
 {
-	t_list	*lst;
-	int		size;
+	struct passwd	*pwd;
+	char			*usrname;
 
-	size = 0;
-	if (list_container == NULL)
-		return (-1);
-	lst = list_container->firstelement;
-	while (lst)
-	{
-		lst = lst->next;
-		size++;
-	}
-	return (size);
+	errno = 0;
+	if ((pwd = getpwuid(pw)) == NULL)
+		usrname = ft_itoa(pw);
+	else
+		usrname = ft_strdup(pwd->pw_name);
+	return (usrname);
+}
+
+char	*ft_getgroup(gid_t gr)
+{
+	struct group	*usrgroup;
+	char			*usr;
+
+	if ((usrgroup = getgrgid(gr)) == NULL)
+		usr = ft_itoa(gr);
+	else
+		usr = ft_strdup(usrgroup->gr_name);
+	return (usr);
 }

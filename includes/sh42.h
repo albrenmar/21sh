@@ -6,13 +6,14 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/14 01:39:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/19 01:10:31 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH42_H
 # define SH42_H
 # include "libft.h"
+# include "ft_ls.h"
 # include <sys/ioctl.h>
 # include <termios.h>
 # include <curses.h>
@@ -59,6 +60,14 @@ typedef struct	s_term_data
 	int		sizex;
 	int		sizey;
 }				t_term_data;
+
+typedef struct	s_auto
+{
+	char			*word;
+	char			*path;
+	t_lstcontainer	*comp_list;
+	int				index;
+}				t_auto;
 
 typedef struct	s_cpaste
 {
@@ -161,4 +170,14 @@ void			begin_cpy(void);
 void			begin_paste(void);
 
 void			print_line_cpy(void);
+
+t_lstcontainer	*modified_ls(int argc, char **argv);
+
+int				auto_complete(void);
+
+t_lstcontainer	*build_ls(t_auto *aut);
+
+int				ft_easyprint(t_list *liste);
+
+void			build_comp(t_lstcontainer *list, t_auto *aut);
 #endif

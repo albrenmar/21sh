@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 23:37:38 by bsiche            #+#    #+#             */
-/*   Updated: 2018/08/30 21:57:44 by bsiche           ###   ########.fr       */
+/*   Updated: 2018/12/18 23:55:37 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			ft_freesplitlist(t_lstcontainer *list)
 	{
 		ft_freelstsplit(list);
 		if (list->firstelement != NULL)
-			ft_lstdel(list->firstelement, 1);
+			ft_lstdel(list->firstelement, 0);
 		free(list);
 	}
 }
