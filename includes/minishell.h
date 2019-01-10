@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 09:25:57 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/10 14:36:46 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/01/10 18:19:00 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # include <unistd.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
+# include <sys/types.h>
+# include <fcntl.h>
 
 int					g_signal_c;
 typedef struct stat	t_stat;
@@ -109,7 +111,11 @@ int					ft_check_args(char *args);
 
 
 t_hist				*hist_lst_create(t_core *core);
-void				hist_lst_add_next(t_core *core);
+void				hist_lst_add_next(t_core *core, char *line);
 void				history_setup(t_core *core);
 void				hist_print(t_core *core);
+void				hist_free(t_core *core);
+void				history_builtin(t_core *core);
+void				hist_setup_file(t_core *core);
+void				hist_save_file(t_core *core);
 #endif

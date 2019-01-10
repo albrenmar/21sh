@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 09:26:51 by hdufer            #+#    #+#             */
-/*   Updated: 2018/03/13 09:30:13 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/01/10 18:09:50 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@ void	exit_builtin(t_core *core)
 	ft_free_tab(core->arg);
 	free(core->line);
 	ft_free_list(core->env);
+	// history save in file ./shell_history
+	hist_save_file(core);
 	exit(1);
 }

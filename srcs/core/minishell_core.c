@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 09:27:22 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/10 14:45:47 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/01/10 18:27:10 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void			minishell(int argc, char **argv, char **env)
 	core = ft_init(argc, argv, env);
 	// Without that crash one on two
 	core->hist = NULL;
+	hist_setup_file(core);
+	//end here
 	ft_display_prompt(0);
 	while ((core->ret = get_next_line(0, &core->line)))
 	{
