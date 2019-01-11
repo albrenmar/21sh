@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:26:48 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/05 15:13:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/10 01:53:59 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	update_pos()
 
 	ab = g_tracking.pos->abs + g_tracking.pos->prompt;
 	g_tracking.pos->x = ab % g_tracking.terminfo->sizex;
+	g_tracking.pos->legacy = (utf_strlen(g_tracking.str) + g_tracking.pos->prompt) / g_tracking.terminfo->sizex;
 }
 
 void	back_home()

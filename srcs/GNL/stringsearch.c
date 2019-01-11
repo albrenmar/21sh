@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/14 03:14:49 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/10 01:15:01 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,17 @@ void		rem_from_str(void)
 		print_line();
 		g_tracking.pos->abs -= 1;
 		back_to_pos();
+	}
+}
+
+void		rem_str(char *str)
+{
+	int		i;
+
+	i = ft_strlen(str);
+	while (i > 0)
+	{
+		rem_from_str();
+		i--;
 	}
 }

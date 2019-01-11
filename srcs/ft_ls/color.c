@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 03:04:27 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/18 20:21:06 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/08 05:07:03 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,27 +97,27 @@ void	color(t_list *liste)
 void	ft_putcolor(int i)
 {
 	if (i == 1)
-		ft_putstr("\033[30;42m");
+		ft_putstr_fd("\033[30;42m",  STDERR_FILENO);
 	if (i == 2)
-		ft_putstr("\033[43m");
+		ft_putstr_fd("\033[43m", STDERR_FILENO);
 	if (i == 3)
-		ft_putstr("\033[36;1m");
+		ft_putstr_fd("\033[36;1m", STDERR_FILENO);
 	if (i == 4)
-		ft_putstr("\033[30;41m");
+		ft_putstr_fd("\033[30;41m", STDERR_FILENO);
 	if (i == 5)
-		ft_putstr("\033[30;46m");
+		ft_putstr_fd("\033[30;46m", STDERR_FILENO);
 	if (i == 6)
-		ft_putstr("\033[31m");
+		ft_putstr_fd("\033[31m", STDERR_FILENO);
 	if (i == 7)
-		ft_putstr("\033[33m");
+		ft_putstr_fd("\033[33m", STDERR_FILENO);
 	if (i == 8)
-		ft_putstr("\033[35m");
+		ft_putstr_fd("\033[35m", STDERR_FILENO);
 	if (i == 9)
-		ft_putstr("\033[34;46m");
+		ft_putstr_fd("\033[34;46m", STDERR_FILENO);
 	if (i == 10)
-		ft_putstr("\033[34;43m");
+		ft_putstr_fd("\033[34;43m", STDERR_FILENO);
 	if (i == 11)
-		ft_putstr("\033[32m");
+		ft_putstr_fd("\033[32m", STDERR_FILENO);
 	if (i == 12)
-		ft_putstr("\033[0m");
+		ft_putstr_fd("\033[0m", STDERR_FILENO);
 }

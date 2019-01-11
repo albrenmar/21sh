@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/18 20:49:53 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/11 23:49:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ int	single_key(char c)
 	if (c == K_TAB)
 	{
 		auto_complete();
-		sleep(2);
 		return (12);
 	}
 	return (0);
@@ -150,7 +149,7 @@ int		readloop(void)
 		free(str);
 		return (1);
 	}
-	if (c < 32)
+	if (c < 32 && i != 12)
 	{
 		while (42)
 		{

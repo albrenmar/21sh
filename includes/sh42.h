@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/19 01:10:31 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/11 23:53:02 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,14 @@ typedef struct	s_auto
 {
 	char			*word;
 	char			*path;
+	char			*menuline;
 	t_lstcontainer	*comp_list;
-	int				index;
+	int				type;
+	char			*to_add;
+	int				col_nbr;
+	int				lin_nbr;
+	int				size;
+	int				line_up;
 }				t_auto;
 
 typedef struct	s_cpaste
@@ -83,6 +89,7 @@ typedef struct	s_tracking
 	struct termios		myterm;
 	struct s_term_data	*terminfo;
 	struct s_cpaste		*cpaste;
+	struct s_auto		*aut;
 	char				*str;
 	char				*cmd;
 	char				*prompt;
@@ -137,6 +144,8 @@ void			correct_pos(void);
 
 void			back_to_pos(void);
 
+void			move_to_end();
+
 void			move_left(void);
 
 void			move_right(void);
@@ -175,9 +184,35 @@ t_lstcontainer	*modified_ls(int argc, char **argv);
 
 int				auto_complete(void);
 
-t_lstcontainer	*build_ls(t_auto *aut);
+void			get_line_col(void);
+
+void			get_max_size(void);
+
+void			ft_strpadding(void);
+
+t_lstcontainer	*build_ls(void);
 
 int				ft_easyprint(t_list *liste);
 
-void			build_comp(t_lstcontainer *list, t_auto *aut);
+void			print_list(void);
+
+void			build_comp(t_lstcontainer *list);
+
+void			completion_loop(t_list *buf);
+
+void			rem_str(char *str);
+
+void			assign_type(void);
+
+void			clean_up_autoc(void);
+
+void			ft_menuline(void);
+
+char			*send_color(int i);
+
+void			color(t_list *liste);
+
+void			print_menu(void);
+
+void			end_autocomplete(int i);
 #endif

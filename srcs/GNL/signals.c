@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 14:00:48 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/05 15:13:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/12 00:48:12 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void		fg_bg(int sino)
 void		handle_sin(int sino)
 {
 	char		*test;
+	int			i;
+	int			y;
 
 	if (sino == SIGABRT || sino == SIGINT || sino == SIGKILL
 	|| sino == SIGINT || sino == SIGQUIT)
@@ -42,12 +44,12 @@ void		handle_sin(int sino)
 	if (sino == SIGWINCH)
 	{
 		get_size();
-//		update_pos();
-		clear_screen3();
-		ft_putstr(">");
-		if (g_tracking.str)
-			ft_putstr(g_tracking.str);
-	//	update_pos();
+		update_pos();
+		if (g_tracking.aut)
+		{
+			end_autocomplete(0);
+	//		auto_complete();
+		}
 	}
 }
 

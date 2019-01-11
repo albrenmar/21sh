@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 22:58:59 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/19 01:00:00 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/08 00:52:48 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ t_lstcontainer		*modified_ls(int argc, char **argv)
 	i = 1;
 	flag = 0;
 	called = 0;
-	str = ft_strnew(1);
+	str = ft_strdup("-G");
 	if (argc == 1)
 	{
-		liste = ft_ls(".", "", 0);
+		liste = ft_ls(".", str, 0);
 		free(str);
 		return (liste);
 	}

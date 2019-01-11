@@ -6,33 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 20:14:05 by bsiche            #+#    #+#             */
-/*   Updated: 2018/07/18 19:01:28 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/08 00:59:15 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
-
-int		ft_easyprint(t_list *liste, char *option)
-{
-	t_list	*buf;
-	t_ls	*tmp;
-	int		g;
-
-	g = checkoption(option, 'G');
-	buf = ft_lstgetfirst(liste);
-	if (g == 1)
-		color(liste);
-	while (buf != NULL)
-	{
-		tmp = buf->content;
-		if (g == 1)
-			ft_putcolor(tmp->color);
-		ft_putendl(tmp->name);
-		ft_putcolor(12);
-		buf = buf->next;
-	}
-	return (0);
-}
+#include "sh42.h"
 
 void	ft_step(t_list *liste, int nb, size_t nopad, int g)
 {
@@ -96,33 +74,5 @@ int		get_coltab(t_list *liste, int g)
 	nbrline = (nbrelem / ft_strpad(liste, g)) + 1;
 	nopad = nbrelem - nbrline;
 	protoprint(liste, nbrline, nopad, g);
-	return (0);
-}
-
-int		ft_print(t_list *liste, char *option, int flag)
-{
-	t_ls	*tmp;
-	int		a;
-
-	a = checkoption(option, 'l');
-	if (a == 0 && needstat(option) != 1)
-		ft_mergesort(liste, 0);
-	tmp = liste->content;
-	if (checkoption(option, 'r') == 1)
-		reverselist(liste);
-	if (checkoption(option, '1') == 1 ||
-		(a == 0 && checkoption(option, 'd') == 1))
-		return (ft_easyprint(liste, option));
-	if (a == 0)
-	{
-		get_coltab(liste, checkoption(option, 'G'));
-		return (0);
-	}
-	else
-	{
-		if (flag != 1 && tmp->issimple != 1)
-			ft_total(liste);
-		ft_printl(liste, checkoption(option, 'G'));
-	}
 	return (0);
 }

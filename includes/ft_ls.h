@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/18 20:33:09 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/08 05:05:31 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef	struct	s_ls
 	char	*strsize;
 	char	*strmin;
 	char	*strmaj;
+	char	*strpad;
+	int		id;
 	int		color;
 }				t_ls;
 
@@ -103,4 +105,6 @@ char			*truename(char *str);
 void			reindex(t_list *liste);
 int				ft_edgecase(char *dossier);
 char			*truename2(char *str);
+void			get_and_sort(t_lstcontainer *mainliste, char *option);
+int				get_coltab(t_list *liste, int g);
 #endif
