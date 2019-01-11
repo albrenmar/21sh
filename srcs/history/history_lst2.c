@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/10 19:25:09 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/01/11 16:06:03 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void		hist_save_file(t_core *core)
 {
 	int fd;
 
-	// FIND WHY FD FUCKING DONT WORk
-	fd = open("~.shell_history", O_APPEND | O_CREAT, 0777);
+
+	fd = open("/goinfre/.shell_history", O_APPEND | O_CREAT, 0777);
 	if (fd < 0)
 	{
 		ft_putendl_fd("Error while opening/creating .shell_history", 2);
@@ -29,8 +29,10 @@ void		hist_save_file(t_core *core)
 	while(core->hist)
 	{
 		ft_putendl_fd(core->hist->line, fd);
-		while (core->hist->next)
+		if (core->hist->next)
 			core->hist = core->hist->next;
+		else
+			break;
 	}
 	close(fd);
 }

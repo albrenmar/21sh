@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/10 19:26:30 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/01/11 16:04:30 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,15 @@ void		hist_setup_file(t_core *core)
 
 	line = ft_memalloc(sizeof(line));
 	// FD DONT WORKKK
-	fd = open("$HOME/.shell_history", O_CREAT | O_APPEND | O_RDWR, 0777);
-	perror("");
+	fd = open("/goinfre/.shell_history", O_CREAT | O_APPEND | O_RDWR, 0777);
 	if (fd < 0)
 	{
 		ft_putendl_fd("Error while opening/creating .shell_history", 2);
 		return;
 	}
-	if (core->hist == NULL)
+	if (core->hist == NULL && core->line)
 		core->hist = hist_lst_create(core);
-	while (get_next_line(fd, line) == 1)
+	while (get_next_line(fd, line) == 1 && *line != NULL)
 		hist_lst_add_next(core, *line);
 	close(fd);
 	free(line);
