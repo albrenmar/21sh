@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 00:24:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/12 04:53:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,22 @@ void	clean_up_autoc(void)
 {
 	free(g_tracking.aut->word);
 	g_tracking.aut->word = NULL;
+	free(g_tracking.aut->menuline);
+	g_tracking.aut->menuline = NULL;
 	free(g_tracking.aut->path);
 	g_tracking.aut->path = NULL;
-	if (g_tracking.aut->comp_list)
+	if (g_tracking.aut->to_free)
 	{
-		ft_lstdel(g_tracking.aut->comp_list->firstelement, 1);
-		g_tracking.aut->comp_list->firstelement = NULL;
+		free_all(g_tracking.aut->to_free, NULL);
+		g_tracking.aut->to_free = NULL;
+		ft_lstdel(g_tracking.aut->comp_list->firstelement, 0);
+		free(g_tracking.aut->comp_list);
 	}
-	free(g_tracking.aut->comp_list);
-	g_tracking.aut->comp_list = NULL;
+	else
+	{
+		free_all(g_tracking.aut->comp_list, NULL);
+		g_tracking.aut->comp_list = NULL;
+	}
 	free(g_tracking.aut);
 	g_tracking.aut = NULL;
 }
@@ -70,6 +77,10 @@ int		read_loop(void)
 		return (-1);
 	if (c == 4414235 || c == K_TAB)
 		return (1);
+	if (c == 4348699)
+		return (2);
+	if (c == 4283163)
+		return (-2);
 	if (c == K_RTN || c == K_SPC)
 	{
 		end_autocomplete(1);
@@ -118,23 +129,8 @@ void	completion_loop(t_list *buf)
 	}
 	while ((i = read_loop()) != 0 && buf != NULL)
 	{
-		if (i == -1)
-		{
-			if (buf->prev == NULL)
-				buf = ft_lstgetlast(buf);
-			else
-				buf = buf->prev;
-			print_menu();
-			get_new(buf);
-		}
-		if (i == 1)
-		{
-			if (buf->next == NULL)
-				buf = ft_lstgetfirst(buf);
-			else
-				buf = buf->next;
-			get_new(buf);
-		}
+		buf = move_arround(buf, i);
+		get_new(buf);
 	}
 	tputs(tgetstr("ve", NULL), 1, yan_putchar);
 }

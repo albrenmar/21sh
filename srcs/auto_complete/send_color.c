@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 05:04:47 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/08 05:07:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/12 04:01:29 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,31 @@
 
 char	*send_color(int i)
 {
+	if (i == 0)
+		return (NULL);
 	if (i == 1)
-		return("\033[30;42m");
+		return ("\033[30;42m");
 	if (i == 2)
-		return("\033[43m");
+		return ("\033[43m");
 	if (i == 3)
-		return("\033[36;1m");
+		return ("\033[36;1m");
 	if (i == 4)
-		return("\033[30;41m");
+		return ("\033[30;41m");
 	if (i == 5)
-		return("\033[30;46m");
+		return ("\033[30;46m");
 	if (i == 6)
-		return("\033[31m");
+		return ("\033[31m");
 	if (i == 7)
-		return("\033[33m");
+		return ("\033[33m");
 	if (i == 8)
-		return("\033[35m");
+		return ("\033[35m");
 	if (i == 9)
-		return("\033[34;46m");
+		return ("\033[34;46m");
 	if (i == 10)
-		return("\033[34;43m");
+		return ("\033[34;43m");
 	if (i == 11)
-		return("\033[32m");
+		return ("\033[32m");
 	if (i == 12)
-		return("\033[0m");
+		return ("\033[0m");
 }
 

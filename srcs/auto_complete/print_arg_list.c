@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/09 23:28:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/12 04:51:03 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ char	*ft_joinline(int col_nbr, int i, t_ls *arg)
 	char	*sub;
 
 	line = ft_strnew(0);
-	line = ft_strjoinfree(line, send_color(arg->color), 1);
+	sub = send_color(arg->color);
+	if (sub != NULL)
+		line = ft_strjoinfree(line, sub, 1);
 	line = ft_strjoinfree(line, arg->name, 1);
 	line = ft_strjoinfree(line, "\033[0m", 1);
 	if ((i + 1) < col_nbr)
@@ -78,7 +80,14 @@ void	ft_menuline(void)
 	char		*res;
 
 	if (ft_check() == 0)
+	{
+		if (g_tracking.aut->menuline)
+		{
+			free(g_tracking.aut->menuline);
+			g_tracking.aut->menuline = NULL;
+		}
 		g_tracking.aut->menuline = ft_createline();
+	}
 	else
 		g_tracking.aut->menuline = (ft_strdup("(╯°□°）╯︵ ┻━┻ Term size too small to display all possibilities"));
 }

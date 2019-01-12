@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 00:27:44 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/12 04:52:18 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_auto		*init_auto(void)
 	aut->path = NULL;
 	aut->menuline = NULL;
 	aut->comp_list = NULL;
+	aut->to_free = 0;
 	aut->to_add = NULL;
 	aut->size = 0;
 	aut->col_nbr = 0;
@@ -61,7 +62,7 @@ void	build_list(void)
 	g_tracking.aut->comp_list = NULL;
 	if (g_tracking.aut->word)
 	{
-		assign_type();	
+		assign_type();
 		list = build_ls();
 		if (list != NULL)
 		{
@@ -71,6 +72,7 @@ void	build_list(void)
 			{
 				get_max_size();
 				rem_str(g_tracking.aut->word);
+				set_up_page();
 				completion_loop(g_tracking.aut->comp_list->firstelement);
 			}
 		}
@@ -79,6 +81,7 @@ void	build_list(void)
 	{
 		g_tracking.aut->comp_list = build_ls();
 		get_max_size();
+		set_up_page();
 		completion_loop(g_tracking.aut->comp_list->firstelement);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/09 23:27:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/12 03:35:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int		check_type(void)
 
 	check = g_tracking.aut->word;
 	if(check[0] == '/')
-		return(1);
+		return (1);
 	if(check[1] != '\0')
 	{
 		if (check[0] == '.' && check[1] == '/')
-			return(1);
+			return (1);
 		if (check[2] != '\0')
 			if (check[0] == '.' && check[1] == '.' && check[2] == '/')
-				return(1);
+				return (1);
 	}
 	if (check[0] == '$')
 		return (2);
@@ -65,30 +65,22 @@ void	rm_slash(void)
 
 int		sanitize_path(void)
 {
-	t_lstcontainer	*tmp;
-	t_list			*buf;
-	char			*path;
-	int				i;
+	int		i;
+	int		a;
+	char	*path;
 
-	tmp = ft_strsplitlst(g_tracking.aut->word, '/');
-	i = lstcontainer_size(tmp);
-	if (i > 1)
+	i = ft_strlen(g_tracking.aut->word);
+	a = 0;
+	while (g_tracking.aut->word[i] != '/' && i > 0)
+		i--;
+	path = ft_strnew(i);
+	while (i > a)
 	{
-		path = ft_strnew(0);
-		buf = tmp->firstelement;
-		while (buf->next != NULL)
-		{
-			path = ft_strjoinfree("/", path, 2);
-			path = ft_strjoinfree(path, buf->content, 1);
-			path = ft_strjoinfree(path, "/", 1);
-			buf = buf->next;
-		}
-		ft_freesplitlist(tmp);
-		free(g_tracking.aut->path);
-		g_tracking.aut->path = path;
-		return (1);
+		path[a] = g_tracking.aut->word[a];
+		a++;
 	}
-	return (0);
+	path = ft_strjoinfree(path, "/", 1);
+	g_tracking.aut->path = path;
 }
 
 void	assign_type(void)
