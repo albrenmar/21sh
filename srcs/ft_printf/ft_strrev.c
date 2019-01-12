@@ -3,33 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/31 07:27:53 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/04 16:40:02 by alsomvil         ###   ########.fr       */
+/*   Created: 2018/05/23 20:06:21 by bsiche            #+#    #+#             */
+/*   Updated: 2018/12/05 15:41:51 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-char		*ft_strrev(char *str)
+char	*ft_strrev(char const *s1, int freeit)
 {
-	int		i;
-	int		j;
-	char	temp;
+	size_t	i;
+	char	*nstring;
 
+	nstring = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (nstring == NULL)
+		return (NULL);
 	i = 0;
-	j = 0;
-	while (str[i])
-		i++;
-	i--;
-	while (i > j)
+	while (s1[i] != '\0')
 	{
-		temp = str[j];
-		str[j] = str[i];
-		str[i] = temp;
-		i--;
-		j++;
+		nstring[ft_strlen(s1) - i - 1] = s1[i];
+		i++;
 	}
-	return (str);
+	nstring[i] = '\0';
+	if (freeit == 1)
+		free((char*)s1);
+	return (nstring);
 }

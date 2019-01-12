@@ -3,29 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/04 14:49:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/04 16:40:21 by alsomvil         ###   ########.fr       */
+/*   Created: 2018/02/17 04:57:22 by bsiche            #+#    #+#             */
+/*   Updated: 2018/12/05 15:41:55 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char	*ft_strsub(const char *s, size_t start, size_t len, size_t freeit)
 {
-	size_t			i;
-	char			*temp;
+	size_t	i;
+	char	*nstring;
 
+	if (s == NULL)
+		return (NULL);
 	i = 0;
-	if (!(temp = ft_memalloc(sizeof(char) * (len + 1))))
+	nstring = (char *)malloc(sizeof(char) * (len + 1));
+	if (nstring == NULL)
 		return (NULL);
 	while (i < len)
 	{
-		temp[i] = s[start];
+		nstring[i] = s[start + i];
 		i++;
-		start++;
 	}
-	temp[i] = '\0';
-	return (temp);
+	nstring[i] = '\0';
+	if (freeit == 1)
+		free((char*)s);
+	return (nstring);
 }

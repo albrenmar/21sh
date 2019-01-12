@@ -3,74 +3,71 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/05 04:16:23 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/04 17:15:24 by alsomvil         ###   ########.fr       */
+/*   Created: 2018/05/23 20:03:52 by bsiche            #+#    #+#             */
+/*   Updated: 2018/05/23 20:03:54 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "libft.h"
 
-static char	*lenword(char const *s, char c)
+static size_t	spstrlen(char const *s, int start, char until)
 {
-	int		i;
-	char	*temp;
+	size_t	i;
 
 	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	if (!(temp = ft_memalloc(sizeof(char) * (i + 1))))
-		return (NULL);
-	i = 0;
-	while (s[i] && s[i] != c)
+	while (s[start + i] != until && s[start + i] != '\0')
 	{
-		temp[i] = s[i];
 		i++;
 	}
-	temp[i] = '\0';
-	return (temp);
+	return (i);
 }
 
-static int	nbword(char const *s, char c)
+static size_t	countwords(char const *s, char c)
 {
-	int		word;
-	int		i;
+	size_t	i;
+	size_t	count;
+	int		makeword;
 
-	word = 0;
 	i = 0;
-	while (s[i] && s[i] == c)
-		i++;
-	while (s[i])
+	count = 0;
+	makeword = 0;
+	while (s[i] != '\0')
 	{
-		while (s[i] && s[i] != c)
-			i++;
-		word++;
-		while (s[i] && s[i] == c)
-			i++;
+		if (s[i] == c)
+			makeword = 0;
+		if (s[i] != c && makeword == 0)
+		{
+			makeword = 1;
+			count++;
+		}
+		i++;
 	}
-	return (word);
+	return (count);
 }
 
-char		**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
-	int		i;
-	int		j;
-	char	**tab;
+	size_t	i;
+	size_t	y;
+	char	**table;
 
-	i = 0;
-	j = 0;
-	if (!(tab = malloc(sizeof(char *) * (nbword(s, c) + 1))))
+	if (s == NULL)
 		return (NULL);
-	while (s[i])
+	i = 0;
+	table = malloc(2 * (sizeof(char **) * (countwords(s, c) + 1)));
+	if (table == NULL)
+		return (NULL);
+	y = 0;
+	while (i < countwords(s, c))
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		if (s[i] != '\0')
-			tab[j++] = lenword(&s[i], c);
-		while (s[i] && s[i] != c)
-			i++;
+		while (s[y] == c)
+			y++;
+		table[i] = ft_strsub(s, y, spstrlen(s, y, c), 0);
+		y += spstrlen(s, y, c);
+		i++;
 	}
-	tab[j] = NULL;
-	return (tab);
+	table[i] = NULL;
+	return (table);
 }

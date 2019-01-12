@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 01:45:59 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/09/13 16:15:02 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/05 15:39:39 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int				ft_dprintf(int fd, const char *format, ...);
 int				ft_printstart(t_save *save, char *tmpformat, int *i);
 int				ft_nextarg(va_list test, t_save *save, char *tmpformat, int i);
 void			*ft_memset(void *b, int c, size_t len);
-char			*ft_strsub(char const *s, unsigned int start, size_t len);
+char			*ft_strsub(char const *s, size_t t, size_t l, size_t f);
 void			ft_bzero(void *s, size_t n);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strndup(const char *s1, int n);
@@ -70,7 +70,7 @@ void			ft_putchar_return(char c, t_save *save);
 size_t			ft_strlen(const char *s);
 void			ft_putchar(char c);
 void			ft_memdel(void **ap);
-char			*ft_strrev(char *str);
+char			*ft_strrev(char const *s1, int freeit);
 char			*ft_itoabase(unsigned long long nb, int base);
 void			*ft_memalloc(size_t size);
 int				ft_printf(const char *format, ...);

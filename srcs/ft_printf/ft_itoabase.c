@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_itoabase.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 02:14:26 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/04 16:37:45 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/05 16:08:34 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ char		*ft_itoabase(unsigned long long nb, int base)
 	if (!(str = ft_memalloc(sizeof(char) * (len + 1 + neg))))
 		return (NULL);
 	ft_fillstr(str, nb, neg, base);
-	ft_strrev(str);
+	ft_strrev(str, 0);
 	return (str);
 }

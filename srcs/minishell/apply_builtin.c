@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 17:52:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/04 17:56:40 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/04 13:12:25 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	create_tab_path(t_tab *st_tab, char **env)
 	st_tab->tab_path = NULL;
 }
 
-void	recup_argument(t_tab *st_tab, t_env *st_env, char **line)
+void	recup_argument(t_tab *st_tab, char **line)
 {
 	if (*line && ft_strcmp(*line, "") != 0)
 		st_tab->tab_word = ft_strsplit(*line, ' ');
@@ -81,14 +81,15 @@ int		test_exist_fonction_two(t_tab *st_tab, t_env *st_env,
 	return (0);
 }
 
-void	test_exist_fonction(t_tab *st_tab, char **line, t_env *st_env)
+void	test_exist_fonction(t_tab *st_tab, t_env *st_env)
 {
 	char	*next_str;
 	int		i;
-	int		test_proc;
 	pid_t	father;
 
 	i = 0;
+	father = 0;
+	next_str = NULL;
 	if (access(st_tab->tab_word[0], X_OK) == 0)
 	{
 		father = fork();
@@ -109,15 +110,15 @@ void	test_exist_fonction(t_tab *st_tab, char **line, t_env *st_env)
 	return ;
 }
 
-void	apply_builtin(t_tab *st_tab, t_env *st_env, char *cmd, char **env)
+void	apply_builtin(t_tab *st_tab, t_env *st_env, char *cmd)
 {
 	if (ft_strcmp(cmd, "") != 0 && verif_char(cmd) == 1)
 	{
-		recup_argument(st_tab, st_env, &cmd);
+		recup_argument(st_tab, &cmd);
 		if (!check_is_builtins(st_tab))
-			test_exist_fonction(st_tab, &cmd, st_env);
+			test_exist_fonction(st_tab, st_env);
 		else if (check_is_builtins(st_tab))
-			realize_built(st_tab, st_env, &cmd, env);
+			realize_built(st_tab, st_env);
 		forfree(st_tab->tab_word);
 	}
 }

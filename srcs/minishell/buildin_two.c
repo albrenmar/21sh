@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 15:07:37 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/04 16:41:26 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/17 06:29:51 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,9 @@ int		check_is_builtins(t_tab *st_tab)
 	return (0);
 }
 
-void	realize_built(t_tab *st_tab, t_env *st_env, char **line, char **env)
+void	realize_built(t_tab *st_tab, t_env *st_env)
 {
-	char	*path;
 	char	*buf;
-	char	*pwd;
-	char	*home;
 
 	buf = NULL;
 	if (ft_strcmp(st_tab->tab_word[0], "env") == 0)

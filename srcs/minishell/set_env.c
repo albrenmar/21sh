@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 23:54:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/04 16:41:56 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/17 06:30:43 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,7 @@ int		test_arg_two(t_tab *st_tab, char **temp_env, int j)
 
 int		test_arg(t_tab *st_tab, char **temp_env, int j)
 {
-	char	*next_str;
 	int		i;
-	int		test_proc;
 	pid_t	father;
 
 	i = 0;

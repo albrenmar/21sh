@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_analize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/10 17:29:30 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/12/17 06:49:18 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,22 +81,22 @@ char	*recup_cmd(char *line, int *i, int nb)
 		return (NULL);
 }
 
-t_list	*create_new_list(void)
+t_last	*create_new_list(void)
 {
-	t_list	*list;
+	t_last	*list;
 
-	list = malloc(sizeof(t_list));
+	list = malloc(sizeof(t_last));
 	list->name = NULL;
 	list->next = NULL;
 	return (list);
 }
 
-t_list	*ft_analize(char *line)
+t_last	*ft_analize(char *line)
 {
 	char	*temp;
 	int		i;
-	t_list	*list_cmd;
-	t_list	*templist;
+	t_last	*list_cmd;
+	t_last	*templist;
 
 	i = 0;
 	temp = NULL;
@@ -106,7 +106,7 @@ t_list	*ft_analize(char *line)
 	{
 		templist->name = ft_strdup(temp);
 		free(temp);
-		templist->next = ft_memalloc(sizeof(t_list));
+		templist->next = ft_memalloc(sizeof(t_last));
 		templist = templist->next;
 	}
 	templist = list_cmd;

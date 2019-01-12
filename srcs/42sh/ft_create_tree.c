@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_tree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 17:26:41 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/10 15:12:39 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/12 04:47:54 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+# define SYMBOL cmd[i] == '<' || cmd[i] == '>' || cmd[i] == '|' || cmd[i] == '&'
 
 int		search_symbol(char *cmd)
 {
@@ -26,25 +28,38 @@ int		search_symbol(char *cmd)
 	return (0);
 }
 
-t_tree	*ft_create_tree(char *cmd, t_tree *tree)
+
+/*t_tree	*ft_create_tree(char *cmd, t_tree *tree)
 {
 	int		i;
+	int		end;
 	int		mode;
 
 	i = 0;
+	end = ft_strlen(cmd) - 1;
 	mode = 1;
-	while (cmd[i] != '>' && cmd[i] != '<' && cmd[i] != '|' && cmd[i] != '&')
+	//printf("END = %d\n", end);
+	while (end > 0 && SYMBOL)
+		end--;
+	if (end > 0)
+		end--;
+	if (!(SYMBOL))
+		mode = 2;
+	if (mode == 1)
 	{
-		i++;
-		if ((cmd[i] == '>' && cmd[i + 1] == '>') || (cmd[i] == '<' &&
-					cmd[i + 1] == '<') || (cmd[i] == '|' && cmd[i + 1] == '|')
-				|| (cmd[i] == '&' && cmd[i + 1] == '&'))
-			mode++;
+		tree->str1 = ft_strndup(cmd, ft_strlen(cmd) - ft_strlen(&cmd[end + 1]));
+		tree->str2 = ft_strdup(&cmd[end + 2]);
+		tree->symbol = ft_strndup(&cmd[end + 1], mode);
 	}
-	tree->str1 = ft_strndup(cmd, i);
-	tree->symbol = ft_strndup(&cmd[i], mode);
-	i = i + mode;
-	tree->str2 = ft_strdup(&cmd[i]);
+	if (mode == 2)
+	{
+		tree->str1 = ft_strndup(cmd, ft_strlen(cmd) - ft_strlen(&cmd[end]));
+		tree->str2 = ft_strdup(&cmd[end + mode]);
+		tree->symbol = ft_strndup(&cmd[end], mode);
+	}
+	printf("Symbol = %s\n", tree->symbol);
+	printf("Str1 = %s\n", tree->str1);
+	printf("Str2 = %s\n", tree->str2);
 	if (search_symbol(tree->str1))
 	{
 		tree->left = ft_memalloc(sizeof(t_tree));
@@ -59,13 +74,5 @@ t_tree	*ft_create_tree(char *cmd, t_tree *tree)
 	}
 	else
 		tree->right = NULL;
-	/* AJOUT FONCTION MJOSE */
-// Tu peux recuperer ici tree->str1, tree->str2 et tree->symbol pour tes tests
-	/* AJOUT FONCTION MJOSE */
-
-
-	/* FINI DEMAIN */
-	/* FINI DEMAIN */
-
 	return (tree);
-}
+}*/
