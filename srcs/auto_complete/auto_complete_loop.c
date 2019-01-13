@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 21:03:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 21:41:07 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	completion_loop(t_lstcontainer *list)
 	t_list			*buf;
 	int				i;
 
-//	tputs(tgetstr("vi", NULL), 1, yan_putchar);
+	tputs(tgetstr("vi", NULL), 1, yan_putchar);
 	line_per_page();
 	g_tracking.aut->page_lst = build_page_lst(list);
 	buf = g_tracking.aut->page_lst->firstelement;

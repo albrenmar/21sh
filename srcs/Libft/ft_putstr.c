@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 20:58:35 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 21:03:59 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 21:40:41 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,23 @@ void	ft_putstr(char const *s)
 
 void	ft_putstr_nocar(char const *s)
 {
-	int	i;
+	char	*new;
+	int		i;
+	int		a;
 
-	if (*s)
+	new = ft_strnew(ft_strlen(s));
+
+	i = 0;
+	a = 0;
+	while (s[i] != '\0')
 	{
-		i = 0;
-		while (s[i])
+		if (s[i] != '\r')
 		{
-			if (s[i] != '\r')
-				ft_putchar(s[i]);
-			i++;
+			new[a] = s[i];
+			a++;
 		}
+		i++;
 	}
+	ft_putstr(new);
+	free(new);
 }
