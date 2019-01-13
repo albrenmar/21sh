@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/11 23:53:02 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 19:03:48 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,19 @@ typedef struct	s_auto
 	char			*path;
 	char			*menuline;
 	t_lstcontainer	*comp_list;
+	t_lstcontainer	*to_free;
+	t_lstcontainer	*page_lst;
+	int				active_page;
+	int				per_page;
+	int				page_nbr;
 	int				type;
 	char			*to_add;
 	int				col_nbr;
 	int				lin_nbr;
 	int				size;
 	int				line_up;
+	int				last_page;
+	int				pad_lpage;
 }				t_auto;
 
 typedef struct	s_cpaste
@@ -198,7 +205,7 @@ void			print_list(void);
 
 void			build_comp(t_lstcontainer *list);
 
-void			completion_loop(t_list *buf);
+void			completion_loop(t_lstcontainer *list);
 
 void			rem_str(char *str);
 
@@ -206,13 +213,31 @@ void			assign_type(void);
 
 void			clean_up_autoc(void);
 
-void			ft_menuline(void);
+int				ft_menuline(void);
 
 char			*send_color(int i);
 
 void			color(t_list *liste);
 
-void			print_menu(void);
+int				print_menu(void);
 
 void			end_autocomplete(int i);
+
+t_list			*move_arround(t_list *buf, int i);
+
+void			set_up_page(void);
+
+t_lstcontainer *build_page_lst(t_lstcontainer *list);
+
+void			print_list2(t_lstcontainer *list);
+
+void			change_page(int i, t_lstcontainer *list);
+
+void			join_page_nbr(void);
+
+void			line_per_page(void);
+
+void			escape_path(void);
+
+t_lstcontainer	*change_dir(void);
 #endif

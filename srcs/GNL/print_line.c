@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 15:24:45 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/11 16:24:41 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 21:10:57 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ void	print_line(void)
 	{
 		clear_screen3();
 		ft_dprintf(2, "%s", g_tracking.prompt);
-		ft_putstr(g_tracking.str);
+		ft_putstr_nocar(g_tracking.str);
 	}
 }
-		
 
-void	print_line_cpy(void)
+void		print_line_cpy(void)
 {
 	int		start;
 	int		end;

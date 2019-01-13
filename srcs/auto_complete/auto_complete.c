@@ -6,11 +6,18 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 04:52:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 20:21:18 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
+
+int		loop_for_space(int i)
+{
+	while (g_tracking.str[i] != ' ' && i != 0)
+		i--;
+	return (i);
+}
 
 void	asign_word(void)
 {
@@ -18,22 +25,34 @@ void	asign_word(void)
 	t_list				*buf;
 	int					i;
 	int					a;
+	int					flag;
 
 	if (ft_strlen(g_tracking.str) != 0)
 	{
+		flag = 0;
 		i = utf_goto(g_tracking.str, g_tracking.pos->abs);
 		a = i;
-		while(g_tracking.str[i] != ' ' && i != 0)
-				i--;
+		while (flag == 0 && i != 0)
+		{
+			i = loop_for_space(i);
+			if (i != 0)
+			{
+				if (g_tracking.str[i - 1] != '\\')
+					flag = 1;
+				else
+					i--;
+			}
+		}
 		if (g_tracking.str[i] == ' ')
 			i++;
-		while(g_tracking.str[a] != ' ' && a != ft_strlen(g_tracking.str))
-				a++;
+		while (g_tracking.str[a] != ' ' && a != ft_strlen(g_tracking.str))
+			a++;
 		a = a - i;
 		if (a != 0)
 			g_tracking.aut->word = ft_strsub(g_tracking.str, i, a, 0);
 	}
 }
+
 
 t_auto		*init_auto(void)
 {
@@ -73,7 +92,7 @@ void	build_list(void)
 				get_max_size();
 				rem_str(g_tracking.aut->word);
 				set_up_page();
-				completion_loop(g_tracking.aut->comp_list->firstelement);
+				completion_loop(g_tracking.aut->comp_list);
 			}
 		}
 	}
@@ -82,7 +101,7 @@ void	build_list(void)
 		g_tracking.aut->comp_list = build_ls();
 		get_max_size();
 		set_up_page();
-		completion_loop(g_tracking.aut->comp_list->firstelement);
+		completion_loop(g_tracking.aut->comp_list);
 	}
 }
 

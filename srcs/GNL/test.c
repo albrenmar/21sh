@@ -202,3 +202,48 @@ int		main(int argc, char **argv)
 	ft_putendl(str);
 	return (0);
 }
+
+	t_lstcontainer		*tmp;
+	t_list				*buf;
+	int					i;
+	int					a;
+	int					flag;
+
+	if (ft_strlen(g_tracking.str) != 0)
+	{
+		flag = 0;
+		i = utf_goto(g_tracking.str, g_tracking.pos->abs);
+		a = i;
+		while (flag != 0 && i != 0)
+		{
+			i = loop_for_space(i);
+			if (g_tracking.str[i - 1] != '\\')
+				flag = 1;
+			else
+				i--;
+		}
+		if (g_tracking.str[i] == ' ')
+			i++;
+
+void	asign_word(void)
+{
+	t_lstcontainer		*tmp;
+	t_list				*buf;
+	int					i;
+	int					a;
+
+	if (ft_strlen(g_tracking.str) != 0)
+	{
+		i = utf_goto(g_tracking.str, g_tracking.pos->abs);
+		a = i;
+		while(g_tracking.str[i] != ' ' && i != 0)
+				i--;
+		if (g_tracking.str[i] == ' ')
+			i++;
+		while(g_tracking.str[a] != ' ' && a != ft_strlen(g_tracking.str))
+				a++;
+		a = a - i;
+		if (a != 0)
+			g_tracking.aut->word = ft_strsub(g_tracking.str, i, a, 0);
+	}
+}

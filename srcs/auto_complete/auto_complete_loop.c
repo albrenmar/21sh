@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 04:53:49 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 21:03:18 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	end_autocomplete(int i)
 		if (i == 1)
 		{
 			if(g_tracking.aut->type == 1)
-				g_tracking.aut->to_add = ft_strjoinfree(g_tracking.aut->to_add, "/", 1);
+				escape_path();
 			else
 				g_tracking.aut->to_add = ft_strjoinfree(g_tracking.aut->to_add, " ", 1);
 			add_to_str(g_tracking.aut->to_add);
@@ -81,6 +81,10 @@ int		read_loop(void)
 		return (2);
 	if (c == 4283163)
 		return (-2);
+	if (c == 2117425947)
+		return (-3);
+	if (c == 2117491483)
+		return (3);
 	if (c == K_RTN || c == K_SPC)
 	{
 		end_autocomplete(1);
@@ -93,7 +97,7 @@ int		read_loop(void)
 	}
 }
 
-void	get_new(t_list *buf)
+int		get_new(t_list *buf)
 {
 	t_ls		*tmp;
 	char		*menu_line;
@@ -106,30 +110,39 @@ void	get_new(t_list *buf)
 		if (g_tracking.aut->to_add)
 			free(g_tracking.aut->to_add);
 		g_tracking.aut->to_add = ft_strdup(tmp->name);
-		if (tmp->strpermission[0] == 'd')
+		if (tmp->strpermission[0] == 'd' || tmp->strpermission[0] == 'l')
 			g_tracking.aut->type = 1;
 		else
 			g_tracking.aut->type = 0;
-		print_menu();
+		return (print_menu());
 	}
 }
 
-void	completion_loop(t_list *buf)
+void	completion_loop(t_lstcontainer *list)
 {
 	char			*new;
+	t_lstcontainer	*page;
+	t_list			*buf;
 	int				i;
 
-	tputs(tgetstr("vi", NULL), 1, yan_putchar);
+//	tputs(tgetstr("vi", NULL), 1, yan_putchar);
+	line_per_page();
+	g_tracking.aut->page_lst = build_page_lst(list);
+	buf = g_tracking.aut->page_lst->firstelement;
 	get_new(buf);
 	i = g_tracking.aut->line_up;
-	while (i > 0)
-	{
-		tputs(tgetstr("up ", NULL), 1, yan_putchar);
-		i--;
-	}
 	while ((i = read_loop()) != 0 && buf != NULL)
 	{
-		buf = move_arround(buf, i);
+		if (i == 3 || i == - 3)
+		{
+			if (g_tracking.aut->page_nbr > 0)
+			{
+				change_page(i, list);
+				buf = g_tracking.aut->page_lst->firstelement;
+			}
+		}
+		else
+			buf = move_arround(buf, i);
 		get_new(buf);
 	}
 	tputs(tgetstr("ve", NULL), 1, yan_putchar);

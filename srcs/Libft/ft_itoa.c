@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 19:08:52 by cababou           #+#    #+#             */
-/*   Updated: 2018/05/23 20:15:15 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/12 01:56:16 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static size_t	charsize(int n)
 {
 	size_t	size;
 
+	size = 0;
 	if (n == 0)
 		return (1);
 	size = 0;

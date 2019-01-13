@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 04:51:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 21:04:47 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_joinline(int col_nbr, int i, t_ls *arg)
 	return (line);
 }
 
-char	*ft_createline(void)
+char	*ft_createline()
 {
 	int		i;
 	t_list	*tmp;
@@ -53,10 +53,9 @@ char	*ft_createline(void)
 	int		col_nbr;
 	char	*fake;
 
-	tmp = g_tracking.aut->comp_list->firstelement;
+	tmp = g_tracking.aut->page_lst->firstelement;
 	col_nbr = g_tracking.aut->col_nbr;
 	fake = ft_strnew(0);
-	g_tracking.aut->line_up = 1;
 	while (tmp)
 	{
 		i = 0;
@@ -70,40 +69,49 @@ char	*ft_createline(void)
 			tmp = tmp->next;
 		}
 		fake = ft_strjoinfree(fake, "\n", 1);
-		g_tracking.aut->line_up++;
 	}
 	return (fake);
 }
 
-void	ft_menuline(void)
+int		ft_menuline()
 {
 	char		*res;
 
-	if (ft_check() == 0)
-	{
+//	if (ft_check() == 0)
+//	{
 		if (g_tracking.aut->menuline)
 		{
 			free(g_tracking.aut->menuline);
 			g_tracking.aut->menuline = NULL;
 		}
 		g_tracking.aut->menuline = ft_createline();
-	}
-	else
-		g_tracking.aut->menuline = (ft_strdup("(╯°□°）╯︵ ┻━┻ Term size too small to display all possibilities"));
+		return (0);
+//	}
+//	else
+//		g_tracking.aut->menuline = (ft_strdup("(╯°□°）╯︵ ┻━┻ Term size too small to display all possibilities"));
+//	return (1);
 }
 
-void	print_menu(void)
+int		print_menu(void)
 {
 	int		i;
+	int		j;
+	int		tmp;
 
-	i = g_tracking.aut->line_up;
-	ft_putstr(g_tracking.aut->to_add);
-	ft_menuline();
+	i = g_tracking.aut->line_up + 1;
+	ft_putstr_nocar(g_tracking.aut->to_add);
+	j = ft_menuline();
 	tputs(tgetstr("do ", NULL), 1, yan_putchar);
-	ft_putstr(g_tracking.aut->menuline);
-	while (i > 0)
+	if (j == 0)
 	{
-		tputs(tgetstr("up ", NULL), 1, yan_putchar);
-		i--;
+		ft_putstr_nocar(g_tracking.aut->menuline);
+		if (g_tracking.aut->page_nbr > 0)
+			join_page_nbr();
+		while (i > 0)
+		{
+			tputs(tgetstr("up ", NULL), 1, yan_putchar);
+			i--;
+		}
 	}
+	return (j);
 }

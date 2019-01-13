@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 03:35:30 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 20:10:32 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,32 @@ int		check_type(void)
 		return (0);
 }
 
+void	escape_path(void)
+{
+	t_lstcontainer	*tmp;
+	t_list			*buf;
+	char			*string;
+
+	tmp = NULL;
+	tmp = ft_strsplitlst(g_tracking.aut->to_add, ' ');
+	if (lstcontainer_size(tmp) > 1)
+	{
+		string = ft_strnew(0);
+		buf = tmp->firstelement;
+		while (buf)
+		{
+			string = ft_strjoinfree(string, buf->content, 1);
+			if (buf->next)
+				string = ft_strjoinfree(string, "\\ ", 1);
+			buf = buf->next;
+		}
+		free(g_tracking.aut->to_add);
+		g_tracking.aut->to_add = string;
+	}
+	ft_freesplitlist(tmp);
+	g_tracking.aut->to_add = ft_strjoinfree(g_tracking.aut->to_add, "/", 1);
+}
+
 void	rm_slash(void)
 {
 	t_lstcontainer		*tmp;
@@ -50,15 +76,12 @@ void	rm_slash(void)
 	}
 	if (g_tracking.aut->word)
 	{
-		if (g_tracking.aut->word[0] == '/')
+		tmp = ft_strsplitlst(g_tracking.str, '/');
+		if (tmp != NULL)
 		{
-			tmp = ft_strsplitlst(g_tracking.str, '/');
-			if (tmp != NULL)
-			{
-				buf = ft_lstgetlast(tmp->firstelement);
-				g_tracking.aut->word = ft_strdup(buf->content);
-				ft_freesplitlist(tmp);
-			}
+			buf = ft_lstgetlast(tmp->firstelement);
+			g_tracking.aut->word = ft_strdup(buf->content);
+			ft_freesplitlist(tmp);
 		}
 	}
 }
@@ -81,6 +104,7 @@ int		sanitize_path(void)
 	}
 	path = ft_strjoinfree(path, "/", 1);
 	g_tracking.aut->path = path;
+	return (0);
 }
 
 void	assign_type(void)

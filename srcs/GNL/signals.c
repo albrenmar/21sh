@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 14:00:48 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 00:48:12 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/12 03:53:51 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void		handle_sin(int sino)
 	{
 		get_size();
 		update_pos();
+		y = utf_strlen(g_tracking.str);
+		y += g_tracking.pos->prompt;
+		g_tracking.pos->y = y / g_tracking.terminfo->sizex;
 		if (g_tracking.aut)
-		{
-			end_autocomplete(0);
-	//		auto_complete();
-		}
+			ioctl(STDERR_FILENO, TIOCSTI, "'");
 	}
 }
 

@@ -6,18 +6,22 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:26:05 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/14 03:11:43 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/12 02:15:31 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_it(char const **s1, char const **s2, size_t free_level)
+void	free_it(char **s1, char **s2, size_t free_level)
 {
 	if (free_level == 1)
+	{
 		free((char *)(*s1));
+	}
 	if (free_level == 2)
+	{
 		free((char *)(*s2));
+	}
 	if (free_level == 3)
 	{
 		free((char *)(*s1));
@@ -25,7 +29,17 @@ void	free_it(char const **s1, char const **s2, size_t free_level)
 	}
 }
 
-char	*ft_strjoinfree(char const *s1, char const *s2, size_t free_level)
+char	*ft_switch(char *s1, char *s2)
+{
+	if (s1 == NULL && s2)
+		return (s2);
+	if (s2 == NULL && s1)
+		return (s1);
+	else
+		return (NULL);
+}
+
+char	*ft_strjoinfree(char *s1, char *s2, size_t free_level)
 {
 	size_t	i;
 	char	*nstring;

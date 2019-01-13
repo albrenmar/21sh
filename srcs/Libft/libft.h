@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 01:51:43 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/05 15:21:36 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/12 02:14:10 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int					ft_strnequ(char const *s1, char const *s2, size_t n);
 
 char				*ft_strsub(char const *s, size_t t, size_t l, size_t f);
 
-char				*ft_strjoinfree(char const *s1, char const *s2, size_t freelv);
+char				*ft_strjoinfree(char*s1, char *s2, size_t freelv);
 
 char				*ft_strrev(char const *s1, int freeit);
 

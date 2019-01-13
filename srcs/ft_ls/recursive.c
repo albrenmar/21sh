@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 00:23:13 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/18 20:38:02 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/12 02:27:04 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void			ft_freestruct(t_list *liste)
 		free(tmp->strtime);
 		free(tmp->strpermission);
 		free(tmp->symlink);
+		free(tmp->strpad);
 		free(buf->content);
 		buf = buf->next;
 	}

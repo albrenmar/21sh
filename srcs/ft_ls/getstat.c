@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 18:47:53 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/18 20:39:24 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/12 02:27:17 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	ft_stat2(t_ls *info, struct stat *tmp, time_t cur)
 	info->group = tmp->st_gid;
 	info->symlink = NULL;
 	info->acl = ' ';
+	info->maj = 0;
+	info->min = 0;
+	info->color = 0;
+	info->strpad = NULL;
 }
 
 void	getattribut(char *path, t_ls *info)

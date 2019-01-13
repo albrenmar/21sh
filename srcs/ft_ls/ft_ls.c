@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:41:15 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/19 01:01:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/12 01:47:35 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ t_lstcontainer	*ft_ls(char *name, char *option, int called)
 		return (free_all(mainliste, dossier));
 	if (needstat(option) == 1)
 		get_and_sort(mainliste, option);
+	free(dossier);
 	return (mainliste);
 }

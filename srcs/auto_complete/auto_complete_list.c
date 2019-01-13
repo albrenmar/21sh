@@ -6,27 +6,20 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 03:38:43 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 21:06:12 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-void	print_list(void)
+t_lstcontainer	*change_dir(void)
 {
-	t_ls		*tmp;
-	t_list		*buf;
-	t_lstcontainer	*list;
-	int			i;
-
-	list = g_tracking.aut->comp_list;
-	buf = ft_lstgetfirst(list->firstelement);
-	while (buf)
+	if (g_tracking.aut->path != NULL)
 	{
-		tmp = buf->content;
-		ft_putendl(tmp->name);
-		buf = buf->next;
+		g_tracking.aut->path = ft_strjoinfree("./", g_tracking.aut->path, 2);
+		return (build_ls);
 	}
+	return (NULL);
 }
 
 void	print_list2(t_lstcontainer *list)
@@ -44,6 +37,27 @@ void	print_list2(t_lstcontainer *list)
 	}
 }
 
+void			check_for_escape()
+{
+	t_lstcontainer	*new;
+	t_list			*buf;
+	char			*path;
+
+	new = ft_strsplitlst(g_tracking.aut->path, '\\');
+	if (lstcontainer_size(new) > 1)
+	{
+		buf = new->firstelement;
+		path = ft_strnew(0);
+		while (buf)
+		{
+			path = ft_strjoinfree(path, buf->content, 1);
+			buf = buf->next;
+		}
+		free (g_tracking.aut->path);
+		g_tracking.aut->path = path;
+	}
+	ft_freesplitlist(new);
+}
 
 t_lstcontainer	*build_ls(void)
 {
@@ -52,11 +66,15 @@ t_lstcontainer	*build_ls(void)
 
 	taab = malloc(sizeof(char *) * 4);
 	taab[0] = "ls";
-	taab[1] = g_tracking.aut->path;
+	taab[1] = NULL;
 	if (g_tracking.aut->path == NULL)
 		liste = modified_ls(1, taab);
 	else
+	{
+		check_for_escape();
+		taab[1] = g_tracking.aut->path;
 		liste = modified_ls(2, taab);
+	}
 	free(taab);
 	return (liste);
 }
