@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/17 06:49:18 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/15 03:13:48 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,10 @@ t_last	*ft_analize(char *line)
 	templist = list_cmd;
 	while ((temp = recup_cmd(&line[i], &i, 0)) != NULL)
 	{
-		templist->name = ft_strdup(temp);
+		list_cmd->name = ft_strdup(temp);
 		free(temp);
-		templist->next = ft_memalloc(sizeof(t_last));
-		templist = templist->next;
+		list_cmd->next = ft_memalloc(sizeof(t_last));
+		list_cmd = list_cmd->next;
 	}
-	templist = list_cmd;
 	return (templist);
 }
