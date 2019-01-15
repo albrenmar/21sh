@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 09:25:57 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/10 18:19:00 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/01/15 14:34:19 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,12 @@ void				ft_secure_if_is_delete(t_core *core, char *dir);
 int					ft_check_args(char *args);
 
 
-t_hist				*hist_lst_create(t_core *core);
-void				hist_lst_add_next(t_core *core, char *line);
+t_hist				*hist_lst_create(char *line);
+void				hist_lst_add_next(t_hist *hist, char *line);
 void				history_setup(t_core *core);
-void				hist_print(t_core *core);
-void				hist_free(t_core *core);
+void				hist_print(t_hist *hist);
+t_hist				*hist_free(t_hist *hist);
 void				history_builtin(t_core *core);
 void				hist_setup_file(t_core *core);
-void				hist_save_file(t_core *core);
+void				hist_save_file(t_hist *s_hist);
 #endif

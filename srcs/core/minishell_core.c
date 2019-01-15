@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 09:27:22 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/10 18:27:10 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/01/14 14:01:05 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,9 @@ void			minishell(int argc, char **argv, char **env)
 	ft_check_arg(argv);
 	env = ft_setenv_if_empty(env);
 	core = ft_init(argc, argv, env);
-	// Without that crash one on two
+	// Without that crash one on two and line is doing shit
 	core->hist = NULL;
+	core->line = NULL;
 	hist_setup_file(core);
 	//end here
 	ft_display_prompt(0);
