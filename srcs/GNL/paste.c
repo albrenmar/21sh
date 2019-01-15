@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unicode.c                                          :+:      :+:    :+:   */
+/*   paste.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/17 00:52:08 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/05 15:13:34 by bsiche           ###   ########.fr       */
+/*   Created: 2018/12/10 19:41:54 by bsiche            #+#    #+#             */
+/*   Updated: 2019/01/13 23:16:00 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
 
-int     is_key(char *str)
+void	begin_paste(void)
 {
-    int	i;
-    int	flag;
+	char	*tmp;
 
-	i = 0;
-	flag = 0;
-	while () 
-
-}
-
-
-int		exec_key(char *str)
-{
-	int i;
-
-	i = ft_strlen(str);
-	if (i > 3)
-		return (3);
-	if (K_RIGHT || K_LEFT || K_UP || K_DOWN)
-		return (ft_cursor(str));
-	if (K_RT)
-	{
-		exit(0);
-		return (1);
-	}
-	return (0);
+	tmp = ft_strdup(g_tracking.cpaste->line);
+	if (g_tracking.cpaste->line)
+		add_to_str(tmp);
 }

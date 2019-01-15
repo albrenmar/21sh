@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 19:03:48 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 23:23:38 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,7 @@ void			begin_cpy(void);
 
 void			begin_paste(void);
 
-void			print_line_cpy(void);
+void			print_line_cpy(int start, int end);
 
 t_lstcontainer	*modified_ls(int argc, char **argv);
 

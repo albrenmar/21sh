@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cp_paste.c                                         :+:      :+:    :+:   */
+/*   copy.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 19:41:54 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/14 03:37:41 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 23:25:27 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int		ft_mini_exec_key(char *str)
 	if (ft_strcmp(str, K_LDOWN) == 0)
 		move_down();
 	if (ft_strcmp(str, K_FN1) == 0)
-		return (7);	
+		return (7);
 	if (ft_strcmp(str, K_FN2) == 0)
-		return (8);	
+		return (8);
 	return (6);
 }
 
@@ -57,15 +57,12 @@ int		mini_is_cmd(char *str)
 	return (0);
 }
 
-
-int		mini_read(void)
+int		mini_read(int i)
 {
 	char	c;
 	char	*str;
-	int		i;
 
 	str = ft_strnew(2);
-	i = 0;
 	read(STDERR_FILENO, &c, 1);
 	str = ft_strjoinchar(str, c, 1);
 	if (c < 32)
@@ -104,8 +101,6 @@ void	ft_actual_cpy(void)
 	start = utf_goto(g_tracking.str, start);
 	end = utf_goto(g_tracking.str, end);
 	len = end - start;
-//	if (g_tracking.cpaste->line)
-//		free(g_tracking.cpaste->line);
 	g_tracking.cpaste->line = ft_strsub(g_tracking.str, start, len, 0);
 }
 
@@ -117,23 +112,14 @@ void	begin_cpy(void)
 	g_tracking.cpaste->b1 = g_tracking.pos->abs;
 	while (i == 0)
 	{
-		i = mini_read();
+		i = mini_read(0);
 		g_tracking.cpaste->b2 = g_tracking.pos->abs;
 		if (i == 7)
-			break;
+			break ;
 		if (i == 8)
 			ft_actual_cpy();
-		print_line_cpy();
+		print_line_cpy(g_tracking.cpaste->b1, g_tracking.cpaste->b2);
 	}
 	print_line();
 	back_to_pos();
-}
-
-void	begin_paste(void)
-{
-	char	*tmp;
-
-	tmp = ft_strdup(g_tracking.cpaste->line);
-	if (g_tracking.cpaste->line)
-		add_to_str(tmp);
 }

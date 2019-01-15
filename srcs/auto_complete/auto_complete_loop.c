@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 21:41:07 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 22:33:11 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int		get_new(t_list *buf)
 			g_tracking.aut->type = 0;
 		return (print_menu());
 	}
+	return (0);
 }
 
 void	completion_loop(t_lstcontainer *list)

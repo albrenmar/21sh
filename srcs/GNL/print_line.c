@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 15:24:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 21:10:57 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 23:26:13 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ void	print_line(void)
 	}
 }
 
-void		print_line_cpy(void)
+void	print_line_cpy(int start, int end)
 {
-	int		start;
-	int		end;
 	int		i;
 
 	start = g_tracking.cpaste->b1;

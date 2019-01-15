@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 20:21:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 23:42:00 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int		loop_for_space(int i)
 
 void	asign_word(void)
 {
-	t_lstcontainer		*tmp;
-	t_list				*buf;
 	int					i;
 	int					a;
 	int					flag;
@@ -53,8 +51,7 @@ void	asign_word(void)
 	}
 }
 
-
-t_auto		*init_auto(void)
+t_auto	*init_auto(void)
 {
 	t_auto		*aut;
 

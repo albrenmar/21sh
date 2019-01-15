@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 21:06:20 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 22:27:34 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	change_page(int i, t_lstcontainer *list)
 	g_tracking.aut->page_lst = build_page_lst(list);
 }
 
-t_lstcontainer *build_page_lst(t_lstcontainer *list)
+t_lstcontainer	*build_page_lst(t_lstcontainer *list)
 {
 	t_lstcontainer		*page_lst;
 	t_list				*buf;
@@ -70,7 +70,7 @@ t_lstcontainer *build_page_lst(t_lstcontainer *list)
 	int					end;
 
 	begin = g_tracking.aut->active_page * g_tracking.aut->per_page;
-	end =  g_tracking.aut->per_page * (g_tracking.aut->active_page + 1);
+	end = g_tracking.aut->per_page * (g_tracking.aut->active_page + 1);
 	page_lst = lstcontainer_new();
 	buf = ft_lstget(begin, list->firstelement);
 	while (buf && begin < end)

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/11 23:49:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 23:37:55 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_return(void)
 	g_tracking.str = NULL;
 	cursor_reset();
 }
-
 
 void	test_read(void)
 {
@@ -55,8 +54,6 @@ void	test_read2(char *str)
 		i++;
 	}
 }
-
-
 
 int		ft_exec_key(char *str)
 {
@@ -105,7 +102,7 @@ int		is_cmd(char *str)
 	return (0);
 }
 
-int	single_key(char c)
+int		single_key(char c)
 {
 	if (c == K_BKSP)
 	{
@@ -133,14 +130,21 @@ int		check(char *str)
 	return (0);
 }
 
-int		readloop(void)
+int		return_loop(int i, char *str)
+{
+	if (check(str) == 1 || i == 12)
+		free(str);
+	else
+		add_to_str(str);
+	return (0);
+}
+
+int		readloop(int i)
 {
 	char	c;
 	char	*str;
-	int		i;
 
 	str = ft_strnew(0);
-	i = 0;
 	read(STDERR_FILENO, &c, 1);
 	str = ft_strjoinchar(str, c, 1);
 	i = single_key(c);
@@ -160,11 +164,7 @@ int		readloop(void)
 				break ;
 		}
 	}
-	if (check(str) == 1 || i == 12)
-		free(str);
-	else
-		add_to_str(str);
-	return (0);
+	return (return_loop(i, str));
 }
 
 int		get_key(void)
@@ -172,7 +172,7 @@ int		get_key(void)
 	char	*test;
 
 	ft_putstr(g_tracking.prompt);
-	while (readloop() == 0)
+	while (readloop(0) == 0)
 	{
 	}
 	return (1);

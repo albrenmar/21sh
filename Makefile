@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/13 20:20:13 by bsiche           ###   ########.fr        #
+#    Updated: 2019/01/13 23:16:19 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRC = main.c \
 	  GNL/lib_utf.c \
 	  GNL/print_line.c \
 	  GNL/next_word.c \
-	  GNL/cp_paste.c \
+	  GNL/copy.c \
+	  GNL/paste.c \
 	  GNL/get_key.c \
 	  auto_complete/auto_complete.c \
 	  auto_complete/auto_complete_list.c \
@@ -100,7 +101,7 @@ LIB = ./srcs/libft
 LIB2 = ./srcs/ft_printf
 LIBADD = ./srcs/libft/libft.a ./srcs/ft_printf/ftprintf.a
 
-FLAG = -g -fsanitize=address
+FLAG = 
 
 all : $(NAME)
 
