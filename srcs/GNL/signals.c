@@ -6,11 +6,17 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 14:00:48 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 23:25:49 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/18 00:58:45 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
+#include "sh42.h"
+
+void	set_back_term(void)
+{
+	tputs(tgetstr("ve", NULL), 1, yan_putchar);
+	tcsetattr(STDERR_FILENO, TCSANOW, &g_tracking.default_term);
+}
 
 void		fg_bg(int sino)
 {
@@ -55,12 +61,12 @@ void		handle_sin(int sino)
 
 void		ft_siginit(void)
 {
-/*	signal(SIGABRT, handle_sin);
+	signal(SIGABRT, handle_sin);
 	signal(SIGINT, handle_sin);
 	signal(SIGSTOP, handle_sin);
 	signal(SIGQUIT, handle_sin);
 	signal(SIGKILL, handle_sin);
 	signal(SIGCONT, handle_sin);
-	signal(SIGTSTP, handle_sin);*/
+	signal(SIGTSTP, handle_sin);
 	signal(SIGWINCH, handle_sin);
 }

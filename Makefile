@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/13 23:16:19 by bsiche           ###   ########.fr        #
+#    Updated: 2019/01/19 23:40:47 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,15 @@ SRC = main.c \
 	  ft_ls/recursive.c \
 	  ft_ls/sortoption.c \
 	  ft_ls/termsize.c \
-	  ft_ls/timesort.c
+	  ft_ls/timesort.c \
+	  alias/alias_bin.c \
+	  alias/alias_file.c \
+	  alias/alias_struct.c \
+	  test/test_main.c \
+	  shell_core/copyenv.c \
+	  shell_core/env_to_lst.c \
+	  shell_core/init_shell.c \
+	  shell_core/get_pwd.c \
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A
@@ -101,7 +109,7 @@ LIB = ./srcs/libft
 LIB2 = ./srcs/ft_printf
 LIBADD = ./srcs/libft/libft.a ./srcs/ft_printf/ftprintf.a
 
-FLAG = 
+FLAG = -g -fsanitize=address
 
 all : $(NAME)
 

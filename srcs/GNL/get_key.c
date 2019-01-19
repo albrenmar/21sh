@@ -6,12 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 23:37:55 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/18 04:08:15 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
-#include "stdio.h"
+#include "sh42.h"
 
 void	ft_return(void)
 {
@@ -148,7 +147,7 @@ int		readloop(int i)
 	read(STDERR_FILENO, &c, 1);
 	str = ft_strjoinchar(str, c, 1);
 	i = single_key(c);
-	if (i == 13)
+	if (i == 13 || i == 10)
 	{
 		free(str);
 		return (1);
@@ -171,9 +170,11 @@ int		get_key(void)
 {
 	char	*test;
 
+	tcsetattr(0, TCSANOW, &g_tracking.myterm);
 	ft_putstr(g_tracking.prompt);
 	while (readloop(0) == 0)
 	{
 	}
+	tcsetattr(STDERR_FILENO, TCSANOW, &g_tracking.default_term);
 	return (1);
 }

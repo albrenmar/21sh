@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 22:33:11 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/20 00:02:37 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	end_autocomplete(int i)
 	{
 		if (i == 1)
 		{
-			if(g_tracking.aut->type == 1)
+			if (g_tracking.aut->type == 1)
 				escape_path();
 			else
 				g_tracking.aut->to_add = ft_strjoinfree(g_tracking.aut->to_add, " ", 1);

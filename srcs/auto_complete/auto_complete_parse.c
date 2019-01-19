@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 20:10:32 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/20 00:05:01 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,7 @@ void	assign_type(void)
 			sanitize_path();
 			rm_slash();
 		}
+		if (g_tracking.aut->type == 2)
+			g_tracking.aut->path = ft_strdup("VAR_ENV_LIST");
 	}
 }

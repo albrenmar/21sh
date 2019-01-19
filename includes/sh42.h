@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 23:23:38 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/19 23:44:42 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <time.h>
+# include <fcntl.h>
 
 # define K_FN1		"\x1b\x4f\x50"
 # define K_FN2		"\x1b\x4f\x51"
@@ -89,6 +90,18 @@ typedef struct	s_cpaste
 	char	*line;
 }				t_cpaste;
 
+typedef struct	s_keyval
+{
+	char	*key;
+	char	*value;
+}				t_keyval;
+
+typedef struct	s_shell
+{
+	t_lstcontainer	*alias_lst;
+	t_lstcontainer	*env;
+}				t_shell;
+
 typedef struct	s_tracking
 {
 	t_cursor			*pos;
@@ -97,6 +110,7 @@ typedef struct	s_tracking
 	struct s_term_data	*terminfo;
 	struct s_cpaste		*cpaste;
 	struct s_auto		*aut;
+	struct s_shell		*mysh;
 	char				*str;
 	char				*cmd;
 	char				*prompt;
@@ -106,6 +120,8 @@ typedef struct	s_tracking
 }				t_tracking;
 
 t_tracking		g_tracking;
+
+void			init_shell(char **environ);
 
 char			*ft_usrmode(mode_t mode);
 
@@ -240,4 +256,26 @@ void			line_per_page(void);
 void			escape_path(void);
 
 t_lstcontainer	*change_dir(void);
+
+int				init_alias(void);
+
+int				add_alias(char *alias);
+
+t_keyval		*parse_alias(char *alias);
+
+int				ft_build_test(char *string);
+
+char			*get_env_string(char *str);
+
+t_lstcontainer	*ft_env_to_lst(char **environ);
+
+int				replace_env_str(char *s1, char *s2);
+
+void			ft_add_env_string(char *s1, char *s2);
+
+char			*remove_env_string(char *str);
+
+char			*ft_true_pwd(void);
+
+void			add_missing_string();
 #endif
