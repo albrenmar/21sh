@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/19 23:40:47 by bsiche           ###   ########.fr        #
+#    Updated: 2019/01/20 07:23:37 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC = main.c \
 	  GNL/paste.c \
 	  GNL/get_key.c \
 	  auto_complete/auto_complete.c \
+	  auto_complete/auto_complete_cleanup.c \
 	  auto_complete/auto_complete_list.c \
 	  auto_complete/auto_complete_page.c \
 	  auto_complete/auto_complete_loop.c \
@@ -78,6 +79,7 @@ SRC = main.c \
 	  alias/alias_file.c \
 	  alias/alias_struct.c \
 	  test/test_main.c \
+	  test/test_two_arg.c \
 	  shell_core/copyenv.c \
 	  shell_core/env_to_lst.c \
 	  shell_core/init_shell.c \
@@ -109,7 +111,7 @@ LIB = ./srcs/libft
 LIB2 = ./srcs/ft_printf
 LIBADD = ./srcs/libft/libft.a ./srcs/ft_printf/ftprintf.a
 
-FLAG = -g -fsanitize=address
+FLAG =
 
 all : $(NAME)
 

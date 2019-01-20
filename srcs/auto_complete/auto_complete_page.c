@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 22:27:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/20 06:57:16 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void	line_per_page(void)
 	int		rest;
 	int		i;
 	int		lin;
-	char	*pad;
 
-	pad = ft_strnew(0);
 	nb = lstcontainer_size(g_tracking.aut->comp_list);
 	rest = nb - (g_tracking.aut->per_page * (g_tracking.aut->page_nbr));
 	g_tracking.aut->line_up = (nb + g_tracking.aut->col_nbr - 1) / g_tracking.aut->col_nbr;

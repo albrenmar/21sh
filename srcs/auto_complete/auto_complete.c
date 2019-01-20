@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 00:08:41 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/20 07:20:39 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ t_auto	*init_auto(void)
 	aut->path = NULL;
 	aut->menuline = NULL;
 	aut->comp_list = NULL;
-	aut->to_free = 0;
+	aut->page_lst = NULL;
+	aut->to_free = NULL;
 	aut->to_add = NULL;
 	aut->size = 0;
 	aut->col_nbr = 0;
