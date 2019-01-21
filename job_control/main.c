@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 00:56:21 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/21 16:02:25 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/21 18:04:06 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,4 +296,26 @@ void	do_job_notification(void)
 			job_last = job;
 		job = job_next;
 	}
+}
+
+void	mark_job_as_running(t_job *job_list)
+{
+	t_process	*process_list;
+
+	process_list = job_list->first_process;
+	while (process_list)
+	{
+		process_list->stopped = 0;
+		process_list = process_list->next;
+	}
+	job_list->notified = 0;
+}
+
+void	continue_job(t_job *job_list, int foreground)
+{
+	mark_job_as_running(job_list);
+	if (foreground)
+		put_job_in_foreground(job_list, 1);
+	else
+		put_job_in_background(job_list, 1);
 }

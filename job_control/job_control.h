@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 02:04:26 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/21 12:24:47 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/21 18:04:30 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../minishell/includes/minishell.h"
 # include <termios.h>
+# include <errno.h>
 
 typedef struct		s_process
 {
@@ -53,5 +54,12 @@ void				launch_process(t_process *process_list, pid_t pgid, int infile, int outf
 void				launch_job(t_job *job_list, int foreground);
 void				put_job_in_foreground(t_job *job_list, int cont);
 void				put_job_in_background(t_job *job_list, int cont);
+int					mark_process_status(pid_t pid, int status);
+void				update_status(void);
+void				wait_for_job(t_job	*job_list);
+void				format_job_info(t_job *job_list, const char *status);
+void				do_job_notification(void);
+void				mark_job_as_running(t_job *job_list);
+void				continue_job(t_job *job_list, int foreground);
 
 #endif
