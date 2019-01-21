@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 01:51:43 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 02:14:10 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/20 20:29:00 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,10 @@ void				free_tab(char **tab);
 char				**ft_split_white(char *str);
 
 char				*ft_strjoinchar(char const *s1, char s2, size_t free_level);
+
+long				ft_atoi_check(char *nptr);
+
+int					ft_isinteg(char *str);
 
 typedef struct		s_list
 {
