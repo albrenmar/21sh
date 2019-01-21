@@ -6,20 +6,32 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/17 23:30:27 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/21 18:03:47 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
+char	*create_path(void)
+{
+	char	*path;
+
+	path = ft_strdup("/Users/");
+	path = ft_strjoinfree(path, USER, 1);
+	path = ft_strjoinfree(path, "/42shrc", 1);
+	return (path);
+}
 int		init_alias(void)
 {
 	int				fd;
 	t_lstcontainer	*alias_lst;
 	char			*alias;
+	char			*path;
 
 	alias_lst = NULL;
-	fd = open("/Users/bsiche/42shrc", O_RDWR | O_CREAT, 0777);
+	path = create_path();
+	fd = open(path, O_RDWR | O_CREAT, 0777);
+	free(path);
 	if (fd == -1)
 	{
 		ft_putendl("Failed to create or load ~./aliasrc, please verify your read/write permissions");
