@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 00:05:01 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/20 21:15:42 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		check_type(void)
 		if (check[2] != '\0')
 			if (check[0] == '.' && check[1] == '.' && check[2] == '/')
 				return (1);
+		if (check[ft_strlen(check) - 1] == '/')
+			return (1);
 	}
 	if (check[0] == '$')
 		return (2);

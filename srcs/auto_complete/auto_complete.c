@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 07:20:39 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/20 21:05:46 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,27 +73,9 @@ t_auto	*init_auto(void)
 
 void	build_list(void)
 {
-	t_lstcontainer	*list;
-
-	list = NULL;
 	g_tracking.aut->comp_list = NULL;
 	if (g_tracking.aut->word)
-	{
-		assign_type();
-		list = build_ls();
-		if (list != NULL)
-		{
-			build_comp(list);
-			g_tracking.aut->to_add = NULL;
-			if (g_tracking.aut->comp_list->firstelement != NULL)
-			{
-				get_max_size();
-				rem_str(g_tracking.aut->word);
-				set_up_page();
-				completion_loop(g_tracking.aut->comp_list);
-			}
-		}
-	}
+		complete_usr_word();
 	else
 	{
 		g_tracking.aut->comp_list = build_ls();
