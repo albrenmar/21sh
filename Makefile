@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/20 07:23:37 by bsiche           ###   ########.fr        #
+#    Updated: 2019/01/20 21:04:25 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC = main.c \
 	  auto_complete/auto_complete_move.c \
 	  auto_complete/auto_complete_parse.c \
 	  auto_complete/auto_complete_padding.c \
+	  auto_complete/auto_complete_type.c \
 	  auto_complete/print_arg_list.c \
 	  auto_complete/send_color.c \
 	  ft_ls/cmdparse.c \
@@ -80,6 +81,7 @@ SRC = main.c \
 	  alias/alias_struct.c \
 	  test/test_main.c \
 	  test/test_two_arg.c \
+	  test/test_three_arg.c \
 	  shell_core/copyenv.c \
 	  shell_core/env_to_lst.c \
 	  shell_core/init_shell.c \

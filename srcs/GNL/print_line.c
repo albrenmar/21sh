@@ -6,11 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 15:24:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 23:26:13 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/21 17:40:01 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
+#include "sh42.h"
 
 void	print_line(void)
 {
@@ -22,7 +22,7 @@ void	print_line(void)
 	if (g_tracking.str != NULL)
 	{
 		clear_screen3();
-		ft_dprintf(2, "%s", g_tracking.prompt);
+		ft_putendl_fd(g_tracking.prompt, 2);
 		ft_putstr_nocar(g_tracking.str);
 	}
 }
