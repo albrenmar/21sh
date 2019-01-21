@@ -6,13 +6,16 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/21 17:52:02 by bsiche           ###   ########.fr        #
+#    Updated: 2019/01/21 18:12:45 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=	42sh
 
 SRC = main.c \
+	  42sh/apply_cmd.c \
+	  42sh/ft_create_tree.c \
+	  42sh/ft_analize.c \
 	  GNL/term_setup.c \
 	  GNL/stringsearch.c \
 	  GNL/signals.c \

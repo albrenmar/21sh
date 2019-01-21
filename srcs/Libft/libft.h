@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 01:51:43 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 20:29:00 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/21 18:30:23 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void				ft_bzero(void *s, size_t n);
 size_t				ft_strlen(const char *s);
 
 char				*ft_strdup(const char *s1);
+
+char				*ft_strndup(const char *s1, int nb);
 
 char				*ft_strcpy(char *dst, const char *src);
 

@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/02 18:27:43 by cababou           #+#    #+#              #
-#    Updated: 2018/12/14 02:21:15 by bsiche           ###   ########.fr        #
+#    Updated: 2019/01/21 18:29:56 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = libft.a
 SRC =		ft_atoi.c \
 	 ft_bzero.c \
 	ft_isalnum.c \
+	ft_strndup.c \
 	ft_isalpha.c \
 	ft_isascii.c \
 	ft_isdigit.c \
