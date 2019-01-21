@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/14 01:28:26 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/17 23:58:18 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,7 @@ int				search_symbol(char *cmd);
 void			apply_builtin(t_tab *st_tab, t_env *st_env,
 		char *cmd, char **env);
 t_last			*ft_analize(char *line);
-
+int				add_alias(char *alias);
+void			print_alias_lst(void);
+int				unalias(char *alias);
 #endif

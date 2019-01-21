@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 15:24:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/21 17:40:01 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/21 17:49:00 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	print_line_cpy(int start, int end)
 	start = utf_goto(g_tracking.str, start);
 	end = utf_goto(g_tracking.str, end);
 	clear_screen3();
-	ft_dprintf(2, "%s", g_tracking.prompt);
+	ft_putendl_fd(g_tracking.prompt, 2);
 	while (g_tracking.str[i])
 	{
 		if (i == start)

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 03:02:54 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 06:33:16 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/20 20:53:43 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,33 @@ int		test_parse(int argc, char **argv)
 		return (one_arg(argv));
 	if (argc == 2)
 		return (two_arg(argv));
-/*	if (argc = 3)
+	if (argc == 3)
 		return (three_arg(argv));
-	if (argc = 4)
-		return (four_arg(argv));
-	if (argc = 5)
-	
-			return (five_arg(argv));*/
-	ft_putendl("fail");
 	return (-1);
+}
+
+int		reverse(int i, int flag)
+{
+	if (flag == -1)
+	{
+		if (i == 1)
+			return (0);
+		if (i == 0)
+			return (1);
+	}
+	return (i);
 }
 
 int		main_test(int argc, char **argv)
 {
-	int	flag;
-	int	i;
+	int		flag;
+	int		i;
 	char	**newtab;
+	char	**not;
 
-	flag = 0;
+	flag = 1;
+	not = NULL;
+	i = -1;
 	if (ft_strcmp(argv[0], "exit") == 0)
 	{
 		free_tab(argv);
@@ -73,9 +82,16 @@ int		main_test(int argc, char **argv)
 	if (argc == 1)
 		return (1);
 	newtab = copy_tab_minus_one(argc, argv);
-	i = -1;
 	argc--;
+	if (ft_strcmp(argv[0], "!") == 0)
+	{
+		not = copy_tab_minus_one(argc, newtab);
+		free_tab(newtab);
+		argc--;
+		flag = -1;
+	}
 	i = test_parse(argc, newtab);
+	i = reverse(i, flag);
 	ft_putnbr(i);
 	ft_putchar('\n');
 	free_tab(newtab);

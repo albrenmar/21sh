@@ -6,29 +6,13 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/20 21:04:25 by bsiche           ###   ########.fr        #
+#    Updated: 2019/01/21 17:52:02 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=	42sh
 
 SRC = main.c \
-	  42sh/apply_cmd.c \
-	  42sh/ft_create_tree.c \
-	  42sh/ft_analize.c \
-	  minishell/main_two.c \
-	  minishell/apply_cmd.c \
-	  minishell/buildin.c \
-	  minishell/buildin_two.c \
-	  minishell/duplicate_tab.c \
-	  minishell/forfreetab.c \
-	  minishell/get_info.c \
-	  minishell/set_env.c \
-	  minishell/set_env_two.c \
-	  minishell/work_to_env.c \
-	  Libft/ft_strcmp.c \
-	  Libft/ft_split_whitespaces.c \
-	  Libft/ft_strsplit.c \
 	  GNL/term_setup.c \
 	  GNL/stringsearch.c \
 	  GNL/signals.c \
@@ -110,8 +94,7 @@ OBJP =		$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 
 LIB = ./srcs/libft
-LIB2 = ./srcs/ft_printf
-LIBADD = ./srcs/libft/libft.a ./srcs/ft_printf/ftprintf.a
+LIBADD = ./srcs/libft/libft.a
 
 FLAG =
 
@@ -127,7 +110,6 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 			@echo "$(CLEAR_LINE)$(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"
 complib :
 			@make -C $(LIB)
-			@make -C $(LIB2)
 clean :
 			@echo -e "$(CLEAR_LINE)$(COL_RED)Cleaning objs dir$(COL_END)"
 			@rm -rf $(OBJDIR)
@@ -139,7 +121,6 @@ clean :
 fclean :	clean
 			@rm -rf $(NAME)
 			@make fclean -C $(LIB)
-			@make fclean -C $(LIB2)
 
 
 re :		fclean all
