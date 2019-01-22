@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 21:05:46 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/23 00:01:08 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_auto	*init_auto(void)
 	aut->path = NULL;
 	aut->menuline = NULL;
 	aut->comp_list = NULL;
+	aut->var_lst = NULL;
 	aut->page_lst = NULL;
 	aut->to_free = NULL;
 	aut->to_add = NULL;
@@ -89,6 +90,8 @@ int		auto_complete(void)
 {
 	if ((g_tracking.aut = init_auto()) == NULL)
 		return (1);
+	build_bin_lst();
+	build_var_lst();
 	asign_word();
 	build_list();
 	clean_up_autoc();

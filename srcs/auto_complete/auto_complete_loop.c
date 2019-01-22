@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 06:52:36 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/23 00:29:04 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	end_autocomplete(int i)
 		{
 			if (g_tracking.aut->type == 1)
 				escape_path();
+			if (g_tracking.aut->type == 2)
+				g_tracking.aut->to_add = ft_strjoinfree(g_tracking.aut->to_add, "} ", 1);
 			else
 				g_tracking.aut->to_add = ft_strjoinfree(g_tracking.aut->to_add, " ", 1);
 			add_to_str(g_tracking.aut->to_add);
@@ -86,10 +88,13 @@ int		get_new(t_list *buf)
 		if (g_tracking.aut->to_add)
 			free(g_tracking.aut->to_add);
 		g_tracking.aut->to_add = ft_strdup(tmp->name);
-		if (tmp->strpermission[0] == 'd' || tmp->strpermission[0] == 'l')
-			g_tracking.aut->type = 1;
-		else
-			g_tracking.aut->type = 0;
+		if (g_tracking.aut->type != 2)
+		{
+			if (tmp->strpermission[0] == 'd' || tmp->strpermission[0] == 'l')
+				g_tracking.aut->type = 1;
+			else
+				g_tracking.aut->type = 0;
+		}
 		return (print_menu());
 	}
 	return (0);

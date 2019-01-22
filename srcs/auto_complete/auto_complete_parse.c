@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 21:15:42 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/23 00:27:08 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,21 @@ int		check_type(void)
 	char	*check;
 
 	check = g_tracking.aut->word;
-	if(check[0] == '/')
+	if (check[0] == '/')
 		return (1);
-	if(check[1] != '\0')
+	if (check[1] != '\0')
 	{
 		if (check[0] == '.' && check[1] == '/')
 			return (1);
+		if (check[0] == '$' && check[1] == '{')
+			return (2);
 		if (check[2] != '\0')
 			if (check[0] == '.' && check[1] == '.' && check[2] == '/')
 				return (1);
 		if (check[ft_strlen(check) - 1] == '/')
 			return (1);
 	}
-	if (check[0] == '$')
-		return (2);
-	else
-		return (0);
+	return (0);
 }
 
 void	escape_path(void)
@@ -122,6 +121,9 @@ void	assign_type(void)
 			rm_slash();
 		}
 		if (g_tracking.aut->type == 2)
-			g_tracking.aut->path = ft_strdup("VAR_ENV_LIST");
+		{
+			g_tracking.aut->word = ft_strsub(g_tracking.aut->word, 2, ft_strlen(g_tracking.aut->word) , 1);
+			complete_usr_var();
+		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/22 00:37:12 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/23 00:01:02 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ typedef struct	s_auto
 	char			*word;
 	char			*path;
 	char			*menuline;
+	t_lstcontainer	*bin_lst;
+	t_lstcontainer	*var_lst;
 	t_lstcontainer	*comp_list;
 	t_lstcontainer	*to_free;
 	t_lstcontainer	*page_lst;
@@ -205,8 +207,6 @@ void			next_word(void);
 
 void			prev_word();
 
-int				ft_dprintf(int fd, const char *format, ...);
-
 int				rev_utf_goto(char *str, int j);
 
 void			begin_cpy(void);
@@ -237,6 +237,8 @@ void			completion_loop(t_lstcontainer *list);
 
 void			complete_usr_word(void);
 
+void			complete_usr_var(void);
+
 void			rem_str(char *str);
 
 void			assign_type(void);
@@ -253,11 +255,15 @@ int				print_menu(void);
 
 void			end_autocomplete(int i);
 
+void			build_bin_lst(void);
+
 t_list			*move_arround(t_list *buf, int i);
 
 void			set_up_page(void);
 
 t_lstcontainer *build_page_lst(t_lstcontainer *list);
+
+void			build_var_lst();
 
 void			print_list2(t_lstcontainer *list);
 
