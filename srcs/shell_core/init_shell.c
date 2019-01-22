@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 00:01:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/21 20:36:24 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ void	init_shell(char **environ)
 		exit(EXIT_FAILURE);
 	}
 	g_tracking.mysh = mysh;
+	g_tracking.mysh->hist = NULL;
 	g_tracking.mysh->alias_lst = NULL;
 	init_alias();
 	g_tracking.mysh->env = ft_env_to_lst(environ);
 	add_missing_string();
+	hist_file_to_lst();
 }

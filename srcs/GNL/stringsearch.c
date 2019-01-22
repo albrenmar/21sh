@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 23:39:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/21 21:29:39 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void		rem_str(char *str)
 {
 	int		i;
 
-	i = ft_strlen(str);
+	i = utf_strlen(str);
 	while (i > 0)
 	{
 		rem_from_str();

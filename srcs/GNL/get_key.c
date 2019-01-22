@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/18 04:08:15 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/22 01:18:25 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,10 @@ int		ft_exec_key(char *str)
 		begin_cpy();
 	if (ft_strcmp(str, K_FN3) == 0)
 		begin_paste();
+	if (ft_strcmp(str, K_UP) == 0)
+		history_up();
+	if (ft_strcmp(str, K_DOWN) == 0)
+		history_down();
 	return (6);
 }
 
@@ -106,6 +110,7 @@ int		single_key(char c)
 	if (c == K_BKSP)
 	{
 		rem_from_str();
+		g_tracking.comp = ft_strdup(g_tracking.str);
 		return (12);
 	}
 	if (c == 10 || c == 13)
@@ -134,7 +139,10 @@ int		return_loop(int i, char *str)
 	if (check(str) == 1 || i == 12)
 		free(str);
 	else
+	{
 		add_to_str(str);
+		g_tracking.comp = ft_strdup(g_tracking.str);
+	}
 	return (0);
 }
 
@@ -172,6 +180,7 @@ int		get_key(void)
 
 	tcsetattr(0, TCSANOW, &g_tracking.myterm);
 	ft_putstr(g_tracking.prompt);
+	g_tracking.histindex = get_last() + 1;
 	while (readloop(0) == 0)
 	{
 	}

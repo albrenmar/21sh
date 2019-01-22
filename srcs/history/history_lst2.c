@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/21 16:35:41 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/01/21 20:35:09 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "sh42.h"
 
 // Save history into ~.shell_history
 void		hist_save_file(t_hist *hist)

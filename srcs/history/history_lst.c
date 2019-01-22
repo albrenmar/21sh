@@ -6,11 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/21 17:22:25 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/22 00:37:55 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "sh42.h"
 #include <errno.h>
 
 // Get all the entry from the file of history If it does not exist, it is created
@@ -49,6 +49,7 @@ void		hist_lst_add_next(t_hist *hist, char *line)
 	new_node->next = NULL;
 	new_node->previous = hist;
 	hist->next = new_node;
+	g_tracking.histmax = new_node->index;
 }
 
 // Print history list

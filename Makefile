@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/21 18:12:45 by alsomvil         ###   ########.fr        #
+#    Updated: 2019/01/21 20:59:16 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,11 @@ SRC = main.c \
 	  shell_core/env_to_lst.c \
 	  shell_core/init_shell.c \
 	  shell_core/get_pwd.c \
+	  history/history_lst.c \
+	  history/history_lst2.c \
+	  history/history_lst_options.c \
+	  history/history_loop.c \
+	  history/print_hist.c
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A
@@ -99,7 +104,7 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
-FLAG =
+FLAG = -g -fsanitize=address
 
 all : $(NAME)
 

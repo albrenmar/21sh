@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/21 18:07:43 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/22 00:37:12 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <time.h>
 # include <fcntl.h>
 
-# define USER		"alsomvil"
+# define USER		"bsiche"
 # define K_FN1		"\x1b\x4f\x50"
 # define K_FN2		"\x1b\x4f\x51"
 # define K_FN3		"\x1b\x4f\x52"
@@ -33,7 +33,6 @@
 # define K_RIGHT	"\x1b\x5b\x43"
 # define K_DOWN		"\x1b\x5b\x42"
 # define K_UP		"\x1b\x5b\x41"
-# define K_		"\x1b\x5b\x41"
 # define K_LUP		"\x1b\x5b\x31\x3b\x32\x41"
 # define K_LDOWN	"\x1b\x5b\x31\x3b\x32\x42"
 # define K_WLEFT	"\x1b\x5b\x31\x3b\x32\x44"
@@ -123,10 +122,13 @@ typedef struct	s_tracking
 	struct s_shell		*mysh;
 	char				*str;
 	char				*cmd;
+	char				*comp;
 	char				*prompt;
 	t_lstcontainer		*key_list;
 	int					swi;
 	int					buffsize;
+	int					histindex;
+	int					histmax;
 }				t_tracking;
 
 t_tracking		g_tracking;
@@ -296,16 +298,19 @@ char			*remove_env_string(char *str);
 char			*ft_true_pwd(void);
 
 void			add_missing_string();
-/*
+
+
+void							hist_file_to_lst(void);
+int								print_hist();
+int								get_last();
+int								go_to(int i);
+int								history_up(void);
+int								history_down(void);
 t_hist                         	*hist_lst_create(char *line);
 void                            hist_lst_add_next(t_hist *hist, char *line);
-void                            history_setup(t_core *core);
 void                            hist_print(t_hist *hist);
 t_hist                          *hist_free(t_hist *hist);
-void                            history_builtin(t_core *core);
-void                            hist_setup_file(t_core *core);
 void                            hist_save_file(t_hist *s_hist);
 t_hist                          *hist_remap_index(t_hist *hist);
 t_hist                          *hist_delete_index(t_hist *hist, int index);
-void                            hist_file_to_lst(t_core *core);*/
 #endif

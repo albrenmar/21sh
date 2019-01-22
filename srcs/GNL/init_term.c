@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:29:52 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/14 03:33:02 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/21 21:34:25 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	init_key_list(void)
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_LEFT));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_RIGHT));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_DOWN));
+	lstcontainer_add(g_tracking.key_list, ft_strdup(K_UP));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_LUP));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_LDOWN));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_WLEFT));
