@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/21 20:59:16 by bsiche           ###   ########.fr        #
+#    Updated: 2019/01/23 13:46:40 by hdufer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRC = main.c \
 	  auto_complete/auto_complete_type.c \
 	  auto_complete/print_arg_list.c \
 	  auto_complete/send_color.c \
+	  auto_complete/var_list.c \
 	  ft_ls/cmdparse.c \
 	  ft_ls/cmdparse_misc.c \
 	  ft_ls/color.c \
