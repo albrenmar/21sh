@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:53:06 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/21 16:30:02 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/01/24 15:25:25 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,23 +71,22 @@ void		history_builtin_delete_index(t_core *core, int j)
 		core->hist = hist_delete_index(core->hist, ft_atoi(tmp));
 }
 
-// Dispatch the action and do the history builtin
-void		history_builtin(t_core *core)
+void		history_builtin_minus(t_core *core)
 {
-	int i = 0;
-	char flags = 0;
+	int i;
+	char flags;
 
-	if (core->arg[1] == NULL)
-		hist_print(core->hist);
-	else
-	{
-		if (core->arg[1][0] == '-')
-		{
-			while (core->arg[1][i])
+	i = 1;
+	flags = 0;
+	while (core->arg[1][i])
 			{
+				if (ERROR_FLAGS_HIST)
+				{
+					ft_putendl_fd("history -[ardcwnps]", 2);
+					return;
+				}
 				if (!(flags & 1) && core->arg[1][i] == 'c' && (flags |= 1))
 					core->hist = hist_free(core->hist);
-				// BUG WHEN -CDXXXXX 
 				if (!(flags & 2) && core->arg[1][i] == 'd' && (flags |= 2))
 					history_builtin_delete_index(core, i);
 				if (!(flags & 4) && core->arg[1][i] == 'a' && (flags |= 4))
@@ -95,11 +94,28 @@ void		history_builtin(t_core *core)
 				if (!(flags & 8) && core->arg[1][i] == 'r' && (flags |= 8))
 					hist_file_to_lst(core);
 				if (!(flags & 16) && core->arg[1][i] == 'w' && (flags |= 16))
-					hist_save_file(core->hist);
+					hist_save_file_w(core->hist, core->arg[2]);
+				if (!(flags & 32) && core->arg[1][i] == 'n' && (flags |= 32))
+					hist_file_to_lst(core);
 				i++;
 			}
 			i = 1;
-		}
+}
+
+// Dispatch the action and do the history builtin
+void		history_builtin(t_core *core)
+{
+	// HISTFILE ENV VARIABLE TO ADD !!!!
+	if (core->arg[1] == NULL)
+		hist_print(core->hist);
+	else
+	{
+		if (core->arg[1][0] == '-')
+			history_builtin_minus(core);
+		else if (ft_isdigit_str(core->arg[1]))
+			history_builtin_digit(core);
+		else
+			ft_putendl_fd("history argument need to be digit", 2);
 	}
 }
 

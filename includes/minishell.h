@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 09:25:57 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/21 15:59:58 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/01/24 14:45:02 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <fcntl.h>
+
+
+# define ERROR_FLAGS_HIST core->arg[1][i] != 'c' && core->arg[1][i] != 'd' && core->arg[1][i] != 'a' \
+&& core->arg[1][i] != 'n' && core->arg[1][i] != 'r' && core->arg[1][i] != 'w' \
+&& core->arg[1][i] != 'p' && core->arg[1][i] != 's'
 
 int					g_signal_c;
 typedef struct stat	t_stat;
@@ -121,4 +126,7 @@ void				hist_save_file(t_hist *s_hist);
 t_hist				*hist_remap_index(t_hist *hist);
 t_hist				*hist_delete_index(t_hist *hist, int index);
 void				hist_file_to_lst(t_core *core);
+void				hist_save_file_w(t_hist *hist,char *path);
+void				history_builtin_digit(t_core *core);
+int					ft_isdigit_str(char* str);
 #endif
