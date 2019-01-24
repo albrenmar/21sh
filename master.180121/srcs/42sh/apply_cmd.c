@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   apply_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 17:28:29 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/21 18:35:12 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/23 23:49:46 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "job_control.h"
 # define LEER		0
 # define ESCRIBIR	1
 # define SYMBOL (cmd_full[i] && (cmd_full[i] == '<' || cmd_full[i] == '>' || cmd_full[i] == '|' || cmd_full[i] == '&'))

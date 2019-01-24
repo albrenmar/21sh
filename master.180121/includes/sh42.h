@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/21 18:07:43 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/24 00:36:42 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SH42_H
 # include "libft.h"
 # include "ft_ls.h"
+# include "job_control.h"
 # include <sys/ioctl.h>
 # include <termios.h>
 # include <curses.h>
@@ -105,11 +106,36 @@ typedef struct			s_hist
 	char			*line;
 }						t_hist;
 
+typedef struct		s_process
+{
+	char				**argv;
+	pid_t				pid;
+	char				completed;
+	char				stopped;
+	int					status;
+	struct s_process	*next;
+}					t_process;
+
+typedef struct		s_job
+{
+	char				*command;
+	t_process			*first_process;
+	pid_t				pgid;
+	char				notified;
+	struct termios		tmodes;
+	int					stdin;
+	int					stdout;
+	int					stderr;
+	struct s_job		*next;
+}					t_job;
+
+
 typedef struct	s_shell
 {
 	t_lstcontainer	*alias_lst;
 	t_lstcontainer	*env;
 	t_hist			*hist;
+	t_job			*jobs;
 }				t_shell;
 
 typedef struct	s_tracking
@@ -308,4 +334,6 @@ void                            hist_save_file(t_hist *s_hist);
 t_hist                          *hist_remap_index(t_hist *hist);
 t_hist                          *hist_delete_index(t_hist *hist, int index);
 void                            hist_file_to_lst(t_core *core);*/
+void				crt_jobs(t_shell *shell, t_last *cmd);
+
 #endif

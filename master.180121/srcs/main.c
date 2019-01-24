@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/21 18:39:55 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/24 00:25:14 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
+//#include "job_control.h"
+
 
 int		main(int argc, char **argv, char **env)
 {
@@ -20,6 +22,7 @@ int		main(int argc, char **argv, char **env)
 	t_env	st_env;
 	t_last	*cmd;
 	char	*prompt;
+	t_shell	shell;
 
 	line = NULL;
 	argc = 0;
@@ -44,6 +47,7 @@ int		main(int argc, char **argv, char **env)
 			exit(0);
 		}
 		cmd = ft_analize(line);
+		crt_jobs(&shell, cmd);
 		apply_cmd(&st_tab, &st_env, cmd);
 		//ft_build_test(line);
 		free(line);

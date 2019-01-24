@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/21 18:23:22 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/24 00:38:50 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # define GO line[*i] == '"'
 
 # include "ft_printf.h"
+//# include "job_control.h"
+# include <termios.h>
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <dirent.h>
@@ -100,4 +102,25 @@ t_last			*ft_analize(char *line);
 int				add_alias(char *alias);
 void			print_alias_lst(void);
 int				unalias(char *alias);
+
+/*
+t_last				*find_job (pid_t pgid);
+int					job_is_stopped(t_last *job_list);
+int					job_is_completed(t_last *job_list);
+void				init_shell_for_job(void);
+void				launch_process(t_ast *process_list, pid_t pgid, int infile, int outfile, int errfile, int foreground);
+void				launch_job(t_last *job_list, int foreground);
+void				put_job_in_foreground(t_last *job_list, int cont);
+void				put_job_in_background(t_last *job_list, int cont);
+int					mark_process_status(pid_t pid, int status);
+void				update_status(void);
+void				wait_for_job(t_last *job_list);
+void				format_job_info(t_last *job_list, const char *status);
+void				do_job_notification(void);
+void				mark_job_as_running(t_last *job_list);
+void				continue_job(t_last *job_list, int foreground);
+*/
+t_ast	*new_first_list(t_ast *ast_cmd, int mode);
+void	create_ast(char *cmd_full, t_ast *ast_cmd);
+
 #endif

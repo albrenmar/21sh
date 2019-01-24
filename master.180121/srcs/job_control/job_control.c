@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   job_control.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 00:56:21 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/21 18:04:06 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/23 02:39:13 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "job_control.h"
 
-t_job	*find_job(pid_t pgid)
+t_last				*g_first_job = NULL;
+pid_t				g_shell_pgid;
+struct termios		g_shell_tmodes;
+int					g_shell_terminal;
+int					g_shell_is_interactive;
+
+
+t_last	*find_job(pid_t pgid)
 {
-	t_job	*job_list;
+	t_last	*job_list;
 
 	job_list = g_first_job;
 	while (job_list)
@@ -26,9 +33,9 @@ t_job	*find_job(pid_t pgid)
 	return (NULL);
 }
 
-int		job_is_stopped(t_job *job_list)
+int		job_is_stopped(t_last *job_list)
 {
-	t_process	*process_list;
+	t_ast	*process_list;
 
 	process_list = job_list->first_process;
 	while (process_list)
@@ -40,9 +47,9 @@ int		job_is_stopped(t_job *job_list)
 	return (1);
 }
 
-int		job_is_completed(t_job *job_list)
+int		job_is_completed(t_last *job_list)
 {
-	t_process	*process_list;
+	t_ast	*process_list;
 
 	process_list = job_list->first_process;
 	while (process_list)
@@ -54,7 +61,7 @@ int		job_is_completed(t_job *job_list)
 	return (1);
 }
 
-void	init_shell(void)
+void	init_shell_for_job(void)
 {
 	g_shell_terminal = STDIN_FILENO;
 	g_shell_is_interactive = isatty(g_shell_terminal);	/*****INTERDIT isatty*****/
@@ -80,7 +87,7 @@ void	init_shell(void)
 	}
 }
 
-void	launch_process(t_process *process_list, pid_t pgid, int infile, int outfile, int errfile, int foreground)
+void	launch_process(t_ast *process_list, pid_t pgid, int infile, int outfile, int errfile, int foreground)
 {
 	pid_t		pid;
 
@@ -119,9 +126,9 @@ void	launch_process(t_process *process_list, pid_t pgid, int infile, int outfile
 	exit(1);
 }
 
-void	launch_job(t_job *job_list, int foreground)
+void	launch_job(t_last *job_list, int foreground)
 {
-	t_process	*process_list;
+	t_ast	*process_list;
 	pid_t		pid;
 	int			mypipe[2];
 	int			infile;
@@ -156,11 +163,11 @@ void	launch_job(t_job *job_list, int foreground)
 			if (g_shell_is_interactive)
 			{
 				if (job_list->pgid)
-					job->pgid = pid;
+					job_list->pgid = pid;
 				setpgid(pid, job_list->pgid);
 			}
 		}
-		if (infile != j->stdin)
+		if (infile != job_list->stdin)
 			close(infile);
 		if (outfile != job_list->stdout)
 			close(outfile);
@@ -176,7 +183,7 @@ void	launch_job(t_job *job_list, int foreground)
 		put_job_in_background(job_list, 0);
 }
 
-void	put_job_in_foreground(t_job *job_list, int cont)
+void	put_job_in_foreground(t_last *job_list, int cont)
 {
 	tcsetpgrp(g_shell_terminal, job_list->pgid);
 	if (cont)
@@ -191,7 +198,7 @@ void	put_job_in_foreground(t_job *job_list, int cont)
 	tcsetattr(g_shell_terminal, TCSADRAIN, &g_shell_tmodes);
 }
 
-void	put_job_in_background(t_job *job_list, int cont)
+void	put_job_in_background(t_last *job_list, int cont)
 {
 	if (cont)
 		if (kill(-job_list->pgid, SIGCONT) < 1)
@@ -200,8 +207,8 @@ void	put_job_in_background(t_job *job_list, int cont)
 
 int		mark_process_status(pid_t pid, int status)
 {
-	t_job		*job_list;
-	t_process	*process_list;
+	t_last		*job_list;
+	t_ast	*process_list;
 
 	if (pid > 0)
 	{
@@ -220,7 +227,7 @@ int		mark_process_status(pid_t pid, int status)
 					{
 						process_list->completed = 1;
 						if (WIFSIGNALED(status))
-							frpintf(stderr, "%d: Terminated by signal %d.\n",
+							fprintf(stderr, "%d: Terminated by signal %d.\n",
 								(int)pid, WTERMSIG(process_list->status));
 					}
 					return (0);
@@ -250,7 +257,7 @@ void	update_status(void)
 		pid = waitpid(WAIT_ANY, &status, WUNTRACED|WNOHANG);
 }
 
-void	wait_for_job(t_job	*job_list)
+void	wait_for_job(t_last	*job_list)
 {
 	int		status;
 	pid_t	pid;
@@ -259,17 +266,17 @@ void	wait_for_job(t_job	*job_list)
 		pid = waitpid(WAIT_ANY, &status, WUNTRACED);
 }
 
-void	format_job_info(t_job *job_list, const char *status)
+void	format_job_info(t_last *job_list, const char *status)
 {
-	fprintf(stderr, "%ld (%s): $s\n", (long)job_list->pgid, status, job_list->command);
+	fprintf(stderr, "%ld (%s): $s\n", (long)job_list->pgid, status, job_list->name);
 }
 
 void	do_job_notification(void)
 {
-	t_job		*job;
-	t_job		*job_last;
-	t_job		*job_next;
-	t_process	*process;
+	t_last		*job;
+	t_last		*job_last;
+	t_last		*job_next;
+	t_ast	*process;
 
 	update_status();
 	job_last = NULL;
@@ -284,7 +291,7 @@ void	do_job_notification(void)
 				job_last = job_next;
 			else
 				g_first_job = job_next;
-			free_job(job);
+//			free_job(job);
 		}
 		else if (job_is_stopped(job) && !job->notified)
 		{
@@ -298,9 +305,9 @@ void	do_job_notification(void)
 	}
 }
 
-void	mark_job_as_running(t_job *job_list)
+void	mark_job_as_running(t_last *job_list)
 {
-	t_process	*process_list;
+	t_ast	*process_list;
 
 	process_list = job_list->first_process;
 	while (process_list)
@@ -311,7 +318,7 @@ void	mark_job_as_running(t_job *job_list)
 	job_list->notified = 0;
 }
 
-void	continue_job(t_job *job_list, int foreground)
+void	continue_job(t_last *job_list, int foreground)
 {
 	mark_job_as_running(job_list);
 	if (foreground)
