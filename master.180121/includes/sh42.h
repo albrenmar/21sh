@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/24 00:36:42 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/25 02:30:46 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct		s_process
 	char				stopped;
 	int					status;
 	struct s_process	*next;
+	struct s_process	*prev;
 }					t_process;
 
 typedef struct		s_job
@@ -127,6 +128,7 @@ typedef struct		s_job
 	int					stdout;
 	int					stderr;
 	struct s_job		*next;
+	struct s_job		*prev;
 }					t_job;
 
 

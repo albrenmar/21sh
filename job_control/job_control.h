@@ -6,15 +6,13 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 02:04:26 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/21 18:04:30 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/22 23:12:45 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef JOB_CONTROL_H
 # define JOB_CONTROL_H
 
-# include "../minishell/includes/minishell.h"
-# include <termios.h>
 # include <errno.h>
 
 typedef struct		s_process
@@ -49,7 +47,7 @@ int					g_shell_is_interactive;
 t_job				*find_job (pid_t pgid);
 int					job_is_stopped(t_job *job_list);
 int					job_is_completed(t_job *job_list);
-void				init_shell(void);
+void				init_shell_for_jobctrl(void);
 void				launch_process(t_process *process_list, pid_t pgid, int infile, int outfile, int errfile, int foreground);
 void				launch_job(t_job *job_list, int foreground);
 void				put_job_in_foreground(t_job *job_list, int cont);
