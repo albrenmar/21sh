@@ -6,11 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/15 03:13:48 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/21 18:27:09 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 
 char	*recup_cmd(char *line, int *i, int nb)

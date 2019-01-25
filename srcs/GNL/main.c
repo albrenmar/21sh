@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 18:12:58 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/05 15:13:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/10 01:17:35 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		main(void)
 	cursorinit();
 	prompt = ft_strdup("Fake minishell >");
 	g_tracking.prompt = ft_strdup(prompt);
+	ft_putstr(g_tracking.prompt);
 	g_tracking.pos->prompt = ft_strlen(prompt);
 	ft_siginit();
 	get_term();

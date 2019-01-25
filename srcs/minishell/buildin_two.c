@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buildin_two.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 15:07:37 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/17 06:29:51 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/17 23:59:04 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,20 @@ int		check_is_builtins(t_tab *st_tab)
 			ft_strcmp(st_tab->tab_word[0], "cd") == 0 ||
 			ft_strcmp(st_tab->tab_word[0], "setenv") == 0 ||
 			ft_strcmp(st_tab->tab_word[0], "unsetenv") == 0 ||
+			ft_strcmp(st_tab->tab_word[0], "alias") == 0 ||
+			ft_strcmp(st_tab->tab_word[0], "unalias") == 0 ||
+			ft_strcmp(st_tab->tab_word[0], "alias_print") == 0 ||
 			ft_strcmp(st_tab->tab_word[0], "env") == 0)
 		return (1);
 	return (0);
 }
 
-void	realize_built(t_tab *st_tab, t_env *st_env)
+void	realize_built(t_tab *st_tab, t_env *st_env, char **line, char **env)
 {
+	char	*path;
 	char	*buf;
+	char	*pwd;
+	char	*home;
 
 	buf = NULL;
 	if (ft_strcmp(st_tab->tab_word[0], "env") == 0)
@@ -56,6 +62,12 @@ void	realize_built(t_tab *st_tab, t_env *st_env)
 		ft_setenv(st_env, st_tab);
 	else if (ft_strcmp(st_tab->tab_word[0], "unsetenv") == 0)
 		ft_unsetenv(st_env, st_tab);
+	else if (ft_strcmp(st_tab->tab_word[0], "alias") == 0)
+		add_alias(st_tab->tab_word[1]);
+	else if (ft_strcmp(st_tab->tab_word[0], "alias_print") == 0)
+		print_alias_lst();
+	else if (ft_strcmp(st_tab->tab_word[0], "unalias") == 0)
+		unalias(st_tab->tab_word[1]);	
 }
 
 char	*recup_path(char **env, char *str)

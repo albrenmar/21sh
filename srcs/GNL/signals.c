@@ -6,11 +6,17 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 14:00:48 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/17 06:32:15 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/18 00:58:45 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
+#include "sh42.h"
+
+void	set_back_term(void)
+{
+	tputs(tgetstr("ve", NULL), 1, yan_putchar);
+	tcsetattr(STDERR_FILENO, TCSANOW, &g_tracking.default_term);
+}
 
 void		fg_bg(int sino)
 {
@@ -29,6 +35,10 @@ void		fg_bg(int sino)
 
 void		handle_sin(int sino)
 {
+	char		*test;
+	int			i;
+	int			y;
+
 	if (sino == SIGABRT || sino == SIGINT || sino == SIGKILL
 	|| sino == SIGINT || sino == SIGQUIT)
 	{
@@ -40,23 +50,23 @@ void		handle_sin(int sino)
 	if (sino == SIGWINCH)
 	{
 		get_size();
-//		update_pos();
-		clear_screen3();
-		ft_putstr(">");
-		if (g_tracking.str)
-			ft_putstr(g_tracking.str);
-	//	update_pos();
+		update_pos();
+		y = utf_strlen(g_tracking.str);
+		y += g_tracking.pos->prompt;
+		g_tracking.pos->y = y / g_tracking.terminfo->sizex;
+		if (g_tracking.aut)
+			ioctl(STDERR_FILENO, TIOCSTI, "'");
 	}
 }
 
 void		ft_siginit(void)
 {
-/*	signal(SIGABRT, handle_sin);
+	signal(SIGABRT, handle_sin);
 	signal(SIGINT, handle_sin);
 	signal(SIGSTOP, handle_sin);
 	signal(SIGQUIT, handle_sin);
 	signal(SIGKILL, handle_sin);
 	signal(SIGCONT, handle_sin);
-	signal(SIGTSTP, handle_sin);*/
+	signal(SIGTSTP, handle_sin);
 	signal(SIGWINCH, handle_sin);
 }

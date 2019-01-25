@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:26:48 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/17 06:33:28 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/20 04:33:51 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	update_pos()
 
 	ab = g_tracking.pos->abs + g_tracking.pos->prompt;
 	g_tracking.pos->x = ab % g_tracking.terminfo->sizex;
+	g_tracking.pos->legacy = (utf_strlen(g_tracking.str) + g_tracking.pos->prompt) / g_tracking.terminfo->sizex;
 }
 
 void	back_home()
@@ -38,7 +39,6 @@ void	move_to_end()
 	int		x;
 	int		i;
 
-	i = 0;
 	x = g_tracking.terminfo->sizex - 1;
 	tputs(tgetstr("up", NULL), 1, yan_putchar);
 	tputs(tgetstr("cr", NULL), 1, yan_putchar);
@@ -54,6 +54,7 @@ void	back_to_pos()
 {
 	int		i;
 	int		x;
+	int		y;
 	int		flag;
 	int		ab;
 

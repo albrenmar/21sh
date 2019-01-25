@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 01:51:43 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/05 15:21:36 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/21 18:30:54 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ size_t				ft_strlen(const char *s);
 
 char				*ft_strdup(const char *s1);
 
+char				*ft_strndup(const char *s1, int nb);
+
 char				*ft_strcpy(char *dst, const char *src);
 
 char				*ft_strncpy(char *dst, const char *src, size_t len);
@@ -39,6 +41,8 @@ char				*ft_strncat(char *s1, const char *s2, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
 
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+
+int					ft_strncmplc(const char *s1, const char *s2, size_t n);
 
 int					ft_isalpha(int c);
 
@@ -96,7 +100,7 @@ int					ft_strnequ(char const *s1, char const *s2, size_t n);
 
 char				*ft_strsub(char const *s, size_t t, size_t l, size_t f);
 
-char				*ft_strjoinfree(char const *s1, char const *s2, size_t freelv);
+char				*ft_strjoinfree(char *s1, char *s2, size_t freelv);
 
 char				*ft_strrev(char const *s1, int freeit);
 
@@ -105,6 +109,8 @@ char				*ft_strtrim(char const *s);
 void				ft_putchar(char c);
 
 void				ft_putstr(char const *s);
+
+void				ft_putstr_nocar(char const *s);
 
 char				**ft_strsplit(char const *s, char c);
 
@@ -135,6 +141,10 @@ void				free_tab(char **tab);
 char				**ft_split_white(char *str);
 
 char				*ft_strjoinchar(char const *s1, char s2, size_t free_level);
+
+long				ft_atoi_check(char *nptr);
+
+int					ft_isinteg(char *str);
 
 typedef struct		s_list
 {

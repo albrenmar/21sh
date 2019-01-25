@@ -6,22 +6,37 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 04:48:12 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/17 06:33:52 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/20 05:03:02 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
 
+void	the_edge(void)
+{
+	tputs(tgetstr("up", NULL), 1, yan_putchar);
+	g_tracking.pos->abs -= 1;
+	back_to_pos();
+	update_pos();
+}
+
 void	move_left(void)
 {
-	int		i;
 	int		x;
+	int		y;
 	int		ab;
+	int		test;
+	int		flag;
 
 	ab = g_tracking.pos->abs + g_tracking.pos->prompt;
+	test = utf_strlen(g_tracking.str) + g_tracking.pos->prompt;
 	x = ab % g_tracking.terminfo->sizex;
-	i = 0;
-	if (g_tracking.pos->abs > 0 && g_tracking.str != NULL)
+	flag = 0;
+	if (test == (g_tracking.terminfo->sizex) * (g_tracking.pos->y) && x == 0)
+		flag = 1;
+	if (flag == 1)
+		the_edge();
+	if (g_tracking.pos->abs > 0 && g_tracking.str != NULL && flag == 0)
 	{
 		g_tracking.pos->abs -= 1;
 		if (x > 0)
@@ -38,6 +53,7 @@ void	move_right(void)
 {
 	int		i;
 	int		x;
+	int		y;
 	int		ab;
 
 	i = 0;

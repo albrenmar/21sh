@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   listcontainer_size.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cababou <cababou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 05:29:49 by cababou           #+#    #+#             */
-/*   Updated: 2018/02/17 05:36:54 by cababou          ###   ########.fr       */
+/*   Updated: 2018/12/19 00:51:56 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int		lstcontainer_size(t_lstcontainer *list_container)
 	int		size;
 
 	size = 0;
+	if (list_container == NULL)
+		return (-1);
 	lst = list_container->firstelement;
 	while (lst)
 	{

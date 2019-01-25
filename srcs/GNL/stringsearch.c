@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/17 06:31:54 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/21 21:29:39 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void		err_check(int a, int i, int j)
 {
 	char	*newstr;
 
-	a = 0;
 	newstr = NULL;
 	if (i + j > g_tracking.buffsize)
 	{
@@ -82,5 +81,17 @@ void		rem_from_str(void)
 		print_line();
 		g_tracking.pos->abs -= 1;
 		back_to_pos();
+	}
+}
+
+void		rem_str(char *str)
+{
+	int		i;
+
+	i = utf_strlen(str);
+	while (i > 0)
+	{
+		rem_from_str();
+		i--;
 	}
 }

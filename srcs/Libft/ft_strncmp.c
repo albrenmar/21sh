@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 17:28:08 by bsiche            #+#    #+#             */
-/*   Updated: 2017/12/02 17:45:51 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/07 18:09:00 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,30 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	}
 	return (0);
+}
+
+int		ft_strncmplc(const char *s1, const char *s2, size_t n)
+{
+	char	*cmp1;
+	char	*cmp2;
+	int		i;
+
+	cmp1 = ft_strdup(s1);
+	cmp2 = ft_strdup(s2);
+	i = 0;
+	while (cmp1[i])
+	{
+		cmp1[i] = ft_tolower(cmp1[i]);
+		i++;
+	}
+	i = 0;
+	while (cmp2[i])
+	{
+		cmp2[i] = ft_tolower(cmp2[i]);
+		i++;
+	}
+	i = ft_strncmp(cmp1, cmp2, n);
+	free(cmp1);
+	free(cmp2);
+	return (i);
 }

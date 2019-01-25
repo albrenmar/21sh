@@ -6,12 +6,12 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/15 02:08:15 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/22 01:27:02 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
-#include "../includes/sh42.h"
+#include "minishell.h"
+#include "sh42.h"
 
 int		main(int argc, char **argv, char **env)
 {
@@ -24,12 +24,13 @@ int		main(int argc, char **argv, char **env)
 	line = NULL;
 	argc = 0;
 	argv = NULL;
-	set_env(&st_env, env);
+//	set_env(&st_env, env);
 	cursorinit();
 	prompt = ft_strdup("Fake minishell > ");
 	g_tracking.prompt = ft_strdup(prompt);
 	g_tracking.pos->prompt = ft_strlen(prompt);
 	ft_siginit();
+	init_shell(env);
 	get_term();
 	while (get_key() > 0)
 	{
@@ -37,11 +38,17 @@ int		main(int argc, char **argv, char **env)
 		free(g_tracking.cmd);
 		g_tracking.swi = 0;
 		ft_putchar('\n');
+		hist_lst_add_next(g_tracking.mysh->hist, line);
+		if (!ft_strcmp(line, "exit"))
+		{
+			printf("%s\n", "exit temporaire");
+			exit(0);
+		}
 		cmd = ft_analize(line);
 		apply_cmd(&st_tab, &st_env, cmd);
+		//ft_build_test(line);
 		free(line);
 		line = NULL;
 	}
-	forfree(st_env.env);
 	return (0);
 }
