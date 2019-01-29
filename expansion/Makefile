@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/13 20:20:13 by bsiche           ###   ########.fr        #
+#    Updated: 2019/01/29 01:59:02 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,8 @@ SRC = main.c \
 	  ft_ls/recursive.c \
 	  ft_ls/sortoption.c \
 	  ft_ls/termsize.c \
-	  ft_ls/timesort.c
+	  ft_ls/timesort.c \
+	  expansions/expand.c
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A

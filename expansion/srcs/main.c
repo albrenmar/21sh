@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/12/14 02:25:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/29 01:53:39 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
+#include "expansions.h"
 
 int		main(int argc, char **argv, char **env)
 {
@@ -36,6 +37,7 @@ int		main(int argc, char **argv, char **env)
 		/* A REMPLACER PAR FONCTIONS BSICHE */
 		line = ft_strdup(g_tracking.cmd);
 		free(g_tracking.cmd);
+		expand_transformer(line);
 		g_tracking.swi = 0;
 		ft_putchar('\n');
 		/* A REMPLACER PAR FONCTIONS BSICHE */
