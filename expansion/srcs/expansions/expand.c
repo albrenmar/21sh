@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/29 07:09:26 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/29 07:34:08 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		create_list_expand(t_expand *new_letter, char *line)
 	while (line[i])
 	{
 		new_letter->ltr = line[i];
-		if (line[i + 1] && !ft_iswhitespace(line[i]))
+		if (line[i + 1])
 		{
 			new_letter->next = new_expand();
 			new_letter = new_letter->next;
@@ -57,6 +57,8 @@ int			need_expand(char *to_transf)
 	else if (to_transf[0] == '~' && have_homedir(to_transf))
 		return (1);
 	else if (have_parm(to_transf))
+		return (1);
+	else if (is_to_add_or_mod_parm(to_transf))
 		return (1);
 	return (0);
 }

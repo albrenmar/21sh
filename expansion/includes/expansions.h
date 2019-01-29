@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/29 06:16:51 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/29 07:31:38 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void			tilde_transformer(t_expand *new_letter, t_env *env, char *line);
 int				have_homedir(char *to_transf);
 int				check_have_homedir(struct passwd *user_inf, char *tmp_usr);
 int				have_parm(char *to_transf);
+int				is_to_add_or_mod_parm(char *to_transf);
 
 #endif
