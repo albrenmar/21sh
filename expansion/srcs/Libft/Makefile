@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/02 18:27:43 by cababou           #+#    #+#              #
-#    Updated: 2018/12/14 02:21:15 by bsiche           ###   ########.fr        #
+#    Updated: 2019/01/29 04:00:43 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,8 @@ SRC =		ft_atoi.c \
 	ft_tablen.c	\
 	ft_split_whitespace.c \
 	get_next_line.c \
-	listcontainer_fastsize.c
+	listcontainer_fastsize.c \
+	ft_iswhitespace.c \
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A

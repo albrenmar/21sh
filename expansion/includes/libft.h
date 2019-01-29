@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 01:51:43 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 21:00:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/29 03:26:58 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,5 +196,7 @@ t_lstcontainer		*lstcontainer_new(void);
 t_lstcontainer		*ft_strsplitlst(char *str, char c);
 
 void				ft_freesplitlist(t_lstcontainer *list);
+
+int					ft_iswhitespace(int c);
 
 #endif

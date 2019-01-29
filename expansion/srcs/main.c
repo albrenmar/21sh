@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/29 01:53:39 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/29 03:22:42 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		main(int argc, char **argv, char **env)
 		/* A REMPLACER PAR FONCTIONS BSICHE */
 		line = ft_strdup(g_tracking.cmd);
 		free(g_tracking.cmd);
-		expand_transformer(line);
+		expand_transformer(line, &st_env);
 		g_tracking.swi = 0;
 		ft_putchar('\n');
 		/* A REMPLACER PAR FONCTIONS BSICHE */
