@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/21 18:23:22 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/29 04:11:41 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,12 @@ typedef struct	s_env
 	char	**env;
 }				t_env;
 
-typedef struct	s_ast
-{
-	char			*cmd;
-	int				next_token;
-	struct s_ast	*next;
-	struct s_ast	*prev;
-}				t_ast;
-
 typedef struct	s_last
 {
+	int				type;
 	char			*name;
 	struct s_last	*next;
+	struct s_last	*prev;
 }				t_last;
 
 typedef struct	s_cmd

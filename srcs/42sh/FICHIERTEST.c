@@ -84,3 +84,45 @@ void	execute_pipe_two(t_ast *ast_cmd, int *prev_descrf)
 		wait(&pid2);
 	}
 }
+
+char	*recup_cmd(char *line, int *i, int nb)
+{
+	char	*test;
+
+	test = NULL;
+	if (!line[nb])
+		return (NULL);
+	if (line[nb] == '\'' || line[nb] == '\"')
+		return (check_quote(line, i, &nb));
+	while (line[nb])
+	{
+		if (line[nb] == ';' || line[nb] == '|' || line[nb] == '&' || line[nb] == '>' || line[nb] == '<' || line[nb] == '(' || line[nb] == ')')
+		{
+			if (line[nb + 1] && (line[nb + 1] == line[nb]))
+			{
+				test = ft_strndup(line, 2);
+				(*i) = (*i) + 2;
+				nb = nb + 2;
+			}
+			else
+			{
+				test = ft_strndup(line, 1);
+				(*i) = (*i) + 1;
+				nb = nb + 1;
+			}
+		}
+		else
+		{
+			while (line[nb] && line[nb] != ' ' && line[nb] != ';' && line[nb] != '|' && line[nb] != '&' && line[nb] != '>' && line[nb] != '<' && line[nb] != '(' && line[nb] != ')')
+			{
+				nb++;
+				(*i)++;
+			}
+			test = ft_strndup(line, nb);
+		}
+		while (line[nb++] == ' ')
+			(*i)++;
+		return (test);
+	}
+	return (test);
+}

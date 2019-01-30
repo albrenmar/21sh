@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/23 00:01:02 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/26 04:32:09 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@
 # define K_BKSP		127
 # define K_TAB		9
 # define K_DEL		"\x1b\x5b\x33\x7e"
+# define LEER		0
+# define ESCRIBIR	1
 
 typedef struct	s_cursor
 {
@@ -132,6 +134,14 @@ typedef struct	s_tracking
 	int					histindex;
 	int					histmax;
 }				t_tracking;
+
+typedef struct	s_ast
+{
+	char			*cmd;
+	int				next_token;
+	struct s_ast	*next;
+	struct s_ast	*prev;
+}				t_ast;
 
 t_tracking		g_tracking;
 
@@ -305,6 +315,27 @@ char			*ft_true_pwd(void);
 
 void			add_missing_string();
 
+//====================================================================
+//Fonctions Alsomvi : token et ast_cmd
+//===================================================================
+
+void	execute_pipe_two(t_ast *ast_cmd, int *descrf, char **tablist);
+
+char	**cmd_to_tab(t_ast *ast_cmd, char **pathlist);
+
+void	tokenisation(char *symbol, int *token, int mode);
+
+void	execute_first_pipe(t_ast *ast_cmd, char **tablist);
+
+t_ast	*new_first_list(t_ast *ast_cmd, int mode);
+
+void	create_ast(char *cmd_full, t_ast *ast_cmd);
+
+void	excute_ast(t_ast *ast_cmd);
+
+//====================================================================
+
+//===================================================================
 
 void							hist_file_to_lst(void);
 int								print_hist();
