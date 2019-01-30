@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/22 01:18:25 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/30 03:29:08 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		ft_exec_key(char *str)
 	if (ft_strcmp(str, K_LDOWN) == 0)
 		move_down();
 	if (ft_strcmp(str, K_DEL) == 0)
-		rem_from_str();
+		rem_from_str_del();
 	if (ft_strcmp(str, K_FN1) == 0)
 		begin_cpy();
 	if (ft_strcmp(str, K_FN3) == 0)

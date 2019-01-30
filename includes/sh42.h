@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/23 00:01:02 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/30 03:29:03 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,8 @@ void			update_pos(void);
 void			add_to_str(char *str);
 
 void			rem_from_str(void);
+
+void			rem_from_str_del(void);
 
 void			get_size(void);
 
