@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 01:29:12 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/30 02:07:02 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/30 02:51:02 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,11 @@ void	add_pointer(t_list	*ref, t_list *to_add)
 	t_list		*next;
 
 	prev = ref->prev;
+	if (prev)
+		prev->next = to_add;
 	to_add->prev = prev;
-	ref->prev = to_add;
 	to_add->next = ref;
+	ref->prev = to_add;
 }
 
 void	insert_node(t_list *ref_node, t_list *insert)
@@ -96,7 +98,7 @@ int		main(int argc, char **argv)
 		insert = insert->next;
 		i++;
 	}
-	insert_node(new->firstelement->next, insert);
+	insert_node(new->firstelement, insert);
 	ft_putchar('\n');
 	print_list2(new);
 	ft_putchar('\n');

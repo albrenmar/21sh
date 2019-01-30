@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/30 04:10:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/30 05:14:34 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 char	*create_path_hist(void)
 {
 	char	*path;
+	char	*usr;
 
 	path = ft_strdup("/Users/");
+	usr = getlogin();
 	path = ft_strjoinfree(path, USER, 1);
 	path = ft_strjoinfree(path, "/.42shist", 1);
 	return (path);
