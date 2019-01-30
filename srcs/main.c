@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/30 03:47:24 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/30 04:17:16 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		main(int argc, char **argv, char **env)
 		hist_lst_add_next(g_tracking.mysh->hist, line);
 		if (!ft_strcmp(line, "exit"))
 		{
+			hist_to_file();
 			printf("%s\n", "exit temporaire");
 			exit(0);
 		}
