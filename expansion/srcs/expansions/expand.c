@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/29 07:34:08 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/30 02:37:18 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ int			need_expand(char *to_transf)
 		return (1);
 	else if (is_to_add_or_mod_parm(to_transf))
 		return (1);
+	else if (to_transf[0] == '$' && to_transf[1])
+		return (1);
 	return (0);
 }
 
-void		expand_transformer(char *line, t_env *env)
+void		expand_transformer(char *line)
 {
 	char		*to_transf;
 	t_expand	*expand;

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/30 01:47:19 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/30 03:00:14 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		main(int argc, char **argv, char **env)
 		free(g_tracking.cmd);
 		g_tracking.swi = 0;
 		ft_putchar('\n');
-		expand_transformer(line, &st_env);
+		expand_transformer(line);
 		hist_lst_add_next(g_tracking.mysh->hist, line);
 		if (!ft_strcmp(line, "exit"))
 		{

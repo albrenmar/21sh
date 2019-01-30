@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/30 02:00:20 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/30 02:25:10 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ typedef struct	s_shell
 	t_lstcontainer	*alias_lst;
 	t_lstcontainer	*env;
 	t_hist			*hist;
-	t_args			*args;
+	t_args			*args_lst;
 }				t_shell;
 
 typedef struct	s_tracking

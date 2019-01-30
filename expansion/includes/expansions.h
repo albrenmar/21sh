@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/30 02:04:29 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/30 02:59:25 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ typedef struct	s_expand
 
 typedef struct	s_args
 {
-	char			*name;
-	char			*value;
+	struct s_keyval	*param;
 	struct s_args	*next;
 }				t_args;
 
-
-void			expand_transformer(char *line, t_env *st_env);
+void			expand_transformer(char *line);
 int				need_expand(char *to_transf);
 t_expand		*new_expand(void);
 void			create_list_expand(t_expand *new_letter, char *line);
