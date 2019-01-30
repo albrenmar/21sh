@@ -6,12 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/11 23:49:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/22 01:18:25 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
-#include "stdio.h"
+#include "sh42.h"
 
 void	ft_return(void)
 {
@@ -22,7 +21,6 @@ void	ft_return(void)
 	g_tracking.str = NULL;
 	cursor_reset();
 }
-
 
 void	test_read(void)
 {
@@ -56,8 +54,6 @@ void	test_read2(char *str)
 	}
 }
 
-
-
 int		ft_exec_key(char *str)
 {
 	if (ft_strcmp(str, K_LEFT) == 0)
@@ -78,6 +74,10 @@ int		ft_exec_key(char *str)
 		begin_cpy();
 	if (ft_strcmp(str, K_FN3) == 0)
 		begin_paste();
+	if (ft_strcmp(str, K_UP) == 0)
+		history_up();
+	if (ft_strcmp(str, K_DOWN) == 0)
+		history_down();
 	return (6);
 }
 
@@ -105,11 +105,12 @@ int		is_cmd(char *str)
 	return (0);
 }
 
-int	single_key(char c)
+int		single_key(char c)
 {
 	if (c == K_BKSP)
 	{
 		rem_from_str();
+		g_tracking.comp = ft_strdup(g_tracking.str);
 		return (12);
 	}
 	if (c == 10 || c == 13)
@@ -133,18 +134,28 @@ int		check(char *str)
 	return (0);
 }
 
-int		readloop(void)
+int		return_loop(int i, char *str)
+{
+	if (check(str) == 1 || i == 12)
+		free(str);
+	else
+	{
+		add_to_str(str);
+		g_tracking.comp = ft_strdup(g_tracking.str);
+	}
+	return (0);
+}
+
+int		readloop(int i)
 {
 	char	c;
 	char	*str;
-	int		i;
 
 	str = ft_strnew(0);
-	i = 0;
 	read(STDERR_FILENO, &c, 1);
 	str = ft_strjoinchar(str, c, 1);
 	i = single_key(c);
-	if (i == 13)
+	if (i == 13 || i == 10)
 	{
 		free(str);
 		return (1);
@@ -160,20 +171,19 @@ int		readloop(void)
 				break ;
 		}
 	}
-	if (check(str) == 1 || i == 12)
-		free(str);
-	else
-		add_to_str(str);
-	return (0);
+	return (return_loop(i, str));
 }
 
 int		get_key(void)
 {
 	char	*test;
 
+	tcsetattr(0, TCSANOW, &g_tracking.myterm);
 	ft_putstr(g_tracking.prompt);
-	while (readloop() == 0)
+	g_tracking.histindex = get_last() + 1;
+	while (readloop(0) == 0)
 	{
 	}
+	tcsetattr(STDERR_FILENO, TCSANOW, &g_tracking.default_term);
 	return (1);
 }

@@ -6,13 +6,13 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:41:15 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 01:47:35 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/20 07:13:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-void	ft_handlelink(t_list *list, char *dossier, int *flag)
+void			ft_handlelink(t_list *list, char *dossier, int *flag)
 {
 	t_ls	*info;
 	char	*perm;
@@ -32,18 +32,21 @@ void	ft_handlelink(t_list *list, char *dossier, int *flag)
 	}
 }
 
-void	get_and_sort(t_lstcontainer *mainliste, char *option)
+void			get_and_sort(t_lstcontainer *mainliste, char *option)
 {
 	ft_sort(mainliste->firstelement, option);
 	ft_strinfo(mainliste->firstelement);
 }
 
-void	ft_folderlist(t_lstcontainer **mainliste, DIR *dir,
+t_lstcontainer	*ft_folderlist(t_lstcontainer *mainliste, DIR *dir,
 char *dossier, char *option)
 {
-	free_all(*mainliste, NULL);
-	*mainliste = lstcontainer_new();
-	*mainliste = makelist(*mainliste, dir, dossier, option);
+	t_lstcontainer *new_mainliste;
+
+	free_all(mainliste, NULL);
+	new_mainliste = lstcontainer_new();
+	new_mainliste = makelist(new_mainliste, dir, dossier, option);
+	return (new_mainliste);
 }
 
 t_lstcontainer	*ft_ls(char *name, char *option, int called)
@@ -56,15 +59,13 @@ t_lstcontainer	*ft_ls(char *name, char *option, int called)
 	flag = 0;
 	dossier = ft_strdup(name);
 	dir = chkdir(dossier, &flag);
-	if (dir == NULL)
-		return (NULL);
 	mainliste = simpleinfo(dossier, option);
 	if (ft_edgecase(dossier) == 1)
 		return (free_all(mainliste, dossier));
 	if (dir == NULL && flag == 0)
 		return (free_all(mainliste, dossier));
 	if (flag != 1 && checkoption(option, 'd') != 1)
-		ft_folderlist(&mainliste, dir, dossier, option);
+		mainliste = ft_folderlist(mainliste, dir, dossier, option);
 	if (dir != NULL)
 		closedir(dir);
 	if (mainliste->firstelement == NULL)

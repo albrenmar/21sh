@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/02 18:27:43 by cababou           #+#    #+#              #
-#    Updated: 2019/01/29 04:00:43 by mjose            ###   ########.fr        #
+#    Updated: 2019/01/21 18:29:56 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = libft.a
 SRC =		ft_atoi.c \
 	 ft_bzero.c \
 	ft_isalnum.c \
+	ft_strndup.c \
 	ft_isalpha.c \
 	ft_isascii.c \
 	ft_isdigit.c \
@@ -86,8 +87,7 @@ SRC =		ft_atoi.c \
 	ft_tablen.c	\
 	ft_split_whitespace.c \
 	get_next_line.c \
-	listcontainer_fastsize.c \
-	ft_iswhitespace.c \
+	listcontainer_fastsize.c
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A

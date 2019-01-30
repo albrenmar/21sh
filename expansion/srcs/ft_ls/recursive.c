@@ -6,11 +6,17 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 00:23:13 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 02:27:04 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/23 00:22:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
+
+void			free_null(char *str)
+{
+	free(str);
+	str = NULL;
+}
 
 void			ft_freestruct(t_list *liste)
 {
@@ -21,19 +27,20 @@ void			ft_freestruct(t_list *liste)
 	while (buf != NULL)
 	{
 		tmp = buf->content;
-		free(tmp->name);
-		free(tmp->strlink);
-		free(tmp->path);
-		free(tmp->strusrname);
-		free(tmp->strgroup);
-		free(tmp->strsize);
-		free(tmp->strmaj);
-		free(tmp->strmin);
-		free(tmp->strtime);
-		free(tmp->strpermission);
-		free(tmp->symlink);
-		free(tmp->strpad);
+		free_null(tmp->name);
+		free_null(tmp->strlink);
+		free_null(tmp->path);
+		free_null(tmp->strusrname);
+		free_null(tmp->strgroup);
+		free_null(tmp->strsize);
+		free_null(tmp->strmaj);
+		free_null(tmp->strmin);
+		free_null(tmp->strtime);
+		free_null(tmp->strpermission);
+		free_null(tmp->symlink);
+		free_null(tmp->strpad);
 		free(buf->content);
+		buf->content = NULL;
 		buf = buf->next;
 	}
 }

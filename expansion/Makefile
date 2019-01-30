@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/29 06:17:59 by mjose            ###   ########.fr        #
+#    Updated: 2019/01/30 02:11:08 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,19 +16,6 @@ SRC = main.c \
 	  42sh/apply_cmd.c \
 	  42sh/ft_create_tree.c \
 	  42sh/ft_analize.c \
-	  minishell/main_two.c \
-	  minishell/apply_cmd.c \
-	  minishell/buildin.c \
-	  minishell/buildin_two.c \
-	  minishell/duplicate_tab.c \
-	  minishell/forfreetab.c \
-	  minishell/get_info.c \
-	  minishell/set_env.c \
-	  minishell/set_env_two.c \
-	  minishell/work_to_env.c \
-	  Libft/ft_strcmp.c \
-	  Libft/ft_split_whitespaces.c \
-	  Libft/ft_strsplit.c \
 	  GNL/term_setup.c \
 	  GNL/stringsearch.c \
 	  GNL/signals.c \
@@ -40,17 +27,21 @@ SRC = main.c \
 	  GNL/lib_utf.c \
 	  GNL/print_line.c \
 	  GNL/next_word.c \
-	  GNL/cp_paste.c \
+	  GNL/copy.c \
+	  GNL/paste.c \
 	  GNL/get_key.c \
 	  auto_complete/auto_complete.c \
+	  auto_complete/auto_complete_cleanup.c \
 	  auto_complete/auto_complete_list.c \
 	  auto_complete/auto_complete_page.c \
 	  auto_complete/auto_complete_loop.c \
 	  auto_complete/auto_complete_move.c \
 	  auto_complete/auto_complete_parse.c \
 	  auto_complete/auto_complete_padding.c \
+	  auto_complete/auto_complete_type.c \
 	  auto_complete/print_arg_list.c \
 	  auto_complete/send_color.c \
+	  auto_complete/var_list.c \
 	  ft_ls/cmdparse.c \
 	  ft_ls/cmdparse_misc.c \
 	  ft_ls/color.c \
@@ -73,9 +64,25 @@ SRC = main.c \
 	  ft_ls/sortoption.c \
 	  ft_ls/termsize.c \
 	  ft_ls/timesort.c \
+	  alias/alias_bin.c \
+	  alias/alias_file.c \
+	  alias/alias_struct.c \
+	  test/test_main.c \
+	  test/test_two_arg.c \
+	  test/test_three_arg.c \
+	  shell_core/copyenv.c \
+	  shell_core/env_to_lst.c \
+	  shell_core/init_shell.c \
+	  shell_core/get_pwd.c \
+	  history/history_lst.c \
+	  history/history_lst2.c \
+	  history/history_lst_options.c \
+	  history/history_loop.c \
+	  history/print_hist.c \
 	  expansions/expand.c \
 	  expansions/user.c \
 	  expansions/parm.c \
+
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A
@@ -100,8 +107,7 @@ OBJP =		$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 
 LIB = ./srcs/libft
-LIB2 = ./srcs/ft_printf
-LIBADD = ./srcs/libft/libft.a ./srcs/ft_printf/ftprintf.a
+LIBADD = ./srcs/libft/libft.a
 
 FLAG = -g -fsanitize=address
 
@@ -117,7 +123,6 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 			@echo "$(CLEAR_LINE)$(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"
 complib :
 			@make -C $(LIB)
-			@make -C $(LIB2)
 clean :
 			@echo -e "$(CLEAR_LINE)$(COL_RED)Cleaning objs dir$(COL_END)"
 			@rm -rf $(OBJDIR)
@@ -129,7 +134,6 @@ clean :
 fclean :	clean
 			@rm -rf $(NAME)
 			@make fclean -C $(LIB)
-			@make fclean -C $(LIB2)
 
 
 re :		fclean all

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 21:06:12 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/23 00:08:39 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_lstcontainer	*change_dir(void)
 	if (g_tracking.aut->path != NULL)
 	{
 		g_tracking.aut->path = ft_strjoinfree("./", g_tracking.aut->path, 2);
-		return (build_ls);
+		return (build_ls());
 	}
 	return (NULL);
 }

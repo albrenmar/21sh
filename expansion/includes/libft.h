@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 01:51:43 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/29 03:26:58 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/21 18:30:54 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void				ft_bzero(void *s, size_t n);
 size_t				ft_strlen(const char *s);
 
 char				*ft_strdup(const char *s1);
+
+char				*ft_strndup(const char *s1, int nb);
 
 char				*ft_strcpy(char *dst, const char *src);
 
@@ -140,6 +142,10 @@ char				**ft_split_white(char *str);
 
 char				*ft_strjoinchar(char const *s1, char s2, size_t free_level);
 
+long				ft_atoi_check(char *nptr);
+
+int					ft_isinteg(char *str);
+
 typedef struct		s_list
 {
 	void			*content;
@@ -196,7 +202,5 @@ t_lstcontainer		*lstcontainer_new(void);
 t_lstcontainer		*ft_strsplitlst(char *str, char c);
 
 void				ft_freesplitlist(t_lstcontainer *list);
-
-int					ft_iswhitespace(int c);
 
 #endif

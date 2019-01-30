@@ -6,35 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 21:41:07 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/23 00:29:04 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
-
-void	clean_up_autoc(void)
-{
-	free(g_tracking.aut->word);
-	g_tracking.aut->word = NULL;
-	free(g_tracking.aut->menuline);
-	g_tracking.aut->menuline = NULL;
-	free(g_tracking.aut->path);
-	g_tracking.aut->path = NULL;
-	if (g_tracking.aut->to_free)
-	{
-		free_all(g_tracking.aut->to_free, NULL);
-		g_tracking.aut->to_free = NULL;
-		ft_lstdel(g_tracking.aut->comp_list->firstelement, 0);
-		free(g_tracking.aut->comp_list);
-	}
-	else
-	{
-		free_all(g_tracking.aut->comp_list, NULL);
-		g_tracking.aut->comp_list = NULL;
-	}
-	free(g_tracking.aut);
-	g_tracking.aut = NULL;
-}
 
 void	end_autocomplete(int i)
 {
@@ -44,8 +20,10 @@ void	end_autocomplete(int i)
 	{
 		if (i == 1)
 		{
-			if(g_tracking.aut->type == 1)
+			if (g_tracking.aut->type == 1)
 				escape_path();
+			if (g_tracking.aut->type == 2)
+				g_tracking.aut->to_add = ft_strjoinfree(g_tracking.aut->to_add, "} ", 1);
 			else
 				g_tracking.aut->to_add = ft_strjoinfree(g_tracking.aut->to_add, " ", 1);
 			add_to_str(g_tracking.aut->to_add);
@@ -110,12 +88,16 @@ int		get_new(t_list *buf)
 		if (g_tracking.aut->to_add)
 			free(g_tracking.aut->to_add);
 		g_tracking.aut->to_add = ft_strdup(tmp->name);
-		if (tmp->strpermission[0] == 'd' || tmp->strpermission[0] == 'l')
-			g_tracking.aut->type = 1;
-		else
-			g_tracking.aut->type = 0;
+		if (g_tracking.aut->type != 2)
+		{
+			if (tmp->strpermission[0] == 'd' || tmp->strpermission[0] == 'l')
+				g_tracking.aut->type = 1;
+			else
+				g_tracking.aut->type = 0;
+		}
 		return (print_menu());
 	}
+	return (0);
 }
 
 void	completion_loop(t_lstcontainer *list)

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 20:21:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/23 00:01:08 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int		loop_for_space(int i)
 
 void	asign_word(void)
 {
-	t_lstcontainer		*tmp;
-	t_list				*buf;
 	int					i;
 	int					a;
 	int					flag;
@@ -53,8 +51,7 @@ void	asign_word(void)
 	}
 }
 
-
-t_auto		*init_auto(void)
+t_auto	*init_auto(void)
 {
 	t_auto		*aut;
 
@@ -64,7 +61,9 @@ t_auto		*init_auto(void)
 	aut->path = NULL;
 	aut->menuline = NULL;
 	aut->comp_list = NULL;
-	aut->to_free = 0;
+	aut->var_lst = NULL;
+	aut->page_lst = NULL;
+	aut->to_free = NULL;
 	aut->to_add = NULL;
 	aut->size = 0;
 	aut->col_nbr = 0;
@@ -75,27 +74,9 @@ t_auto		*init_auto(void)
 
 void	build_list(void)
 {
-	t_lstcontainer	*list;
-
-	list = NULL;
 	g_tracking.aut->comp_list = NULL;
 	if (g_tracking.aut->word)
-	{
-		assign_type();
-		list = build_ls();
-		if (list != NULL)
-		{
-			build_comp(list);
-			g_tracking.aut->to_add = NULL;
-			if (g_tracking.aut->comp_list->firstelement != NULL)
-			{
-				get_max_size();
-				rem_str(g_tracking.aut->word);
-				set_up_page();
-				completion_loop(g_tracking.aut->comp_list);
-			}
-		}
-	}
+		complete_usr_word();
 	else
 	{
 		g_tracking.aut->comp_list = build_ls();
@@ -109,6 +90,8 @@ int		auto_complete(void)
 {
 	if ((g_tracking.aut = init_auto()) == NULL)
 		return (1);
+	build_bin_lst();
+	build_var_lst();
 	asign_word();
 	build_list();
 	clean_up_autoc();
