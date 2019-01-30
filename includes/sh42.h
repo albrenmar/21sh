@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/30 03:29:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/30 04:11:34 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -306,6 +306,8 @@ char			*remove_env_string(char *str);
 char			*ft_true_pwd(void);
 
 void			add_missing_string();
+
+void			hist_to_file(void);
 
 
 void							hist_file_to_lst(void);
