@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/30 02:11:08 by mjose            ###   ########.fr        #
+#    Updated: 2019/01/30 04:26:36 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,8 @@ SRC = main.c \
 	  expansions/expand.c \
 	  expansions/user.c \
 	  expansions/parm.c \
+	  expansions/transform.c \
+	  expansions/expand_tilde.c \
 
 
 CLEAR_LINE	= \033[2K

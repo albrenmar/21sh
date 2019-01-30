@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/30 02:37:18 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/30 04:05:09 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,13 @@ void		expand_transformer(char *line)
 	char		*to_transf;
 	t_expand	*expand;
 
-	to_transf = line;
+	to_transf = ft_strdup(line);
 	expand = NULL;
 	if (need_expand(to_transf))
 	{
 		expand = new_expand();
 		create_list_expand(expand, to_transf);
-//		tilde_transformer(expand, env);
+		transform(expand, &to_transf);
 	}
+	ft_putendl(to_transf);
 }
