@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/22 01:27:02 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/30 03:47:24 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int		main(int argc, char **argv, char **env)
 			exit(0);
 		}
 		cmd = ft_analize(line);
-		apply_cmd(&st_tab, &st_env, cmd);
 		//ft_build_test(line);
 		free(line);
 		line = NULL;

@@ -6,15 +6,13 @@
 #    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/23 13:46:40 by hdufer           ###   ########.fr        #
+#    Updated: 2019/01/30 03:49:10 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=	42sh
 
 SRC = main.c \
-	  42sh/apply_cmd.c \
-	  42sh/ft_create_tree.c \
 	  42sh/ft_analize.c \
 	  GNL/term_setup.c \
 	  GNL/stringsearch.c \
