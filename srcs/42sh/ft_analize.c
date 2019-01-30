@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_analize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/30 03:36:53 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/30 06:16:26 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,10 +256,10 @@ t_last	*ft_analize(char *line)
 	while (templist->prev)
 		templist = templist->prev;
 	//templist = templist->prev;
-	while (templist && templist->next)
+/*	while (templist && templist->next)
 	{
 		printf("ARG = %s TYPE = %d\n", templist->name, templist->type);
 		templist = templist->next;
 	}
-	return (templist);
+*/	return (templist);
 }

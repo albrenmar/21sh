@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/30 04:05:09 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/30 06:10:42 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,24 @@ int			need_expand(char *to_transf)
 	return (0);
 }
 
-void		expand_transformer(char *line)
+void		expand_transformer(t_last *cmd)
 {
-	char		*to_transf;
 	t_expand	*expand;
+	t_last		*frst_cmd;
 
-	to_transf = ft_strdup(line);
 	expand = NULL;
-	if (need_expand(to_transf))
+	frst_cmd = cmd;
+	while (cmd && cmd->name)
 	{
-		expand = new_expand();
-		create_list_expand(expand, to_transf);
-		transform(expand, &to_transf);
+		if (need_expand(cmd->name))
+		{
+			expand = new_expand();
+			create_list_expand(expand, cmd->name);
+			transform(expand, &cmd->name);
+		}
+		ft_putendl(cmd->name);
+		if (cmd->next)
+			cmd = cmd->next;
 	}
-	ft_putendl(to_transf);
+	cmd = frst_cmd;
 }

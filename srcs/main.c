@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/30 05:33:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/30 06:02:30 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		main(int argc, char **argv, char **env)
 		free(g_tracking.cmd);
 		g_tracking.swi = 0;
 		ft_putchar('\n');
-		expand_transformer(line);
+
 		hist_lst_add_next(g_tracking.mysh->hist, line);
 		if (!ft_strcmp(line, "exit"))
 		{
@@ -48,6 +48,7 @@ int		main(int argc, char **argv, char **env)
 			exit(0);
 		}
 		cmd = ft_analize(line);
+		expand_transformer(cmd);
 		//ft_build_test(line);
 		free(line);
 		line = NULL;

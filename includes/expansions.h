@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/30 03:58:28 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/30 06:03:03 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct	s_args
 	struct s_args	*next;
 }				t_args;
 
-void			expand_transformer(char *line);
+void			expand_transformer(t_last *cmd);
 int				need_expand(char *to_transf);
 t_expand		*new_expand(void);
 void			create_list_expand(t_expand *new_letter, char *line);
