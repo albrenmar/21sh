@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/21 21:29:39 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/30 03:29:13 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,31 @@ void		rem_from_str(void)
 		free(end);
 		print_line();
 		g_tracking.pos->abs -= 1;
+		back_to_pos();
+	}
+}
+
+void		rem_from_str_del(void)
+{
+	int		a;
+	int		b;
+	char	*start;
+	char	*end;
+
+	b = g_tracking.pos->abs + 1;
+	a = b - 1;
+	if (g_tracking.str != NULL && b > 0)
+	{
+		a = utf_goto(g_tracking.str, a);
+		b = utf_goto(g_tracking.str, b);
+		start = ft_strsub(g_tracking.str, 0, a, 0);
+		end = ft_strsub(g_tracking.str, b, ft_strlen(g_tracking.str), 0);
+		end = ft_strjoinfree(start, end, 3);
+		free(g_tracking.str);
+		g_tracking.str = malloc(sizeof(char) * g_tracking.buffsize);
+		g_tracking.str = ft_strcpy(g_tracking.str, end);
+		free(end);
+		print_line();
 		back_to_pos();
 	}
 }

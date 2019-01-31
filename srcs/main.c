@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/30 02:25:53 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/31 13:10:11 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		main(int argc, char **argv, char **env)
 	line = NULL;
 	argc = 0;
 	argv = NULL;
-//	set_env(&st_env, env);
+	//	set_env(&st_env, env);
 	cursorinit();
 	prompt = ft_strdup("Fake minishell > ");
 	g_tracking.prompt = ft_strdup(prompt);
@@ -44,7 +44,11 @@ int		main(int argc, char **argv, char **env)
 			printf("%s\n", "exit temporaire");
 			exit(0);
 		}
-		cmd = ft_analize(line);
+		else if (line && (cmd = ft_parseur(line)))
+		{
+			convert_to_list_tab(cmd);
+			//ft_ast(cmd);
+		}
 		//ft_build_test(line);
 		free(line);
 		line = NULL;

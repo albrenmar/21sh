@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/29 04:11:41 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/31 07:17:54 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # define PO line[*i] && line[*i] == '('
 # define PF line[*i] && line[*i] == ')'
 # define GO line[*i] == '"'
+#define PA 1
+#define OP 2
+#define CMD 3
+#define ARG 4
+#define OPT 5
+#define PATH 6
 
 # include "ft_printf.h"
 # include <sys/stat.h>
@@ -40,6 +46,14 @@ typedef struct	s_env
 	char	**env;
 }				t_env;
 
+typedef struct	s_tab_arg
+{
+	int		type;
+	char	**tab;
+	struct s_tab_arg	*next;
+	struct s_tab_arg	*prev;
+}				t_tab_arg;
+
 typedef struct	s_last
 {
 	int				type;
@@ -47,6 +61,14 @@ typedef struct	s_last
 	struct s_last	*next;
 	struct s_last	*prev;
 }				t_last;
+
+typedef struct	s_tree
+{
+	int			type;
+	char		*name;
+	struct s_tree	*right;
+	struct s_tree	*left;
+}				t_tree;
 
 typedef struct	s_cmd
 {
@@ -94,4 +116,13 @@ t_last			*ft_analize(char *line);
 int				add_alias(char *alias);
 void			print_alias_lst(void);
 int				unalias(char *alias);
+void			insert_node(t_last *ref_node, t_last *insert);
+t_last			*create_new_list(void);
+void			ft_lexeur(t_last *list_cmd);
+int				error_lexer(t_last *list_cmd);
+void			tri_lexer(t_last *list_cmd);
+t_last			*ft_parseur(char *line);
+void			ft_ast(t_last *list);
+void			convert_to_list_tab(t_last	*list);
+
 #endif

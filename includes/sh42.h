@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/26 04:32:09 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/01/31 07:23:03 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <time.h>
 # include <fcntl.h>
 
-# define USER		"bsiche"
+# define USER		"alsomvil"
 # define K_FN1		"\x1b\x4f\x50"
 # define K_FN2		"\x1b\x4f\x51"
 # define K_FN3		"\x1b\x4f\x52"
@@ -43,8 +43,6 @@
 # define K_BKSP		127
 # define K_TAB		9
 # define K_DEL		"\x1b\x5b\x33\x7e"
-# define LEER		0
-# define ESCRIBIR	1
 
 typedef struct	s_cursor
 {
@@ -135,14 +133,6 @@ typedef struct	s_tracking
 	int					histmax;
 }				t_tracking;
 
-typedef struct	s_ast
-{
-	char			*cmd;
-	int				next_token;
-	struct s_ast	*next;
-	struct s_ast	*prev;
-}				t_ast;
-
 t_tracking		g_tracking;
 
 void			init_shell(char **environ);
@@ -174,6 +164,8 @@ void			update_pos(void);
 void			add_to_str(char *str);
 
 void			rem_from_str(void);
+
+void			rem_from_str_del(void);
 
 void			get_size(void);
 
@@ -315,27 +307,6 @@ char			*ft_true_pwd(void);
 
 void			add_missing_string();
 
-//====================================================================
-//Fonctions Alsomvi : token et ast_cmd
-//===================================================================
-
-void	execute_pipe_two(t_ast *ast_cmd, int *descrf, char **tablist);
-
-char	**cmd_to_tab(t_ast *ast_cmd, char **pathlist);
-
-void	tokenisation(char *symbol, int *token, int mode);
-
-void	execute_first_pipe(t_ast *ast_cmd, char **tablist);
-
-t_ast	*new_first_list(t_ast *ast_cmd, int mode);
-
-void	create_ast(char *cmd_full, t_ast *ast_cmd);
-
-void	excute_ast(t_ast *ast_cmd);
-
-//====================================================================
-
-//===================================================================
 
 void							hist_file_to_lst(void);
 int								print_hist();
