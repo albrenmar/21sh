@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/30 06:10:42 by mjose            ###   ########.fr       */
+/*   Updated: 2019/01/31 01:19:05 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int			need_expand(char *to_transf)
 	else if (to_transf[0] == '~' && (to_transf[1] == '+'
 			|| to_transf[1] == '-') && (!to_transf[2]
 			|| to_transf[2] == '/'))
+		return (1);
+	else if (is_path_tilde(to_transf))
 		return (1);
 	else if (to_transf[0] == '~' && have_homedir(to_transf))
 		return (1);
