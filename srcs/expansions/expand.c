@@ -6,36 +6,45 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/31 01:19:05 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/01 03:32:13 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 
-t_expand	*new_expand(void)
+t_expand	*new_expand(int len)
 {
 	t_expand	*new_letter;
 
 	new_letter = ft_memalloc(sizeof(t_expand));
 	new_letter->ltr = '\0';
+	new_letter->len = len;
+	new_letter->idx = 0;
 	new_letter->next = NULL;
+	new_letter->prev = NULL;
 	return (new_letter);
 }
 
 void		create_list_expand(t_expand *new_letter, char *line)
 {
 	int			i;
+	int			len;
 	t_expand	*frst_letter;
+	t_expand	*prev_letter;
 
 	i = 0;
+	len = new_letter->len;
 	frst_letter = new_letter;
 	while (line[i])
 	{
 		new_letter->ltr = line[i];
+		new_letter->idx = i + 1;
 		if (line[i + 1])
 		{
-			new_letter->next = new_expand();
+			prev_letter = new_letter;
+			new_letter->next = new_expand(len);
 			new_letter = new_letter->next;
+			new_letter->prev = prev_letter;
 			i++;
 		}
 		else
@@ -78,7 +87,7 @@ void		expand_transformer(t_last *cmd)
 	{
 		if (need_expand(cmd->name))
 		{
-			expand = new_expand();
+			expand = new_expand(ft_strlen(cmd->name));
 			create_list_expand(expand, cmd->name);
 			transform(expand, &cmd->name);
 		}

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/30 23:49:23 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/01 04:29:21 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@
 typedef struct	s_expand
 {
 	char			ltr;
+	int				len;
+	int				idx;
 	struct s_expand	*next;
+	struct s_expand	*prev;
 }				t_expand;
 
 typedef struct	s_args
@@ -32,7 +35,7 @@ typedef struct	s_args
 
 void			expand_transformer(t_last *cmd);
 int				need_expand(char *to_transf);
-t_expand		*new_expand(void);
+t_expand		*new_expand(int len);
 void			create_list_expand(t_expand *new_letter, char *line);
 int				have_homedir(char *to_transf);
 int				check_have_homedir(struct passwd *user_inf, char *tmp_usr);
@@ -41,6 +44,10 @@ int				is_to_add_or_mod_parm(char *to_transf);
 void			transform(t_expand *expand, char **str);
 void			expand_tilde_only(char **str);
 char			*get_user_home(char *user);
-void			expand_tilde_path(char **str);
+void			expand_tilde_path(char **str, t_expand **expand);
+int				is_path_tilde(char *to_transf);
+void			delete_list_expand(t_expand **letter);
+void			delete_letter_expand(t_expand **letter);
+void			update_list_expand(t_expand **letter, char **str);
 
 #endif
