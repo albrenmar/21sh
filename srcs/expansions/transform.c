@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/02 01:18:01 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/02 02:59:09 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	transform(t_expand *expand, char **str)
 		{
 			if (expand->next->ltr == '/' && !expand->prev)
 				expand_tilde_path(str, &first_letter);
-/*			else if (expand->next->ltr == '/' && expand->prev->ltr == '/')
-				expand_path_tilde_path(str, &first_letter, expand->idx);
-*/			expand = first_letter;
+			else if (expand->next->ltr && !expand->prev)
+				expand_tilde_user(str, &first_letter);
+			expand = first_letter;
 		}
 		if (expand->next)
 			expand = expand->next;
