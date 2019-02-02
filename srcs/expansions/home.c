@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand_tilde.c                                     :+:      :+:    :+:   */
+/*   home.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/29 02:50:02 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/02 02:51:45 by mjose            ###   ########.fr       */
+/*   Created: 2019/02/02 01:20:02 by mjose             #+#    #+#             */
+/*   Updated: 2019/02/02 02:43:35 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
+#include "sh42.h"
 
-void	expand_tilde_path(char **str, t_expand **expand)
+char	*get_user_home(char *user)
 {
-	char	*home;
-	char	*str_tmp;
+	struct passwd	*user_inf;
 
-	home = get_home_value();
-	str_tmp = ft_strjoinfree(home, *str + 1, 1);
-	ft_strdel(str);
-	*str = str_tmp;
-	update_list_expand(expand, str);
+	user_inf = getpwnam(user);
+	return (ft_strdup(user_inf->pw_dir));
 }
 
-void	expand_tilde_only(char **str)
+char	*get_home_value(void)
 {
-	ft_strdel(str);
-	*str = get_home_value();
+	char	*home;
+
+	if ((home = ft_strdup(get_env_string("HOME"))) && ft_strequ(home, ""))
+		return (home);
+	else if ((home = get_parm_string("HOME")) && ft_strequ(home, ""))
+		return (home);
+	else
+		return (get_user_home(getlogin()));
+	return (NULL);
 }

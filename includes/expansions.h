@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/01 04:29:21 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/02 01:49:52 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ int				is_path_tilde(char *to_transf);
 void			delete_list_expand(t_expand **letter);
 void			delete_letter_expand(t_expand **letter);
 void			update_list_expand(t_expand **letter, char **str);
+char			*get_home_value(void);
+char			*get_parm_string(char *str);
 
 #endif

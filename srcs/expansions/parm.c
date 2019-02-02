@@ -6,11 +6,27 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 06:10:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/29 07:36:51 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/02 02:20:43 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
+#include "sh42.h"
+
+char	*get_parm_string(char *str)
+{
+	t_args		*tmp;
+	t_keyval	*buf;
+
+	if (g_tracking.mysh->args_lst == NULL)
+		return (NULL);
+	tmp = g_tracking.mysh->args_lst;
+	while (tmp && !ft_strequ(tmp->param->key, str))
+		tmp = tmp->next;
+	if (tmp && tmp->param->value)
+		return (ft_strdup(tmp->param->value));
+	return (NULL);
+}
 
 int		is_to_add_or_mod_parm(char *to_transf)
 {

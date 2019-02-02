@@ -6,19 +6,12 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 04:41:48 by mjose             #+#    #+#             */
-/*   Updated: 2019/01/30 23:52:36 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/02 01:40:07 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 
-char	*get_user_home(char *user)
-{
-	struct passwd	*user_inf;
-
-	user_inf = getpwnam(user);
-	return (ft_strdup(user_inf->pw_dir));
-}
 
 int		check_have_homedir(struct passwd *user_inf, char *tmp_usr)
 {

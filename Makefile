@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/01 02:21:43 by mjose            ###   ########.fr        #
+#    Updated: 2019/02/02 01:38:56 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,6 +84,7 @@ SRC = main.c \
 	  expansions/expand_tilde.c \
 	  expansions/tilde.c \
 	  expansions/tools_expand.c \
+	  expansions/home.c \
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A
