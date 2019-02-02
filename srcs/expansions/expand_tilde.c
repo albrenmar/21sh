@@ -6,25 +6,61 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 02:50:02 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/02 05:04:28 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/02 07:14:56 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
+#include "sh42.h"
 
-char	*recup_expath(char **tab)
+char	*recup_expath(char **tab_path, int start)
 {
 	int		i;
 	char	*path;
 
-	i = 1;
-	path = ft_strnew(1);
-	while (tab[i])
+	i = start;
+	if (!i)
 	{
-		tab[i] = ft_strjoinfree("/", tab[i], 2);
-		path = ft_strdup(ft_strjoinfree(path, tab[i++], 3));
+		path = ft_strdup(tab_path[i] + 1);
+		ft_strdel(&tab_path[i]);
+		tab_path[i] = ft_strdup(path);
+		ft_strdel(&path);
+	}
+	path = ft_strnew(1);
+	while (tab_path[i])
+	{
+		tab_path[i] = ft_strjoinfree("/", tab_path[i], 2);
+		path = ft_strdup(ft_strjoinfree(path, tab_path[i++], 3));
 	}
 	return (path);
+}
+
+void	expand_tilde_pwd(char **str, t_expand **expand)
+{
+	char	*path;
+	char	**tmp;
+
+	path = NULL;
+	if (ft_strchr(*str, '/') || !(*expand)->next->next)
+	{
+		if ((*expand)->next->ltr == '-')
+			path = ft_strdup(get_env_string("OLDPWD"));
+		else if ((*expand)->next->ltr == '+')
+			path = ft_strdup(get_env_string("PWD"));
+	}
+	if (path && ft_strchr(*str, '/'))
+	{
+		tmp = ft_strsplit(*str, '/');
+		ft_strdel(&tmp[0]);
+		tmp[0] = path;
+		path = recup_expath(tmp, 0);
+	}
+	if (path)
+	{
+		ft_strdel(str);
+		*str = path;
+	}
+	update_list_expand(expand, str);
 }
 
 void	expand_tilde_user(char **str, t_expand **expand)
@@ -42,7 +78,7 @@ void	expand_tilde_user(char **str, t_expand **expand)
 		tmp = ft_strsplit(*str, '/');
 		tmp_path = tmp[0];
 		user = ft_strndup(tmp_path + 1, ft_strlen(tmp_path + 1));
-		tmp_path = recup_expath(tmp);
+		tmp_path = recup_expath(tmp, 1);
 	}
 	home = get_user_home(user);
 	ft_strdel(str);
@@ -50,6 +86,7 @@ void	expand_tilde_user(char **str, t_expand **expand)
 		*str = home;
 	else
 		*str = ft_strjoinfree(home, tmp_path, 3);
+	update_list_expand(expand, str);
 }
 
 void	expand_tilde_path(char **str, t_expand **expand)
