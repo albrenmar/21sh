@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/04 02:05:51 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/04 04:12:48 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ void	transform(t_expand *expand, char **str)
 			expand = first_letter;
 		}
 		else if (expand->ltr == '$' && expand->next && expand->next->ltr == '{'
-					&& !expand->prev && *str[ft_strlen(*str) == '}'])
+				&& !expand->prev && *str[ft_strlen(*str) == '}'])
+		{
 			expand_keys(expand, str);
+			expand = first_letter;
+		}
 		if (expand->next)
 			expand = expand->next;
 		else
