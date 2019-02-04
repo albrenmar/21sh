@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/02 06:41:12 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/04 02:05:51 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	transform(t_expand *expand, char **str)
 				expand_tilde_pwd(str, &first_letter);
 			expand = first_letter;
 		}
+		else if (expand->ltr == '$' && expand->next && expand->next->ltr == '{'
+					&& !expand->prev && *str[ft_strlen(*str) == '}'])
+			expand_keys(expand, str);
 		if (expand->next)
 			expand = expand->next;
 		else
