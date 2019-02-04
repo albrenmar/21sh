@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/01 03:32:13 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/04 04:56:10 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		create_list_expand(t_expand *new_letter, char *line)
 	i = 0;
 	len = new_letter->len;
 	frst_letter = new_letter;
-	while (line[i])
+	while (line && line[i])
 	{
 		new_letter->ltr = line[i];
 		new_letter->idx = i + 1;

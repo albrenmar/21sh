@@ -6,13 +6,41 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/04 04:42:38 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/04 05:05:01 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 #include "sh42.h"
 
+void	exp_key_plus(char **str, t_expand *expand)
+{
+	char	*str1;
+	char	*str2;
+	char	*value1;
+	char	*value2;
+
+	str1 = NULL;
+	str2 = NULL;
+	str1 = get_varname(expand);
+	str2 = get_value(expand);
+	value1 = get_env_string(str1);
+	if (!value1)
+		value1 = get_parm_string(str1);
+	value2 = str2;
+	ft_strdel(str);
+	ft_strdel(&str1);
+	if (value1)
+	{
+		*str = value2;
+		ft_strdel(&value1);
+	}
+	else
+	{
+		ft_strdel(&value2);
+		*str = NULL;
+	}
+}
 
 void	exp_key_inter(char **str, t_expand *expand)
 {
@@ -40,6 +68,7 @@ void	exp_key_inter(char **str, t_expand *expand)
 		ft_strdel(&value1);
 		ft_strdel(&str1);
 		ft_strdel(&str2);
+		str = NULL;
 		exit(1);
 	}
 }
@@ -137,5 +166,7 @@ void	expand_keys(t_expand *expand, char **str)
 		exp_key_equal(str, expand);
 	else if (sign == '?')
 		exp_key_inter(str, expand);
+	else if (sign == '+')
+		exp_key_plus(str, expand);
 	update_list_expand(&expand, str);
 }
