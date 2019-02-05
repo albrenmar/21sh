@@ -6,7 +6,7 @@
 #    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/31 07:17:30 by alsomvil         ###   ########.fr        #
+#    Updated: 2019/02/05 01:57:31 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC = main.c \
 	  42sh/ft_lexeur.c \
 	  42sh/ft_modif_list.c \
 	  42sh/ft_ast.c \
+	  42sh/execute_ast.c \
 	  42sh/convert_to_list_tab.c \
 	  GNL/term_setup.c \
 	  GNL/stringsearch.c \

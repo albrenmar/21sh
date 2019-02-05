@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/31 13:10:11 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/01 12:01:09 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		main(int argc, char **argv, char **env)
 	t_env	st_env;
 	t_last	*cmd;
 	char	*prompt;
+	t_tab_arg	*tab_arg;
 
 	line = NULL;
 	argc = 0;
@@ -46,8 +47,8 @@ int		main(int argc, char **argv, char **env)
 		}
 		else if (line && (cmd = ft_parseur(line)))
 		{
-			convert_to_list_tab(cmd);
-			//ft_ast(cmd);
+			tab_arg = convert_to_list_tab(cmd);
+			ft_ast(tab_arg);
 		}
 		//ft_build_test(line);
 		free(line);

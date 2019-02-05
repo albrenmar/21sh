@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/31 07:23:03 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/05 01:19:26 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,19 @@ typedef struct			s_hist
 	char			*line;
 }						t_hist;
 
+typedef struct			s_exec
+{
+	char	**left;
+	char	**right;
+	char	**sym;
+}						t_exec;
+
 typedef struct	s_shell
 {
 	t_lstcontainer	*alias_lst;
 	t_lstcontainer	*env;
 	t_hist			*hist;
+	t_exec			*exec;
 }				t_shell;
 
 typedef struct	s_tracking

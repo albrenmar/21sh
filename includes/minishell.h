@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/31 07:17:54 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/05 01:58:35 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct	s_env
 typedef struct	s_tab_arg
 {
 	int		type;
-	char	**tab;
+	char	**tab_test;
 	struct s_tab_arg	*next;
 	struct s_tab_arg	*prev;
 }				t_tab_arg;
@@ -66,6 +66,8 @@ typedef struct	s_tree
 {
 	int			type;
 	char		*name;
+	char		**cmd;
+	struct s_tree	*prev;
 	struct s_tree	*right;
 	struct s_tree	*left;
 }				t_tree;
@@ -122,7 +124,8 @@ void			ft_lexeur(t_last *list_cmd);
 int				error_lexer(t_last *list_cmd);
 void			tri_lexer(t_last *list_cmd);
 t_last			*ft_parseur(char *line);
-void			ft_ast(t_last *list);
-void			convert_to_list_tab(t_last	*list);
+void			ft_ast(t_tab_arg *tab_arg);
+t_tab_arg		*convert_to_list_tab(t_last	*list);
+void			execute_ast(t_tree *tree);
 
 #endif
