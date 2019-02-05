@@ -6,12 +6,57 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/05 01:30:54 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/05 04:21:57 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 #include "sh42.h"
+
+void	exp_key_unique_hash(char **str, t_expand *expand)
+{
+	char	*varname;
+	char	*value_var;
+	char	*to_srch;
+	char	*found;
+	int		total;
+	int		total_found;
+	int		i;
+	char	*tmp;
+	char	*tmp2;
+
+	varname = NULL;
+	to_srch = NULL;
+	i = 0;
+	varname = get_varname(expand);
+	value_var = get_env_string(varname);
+	to_srch = get_value(expand);
+	if (value_var && (found = ft_strnstr(value_var, to_srch , ft_strlen(value_var))))
+	{
+		total = ft_strlen(value_var);
+		total_found = ft_strlen(to_srch);
+		ft_strdel(str);
+		tmp = ft_strnew(total - total_found);
+		tmp2 = value_var;
+		while (total_found != i)
+		{
+			tmp2++;
+			i++;
+		}
+		*str = ft_strdup(tmp2);
+	}
+	else if (value_var)
+	{
+		ft_strdel(str);
+		*str = value_var;
+	}
+	else
+	{
+		ft_strdel(str);
+		*str = ft_strnew(0);
+//		*str = NULL;
+	}
+}
 
 void	exp_key_start_hash(char **str, t_expand *expand)
 {
@@ -204,6 +249,8 @@ t_expand	*expand_keys(t_expand *expand, char **str)
 		exp_key_plus(str, expand);
 	else if (sign == '@')
 		exp_key_start_hash(str, expand);
+	else if (sign == '#')
+		exp_key_unique_hash(str, expand);
 	update_list_expand(&expand, str);
 	return (expand);
 }

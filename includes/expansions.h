@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/05 01:30:11 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/05 03:47:35 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ void			exp_key_equal(char **str, t_expand *expand);
 void			exp_key_inter(char **str, t_expand *expand);
 void			exp_key_plus(char **str, t_expand *expand);
 void			exp_key_start_hash(char **str, t_expand *expand);
+void			exp_key_unique_hash(char **str, t_expand *expand);
 
 #endif
