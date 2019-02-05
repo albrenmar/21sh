@@ -6,12 +6,25 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/04 05:05:01 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/05 01:30:54 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 #include "sh42.h"
+
+void	exp_key_start_hash(char **str, t_expand *expand)
+{
+	char	*varname;
+	char	*value;
+
+	varname = get_varname(expand);
+	value = get_env_string(varname);
+	ft_strdel(str);
+	*str = ft_itoa(ft_strlen(value));
+	ft_strdel(&varname);
+	ft_strdel(&value);
+}
 
 void	exp_key_plus(char **str, t_expand *expand)
 {
@@ -69,6 +82,7 @@ void	exp_key_inter(char **str, t_expand *expand)
 		ft_strdel(&str1);
 		ft_strdel(&str2);
 		str = NULL;
+		ft_putendl("Exit temporaire, mauvais parametre");
 		exit(1);
 	}
 }
@@ -150,12 +164,32 @@ char	check_sign(t_expand *expand)
 			else if (to_run->next->ltr == '+')
 				sign = '+';
 		}
+		else if (to_run->ltr == '#' && to_run->prev && to_run->prev->ltr == '{')
+			sign = '@';
+		else if (to_run->ltr == '#' && to_run->next && to_run->next->ltr != '}'
+				&& to_run->prev && to_run->prev->ltr != '{'
+				&& to_run->prev->ltr != '#')
+			sign = '#';
+		else if (to_run->ltr == '#' && to_run->next && to_run->next->ltr == '#'
+				&& to_run->next->next && to_run->next->next->ltr != '}'
+				&& to_run->prev && to_run->prev->ltr != '{'
+				&& to_run->prev->ltr != '#')
+			sign = '3';
+		else if (to_run->ltr == '%' && to_run->next && to_run->next->ltr != '}'
+				&& to_run->prev && to_run->prev->ltr != '{'
+				&& to_run->prev->ltr != '%')
+			sign = '%';
+		else if (to_run->ltr == '%' && to_run->next && to_run->next->ltr == '%'
+				&& to_run->next->next && to_run->next->next->ltr != '}'
+				&& to_run->prev && to_run->prev->ltr != '{'
+				&& to_run->prev->ltr != '%')
+			sign = '5';
 		to_run = to_run->next;
 	}
 	return (sign);
 }
 
-void	expand_keys(t_expand *expand, char **str)
+t_expand	*expand_keys(t_expand *expand, char **str)
 {
 	char		sign;
 
@@ -168,5 +202,8 @@ void	expand_keys(t_expand *expand, char **str)
 		exp_key_inter(str, expand);
 	else if (sign == '+')
 		exp_key_plus(str, expand);
+	else if (sign == '@')
+		exp_key_start_hash(str, expand);
 	update_list_expand(&expand, str);
+	return (expand);
 }

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/04 04:51:04 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/05 01:30:11 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char			*get_home_value(void);
 char			*get_parm_string(char *str);
 void			expand_tilde_user(char **str, t_expand **expand);
 void			expand_tilde_pwd(char **str, t_expand **expand);
-void			expand_keys(t_expand *expand, char **str);
+t_expand		*expand_keys(t_expand *expand, char **str);
 char			check_sign(t_expand *expand);
 void			exp_key_less(char **str, t_expand *expand);
 char			*get_varname(t_expand *expand);
@@ -61,5 +61,6 @@ char			*get_value(t_expand *expand);
 void			exp_key_equal(char **str, t_expand *expand);
 void			exp_key_inter(char **str, t_expand *expand);
 void			exp_key_plus(char **str, t_expand *expand);
+void			exp_key_start_hash(char **str, t_expand *expand);
 
 #endif

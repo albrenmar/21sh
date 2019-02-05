@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 01:23:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/04 03:02:35 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/05 01:14:38 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ char	*get_varname(t_expand *expand)
 
 	i = 0;
 	to_run = expand->next->next;
-	while (to_run->ltr != ':')
+	if (to_run->ltr == '#')
+		to_run = to_run->next;
+	while (to_run->ltr != ':' && to_run->ltr != '}')
 	{
 		to_run = to_run->next;
 		i++;
@@ -56,7 +58,9 @@ char	*get_varname(t_expand *expand)
 	varname = ft_strnew(i);
 	to_run = expand->next->next;
 	i = 0;
-	while (to_run->ltr != ':')
+	if (to_run->ltr == '#')
+		to_run = to_run->next;
+	while (to_run->ltr != ':' && to_run->ltr != '}')
 	{
 		varname[i++] = to_run->ltr;
 		to_run = to_run->next;
