@@ -6,13 +6,13 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 01:23:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/06 00:49:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/06 04:17:16 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 
-char	*get_value_asterisk(t_expand *expand)
+char	*get_asterisk_value(t_expand *expand)
 {
 	int			i;
 	char		*value;
@@ -57,11 +57,11 @@ char	*get_value(t_expand *expand)
 
 	i = 0;
 	to_run = expand->next->next;
-	while (to_run->ltr != ':' && to_run->ltr != '#')
+	while (to_run->ltr != ':' && to_run->ltr != '#' && to_run->ltr != '%')
 		to_run = to_run->next;
-	if (to_run->ltr == '#')
+	if (to_run->ltr == '#' || to_run->ltr == '%')
 	{
-		if (to_run->next->ltr == '#')
+		if (to_run->next->ltr == '#' || to_run->next->ltr == '%')
 			to_run = to_run->next;
 		to_run = to_run->prev;
 	}
@@ -90,10 +90,10 @@ char	*get_varname(t_expand *expand)
 
 	i = 0;
 	to_run = expand->next->next;
-	if (to_run->ltr == '#')
+	if (to_run->ltr == '#' && to_run->ltr == '%')
 		to_run = to_run->next;
 	while (to_run->ltr != ':' && to_run->ltr != '}'
-			&& to_run->ltr != '#')
+			&& to_run->ltr != '#' && to_run->ltr != '%')
 	{
 		to_run = to_run->next;
 		i++;
@@ -101,10 +101,10 @@ char	*get_varname(t_expand *expand)
 	varname = ft_strnew(i);
 	to_run = expand->next->next;
 	i = 0;
-	if (to_run->ltr == '#')
+	if (to_run->ltr == '#' && to_run->ltr != '%')
 		to_run = to_run->next;
 	while (to_run->ltr != ':' && to_run->ltr != '}'
-			&& to_run->ltr != '#')
+			&& to_run->ltr != '#' && to_run->ltr != '%')
 	{
 		varname[i++] = to_run->ltr;
 		to_run = to_run->next;

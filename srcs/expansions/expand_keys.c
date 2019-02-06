@@ -6,12 +6,60 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/06 03:07:54 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/06 04:22:15 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 #include "sh42.h"
+
+void	exp_key_unique_percent(char **str, t_expand *expand)
+{
+	char	*varname;
+	char	*value_var;
+	char	*to_srch;
+	char	*found;
+	int		total;
+	int		total_found;
+	int		i;
+	char	*tmp;
+	char	*tmp2;
+
+	varname = NULL;
+	to_srch = NULL;
+	i = 0;
+	varname = get_varname(expand);
+	value_var = get_env_string(varname);
+	to_srch = get_value(expand);
+	value_var = ft_strrev(value_var, 1);
+	to_srch = ft_strrev(to_srch, 1);
+	if (value_var && (found = ft_strnstr(value_var, to_srch , ft_strlen(value_var))))
+	{
+		total = ft_strlen(value_var);
+		total_found = ft_strlen(to_srch);
+		ft_strdel(str);
+		tmp = ft_strnew(total - total_found);
+		tmp2 = value_var;
+		while (total_found != i)
+		{
+			tmp2++;
+			i++;
+		}
+//		*str = ft_strdup(tmp2);
+		*str = ft_strrev(tmp2, 0);
+	}
+	else if (value_var)
+	{
+		ft_strdel(str);
+		*str = ft_strrev(value_var, 1);
+	}
+	else
+	{
+		ft_strdel(str);
+		*str = ft_strnew(0);
+//		*str = NULL;
+	}
+}
 
 void	exp_key_double_hash(char **str, t_expand *expand)
 {
@@ -31,7 +79,7 @@ void	exp_key_double_hash(char **str, t_expand *expand)
 	i = 0;
 	varname = get_varname(expand);
 	value_var = get_env_string(varname);
-	to_srch = get_value_asterisk(expand);
+	to_srch = get_asterisk_value(expand);
 	tmp3 = to_srch;
 	tmp = value_var;
 	tmp2 = value_var;
@@ -287,6 +335,8 @@ t_expand	*expand_keys(t_expand *expand, char **str)
 		exp_key_unique_hash(str, expand);
 	else if (sign == '3')
 		exp_key_double_hash(str, expand);
+	else if (sign == '%')
+		exp_key_unique_percent(str, expand);
 	update_list_expand(&expand, str);
 	return (expand);
 }
