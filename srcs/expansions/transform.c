@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/05 01:30:36 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/05 23:55:19 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	transform(t_expand *expand, char **str)
 		}
 		if (expand->next)
 			expand = expand->next;
+			
 		else
 			break ;
 	}
