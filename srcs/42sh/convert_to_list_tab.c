@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 07:07:00 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/01 13:00:52 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/07 02:47:59 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ t_tab_arg		*new_tab_list(int option)
 	tab->prev = NULL;
 	if (option == 1)
 	{
-		tab->tab = NULL;
+		tab->tab_test = NULL;
 	}
 	else
 	{
-		tab->tab = ft_memalloc(sizeof(char *) * 2);
-		tab->tab[1] = NULL;
+		tab->tab_test = ft_memalloc(sizeof(char *) * 2);
+		tab->tab_test[1] = NULL;
 	}
 	return (tab);
 }
@@ -57,7 +57,7 @@ t_tab_arg	*convert_to_list_tab(t_last	*list)
 	{
 		tab = new_tab_list(0);
 		temp_tab = tab;
-		tab->tab[0] = ft_strdup(list->name);
+		tab->tab_test[0] = ft_strdup(list->name);
 		tab->type = list->type;
 	}
 	else
@@ -68,7 +68,7 @@ t_tab_arg	*convert_to_list_tab(t_last	*list)
 	{
 		tab = new_tab_list(1);
 		temp_tab = tab;
-		tab->tab = ft_strsplit(temp, ' ');
+		tab->tab_test = ft_strsplit(temp, ' ');
 		tab->type = list->type;
 		temp = NULL;
 	}
@@ -80,7 +80,7 @@ t_tab_arg	*convert_to_list_tab(t_last	*list)
 			tab->next = new_tab_list(0);
 			tab->next->prev = tab;
 			tab = tab->next;
-			tab->tab[0] = ft_strdup(list->name);
+			tab->tab_test[0] = ft_strdup(list->name);
 			tab->type = list->type;
 			list = list->next;
 		}
@@ -95,7 +95,7 @@ t_tab_arg	*convert_to_list_tab(t_last	*list)
 			{
 				tab = new_tab_list(1);
 				temp_tab = tab;
-				tab->tab = ft_strsplit(temp, ' ');
+				tab->tab_test = ft_strsplit(temp, ' ');
 				tab->type = CMD;
 				temp = NULL;
 			}
@@ -104,7 +104,7 @@ t_tab_arg	*convert_to_list_tab(t_last	*list)
 				tab->next = new_tab_list(1);
 				tab->next->prev = tab;
 				tab = tab->next;
-				tab->tab = ft_strsplit(temp, ' ');
+				tab->tab_test = ft_strsplit(temp, ' ');
 				tab->type = CMD;
 				temp = NULL;
 			}
@@ -114,9 +114,9 @@ t_tab_arg	*convert_to_list_tab(t_last	*list)
 	{
 		i = 0;
 		printf("CMD = ");
-		while (temp_tab->tab[i])
+		while (temp_tab->tab_test[i])
 		{
-			printf("%s   ", temp_tab->tab[i]);
+			printf("%s   ", temp_tab->tab_test[i]);
 			i++;
 		}
 		printf("\n");

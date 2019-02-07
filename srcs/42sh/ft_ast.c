@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 02:25:05 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/05 06:09:45 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/07 06:47:24 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,30 @@ void		ft_ast(t_tab_arg *tab_arg)
 {
 	t_tree	*tree;
 	int		i;
+	pid_t	gpid;
+	pipe(descrf);
+	pipe(descrf_two);
 
 	i = 0;
 	tree = new_branch();
 	create_ast(tree, tab_arg);
 	init_ast();
-	execute_ast(tree);
+	g_tracking.mysh->exec->gpid = (gpid = fork());
+	if (gpid == 0)
+	{
+		//dprintf(2, "PID fils = %d\n", getpid());
+		dprintf(2, "%d\n", g_tracking.mysh->exec->gpid);
+		execute_ast(tree,tab_arg);
+		execute_pipe_two();
+		close(descrf[0]);
+		close(descrf[1]);
+		close(descrf_two[0]);
+		close(descrf_two[1]);
+		exit (0);
+	}
+	else
+	{
+		wait(&gpid);
+	}
 	return ;
 }

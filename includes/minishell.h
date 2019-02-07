@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/05 01:58:35 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/07 02:18:06 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,8 @@ void			tri_lexer(t_last *list_cmd);
 t_last			*ft_parseur(char *line);
 void			ft_ast(t_tab_arg *tab_arg);
 t_tab_arg		*convert_to_list_tab(t_last	*list);
-void			execute_ast(t_tree *tree);
+void			execute_ast(t_tree *tree, t_tab_arg *tab_arg);
+void			execute_four(void);
+void		execute_pipe_two(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/05 01:19:26 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/07 06:42:53 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@
 # define K_BKSP		127
 # define K_TAB		9
 # define K_DEL		"\x1b\x5b\x33\x7e"
+
+int		descrf[2];
+int		descrf_two[2];
 
 typedef struct	s_cursor
 {
@@ -108,6 +111,9 @@ typedef struct			s_hist
 
 typedef struct			s_exec
 {
+	pid_t	gpid;
+	pid_t	pid_exec;
+	int		i;
 	char	**left;
 	char	**right;
 	char	**sym;
