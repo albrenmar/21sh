@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_expand.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 01:23:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/06 04:17:16 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/11 06:25:49 by akira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*get_value_asterisk(t_expand *expand)
 
 	i = 0;
 	to_run = expand->next->next;
-	while (to_run->ltr != ':' && to_run->ltr != '$')
+	while (to_run->ltr != ':' && to_run->ltr != '%')
 		to_run = to_run->next;
 	if (to_run->ltr == '%')
 	{

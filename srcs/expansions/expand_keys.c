@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_keys.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/06 04:22:15 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/11 07:08:08 by akira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 	i = 0;
 	varname = get_varname(expand);
 	value_var = get_env_string(varname);
-	to_srch = get_asterisk_value(expand);
+	to_srch = get_value_asterisk(expand);
 /*	tmp3 = to_srch;
 	tmp = value_var;
 	tmp2 = value_var;
@@ -51,14 +51,17 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 		total = ft_strlen(value_var);
 		total_found = ft_strlen(to_srch);
 		ft_strdel(str);
+//		*str = ft_strdup(found);
 		tmp = ft_strnew(total - total_found);
 		tmp2 = value_var;
-		while (total_found != i)
+		while ((*tmp2 != *found) || (ft_strlen(found) != ft_strlen(tmp2)))
 		{
+			tmp[i] = *tmp2;
 			tmp2++;
 			i++;
 		}
-		*str = ft_strdup(tmp2);
+		*str = tmp;
+//		*str = ft_strdup(tmp2);
 	}
 	else if (value_var)
 	{
@@ -364,7 +367,7 @@ char	check_sign(t_expand *expand)
 			sign = '3';
 		else if (to_run->ltr == '%' && to_run->next && to_run->next->ltr != '}'
 				&& to_run->prev && to_run->prev->ltr != '{'
-				&& to_run->prev->ltr != '%')
+				&& to_run->prev->ltr != '%' && to_run->next->ltr != '%')
 			sign = '%';
 		else if (to_run->ltr == '%' && to_run->next && to_run->next->ltr == '%'
 				&& to_run->next->next && to_run->next->next->ltr != '}'
