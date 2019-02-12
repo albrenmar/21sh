@@ -121,3 +121,34 @@ void		execute_pipe(void)
 	close(descrf_two[0]);
 	close(descrf_two[1]);
 }
+
+void		ft_ast(t_tab_arg *tab_arg)
+{
+	t_tree	*tree;
+	FILE *toto;
+	int		i;
+	char	buf[1064];
+	pid_t	gpid;
+	pipe(descrf);
+	pipe(descrf_two);
+
+	i = 0;
+	tree = new_branch();
+	create_ast(tree, tab_arg);
+	init_ast();
+	g_tracking.mysh->exec->gpid = (gpid = fork());
+	if (gpid == 0)
+	{
+		execute_ast(tree,tab_arg);
+		close(descrf_two[1]);
+		dup2(descrf_two[0], 0);
+		close(descrf_two[0]);
+		execute_two();
+	}
+	else
+	{
+		wait(&gpid);
+	}
+	wait(NULL);
+	return ;
+}

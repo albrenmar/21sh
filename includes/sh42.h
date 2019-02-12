@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/07 06:42:53 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/12 01:17:58 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,22 @@ typedef struct			s_hist
 	char			*line;
 }						t_hist;
 
+typedef struct			s_order
+{
+	int		type;
+	char	**command;
+	char	*sym;
+	struct	s_order	*next;
+	struct	s_order	*prev;
+}						t_order;
+
 typedef struct			s_exec
 {
 	pid_t	gpid;
 	pid_t	pid_exec;
+	int		ret;
 	int		i;
+	char	*fich;
 	char	**left;
 	char	**right;
 	char	**sym;
@@ -125,6 +136,7 @@ typedef struct	s_shell
 	t_lstcontainer	*env;
 	t_hist			*hist;
 	t_exec			*exec;
+	t_order			*order;
 }				t_shell;
 
 typedef struct	s_tracking

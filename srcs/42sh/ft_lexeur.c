@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 01:41:13 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/31 11:24:27 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/11 14:43:47 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ void	tri_lexer(t_last *list_cmd)
 
 int		error_lexer(t_last *list_cmd)
 {
+	if (list_cmd && list_cmd->type == OP)
+	{
+		printf("Error\n");
+		return (1);
+	}
 	while (list_cmd)
 	{
 		if (list_cmd->type == OP && list_cmd->next && list_cmd->next->type == OP)

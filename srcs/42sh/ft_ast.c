@@ -6,12 +6,15 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 02:25:05 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/07 06:47:24 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/12 02:38:48 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
+
+#define ORDER g_tracking.mysh->order
+#define EXEC g_tracking.mysh->exec
 
 t_tree		*new_branch(void)
 {
@@ -78,16 +81,6 @@ void		create_ast(t_tree *tree, t_tab_arg *tab_arg)
 	return ;
 }
 
-void		affich_tree(t_tree *tree)
-{
-	if (tree->left)
-		affich_tree(tree->left);
-	printf("%s\n", tree->name);
-	if (tree->right)
-		affich_tree(tree->right);
-	printf("%s\n", tree->name);
-}
-
 void		init_ast(void)
 {
 	g_tracking.mysh->exec = ft_memalloc(sizeof(t_exec));
@@ -99,31 +92,19 @@ void		init_ast(void)
 void		ft_ast(t_tab_arg *tab_arg)
 {
 	t_tree	*tree;
-	int		i;
 	pid_t	gpid;
 	pipe(descrf);
 	pipe(descrf_two);
 
-	i = 0;
 	tree = new_branch();
 	create_ast(tree, tab_arg);
 	init_ast();
-	g_tracking.mysh->exec->gpid = (gpid = fork());
-	if (gpid == 0)
+	execute_ast(tree,tab_arg);
+	add_to_exec(1);
+	if (EXEC->ret == 0)
 	{
-		//dprintf(2, "PID fils = %d\n", getpid());
-		dprintf(2, "%d\n", g_tracking.mysh->exec->gpid);
-		execute_ast(tree,tab_arg);
-		execute_pipe_two();
-		close(descrf[0]);
-		close(descrf[1]);
-		close(descrf_two[0]);
-		close(descrf_two[1]);
-		exit (0);
+		exec_command();
 	}
-	else
-	{
-		wait(&gpid);
-	}
+	ORDER = NULL;
 	return ;
 }
