@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/12 04:18:25 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/12 05:02:11 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 void		execute_two(void)
 {
 	if ((ORDER->command = test_exist_fonction(ORDER->command)))
+	{
 		execve(ORDER->command[0], ORDER->command, NULL);
+	}
 	else
 	{
 		exit(-1);

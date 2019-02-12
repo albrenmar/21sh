@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/12 04:20:35 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/12 05:45:02 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_order		*new_order(void)
 	order->command = NULL;
 	order->next = NULL;
 	order->prev = NULL;
+	order->temp_command = NULL;
 	return (order);
 }
 
@@ -85,6 +86,7 @@ void		exec_command(void)
 	pipe(descrf);
 	pipe(descrf_two);
 	int		j;
+	int		close_fd;
 
 	j = 0;
 	EXEC->pid_exec = 0;
@@ -104,14 +106,30 @@ void		exec_command(void)
 				execute_pipe();
 				ORDER = ORDER->next;
 			}
-			if (ORDER && !ORDER->sym && EXEC->ret != -1)
+			while (ORDER && ORDER->sym && ORDER->sym[0] == '>' && ORDER->next && ORDER->next->sym && ORDER->next->sym[0] == '>')
+			{
+				ORDER = ORDER->next;
+				close_fd = open(ORDER->command[0], O_CREAT | O_TRUNC, 0644);
+				close(close_fd);
+
+			}
+			if (ORDER && (!ORDER->sym || ORDER->sym[0] == '>') && EXEC->ret != -1)
 			{
 				close(descrf_two[1]);
 				dup2(descrf_two[0], 0);
 				close(descrf_two[0]);
+				if (ORDER && ORDER->sym && ORDER->sym[0] == '>')
+				{
+					close(1);
+					open(ORDER->next->command[0], O_CREAT | O_TRUNC | O_WRONLY, 0644);
+					ORDER->temp_command = ORDER;
+					while (ORDER->prev && ORDER->prev->sym[0] != '|')
+						ORDER = ORDER->prev;
+				}
 				execute_two();
 				ORDER = ORDER->next;
 			}
+			exit (0);
 		}
 	}
 	else
