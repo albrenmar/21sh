@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/04 02:04:33 by mjose            ###   ########.fr        #
+#    Updated: 2019/02/12 02:52:21 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,7 @@ SRC = main.c \
 	  expansions/tools_expand.c \
 	  expansions/home.c \
 	  expansions/expand_keys.c \
+	  expansions/check_sign_tools.c \
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A

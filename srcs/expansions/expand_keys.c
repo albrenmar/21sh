@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_keys.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/11 07:08:08 by akira            ###   ########.fr       */
+/*   Updated: 2019/02/12 05:08:56 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,37 +343,12 @@ char	check_sign(t_expand *expand)
 	sign = '\0';
 	while (to_run)
 	{
-		if (to_run->ltr == ':')
+		if (!sign)
 		{
-			if (to_run->next->ltr == '-')
-				sign = '-';
-			else if (to_run->next->ltr == '=')
-				sign = '=';
-			else if (to_run->next->ltr == '?')
-				sign = '?';
-			else if (to_run->next->ltr == '+')
-				sign = '+';
+			sign = is_two_points_sign(to_run);
+			if (!sign)
+				sign = is_diferent_sign(to_run);
 		}
-		else if (to_run->ltr == '#' && to_run->prev && to_run->prev->ltr == '{')
-			sign = '@';
-		else if (to_run->ltr == '#' && to_run->next && to_run->next->ltr != '}'
-				&& to_run->prev && to_run->prev->ltr != '{'
-				&& to_run->prev->ltr != '#' && to_run->next->ltr != '#')
-			sign = '#';
-		else if (to_run->ltr == '#' && to_run->next && to_run->next->ltr == '#'
-				&& to_run->next->next && to_run->next->next->ltr != '}'
-				&& to_run->prev && to_run->prev->ltr != '{'
-				&& to_run->prev->ltr != '#')
-			sign = '3';
-		else if (to_run->ltr == '%' && to_run->next && to_run->next->ltr != '}'
-				&& to_run->prev && to_run->prev->ltr != '{'
-				&& to_run->prev->ltr != '%' && to_run->next->ltr != '%')
-			sign = '%';
-		else if (to_run->ltr == '%' && to_run->next && to_run->next->ltr == '%'
-				&& to_run->next->next && to_run->next->next->ltr != '}'
-				&& to_run->prev && to_run->prev->ltr != '{'
-				&& to_run->prev->ltr != '%')
-			sign = '5';
 		to_run = to_run->next;
 	}
 	return (sign);
