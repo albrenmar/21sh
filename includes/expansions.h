@@ -65,5 +65,7 @@ void			exp_key_start_hash(char **str, t_expand *expand);
 void			exp_key_unique_hash(char **str, t_expand *expand);
 char			*get_asterisk_value(t_expand *expand);
 void			exp_key_unique_percent(char **str, t_expand *expand);
+char			*get_value_asterisk(t_expand *expand);
+void			exp_key_double_percent(char **str, t_expand *expand);
 
 #endif

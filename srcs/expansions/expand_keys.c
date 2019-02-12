@@ -3,15 +3,78 @@
 /*                                                        :::      ::::::::   */
 /*   expand_keys.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/06 04:22:15 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/11 07:08:08 by akira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 #include "sh42.h"
+
+void	exp_key_double_percent(char **str, t_expand *expand)
+{
+	char	*varname;
+	char	*value_var;
+	char	*to_srch;
+	char	*found;
+	int		total;
+	int		total_found;
+	int		i;
+	char	*tmp;
+	char	*tmp2;
+	char	*tmp3;
+
+	varname = NULL;
+	to_srch = NULL;
+	i = 0;
+	varname = get_varname(expand);
+	value_var = get_env_string(varname);
+	to_srch = get_value_asterisk(expand);
+/*	tmp3 = to_srch;
+	tmp = value_var;
+	tmp2 = value_var;
+	while ((tmp = ft_strstr(tmp2, to_srch)))
+		tmp2++;
+	if (tmp2)
+		while (*tmp3 != '\0' && *(tmp3 + 1) == *tmp2)
+		{
+			tmp2++;
+			tmp3++;
+		}
+	ft_strdel(str);
+	*str = ft_strdup(tmp2);
+*/
+	if (value_var && (found = ft_strnstr(value_var, to_srch , ft_strlen(value_var))))
+	{
+		total = ft_strlen(value_var);
+		total_found = ft_strlen(to_srch);
+		ft_strdel(str);
+//		*str = ft_strdup(found);
+		tmp = ft_strnew(total - total_found);
+		tmp2 = value_var;
+		while ((*tmp2 != *found) || (ft_strlen(found) != ft_strlen(tmp2)))
+		{
+			tmp[i] = *tmp2;
+			tmp2++;
+			i++;
+		}
+		*str = tmp;
+//		*str = ft_strdup(tmp2);
+	}
+	else if (value_var)
+	{
+		ft_strdel(str);
+		*str = value_var;
+	}
+	else
+	{
+		ft_strdel(str);
+		*str = ft_strnew(0);
+//		*str = NULL;
+	}
+}
 
 void	exp_key_unique_percent(char **str, t_expand *expand)
 {
@@ -304,7 +367,7 @@ char	check_sign(t_expand *expand)
 			sign = '3';
 		else if (to_run->ltr == '%' && to_run->next && to_run->next->ltr != '}'
 				&& to_run->prev && to_run->prev->ltr != '{'
-				&& to_run->prev->ltr != '%')
+				&& to_run->prev->ltr != '%' && to_run->next->ltr != '%')
 			sign = '%';
 		else if (to_run->ltr == '%' && to_run->next && to_run->next->ltr == '%'
 				&& to_run->next->next && to_run->next->next->ltr != '}'
@@ -337,6 +400,8 @@ t_expand	*expand_keys(t_expand *expand, char **str)
 		exp_key_double_hash(str, expand);
 	else if (sign == '%')
 		exp_key_unique_percent(str, expand);
+	else if (sign == '5')
+		exp_key_double_percent(str, expand);
 	update_list_expand(&expand, str);
 	return (expand);
 }
