@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/12 05:08:56 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/12 06:14:27 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,33 +163,14 @@ void	exp_key_unique_hash(char **str, t_expand *expand)
 	char	*varname;
 	char	*value_var;
 	char	*to_srch;
-	char	*found;
-	int		total;
-	int		total_found;
-	int		i;
-	char	*tmp;
-	char	*tmp2;
 
 	varname = NULL;
 	to_srch = NULL;
-	i = 0;
 	varname = get_varname(expand);
 	value_var = get_env_string(varname);
 	to_srch = get_value(expand);
-	if (value_var && (found = ft_strnstr(value_var, to_srch , ft_strlen(value_var))))
-	{
-		total = ft_strlen(value_var);
-		total_found = ft_strlen(to_srch);
-		ft_strdel(str);
-		tmp = ft_strnew(total - total_found);
-		tmp2 = value_var;
-		while (total_found != i)
-		{
-			tmp2++;
-			i++;
-		}
-		*str = ft_strdup(tmp2);
-	}
+	if (value_var && ft_strnstr(value_var, to_srch, ft_strlen(value_var)))
+		skip_found(str, value_var, to_srch);
 	else if (value_var)
 	{
 		ft_strdel(str);
@@ -199,7 +180,6 @@ void	exp_key_unique_hash(char **str, t_expand *expand)
 	{
 		ft_strdel(str);
 		*str = ft_strnew(0);
-//		*str = NULL;
 	}
 }
 
