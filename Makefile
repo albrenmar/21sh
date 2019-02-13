@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/13 06:27:34 by mjose            ###   ########.fr        #
+#    Updated: 2019/02/13 06:56:30 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,6 +89,8 @@ SRC = main.c \
 	  expansions/check_sign_tools.c \
 	  expansions/hash_tools.c \
 	  expansions/percent_tools.c \
+	  expansions/expand_keys_dblpnt.c \
+	  expansions/expand_keys_adv.c \
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A
@@ -115,7 +117,7 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
-FLAG = -g -fsanitize=address
+FLAG = -g #-fsanitize=address
 
 all : $(NAME)
 
