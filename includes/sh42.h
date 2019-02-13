@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/12 05:23:59 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/13 08:12:20 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ typedef struct			s_order
 	struct	s_order	*next;
 	struct	s_order	*prev;
 	struct	s_order	*temp_command;
+	struct	s_order	*temp_command_next;
 }						t_order;
 
 typedef struct			s_exec

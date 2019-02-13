@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/12 05:45:02 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/13 09:36:45 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 void		execute(void)
 {
-	if (g_tracking.mysh->exec->sym[0][0] == '|')
+	if (EXEC->sym[0][0] == '|')
 		test_pipe();
-	else if (g_tracking.mysh->exec->sym[0][0] == '>')
+	else if (EXEC->sym[0][0] == '>')
 		test_redir();
 }
 
@@ -33,6 +33,7 @@ t_order		*new_order(void)
 	order->next = NULL;
 	order->prev = NULL;
 	order->temp_command = NULL;
+	order->temp_command_next = NULL;
 	return (order);
 }
 
@@ -72,9 +73,9 @@ void		add_to_exec(int mode)
 	}
 	else
 		ORDER = new_order();
-	ORDER->command = copy_tab(g_tracking.mysh->exec->left);
+	ORDER->command = copy_tab(EXEC->left);
 	if (EXEC->sym && mode == 0)
-		ORDER->sym = ft_strdup(g_tracking.mysh->exec->sym[0]);
+		ORDER->sym = ft_strdup(EXEC->sym[0]);
 	else
 		ORDER->sym = NULL;
 }
@@ -82,6 +83,8 @@ void		add_to_exec(int mode)
 void		exec_command(void)
 {
 	int		status;
+	t_order		*temp_command;
+	t_order		*temp_command_next;
 	pid_t	gpid;
 	pipe(descrf);
 	pipe(descrf_two);
@@ -93,44 +96,50 @@ void		exec_command(void)
 	EXEC->gpid = 0;
 	while (ORDER->prev)
 		ORDER = ORDER->prev;
-	g_tracking.mysh->exec->gpid = (gpid = fork());
+	EXEC->gpid = (gpid = fork());
 	if (gpid == 0)
 	{
+		if (!ORDER->next)
+		{
+			execute_pipe_two();
+			exit (0);
+		}
 		while (ORDER)
 		{
-			while (ORDER && ORDER->sym && ORDER->sym[0] == '|' && ORDER->next)
+			while (ORDER && ORDER->sym && ORDER->sym[0] == '|')
 			{
 				descrf[0] = descrf_two[0];
 				descrf[1] = descrf_two[1];
 				pipe(descrf_two);
 				execute_pipe();
 				ORDER = ORDER->next;
-			}
-			while (ORDER && ORDER->sym && ORDER->sym[0] == '>' && ORDER->next && ORDER->next->sym && ORDER->next->sym[0] == '>')
-			{
-				ORDER = ORDER->next;
-				close_fd = open(ORDER->command[0], O_CREAT | O_TRUNC, 0644);
-				close(close_fd);
-
-			}
-			if (ORDER && (!ORDER->sym || ORDER->sym[0] == '>') && EXEC->ret != -1)
-			{
-				close(descrf_two[1]);
-				dup2(descrf_two[0], 0);
-				close(descrf_two[0]);
-				if (ORDER && ORDER->sym && ORDER->sym[0] == '>')
+				if (!ORDER->next)
 				{
-					close(1);
-					open(ORDER->next->command[0], O_CREAT | O_TRUNC | O_WRONLY, 0644);
-					ORDER->temp_command = ORDER;
-					while (ORDER->prev && ORDER->prev->sym[0] != '|')
-						ORDER = ORDER->prev;
+					execute_pipe_two();
+					ORDER = ORDER->next;
 				}
-				execute_two();
-				ORDER = ORDER->next;
 			}
-			exit (0);
+			if (ORDER && ORDER->sym && ORDER->sym[0] == '>')
+			{
+				temp_command = ORDER;
+				while (ORDER && ORDER->sym && ORDER->sym[0] == '>')
+				{
+					ORDER = ORDER->next;
+					close(1);
+					if (ft_strlen(ORDER->sym) == 1)
+						close_fd = open(ORDER->command[0], O_CREAT | O_TRUNC | O_RDWR, 0644);
+					else
+						close_fd = open(ORDER->command[0], O_CREAT | O_APPEND | O_RDWR, 0644);
+				}
+				ORDER = ORDER->next;
+				temp_command_next = ORDER;
+				ORDER = temp_command;
+				execute_pipe_two();
+				close(close_fd);
+				ORDER = temp_command_next;
+			}
 		}
+		exit (0);
 	}
 	else
 	{
@@ -147,16 +156,16 @@ void		execute_ast(t_tree *tree, t_tab_arg *tab_arg)
 {
 	if (tree->left)
 		execute_ast(tree->left, tab_arg);
-	if (/*!g_tracking.mysh->exec->sym &&*/ tree->type == OP)
-		g_tracking.mysh->exec->sym = tree->cmd;
-	if ((!g_tracking.mysh->exec->left || !g_tracking.mysh->exec->right) && !tree->left)
+	if (tree->type == OP)
+		EXEC->sym = tree->cmd;
+	if ((!EXEC->left || !EXEC->right) && !tree->left)
 	{
-		if (!g_tracking.mysh->exec->left)
-			g_tracking.mysh->exec->left = tree->cmd;
+		if (!EXEC->left)
+			EXEC->left = tree->cmd;
 		else
-			g_tracking.mysh->exec->right = tree->cmd;
+			EXEC->right = tree->cmd;
 	}
-	if (g_tracking.mysh->exec->left && g_tracking.mysh->exec->right)
+	if (EXEC->left && EXEC->right)
 	{
 		if ((ft_strlen(EXEC->sym[0]) == 2) && ((EXEC->sym[0][0] == '|') || EXEC->sym[0][0] == '&'))
 		{
@@ -164,21 +173,18 @@ void		execute_ast(t_tree *tree, t_tab_arg *tab_arg)
 			if (EXEC->ret == 0)
 				exec_command();
 			if ((EXEC->ret == 1 && EXEC->sym[0][0] == '&') || (EXEC->ret == -1 && EXEC->sym[0][0] == '|'))
-			{
 				EXEC->ret = 0;
-			}
 			ORDER = NULL;
 		}
 		else
 			add_to_exec(0);
-		//execute();
-		g_tracking.mysh->exec->left = g_tracking.mysh->exec->right;
-		g_tracking.mysh->exec->right = NULL;
+		EXEC->left = EXEC->right;
+		EXEC->right = NULL;
 		return ;
 	}
-	if (/*!g_tracking.mysh->exec->sym && */tree->type == OP &&
+	if (tree->type == OP &&
 			(ft_strlen(tree->name) != 2 || (tree->name[0] != '|' && tree->name[0] != '&')))
-		g_tracking.mysh->exec->sym = tree->cmd;
+		EXEC->sym = tree->cmd;
 	if (tree->right)
 		execute_ast(tree->right, tab_arg);
 	return ;

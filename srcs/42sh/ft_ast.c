@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 02:25:05 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/12 02:38:48 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/13 08:39:32 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,7 @@ void		ft_ast(t_tab_arg *tab_arg)
 	execute_ast(tree,tab_arg);
 	add_to_exec(1);
 	if (EXEC->ret == 0)
-	{
 		exec_command();
-	}
 	ORDER = NULL;
 	return ;
 }

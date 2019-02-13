@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/12 05:02:11 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/13 09:16:34 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 #include "../../includes/sh42.h"
 
 #define ORDER g_tracking.mysh->order
+#define EXEC g_tracking.mysh->exec
 
 void		execute_two(void)
 {
 	if ((ORDER->command = test_exist_fonction(ORDER->command)))
 	{
 		execve(ORDER->command[0], ORDER->command, NULL);
+		perror("FAIL");
 	}
 	else
 	{
@@ -29,18 +31,32 @@ void		execute_two(void)
 
 void		execute_pipe_two(void)
 {
+	int		status;
+	int		j;
 	pid_t	pid0;
-
 	g_tracking.mysh->exec->pid_exec = (pid0 = fork());
 	if (pid0 == 0)
 	{
 		close(descrf_two[1]);
 		dup2(descrf_two[0], 0);
 		close(descrf_two[0]);
-		execute_two();
+		if ((ORDER->command = test_exist_fonction(ORDER->command)))
+		{
+			execve(ORDER->command[0], ORDER->command, NULL);
+			perror("FAIL");
+		}
+		else
+		{
+			exit(-1);
+		}
 	}
 	else
-		close(descrf_two[0]);
+	{
+		waitpid(pid0, &status, WUNTRACED);
+		j = WEXITSTATUS(status);
+	}
+	if (j != 0)
+		exit (-1);
 }
 
 void		execute_pipe(void)
