@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/13 03:46:44 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/13 05:49:39 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,36 +81,16 @@ void	exp_key_unique_percent(char **str, t_expand *expand)
 	char	*varname;
 	char	*value_var;
 	char	*to_srch;
-	char	*found;
-	int		total;
-	int		total_found;
-	int		i;
-	char	*tmp;
-	char	*tmp2;
 
 	varname = NULL;
 	to_srch = NULL;
-	i = 0;
 	varname = get_varname(expand);
 	value_var = get_env_string(varname);
 	to_srch = get_value(expand);
 	value_var = ft_strrev(value_var, 1);
 	to_srch = ft_strrev(to_srch, 1);
-	if (value_var && (found = ft_strnstr(value_var, to_srch , ft_strlen(value_var))))
-	{
-		total = ft_strlen(value_var);
-		total_found = ft_strlen(to_srch);
-		ft_strdel(str);
-		tmp = ft_strnew(total - total_found);
-		tmp2 = value_var;
-		while (total_found != i)
-		{
-			tmp2++;
-			i++;
-		}
-//		*str = ft_strdup(tmp2);
-		*str = ft_strrev(tmp2, 0);
-	}
+	if (value_var && ft_strnstr(value_var, to_srch, ft_strlen(value_var)))
+		select_not_found(str, value_var, to_srch);
 	else if (value_var)
 	{
 		ft_strdel(str);
@@ -120,7 +100,6 @@ void	exp_key_unique_percent(char **str, t_expand *expand)
 	{
 		ft_strdel(str);
 		*str = ft_strnew(0);
-//		*str = NULL;
 	}
 }
 
