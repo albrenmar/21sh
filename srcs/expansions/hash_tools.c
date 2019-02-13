@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unique_percent_tools.c                             :+:      :+:    :+:   */
+/*   hash_tools.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/13 05:33:22 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/13 05:42:39 by mjose            ###   ########.fr       */
+/*   Created: 2019/02/12 05:27:55 by mjose             #+#    #+#             */
+/*   Updated: 2019/02/13 06:05:06 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 
-void	select_not_found(char **str, char *value_var, char *to_srch)
+void	skip_found(char **str, char *value_var, char *to_srch)
 {
 	int		total_found;
 	char	*tmp;
@@ -24,5 +24,5 @@ void	select_not_found(char **str, char *value_var, char *to_srch)
 	tmp = value_var;
 	while (total_found != i++)
 		tmp++;
-	*str = ft_strrev(tmp, 0);
+	*str = ft_strdup(tmp);
 }

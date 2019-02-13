@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/13 05:44:50 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/13 06:32:28 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ char			is_two_points_sign(t_expand *to_run);
 char			is_diferent_sign(t_expand *to_run);
 void			skip_found(char **str, char *value_var, char *to_srch);
 void			select_not_found(char **str, char *value_var, char *to_srch);
+void			select_last_not_found(char **str, char *value_var,
+					char *to_srch, char *found);
 
 #endif
