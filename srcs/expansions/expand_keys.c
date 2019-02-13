@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/12 06:14:27 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/13 03:46:44 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,24 +129,17 @@ void	exp_key_double_hash(char **str, t_expand *expand)
 	char	*varname;
 	char	*value_var;
 	char	*to_srch;
-	char	*found;
-	int		total;
-	int		total_found;
-	int		i;
-	char	*tmp;
 	char	*tmp2;
 	char	*tmp3;
 
 	varname = NULL;
 	to_srch = NULL;
-	i = 0;
 	varname = get_varname(expand);
 	value_var = get_env_string(varname);
 	to_srch = get_asterisk_value(expand);
 	tmp3 = to_srch;
-	tmp = value_var;
 	tmp2 = value_var;
-	while ((tmp = ft_strstr(tmp2, to_srch)))
+	while (ft_strstr(tmp2, to_srch))
 		tmp2++;
 	if (tmp2)
 		while (*tmp3 != '\0' && *(tmp3 + 1) == *tmp2)
