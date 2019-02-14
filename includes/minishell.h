@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/13 08:53:17 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/14 08:06:57 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,8 @@ void			ft_ast(t_tab_arg *tab_arg);
 t_tab_arg		*convert_to_list_tab(t_last	*list);
 void			execute_ast(t_tree *tree, t_tab_arg *tab_arg);
 void			execute_pipe(void);
-void			execute_pipe_two(void);
-void			test_pipe(void);
+void			execute_pipe_two(int fd);
+//void			test_pipe(void);
 void			test_redir(void);
 char			**test_exist_fonction(char **tab_cmd);
 void			execute_two(void);

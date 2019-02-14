@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/13 09:16:34 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/14 09:03:10 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		execute_two(void)
 	}
 }
 
-void		execute_pipe_two(void)
+void		execute_pipe_two(int fd)
 {
 	int		status;
 	int		j;
@@ -37,6 +37,10 @@ void		execute_pipe_two(void)
 	g_tracking.mysh->exec->pid_exec = (pid0 = fork());
 	if (pid0 == 0)
 	{
+		if (fd != 0)
+		{
+			dup2(fd, 1);
+		}
 		close(descrf_two[1]);
 		dup2(descrf_two[0], 0);
 		close(descrf_two[0]);
@@ -56,12 +60,16 @@ void		execute_pipe_two(void)
 		j = WEXITSTATUS(status);
 	}
 	if (j != 0)
-		exit (-1);
+		EXEC->ret = -1;
+	dprintf(2, "TEST1 =%d\n", EXEC->ret);
+	return ;
 }
 
 void		execute_pipe(void)
 {
 	pid_t	pid0;
+	int		j;
+	int		status;
 
 	g_tracking.mysh->exec->pid_exec = (pid0 = fork());
 	if (pid0 == 0)
@@ -75,10 +83,17 @@ void		execute_pipe(void)
 		execute_two();
 	}
 	else
+	{
 		close(descrf_two[1]);
+		j = WEXITSTATUS(status);
+	}
+	if (j != 0)
+		EXEC->ret = -1;
+	dprintf(2, "TEST =%d\n", EXEC->ret);
+	return ;
 }
 
-void		test_pipe(void)
+/*void		test_pipe(void)
 {
 	if (g_tracking.mysh->exec->sym && ft_strlen(g_tracking.mysh->exec->sym[0]) != 2)
 	{
@@ -95,4 +110,4 @@ void		test_pipe(void)
 		close(descrf_two[0]);
 		close(descrf_two[1]);
 	}
-}
+}*/

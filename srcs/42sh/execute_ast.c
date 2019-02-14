@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/13 09:36:45 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/14 08:11:31 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #define ORDER g_tracking.mysh->order
 #define EXEC g_tracking.mysh->exec
 
-void		execute(void)
+/*void		execute(void)
 {
 	if (EXEC->sym[0][0] == '|')
 		test_pipe();
 	else if (EXEC->sym[0][0] == '>')
 		test_redir();
-}
+}*/
 
 t_order		*new_order(void)
 {
@@ -96,13 +96,14 @@ void		exec_command(void)
 	EXEC->gpid = 0;
 	while (ORDER->prev)
 		ORDER = ORDER->prev;
-	EXEC->gpid = (gpid = fork());
+	/*EXEC->gpid = (gpid = fork());
 	if (gpid == 0)
 	{
-		if (!ORDER->next)
+	*/	if (!ORDER->next)
 		{
-			execute_pipe_two();
-			exit (0);
+			execute_pipe_two(0);
+			//exit (0);
+			ORDER = ORDER->next;
 		}
 		while (ORDER)
 		{
@@ -115,7 +116,7 @@ void		exec_command(void)
 				ORDER = ORDER->next;
 				if (!ORDER->next)
 				{
-					execute_pipe_two();
+					execute_pipe_two(0);
 					ORDER = ORDER->next;
 				}
 			}
@@ -125,7 +126,6 @@ void		exec_command(void)
 				while (ORDER && ORDER->sym && ORDER->sym[0] == '>')
 				{
 					ORDER = ORDER->next;
-					close(1);
 					if (ft_strlen(ORDER->sym) == 1)
 						close_fd = open(ORDER->command[0], O_CREAT | O_TRUNC | O_RDWR, 0644);
 					else
@@ -134,12 +134,12 @@ void		exec_command(void)
 				ORDER = ORDER->next;
 				temp_command_next = ORDER;
 				ORDER = temp_command;
-				execute_pipe_two();
+				execute_pipe_two(close_fd);
 				close(close_fd);
 				ORDER = temp_command_next;
 			}
 		}
-		exit (0);
+		/*exit (0);
 	}
 	else
 	{
@@ -149,7 +149,7 @@ void		exec_command(void)
 	if (j == 0)
 		EXEC->ret = 1;
 	else
-		EXEC->ret = -1;
+		EXEC->ret = -1;*/
 }
 
 void		execute_ast(t_tree *tree, t_tab_arg *tab_arg)
