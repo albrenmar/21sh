@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:53:06 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/24 15:25:25 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/02/01 15:01:57 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void		history_builtin_minus(t_core *core)
 					hist_save_file_w(core->hist, core->arg[2]);
 				if (!(flags & 32) && core->arg[1][i] == 'n' && (flags |= 32))
 					hist_file_to_lst(core);
+				if (!(flags & 64) && core->arg[1][i] == 'p' && (flags |= 64))
+					history_builtin_p(core);
 				i++;
 			}
 			i = 1;
@@ -122,8 +124,8 @@ void		history_builtin(t_core *core)
 // Setup the history list
 void		history_setup(t_core *core)
 {
-			if (core->hist == NULL || core->hist->line == NULL)
-				core->hist = hist_lst_create(core->line);
-			else
-				hist_lst_add_next(core->hist, core->line);
+	if (core->hist == NULL || core->hist->line == NULL)
+		core->hist = hist_lst_create(core->line);
+	else
+		hist_lst_add_next(core->hist, core->line);
 }

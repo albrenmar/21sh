@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/16 15:37:20 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/02/03 13:53:53 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ t_hist		*hist_lst_create(char *line)
 	new_lst->previous = NULL;
 	return (new_lst);
 }
-// free/clear the history_lst and the file;
+// free/clear the history_lst and the file
 t_hist		*hist_free(t_hist *hist)
 {
 	t_hist *tmp;
