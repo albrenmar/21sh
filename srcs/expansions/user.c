@@ -6,12 +6,11 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 04:41:48 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/02 01:40:07 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/14 07:21:43 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
-
 
 int		check_have_homedir(struct passwd *user_inf, char *tmp_usr)
 {
