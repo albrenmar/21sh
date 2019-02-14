@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/13 06:56:30 by mjose            ###   ########.fr        #
+#    Updated: 2019/02/14 06:15:00 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,7 @@ SRC = main.c \
 	  expansions/percent_tools.c \
 	  expansions/expand_keys_dblpnt.c \
 	  expansions/expand_keys_adv.c \
+	  expansions/values.c \
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A
