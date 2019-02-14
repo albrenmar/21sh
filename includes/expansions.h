@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/13 06:54:43 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/14 07:17:29 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,8 @@ void			skip_found(char **str, char *value_var, char *to_srch);
 void			select_not_found(char **str, char *value_var, char *to_srch);
 void			select_last_not_found(char **str, char *value_var,
 					char *to_srch, char *found);
+char			*varname(char *var, t_expand *to_run);
+char			*value(char *val, t_expand *start);
+char			*value_asterisk(char *val, t_expand *start);
 
 #endif
