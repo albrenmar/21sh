@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/15 04:20:16 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/15 08:26:35 by akira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "ft_ls.h"
 # include "expansions.h"
 # include <sys/ioctl.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 # include <termios.h>
 # include <curses.h>
 # include <term.h>

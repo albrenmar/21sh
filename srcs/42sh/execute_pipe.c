@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/14 09:03:10 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/15 08:18:46 by akira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
+#include <sys/types.h>
+#include <sys/wait.h>
 
 #define ORDER g_tracking.mysh->order
 #define EXEC g_tracking.mysh->exec

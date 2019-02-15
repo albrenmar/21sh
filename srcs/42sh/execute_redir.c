@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   execute_redir.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:09:42 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/11 20:20:00 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/15 08:19:04 by akira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
+#include <sys/types.h>
+#include <sys/wait.h>
+
 
 void		execute_redir_two(void)
 {
