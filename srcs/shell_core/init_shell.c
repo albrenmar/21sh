@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/30 05:29:55 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/15 08:43:22 by akira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ void	init_shell(char **environ)
 	g_tracking.mysh = mysh;
 	g_tracking.mysh->hist = NULL;
 	g_tracking.mysh->alias_lst = NULL;
-	g_tracking.mysh->args_lst = NULL;
 	init_alias();
 	g_tracking.mysh->env = ft_env_to_lst(environ);
+	g_tracking.mysh->exec = NULL;
+	g_tracking.mysh->order = NULL;
+	g_tracking.mysh->args_lst = NULL;
 	add_missing_string();
 	hist_file_to_lst();
 }

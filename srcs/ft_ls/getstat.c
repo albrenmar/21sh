@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getstat.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 18:47:53 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 02:27:17 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/15 08:20:41 by akira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	ft_special(t_ls *info, struct stat *tmp, char *str)
 		symlink = ft_strjoinfree(symlink, "\0", 1);
 		info->symlink = symlink;
 	}
-	if (permission[0] == 'c' || permission[0] == 'b')
-	{
-		info->maj = 0;
-		info->min = 0;
-	}
+//	if (permission[0] == 'c' || permission[0] == 'b')
+//	{
+//		info->maj = major(tmp->st_rdev);
+//		info->min = minor(tmp->st_rdev);
+//	}
 	free(permission);
 }
 
@@ -55,7 +55,21 @@ void	ft_stat2(t_ls *info, struct stat *tmp, time_t cur)
 	info->strpad = NULL;
 }
 
+void	getattribut(char *path, t_ls *info)
+{
+	int		i;
+	acl_t	acl;
 
+	acl = NULL;
+//	acl = acl_get_link_np(path, ACL_TYPE_EXTENDED);
+	if (acl != NULL)
+		info->acl = '+';
+//	i = listxattr(path, NULL, 0, XATTR_NOFOLLOW);
+	if (i != 0 && i != -1)
+		info->acl = '@';
+//	acl_free(acl);
+	acl = NULL;
+}
 
 int		ft_stat(char *path, t_ls *info, char *option)
 {
@@ -78,6 +92,8 @@ int		ft_stat(char *path, t_ls *info, char *option)
 		info->time = tmp->st_atime;
 	ft_stat2(info, tmp, cur);
 	ft_special(info, tmp, path);
+	if (checkoption(option, '@') == 1)
+		getattribut(path, info);
 	free(tmp);
 	return (0);
 }
