@@ -6,14 +6,22 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/14 06:33:45 by mjose            ###   ########.fr        #
+#    Updated: 2019/02/15 04:34:48 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=	42sh
 
 SRC = main.c \
-	  42sh/ft_analize.c \
+	  42sh/ft_parseur.c \
+	  42sh/ft_lexeur.c \
+	  42sh/ft_modif_list.c \
+	  42sh/ft_ast.c \
+	  42sh/execute_ast.c \
+	  42sh/execute_pipe.c \
+	  42sh/execute_redir.c \
+	  42sh/add_path_to_bin.c \
+	  42sh/convert_to_list_tab.c \
 	  GNL/term_setup.c \
 	  GNL/stringsearch.c \
 	  GNL/signals.c \
