@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/22 23:31:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/13 20:51:29 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,16 @@ void	init_shell(char **environ)
 		ft_putendl("Failled to allocate memory");
 		exit(EXIT_FAILURE);
 	}
+	g_tracking.jobs = NULL;
+	g_tracking.lastreturn = 0;
+	g_tracking.spid = 0;
 	g_tracking.mysh = mysh;
 	g_tracking.mysh->hist = NULL;
 	g_tracking.mysh->alias_lst = NULL;
 	init_alias();
 	g_tracking.mysh->env = ft_env_to_lst(environ);
+	g_tracking.mysh->exec = NULL;
+	g_tracking.mysh->order = NULL;
 	add_missing_string();
 	hist_file_to_lst();
 }

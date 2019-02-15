@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/30 04:11:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/15 09:16:08 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH42_H
 # define SH42_H
 # include "libft.h"
+# include "minishell.h"
 # include "ft_ls.h"
 # include <sys/ioctl.h>
 # include <termios.h>
@@ -25,7 +26,13 @@
 # include <time.h>
 # include <fcntl.h>
 
-# define USER		"bsiche"
+# define ANSI_COLOR_BLUE	"\x1b[36m"
+# define ANSI_COLOR_GREEN	"\x1b[32m"
+# define ANSI_COLOR_DEFAULT "\x1b[0m"
+# define ANSI_COLOR_MAGENTA	"\x1b[35m"
+
+# define USER		"abguimba"
+
 # define K_FN1		"\x1b\x4f\x50"
 # define K_FN2		"\x1b\x4f\x51"
 # define K_FN3		"\x1b\x4f\x52"
@@ -43,6 +50,11 @@
 # define K_BKSP		127
 # define K_TAB		9
 # define K_DEL		"\x1b\x5b\x33\x7e"
+# define ORDER		g_tracking.mysh->order
+# define EXEC		g_tracking.mysh->exec
+
+int		descrf[2];
+int		descrf_two[2];
 
 typedef struct	s_cursor
 {
@@ -106,15 +118,68 @@ typedef struct			s_hist
 	char			*line;
 }						t_hist;
 
+typedef struct			s_exec
+{
+	// pid_t	pid_exec;
+	int		ret;
+	int		i;
+	char	*fich;
+	char	**left;
+	char	**right;
+	char	**sym;
+}						t_exec;
+
+typedef struct			s_order
+{
+	int		type;
+	char	**command;
+	char	*sym;
+	struct	s_order	*next;
+	struct	s_order	*prev;
+	struct	s_order *temp_command;
+}						t_order;
+
 typedef struct	s_shell
 {
 	t_lstcontainer	*alias_lst;
 	t_lstcontainer	*env;
 	t_hist			*hist;
+	t_exec			*exec;
+	t_order			*order;
 }				t_shell;
+
+typedef struct	s_cmd
+{
+	int				status;
+	struct s_cmd	*next;
+	pid_t			cpid;
+	int				done;
+	int				stopped;
+}				t_cmd;
+
+typedef struct	s_jobs
+{
+	struct s_jobs	*next;
+	struct s_jobs	*prev;
+	char			*name;
+	int				stdin;
+	int				stdout;
+	int				stderr;
+	int				place;
+	int				background;
+	pid_t			jpid;
+	int				notified;
+	int				backstart;
+	struct termios	jterm;
+	// pid_t			lastpid;
+	struct s_cmd	*t_cmd;
+}				t_jobs;
 
 typedef struct	s_tracking
 {
+	int					interactive;
+	int					sterminal;
+	struct s_jobs		*jobs;
 	t_cursor			*pos;
 	struct termios		default_term;
 	struct termios		myterm;
@@ -131,6 +196,8 @@ typedef struct	s_tracking
 	int					buffsize;
 	int					histindex;
 	int					histmax;
+	int					lastreturn;
+	pid_t				spid;
 }				t_tracking;
 
 t_tracking		g_tracking;
@@ -307,8 +374,91 @@ char			*ft_true_pwd(void);
 
 void			add_missing_string();
 
-void			hist_to_file(void);
+void			print_tab(char **tob);
 
+void			cmd_manager(t_last *cmd, t_tab_arg *tab_arg, t_env *st_env);
+
+void			env_format(char **envp, t_env **env);
+
+char			**envlist_to_tab(t_env **env);
+
+void			free_last(t_last **cmd);
+
+void			suspend_signal_handler(void);
+
+void			stop_signal_handler(void);
+
+void			set_signal_handlers(void);
+
+void			signal_handler(int signo);
+
+void			set_shell_signal_handlers(void);
+
+t_jobs			*new_job(t_last *part, int background);
+
+int				cmd_checker(t_last *part, int mode);
+
+int				rellocate_cmd(t_last *part, int mode);
+
+char			*check_separator(t_last *part);
+
+char			*fill_cmd_name(t_last *part);
+
+t_jobs			*find_job (pid_t jpid);
+
+int				job_is_done(t_jobs *job);
+
+int				job_is_stopped(t_jobs *job);
+
+void			interactive_check_set_shell_group(void);
+
+void			set_process_signal_handlers(void);
+
+void			ft_ast(t_tab_arg *tab_arg, t_env *t_env, t_jobs *job);
+
+void			execute_two(t_env *st_env, int mode, t_jobs *job);
+
+void			exec_command(t_env *st_env, t_jobs *job);
+
+void			execute_pipe(t_env *st_env, t_jobs *job);
+
+void			execute_ast(t_tree *tree, t_tab_arg *tab_arg, t_env *st_env, t_jobs *job);
+
+t_cmd			*new_process(t_jobs *job, pid_t cpid);
+
+char			*job_name_maker(t_last *part);
+
+void			put_job_in_foreground(t_jobs *job, int cont);
+
+void			put_job_in_background(t_jobs *job, int cont);
+
+void			wait_for_job(t_jobs *job);
+
+int				update_process_status(pid_t pid, int status);
+
+void			update_status(void);
+
+void			show_job_info(t_jobs *job, const char *status, int mode);
+
+void			jobs_notifications(void);
+
+void			free_job(t_jobs *job);
+
+void			jobs_builtin(void);
+
+int				get_job_number(void);
+
+void			bg_builtin(void);
+
+void			fg_builtin(void);
+
+void			continue_job(t_jobs *job, int foreground);
+
+void			mark_job_as_running(t_jobs *job);
+
+void			jobs_debug(void);
+
+void			print_prompt_pwd(void);
 
 void							hist_file_to_lst(void);
 int								print_hist();

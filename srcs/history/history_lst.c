@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/22 00:37:55 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/15 04:44:00 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		hist_setup_file(void)
 	fd = open("/goinfre/.shell_history", O_CREAT | O_APPEND | O_RDWR, 00777);
 	if (fd < 0)
 	{
-		ft_putendl_fd("Error while opening/creating .shell_history", 2);
+		ft_putendl("Error while opening/creating .shell_history");
 		return;
 	}
 	if (get_next_line(fd, line) == 1)

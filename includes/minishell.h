@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/29 04:11:41 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/14 04:58:47 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # define PO line[*i] && line[*i] == '('
 # define PF line[*i] && line[*i] == ')'
 # define GO line[*i] == '"'
+#define PA 1
+#define OP 2
+#define CMD 3
+#define ARG 4
+#define OPT 5
+#define PATH 6
 
 # include "ft_printf.h"
 # include <sys/stat.h>
@@ -35,23 +41,44 @@ typedef struct	s_tab
 	char	**tab_path;
 }				t_tab;
 
-typedef struct	s_env
+typedef struct		s_env
 {
-	char	**env;
-}				t_env;
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}					t_env;
+
+// typedef struct	s_env
+// {
+// 	char	**env;
+// }				t_env;
+
+typedef struct	s_tab_arg
+{
+	int		type;
+	char	**tab_test;
+	struct s_tab_arg	*next;
+	struct s_tab_arg	*prev;
+}				t_tab_arg;
 
 typedef struct	s_last
 {
+	int				check;
 	int				type;
 	char			*name;
 	struct s_last	*next;
 	struct s_last	*prev;
 }				t_last;
 
-typedef struct	s_cmd
+typedef struct	s_tree
 {
-	struct s_list	*beginlist;
-}				t_cmd;
+	int			type;
+	char		*name;
+	char		**cmd;
+	struct s_tree	*prev;
+	struct s_tree	*right;
+	struct s_tree	*left;
+}				t_tree;
 
 int				ft_strcmp(const char *s1, const char *s2);
 int				nb_env(char **env);
@@ -94,4 +121,18 @@ t_last			*ft_analize(char *line);
 int				add_alias(char *alias);
 void			print_alias_lst(void);
 int				unalias(char *alias);
+void			insert_node(t_last *ref_node, t_last *insert);
+t_last			*create_new_list(void);
+void			ft_lexeur(t_last *list_cmd);
+int				error_lexer(t_last *list_cmd);
+void			tri_lexer(t_last *list_cmd);
+t_last			*ft_parseur(char *line);
+t_tab_arg		*convert_to_list_tab(t_last	*list);
+void			execute_four(t_env *st_env);
+void			execute_pipe_two(t_env *st_env);
+void			test_pipe(t_env *st_env);
+void			test_redir(t_env *st_env);
+char			**test_exist_fonction(char **tab_cmd);
+void			add_to_exec(int mode);
+
 #endif
