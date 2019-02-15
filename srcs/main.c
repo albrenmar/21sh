@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/10 19:46:33 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/15 10:14:09 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ int		main(int argc, char **argv, char **env)
 		}
 		else if (line && (cmd = ft_parseur(line)))
 		{
+		/*	while (cmd)
+			{
+				printf("NAME = %s\n", cmd->name);
+				printf("TYPE = %d\n", cmd->type);
+				cmd = cmd->next;
+			}*/
 			tab_arg = convert_to_list_tab(cmd);
 			ft_ast(tab_arg);
 		}

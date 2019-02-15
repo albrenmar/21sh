@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/14 09:03:10 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/15 02:28:40 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ void		execute_pipe_two(int fd)
 	if (pid0 == 0)
 	{
 		if (fd != 0)
-		{
 			dup2(fd, 1);
-		}
 		close(descrf_two[1]);
 		dup2(descrf_two[0], 0);
 		close(descrf_two[0]);
@@ -50,9 +48,7 @@ void		execute_pipe_two(int fd)
 			perror("FAIL");
 		}
 		else
-		{
 			exit(-1);
-		}
 	}
 	else
 	{
@@ -61,7 +57,6 @@ void		execute_pipe_two(int fd)
 	}
 	if (j != 0)
 		EXEC->ret = -1;
-	dprintf(2, "TEST1 =%d\n", EXEC->ret);
 	return ;
 }
 
@@ -89,25 +84,5 @@ void		execute_pipe(void)
 	}
 	if (j != 0)
 		EXEC->ret = -1;
-	dprintf(2, "TEST =%d\n", EXEC->ret);
 	return ;
 }
-
-/*void		test_pipe(void)
-{
-	if (g_tracking.mysh->exec->sym && ft_strlen(g_tracking.mysh->exec->sym[0]) != 2)
-	{
-		descrf[0] = descrf_two[0];
-		descrf[1] = descrf_two[1];
-		pipe(descrf_two);
-		execute_pipe();
-	}
-	else
-	{
-		execute_pipe_two();
-		close(descrf[0]);
-		close(descrf[1]);
-		close(descrf_two[0]);
-		close(descrf_two[1]);
-	}
-}*/

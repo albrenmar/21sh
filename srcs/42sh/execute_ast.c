@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/14 08:11:31 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/15 10:14:07 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 #define EXEC g_tracking.mysh->exec
 
 /*void		execute(void)
-{
-	if (EXEC->sym[0][0] == '|')
-		test_pipe();
-	else if (EXEC->sym[0][0] == '>')
-		test_redir();
-}*/
+  {
+  if (EXEC->sym[0][0] == '|')
+  test_pipe();
+  else if (EXEC->sym[0][0] == '>')
+  test_redir();
+  }*/
 
 t_order		*new_order(void)
 {
@@ -94,62 +94,50 @@ void		exec_command(void)
 	j = 0;
 	EXEC->pid_exec = 0;
 	EXEC->gpid = 0;
+	EXEC->ret = 0;
 	while (ORDER->prev)
 		ORDER = ORDER->prev;
-	/*EXEC->gpid = (gpid = fork());
-	if (gpid == 0)
+	if (!ORDER->next)
 	{
-	*/	if (!ORDER->next)
+		execute_pipe_two(0);
+		ORDER = ORDER->next;
+	}
+	while (ORDER)
+	{
+		while (ORDER && ORDER->sym && ORDER->sym[0] == '|')
 		{
-			execute_pipe_two(0);
-			//exit (0);
+			descrf[0] = descrf_two[0];
+			descrf[1] = descrf_two[1];
+			pipe(descrf_two);
+			execute_pipe();
 			ORDER = ORDER->next;
+			if (!ORDER->next)
+			{
+				execute_pipe_two(0);
+				ORDER = ORDER->next;
+			}
 		}
-		while (ORDER)
+		if (ORDER && ORDER->sym && ORDER->sym[0] == '>')
 		{
-			while (ORDER && ORDER->sym && ORDER->sym[0] == '|')
+			temp_command = ORDER;
+			while (ORDER && ORDER->sym && ORDER->sym[0] == '>')
 			{
-				descrf[0] = descrf_two[0];
-				descrf[1] = descrf_two[1];
-				pipe(descrf_two);
-				execute_pipe();
 				ORDER = ORDER->next;
-				if (!ORDER->next)
-				{
-					execute_pipe_two(0);
-					ORDER = ORDER->next;
-				}
+				if (ft_strlen(ORDER->sym) == 1)
+					close_fd = open(ORDER->command[0], O_CREAT | O_TRUNC | O_RDWR, 0644);
+				else
+					close_fd = open(ORDER->command[0], O_CREAT | O_APPEND | O_RDWR, 0644);
 			}
-			if (ORDER && ORDER->sym && ORDER->sym[0] == '>')
-			{
-				temp_command = ORDER;
-				while (ORDER && ORDER->sym && ORDER->sym[0] == '>')
-				{
-					ORDER = ORDER->next;
-					if (ft_strlen(ORDER->sym) == 1)
-						close_fd = open(ORDER->command[0], O_CREAT | O_TRUNC | O_RDWR, 0644);
-					else
-						close_fd = open(ORDER->command[0], O_CREAT | O_APPEND | O_RDWR, 0644);
-				}
-				ORDER = ORDER->next;
-				temp_command_next = ORDER;
-				ORDER = temp_command;
-				execute_pipe_two(close_fd);
-				close(close_fd);
-				ORDER = temp_command_next;
-			}
+			ORDER = ORDER->next;
+			temp_command_next = ORDER;
+			ORDER = temp_command;
+			execute_pipe_two(close_fd);
+			close(close_fd);
+			ORDER = temp_command_next;
 		}
-		/*exit (0);
 	}
-	else
-	{
-		waitpid(gpid, &status, WUNTRACED);
-		j = WEXITSTATUS(status);
-	}
-	if (j == 0)
+	if (EXEC->ret == 0)
 		EXEC->ret = 1;
-	else
-		EXEC->ret = -1;*/
 }
 
 void		execute_ast(t_tree *tree, t_tab_arg *tab_arg)
@@ -167,12 +155,12 @@ void		execute_ast(t_tree *tree, t_tab_arg *tab_arg)
 	}
 	if (EXEC->left && EXEC->right)
 	{
-		if ((ft_strlen(EXEC->sym[0]) == 2) && ((EXEC->sym[0][0] == '|') || EXEC->sym[0][0] == '&'))
+		if (((ft_strlen(EXEC->sym[0]) == 2) && ((EXEC->sym[0][0] == '|') || EXEC->sym[0][0] == '&')) || EXEC->sym[0][0] == ';')
 		{
 			add_to_exec(1);
 			if (EXEC->ret == 0)
 				exec_command();
-			if ((EXEC->ret == 1 && EXEC->sym[0][0] == '&') || (EXEC->ret == -1 && EXEC->sym[0][0] == '|'))
+			if ((EXEC->ret == 1 && (EXEC->sym[0][0] == '&' || EXEC->sym[0][0] == ';')) || (EXEC->ret == -1 && EXEC->sym[0][0] == '|'))
 				EXEC->ret = 0;
 			ORDER = NULL;
 		}

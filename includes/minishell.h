@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/14 08:06:57 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/15 06:28:26 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #define ARG 4
 #define OPT 5
 #define PATH 6
+#define DESCR 7
 
 # include "ft_printf.h"
 # include <sys/stat.h>

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/13 08:12:20 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/15 10:14:11 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,9 @@ typedef struct			s_exec
 {
 	pid_t	gpid;
 	pid_t	pid_exec;
+	int		STDIN;
+	int		STDOUT;
+	int		STDERR;
 	int		ret;
 	int		i;
 	char	*fich;
