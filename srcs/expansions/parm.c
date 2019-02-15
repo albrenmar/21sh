@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 06:10:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/02 02:20:43 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/15 04:52:09 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		is_to_add_or_mod_parm(char *to_transf)
 			return (0);
 		if (to_transf[i] == '=')
 			return (1);
+		i++;
 	}
 	return (0);
 }
