@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/15 08:18:46 by akira            ###   ########.fr       */
+/*   Updated: 2019/02/16 05:13:30 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-#include "../../includes/sh42.h"
+#include "sh42.h"
 #include <sys/types.h>
 #include <sys/wait.h>
 
 #define ORDER g_tracking.mysh->order
 #define EXEC g_tracking.mysh->exec
+
+char			**init_envp(t_lstcontainer *env);
 
 void		execute_two(void)
 {
@@ -48,7 +50,7 @@ void		execute_pipe_two(int fd)
 		close(descrf_two[0]);
 		if ((ORDER->command = test_exist_fonction(ORDER->command)))
 		{
-			execve(ORDER->command[0], ORDER->command, NULL);
+			execve(ORDER->command[0], ORDER->command, g_tracking.mysh->tab_env);
 			perror("FAIL");
 		}
 		else

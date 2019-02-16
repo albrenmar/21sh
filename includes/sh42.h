@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/15 08:26:35 by akira            ###   ########.fr       */
+/*   Updated: 2019/02/16 05:13:15 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "libft.h"
 # include "ft_ls.h"
 # include "expansions.h"
+# include "minishell.h"
 # include <sys/ioctl.h>
 # include <sys/types.h>
 # include <sys/wait.h>
@@ -143,6 +144,7 @@ typedef struct	s_shell
 	t_exec			*exec;
 	t_args			*args_lst;
 	t_order			*order;
+	char			**tab_env;
 }				t_shell;
 
 typedef struct	s_tracking
@@ -338,6 +340,7 @@ char			*remove_env_string(char *str);
 char			*ft_true_pwd(void);
 
 void			add_missing_string();
+char			**init_envp(t_lstcontainer *env);
 
 
 void							hist_file_to_lst(void);
