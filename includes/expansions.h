@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/14 07:17:29 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/16 05:43:52 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void			exp_key_unique_percent(char **str, t_expand *expand);
 char			*get_value_asterisk(t_expand *expand);
 void			exp_key_double_percent(char **str, t_expand *expand);
 void			exp_key_double_hash(char **str, t_expand *expand);
-void			transform_if_tilde(t_expand *expand, char **str);
+void			transform_if_tilde(t_expand **expand, char **str);
 char			is_two_points_sign(t_expand *to_run);
 char			is_diferent_sign(t_expand *to_run);
 void			skip_found(char **str, char *value_var, char *to_srch);
@@ -78,5 +78,6 @@ void			select_last_not_found(char **str, char *value_var,
 char			*varname(char *var, t_expand *to_run);
 char			*value(char *val, t_expand *start);
 char			*value_asterisk(char *val, t_expand *start);
+int				have_envname(char *var);
 
 #endif

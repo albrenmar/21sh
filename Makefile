@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/15 04:34:48 by mjose            ###   ########.fr        #
+#    Updated: 2019/02/16 07:44:43 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,6 +101,7 @@ SRC = main.c \
 	  expansions/expand_keys_adv.c \
 	  expansions/values.c \
 	  expansions/values_tools.c \
+	  expansions/environ.c \
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A
@@ -127,7 +128,7 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
-FLAG = -g #-fsanitize=address
+FLAG = -g -fsanitize=address
 
 all : $(NAME)
 
