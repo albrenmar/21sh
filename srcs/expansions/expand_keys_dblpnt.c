@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/17 06:37:25 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/17 10:42:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,9 @@ void	exp_key_equal(char **str, t_expand *expand)
 		replace_env_str(str1, value2);
 		ft_strdel(&str1);
 	}
+	else
+		add_to_env_set(str1, value2);
+	*str = value2;
 }
 
 void	exp_key_less(char **str, t_expand *expand)

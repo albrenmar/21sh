@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/17 07:28:46 by mjose            ###   ########.fr        #
+#    Updated: 2019/02/17 10:43:59 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,6 +102,7 @@ SRC = main.c \
 	  expansions/values.c \
 	  expansions/values_tools.c \
 	  expansions/environ.c \
+	  expansions/environ_set.c \
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A

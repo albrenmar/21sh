@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/16 05:43:52 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/17 10:05:15 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@
 
 typedef struct	s_expand
 {
-	char			ltr;
-	int				len;
-	int				idx;
-	struct s_expand	*next;
-	struct s_expand	*prev;
+	char				ltr;
+	int					len;
+	int					idx;
+	struct s_expand		*next;
+	struct s_expand		*prev;
 }				t_expand;
 
-typedef struct	s_args
+typedef struct	s_env_set
 {
-	struct s_keyval	*param;
-	struct s_args	*next;
-}				t_args;
+	struct s_keyval		*param;
+	struct s_env_set	*next;
+}				t_env_set;
 
 void			expand_transformer(t_last *cmd);
 int				need_expand(char *to_transf);
@@ -79,5 +79,7 @@ char			*varname(char *var, t_expand *to_run);
 char			*value(char *val, t_expand *start);
 char			*value_asterisk(char *val, t_expand *start);
 int				have_envname(char *var);
+void			add_to_env_set(char *varname, char *varvalue);
+t_env_set		*new_envset(char *varname, char *varvalue);
 
 #endif

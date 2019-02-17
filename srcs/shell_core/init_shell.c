@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/16 05:02:22 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/17 09:16:04 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_shell(char **environ)
 	g_tracking.mysh->tab_env = init_envp(g_tracking.mysh->env);
 	g_tracking.mysh->exec = NULL;
 	g_tracking.mysh->order = NULL;
-	g_tracking.mysh->args_lst = NULL;
+	g_tracking.mysh->setenv_lst = NULL;
 	add_missing_string();
 	hist_file_to_lst();
 }

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/16 05:13:15 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/17 09:01:34 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ typedef struct	s_shell
 	t_lstcontainer	*env;
 	t_hist			*hist;
 	t_exec			*exec;
-	t_args			*args_lst;
+	t_env_set		*setenv_lst;
 	t_order			*order;
 	char			**tab_env;
 }				t_shell;
