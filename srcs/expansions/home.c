@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   home.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 01:20:02 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/15 09:20:57 by akira            ###   ########.fr       */
+/*   Updated: 2019/02/17 06:34:30 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	*get_home_value(void)
 	else if ((home = get_parm_string("HOME")) && ft_strequ(home, ""))
 		return (home);
 	else
-		return (get_user_home("akira"));
-//		return (get_user_home(getlogin()));
+		return (get_user_home(getlogin()));
 	return (NULL);
 }

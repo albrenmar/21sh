@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/16 07:50:17 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/17 06:37:25 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,23 +87,15 @@ void	exp_key_equal(char **str, t_expand *expand)
 	str1 = get_varname(expand);
 	str2 = get_value(expand);
 	value1 = get_env_string(str1);
-	printf("1%s///////////////////////////////////////////\n", value1);
-	printf("%d\n", ft_strequ(value1, ""));
-	printf("%s///////////////////////////////////////////\n", str2);
 	if (!value1)
-	{
 		value1 = get_parm_string(str1);
-		printf("2%s///////////////////////////////////////////\n", value1);
-	}
 	value2 = str2;
 	ft_strdel(str);
 	if (value1 && ft_strequ(value1, ""))
 		*str = value1;
 	else if (have_envname(str1))
 	{
-//		ft_strdel(&value1);
 		*str = value2;
-//		printf("%s///////////////////////////////////////////%s\n", str1, value2);
 		replace_env_str(str1, value2);
 		ft_strdel(&str1);
 	}
