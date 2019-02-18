@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/15 10:14:11 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/18 03:23:01 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SH42_H
 # include "libft.h"
 # include "ft_ls.h"
+# include "minishell.h"
 # include <sys/ioctl.h>
 # include <termios.h>
 # include <curses.h>
@@ -109,39 +110,20 @@ typedef struct			s_hist
 	char			*line;
 }						t_hist;
 
-typedef struct			s_order
+typedef struct	s_tree
 {
-	int		type;
-	char	**command;
-	char	*sym;
-	struct	s_order	*next;
-	struct	s_order	*prev;
-	struct	s_order	*temp_command;
-	struct	s_order	*temp_command_next;
-}						t_order;
-
-typedef struct			s_exec
-{
-	pid_t	gpid;
-	pid_t	pid_exec;
-	int		STDIN;
-	int		STDOUT;
-	int		STDERR;
-	int		ret;
-	int		i;
-	char	*fich;
-	char	**left;
-	char	**right;
-	char	**sym;
-}						t_exec;
+	int			type;
+	char		*cmd;
+	t_last		*list_cmd;
+	struct s_tree	*right;
+	struct s_tree	*left;
+}				t_tree;
 
 typedef struct	s_shell
 {
 	t_lstcontainer	*alias_lst;
 	t_lstcontainer	*env;
 	t_hist			*hist;
-	t_exec			*exec;
-	t_order			*order;
 }				t_shell;
 
 typedef struct	s_tracking
@@ -167,175 +149,90 @@ typedef struct	s_tracking
 t_tracking		g_tracking;
 
 void			init_shell(char **environ);
-
 char			*ft_usrmode(mode_t mode);
-
 void			ft_printlist();
-
 char			*ft_true_pwd(void);
-
 int				get_key(void);
-
 int				yan_putchar(int c);
-
 void			get_term(void);
-
 void			ft_siginit(void);
-
 void			set_back_term(void);
-
 void			ft_colorstat(void);
-
 int				clear_screen3(void);
-
 int				clear_screen2(void);
-
 void			update_pos(void);
-
 void			add_to_str(char *str);
-
 void			rem_from_str(void);
-
 void			rem_from_str_del(void);
-
 void			get_size(void);
-
 int				utf_byte(char c);
-
 int				utf_strlen(char *str);
-
 int				get_nb_char(unsigned char c);
-
 int				utf_goto(char *str, int j);
-
 void		    print_line(void);
-
 void			correct_pos(void);
-
 void			back_to_pos(void);
-
 void			move_to_end();
-
 void			move_left(void);
-
 void			move_right(void);
-
 void			back_home(void);
-
 void			go_to_pos(void);
-
 void			cursorinit(void);
-
 void			cursor_reset(void);
-
 void			move_up(void);
-
 int				check_up(void);
-
 void			move_down(void);
-
 int				check_down(void);
-
 void			next_word(void);
-
 void			prev_word();
-
 int				rev_utf_goto(char *str, int j);
-
 void			begin_cpy(void);
-
 void			begin_paste(void);
-
 void			print_line_cpy(int start, int end);
-
 t_lstcontainer	*modified_ls(int argc, char **argv);
-
 int				auto_complete(void);
-
 void			get_line_col(void);
-
 void			get_max_size(void);
-
 void			ft_strpadding(void);
-
 t_lstcontainer	*build_ls(void);
-
 int				ft_easyprint(t_list *liste);
-
 void			print_list(void);
-
 void			build_comp(t_lstcontainer *list);
-
 void			completion_loop(t_lstcontainer *list);
-
 void			complete_usr_word(void);
-
 void			complete_usr_var(void);
-
 void			rem_str(char *str);
-
 void			assign_type(void);
-
 void			clean_up_autoc(void);
-
 int				ft_menuline(void);
-
 char			*send_color(int i);
-
 void			color(t_list *liste);
-
 int				print_menu(void);
-
 void			end_autocomplete(int i);
-
 void			build_bin_lst(void);
-
 t_list			*move_arround(t_list *buf, int i);
-
 void			set_up_page(void);
-
 t_lstcontainer *build_page_lst(t_lstcontainer *list);
-
 void			build_var_lst();
-
 void			print_list2(t_lstcontainer *list);
-
 void			change_page(int i, t_lstcontainer *list);
-
 void			join_page_nbr(void);
-
 void			line_per_page(void);
-
 void			escape_path(void);
-
 t_lstcontainer	*change_dir(void);
-
 int				init_alias(void);
-
 int				add_alias(char *alias);
-
 t_keyval		*parse_alias(char *alias);
-
 int				ft_build_test(char *string);
-
 int				two_arg(char **argv);
-
 int				three_arg(char **argv);
-
 t_lstcontainer	*type_ls(int argc, char **argv);
-
 char			*get_env_string(char *str);
-
 t_lstcontainer	*ft_env_to_lst(char **environ);
-
 int				replace_env_str(char *s1, char *s2);
-
 void			ft_add_env_string(char *s1, char *s2);
-
 char			*remove_env_string(char *str);
-
 char			*ft_true_pwd(void);
-
 void			add_missing_string();
 
 
@@ -345,11 +242,18 @@ int								get_last();
 int								go_to(int i);
 int								history_up(void);
 int								history_down(void);
-t_hist                         	*hist_lst_create(char *line);
-void                            hist_lst_add_next(t_hist *hist, char *line);
-void                            hist_print(t_hist *hist);
-t_hist                          *hist_free(t_hist *hist);
-void                            hist_save_file(t_hist *s_hist);
-t_hist                          *hist_remap_index(t_hist *hist);
-t_hist                          *hist_delete_index(t_hist *hist, int index);
+t_hist							*hist_lst_create(char *line);
+void							hist_lst_add_next(t_hist *hist, char *line);
+void							hist_print(t_hist *hist);
+t_hist							*hist_free(t_hist *hist);
+void							hist_save_file(t_hist *s_hist);
+t_hist							*hist_remap_index(t_hist *hist);
+t_hist							*hist_delete_index(t_hist *hist, int index);
+
+
+void							ft_ast(t_last *list_command);
+void							execute_ast(t_tree *tree, t_last *list);
+t_last							*convert_list(t_last *list);
+
+
 #endif

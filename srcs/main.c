@@ -6,12 +6,25 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/15 10:14:09 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/17 06:16:27 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
+
+void	print_last(t_last *list)
+{
+	t_last		*temp;
+
+	temp = list;
+	while (list)
+	{
+		printf("CMD = %s ET TYPE = %d\n", list->name, list->type);
+		list = list->next;
+	}
+	list = temp;
+}
 
 int		main(int argc, char **argv, char **env)
 {
@@ -20,7 +33,6 @@ int		main(int argc, char **argv, char **env)
 	t_env	st_env;
 	t_last	*cmd;
 	char	*prompt;
-	t_tab_arg	*tab_arg;
 
 	line = NULL;
 	argc = 0;
@@ -47,14 +59,8 @@ int		main(int argc, char **argv, char **env)
 		}
 		else if (line && (cmd = ft_parseur(line)))
 		{
-		/*	while (cmd)
-			{
-				printf("NAME = %s\n", cmd->name);
-				printf("TYPE = %d\n", cmd->type);
-				cmd = cmd->next;
-			}*/
-			tab_arg = convert_to_list_tab(cmd);
-			ft_ast(tab_arg);
+			cmd = convert_list(cmd);
+			ft_ast(cmd);
 		}
 		//ft_build_test(line);
 		free(line);

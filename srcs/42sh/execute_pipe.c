@@ -6,17 +6,17 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/15 02:28:40 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/18 01:34:51 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
 
-#define ORDER g_tracking.mysh->order
-#define EXEC g_tracking.mysh->exec
+//#define ORDER g_tracking.mysh->order
+//#define EXEC g_tracking.mysh->exec
 
-void		execute_two(void)
+/*void		execute_two(void)
 {
 	if ((ORDER->command = test_exist_fonction(ORDER->command)))
 	{
@@ -34,17 +34,24 @@ void		execute_pipe_two(int fd)
 	int		status;
 	int		j;
 	pid_t	pid0;
-	g_tracking.mysh->exec->pid_exec = (pid0 = fork());
+	pid0 = fork();
 	if (pid0 == 0)
 	{
+		dprintf(2, "EXEC= %s\n", EXEC->left->tab_test[0]);
+		dprintf(2, "TYPE= %d\n", EXEC->left->type);
+		while (EXEC->left->type != CMD)
+		{
+				EXEC->left = EXEC->left->next;
+		}
 		if (fd != 0)
 			dup2(fd, 1);
 		close(descrf_two[1]);
 		dup2(descrf_two[0], 0);
 		close(descrf_two[0]);
-		if ((ORDER->command = test_exist_fonction(ORDER->command)))
+		if ((EXEC->left->tab_test = test_exist_fonction(EXEC->left->tab_test)))
 		{
-			execve(ORDER->command[0], ORDER->command, NULL);
+			//close(1);
+			execve(EXEC->left->tab_test[0], EXEC->left->tab_test, NULL);
 			perror("FAIL");
 		}
 		else
@@ -66,7 +73,7 @@ void		execute_pipe(void)
 	int		j;
 	int		status;
 
-	g_tracking.mysh->exec->pid_exec = (pid0 = fork());
+	pid0 = fork();
 	if (pid0 == 0)
 	{
 		close(descrf_two[0]);
@@ -85,4 +92,4 @@ void		execute_pipe(void)
 	if (j != 0)
 		EXEC->ret = -1;
 	return ;
-}
+}*/

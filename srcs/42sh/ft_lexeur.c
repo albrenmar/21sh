@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 01:41:13 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/15 09:00:22 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/17 05:10:29 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,12 +122,7 @@ void	ft_lexeur(t_last *list_cmd)
 	i = 0;
 	while (list_cmd)
 	{
-		if (list_cmd->name[0] == '(' || list_cmd->name[0] == ')')
-		{
-			list_cmd->type = PA;
-			list_cmd = list_cmd->next;
-		}
-		else if (list_cmd->name[0] > 47 && list_cmd->name[0] < 58)
+		if (list_cmd->name[0] > 47 && list_cmd->name[0] < 58)
 		{
 			while (list_cmd->name[i] > 47 && list_cmd->name[i] < 58)
 				i++;
@@ -143,24 +138,19 @@ void	ft_lexeur(t_last *list_cmd)
 			}
 			else
 			{
-				list_cmd->type = ARG;
+				if (!list_cmd->prev || (list_cmd->prev && (list_cmd->prev->type == OP || list_cmd->prev->type == DESCR)))
+					list_cmd->type = CMD;
+				else
+					list_cmd->type = ARG;
 				list_cmd = list_cmd->next;
 			}
 		}
 		else if (list_cmd->name[0] == ';' || list_cmd->name[0] == '|' || list_cmd->name[0] == '>' || list_cmd->name[0] == '<' || list_cmd->name[0] == '&')
 		{
-			/*if (ft_strlen(list_cmd->name) != 2 && list_cmd->name[1] == '&')
-			{
-				list_cmd->type = DESCR;
-				list_cmd = list_cmd->next;
-			}
-			else
-			{*/
-				list_cmd->type = OP;
-				list_cmd = list_cmd->next;
-			//}
+			list_cmd->type = OP;
+			list_cmd = list_cmd->next;
 		}
-		else if (!list_cmd->prev || (list_cmd->prev && (list_cmd->prev->type == OP || list_cmd->prev->type == PA)))
+		else if (!list_cmd->prev || (list_cmd->prev && (list_cmd->prev->type == OP)))
 		{
 			list_cmd->type = CMD;
 			list_cmd = list_cmd->next;
@@ -172,7 +162,7 @@ void	ft_lexeur(t_last *list_cmd)
 		}
 		else
 		{
-			list_cmd->type = ARG;
+			list_cmd->type = CMD;
 			list_cmd = list_cmd->next;
 		}
 	}
