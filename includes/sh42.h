@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/17 09:01:34 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/18 03:51:12 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define SH42_H
 # include "libft.h"
 # include "ft_ls.h"
-# include "expansions.h"
 # include "minishell.h"
+# include "expansions.h"
+# include "set.h"
 # include <sys/ioctl.h>
 # include <sys/types.h>
 # include <sys/wait.h>

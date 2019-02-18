@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/17 10:05:15 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/18 05:52:43 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,5 @@ char			*varname(char *var, t_expand *to_run);
 char			*value(char *val, t_expand *start);
 char			*value_asterisk(char *val, t_expand *start);
 int				have_envname(char *var);
-void			add_to_env_set(char *varname, char *varvalue);
-t_env_set		*new_envset(char *varname, char *varvalue);
 
 #endif

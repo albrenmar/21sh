@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/16 05:13:30 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/18 04:06:24 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #define ORDER g_tracking.mysh->order
 #define EXEC g_tracking.mysh->exec
 
-char			**init_envp(t_lstcontainer *env);
 
 void		execute_two(void)
 {
@@ -39,7 +38,7 @@ void		execute_pipe_two(int fd)
 	int		j;
 	pid_t	pid0;
 	g_tracking.mysh->exec->pid_exec = (pid0 = fork());
-	if (pid0 == 0)
+	if (pid0 == 0 && !ft_strequ(ORDER->command[0], "set"))
 	{
 		if (fd != 0)
 		{
@@ -57,6 +56,11 @@ void		execute_pipe_two(int fd)
 		{
 			exit(-1);
 		}
+	}
+	else if (ft_strequ(ORDER->command[0], "set"))
+	{
+		show_setenv();
+		j = 0;
 	}
 	else
 	{
