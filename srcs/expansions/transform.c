@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/16 03:11:55 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/18 07:00:56 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ void	transform(t_expand *expand, char **str)
 		else
 			break ;
 	}
-	expand = first_letter;
+//	expand = first_letter;
+	delete_list_expand(&first_letter);
 }
