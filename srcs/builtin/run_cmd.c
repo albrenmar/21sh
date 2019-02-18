@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 09:26:54 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/10 15:37:44 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/02/18 12:32:23 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,11 +116,11 @@ void			ft_run_command(t_core *core)
 		which_builtin(core);
 	else if (ft_strcmp(core->arg[0], "exit") == 0)
 		exit_builtin(core);
-	else if ((tmp = test_command(core, 0)) != NULL)
-		exec_cmd(core, tmp);
 	// history builtin
 	else if (ft_strcmp(core->arg[0], "history") == 0)
 		history_builtin(core);
+	else if ((tmp = test_command(core, 0)) != NULL)
+		exec_cmd(core, tmp);
 	else
 	{
 		ft_putstr_fd(NOT_FOUND, 2);

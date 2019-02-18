@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:53:06 by hdufer            #+#    #+#             */
-/*   Updated: 2019/02/01 15:01:57 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/02/18 16:48:41 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,26 @@ void		history_builtin_delete_index(t_core *core, int j)
 {
 	char tmp[100000];
 	int i[2];
+	t_hist *tmp_hist;
+
+	tmp_hist = NULL;
 	i[0] = 0;
 	i[1] = 0;
+	if (core->arg[2] && ft_atoi(core->arg[2]) == 1)
+		{
+			while (core->hist->previous)
+				core->hist = core->hist->previous;
+			if (core->hist->next)
+			{
+				tmp_hist = core->hist;
+				core->hist = core->hist->next;
+			}
+			free(tmp_hist->line);
+			free(tmp_hist);
+			core->hist->previous = NULL;
+			hist_remap_index(core->hist);
+			return ;
+		}
 	if (!(core->arg[1][j+1]) && (core->arg[2]))
 	{
 		if (ft_isdigit(core->arg[2][i[1]]))
@@ -99,6 +117,8 @@ void		history_builtin_minus(t_core *core)
 					hist_file_to_lst(core);
 				if (!(flags & 64) && core->arg[1][i] == 'p' && (flags |= 64))
 					history_builtin_p(core);
+				if (!(flags & 128) && core->arg[1][i] == 's' && (flags |= 128))
+					history_builtin_s(core);
 				i++;
 			}
 			i = 1;

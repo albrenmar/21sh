@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/02/03 14:03:46 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/02/18 17:10:55 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void		history_builtin_p(t_core *core)
 {
 	int i;
 	int j;
-	char **tab;
+	// char *tmp;
 
 	i = 1;
 	j = 2;
@@ -113,50 +113,51 @@ void		history_builtin_p(t_core *core)
 			hist_delete_index(core->hist, core->hist->next->index);
 		}
 		else
-		{
 			hist_free(core->hist);
-			core->hist = 0;
-		}
-		
 	}
-	while (core->arg[j])
+	if (core->arg[j][0] == '!')
 	{
-		if (core->arg[j][0] == '!')
+		if (ft_strlen(core->arg[j]) == 1)
+			return ft_putendl(core->arg[j]);
+		while (core->arg[j][i])
 		{
-			while(ft_strlen(core->hist->line) <= (ft_strlen(core->arg[j])-1))
-			{
-				while (core->hist->line[i])
-				{
-					if (ft_isalnum(core->arg[j][i]) == 0)
-						return ft_putendl_fd("Event not found", 2);
-					i++;
-				}
-				i = 1;
-				if (ft_strncmp(&core->arg[j][1], core->hist->line, (ft_strlen(core->arg[j])-1)) != 0)
-					{
-					if (core->hist->previous)
-						core->hist = core->hist->previous;
-					else
-						return ft_putendl_fd("Event not found", 2);
-					}
-				else
-				{
-					i = 0;
-					tab = malloc(sizeof(tab));
-					tab = ft_split_whitespaces(core->hist->line);
-					while(tab[i])
-						ft_putendl(tab[i++]);
-					return ;
-				}
+			if (ft_isalnum(core->arg[j][i]) == 0)
+				return ft_putendl_fd("Event not found", 2);
+			i++;
+		}
+		i = 1;
+		while (ft_strncmp(&core->arg[j][1], core->hist->line, (ft_strlen(core->arg[j])-1)) != 0)
+		{
+			if (core->hist->previous)
+				core->hist = core->hist->previous;
+			else
+				return ft_putendl_fd("Event not found", 2);
 			}
-			ft_putendl_fd("Event not found", 2);
-			j++;
-		}
-		else
-		{
-			ft_putendl(core->arg[j++]);
-		}
+		// ft_putendl(core->hist->line);
+		// if ((tmp = test_command(core, 0)) != NULL)
+		// 	exec_cmd(core, tmp);
+		// else // SHEBANG
+		// {
+		// 	ft_putstr_fd(NOT_FOUND, 2);
+		// 	ft_putendl_fd(core->arg[0], 2);
+		// }
+		return ;
+		j++;
 	}
+	else
+	{
+		while (core->arg[j])
+			ft_putendl(core->arg[j++]);
+	}
+	if (ft_strchr(core->arg[1], 's') != NULL)
+		{
+			j = 2;
+			while (core->arg[j])
+			{
+				hist_lst_add_next(core->hist, core->arg[j]);
+				j++;
+			}
+		}
 }
 // Faire s'execute avec des !command (shebang)
 // Prend la derniere commannde a partir de la fin

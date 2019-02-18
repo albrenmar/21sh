@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/02/03 13:53:53 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/02/18 16:53:20 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		hist_lst_add_next(t_hist *hist,char *line)
 {
 	t_hist	*new_node;
 
-	while (hist->next != NULL)
+	while (hist->next && hist->next != NULL)
 		hist = hist->next;
 	new_node = ft_memalloc(sizeof(*new_node));
 	new_node->index = hist->index + 1;
@@ -68,6 +68,7 @@ void		hist_print(t_hist *hist)
 			break;
 	}
 }
+
 // Create a new list
 t_hist		*hist_lst_create(char *line)
 {
@@ -80,6 +81,7 @@ t_hist		*hist_lst_create(char *line)
 	new_lst->previous = NULL;
 	return (new_lst);
 }
+
 // free/clear the history_lst and the file
 t_hist		*hist_free(t_hist *hist)
 {
@@ -96,5 +98,6 @@ t_hist		*hist_free(t_hist *hist)
 			free(tmp);
 		}
 	}
+	hist = NULL;
 	return (hist);
 }

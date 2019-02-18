@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 09:25:57 by hdufer            #+#    #+#             */
-/*   Updated: 2019/02/03 11:58:00 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/02/18 14:32:39 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,4 +130,5 @@ void				hist_save_file_w(t_hist *hist,char *path);
 void				history_builtin_digit(t_core *core);
 int					ft_isdigit_str(char* str);
 void				history_builtin_p(t_core *core);
+void				history_builtin_s(t_core *core);
 #endif
