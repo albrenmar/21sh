@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 01:46:30 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/31 11:30:19 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/19 06:33:06 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_last	*create_new_list(void)
 	list->name = NULL;
 	list->next = NULL;
 	list->prev = NULL;
+	list->prev_wihtout_descr = NULL;
 	return (list);
 }
 

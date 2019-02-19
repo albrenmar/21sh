@@ -6,7 +6,7 @@
 #    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/17 06:16:05 by alsomvil         ###   ########.fr        #
+#    Updated: 2019/02/19 04:22:46 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC = main.c \
 	  42sh/ft_lexeur.c \
 	  42sh/ft_modif_list.c \
 	  42sh/ft_ast.c \
+	  42sh/its_token.c \
 	  42sh/execute_ast.c \
 	  42sh/execute_pipe.c \
 	  42sh/add_path_to_bin.c \

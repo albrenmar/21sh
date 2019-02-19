@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/18 01:31:32 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/19 06:04:35 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 # define PO line[*i] && line[*i] == '('
 # define PF line[*i] && line[*i] == ')'
 # define GO line[*i] == '"'
-#define SEP 1
-#define OP 2
-#define CMD 3
-#define ARG 4
-#define OPT 5
-#define PATH 6
+#define CMD 1
+#define OPT 2
+#define ARG 3
+#define FICH 4
+#define OP 5
+#define SEP 6
 #define DESCR 7
+#define PATH 8
 
 # include "ft_printf.h"
 //# include "sh42.h"
@@ -55,6 +56,7 @@ typedef struct	s_last
 	char			*name;
 	struct s_last	*next;
 	struct s_last	*prev;
+	struct s_last	*prev_wihtout_descr;
 }				t_last;
 
 
@@ -104,20 +106,18 @@ t_last			*ft_analize(char *line);
 int				add_alias(char *alias);
 void			print_alias_lst(void);
 int				unalias(char *alias);
+
+
+
 void			insert_node(t_last *ref_node, t_last *insert);
 t_last			*create_new_list(void);
-void			ft_lexeur(t_last *list_cmd);
 int				error_lexer(t_last *list_cmd);
-void			tri_lexer(t_last *list_cmd);
-t_last			*ft_parseur(char *line);
 void			execute_pipe(void);
 void			execute_pipe_two(int fd);
 //void			test_pipe(void);
 void			test_redir(void);
 char			**test_exist_fonction(char **tab_cmd);
 void			execute_two(void);
-void			add_to_exec(int mode);
-void			exec_command(void);
 void			print_last(t_last *list);
 
 #endif

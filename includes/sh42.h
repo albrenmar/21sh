@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/18 03:23:01 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/19 05:39:35 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,11 +119,19 @@ typedef struct	s_tree
 	struct s_tree	*left;
 }				t_tree;
 
+typedef struct	s_set_fd
+{
+	int		STDIN;
+	int		STDOUT;
+	int		STDERR;
+}				t_set_fd;
+
 typedef struct	s_shell
 {
 	t_lstcontainer	*alias_lst;
 	t_lstcontainer	*env;
 	t_hist			*hist;
+	t_fd			*set_fd;
 }				t_shell;
 
 typedef struct	s_tracking
@@ -251,9 +259,17 @@ t_hist							*hist_remap_index(t_hist *hist);
 t_hist							*hist_delete_index(t_hist *hist, int index);
 
 
+t_last							*ft_parseur(char *line);
+void							ft_lexeur(t_last *list_cmd);
+void							tri_lexer(t_last *list_cmd);
 void							ft_ast(t_last *list_command);
-void							execute_ast(t_tree *tree, t_last *list);
-t_last							*convert_list(t_last *list);
+void							execute_ast(t_tree *tree);
+int								exec_command(t_last *list);
+void							convert_list(t_last *list);
+int								its_reddir(t_last *list);
+int								its_fd_reddir(t_last *list);
+int								its_pipe(t_last *list);
+int								its_separator(t_last *list);
 
 
 #endif

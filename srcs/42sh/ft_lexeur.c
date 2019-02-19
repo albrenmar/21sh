@@ -6,44 +6,12 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 01:41:13 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/17 05:10:29 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/19 04:19:11 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
-
-
-void	tri_lexer(t_last *list_cmd)
-{
-	t_last	*temp;
-	t_last	*temp_pipe;
-
-	temp = list_cmd;
-	temp_pipe = NULL;
-	while (list_cmd)
-	{
-		if (list_cmd->type == OP && list_cmd->name[0] == '>')
-		{
-			if (list_cmd->next && list_cmd->next->name[0] == '|' && ft_strlen(list_cmd->next->name) ==  1)
-			{
-				if (list_cmd->next->next && list_cmd->next->next->next)
-					temp_pipe = list_cmd->next->next->next;
-			}
-			else if (list_cmd->next && list_cmd->next->next)
-				temp_pipe = list_cmd->next->next;
-			if (temp_pipe && (temp_pipe->type == ARG || temp_pipe->type == OPT))
-			{
-				insert_node(list_cmd, temp_pipe);
-				temp_pipe = NULL;
-				list_cmd = temp;
-			}
-			else
-				list_cmd = list_cmd->next;
-		}
-		else
-			list_cmd = list_cmd->next;
-	}
-}
+//#include "../../includes/minishell.h"
+#include "../../includes/sh42.h"
 
 int		error_lexer(t_last *list_cmd)
 {

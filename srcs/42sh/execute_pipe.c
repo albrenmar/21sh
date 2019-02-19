@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/18 01:34:51 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/19 02:04:54 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 		exit(-1);
 	}
 }
-
-void		execute_pipe_two(int fd)
+*/
+/*void		execute_pipe_two(int fd)
 {
 	int		status;
 	int		j;
@@ -37,20 +37,11 @@ void		execute_pipe_two(int fd)
 	pid0 = fork();
 	if (pid0 == 0)
 	{
-		dprintf(2, "EXEC= %s\n", EXEC->left->tab_test[0]);
-		dprintf(2, "TYPE= %d\n", EXEC->left->type);
-		while (EXEC->left->type != CMD)
-		{
-				EXEC->left = EXEC->left->next;
-		}
-		if (fd != 0)
-			dup2(fd, 1);
 		close(descrf_two[1]);
 		dup2(descrf_two[0], 0);
 		close(descrf_two[0]);
 		if ((EXEC->left->tab_test = test_exist_fonction(EXEC->left->tab_test)))
 		{
-			//close(1);
 			execve(EXEC->left->tab_test[0], EXEC->left->tab_test, NULL);
 			perror("FAIL");
 		}
@@ -73,6 +64,8 @@ void		execute_pipe(void)
 	int		j;
 	int		status;
 
+	descrf[0] = descrf_two[0];
+	descrf[1] = descrf_two[1];
 	pid0 = fork();
 	if (pid0 == 0)
 	{

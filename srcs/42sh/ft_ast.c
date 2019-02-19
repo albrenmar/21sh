@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 02:25:05 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/18 04:06:50 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/19 06:54:07 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,11 +111,14 @@ void		ft_ast(t_last *list_command)
 	pipe(descrf);
 	pipe(descrf_two);
 
-	//print_last(list_command);
 	tree = new_branch();
 	create_ast(tree, list_command);
-	//affich_ast(tree);
-	execute_ast(tree, list_command);
-	exit (0);
+	if (tree->type == SEP)
+	{
+		printf("MABITE\n");
+		execute_ast(tree);
+	}
+	else
+		exec_command(tree->list_cmd);
 	return ;
 }

@@ -6,11 +6,12 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/16 01:55:07 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/19 05:10:17 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+//#include "../../includes/minishell.h"
+#include "../../includes/sh42.h"
 
 char	*check_quote(char *line, int *i, int *nb)
 {
@@ -139,7 +140,7 @@ t_last	*ft_parseur(char *line)
 	ft_lexeur(list_cmd);
 	if (error_lexer(list_cmd))
 		return (NULL);
-	if (list_cmd)
-		tri_lexer(list_cmd);
+	/*if (list_cmd)
+		tri_lexer(list_cmd);*/
 	return (list_cmd);
 }
