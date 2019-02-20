@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/20 11:37:41 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 14:26:16 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ typedef struct	s_shell
 	t_lstcontainer	*alias_lst;
 	t_lstcontainer	*env;
 	t_hist			*hist;
-	t_fd			*set_fd;
+	t_set_fd		*set_fd;
 }				t_shell;
 
 typedef struct	s_tracking
@@ -259,6 +259,7 @@ t_hist							*hist_remap_index(t_hist *hist);
 t_hist							*hist_delete_index(t_hist *hist, int index);
 
 
+t_last							*create_new_list(void);
 t_last							*ft_parseur(char *line);
 void							ft_lexeur(t_last *list_cmd);
 void							tri_lexer(t_last *list_cmd);
@@ -274,6 +275,9 @@ char							**create_tab_to_exec(t_last *list);
 void							execute_pipe(char **tab_exec);
 void							execute_two(char **tab_cmd);
 void							execute_pipe_two(char **tab_exec);
+char							**test_exist_fonction(char **tab_cmd);
+int								error_lexer(t_last *list_cmd);
+void							create_fich(t_last *list);
 
 
 #endif

@@ -6,11 +6,10 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/20 11:49:41 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 14:26:27 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
 
 //#define ORDER g_tracking.mysh->order
@@ -39,6 +38,12 @@ void		execute_pipe_two(char **tab_exec)
 	pid0 = fork();
 	if (pid0 == 0)
 	{
+		if (g_tracking.mysh->set_fd->STDIN != 0)
+			dup2(g_tracking.mysh->set_fd->STDIN, 0);
+		if (g_tracking.mysh->set_fd->STDOUT != 1)
+			dup2(g_tracking.mysh->set_fd->STDOUT, 1);
+		if (g_tracking.mysh->set_fd->STDERR != 2)
+			dup2(g_tracking.mysh->set_fd->STDERR, 2);
 		close(descrf_two[1]);
 		dup2(descrf_two[0], 0);
 		close(descrf_two[0]);
@@ -66,6 +71,12 @@ void		execute_pipe(char **tab_exec)
 	pid0 = fork();
 	if (pid0 == 0)
 	{
+		if (g_tracking.mysh->set_fd->STDIN != 0)
+			dup2(g_tracking.mysh->set_fd->STDIN, 0);
+		if (g_tracking.mysh->set_fd->STDOUT != 1)
+			dup2(g_tracking.mysh->set_fd->STDOUT, 1);
+		if (g_tracking.mysh->set_fd->STDERR != 2)
+			dup2(g_tracking.mysh->set_fd->STDERR, 2);
 		close(descrf_two[0]);
 		dup2(descrf_two[1], 1);
 		close(descrf_two[1]);

@@ -6,7 +6,7 @@
 #    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/20 10:50:32 by alsomvil         ###   ########.fr        #
+#    Updated: 2019/02/20 14:26:08 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = main.c \
 	  42sh/add_path_to_bin.c \
 	  42sh/create_tab_to_exec.c \
 	  42sh/convert_list.c \
+	  42sh/create_fich.c \
 	  GNL/term_setup.c \
 	  GNL/stringsearch.c \
 	  GNL/signals.c \
