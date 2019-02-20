@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 06:04:35 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 11:37:43 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,9 @@ int				unalias(char *alias);
 void			insert_node(t_last *ref_node, t_last *insert);
 t_last			*create_new_list(void);
 int				error_lexer(t_last *list_cmd);
-void			execute_pipe(void);
-void			execute_pipe_two(int fd);
 //void			test_pipe(void);
 void			test_redir(void);
 char			**test_exist_fonction(char **tab_cmd);
-void			execute_two(void);
 void			print_last(t_last *list);
 
 #endif

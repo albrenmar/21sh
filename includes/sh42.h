@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/19 05:39:35 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 11:37:41 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,6 +270,10 @@ int								its_reddir(t_last *list);
 int								its_fd_reddir(t_last *list);
 int								its_pipe(t_last *list);
 int								its_separator(t_last *list);
+char							**create_tab_to_exec(t_last *list);
+void							execute_pipe(char **tab_exec);
+void							execute_two(char **tab_cmd);
+void							execute_pipe_two(char **tab_exec);
 
 
 #endif

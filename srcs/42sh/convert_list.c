@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 07:07:00 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 08:45:13 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 10:26:47 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		convert_list(t_last *list)
 	{
 		if (list->type == DESCR)
 			;
-		else if (!PREV || (PREV && (its_pipe(PREV) || PREV->type == SEP)))
+		else if (!its_reddir(list) && !its_fd_reddir(list) && (!PREV || (PREV && (its_pipe(PREV) || PREV->type == SEP))))
 			LIST = CMD;
 		else if (its_pipe(list) || its_reddir(list) || its_fd_reddir(list))
 			LIST = OP;

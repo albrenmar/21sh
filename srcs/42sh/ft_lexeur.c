@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 01:41:13 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 04:19:11 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 10:28:26 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int		error_lexer(t_last *list_cmd)
 {
-	if (list_cmd && list_cmd->type == OP)
+	if (list_cmd && list_cmd->type == OP && !its_reddir(list_cmd) && !its_fd_reddir(list_cmd))
 	{
 		printf("Error\n");
 		return (1);

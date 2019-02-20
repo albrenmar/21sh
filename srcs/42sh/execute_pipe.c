@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 09:29:52 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 11:49:41 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 //#define ORDER g_tracking.mysh->order
 //#define EXEC g_tracking.mysh->exec
 
-/*void		execute_two(void)
+void		execute_two(char **tab_exec)
 {
-	if ((ORDER->command = test_exist_fonction(ORDER->command)))
+	if ((tab_exec = test_exist_fonction(tab_exec)))
 	{
-		execve(ORDER->command[0], ORDER->command, NULL);
+		execve(tab_exec[0], tab_exec, NULL);
 		perror("FAIL");
 	}
 	else
@@ -28,37 +28,33 @@
 		exit(-1);
 	}
 }
-*/
-/*void		execute_pipe_two(int fd)
+
+
+void		execute_pipe_two(char **tab_exec)
 {
 	int		status;
 	int		j;
 	pid_t	pid0;
+
 	pid0 = fork();
 	if (pid0 == 0)
 	{
 		close(descrf_two[1]);
 		dup2(descrf_two[0], 0);
 		close(descrf_two[0]);
-		if ((EXEC->left->tab_test = test_exist_fonction(EXEC->left->tab_test)))
-		{
-			execve(EXEC->left->tab_test[0], EXEC->left->tab_test, NULL);
-			perror("FAIL");
-		}
-		else
-			exit(-1);
+		execute_two(tab_exec);
 	}
 	else
 	{
 		waitpid(pid0, &status, WUNTRACED);
 		j = WEXITSTATUS(status);
 	}
-	if (j != 0)
-		EXEC->ret = -1;
+	/*if (j != 0)
+		EXEC->ret = -1;*/
 	return ;
 }
 
-void		execute_pipe(void)
+void		execute_pipe(char **tab_exec)
 {
 	pid_t	pid0;
 	int		j;
@@ -66,6 +62,7 @@ void		execute_pipe(void)
 
 	descrf[0] = descrf_two[0];
 	descrf[1] = descrf_two[1];
+	pipe(descrf_two);
 	pid0 = fork();
 	if (pid0 == 0)
 	{
@@ -75,14 +72,14 @@ void		execute_pipe(void)
 		close(descrf[1]);
 		dup2(descrf[0], 0);
 		close(descrf[0]);
-		execute_two();
+		execute_two(tab_exec);
 	}
 	else
 	{
 		close(descrf_two[1]);
 		j = WEXITSTATUS(status);
 	}
-	if (j != 0)
-		EXEC->ret = -1;
+	/*if (j != 0)
+		EXEC->ret = -1;*/
 	return ;
-}*/
+}

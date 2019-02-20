@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 04:18:28 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 06:52:24 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 09:16:42 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		its_pipe(t_last *list)
 	int		i;
 
 	i = 0;
-	if (list->name[i] && ft_strlen(list->name) == 1 && list->name[i] == '|')
+	if (list && list->name[i] && ft_strlen(list->name) == 1 && list->name[i] == '|')
 		return (1);
 	return (0);
 }
