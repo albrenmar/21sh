@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 05:10:17 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 17:24:58 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,6 @@ char	*recup_cmd(char *line, int *i, int nb)
 					nb++;
 					(*i)++;
 				}
-				while (line[nb] > 47 && line[nb] < 58)
-				{
-					nb++;
-					(*i)++;
-				}
-				if (line[nb] == '-')
-				{
-					nb++;
-					(*i)++;
-				}
 				test = ft_strndup(line, nb);
 			}
 		}
@@ -80,19 +70,6 @@ char	*recup_cmd(char *line, int *i, int nb)
 					{
 						nb++;
 						(*i)++;
-						if (line[nb] == '-')
-						{
-							nb++;
-							(*i)++;
-						}
-						else
-						{
-							while (line[nb] > 47 && line[nb] < 58)
-							{
-								nb++;
-								(*i)++;
-							}
-						}
 					}
 					break ;
 				}
@@ -140,7 +117,5 @@ t_last	*ft_parseur(char *line)
 	ft_lexeur(list_cmd);
 	if (error_lexer(list_cmd))
 		return (NULL);
-	/*if (list_cmd)
-		tri_lexer(list_cmd);*/
 	return (list_cmd);
 }

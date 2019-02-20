@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 06:50:10 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 17:43:20 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,6 @@ void	print_last(t_last *list)
 		list = list->next;
 	}
 	list = temp;
-}
-
-void	add_without_descr(t_last *list)
-{
-	t_last	*temp;
-
-	temp = NULL;
-	while (list)
-	{
-		if (temp != NULL)
-			list->prev_wihtout_descr = temp;
-		if (list->type != DESCR)
-		{
-			temp = list;
-		}
-		list = list->next;
-	}
 }
 
 int		main(int argc, char **argv, char **env)
@@ -76,7 +59,6 @@ int		main(int argc, char **argv, char **env)
 		}
 		else if (line && (cmd = ft_parseur(line)))
 		{
-			add_without_descr(cmd);
 			convert_list(cmd);
 			ft_ast(cmd);
 		}

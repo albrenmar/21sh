@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 07:07:00 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/20 10:26:47 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 17:44:52 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
 
-#define PREV list->prev_wihtout_descr
+#define PREV list->prev
 #define LIST list->type
 
 t_last		*new_list(void)
@@ -25,7 +25,6 @@ t_last		*new_list(void)
 	new->name = NULL;
 	new->next = NULL;
 	new->prev = NULL;
-	new->prev_wihtout_descr = NULL;
 	return (new);
 }
 
@@ -36,9 +35,7 @@ void		convert_list(t_last *list)
 	begin = list;
 	while (list)
 	{
-		if (list->type == DESCR)
-			;
-		else if (!its_reddir(list) && !its_fd_reddir(list) && (!PREV || (PREV && (its_pipe(PREV) || PREV->type == SEP))))
+		if (!its_reddir(list) && !its_fd_reddir(list) && (!PREV || (PREV && (its_pipe(PREV) || PREV->type == SEP))))
 			LIST = CMD;
 		else if (its_pipe(list) || its_reddir(list) || its_fd_reddir(list))
 			LIST = OP;

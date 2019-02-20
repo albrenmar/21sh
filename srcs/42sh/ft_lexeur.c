@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 01:41:13 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/20 10:28:26 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 17:23:53 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,7 @@ void	ft_lexeur(t_last *list_cmd)
 		{
 			while (list_cmd->name[i] > 47 && list_cmd->name[i] < 58)
 				i++;
-			if ((list_cmd->name[i] == '>' || list_cmd->name[i] == '<') && list_cmd->name[i + 1] && list_cmd->name[i + 1] == '&')
-			{
-				list_cmd->type = DESCR;
-				list_cmd = list_cmd->next;
-			}
-			else if (list_cmd->name[i] == '>' || list_cmd->name[i] == '<')
+			if (list_cmd->name[i] == '>' || list_cmd->name[i] == '<')
 			{
 				list_cmd->type = OP;
 				list_cmd = list_cmd->next;

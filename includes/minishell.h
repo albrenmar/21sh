@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/20 14:26:12 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 17:47:57 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 #define PATH 8
 
 # include "ft_printf.h"
-//# include "sh42.h"
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <dirent.h>
@@ -56,7 +55,6 @@ typedef struct	s_last
 	char			*name;
 	struct s_last	*next;
 	struct s_last	*prev;
-	struct s_last	*prev_wihtout_descr;
 }				t_last;
 
 
@@ -106,9 +104,5 @@ t_last			*ft_analize(char *line);
 int				add_alias(char *alias);
 void			print_alias_lst(void);
 int				unalias(char *alias);
-
-
-
-void			print_last(t_last *list);
 
 #endif
