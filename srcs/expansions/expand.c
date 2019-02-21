@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/15 04:56:48 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/21 06:28:00 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,21 +76,29 @@ int			need_expand(char *to_transf)
 	return (0);
 }
 
-void		expand_transformer(t_last *cmd)
+void		scan_arg_transformer(char *arg)
 {
 	t_expand	*expand;
+	t_scan		*scan;
+
+	scan = NULL;
+	scan = new_scan();
+	scan_argument(arg, scan);
+	expand = NULL;
+	expand = new_expand(ft_strlen(arg));
+	create_list_expand(expand, arg);
+	transform(expand, &arg);
+}
+
+void		expand_transformer(t_last *cmd)
+{
 	t_last		*frst_cmd;
 
-	expand = NULL;
 	frst_cmd = cmd;
 	while (cmd && cmd->name)
 	{
 		if (need_expand(cmd->name))
-		{
-			expand = new_expand(ft_strlen(cmd->name));
-			create_list_expand(expand, cmd->name);
-			transform(expand, &cmd->name);
-		}
+			scan_arg_transformer(cmd->name);
 		ft_putendl(cmd->name);
 		if (cmd->next)
 			cmd = cmd->next;

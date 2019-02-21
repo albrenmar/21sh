@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/18 05:52:43 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/21 06:32:05 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,16 @@ typedef struct	s_env_set
 	struct s_keyval		*param;
 	struct s_env_set	*next;
 }				t_env_set;
+
+typedef struct 	s_scan
+{
+	int					start;
+	int					end;
+	char				*sstrsing;
+	int					error;
+	struct s_scan		*next;
+}				t_scan;
+
 
 void			expand_transformer(t_last *cmd);
 int				need_expand(char *to_transf);
@@ -79,5 +89,8 @@ char			*varname(char *var, t_expand *to_run);
 char			*value(char *val, t_expand *start);
 char			*value_asterisk(char *val, t_expand *start);
 int				have_envname(char *var);
+void			scan_arg_transformer(char *arg);
+t_scan			*new_scan(void);
+void			scan_argument(char *arg, t_scan *info_arg);
 
 #endif
