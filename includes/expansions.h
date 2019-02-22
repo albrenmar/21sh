@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/22 05:39:52 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/22 09:04:03 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ typedef struct	s_env_set
 
 typedef struct 	s_scan
 {
-	int					start;
-	int					end;
 	char				*sstrsing;
 	int					error;
 	struct s_scan		*next;
