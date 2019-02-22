@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 01:41:13 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/20 17:23:53 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/22 05:30:22 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	ft_lexeur(t_last *list_cmd)
 			}
 			else
 			{
-				if (!list_cmd->prev || (list_cmd->prev && (list_cmd->prev->type == OP || list_cmd->prev->type == DESCR)))
+				if (!list_cmd->prev || (list_cmd->prev && (list_cmd->prev->type == OP)))
 					list_cmd->type = CMD;
 				else
 					list_cmd->type = ARG;

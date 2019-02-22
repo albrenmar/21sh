@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/20 19:25:20 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/22 07:49:16 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ typedef struct	s_tree
 	t_last		*list_cmd;
 	struct s_tree	*right;
 	struct s_tree	*left;
+	struct s_tree	*prev;
 }				t_tree;
 
 typedef struct	s_set_fd
@@ -287,6 +288,7 @@ char							**test_exist_fonction(char **tab_cmd);
 int								error_lexer(t_last *list_cmd);
 void							create_fich(t_last *list);
 void							print_last(t_last *list);
+int								its_eper(t_last *list);
 
 
 #endif

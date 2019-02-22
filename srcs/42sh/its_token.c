@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 04:18:28 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/20 17:48:00 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/22 05:50:26 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,16 @@ int		its_fd_reddir(t_last *list)
 	while (list->name[i] && list->name[i] > 47 && list->name[i] < 58)
 		i++;
 	if (list->name[i] && list->name[i] == '>')
+		return (1);
+	return (0);
+}
+
+int		its_eper(t_last *list)
+{
+	int		i;
+
+	i = 0;
+	if (list && list->name[i] && ft_strlen(list->name) == 1 && list->name[i] == '&')
 		return (1);
 	return (0);
 }

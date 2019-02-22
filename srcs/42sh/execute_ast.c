@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/20 19:03:07 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/22 08:12:03 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,41 @@ void		execute_ast(t_tree *tree)
 	if (tree->type == SEP)
 	{
 		if (tree->left && tree->left->type != SEP)
-			ret = exec_command(tree->left->list_cmd);
+		{
+			printf("____________________________________-\n");
+			printf("EXECUTE JOBS [1]\n");
+			/*if (tree->prev)
+			{
+				printf("BACKGROUND ???? : %s\n", tree->prev->cmd);
+			}*/
+			print_last(tree->left->list_cmd);
+			//ret = exec_command(tree->left->list_cmd);
+			printf("____________________________________-\n");
+		}
 		else if (tree->left && tree->left->type == SEP)
 			execute_ast(tree->left);
-		printf("SUIVANT LE RETOUR AVANT [%s]\n", tree->cmd);
+		if (ft_strlen(tree->cmd) > 1)
+		{
+			printf("OOOOOOOOOOOOOOOOOOOOOOOOOOOO-\n");
+			printf("EN FONCTION DE [%s]\n", tree->cmd);
+			printf("OOOOOOOOOOOOOOOOOOOOOOOOOOOO-\n");
+		}
 		if (tree->right && tree->right->type != SEP)
-			ret = exec_command(tree->right->list_cmd);
+		{
+			printf("____________________________________-\n");
+			printf("EXECUTE JOBS [2]\n");
+			if (tree->prev)
+			{
+				printf("BACKGROUND ???? : %s\n", tree->prev->cmd);
+			}
+			print_last(tree->right->list_cmd);
+			printf("____________________________________-\n");
+			//ret = exec_command(tree->right->list_cmd);
+		}
 		else if (tree->right)
+		{
 			execute_ast(tree->right);
+		}
 	}
 	return ;
 }
