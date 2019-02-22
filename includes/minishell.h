@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/20 17:47:57 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/22 11:39:20 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,13 @@ typedef struct	s_env
 
 typedef struct	s_last
 {
+	int				check;
 	int				type;
 	char			*name;
 	struct s_last	*next;
 	struct s_last	*prev;
 }				t_last;
 
-
-typedef struct	s_cmd
-{
-	struct s_list	*beginlist;
-}				t_cmd;
 
 int				ft_strcmp(const char *s1, const char *s2);
 int				nb_env(char **env);

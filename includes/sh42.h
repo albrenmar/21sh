@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/22 07:49:16 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/22 12:34:13 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,47 @@ typedef struct	s_tracking
 	int					buffsize;
 	int					histindex;
 	int					histmax;
+	struct s_jobs		*jobs;
+	int					interactive;
+	int					lastreturn;
+	int					sterminal;
+	pid_t				spid;
+	int					bg;
+	int					fg;
+	int					lastplace;
+	char				**orderhold;
 }				t_tracking;
+
+typedef struct	s_cmd
+{
+	int				status;
+	struct s_cmd	*next;
+	pid_t			cpid;
+	int				done;
+	int				stopped;
+}				t_cmd;
+
+typedef struct	s_jobs
+{
+	int				currentback;
+	int				current;
+	int				startback;
+	struct s_jobs	*next;
+	struct s_jobs	*prev;
+	char			*name;
+	char			wd[4096 + 1];
+	int				stdin;
+	int				stdout;
+	int				stderr;
+	int				place;
+	int				background;
+	pid_t			jpid;
+	int				notified;
+	int				backstart;
+	struct termios	jterm;
+	// pid_t			lastpid;
+	struct s_cmd	*t_cmd;
+}				t_jobs;
 
 t_tracking		g_tracking;
 
@@ -272,8 +312,8 @@ t_last							*ft_parseur(char *line);
 void							ft_lexeur(t_last *list_cmd);
 void							tri_lexer(t_last *list_cmd);
 void							ft_ast(t_last *list_command);
-void							execute_ast(t_tree *tree);
-int								exec_command(t_last *list);
+void							execute_ast(t_tree *tree, t_jobs *job);
+int								exec_command(t_last *list, int foreground, t_jobs *job);
 void							convert_list(t_last *list);
 int								its_reddir(t_last *list);
 int								its_fd_reddir(t_last *list);
@@ -281,14 +321,43 @@ int								its_reddir_to_fd(t_last *list);
 int								its_pipe(t_last *list);
 int								its_separator(t_last *list);
 char							**create_tab_to_exec(t_last *list);
-void							execute_pipe(char **tab_exec);
+void							execute_pipe(char **tab_exec, t_jobs *job);
 void							execute_two(char **tab_cmd);
-void							execute_pipe_two(char **tab_exec);
+void							execute_pipe_two(char **tab_exec, t_jobs *job);
 char							**test_exist_fonction(char **tab_cmd);
 int								error_lexer(t_last *list_cmd);
 void							create_fich(t_last *list);
 void							print_last(t_last *list);
 int								its_eper(t_last *list);
 
+
+void			interactive_check_set_shell_group(void);
+void			set_shell_signal_handlers(void);
+void			set_process_signal_handlers(void);
+t_cmd			*new_process(t_jobs *job, pid_t cpid);
+
+
+t_jobs			*new_job(t_last *part, int background);
+void			wait_for_job(t_jobs *job);
+void			put_job_in_foreground(t_jobs *job, int cont);
+void			put_job_in_background(t_jobs *job, int cont);
+int				job_is_done(t_jobs *job);
+int				job_is_stopped(t_jobs *job);
+int				bg_builtin(int mode);
+int				fg_builtin(int mode);
+char			*parse_job_number(char *str);
+int				job_exists(int place);
+int				parse_job_sign(char *str);
+int				errors_bg(int nb, int error);
+int				cmd_checker(t_last *part, int mode, t_jobs *job);
+void			free_last(t_last **cmd);
+char			*check_separator(t_last *part);
+int				suspended_jobs_count(void);
+void			update_status(void);
+int				update_process_status(pid_t pid, int status);
+void			show_job_info(t_jobs *job, const char *status, int mode);
+void			free_job(t_jobs *job);
+void			jobs_notifications(void);
+void			jobs_update_current(void);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/20 18:16:53 by alsomvil         ###   ########.fr        #
+#    Updated: 2019/02/22 12:34:15 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,11 @@ SRC = main.c \
 	  42sh/create_tab_to_exec.c \
 	  42sh/convert_list.c \
 	  42sh/create_fich.c \
+	  Jobs/signal_handlers.c \
+	  Jobs/utils.c \
+	  Jobs/job_functions.c \
+	  Jobs/errors.c \
+	  Jobs/ft_job_control.c \
 	  GNL/term_setup.c \
 	  GNL/stringsearch.c \
 	  GNL/signals.c \

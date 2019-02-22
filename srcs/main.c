@@ -6,25 +6,13 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/20 17:43:20 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/22 12:28:18 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
 
-void	print_last(t_last *list)
-{
-	t_last		*temp;
-
-	temp = list;
-	while (list)
-	{
-		printf("CMD = %s ET TYPE = %d\n", list->name, list->type);
-		list = list->next;
-	}
-	list = temp;
-}
 
 int		main(int argc, char **argv, char **env)
 {
@@ -45,6 +33,8 @@ int		main(int argc, char **argv, char **env)
 	ft_siginit();
 	init_shell(env);
 	get_term();
+	interactive_check_set_shell_group();
+	set_shell_signal_handlers();
 	while (get_key() > 0)
 	{
 		line = ft_strdup(g_tracking.cmd);
@@ -62,6 +52,8 @@ int		main(int argc, char **argv, char **env)
 			convert_list(cmd);
 			ft_ast(cmd);
 		}
+		jobs_notifications();
+		jobs_update_current();
 		//ft_build_test(line);
 		free(line);
 		line = NULL;
