@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/14 07:17:29 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/22 04:40:59 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,28 @@
 
 typedef struct	s_expand
 {
-	char			ltr;
-	int				len;
-	int				idx;
-	struct s_expand	*next;
-	struct s_expand	*prev;
+	char				ltr;
+	int					len;
+	int					idx;
+	struct s_expand		*next;
+	struct s_expand		*prev;
 }				t_expand;
 
-typedef struct	s_args
+typedef struct	s_env_set
 {
-	struct s_keyval	*param;
-	struct s_args	*next;
-}				t_args;
+	struct s_keyval		*param;
+	struct s_env_set	*next;
+}				t_env_set;
+
+typedef struct 	s_scan
+{
+	int					start;
+	int					end;
+	char				*sstrsing;
+	int					error;
+	struct s_scan		*next;
+}				t_scan;
+
 
 void			expand_transformer(t_last *cmd);
 int				need_expand(char *to_transf);
@@ -68,7 +78,7 @@ void			exp_key_unique_percent(char **str, t_expand *expand);
 char			*get_value_asterisk(t_expand *expand);
 void			exp_key_double_percent(char **str, t_expand *expand);
 void			exp_key_double_hash(char **str, t_expand *expand);
-void			transform_if_tilde(t_expand *expand, char **str);
+void			transform_if_tilde(t_expand **expand, char **str);
 char			is_two_points_sign(t_expand *to_run);
 char			is_diferent_sign(t_expand *to_run);
 void			skip_found(char **str, char *value_var, char *to_srch);
@@ -78,5 +88,9 @@ void			select_last_not_found(char **str, char *value_var,
 char			*varname(char *var, t_expand *to_run);
 char			*value(char *val, t_expand *start);
 char			*value_asterisk(char *val, t_expand *start);
+int				have_envname(char *var);
+void			scan_arg_transformer(char **arg);
+t_scan			*new_scan(void);
+void			scan_argument(char *arg, t_scan *info_arg);
 
 #endif

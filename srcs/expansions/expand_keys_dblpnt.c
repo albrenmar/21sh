@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/13 06:57:48 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/19 04:25:22 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,11 @@ void	exp_key_equal(char **str, t_expand *expand)
 	char	*str2;
 	char	*value1;
 	char	*value2;
+	int		env_or_set;
 
 	str1 = NULL;
 	str2 = NULL;
+	value1 = NULL;
 	str1 = get_varname(expand);
 	str2 = get_value(expand);
 	value1 = get_env_string(str1);
@@ -90,15 +92,20 @@ void	exp_key_equal(char **str, t_expand *expand)
 		value1 = get_parm_string(str1);
 	value2 = str2;
 	ft_strdel(str);
-	if (value1)
+	env_or_set = have_envname(str1);
+	if (value1 && ft_strequ(value1, ""))
 		*str = value1;
-	else
+	else if (env_or_set == 1)
 	{
-		ft_strdel(&value1);
 		*str = value2;
 		replace_env_str(str1, value2);
 		ft_strdel(&str1);
 	}
+	else if (env_or_set == 2 || !env_or_set)
+		replace_env_set_str(str1, value2);
+		//add_to_env_set(str1, value2);
+	ft_strdel(&str1);
+	*str = value2;
 }
 
 void	exp_key_less(char **str, t_expand *expand)

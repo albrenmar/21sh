@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_to_lst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 23:10:09 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/19 23:44:25 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/17 07:27:55 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,33 @@ t_lstcontainer		*emptyenv(void)
 		tmp = tmp->next;
 	}
 	return (empty);
+}
+
+char        **init_envp(t_lstcontainer *env)
+{
+	int				i;
+	char			**envp;
+	t_list			*tmp;
+	t_keyval		*buf;
+
+	envp = NULL;
+	if (env != NULL)
+	{
+		i = env->size(env) + 1;
+		envp = malloc(sizeof(char *)* i + 1);
+		i = 0;
+		tmp = env->firstelement;
+		while (tmp)
+		{
+			buf = tmp->content;
+			envp[i] = ft_strnew(0);
+			envp[i] = ft_strjoinfree(envp[i], buf->key, 1);
+			envp[i] = ft_strjoinfree(envp[i], "=", 1);
+			envp[i] = ft_strjoinfree(envp[i], buf->value, 1);
+			tmp = tmp->next;
+			i++;
+		}
+		envp[i] = NULL;
+	}
+    return (envp);
 }

@@ -6,30 +6,34 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/14 06:04:59 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/18 07:00:56 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 
-void	transform_if_tilde(t_expand *expand, char **str)
+void	transform_if_tilde(t_expand **expand, char **str)
 {
-	t_expand	*first_letter;
+	t_expand	**first_letter;
+	t_expand	*letter;
 
 	first_letter = expand;
-	if (expand->ltr == '~' && !expand->next && !expand->prev)
-		expand_tilde_only(str);
-	else if (expand->ltr == '~' && expand->next && !expand->prev)
+	letter = *expand;
+	if (letter->ltr == '~' && !letter->next && !letter->prev)
 	{
-		if (expand->next->ltr == '/')
-			expand_tilde_path(str, &first_letter);
-		else if (expand->next->ltr && expand->next->ltr != '-'
-				&& expand->next->ltr != '+')
-			expand_tilde_user(str, &first_letter);
-		else if (expand->next->ltr && (expand->next->ltr == '-'
-				|| expand->next->ltr == '+'))
-			expand_tilde_pwd(str, &first_letter);
-		expand = first_letter;
+		expand_tilde_only(str);
+		letter = *first_letter;
+	}
+	else if (letter->ltr == '~' && letter->next && !letter->prev)
+	{
+		if (letter->next->ltr == '/')
+			expand_tilde_path(str, first_letter);
+		else if (letter->next->ltr && letter->next->ltr != '-'
+				&& letter->next->ltr != '+')
+			expand_tilde_user(str, first_letter);
+		else if (letter->next->ltr && (letter->next->ltr == '-'
+				|| letter->next->ltr == '+'))
+			expand_tilde_pwd(str, first_letter);
 	}
 }
 
@@ -42,7 +46,7 @@ void	transform(t_expand *expand, char **str)
 	tmp = *str;
 	while (expand)
 	{
-		transform_if_tilde(expand, str);
+		transform_if_tilde(&first_letter, str);
 		if (expand->ltr == '$' && expand->next && expand->next->ltr == '{'
 				&& !expand->prev && tmp[ft_strlen(tmp) - 1] == '}')
 		{
@@ -54,5 +58,6 @@ void	transform(t_expand *expand, char **str)
 		else
 			break ;
 	}
-	expand = first_letter;
+//	expand = first_letter;
+	delete_list_expand(&first_letter);
 }

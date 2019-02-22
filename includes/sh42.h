@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/30 05:34:57 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/18 03:51:12 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 # define SH42_H
 # include "libft.h"
 # include "ft_ls.h"
+# include "minishell.h"
 # include "expansions.h"
+# include "set.h"
 # include <sys/ioctl.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 # include <termios.h>
 # include <curses.h>
 # include <term.h>
@@ -26,7 +30,7 @@
 # include <time.h>
 # include <fcntl.h>
 
-# define USER		"bsiche"
+# define USER		"alsomvil"
 # define K_FN1		"\x1b\x4f\x50"
 # define K_FN2		"\x1b\x4f\x51"
 # define K_FN3		"\x1b\x4f\x52"
@@ -44,6 +48,9 @@
 # define K_BKSP		127
 # define K_TAB		9
 # define K_DEL		"\x1b\x5b\x33\x7e"
+
+int		descrf[2];
+int		descrf_two[2];
 
 typedef struct	s_cursor
 {
@@ -107,12 +114,38 @@ typedef struct			s_hist
 	char			*line;
 }						t_hist;
 
+typedef struct			s_order
+{
+	int		type;
+	char	**command;
+	char	*sym;
+	struct	s_order	*next;
+	struct	s_order	*prev;
+	struct	s_order	*temp_command;
+	struct	s_order	*temp_command_next;
+}						t_order;
+
+typedef struct			s_exec
+{
+	pid_t	gpid;
+	pid_t	pid_exec;
+	int		ret;
+	int		i;
+	char	*fich;
+	char	**left;
+	char	**right;
+	char	**sym;
+}						t_exec;
+
 typedef struct	s_shell
 {
 	t_lstcontainer	*alias_lst;
 	t_lstcontainer	*env;
 	t_hist			*hist;
-	t_args			*args_lst;
+	t_exec			*exec;
+	t_env_set		*setenv_lst;
+	t_order			*order;
+	char			**tab_env;
 }				t_shell;
 
 typedef struct	s_tracking
@@ -308,8 +341,7 @@ char			*remove_env_string(char *str);
 char			*ft_true_pwd(void);
 
 void			add_missing_string();
-
-void			hist_to_file(void);
+char			**init_envp(t_lstcontainer *env);
 
 
 void							hist_file_to_lst(void);

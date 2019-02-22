@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/30 05:14:13 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/21 18:03:47 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,12 @@
 char	*create_path(void)
 {
 	char	*path;
-	char	*usr;
 
 	path = ft_strdup("/Users/");
-	usr = getlogin();
 	path = ft_strjoinfree(path, USER, 1);
 	path = ft_strjoinfree(path, "/42shrc", 1);
 	return (path);
 }
-
 int		init_alias(void)
 {
 	int				fd;
