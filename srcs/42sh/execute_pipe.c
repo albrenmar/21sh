@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/14 22:09:26 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/19 08:33:56 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
 
-#define ORDER g_tracking.mysh->order
-
-void		execute_two(t_env *st_env, int mode, t_jobs *job)
+void		execute_two(int mode, t_jobs *job, int fd)
 {
-	char	**envtab;
+	// char	**envtab;
 	pid_t	pid0;
 	
-	envtab = envlist_to_tab(&st_env);
+	// envtab = envlist_to_tab(&st_env);
+	// ft_putendl("AA");
+	g_tracking.orderhold = ORDER->command;
 	pid0 = fork();
 	if (pid0 == 0)
 	{
@@ -39,25 +39,34 @@ void		execute_two(t_env *st_env, int mode, t_jobs *job)
 			close(descrf[1]);
 			dup2(descrf[0], 0);
 			close(descrf[0]);
-			if ((ORDER->command = test_exist_fonction(ORDER->command)))
-				execve(ORDER->command[0], ORDER->command, envtab);
+			if (is_builtin(1))
+				exit (builtin_exec(mode));
+			else if ((ORDER->command = test_exist_fonction(ORDER->command)))
+				execve(ORDER->command[0], ORDER->command, g_tracking.envtab);
 			else
 				exit(-1);
 		}
 		else if (mode == 2)
 		{
 
-			close(descrf[1]);
-			dup2(descrf[0], 0);
-			close(descrf[0]);
+			if (fd != 0)
+				dup2(fd, 1);
+			close(descrf_two[1]);
+			dup2(descrf_two[0], 0);
+			close(descrf_two[0]);
+			// ft_putendl("BB");
+			if (is_builtin(1))
+				exit (builtin_exec(mode));
 			if ((ORDER->command = test_exist_fonction(ORDER->command)))
-				execve(ORDER->command[0], ORDER->command, envtab);
+				execve(ORDER->command[0], ORDER->command, g_tracking.envtab);
 			else
 				exit(-1);
 		}
 	}
 	else
 	{
+		if (mode == 0)
+			close(descrf_two[1]);
 		if (mode == 2)
 			close(descrf_two[1]);
 		new_process(job, pid0);
@@ -66,10 +75,17 @@ void		execute_two(t_env *st_env, int mode, t_jobs *job)
 		if (job->jpid == 0)
 			job->jpid = pid0;
 		setpgid(pid0, job->jpid);
+		if (is_builtin(2))
+			builtin_exec(1);
 	}
 }
 
-void		execute_pipe(t_env *st_env, t_jobs *job)
+void		execute_pipe_two(t_jobs *job, int fd)
 {
-	execute_two(st_env, 0, job);
+	execute_two(2, job, fd);
+}
+
+void		execute_pipe(t_jobs *job)
+{
+	execute_two(0, job, 0);
 }

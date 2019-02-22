@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/14 04:58:47 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/15 21:16:04 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,6 @@ int				error_lexer(t_last *list_cmd);
 void			tri_lexer(t_last *list_cmd);
 t_last			*ft_parseur(char *line);
 t_tab_arg		*convert_to_list_tab(t_last	*list);
-void			execute_four(t_env *st_env);
-void			execute_pipe_two(t_env *st_env);
 void			test_pipe(t_env *st_env);
 void			test_redir(t_env *st_env);
 char			**test_exist_fonction(char **tab_cmd);

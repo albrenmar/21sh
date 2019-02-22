@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_job_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/15 09:56:09 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/02/19 06:49:36 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@ int					rellocate_cmd(t_last *part, int mode)
 	return (0);
 }
 
-int					cmd_checker(t_last *part, int mode)
+int					cmd_checker(t_last *part, int mode, t_jobs *job)
 {
+	if (job->startback == 1)
+		return (0);
 	if (!(ft_strcmp(check_separator(part), ";")))
 		return (0);
 	while (part && part->check == 1)
@@ -259,7 +261,7 @@ static t_last		*cmd_to_part(t_last *cmd)
 	return (head);
 }
 
-void	cmd_manager(t_last *cmd, t_tab_arg *tab_arg, t_env *st_env)
+void	cmd_manager(t_last *cmd, t_tab_arg *tab_arg)
 {
 	t_last	*part;
 	t_jobs	*job;
@@ -275,21 +277,28 @@ void	cmd_manager(t_last *cmd, t_tab_arg *tab_arg, t_env *st_env)
 		else
 			foreground = 1;
 		job = new_job(part, foreground);
-		ft_ast(tab_arg, st_env, job);
+		ft_ast(tab_arg, job);
 		if (!g_tracking.interactive)
 			wait_for_job(job);
 		else if (!foreground)
 			put_job_in_foreground(job, 0);
 		else
 			put_job_in_background(job, 0);
-		// ft_putnbr(g_tracking.lastreturn);
-		if (g_tracking.lastreturn == 0 && cmd_checker(part, 0) == -1)
+		if (g_tracking.fg == 1 || g_tracking.bg == 1)
+		{
+			if (g_tracking.fg == 1)
+				fg_builtin(4);
+			else
+				bg_builtin(4);
+		}
+		ORDER = NULL;
+		if (g_tracking.lastreturn == 0 && cmd_checker(part, 0, job) == -1)
 		{
 			free_last(&cmd);
 			free_last(&part);
 			return ;
 		}
-		else if (g_tracking.lastreturn != 0 && cmd_checker(part, -1) == -1)
+		else if (g_tracking.lastreturn != 0 && cmd_checker(part, -1, job) == -1)
 		{
 			free_last(&cmd);
 			free_last(&part);

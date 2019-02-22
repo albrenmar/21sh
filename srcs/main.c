@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/15 09:19:44 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/02/18 20:14:47 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		main(int argc, char **argv, char **env)
 	prompt = ft_strdup("Fake minishell > ");
 	g_tracking.prompt = ft_strdup(prompt);
 	g_tracking.pos->prompt = ft_strlen(prompt);
-	ft_siginit();
+	// ft_siginit();
 	init_shell(env);
 	get_term();
 	// init_jobs();
@@ -42,30 +42,18 @@ int		main(int argc, char **argv, char **env)
 	set_shell_signal_handlers();
 	while (get_key() > 0)
 	{
+		// jobs_notifications();
 		line = ft_strdup(g_tracking.cmd);
 		free(g_tracking.cmd);
 		g_tracking.swi = 0;
 		ft_putchar('\n');
 		hist_lst_add_next(g_tracking.mysh->hist, line);
-		if (!ft_strcmp(line, "exit"))
-		{
-			if (!g_tracking.jobs)
-			{
-				printf("%s\n", "exit temporaire");
-				exit(0);
-			}
-			else
-				ft_putendl("There are still jobs running you idiot!");
-		}
-		else if (!ft_strcmp(line, "jobs"))
-			jobs_builtin();
-		else if (!ft_strcmp(line, "bg"))
-			bg_builtin();
-		else if (!ft_strcmp(line, "fg"))
-			fg_builtin();
-		else if (line && (cmd = ft_parseur(line)))
-			cmd_manager(cmd, tab_arg, st_env);
+		// if (!ft_strcmp(line, "exit") && ft_strlen(line) == 4)
+		// 	ft_exit();
+		if (line && (cmd = ft_parseur(line)))
+			cmd_manager(cmd, tab_arg);
 		jobs_notifications();
+		jobs_update_current();
 		// jobs_debug();
 		//ft_build_test(line);
 		free(line);

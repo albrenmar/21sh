@@ -6,13 +6,15 @@
 #    By: abe <abe@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/13 00:24:21 by abe              ###   ########.fr        #
+#    Updated: 2019/02/17 21:23:45 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=	42sh
 
 SRC = main.c \
+	  42sh/errors.c \
+	  42sh/builtins.c \
 	  42sh/add_path_to_bin.c \
 	  42sh/execute_pipe.c \
 	  42sh/signal_handlers.c \

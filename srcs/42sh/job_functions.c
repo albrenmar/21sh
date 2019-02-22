@@ -6,12 +6,112 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/15 10:18:42 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/02/19 09:27:25 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
+
+void		jobs_update_currentback(int mode)
+{
+	t_jobs	*tmp;
+	t_jobs	*hold;
+
+	tmp = g_tracking.jobs;
+	hold = NULL;
+	if (!tmp->next)
+	{
+		tmp->current = 1;
+		tmp->currentback = 0;
+		return ;
+	}
+	else if (mode == 1)
+	{
+		while (tmp->next)
+		{
+			tmp->current = 0;
+			tmp->currentback = 0;
+			tmp = tmp->next;
+		}
+		while (tmp->prev && tmp->t_cmd->stopped != 1)
+			tmp = tmp->prev;
+		tmp->current = 1;
+		tmp->currentback = 0;
+		if (tmp->next)
+		{
+			hold = tmp->next;
+			while (hold->next)
+				hold = hold->next;
+		}
+		else
+			hold = tmp->prev;
+	}
+	else if (mode > 1)
+	{
+		while (tmp->next)
+		{
+			tmp->current = 0;
+			tmp->currentback = 0;
+			tmp = tmp->next;
+		}
+		tmp->current = 0;
+		tmp->currentback = 0;
+		while (tmp)
+		{
+			if (tmp->t_cmd->stopped == 1)
+			{
+				if (hold == NULL)
+				{
+					tmp->current = 1;
+					tmp->currentback = 0;
+					hold = tmp->prev;
+				}
+				else
+				{
+					tmp->current = 0;
+					tmp->currentback = 1;
+					return ;
+				}
+			}
+			if (!tmp->prev)
+				break ;
+			tmp = tmp->prev;
+		}
+	}
+	hold->current = 0;
+	hold->currentback = 1;
+}
+
+void		jobs_update_current(void)
+{
+	t_jobs	*tmp;
+	int		mode;
+	t_jobs	*hold;
+
+	tmp = g_tracking.jobs;
+	hold = NULL;
+	mode = suspended_jobs_count();
+	if (tmp)
+	{
+		if (mode == 0)
+		{
+			while (tmp->next)
+			{
+				tmp->current = 0;
+				tmp->currentback = 0;
+				hold = tmp;
+				tmp = tmp->next;
+			}
+			tmp->currentback = 0;
+			if (hold != NULL)
+				hold->currentback = 1;
+			tmp->current = 1;
+		}
+		else
+			jobs_update_currentback(mode);
+	}
+}
 
 void		mark_job_as_running(t_jobs *job)
 {
@@ -35,69 +135,260 @@ void		continue_job(t_jobs *job, int foreground)
 		put_job_in_background(job, 1);
 }
 
-void		fg_builtin(void)
+int			fg_builtin(int mode)
 {
 	t_jobs	*tmp;
 
 	tmp = g_tracking.jobs;
-	if (tmp)
+	if (tmp->next)
 	{
-		while (tmp->next)
+		while (tmp->next && tmp->current != 1)
 			tmp = tmp->next;
-		continue_job(tmp, 1);
+		if (mode != 2 && mode != 0)
+		{
+			if (mode == 1)
+			{
+				g_tracking.lastplace = tmp->place;
+				g_tracking.fg = 1;
+			}
+			else
+			{
+				g_tracking.fg = 0;
+				ft_putendl(tmp->name);
+				continue_job(tmp, 1);
+			}
+		}
+		return (0);
 	}
-	else
+	if (mode == 1)
 		ft_putendl("No jobs 😂");
+	return (1);
 }
 
-void		bg_builtin(void)
+int			bg_builtin_output(int mode, t_jobs *tmp)
 {
-	t_jobs	*tmp;
-
-	tmp = g_tracking.jobs;
-	if (tmp)
+	if (mode != 2 && mode != 0)
 	{
-		while (tmp->next)
-			tmp = tmp->next;
-		continue_job(tmp, 0);
-	}
-	else
-		ft_putendl("No jobs 😂");
-}
-
-void		jobs_builtin(void)
-{
-	t_jobs	*tmp;
-
-	tmp = g_tracking.jobs;
-	if (tmp)
-	{
-		while (tmp)
+		if (mode != 1 && tmp->background != 1)
 		{
 			ft_putchar('[');
 			ft_putnbr(tmp->place);
 			ft_putchar(']');
-			if (tmp->next)
+			ft_putchar('+');
+			ft_putchar(' ');
+			ft_putstr(tmp->name);
+			ft_putchar(' ');
+			ft_putchar('&');
+			ft_putchar('\n');
+		}
+		if (mode == 1)
+		{
+			g_tracking.lastplace = tmp->place;
+			g_tracking.bg = 1;
+		}
+		else
+		{
+			g_tracking.bg = 0;
+			if (tmp->background != 1)
 			{
-				if (!tmp->next->next)
+				continue_job(tmp, 0);
+				tmp->background = 1;
+			}
+			else
+				return (errors_bg(tmp->place, 0));
+		}
+	}
+	return (0);
+}
+
+int			bg_builtin(int mode)
+{
+	t_jobs	*tmp;
+	char	*hold;
+	int		nb;
+
+	nb = 0;
+	tmp = g_tracking.jobs;
+	if (tmp->next)
+	{
+		if (g_tracking.orderhold[1] && g_tracking.orderhold[1][0] == '%')
+		{
+			hold = parse_job_number(g_tracking.orderhold[1]);
+			if (hold)
+				nb = ft_atoi(hold);
+			if (job_exists(parse_job_sign(g_tracking.orderhold[1])))
+			{
+				while (tmp->prev)
+					tmp = tmp->prev;
+				nb = parse_job_sign(g_tracking.orderhold[1]);
+				while (tmp->next && tmp->place != nb)
+					tmp = tmp->next;
+				if (nb == 0 && mode == 1)
+					return (errors_bg(0, 2));
+				else if (nb != 0)
+					return (bg_builtin_output(mode, tmp));
+			}
+			else if (hold && job_exists(ft_atoi(hold)))
+			{
+				while (tmp->prev)
+					tmp = tmp->prev;
+				while (tmp->next && tmp->place != nb)
+					tmp = tmp->next;
+				return (bg_builtin_output(mode, tmp));
+			}
+			else if (hold)
+			{
+				if (mode == 1)
+					return (errors_bg(ft_atoi(hold), 3));
+				else if (mode == 4)
+					return (1);
+			}
+			else
+				errors_bg(0, 2);
+		}
+		else if (g_tracking.orderhold[1] && g_tracking.orderhold[1][0] != '%')
+			return (errors_bg(tmp->place, 2));
+		while (tmp->prev)
+			tmp = tmp->prev;
+		while (tmp->next && tmp->current != 1)
+			tmp = tmp->next;
+		return (bg_builtin_output(mode, tmp));
+	}
+	if (mode == 1)
+		ft_putendl("No jobs 😂");
+	return (1);
+}
+
+int			jobs_builtin_parser(t_jobs *tmp, int optionl, int optionp, char *hold)
+{
+	int		i;
+	int		j;
+	int		place;
+	int		mode;
+	i = 1;
+	mode = 0;
+	place = 0;
+	if (ORDER->command[1])
+	{
+		while (ORDER->command[i] && ORDER->command[i][0] == '-')
+		{
+			if (!ORDER->command[i][1])
+				return (errors_jobs('a', 0, 0));
+			j = 1;
+			while (ORDER->command[i][j] != '\0')
+			{
+				if (ORDER->command[i][j] != 'l' && ORDER->command[i][j] != 'p')
+					return (errors_jobs(ORDER->command[i][j], 0, 1));
+				else if (ORDER->command[i][j] == 'l')
+					optionl = 1;
+				else if (ORDER->command[i][j] == 'p')
+					optionp = 1;
+				j++;
+			}
+			i++;
+		}
+		if (optionp)
+			j = 2;
+		else if (optionl)
+			j = 1;
+		if (ORDER->command[i] && ORDER->command[i][0] == '%')
+		{
+			while (ORDER->command[i] && ORDER->command[i][0] == '%')
+			{
+				hold = parse_job_number(ORDER->command[i]);
+				if (job_exists(parse_job_sign(ORDER->command[i])))
+					jobs_builtin_output(tmp, 1, parse_job_sign(ORDER->command[i]), j);
+				else if (hold && job_exists(ft_atoi(hold)))
+					jobs_builtin_output(tmp, 1, ft_atoi(hold), j);
+				else if (hold)
+					errors_jobs('a', ft_atoi(hold), 2);
+				else
+					errors_jobs('a', 0, 2);
+				i++;
+			}
+			return (0);
+		}
+		else
+		{
+			jobs_builtin_output(tmp, 0, 0, j);
+			return (0);
+		}
+	}
+	jobs_builtin_output(tmp, 0, 0, 0);
+	return (0);
+}
+
+void		jobs_builtin_output(t_jobs *tmp, int mode, int number, int options)
+{
+	while (tmp && tmp->next)
+	{
+		if (mode == 0 || (mode == 1 && number == tmp->place))
+		{
+			if (options != 2)
+			{
+				ft_putchar('[');
+				ft_putnbr(tmp->place);
+				ft_putchar(']');
+				if (tmp->current == 1)
+					ft_putchar('+');
+				else if (tmp->currentback == 1)
 					ft_putchar('-');
 				else
 					ft_putchar(' ');
+				ft_putchar(' ');
 			}
-			else if (!tmp->next)
-				ft_putchar('+');
-			ft_putstr("  ");
-			if (tmp->t_cmd->stopped == 1)
-				ft_putstr("Stopped");
-			else
-				ft_putstr("       ");
-			ft_putstr("           ");
-			ft_putendl(tmp->name);
-			tmp = tmp->next;
+			if (options == 1 || options == 2)
+				ft_putnbr(tmp->jpid);
+			ft_putchar(' ');
+			if (options == 2)
+				ft_putchar('\n');
+			if (options != 2)
+			{
+				if (tmp->background == 1)
+					ft_putstr("Running");
+				if (options != 1 && tmp->t_cmd->stopped == 1)
+					ft_putstr("Stopped");
+				else if (options == 1)
+					ft_putstr("Suspended");
+				else
+					ft_putstr("       ");
+				ft_putstr("           ");
+				ft_putstr(tmp->name);
+				ft_putchar(' ');
+				if (tmp->background == 1)
+					ft_putchar('&');
+				ft_putstr("      ");
+				if (ft_strcmp(tmp->wd, getcwd(NULL, 42)))
+				{
+					ft_putstr("(wd: ");
+					ft_putstr(tmp->wd);
+					ft_putendl(")  ");
+				}
+				else
+					ft_putchar('\n');
+				if (mode == 1 && tmp->place == number)
+					return ;
+			}
 		}
+		tmp = tmp->next;
 	}
-	else
-		ft_putendl("No jobs bro");
+}
+
+int			jobs_builtin(void)
+{
+	t_jobs	*tmp;
+	int		optionl;
+	int		optionp;
+	char	*place;
+
+	optionl = 0;
+	optionp = 0;
+	place = NULL;
+	tmp = g_tracking.jobs;
+	if (tmp && tmp->next)
+		return (jobs_builtin_parser(tmp, optionl, optionp, place));
+	ft_putendl("No jobs bro");
+	return (1);
 }
 
 void		jobs_notifications(void)
@@ -118,6 +409,12 @@ void		jobs_notifications(void)
 			ft_putchar('[');
 			ft_putnbr(job->place);
 			ft_putchar(']');
+			if (job->current == 1)
+				ft_putchar('+');
+			else if (job->currentback == 1)
+				ft_putchar('-');
+			else
+				ft_putchar(' ');
 			ft_putchar(' ');
 			ft_putnbr(job->jpid);
 			ft_putchar('\n');
@@ -170,16 +467,18 @@ void		show_job_info(t_jobs *job, const char *status, int mode)
 		ft_putchar('[');
 		ft_putnbr(job->place);
 		ft_putchar(']');
-		if (job->next)
-			{
-				if (!job->next->next)
-					ft_putchar('-');
-				else
-					ft_putchar(' ');
-			}
-			else if (!job->next)
+		if (mode == 2)
+			ft_putchar('+');
+		else
+		{
+			if (job->current == 1)
 				ft_putchar('+');
-			ft_putstr("  ");
+			else if (job->currentback == 1)
+				ft_putchar('-');
+			else
+				ft_putchar(' ');
+		}
+		ft_putstr("  ");
 	}
 	else
 	{
@@ -271,7 +570,7 @@ void				put_job_in_foreground(t_jobs *job, int cont)
 	tcsetpgrp(g_tracking.sterminal, job->jpid);
 	if (cont)
 	{
-		tcsetattr(g_tracking.sterminal, TCSADRAIN, &job->jterm);
+		// tcsetattr(g_tracking.sterminal, TCSADRAIN, &job->jterm);
 		if (kill (- job->jpid, SIGCONT) < 0)
 			perror ("kill (SIGCONT)");
 	}

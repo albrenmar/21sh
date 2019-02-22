@@ -3,38 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 18:12:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/10 01:17:35 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/15 20:48:30 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
 
-int		main(void)
-{
-	char	*prompt;
-	char	*cmd;
-	int		i;
+// int		main(void)
+// {
+// 	char	*prompt;
+// 	char	*cmd;
+// 	int		i;
 
-	cursorinit();
-	prompt = ft_strdup("Fake minishell >");
-	g_tracking.prompt = ft_strdup(prompt);
-	ft_putstr(g_tracking.prompt);
-	g_tracking.pos->prompt = ft_strlen(prompt);
-	ft_siginit();
-	get_term();
-	while (get_key() > 0)
-	{
-		cmd = ft_strdup(g_tracking.cmd);
-		ft_putchar('\n');
-		ft_putstr("Execution de la commande");
-		ft_putchar('"');
-		ft_putstr(cmd);
-		ft_putchar('"');
-		g_tracking.swi = 0;
-		ft_putchar('\n');
-	}
-	return (0);
-}
+// 	cursorinit();
+// 	prompt = ft_strdup("Fake minishell >");
+// 	g_tracking.prompt = ft_strdup(prompt);
+// 	ft_putstr(g_tracking.prompt);
+// 	g_tracking.pos->prompt = ft_strlen(prompt);
+// 	ft_siginit();
+// 	get_term();
+// 	while (get_key() > 0)
+// 	{
+// 		cmd = ft_strdup(g_tracking.cmd);
+// 		ft_putchar('\n');
+// 		ft_putstr("Execution de la commande");
+// 		ft_putchar('"');
+// 		ft_putstr(cmd);
+// 		ft_putchar('"');
+// 		g_tracking.swi = 0;
+// 		ft_putchar('\n');
+// 	}
+// 	return (0);
+// }

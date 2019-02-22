@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/15 09:16:08 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/02/19 08:32:43 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,8 @@ typedef struct			s_hist
 
 typedef struct			s_exec
 {
-	// pid_t	pid_exec;
+	pid_t	pid_exec;
+	pid_t	gpid;
 	int		ret;
 	int		i;
 	char	*fich;
@@ -159,9 +160,13 @@ typedef struct	s_cmd
 
 typedef struct	s_jobs
 {
+	int				currentback;
+	int				current;
+	int				startback;
 	struct s_jobs	*next;
 	struct s_jobs	*prev;
 	char			*name;
+	char			wd[4096 + 1];
 	int				stdin;
 	int				stdout;
 	int				stderr;
@@ -177,6 +182,12 @@ typedef struct	s_jobs
 
 typedef struct	s_tracking
 {
+	char				**envtab;
+	char				**orderhold;
+	int					lastplace;
+	int					bg;
+	int					fg;
+	int					exit;
 	int					interactive;
 	int					sterminal;
 	struct s_jobs		*jobs;
@@ -376,7 +387,7 @@ void			add_missing_string();
 
 void			print_tab(char **tob);
 
-void			cmd_manager(t_last *cmd, t_tab_arg *tab_arg, t_env *st_env);
+void			cmd_manager(t_last *cmd, t_tab_arg *tab_arg);
 
 void			env_format(char **envp, t_env **env);
 
@@ -396,7 +407,7 @@ void			set_shell_signal_handlers(void);
 
 t_jobs			*new_job(t_last *part, int background);
 
-int				cmd_checker(t_last *part, int mode);
+int				cmd_checker(t_last *part, int mode, t_jobs *job);
 
 int				rellocate_cmd(t_last *part, int mode);
 
@@ -414,15 +425,17 @@ void			interactive_check_set_shell_group(void);
 
 void			set_process_signal_handlers(void);
 
-void			ft_ast(t_tab_arg *tab_arg, t_env *t_env, t_jobs *job);
+void			ft_ast(t_tab_arg *tab_arg, t_jobs *job);
 
-void			execute_two(t_env *st_env, int mode, t_jobs *job);
+void			execute_two(int mode, t_jobs *job, int fd);
 
-void			exec_command(t_env *st_env, t_jobs *job);
+void			exec_command(t_jobs *job);
 
-void			execute_pipe(t_env *st_env, t_jobs *job);
+void			execute_pipe(t_jobs *job);
 
-void			execute_ast(t_tree *tree, t_tab_arg *tab_arg, t_env *st_env, t_jobs *job);
+void			execute_pipe_two(t_jobs *job, int fd);
+
+void			execute_ast(t_tree *tree, t_tab_arg *tab_arg, t_jobs *job);
 
 t_cmd			*new_process(t_jobs *job, pid_t cpid);
 
@@ -444,13 +457,13 @@ void			jobs_notifications(void);
 
 void			free_job(t_jobs *job);
 
-void			jobs_builtin(void);
+int				jobs_builtin(void);
 
 int				get_job_number(void);
 
-void			bg_builtin(void);
+int				bg_builtin(int mode);
 
-void			fg_builtin(void);
+int				fg_builtin(int mode);
 
 void			continue_job(t_jobs *job, int foreground);
 
@@ -459,6 +472,38 @@ void			mark_job_as_running(t_jobs *job);
 void			jobs_debug(void);
 
 void			print_prompt_pwd(void);
+
+int				builtin_exec(int mode);
+
+int				ft_builtin_search(char *builtin);
+
+int				ft_exit(int mode);
+
+int				is_builtin(int mode);
+
+int				jobs_builtin_parser(t_jobs *tmp, int optionl, int optionp, char *hold);
+
+void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
+
+int				errors_jobs(char option, int nb, int error);
+
+char			*parse_job_number(char *str);
+
+int				job_exists(int place);
+
+void			jobs_update_current(void);
+
+int				suspended_jobs_count(void);
+
+int				errors_bg(int nb, int error);
+
+void			jobs_update_currentback(int mode);
+
+int				parse_job_sign(char *str);
+
+int				bg_builtin_output(int mode, t_jobs *tmp);
+
+char        	**init_envp(t_lstcontainer *env);
 
 void							hist_file_to_lst(void);
 int								print_hist();

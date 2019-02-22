@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 02:25:05 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/14 05:20:18 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/19 06:02:00 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ void		create_ast(t_tree *tree, t_tab_arg *tab_arg)
 	while (tab_arg->prev)
 	{
 		if ((temp == NULL) && tab_arg->type == OP)
+		{
 			temp = tab_arg;
-		else if (tab_arg->type == OP)
+		}
+		/*else if (tab_arg->type == OP)
 		{
 			if (tab_arg->tab_test[0][0] == ';' || tab_arg->tab_test[0][0] == '&')
 				temp = tab_arg;
-		}
+		}*/
 		tab_arg = tab_arg->prev;
 	}
 	if (temp)
@@ -89,18 +91,21 @@ void		init_ast(void)
 	g_tracking.mysh->exec->sym = NULL;
 }
 
-void		ft_ast(t_tab_arg *tab_arg, t_env *st_env, t_jobs *job)
+void		ft_ast(t_tab_arg *tab_arg, t_jobs *job)
 {
 	t_tree	*tree;
+	pid_t	gpid;
 	pipe(descrf);
 	pipe(descrf_two);
 
 	tree = new_branch();
 	create_ast(tree, tab_arg);
 	init_ast();
-	execute_ast(tree, tab_arg, st_env, job);
+	execute_ast(tree,tab_arg, job);
+	//exit (0);
 	add_to_exec(1);
 	if (EXEC->ret == 0)
-		exec_command(st_env, job);
-	ORDER = NULL;
+		exec_command(job);
+	// ORDER = NULL;
+	return ;
 }
