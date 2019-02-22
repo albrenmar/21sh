@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 08:33:56 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/02/21 20:50:58 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void		execute_two(int mode, t_jobs *job, int fd)
 		}
 		else if (mode == 2)
 		{
-
 			if (fd != 0)
 				dup2(fd, 1);
 			close(descrf_two[1]);
