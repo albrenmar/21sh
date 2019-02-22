@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "__functional_base": "c",
+        "atomic": "c",
+        "functional": "c",
+        "iterator": "c",
+        "limits": "c",
+        "memory": "c",
+        "tuple": "c",
+        "type_traits": "c"
+    }
+}

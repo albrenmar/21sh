@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/21 06:28:00 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/22 04:53:57 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,32 @@ int			need_expand(char *to_transf)
 	return (0);
 }
 
-void		scan_arg_transformer(char *arg)
+void		scan_arg_transformer(char **arg)
 {
 	t_expand	*expand;
 	t_scan		*scan;
+	t_scan		*first_scan;
+	char		*new_arg;
 
 	scan = NULL;
 	scan = new_scan();
-	scan_argument(arg, scan);
-	expand = NULL;
-	expand = new_expand(ft_strlen(arg));
-	create_list_expand(expand, arg);
-	transform(expand, &arg);
+	first_scan = scan;
+	scan_argument(*arg, scan);
+	new_arg = NULL;
+	while (scan && scan->sstrsing)
+	{
+		expand = NULL;
+		expand = new_expand(ft_strlen(scan->sstrsing));
+		create_list_expand(expand, scan->sstrsing);
+		transform(expand, &scan->sstrsing);
+		if (!new_arg)
+			new_arg = ft_strnew(1);
+		new_arg = ft_strjoinfree(new_arg, scan->sstrsing, 1);
+		scan = scan->next;
+	}
+	scan = first_scan;
+	ft_strdel(arg);
+	*arg = new_arg;
 }
 
 void		expand_transformer(t_last *cmd)
@@ -98,7 +112,8 @@ void		expand_transformer(t_last *cmd)
 	while (cmd && cmd->name)
 	{
 		if (need_expand(cmd->name))
-			scan_arg_transformer(cmd->name);
+			scan_arg_transformer(&cmd->name);
+		ft_putstr("Voy a ejecutar:");
 		ft_putendl(cmd->name);
 		if (cmd->next)
 			cmd = cmd->next;

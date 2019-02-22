@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 05:42:59 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/21 08:13:35 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/22 05:06:35 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,25 @@ void	scan_argument(char *arg, t_scan *info_arg)
 		while (arg[i] && arg[i] != '$' && arg[i + 1] && arg[i + 1] != '{')
 		{
 			if (info_arg->start == -1)
-				info_arg->start == i;
+				info_arg->start = i;
 			if (run_arg[i] == '$')
 				info_arg->error = i;
 			run_arg[i] = arg[i];
 			i++;
-			info_arg->end == i;
+			info_arg->end = i;
 		}
 	else if (arg[i] && arg[i] != '}')
 		while (arg[i] && arg[i] != '}')
 		{
 			if (info_arg->start == -1)
-				info_arg->start == i;
+				info_arg->start = i;
 			run_arg[i] = arg[i];
 			i++;
-			info_arg->end == i;
+			info_arg->end = i;
 		}
 	if (run_arg[0])
 	{
-		if (arg[i] == '}')
+		if (arg[i] == '}' || (arg[0] == '~' && arg[i]))
 		{
 			run_arg[i] = arg[i];
 			i++;
@@ -77,4 +77,5 @@ t_scan	*new_scan(void)
 	scan->sstrsing = NULL;
 	scan->error = -1;
 	scan->next = NULL;
+	return (scan);
 }
