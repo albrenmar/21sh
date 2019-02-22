@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 03:26:41 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/18 05:19:09 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/22 07:17:00 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	show_setenv(void)
 	ft_printlist();
 	if (g_tracking.mysh->setenv_lst)
 		set_var = g_tracking.mysh->setenv_lst;
-	while (set_var)
+	while (set_var && set_var->param)
 	{
 		ft_putstr(set_var->param->key);
 		ft_putchar('=');
