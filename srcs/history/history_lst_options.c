@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst_options.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/02/15 04:43:50 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/01/30 03:33:28 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	hist_file_to_lst(void)
 	path = create_path_hist();
 	fd = open(path, O_CREAT | O_APPEND | O_RDWR, 00777);
 	if (fd < 0)
-		ft_putendl("Error while opening/creating .shell_history");
+		ft_putendl_fd("Error while opening/creating .shell_history", 2);
 	if (g_tracking.mysh->hist == NULL)
 		g_tracking.mysh->hist = hist_lst_create(*line);
 	while (get_next_line(fd, line) == 1 && *line != NULL)

@@ -6,12 +6,37 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 06:37:11 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/23 13:58:18 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
+
+int			errors_fg(int nb, int error)
+{
+	// if (error == 0)
+	// {
+	// 	ft_putstr("42sh: fg: job ");
+	// 	ft_putnbr(nb);
+	// 	ft_putendl(" is already in the background!");
+	// }
+	if (error == 1)
+		ft_putendl("42sh: fg: wrong job_id usage, only one job supported ");
+	if (error == 2)
+	{
+		ft_putstr("42sh: fg: ");
+		ft_putendl("wrong job_id usage");
+		return (1);
+	}
+	else if (error == 3)
+	{
+		ft_putstr("42sh: fg: job ");
+		ft_putnbr(nb);
+		ft_putendl(" doesn't exist!");
+	}
+	return (1);
+}
 
 int			errors_bg(int nb, int error)
 {

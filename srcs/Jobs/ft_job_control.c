@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 06:49:36 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/22 12:10:05 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int					cmd_checker(t_last *part, int mode, t_jobs *job)
 		return (rellocate_cmd(part, mode));
 	}
 }
-
+/*
 char				*fill_cmd_name(t_last *part)
 {
 	char			*new;
@@ -150,7 +150,7 @@ char				*fill_cmd_name(t_last *part)
 // 	}
 	
 // }
-
+*/
 char				*check_separator(t_last *part)
 {
 	t_last			*hold;
@@ -169,7 +169,7 @@ char				*check_separator(t_last *part)
 	else
 		return (NULL);
 }
-
+/*
 static t_last		*next_cmd(t_last *part)
 {
 	t_last	*new;
@@ -216,7 +216,7 @@ static t_last		*next_cmd(t_last *part)
 		part->next->check = 1;
 	return (head);
 }
-
+*/
 void		free_last(t_last **cmd)
 {
 	t_last	*tmp;
@@ -231,7 +231,7 @@ void		free_last(t_last **cmd)
 		tmp = tmp->next;
 	}
 }
-
+/*
 static t_last		*cmd_to_part(t_last *cmd)
 {
 	t_last	*new;
@@ -261,6 +261,19 @@ static t_last		*cmd_to_part(t_last *cmd)
 	return (head);
 }
 
+void	print_last(t_last *list)
+{
+	t_last		*temp;
+
+	temp = list;
+	while (list)
+	{
+		printf("CMD = %s ET TYPE = %d\n", list->name, list->type);
+		list = list->next;
+	}
+	list = temp;
+}
+
 void	cmd_manager(t_last *cmd, t_tab_arg *tab_arg)
 {
 	t_last	*part;
@@ -268,9 +281,12 @@ void	cmd_manager(t_last *cmd, t_tab_arg *tab_arg)
 	int		foreground;
 	
 	part = cmd_to_part(cmd);
+	print_last(part);
+	exit (0);
 	free_last(&cmd);
 	while ((cmd = next_cmd(part)) != NULL)
 	{
+		/////////
 		tab_arg = convert_to_list_tab(cmd);
 		if (ft_strcmp(check_separator(part), "&"))
 			foreground = 0;
@@ -284,6 +300,7 @@ void	cmd_manager(t_last *cmd, t_tab_arg *tab_arg)
 			put_job_in_foreground(job, 0);
 		else
 			put_job_in_background(job, 0);
+		/////////
 		if (g_tracking.fg == 1 || g_tracking.bg == 1)
 		{
 			if (g_tracking.fg == 1)
@@ -307,4 +324,4 @@ void	cmd_manager(t_last *cmd, t_tab_arg *tab_arg)
 	}
 	free_last(&cmd);
 	free_last(&part);
-}
+}*/

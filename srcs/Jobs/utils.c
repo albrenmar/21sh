@@ -6,12 +6,32 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 05:58:07 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/23 13:40:16 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
+
+char			**tab_dup(char **tob)
+{
+	int			i;
+	char		**new;
+
+	i = 0;
+	while (tob[i])
+		i++;
+	if (!(new = malloc(sizeof(char*) * (i + 1))))
+			return (NULL);
+	i = 0;
+	while (tob[i])
+	{
+		new[i] = ft_strdup(tob[i]);
+		i++;
+	}
+	new[i] = NULL;
+	return (new);
+}
 
 int				suspended_jobs_count(void)
 {
@@ -94,7 +114,7 @@ char			*parse_job_number(char *str)
 	new[j] = '\0';
 	return (new);
 }
-
+/*
 void			jobs_debug(void)
 {
 	t_jobs		*tmp;
@@ -133,7 +153,7 @@ int				get_job_number(void)
 	}
 	return (i);
 }
-
+*/
 void			free_job(t_jobs *job)
 {
 	t_jobs		*hold;
@@ -307,7 +327,7 @@ t_jobs			*new_job(t_last *part, int background)
 	return (tmp);
 }
 
-static void		env_struct_picker_2(char *new, t_env *tmp)
+/*static void		env_struct_picker_2(char *new, t_env *tmp)
 {
 	int		i;
 	int		nb;
@@ -383,4 +403,4 @@ char		**envlist_to_tab(t_env **env)
 	}
 	tob[i] = NULL;
 	return (tob);
-}
+}*/

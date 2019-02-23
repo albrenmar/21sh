@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/18 20:23:07 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/22 12:30:09 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		sig_int_handler(int signo)
 		signal(SIGINT, sig_int_handler);
 	}
 }
-
+/*
 void		suspend_signal_handler(void)
 {
 	signal(SIGTSTP, SIG_DFL);
@@ -49,7 +49,7 @@ void		signal_handler(int signo)
 	{
 	}
 }
-
+*/
 void		set_process_signal_handlers(void)
 {
 	signal(SIGINT, SIG_DFL);
@@ -70,7 +70,7 @@ void		set_shell_signal_handlers(void)
 	signal(SIGCHLD, SIG_DFL);
 	// signal(SIGCHLD, SIG_IGN);
 }
-
+/*
 void		set_signal_handlers(void)
 {
 	// signal(SIGWINCH, signal_handler);
@@ -80,4 +80,4 @@ void		set_signal_handlers(void)
 	signal(SIGTSTP, signal_handler);
 	signal(SIGKILL, signal_handler);
 	signal(SIGQUIT, signal_handler);
-}
+}*/

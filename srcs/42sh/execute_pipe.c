@@ -6,85 +6,125 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/21 20:50:58 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/23 13:35:04 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
 
-void		execute_two(int mode, t_jobs *job, int fd)
+//#define ORDER g_tracking.mysh->order
+//#define EXEC g_tracking.mysh->exec
+
+void		execute_two(char **tab_exec)
 {
-	// char	**envtab;
-	pid_t	pid0;
-	
-	// envtab = envlist_to_tab(&st_env);
-	// ft_putendl("AA");
-	g_tracking.orderhold = ORDER->command;
-	pid0 = fork();
-	if (pid0 == 0)
+	if (is_builtin())
+		exit (builtin_exec());
+	if ((tab_exec = test_exist_fonction(tab_exec)))
 	{
-		pid0 = getpid();
-		if (job->jpid == 0)
-			job->jpid = pid0;
-		setpgid(pid0, job->jpid);
-		if (job->background == 0)
-			tcsetpgrp(g_tracking.sterminal, job->jpid);
-		set_process_signal_handlers();
-		if (mode == 0)
+		execve(tab_exec[0], tab_exec, NULL);
+		perror("FAIL");
+	}
+	else
+	{
+		exit(-1);
+	}
+}
+
+
+void		execute_pipe_two(char **tab_exec, t_jobs *job)
+{
+	int		status;
+	int		j;
+	pid_t	pid0;
+
+	g_tracking.g_tab_exec = tab_dup(tab_exec);
+	if (!is_builtin_alone())
+	{
+		pid0 = fork();
+		if (pid0 == 0)
 		{
+			pid0 = getpid();
+			if (job->jpid == 0)
+				job->jpid = pid0;
+			setpgid(pid0, job->jpid);
+			if (job->background == 0)
+				tcsetpgrp(g_tracking.sterminal, job->jpid);
+			set_process_signal_handlers();
+			if (g_tracking.mysh->set_fd->STDIN != 0)
+				dup2(g_tracking.mysh->set_fd->STDIN, 0);
+			if (g_tracking.mysh->set_fd->STDOUT != 1)
+				dup2(g_tracking.mysh->set_fd->STDOUT, 1);
+			if (g_tracking.mysh->set_fd->STDERR != 2)
+				dup2(g_tracking.mysh->set_fd->STDERR, 2);
+			close(descrf_two[1]);
+			dup2(descrf_two[0], 0);
+			close(descrf_two[0]);
+			execute_two(tab_exec);
+		}
+		else
+		{
+			// waitpid(pid0, &status, WUNTRACED);
+			// j = WEXITSTATUS(status);
+			new_process(job, pid0);
+			if (job->jpid == 0)
+				job->jpid = pid0;
+			setpgid(pid0, job->jpid);
+		}
+	/*if (j != 0)
+		EXEC->ret = -1;*/
+	}
+	else
+		g_tracking.builtin = 1;
+}
+
+void		execute_pipe(char **tab_exec, t_jobs *job)
+{
+	pid_t	pid0;
+	int		j;
+	int		status;
+
+	descrf[0] = descrf_two[0];
+	descrf[1] = descrf_two[1];
+	pipe(descrf_two);
+	g_tracking.g_tab_exec = tab_dup(tab_exec);
+	if (!is_builtin_alone())
+	{
+		pid0 = fork();
+		if (pid0 == 0)
+		{
+			pid0 = getpid();
+			if (job->jpid == 0)
+				job->jpid = pid0;
+			setpgid(pid0, job->jpid);
+			if (job->background == 0)
+				tcsetpgrp(g_tracking.sterminal, job->jpid);
+			set_process_signal_handlers();
+			if (g_tracking.mysh->set_fd->STDIN != 0)
+				dup2(g_tracking.mysh->set_fd->STDIN, 0);
+			if (g_tracking.mysh->set_fd->STDOUT != 1)
+				dup2(g_tracking.mysh->set_fd->STDOUT, 1);
+			if (g_tracking.mysh->set_fd->STDERR != 2)
+				dup2(g_tracking.mysh->set_fd->STDERR, 2);
 			close(descrf_two[0]);
 			dup2(descrf_two[1], 1);
 			close(descrf_two[1]);
 			close(descrf[1]);
 			dup2(descrf[0], 0);
 			close(descrf[0]);
-			if (is_builtin(1))
-				exit (builtin_exec(mode));
-			else if ((ORDER->command = test_exist_fonction(ORDER->command)))
-				execve(ORDER->command[0], ORDER->command, g_tracking.envtab);
-			else
-				exit(-1);
+			execute_two(tab_exec);
 		}
-		else if (mode == 2)
+		else
 		{
-			if (fd != 0)
-				dup2(fd, 1);
 			close(descrf_two[1]);
-			dup2(descrf_two[0], 0);
-			close(descrf_two[0]);
-			// ft_putendl("BB");
-			if (is_builtin(1))
-				exit (builtin_exec(mode));
-			if ((ORDER->command = test_exist_fonction(ORDER->command)))
-				execve(ORDER->command[0], ORDER->command, g_tracking.envtab);
-			else
-				exit(-1);
+			// j = WEXITSTATUS(status);
+			new_process(job, pid0);
+			if (job->jpid == 0)
+				job->jpid = pid0;
+			setpgid(pid0, job->jpid);
 		}
+	/*if (j != 0)
+		EXEC->ret = -1;*/
 	}
 	else
-	{
-		if (mode == 0)
-			close(descrf_two[1]);
-		if (mode == 2)
-			close(descrf_two[1]);
-		new_process(job, pid0);
-		// if (mode == 2)
-		// 	job->lastpid = pid0;
-		if (job->jpid == 0)
-			job->jpid = pid0;
-		setpgid(pid0, job->jpid);
-		if (is_builtin(2))
-			builtin_exec(1);
-	}
-}
-
-void		execute_pipe_two(t_jobs *job, int fd)
-{
-	execute_two(2, job, fd);
-}
-
-void		execute_pipe(t_jobs *job)
-{
-	execute_two(0, job, 0);
+		g_tracking.builtin = 1;
 }

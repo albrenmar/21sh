@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   add_path_to_bin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:00:43 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 09:00:44 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/02/18 01:36:13 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
 
-#define EXEC g_tracking.mysh->exec
+//#define EXEC g_tracking.mysh->exec
 
 int		test_exist_fonction_two(char ***tab_cmd, char **pathlist)
 {
@@ -56,7 +56,7 @@ char	**test_exist_fonction(char **tab_cmd)
 	else
 	{
 		printf("La commande %s n'existe pas\n", tab_cmd[i]);
-		EXEC->ret = -1;
+		//EXEC->ret = -1;
 		return (NULL);
 	}
 	return (NULL);

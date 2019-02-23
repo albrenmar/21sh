@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   job_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 09:27:25 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/02/23 14:05:38 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,73 +135,14 @@ void		continue_job(t_jobs *job, int foreground)
 		put_job_in_background(job, 1);
 }
 
-int			fg_builtin(int mode)
+int			fg_builtin_output(t_jobs *tmp)
 {
-	t_jobs	*tmp;
-
-	tmp = g_tracking.jobs;
-	if (tmp->next)
-	{
-		while (tmp->next && tmp->current != 1)
-			tmp = tmp->next;
-		if (mode != 2 && mode != 0)
-		{
-			if (mode == 1)
-			{
-				g_tracking.lastplace = tmp->place;
-				g_tracking.fg = 1;
-			}
-			else
-			{
-				g_tracking.fg = 0;
-				ft_putendl(tmp->name);
-				continue_job(tmp, 1);
-			}
-		}
-		return (0);
-	}
-	if (mode == 1)
-		ft_putendl("No jobs 😂");
-	return (1);
-}
-
-int			bg_builtin_output(int mode, t_jobs *tmp)
-{
-	if (mode != 2 && mode != 0)
-	{
-		if (mode != 1 && tmp->background != 1)
-		{
-			ft_putchar('[');
-			ft_putnbr(tmp->place);
-			ft_putchar(']');
-			ft_putchar('+');
-			ft_putchar(' ');
-			ft_putstr(tmp->name);
-			ft_putchar(' ');
-			ft_putchar('&');
-			ft_putchar('\n');
-		}
-		if (mode == 1)
-		{
-			g_tracking.lastplace = tmp->place;
-			g_tracking.bg = 1;
-		}
-		else
-		{
-			g_tracking.bg = 0;
-			if (tmp->background != 1)
-			{
-				continue_job(tmp, 0);
-				tmp->background = 1;
-			}
-			else
-				return (errors_bg(tmp->place, 0));
-		}
-	}
+	ft_putendl(tmp->name);
+	continue_job(tmp, 1);
 	return (0);
 }
 
-int			bg_builtin(int mode)
+int			fg_builtin(void)
 {
 	t_jobs	*tmp;
 	char	*hold;
@@ -211,22 +152,22 @@ int			bg_builtin(int mode)
 	tmp = g_tracking.jobs;
 	if (tmp->next)
 	{
-		if (g_tracking.orderhold[1] && g_tracking.orderhold[1][0] == '%')
+		if (g_tracking.g_tab_exec[1] && g_tracking.g_tab_exec[1][0] == '%')
 		{
-			hold = parse_job_number(g_tracking.orderhold[1]);
+			hold = parse_job_number(g_tracking.g_tab_exec[1]);
 			if (hold)
 				nb = ft_atoi(hold);
-			if (job_exists(parse_job_sign(g_tracking.orderhold[1])))
+			if (job_exists(parse_job_sign(g_tracking.g_tab_exec[1])))
 			{
 				while (tmp->prev)
 					tmp = tmp->prev;
-				nb = parse_job_sign(g_tracking.orderhold[1]);
+				nb = parse_job_sign(g_tracking.g_tab_exec[1]);
 				while (tmp->next && tmp->place != nb)
 					tmp = tmp->next;
-				if (nb == 0 && mode == 1)
-					return (errors_bg(0, 2));
+				if (nb == 0)
+					return (errors_fg(0, 2));
 				else if (nb != 0)
-					return (bg_builtin_output(mode, tmp));
+					return (fg_builtin_output(tmp));
 			}
 			else if (hold && job_exists(ft_atoi(hold)))
 			{
@@ -234,28 +175,95 @@ int			bg_builtin(int mode)
 					tmp = tmp->prev;
 				while (tmp->next && tmp->place != nb)
 					tmp = tmp->next;
-				return (bg_builtin_output(mode, tmp));
+				return (fg_builtin_output(tmp));
 			}
 			else if (hold)
+				return (errors_fg(ft_atoi(hold), 3));
+			else
+				errors_fg(0, 2);
+		}
+		else if (g_tracking.g_tab_exec[1] && g_tracking.g_tab_exec[1][0] != '%')
+			return (errors_fg(tmp->place, 2));
+		while (tmp->prev)
+			tmp = tmp->prev;
+		while (tmp->next && tmp->current != 1)
+			tmp = tmp->next;
+		return (fg_builtin_output(tmp));
+	}
+	ft_putendl("No jobs 😂");
+	return (1);
+}
+
+int			bg_builtin_output(t_jobs *tmp)
+{
+	if (tmp->background != 1)
+	{
+		ft_putchar('[');
+		ft_putnbr(tmp->place);
+		ft_putchar(']');
+		ft_putchar('+');
+		ft_putchar(' ');
+		ft_putstr(tmp->name);
+		ft_putchar(' ');
+		ft_putchar('&');
+		ft_putchar('\n');
+		continue_job(tmp, 0);
+		tmp->background = 1;
+	}
+	else
+		return (errors_bg(tmp->place, 0));
+	return (0);
+}
+
+int			bg_builtin(void)
+{
+	t_jobs	*tmp;
+	char	*hold;
+	int		nb;
+
+	nb = 0;
+	tmp = g_tracking.jobs;
+	if (tmp->next)
+	{
+		if (g_tracking.g_tab_exec[1] && g_tracking.g_tab_exec[1][0] == '%')
+		{
+			hold = parse_job_number(g_tracking.g_tab_exec[1]);
+			if (hold)
+				nb = ft_atoi(hold);
+			if (job_exists(parse_job_sign(g_tracking.g_tab_exec[1])))
 			{
-				if (mode == 1)
-					return (errors_bg(ft_atoi(hold), 3));
-				else if (mode == 4)
-					return (1);
+				while (tmp->prev)
+					tmp = tmp->prev;
+				nb = parse_job_sign(g_tracking.g_tab_exec[1]);
+				while (tmp->next && tmp->place != nb)
+					tmp = tmp->next;
+				if (nb == 0)
+					return (errors_bg(0, 2));
+				else if (nb != 0)
+					return (bg_builtin_output(tmp));
 			}
+			else if (hold && job_exists(ft_atoi(hold)))
+			{
+				while (tmp->prev)
+					tmp = tmp->prev;
+				while (tmp->next && tmp->place != nb)
+					tmp = tmp->next;
+				return (bg_builtin_output(tmp));
+			}
+			else if (hold)
+				return (errors_bg(ft_atoi(hold), 3));
 			else
 				errors_bg(0, 2);
 		}
-		else if (g_tracking.orderhold[1] && g_tracking.orderhold[1][0] != '%')
+		else if (g_tracking.g_tab_exec[1] && g_tracking.g_tab_exec[1][0] != '%')
 			return (errors_bg(tmp->place, 2));
 		while (tmp->prev)
 			tmp = tmp->prev;
 		while (tmp->next && tmp->current != 1)
 			tmp = tmp->next;
-		return (bg_builtin_output(mode, tmp));
+		return (bg_builtin_output(tmp));
 	}
-	if (mode == 1)
-		ft_putendl("No jobs 😂");
+	ft_putendl("No jobs 😂");
 	return (1);
 }
 
@@ -268,20 +276,20 @@ int			jobs_builtin_parser(t_jobs *tmp, int optionl, int optionp, char *hold)
 	i = 1;
 	mode = 0;
 	place = 0;
-	if (ORDER->command[1])
+	if (g_tracking.g_tab_exec[1])
 	{
-		while (ORDER->command[i] && ORDER->command[i][0] == '-')
+		while (g_tracking.g_tab_exec[i] && g_tracking.g_tab_exec[i][0] == '-')
 		{
-			if (!ORDER->command[i][1])
+			if (!g_tracking.g_tab_exec[i][1])
 				return (errors_jobs('a', 0, 0));
 			j = 1;
-			while (ORDER->command[i][j] != '\0')
+			while (g_tracking.g_tab_exec[i][j] != '\0')
 			{
-				if (ORDER->command[i][j] != 'l' && ORDER->command[i][j] != 'p')
-					return (errors_jobs(ORDER->command[i][j], 0, 1));
-				else if (ORDER->command[i][j] == 'l')
+				if (g_tracking.g_tab_exec[i][j] != 'l' && g_tracking.g_tab_exec[i][j] != 'p')
+					return (errors_jobs(g_tracking.g_tab_exec[i][j], 0, 1));
+				else if (g_tracking.g_tab_exec[i][j] == 'l')
 					optionl = 1;
-				else if (ORDER->command[i][j] == 'p')
+				else if (g_tracking.g_tab_exec[i][j] == 'p')
 					optionp = 1;
 				j++;
 			}
@@ -291,13 +299,13 @@ int			jobs_builtin_parser(t_jobs *tmp, int optionl, int optionp, char *hold)
 			j = 2;
 		else if (optionl)
 			j = 1;
-		if (ORDER->command[i] && ORDER->command[i][0] == '%')
+		if (g_tracking.g_tab_exec[i] && g_tracking.g_tab_exec[i][0] == '%')
 		{
-			while (ORDER->command[i] && ORDER->command[i][0] == '%')
+			while (g_tracking.g_tab_exec[i] && g_tracking.g_tab_exec[i][0] == '%')
 			{
-				hold = parse_job_number(ORDER->command[i]);
-				if (job_exists(parse_job_sign(ORDER->command[i])))
-					jobs_builtin_output(tmp, 1, parse_job_sign(ORDER->command[i]), j);
+				hold = parse_job_number(g_tracking.g_tab_exec[i]);
+				if (job_exists(parse_job_sign(g_tracking.g_tab_exec[i])))
+					jobs_builtin_output(tmp, 1, parse_job_sign(g_tracking.g_tab_exec[i]), j);
 				else if (hold && job_exists(ft_atoi(hold)))
 					jobs_builtin_output(tmp, 1, ft_atoi(hold), j);
 				else if (hold)
@@ -633,7 +641,7 @@ int					job_is_stopped(t_jobs *job)
 	}
 	return (1);
 }
-
+/*
 t_jobs				*find_job (pid_t jpid)
 {
   struct s_jobs		*j;
@@ -645,4 +653,4 @@ t_jobs				*find_job (pid_t jpid)
 			return (j);
 	}
 	return (NULL);
-}
+}*/

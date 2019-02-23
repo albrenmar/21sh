@@ -6,162 +6,122 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/19 06:14:20 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/23 12:42:09 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
 
-t_order		*new_order(void)
+int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 {
-	t_order		*order;
+	t_last	*temp_command;
+	int		redir;
+	char	**tab_exec;
 
-	order = ft_memalloc(sizeof(t_order));
-	order->command = NULL;
-	order->next = NULL;
-	order->prev = NULL;
-	order->temp_command = NULL;
-	return (order);
-}
-
-char		**copy_tab(char **copy)
-{
-	int		i;
-	int		j;
-	char	**tabcpy;
-
-	i = 0;
-	j = 0;
-	while (copy[i])
-		i++;
-	tabcpy = ft_memalloc(sizeof(char *) * (i + 1));
-	tabcpy[i] = NULL;
-	i = 0;
-	while (copy[i])
-	{
-		tabcpy[i] = ft_strdup(copy[i]);
-		i++;
-	}
-	tabcpy[i] = NULL;
-	return (tabcpy);
-}
-
-void		add_to_exec(int mode)
-{
-	if (ORDER)
-	{
-		while (ORDER->next)
-		{
-			ORDER = ORDER->next;
-		}
-		ORDER->next = new_order();
-		ORDER->next->prev = ORDER;
-		ORDER = ORDER->next;
-	}
-	else
-		ORDER = new_order();
-	ORDER->command = copy_tab(EXEC->left);
-	if (EXEC->sym && mode == 0)
-		ORDER->sym = ft_strdup(EXEC->sym[0]);
-	else
-		ORDER->sym = NULL;
-}
-
-void		exec_command(t_jobs *job)
-{
-	int		status;
-	t_order		*temp_command;
-	t_order		*temp_command_next;
-	pid_t	gpid;
+	redir = 0;
+	tab_exec = NULL;
+	temp_command = NULL;
 	pipe(descrf);
 	pipe(descrf_two);
-	int		j;
-	int		close_fd;
-
-	j = 0;
-	EXEC->pid_exec = 0;
-	EXEC->gpid = 0;
-	EXEC->ret = 0;
-	while (ORDER->prev)
-		ORDER = ORDER->prev;
-	if (!ORDER->next)
+	job = new_job(list_cmd, foreground);
+	g_tracking.mysh->set_fd = ft_memalloc(sizeof(t_set_fd));
+	g_tracking.mysh->set_fd->STDIN = 0;
+	g_tracking.mysh->set_fd->STDOUT = 1;
+	g_tracking.mysh->set_fd->STDERR = 2;
+	while (list_cmd)
 	{
-		execute_pipe_two(job, 0);
-		ORDER = ORDER->next;
-	}
-	while (ORDER)
-	{
-		while (ORDER && ORDER->sym && ORDER->sym[0] == '|')
+		if (list_cmd->type == CMD)
 		{
-			descrf[0] = descrf_two[0];
-			descrf[1] = descrf_two[1];
-			pipe(descrf_two);
-			execute_pipe(job);
-			ORDER = ORDER->next;
-			if (!ORDER->next)
-			{
-				execute_pipe_two(job, 0);
-				ORDER = ORDER->next;
-			}
+			temp_command = list_cmd;
+			list_cmd = list_cmd->next;
 		}
-		if (ORDER && ORDER->sym && ORDER->sym[0] == '>')
+		else if (list_cmd->type == OP && its_pipe(list_cmd) && temp_command && redir == 0)
 		{
-			temp_command = ORDER;
-			while (ORDER && ORDER->sym && ORDER->sym[0] == '>')
-			{
-				ORDER = ORDER->next;
-				if (ft_strlen(ORDER->sym) == 1)
-					close_fd = open(ORDER->command[0], O_CREAT | O_TRUNC | O_RDWR, 0644);
-				else
-					close_fd = open(ORDER->command[0], O_CREAT | O_APPEND | O_RDWR, 0644);
-			}
-			ORDER = ORDER->next;
-			temp_command_next = ORDER;
-			ORDER = temp_command;
-			execute_pipe_two(job, close_fd);
-			close(close_fd);
-			ORDER = temp_command_next;
+			tab_exec = create_tab_to_exec(temp_command);
+			execute_pipe(tab_exec, job);
+			tab_exec = NULL;
+			temp_command = NULL;
+			list_cmd = list_cmd->next;
+		}
+		else if (list_cmd->type == OP && (its_reddir(list_cmd) || its_fd_reddir(list_cmd)))
+		{
+			redir++;
+			create_fich(list_cmd);
+			list_cmd = list_cmd->next;
+		}
+		else if (!temp_command)
+			list_cmd = list_cmd->next;
+		else if (list_cmd->type == FICH || list_cmd->type == OPT || list_cmd->type == ARG)
+			list_cmd = list_cmd->next;
+		if (temp_command && (!list_cmd || (its_pipe(list_cmd) && redir != 0)))
+		{
+			tab_exec = create_tab_to_exec(temp_command);
+			execute_pipe_two(tab_exec, job);
+			tab_exec = NULL;
+			temp_command = NULL;
+			redir = 0;
 		}
 	}
-	if (EXEC->ret == 0)
-		EXEC->ret = 1;
+	if (g_tracking.builtin == 0)
+	{
+		if (!g_tracking.interactive)
+			wait_for_job(job);
+		else if (!foreground)
+			put_job_in_foreground(job, 0);
+		else
+			put_job_in_background(job, 0);
+	}
+	else
+	{
+		g_tracking.builtin = 0;
+		g_tracking.lastreturn = builtin_exec();
+	}
+	return (0);
 }
 
-void		execute_ast(t_tree *tree, t_tab_arg *tab_arg, t_jobs *job)
+void		execute_ast(t_tree *tree, t_jobs *job)
 {
-	if (tree->left)
-		execute_ast(tree->left, tab_arg, job);
-	if (tree->type == OP)
-		EXEC->sym = tree->cmd;
-	if ((!EXEC->left || !EXEC->right) && !tree->left)
+	int		ret;
+	int		foreground;
+
+	ret = 0;
+	foreground = 0;
+	if (tree->type == SEP)
 	{
-		if (!EXEC->left)
-			EXEC->left = tree->cmd;
-		else
-			EXEC->right = tree->cmd;
-	}
-	if (EXEC->left && EXEC->right)
-	{
-		if (((ft_strlen(EXEC->sym[0]) == 2) && ((EXEC->sym[0][0] == '|') || EXEC->sym[0][0] == '&')) || EXEC->sym[0][0] == ';')
+		if (tree->left && tree->left->type != SEP)
 		{
-			add_to_exec(1);
-			if (EXEC->ret == 0)
-				exec_command(job);
-			if ((EXEC->ret == 1 && (EXEC->sym[0][0] == '&' || EXEC->sym[0][0] == ';')) || (EXEC->ret == -1 && EXEC->sym[0][0] == '|'))
-				EXEC->ret = 0;
-			ORDER = NULL;
+			printf("____________________________________-\n");
+			printf("EXECUTE JOBS [1]\n");
+			if (ft_strlen(tree->cmd) == 1 && tree->cmd[0] == '&')
+			{
+				foreground = 1;
+				//printf("BACK !!!!!!!!!!!!!!!!!!!\n");
+			}
+			//print_last(tree->left->list_cmd);
+			ret = exec_command(tree->left->list_cmd, foreground, job);
+			printf("____________________________________-\n");
 		}
-		else
-			add_to_exec(0);
-		EXEC->left = EXEC->right;
-		EXEC->right = NULL;
-		return ;
+		else if (tree->left && tree->left->type == SEP)
+			execute_ast(tree->left, job);
+		if (ft_strlen(tree->cmd) > 1)
+			printf("EN FONCTION DE [%s]\n", tree->cmd);
+		if (tree->right && tree->right->type != SEP)
+		{
+			printf("____________________________________-\n");
+			printf("EXECUTE JOBS [2]\n");
+			if (tree->prev && ft_strlen(tree->prev->cmd) == 1 && tree->prev->cmd[0] == '&')
+			{
+				foreground = 1;
+				//printf("BACK !!!!!!!!!!!!!!!!!!!\n");
+			}
+			//print_last(tree->right->list_cmd);
+			printf("____________________________________-\n");
+			ret = exec_command(tree->right->list_cmd, foreground, job);
+		}
+		else if (tree->right)
+		{
+			execute_ast(tree->right, job);
+		}
 	}
-	if (tree->type == OP &&
-			(ft_strlen(tree->name) != 2 || (tree->name[0] != '|' && tree->name[0] != '&')))
-		EXEC->sym = tree->cmd;
-	if (tree->right)
-		execute_ast(tree->right, tab_arg, job);
 	return ;
 }
