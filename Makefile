@@ -3,17 +3,33 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
+#    By: abe <abe@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/01/30 03:49:10 by alsomvil         ###   ########.fr        #
+#    Updated: 2019/02/23 12:48:33 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=	42sh
 
 SRC = main.c \
-	  42sh/ft_analize.c \
+	  42sh/builtins.c \
+	  42sh/ft_parseur.c \
+	  42sh/ft_lexeur.c \
+	  42sh/ft_modif_list.c \
+	  42sh/ft_ast.c \
+	  42sh/its_token.c \
+	  42sh/execute_ast.c \
+	  42sh/execute_pipe.c \
+	  42sh/add_path_to_bin.c \
+	  42sh/create_tab_to_exec.c \
+	  42sh/convert_list.c \
+	  42sh/create_fich.c \
+	  Jobs/signal_handlers.c \
+	  Jobs/utils.c \
+	  Jobs/job_functions.c \
+	  Jobs/errors.c \
+	  Jobs/ft_job_control.c \
 	  GNL/term_setup.c \
 	  GNL/stringsearch.c \
 	  GNL/signals.c \

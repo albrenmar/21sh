@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/30 04:17:16 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/23 12:25:58 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
+
 
 int		main(int argc, char **argv, char **env)
 {
@@ -24,7 +25,7 @@ int		main(int argc, char **argv, char **env)
 	line = NULL;
 	argc = 0;
 	argv = NULL;
-//	set_env(&st_env, env);
+	//	set_env(&st_env, env);
 	cursorinit();
 	prompt = ft_strdup("Fake minishell > ");
 	g_tracking.prompt = ft_strdup(prompt);
@@ -32,6 +33,8 @@ int		main(int argc, char **argv, char **env)
 	ft_siginit();
 	init_shell(env);
 	get_term();
+	interactive_check_set_shell_group();
+	set_shell_signal_handlers();
 	while (get_key() > 0)
 	{
 		line = ft_strdup(g_tracking.cmd);
@@ -39,13 +42,18 @@ int		main(int argc, char **argv, char **env)
 		g_tracking.swi = 0;
 		ft_putchar('\n');
 		hist_lst_add_next(g_tracking.mysh->hist, line);
-		if (!ft_strcmp(line, "exit"))
+		// if (!ft_strcmp(line, "exit"))
+		// {
+		// 	printf("%s\n", "exit temporaire");
+		// 	exit(0);
+		// }
+		if (line && (cmd = ft_parseur(line)))
 		{
-			hist_to_file();
-			printf("%s\n", "exit temporaire");
-			exit(0);
+			convert_list(cmd);
+			ft_ast(cmd);
 		}
-		cmd = ft_analize(line);
+		jobs_notifications();
+		jobs_update_current();
 		//ft_build_test(line);
 		free(line);
 		line = NULL;
