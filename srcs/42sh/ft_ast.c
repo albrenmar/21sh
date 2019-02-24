@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 02:25:05 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/22 12:27:55 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/24 18:28:31 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_last	*search_OR_AND(t_last *list)
 	temp = NULL;
 	while (list->prev)
 	{
-		if ((ft_strlen(list->name) == 2 && (list->name[0] == '|' || list->name[0] == '&')) || (ft_strlen(list->name) == 1 && list->name[0] == '&'))
+		if ((ft_strlen(list->name) == 2 && (list->name[0] == '|' || list->name[0] == '&')) || (ft_strlen(list->name) == 1 && (list->name[0] == '&' || list->name[0] == ';')))
 		{
 			temp = list;
 			list = begin;
@@ -81,10 +81,16 @@ void		affich_ast(t_tree *tree)
 void		create_ast(t_tree *tree, t_last *list_command)
 {
 	t_last	*separator;
+
+	print_last(list_command);
 	while (list_command->next)
+	{
+		printf("TEST DE FOU\n");
 		list_command = list_command->next;
+	}
 	while (list_command->prev)
 	{
+		printf("TEST DE FOU2222\n");
 		if ((separator = search_OR_AND(list_command)))
 		{
 			tree->type = SEP;
@@ -106,6 +112,7 @@ void		create_ast(t_tree *tree, t_last *list_command)
 		}
 		list_command = list_command->prev;
 	}
+	printf("TEST DE FOU3333\n");
 	tree->type = CMD;
 	tree->list_cmd = list_command;
 	return ;
@@ -121,8 +128,14 @@ void		ft_ast(t_last *list_command)
 	tree = new_branch();
 	create_ast(tree, list_command);
 	if (tree->type == SEP)
+	{
 		execute_ast(tree, job);
+	}
 	else
+	{
+		printf("TEST DE FOU44444\n");
+		print_last(tree->list_cmd);
 		exec_command(tree->list_cmd, 0, job);
+	}
 	return ;
 }

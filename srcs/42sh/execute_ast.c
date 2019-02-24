@@ -6,11 +6,20 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/23 12:42:09 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/24 18:15:09 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
+
+void	print_last(t_last *list)
+{
+	while (list)
+	{
+		printf("CMD = %s TYPE = %d\n", list->name, list->type);
+		list = list->next;
+	}
+}
 
 int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 {
