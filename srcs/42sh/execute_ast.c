@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/24 19:22:46 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/24 19:41:50 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void		execute_ast(t_tree *tree, t_jobs *job)
 				return ;
 			if (tree->cmd[0] == '|' && g_tracking.lastreturn == 0)
 				return ;
-			printf("RETOUR NEXT = %d\n", g_tracking.lastreturn);
+			//printf("RETOUR NEXT = %d\n", g_tracking.lastreturn);
 		//	printf("EN FONCTION DE [%s]\n", tree->cmd);
 		}
 		if (tree->right && tree->right->type != SEP)
