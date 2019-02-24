@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/24 18:15:09 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/24 18:48:13 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ void		execute_ast(t_tree *tree, t_jobs *job)
 	{
 		if (tree->left && tree->left->type != SEP)
 		{
-			printf("____________________________________-\n");
-			printf("EXECUTE JOBS [1]\n");
+			/*printf("____________________________________-\n");
+			printf("EXECUTE JOBS [1]\n");*/
 			if (ft_strlen(tree->cmd) == 1 && tree->cmd[0] == '&')
 			{
 				foreground = 1;
@@ -108,7 +108,8 @@ void		execute_ast(t_tree *tree, t_jobs *job)
 			}
 			//print_last(tree->left->list_cmd);
 			ret = exec_command(tree->left->list_cmd, foreground, job);
-			printf("____________________________________-\n");
+			foreground = 0;
+			//printf("____________________________________-\n");
 		}
 		else if (tree->left && tree->left->type == SEP)
 			execute_ast(tree->left, job);
@@ -116,16 +117,18 @@ void		execute_ast(t_tree *tree, t_jobs *job)
 			printf("EN FONCTION DE [%s]\n", tree->cmd);
 		if (tree->right && tree->right->type != SEP)
 		{
-			printf("____________________________________-\n");
-			printf("EXECUTE JOBS [2]\n");
+			//printf("____________________________________-\n");
+			//printf("EXECUTE JOBS [2]\n");
 			if (tree->prev && ft_strlen(tree->prev->cmd) == 1 && tree->prev->cmd[0] == '&')
 			{
 				foreground = 1;
 				//printf("BACK !!!!!!!!!!!!!!!!!!!\n");
 			}
 			//print_last(tree->right->list_cmd);
-			printf("____________________________________-\n");
+			//printf("CMD RIGHT = %s\n", tree->right->list_cmd->name);
+			//printf("FORGROUND = %d\n", foreground);
 			ret = exec_command(tree->right->list_cmd, foreground, job);
+			foreground = 0;
 		}
 		else if (tree->right)
 		{

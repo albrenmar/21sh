@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/23 14:05:38 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/24 18:42:55 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ void		continue_job(t_jobs *job, int foreground)
 int			fg_builtin_output(t_jobs *tmp)
 {
 	ft_putendl(tmp->name);
+	tmp->background = 0;
 	continue_job(tmp, 1);
 	return (0);
 }

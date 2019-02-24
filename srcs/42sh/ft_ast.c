@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 02:25:05 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/24 18:28:31 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/24 18:44:35 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,11 @@ void		create_ast(t_tree *tree, t_last *list_command)
 {
 	t_last	*separator;
 
-	print_last(list_command);
+	//print_last(list_command);
 	while (list_command->next)
-	{
-		printf("TEST DE FOU\n");
 		list_command = list_command->next;
-	}
 	while (list_command->prev)
 	{
-		printf("TEST DE FOU2222\n");
 		if ((separator = search_OR_AND(list_command)))
 		{
 			tree->type = SEP;
@@ -112,7 +108,6 @@ void		create_ast(t_tree *tree, t_last *list_command)
 		}
 		list_command = list_command->prev;
 	}
-	printf("TEST DE FOU3333\n");
 	tree->type = CMD;
 	tree->list_cmd = list_command;
 	return ;
@@ -132,10 +127,6 @@ void		ft_ast(t_last *list_command)
 		execute_ast(tree, job);
 	}
 	else
-	{
-		printf("TEST DE FOU44444\n");
-		print_last(tree->list_cmd);
 		exec_command(tree->list_cmd, 0, job);
-	}
 	return ;
 }
