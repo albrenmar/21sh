@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/24 18:48:13 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/24 19:22:46 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,34 +99,26 @@ void		execute_ast(t_tree *tree, t_jobs *job)
 	{
 		if (tree->left && tree->left->type != SEP)
 		{
-			/*printf("____________________________________-\n");
-			printf("EXECUTE JOBS [1]\n");*/
 			if (ft_strlen(tree->cmd) == 1 && tree->cmd[0] == '&')
-			{
 				foreground = 1;
-				//printf("BACK !!!!!!!!!!!!!!!!!!!\n");
-			}
-			//print_last(tree->left->list_cmd);
 			ret = exec_command(tree->left->list_cmd, foreground, job);
 			foreground = 0;
-			//printf("____________________________________-\n");
 		}
 		else if (tree->left && tree->left->type == SEP)
 			execute_ast(tree->left, job);
 		if (ft_strlen(tree->cmd) > 1)
-			printf("EN FONCTION DE [%s]\n", tree->cmd);
+		{
+			if (tree->cmd[0] == '&' && g_tracking.lastreturn == 1)
+				return ;
+			if (tree->cmd[0] == '|' && g_tracking.lastreturn == 0)
+				return ;
+			printf("RETOUR NEXT = %d\n", g_tracking.lastreturn);
+		//	printf("EN FONCTION DE [%s]\n", tree->cmd);
+		}
 		if (tree->right && tree->right->type != SEP)
 		{
-			//printf("____________________________________-\n");
-			//printf("EXECUTE JOBS [2]\n");
 			if (tree->prev && ft_strlen(tree->prev->cmd) == 1 && tree->prev->cmd[0] == '&')
-			{
 				foreground = 1;
-				//printf("BACK !!!!!!!!!!!!!!!!!!!\n");
-			}
-			//print_last(tree->right->list_cmd);
-			//printf("CMD RIGHT = %s\n", tree->right->list_cmd->name);
-			//printf("FORGROUND = %d\n", foreground);
 			ret = exec_command(tree->right->list_cmd, foreground, job);
 			foreground = 0;
 		}
