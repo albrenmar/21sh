@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/23 12:37:49 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/25 05:54:02 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,6 @@ void	init_shell(char **environ)
 	g_tracking.mysh->env = ft_env_to_lst(environ);
 	add_missing_string();
 	hist_file_to_lst();
+	g_tracking.mysh->tab_env = init_envp(g_tracking.mysh->env);
+	g_tracking.mysh->setenv_lst = NULL;
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abe <abe@student.42.fr>                    +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/23 12:48:33 by abe              ###   ########.fr        #
+#    Updated: 2019/02/25 05:24:29 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,11 +88,32 @@ SRC = main.c \
 	  shell_core/env_to_lst.c \
 	  shell_core/init_shell.c \
 	  shell_core/get_pwd.c \
+	  shell_core/env_list_to_tab.c \
 	  history/history_lst.c \
 	  history/history_lst2.c \
 	  history/history_lst_options.c \
 	  history/history_loop.c \
-	  history/print_hist.c
+	  history/print_hist.c \
+	  expansions/expand.c \
+	  expansions/user.c \
+	  expansions/parm.c \
+	  expansions/transform.c \
+	  expansions/expand_tilde.c \
+	  expansions/tilde.c \
+	  expansions/tools_expand.c \
+	  expansions/home.c \
+	  expansions/expand_keys.c \
+	  expansions/check_sign_tools.c \
+	  expansions/hash_tools.c \
+	  expansions/percent_tools.c \
+	  expansions/expand_keys_dblpnt.c \
+	  expansions/expand_keys_adv.c \
+	  expansions/values.c \
+	  expansions/values_tools.c \
+	  expansions/environ.c \
+	  expansions/environ_set.c \
+	  expansions/scan.c \
+	  set/set.c \
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A

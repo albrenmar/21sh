@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/23 14:01:54 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/25 04:51:18 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include "libft.h"
 # include "ft_ls.h"
 # include "minishell.h"
+# include "expansions.h"
+# include "set.h"
 # include <sys/ioctl.h>
 # include <termios.h>
 # include <curses.h>
@@ -140,6 +142,8 @@ typedef struct	s_shell
 	t_lstcontainer	*env;
 	t_hist			*hist;
 	t_set_fd		*set_fd;
+	t_env_set		*setenv_lst;
+	char			**tab_env;
 }				t_shell;
 
 typedef struct	s_tracking
@@ -372,5 +376,7 @@ void			show_job_info(t_jobs *job, const char *status, int mode);
 void			free_job(t_jobs *job);
 void			jobs_notifications(void);
 void			jobs_update_current(void);
+
+char			**init_envp(t_lstcontainer *env);
 
 #endif
