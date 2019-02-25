@@ -6,22 +6,30 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/15 04:34:48 by mjose            ###   ########.fr        #
+#    Updated: 2019/02/25 05:24:29 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=	42sh
 
 SRC = main.c \
+	  42sh/builtins.c \
 	  42sh/ft_parseur.c \
 	  42sh/ft_lexeur.c \
 	  42sh/ft_modif_list.c \
 	  42sh/ft_ast.c \
+	  42sh/its_token.c \
 	  42sh/execute_ast.c \
 	  42sh/execute_pipe.c \
-	  42sh/execute_redir.c \
 	  42sh/add_path_to_bin.c \
-	  42sh/convert_to_list_tab.c \
+	  42sh/create_tab_to_exec.c \
+	  42sh/convert_list.c \
+	  42sh/create_fich.c \
+	  Jobs/signal_handlers.c \
+	  Jobs/utils.c \
+	  Jobs/job_functions.c \
+	  Jobs/errors.c \
+	  Jobs/ft_job_control.c \
 	  GNL/term_setup.c \
 	  GNL/stringsearch.c \
 	  GNL/signals.c \
@@ -80,6 +88,7 @@ SRC = main.c \
 	  shell_core/env_to_lst.c \
 	  shell_core/init_shell.c \
 	  shell_core/get_pwd.c \
+	  shell_core/env_list_to_tab.c \
 	  history/history_lst.c \
 	  history/history_lst2.c \
 	  history/history_lst_options.c \
@@ -101,6 +110,10 @@ SRC = main.c \
 	  expansions/expand_keys_adv.c \
 	  expansions/values.c \
 	  expansions/values_tools.c \
+	  expansions/environ.c \
+	  expansions/environ_set.c \
+	  expansions/scan.c \
+	  set/set.c \
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A
@@ -127,7 +140,7 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
-FLAG = -g #-fsanitize=address
+FLAG = -g -fsanitize=address
 
 all : $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 01:20:02 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/02 02:43:35 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/17 06:34:30 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char	*get_user_home(char *user)
 char	*get_home_value(void)
 {
 	char	*home;
+	char	*user;
+	char	*usertmp;
 
 	if ((home = ft_strdup(get_env_string("HOME"))) && ft_strequ(home, ""))
 		return (home);

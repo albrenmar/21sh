@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/15 04:56:48 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/25 06:12:41 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,26 +76,39 @@ int			need_expand(char *to_transf)
 	return (0);
 }
 
-void		expand_transformer(t_last *cmd)
+void		scan_arg_transformer(char **arg)
 {
 	t_expand	*expand;
-	t_last		*frst_cmd;
+	t_scan		*scan;
+	t_scan		*first_scan;
+	char		*new_arg;
 
-	expand = NULL;
-	frst_cmd = cmd;
-	while (cmd && cmd->name)
+	scan = NULL;
+	scan = new_scan();
+	first_scan = scan;
+	scan_argument(*arg, scan);
+	new_arg = NULL;
+	while (scan && scan->sstrsing)
 	{
-		if (need_expand(cmd->name))
-		{
-			expand = new_expand(ft_strlen(cmd->name));
-			create_list_expand(expand, cmd->name);
-			transform(expand, &cmd->name);
-		}
-		ft_putendl(cmd->name);
-		if (cmd->next)
-			cmd = cmd->next;
-		else
-			break ;
+		expand = NULL;
+		expand = new_expand(ft_strlen(scan->sstrsing));
+		create_list_expand(expand, scan->sstrsing);
+		transform(expand, &scan->sstrsing);
+		if (!new_arg)
+			new_arg = ft_strnew(1);
+		new_arg = ft_strjoinfree(new_arg, scan->sstrsing, 1);
+		scan = scan->next;
 	}
-	cmd = frst_cmd;
+	scan = first_scan;
+	ft_strdel(arg);
+	*arg = new_arg;
+}
+
+void		expand_transformer(char **value)
+{
+	if (*value)
+	{
+		if (need_expand(*value))
+			scan_arg_transformer(value);
+	}
 }

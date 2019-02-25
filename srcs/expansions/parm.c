@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 06:10:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/15 04:52:09 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/17 09:57:59 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 char	*get_parm_string(char *str)
 {
-	t_args		*tmp;
+	t_env_set	*tmp;
 	t_keyval	*buf;
 
-	if (g_tracking.mysh->args_lst == NULL)
+	if (g_tracking.mysh->setenv_lst == NULL)
 		return (NULL);
-	tmp = g_tracking.mysh->args_lst;
+	tmp = g_tracking.mysh->setenv_lst;
 	while (tmp && !ft_strequ(tmp->param->key, str))
 		tmp = tmp->next;
 	if (tmp && tmp->param->value)
