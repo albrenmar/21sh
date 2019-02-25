@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/23 13:47:14 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/25 05:50:50 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 int			is_builtin(void)
 {
 	if (ft_builtin_search("jobs") || ft_builtin_search("fg") ||
-		ft_builtin_search("bg") || ft_builtin_search("exit"))
+		ft_builtin_search("bg") || ft_builtin_search("exit") ||
+		ft_builtin_search("set"))
 		return (1);
 	return (0);
 }
@@ -80,6 +81,8 @@ int			builtin_exec(void)
 		return (fg_builtin());
 	else if (ft_builtin_search("bg"))
 		return (bg_builtin());
+	else if (ft_builtin_search("set"))
+		return (show_setenv());
 	else if (ft_builtin_search("exit"))
 		return (ft_exit());
 	return (0);

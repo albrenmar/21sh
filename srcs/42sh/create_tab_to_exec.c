@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tab_to_exec.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/20 11:23:08 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/25 06:14:30 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char	**create_tab_to_exec(t_last *list)
 	tab_exec = ft_memalloc(sizeof(char *) * (i + 1));
 	i = 0;
 	tab_exec[i] = list->name;
+	expand_transformer(&tab_exec[i]);
 	list = list->next;
 	i++;
 	while (list && list->type != CMD)
@@ -40,6 +41,7 @@ char	**create_tab_to_exec(t_last *list)
 		if (list->type == OPT || list->type == ARG)
 		{
 			tab_exec[i] = list->name;
+			expand_transformer(&tab_exec[i]);
 			i++;
 		}
 		list = list->next;
