@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:00:43 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/18 01:36:13 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/25 11:08:58 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	**test_exist_fonction(char **tab_cmd)
 		return (tab_cmd);
 	else
 	{
-		printf("La commande %s n'existe pas\n", tab_cmd[i]);
+		printf("42sh: command not found: %s\n", tab_cmd[i]);
 		//EXEC->ret = -1;
 		return (NULL);
 	}

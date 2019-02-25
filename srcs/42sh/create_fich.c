@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/20 21:32:23 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/26 00:33:26 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,37 @@
 
 void		set_fd(char c, int fd)
 {
-	if (c == '0')
-		g_tracking.mysh->set_fd->STDIN = fd;
-	else if (c == '1')
-		g_tracking.mysh->set_fd->STDOUT = fd;
-	else if (c == '2')
-		g_tracking.mysh->set_fd->STDERR = fd;
-	else if (c == '3')
-		g_tracking.mysh->set_fd->three = fd;
-	else if (c == '4')
-		g_tracking.mysh->set_fd->four = fd;
-	else if (c == '5')
-		g_tracking.mysh->set_fd->five = fd;
-	else if (c == '6')
-		g_tracking.mysh->set_fd->six = fd;
-	else if (c == '7')
-		g_tracking.mysh->set_fd->seven = fd;
-	else if (c == '8')
-		g_tracking.mysh->set_fd->eight = fd;
-	else if (c == '9')
-		g_tracking.mysh->set_fd->nine = fd;
+	printf("STDOUT = %d\n", g_tracking.mysh->set_fd->STDOUT);
+	if (fd == 1 && g_tracking.mysh->set_fd->STDOUT == 1)
+	{
+		if (c == '2')
+		{
+			dup2(g_tracking.mysh->set_fd->STDERR, fd);
+		}
+	}
+	else
+	{
+		if (c == '0')
+			g_tracking.mysh->set_fd->STDIN = fd;
+		else if (c == '1')
+			g_tracking.mysh->set_fd->STDOUT = fd;
+		else if (c == '2')
+			g_tracking.mysh->set_fd->STDERR = fd;
+		else if (c == '3')
+			g_tracking.mysh->set_fd->three = fd;
+		else if (c == '4')
+			g_tracking.mysh->set_fd->four = fd;
+		else if (c == '5')
+			g_tracking.mysh->set_fd->five = fd;
+		else if (c == '6')
+			g_tracking.mysh->set_fd->six = fd;
+		else if (c == '7')
+			g_tracking.mysh->set_fd->seven = fd;
+		else if (c == '8')
+			g_tracking.mysh->set_fd->eight = fd;
+		else if (c == '9')
+			g_tracking.mysh->set_fd->nine = fd;
+	}
 }
 
 void		create_fich(t_last *list)
@@ -74,9 +85,18 @@ void		create_fich(t_last *list)
 	}
 	else if (its_reddir(list))
 	{
-		while (list->type != FICH)
-			list = list->next;
-		g_tracking.mysh->set_fd->STDOUT = open(list->name, O_CREAT | O_TRUNC | O_RDWR, 0644);
+		if (list->name[0] == '>')
+		{
+			while (list->type != FICH)
+				list = list->next;
+			g_tracking.mysh->set_fd->STDOUT = open(list->name, O_CREAT | O_TRUNC | O_RDWR, 0644);
+		}
+		else if (list->name[0] == '<')
+		{
+			while (list->type != FICH)
+				list = list->next;
+			g_tracking.mysh->set_fd->STDIN = open(list->name, O_RDWR, 0644);
+		}
 	}
 	else if (its_fd_reddir(list))
 	{

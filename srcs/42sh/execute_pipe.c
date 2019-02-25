@@ -6,14 +6,11 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/23 13:35:04 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/25 21:15:09 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
-
-//#define ORDER g_tracking.mysh->order
-//#define EXEC g_tracking.mysh->exec
 
 void		execute_two(char **tab_exec)
 {
@@ -57,21 +54,17 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job)
 			if (g_tracking.mysh->set_fd->STDERR != 2)
 				dup2(g_tracking.mysh->set_fd->STDERR, 2);
 			close(descrf_two[1]);
-			dup2(descrf_two[0], 0);
+			dup2(descrf_two[0], g_tracking.mysh->set_fd->STDIN);
 			close(descrf_two[0]);
 			execute_two(tab_exec);
 		}
 		else
 		{
-			// waitpid(pid0, &status, WUNTRACED);
-			// j = WEXITSTATUS(status);
 			new_process(job, pid0);
 			if (job->jpid == 0)
 				job->jpid = pid0;
 			setpgid(pid0, job->jpid);
 		}
-	/*if (j != 0)
-		EXEC->ret = -1;*/
 	}
 	else
 		g_tracking.builtin = 1;
@@ -106,24 +99,21 @@ void		execute_pipe(char **tab_exec, t_jobs *job)
 			if (g_tracking.mysh->set_fd->STDERR != 2)
 				dup2(g_tracking.mysh->set_fd->STDERR, 2);
 			close(descrf_two[0]);
-			dup2(descrf_two[1], 1);
+			dup2(descrf_two[1], g_tracking.mysh->set_fd->STDOUT);
 			close(descrf_two[1]);
 			close(descrf[1]);
-			dup2(descrf[0], 0);
+			dup2(descrf[0], g_tracking.mysh->set_fd->STDIN);
 			close(descrf[0]);
 			execute_two(tab_exec);
 		}
 		else
 		{
 			close(descrf_two[1]);
-			// j = WEXITSTATUS(status);
 			new_process(job, pid0);
 			if (job->jpid == 0)
 				job->jpid = pid0;
 			setpgid(pid0, job->jpid);
 		}
-	/*if (j != 0)
-		EXEC->ret = -1;*/
 	}
 	else
 		g_tracking.builtin = 1;
