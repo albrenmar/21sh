@@ -96,6 +96,8 @@ t_hist		*hist_free(t_hist *hist)
 			hist = hist->previous;
 			free(tmp->line);
 			free(tmp);
+			tmp->line = NULL;
+			tmp = NULL;
 		}
 	}
 	hist = NULL;

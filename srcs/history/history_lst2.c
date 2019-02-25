@@ -128,3 +128,22 @@ t_hist		*hist_delete_index(t_hist *hist, int index)
 	hist = hist_remap_index(hist);
 	return (hist);
 }
+
+t_hist		*hist_delete_last(t_hist *hist)
+{
+	t_hist *tmp;
+
+	while(hist)
+		hist = hist->next;
+	tmp = hist;
+	if (!(hist->previous))
+		hist = hist_free(hist);
+	else
+	{
+		free(tmp);
+		tmp = NULL;
+		hist->next = NULL;
+		hist = hist_remap_index(hist);
+	}
+	return hist;
+}

@@ -25,3 +25,34 @@ int		ft_isdigit_str(char* str)
 	}
 	return (1);
 }
+
+char		*builtin_s_args(char **tab)
+{
+	int i;
+	int j;
+	int h;
+	char *str_ret;
+
+	i = 2;
+	j = 0;
+	h = 0;
+	while(tab[i])
+	{
+		while(tab[i][j])
+			j++;
+		i++;
+	}
+	str_ret = ft_memalloc(sizeof(char) * j+(i-2) + 1);
+	i = 2;
+	j = 0;
+	while(tab[i])
+	{
+		while(tab[i][j])
+			str_ret[h++] = tab[i][j++];
+		i++;
+		if (tab[i+1])
+			str_ret[h++] = ' ';
+	}
+	str_ret[h] = '\0';
+	return str_ret;
+}
