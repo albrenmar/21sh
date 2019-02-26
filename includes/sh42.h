@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/26 01:06:32 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/25 16:14:31 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@
 # define K_SPC		32
 # define K_BKSP		127
 # define K_TAB		9
-# define K_CTRLR	18
 # define K_DEL		"\x1b\x5b\x33\x7e"
 
 int		descrf[2];
@@ -147,6 +146,15 @@ typedef struct	s_shell
 	char			**tab_env;
 }				t_shell;
 
+typedef struct		s_hash
+{
+    char			*binary;
+	char			*path;
+	int				totalhits;
+    struct s_hash	*nextbinary;
+}
+					t_hash;
+
 typedef struct	s_tracking
 {
 	char				**g_tab_exec;
@@ -158,18 +166,17 @@ typedef struct	s_tracking
 	struct s_cpaste		*cpaste;
 	struct s_auto		*aut;
 	struct s_shell		*mysh;
+	struct s_jobs		*jobs;
+	struct s_hash		*hashtable[27];
 	char				*str;
 	char				*cmd;
 	char				*comp;
 	char				*prompt;
-	char				*search;
-	char				*found;
 	t_lstcontainer		*key_list;
 	int					swi;
 	int					buffsize;
 	int					histindex;
 	int					histmax;
-	struct s_jobs		*jobs;
 	int					interactive;
 	int					lastreturn;
 	int					sterminal;
@@ -314,9 +321,6 @@ t_hist			*hist_free(t_hist *hist);
 void			hist_save_file(t_hist *s_hist);
 t_hist			*hist_remap_index(t_hist *hist);
 t_hist			*hist_delete_index(t_hist *hist, int index);
-int     		begin_search(void);
-char         	*get_hist_ptr(char *needle);
-t_hist			*get_hist_nbr(int i);
 
 
 t_last			*create_new_list(void);
@@ -358,6 +362,17 @@ void			set_shell_signal_handlers(void);
 void			set_process_signal_handlers(void);
 t_cmd			*new_process(t_jobs *job, pid_t cpid);
 
+void			continue_job(t_jobs *job, int foreground);
+void			hash_binary(void);
+int				hash_maker(const char *binary);
+t_hash			*new_binary_hash(char *binary, char *path, int hits);
+int				errors_hash(char *binary, int error);
+int				ft_hash(void);
+void			ft_hash_output(void);
+int				empty_hash_table(void);
+int				hash_update_commands(int j);
+char			**tab_format_hash(char *binary);
+char			**hashed_command(char **tab_exec);
 
 t_jobs			*new_job(t_last *part, int background);
 void			wait_for_job(t_jobs *job);

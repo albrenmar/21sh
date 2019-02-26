@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_path_to_bin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:00:43 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 11:08:58 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/25 14:00:26 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char	**test_exist_fonction(char **tab_cmd)
 		return (tab_cmd);
 	else
 	{
-		printf("42sh: command not found: %s\n", tab_cmd[i]);
 		//EXEC->ret = -1;
 		return (NULL);
 	}

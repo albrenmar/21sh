@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_ast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 21:38:13 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/26 01:13:22 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 	temp_command = NULL;
 	pipe(descrf);
 	pipe(descrf_two);
+	if (!list_cmd)
+		return (0);
 	job = new_job(list_cmd, foreground);
 	g_tracking.mysh->set_fd = ft_memalloc(sizeof(t_set_fd));
 	g_tracking.mysh->set_fd->STDIN = 0;

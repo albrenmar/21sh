@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 04:18:28 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 20:45:35 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/22 05:50:26 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		its_reddir(t_last *list)
 	int		i;
 
 	i = 0;
-	if (list->name[i] && (list->name[i] == '>'  || list->name[i] == '<'))
+	if (list->name[i] && list->name[i] == '>')
 		return (1);
 	return (0);
 }

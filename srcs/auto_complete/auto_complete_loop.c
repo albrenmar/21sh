@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/24 03:19:43 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/23 00:29:04 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	end_autocomplete(int i)
 				escape_path();
 			if (g_tracking.aut->type == 2)
 				g_tracking.aut->to_add = ft_strjoinfree(g_tracking.aut->to_add, "} ", 1);
-			if ((g_tracking.aut->type != 2) && (g_tracking.aut->type != 1))
+			else
 				g_tracking.aut->to_add = ft_strjoinfree(g_tracking.aut->to_add, " ", 1);
 			add_to_str(g_tracking.aut->to_add);
 		}

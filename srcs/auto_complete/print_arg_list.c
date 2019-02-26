@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/24 03:17:37 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/13 21:04:47 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,24 +92,6 @@ int		ft_menuline()
 //	return (1);
 }
 
-void	back_up_add(void)
-{
-	int		y;
-	int		ab;
-	int		winx;
-
-	ab = utf_strlen(g_tracking.str);
-	ab += g_tracking.pos->prompt;
-	ab += utf_strlen(g_tracking.aut->to_add);
-	y = ab / g_tracking.terminfo->sizex;
-	y = y - (g_tracking.pos->y);
-	while (y != 0)
-	{
-		y--;
-		tputs(tgetstr("up ", NULL), 1, yan_putchar);
-	}
-}
-
 int		print_menu(void)
 {
 	int		i;
@@ -118,7 +100,6 @@ int		print_menu(void)
 
 	i = g_tracking.aut->line_up + 1;
 	ft_putstr_nocar(g_tracking.aut->to_add);
-	back_up_add();
 	j = ft_menuline();
 	tputs(tgetstr("do ", NULL), 1, yan_putchar);
 	if (j == 0)

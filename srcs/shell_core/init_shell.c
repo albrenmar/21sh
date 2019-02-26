@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/25 05:54:02 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/25 13:58:32 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,18 @@ void	ft_printlist(void)
 void	init_shell(char **environ)
 {
 	t_shell		*mysh;
+	int			i;
 
+	i = 0;
 	if (!(mysh = malloc(sizeof(t_shell))))
 	{
 		ft_putendl("Failled to allocate memory");
 		exit(EXIT_FAILURE);
+	}
+	while (i < 27)
+	{
+		g_tracking.hashtable[i] = NULL;
+		i++;
 	}
 	g_tracking.builtin = 0;
 	g_tracking.jobs = NULL;
