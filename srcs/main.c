@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/26 03:04:07 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/26 06:21:19 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int		main(int argc, char **argv, char **env)
 	while (get_key() > 0)
 	{
 		line = ft_strdup(g_tracking.cmd);
-		ft_putnbr(ft_strlen(line));
 		free(g_tracking.cmd);
 		g_tracking.swi = 0;
 		ft_putchar('\n');
