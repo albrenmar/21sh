@@ -86,18 +86,9 @@ void		create_fich(t_last *list)
 	}
 	else if (its_reddir(list))
 	{
-		if (list->name[0] == '>')
-		{
-			while (list->type != FICH)
-				list = list->next;
-			g_tracking.mysh->set_fd->STDOUT = open(list->name, O_CREAT | O_TRUNC | O_RDWR, 0644);
-		}
-		else if (list->name[0] == '<')
-		{
-			while (list->type != FICH)
-				list = list->next;
-			g_tracking.mysh->set_fd->STDIN = open(list->name, O_RDWR, 0644);
-		}
+		while (list->type != FICH)
+			list = list->next;
+		g_tracking.mysh->set_fd->STDOUT = open(list->name, O_CREAT | O_TRUNC | O_RDWR, 0644);
 	}
 	else if (its_fd_reddir(list))
 	{

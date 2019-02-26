@@ -3,17 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: abe <abe@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/25 05:24:29 by mjose            ###   ########.fr        #
+#    Updated: 2019/02/25 13:33:23 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=	42sh
 
 SRC = main.c \
-	  42sh/builtins.c \
 	  42sh/ft_parseur.c \
 	  42sh/ft_lexeur.c \
 	  42sh/ft_modif_list.c \
@@ -25,6 +24,17 @@ SRC = main.c \
 	  42sh/create_tab_to_exec.c \
 	  42sh/convert_list.c \
 	  42sh/create_fich.c \
+	  42sh/hashtables.c \
+	  builtins/fg_bg_builtins.c \
+	  builtins/jobs_builtin.c \
+	  builtins/exit.c \
+	  builtins/hash_builtin.c \
+	  builtins/builtins.c \
+	  builtins/set.c \
+	  builtins/type_main.c \
+	  builtins/test_main.c \
+	  builtins/test_two_arg.c \
+	  builtins/test_three_arg.c \
 	  Jobs/signal_handlers.c \
 	  Jobs/utils.c \
 	  Jobs/job_functions.c \
@@ -81,9 +91,6 @@ SRC = main.c \
 	  alias/alias_bin.c \
 	  alias/alias_file.c \
 	  alias/alias_struct.c \
-	  test/test_main.c \
-	  test/test_two_arg.c \
-	  test/test_three_arg.c \
 	  shell_core/copyenv.c \
 	  shell_core/env_to_lst.c \
 	  shell_core/init_shell.c \
@@ -113,7 +120,6 @@ SRC = main.c \
 	  expansions/environ.c \
 	  expansions/environ_set.c \
 	  expansions/scan.c \
-	  set/set.c \
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A

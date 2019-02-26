@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/25 04:51:18 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/25 16:14:31 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,15 @@ typedef struct	s_shell
 	char			**tab_env;
 }				t_shell;
 
+typedef struct		s_hash
+{
+    char			*binary;
+	char			*path;
+	int				totalhits;
+    struct s_hash	*nextbinary;
+}
+					t_hash;
+
 typedef struct	s_tracking
 {
 	char				**g_tab_exec;
@@ -157,6 +166,8 @@ typedef struct	s_tracking
 	struct s_cpaste		*cpaste;
 	struct s_auto		*aut;
 	struct s_shell		*mysh;
+	struct s_jobs		*jobs;
+	struct s_hash		*hashtable[27];
 	char				*str;
 	char				*cmd;
 	char				*comp;
@@ -166,7 +177,6 @@ typedef struct	s_tracking
 	int					buffsize;
 	int					histindex;
 	int					histmax;
-	struct s_jobs		*jobs;
 	int					interactive;
 	int					lastreturn;
 	int					sterminal;
@@ -352,6 +362,17 @@ void			set_shell_signal_handlers(void);
 void			set_process_signal_handlers(void);
 t_cmd			*new_process(t_jobs *job, pid_t cpid);
 
+void			continue_job(t_jobs *job, int foreground);
+void			hash_binary(void);
+int				hash_maker(const char *binary);
+t_hash			*new_binary_hash(char *binary, char *path, int hits);
+int				errors_hash(char *binary, int error);
+int				ft_hash(void);
+void			ft_hash_output(void);
+int				empty_hash_table(void);
+int				hash_update_commands(int j);
+char			**tab_format_hash(char *binary);
+char			**hashed_command(char **tab_exec);
 
 t_jobs			*new_job(t_last *part, int background);
 void			wait_for_job(t_jobs *job);
