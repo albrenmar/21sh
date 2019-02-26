@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 22:04:28 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/26 03:16:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/26 03:30:20 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,17 @@ int		read_search()
 	read(STDERR_FILENO, &c, 1);
 	if (c == 10)
 	{
-		ft_bzero(g_tracking.str, g_tracking.buffsize);
-		g_tracking.pos->abs = 0;
-		add_to_str(ft_strdup(g_tracking.found));
+		if (g_tracking.found)
+		{
+			ft_bzero(g_tracking.str, g_tracking.buffsize);
+			g_tracking.pos->abs = 0;
+			add_to_str(ft_strdup(g_tracking.found));
+		}
+		else
+		{
+			print_line();
+			back_to_pos();
+		}
 		g_tracking.found = NULL;
 		g_tracking.search = NULL;
 		return (1);
