@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:29:52 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/21 21:34:25 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/24 02:51:54 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	cursor_reset(void)
 	g_tracking.cpaste = malloc(sizeof(t_cpaste));
 	g_tracking.cpaste->line = NULL;
 	g_tracking.buffsize = 1024;
+	g_tracking.search = NULL;
+	g_tracking.found = NULL;
 	if ((g_tracking.str = malloc(sizeof(char) * g_tracking.buffsize)) == NULL)
 	{
 		ft_putendl("Failled to allocate memory");
