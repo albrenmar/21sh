@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/22 09:19:08 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/25 05:32:26 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	transform(t_expand *expand, char **str)
 
 	first_letter = expand;
 	tmp = *str;
-	while (expand)
+	transform_if_tilde(&first_letter, str);
+	while (expand->ltr && expand->ltr != '~')
 	{
-		transform_if_tilde(&first_letter, str);
 		if (expand->ltr == '$' && expand->next && expand->next->ltr == '{'
 				&& !expand->prev && tmp[ft_strlen(tmp) - 1] == '}')
 		{

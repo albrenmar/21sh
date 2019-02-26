@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set.h                                              :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/18 03:47:54 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/24 05:08:22 by mjose            ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
+/*   Updated: 2019/02/25 12:44:46 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SET_H
-# define SET_H
+#include "minishell.h"
+#include "sh42.h"
 
-void			add_to_env_set(char *varname, char *varvalue);
-t_env_set		*new_envset(char *varname, char *varvalue);
-int				show_setenv(void);
-void			replace_env_set_str(char *varname, char *varvalue);
-
-#endif
+int			ft_exit(void)
+{
+	if (!g_tracking.jobs->next)
+	{
+		ft_putendl("Exit");
+		exit(0);
+	}
+	else
+		ft_putendl("There are still jobs running you idiot!");
+	return (1);
+}

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/15 04:40:52 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/23 12:25:58 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
-#include "expansions.h"
+
 
 int		main(int argc, char **argv, char **env)
 {
@@ -21,7 +21,6 @@ int		main(int argc, char **argv, char **env)
 	t_env	st_env;
 	t_last	*cmd;
 	char	*prompt;
-	t_tab_arg	*tab_arg;
 
 	line = NULL;
 	argc = 0;
@@ -34,6 +33,8 @@ int		main(int argc, char **argv, char **env)
 	ft_siginit();
 	init_shell(env);
 	get_term();
+	interactive_check_set_shell_group();
+	set_shell_signal_handlers();
 	while (get_key() > 0)
 	{
 		line = ft_strdup(g_tracking.cmd);
@@ -41,17 +42,18 @@ int		main(int argc, char **argv, char **env)
 		g_tracking.swi = 0;
 		ft_putchar('\n');
 		hist_lst_add_next(g_tracking.mysh->hist, line);
-		if (!ft_strcmp(line, "exit"))
+		// if (!ft_strcmp(line, "exit"))
+		// {
+		// 	printf("%s\n", "exit temporaire");
+		// 	exit(0);
+		// }
+		if (line && (cmd = ft_parseur(line)))
 		{
-			printf("%s\n", "exit temporaire");
-			exit(0);
+			convert_list(cmd);
+			ft_ast(cmd);
 		}
-		else if (line && (cmd = ft_parseur(line)))
-		{
-			expand_transformer(cmd);
-			tab_arg = convert_to_list_tab(cmd);
-			ft_ast(tab_arg);
-		}
+		jobs_notifications();
+		jobs_update_current();
 		//ft_build_test(line);
 		free(line);
 		line = NULL;

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/22 04:53:57 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/25 06:12:41 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,21 +104,11 @@ void		scan_arg_transformer(char **arg)
 	*arg = new_arg;
 }
 
-void		expand_transformer(t_last *cmd)
+void		expand_transformer(char **value)
 {
-	t_last		*frst_cmd;
-
-	frst_cmd = cmd;
-	while (cmd && cmd->name)
+	if (*value)
 	{
-		if (need_expand(cmd->name))
-			scan_arg_transformer(&cmd->name);
-		ft_putstr("Voy a ejecutar:");
-		ft_putendl(cmd->name);
-		if (cmd->next)
-			cmd = cmd->next;
-		else
-			break ;
+		if (need_expand(*value))
+			scan_arg_transformer(value);
 	}
-	cmd = frst_cmd;
 }

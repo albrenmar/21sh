@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 08:40:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/22 07:16:21 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/25 06:08:29 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ t_env_set	*new_envset(char *varname, char *varvalue)
 		buf->value = ft_strdup(varvalue);
 		env_lst->param = buf;
 	}
+	else
+		env_lst->param = NULL;
 	env_lst->next = NULL;
 	return (env_lst);
 }

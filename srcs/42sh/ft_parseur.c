@@ -6,11 +6,12 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/31 13:10:14 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/20 17:24:58 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+//#include "../../includes/minishell.h"
+#include "../../includes/sh42.h"
 
 char	*check_quote(char *line, int *i, int *nb)
 {
@@ -34,15 +35,20 @@ char	*recup_cmd(char *line, int *i, int nb)
 		{
 			if (line[nb + 1] && (line[nb + 1] == line[nb]))
 			{
-				test = ft_strndup(line, 2);
 				(*i) = (*i) + 2;
 				nb = nb + 2;
+				test = ft_strndup(line, nb);
 			}
 			else
 			{
-				test = ft_strndup(line, 1);
 				(*i) = (*i) + 1;
 				nb = nb + 1;
+				if (line[nb] == '&')
+				{
+					nb++;
+					(*i)++;
+				}
+				test = ft_strndup(line, nb);
 			}
 		}
 		else
@@ -51,6 +57,22 @@ char	*recup_cmd(char *line, int *i, int nb)
 			{
 				nb++;
 				(*i)++;
+				if (line[nb] && ((line[nb] == '>') || line[nb] == '<') && line[nb - 1] && line[nb - 1] > 47 && line[nb - 1] < 58 && (nb < 2 || (nb > 1 && (!line[nb - 2] || (line[nb - 2] && line[nb - 2] == ' ')))))
+				{
+					nb++;
+					(*i)++;
+					if (line[nb] == line[nb - 1])
+					{
+						nb++;
+						(*i)++;
+					}
+					else if (line[nb] == '&')
+					{
+						nb++;
+						(*i)++;
+					}
+					break ;
+				}
 			}
 			test = ft_strndup(line, nb);
 		}
@@ -95,7 +117,5 @@ t_last	*ft_parseur(char *line)
 	ft_lexeur(list_cmd);
 	if (error_lexer(list_cmd))
 		return (NULL);
-	if (list_cmd)
-		tri_lexer(list_cmd);
 	return (list_cmd);
 }

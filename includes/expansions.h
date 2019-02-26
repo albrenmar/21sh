@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/22 09:04:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/25 05:09:09 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct	s_env_set
 	struct s_env_set	*next;
 }				t_env_set;
 
-typedef struct 	s_scan
+typedef struct	s_scan
 {
 	char				*sstrsing;
 	int					error;
@@ -41,7 +41,7 @@ typedef struct 	s_scan
 }				t_scan;
 
 
-void			expand_transformer(t_last *cmd);
+void			expand_transformer(char **value);
 int				need_expand(char *to_transf);
 t_expand		*new_expand(int len);
 void			create_list_expand(t_expand *new_letter, char *line);
