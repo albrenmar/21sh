@@ -6,45 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 22:04:28 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/24 03:06:49 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/26 03:16:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
-
-int		read_search()
-{
-	char	c;
-
-	c = 0;
-	read(STDERR_FILENO, &c, 1);
-	if (c == 10)
-	{
-		ft_bzero(g_tracking.str, g_tracking.buffsize);
-		g_tracking.pos->abs = 0;
-		add_to_str(ft_strdup(g_tracking.found));
-		return(1);
-	}
-	if (c == 18)
-	{
-        if (g_tracking.histindex > 1)
-		   	g_tracking.histindex--;
-	}
-	if (c == 127)
-	{
-		if (ft_strlen(g_tracking.search) > 0)
-		{
-			g_tracking.search = ft_strsub(g_tracking.search, 0,
-			(ft_strlen(g_tracking.search) - 1), 1);
-		}
-		return (0);
-	}
-	if (c < 32)
-		return (2);
-	tputs(tgetstr("le", NULL), 1, yan_putchar);
-	g_tracking.search = ft_strjoinchar(g_tracking.search, c, 1);
-	return (0);
-}
 
 void	back_up(void)
 {
@@ -69,6 +35,43 @@ void	back_up(void)
 		y--;
 		tputs(tgetstr("up", NULL), 1, yan_putchar);
 	}
+}
+
+
+int		read_search()
+{
+	char	c;
+
+	c = 0;
+	read(STDERR_FILENO, &c, 1);
+	if (c == 10)
+	{
+		ft_bzero(g_tracking.str, g_tracking.buffsize);
+		g_tracking.pos->abs = 0;
+		add_to_str(ft_strdup(g_tracking.found));
+		g_tracking.found = NULL;
+		g_tracking.search = NULL;
+		return (1);
+	}
+	if (c == 18)
+	{
+        if (g_tracking.histindex > 1)
+		   	g_tracking.histindex--;
+	}
+	if (c == 127)
+	{
+		if (ft_strlen(g_tracking.search) > 0)
+		{
+			g_tracking.search = ft_strsub(g_tracking.search, 0,
+			(ft_strlen(g_tracking.search) - 1), 1);
+		}
+		return (0);
+	}
+	if (c < 32)
+		return (2);
+	tputs(tgetstr("le", NULL), 1, yan_putchar);
+	g_tracking.search = ft_strjoinchar(g_tracking.search, c, 1);
+	return (0);
 }
 
 int		begin_search(void)
