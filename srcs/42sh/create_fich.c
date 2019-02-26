@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/26 00:33:26 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/26 01:29:36 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void		set_fd(char c, int fd)
 {
-	printf("STDOUT = %d\n", g_tracking.mysh->set_fd->STDOUT);
-	if (fd == 1 && g_tracking.mysh->set_fd->STDOUT == 1)
+	if ((fd == 0 && g_tracking.mysh->set_fd->STDIN == 0) || (fd == 1 && g_tracking.mysh->set_fd->STDOUT == 1) ||(fd == 2 && g_tracking.mysh->set_fd->STDERR == 2))
 	{
+		if (c == '0')
+			dup2(g_tracking.mysh->set_fd->STDIN, fd);
+		if (c == '1')
+			dup2(g_tracking.mysh->set_fd->STDOUT, fd);
 		if (c == '2')
-		{
 			dup2(g_tracking.mysh->set_fd->STDERR, fd);
-		}
 	}
 	else
 	{
