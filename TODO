@@ -8,6 +8,12 @@ Partie Abraham
 -changer la structure des test_exists_fonction et hashed_command pour execution de fichiers
 que quand necessaire pour n'importe quel type de fichier
 
+Partie Marc
+- Gestion d'errors pour les expansions.
+- Quiter le process en execution pour no importe quel commande avec ${VARNAME:?VARVALUE} en tant que VARNAME 
+    no existe pas, ou elle a pas valeur. (A voir avec Abraham/et/ou/Alexandre.)
+- Ajuter les expansions dans l'autocomplete, entant que la line finis avec '/' (A voir avec Brendan).
+
 
 MISC
 -Builtin cd
