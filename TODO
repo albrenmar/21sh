@@ -14,3 +14,4 @@ MISC
 -Ctrl-Z avec "cat" en cours
 -Ajouter tous la meilleure version des builtins (POSIX?)
 -ajouter env a execve
+-Faire que le parser reconaisse le signe = pour les cmd style "env HOME=TMP cd ~"
