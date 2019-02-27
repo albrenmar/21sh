@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/23 12:25:58 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/26 06:21:19 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,6 @@ int		main(int argc, char **argv, char **env)
 		g_tracking.swi = 0;
 		ft_putchar('\n');
 		hist_lst_add_next(g_tracking.mysh->hist, line);
-		// if (!ft_strcmp(line, "exit"))
-		// {
-		// 	printf("%s\n", "exit temporaire");
-		// 	exit(0);
-		// }
 		if (line && (cmd = ft_parseur(line)))
 		{
 			convert_list(cmd);
@@ -54,7 +49,6 @@ int		main(int argc, char **argv, char **env)
 		}
 		jobs_notifications();
 		jobs_update_current();
-		//ft_build_test(line);
 		free(line);
 		line = NULL;
 	}

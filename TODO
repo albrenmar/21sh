@@ -1,0 +1,17 @@
+Partie Brendan
+-S'assurer que tout est safe avec l'autocomplete(trouver source des segfault bizzare sur certains macs, ajouter l'expansion ~de Marc
+pour les variable d'env type ~/Documents
+-CTRL+D/CTRL-C/quotes/Heredoc (déja écrit, a implementer quand Alex aura fini sa partie)
+-Type et Test, a adapter avec le tableau d'arg et non char **argv
+
+Partie Abraham
+-changer la structure des test_exists_fonction et hashed_command pour execution de fichiers
+que quand necessaire pour n'importe quel type de fichier
+
+
+MISC
+-Builtin cd
+-Ctrl-Z avec "cat" en cours
+-Ajouter tous la meilleure version des builtins (POSIX?)
+-ajouter env a execve
+-Faire que le parser reconaisse le signe = pour les cmd style "env HOME=TMP cd ~"

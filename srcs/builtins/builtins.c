@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 05:50:50 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/26 03:07:43 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,9 @@ int			is_builtin(void)
 {
 	if (ft_builtin_search("jobs") || ft_builtin_search("fg") ||
 		ft_builtin_search("bg") || ft_builtin_search("exit") ||
-		ft_builtin_search("set"))
+		ft_builtin_search("set") || ft_builtin_search("hash"))
 		return (1);
 	return (0);
-}
-
-int			ft_exit(void)
-{
-	if (!g_tracking.jobs->next)
-	{
-		ft_putendl("Exit");
-		exit(0);
-	}
-	else
-		ft_putendl("There are still jobs running you idiot!");
-	return (1);
 }
 
 int			is_builtin_alone(void)
@@ -85,5 +73,7 @@ int			builtin_exec(void)
 		return (show_setenv());
 	else if (ft_builtin_search("exit"))
 		return (ft_exit());
+	else if (ft_builtin_search("hash"))
+		return (ft_hash());
 	return (0);
 }
