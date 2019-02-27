@@ -6,7 +6,11 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 01:46:30 by alsomvil          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/01/31 11:30:19 by alsomvil         ###   ########.fr       */
+=======
+/*   Updated: 2019/02/20 17:40:17 by alsomvil         ###   ########.fr       */
+>>>>>>> mjose.merge
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +26,7 @@ t_last	*create_new_list(void)
 	list->prev = NULL;
 	return (list);
 }
+<<<<<<< HEAD
 
 void	rm_pointer(t_last *to_rm)
 {
@@ -61,3 +66,5 @@ void	insert_node(t_last *ref_node, t_last *insert)
 	rm_pointer(insert);
 	add_pointer(ref_node, insert);
 }
+=======
+>>>>>>> mjose.merge

@@ -6,7 +6,11 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 08:40:37 by mjose             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/02/19 06:07:16 by mjose            ###   ########.fr       */
+=======
+/*   Updated: 2019/02/25 06:08:29 by mjose            ###   ########.fr       */
+>>>>>>> mjose.merge
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +28,11 @@ void		replace_env_set_str(char *varname, char *varvalue)
 	{
 		set_env = g_tracking.mysh->setenv_lst;
 		first = g_tracking.mysh->setenv_lst;
+<<<<<<< HEAD
 		while (set_env)
+=======
+		while (set_env && set_env->param)
+>>>>>>> mjose.merge
 		{
 			if (ft_strequ(varname, set_env->param->key))
 			{
@@ -36,10 +44,14 @@ void		replace_env_set_str(char *varname, char *varvalue)
 			if (set_env->next)
 				set_env = set_env->next;
 			else
+<<<<<<< HEAD
 			{
 				add_to_env_set(varname, varvalue);
 				break ;
 			}
+=======
+				add_to_env_set(varname, varvalue);
+>>>>>>> mjose.merge
 		}
 		g_tracking.mysh->setenv_lst = first;
 	}
@@ -52,6 +64,7 @@ t_env_set	*new_envset(char *varname, char *varvalue)
 
 	env_lst = NULL;
 	buf = NULL;
+<<<<<<< HEAD
 	buf = (t_keyval *)malloc(sizeof(t_keyval));
 	env_lst = (t_env_set *)malloc(sizeof(t_env_set));
 	buf->key = ft_strdup(varname);
@@ -63,17 +76,42 @@ t_env_set	*new_envset(char *varname, char *varvalue)
 }
 
 void	add_to_env_set(char *varname, char *varvalue)
+=======
+	env_lst = (t_env_set *)malloc(sizeof(t_env_set));
+	if (varname)
+	{
+		buf = (t_keyval *)malloc(sizeof(t_keyval));
+		buf->key = ft_strdup(varname);
+		buf->value = ft_strdup(varvalue);
+		env_lst->param = buf;
+	}
+	else
+		env_lst->param = NULL;
+	env_lst->next = NULL;
+	return (env_lst);
+}
+
+void		add_to_env_set(char *varname, char *varvalue)
+>>>>>>> mjose.merge
 {
 	t_env_set	*env_list;
 	t_env_set	*first;
 	t_env_set	*new_envvar;
 
 	if (g_tracking.mysh->setenv_lst == NULL)
+<<<<<<< HEAD
 		g_tracking.mysh->setenv_lst = new_envset(varname, varvalue);
+=======
+	{
+		g_tracking.mysh->setenv_lst = new_envset(varname, varvalue);
+		g_tracking.mysh->setenv_lst->next = new_envset(NULL, NULL);
+	}
+>>>>>>> mjose.merge
 	else
 	{
 		env_list = g_tracking.mysh->setenv_lst;
 		first = g_tracking.mysh->setenv_lst;
+<<<<<<< HEAD
 		while (env_list && env_list->next)
 			env_list = env_list->next;
 		new_envvar = new_envset(varname, varvalue);
@@ -81,3 +119,14 @@ void	add_to_env_set(char *varname, char *varvalue)
 		g_tracking.mysh->setenv_lst = first;
 	}
 }
+=======
+		while (env_list && env_list->param)
+			env_list = env_list->next;
+		free(&new_envvar);
+		new_envvar = new_envset(varname, varvalue);
+		new_envvar->next = new_envset(NULL, NULL);
+		env_list->next = new_envvar;
+		g_tracking.mysh->setenv_lst = first;
+	}
+}
+>>>>>>> mjose.merge

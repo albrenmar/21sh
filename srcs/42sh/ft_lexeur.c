@@ -6,6 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 01:41:13 by alsomvil          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/02/11 14:43:47 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -54,6 +55,18 @@ void	tri_lexer(t_last *list_cmd)
 int		error_lexer(t_last *list_cmd)
 {
 	if (list_cmd && list_cmd->type == OP)
+=======
+/*   Updated: 2019/02/22 05:30:22 by alsomvil         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+//#include "../../includes/minishell.h"
+#include "../../includes/sh42.h"
+
+int		error_lexer(t_last *list_cmd)
+{
+	if (list_cmd && list_cmd->type == OP && !its_reddir(list_cmd) && !its_fd_reddir(list_cmd))
+>>>>>>> mjose.merge
 	{
 		printf("Error\n");
 		return (1);
@@ -71,9 +84,28 @@ int		error_lexer(t_last *list_cmd)
 					return (1);
 				}
 			}
+<<<<<<< HEAD
 			else if (ft_strlen(list_cmd->name) == 1 && list_cmd->name[0] == '>')
 			{
 				if (ft_strlen(list_cmd->next->name) == 2 || list_cmd->next->name[0]== ';' || (list_cmd->next->next && list_cmd->next->next->type == OP))
+=======
+			else if (ft_strlen(list_cmd->name) == 1 && list_cmd->name[0] == '&')
+			{
+				printf("Error\n");
+				return (1);
+			}
+			else if (ft_strlen(list_cmd->name) == 1 && list_cmd->name[0] == '>')
+			{
+				if (ft_strlen(list_cmd->next->name) == 2 || list_cmd->next->name [0] == '>' || list_cmd->next->name[0] == ';' || (list_cmd->next->next && list_cmd->next->next->type == OP))
+				{
+					printf("Error\n");
+					return (1);
+				}
+			}
+			else if (ft_strlen(list_cmd->name) == 1 && list_cmd->name[0] == '<')
+			{
+				if (ft_strlen(list_cmd->next->name) == 2 || list_cmd->next->name [0] == '<' || list_cmd->next->name[0] == ';' || (list_cmd->next->next && list_cmd->next->next->type == OP))
+>>>>>>> mjose.merge
 				{
 					printf("Error\n");
 					return (1);
@@ -110,19 +142,48 @@ int		error_lexer(t_last *list_cmd)
 
 void	ft_lexeur(t_last *list_cmd)
 {
+<<<<<<< HEAD
 	while (list_cmd)
 	{
 		if (list_cmd->name[0] == '(' || list_cmd->name[0] == ')')
 		{
 			list_cmd->type = PA;
 			list_cmd = list_cmd->next;
+=======
+	int		i;
+
+	i = 0;
+	while (list_cmd)
+	{
+		if (list_cmd->name[0] > 47 && list_cmd->name[0] < 58)
+		{
+			while (list_cmd->name[i] > 47 && list_cmd->name[i] < 58)
+				i++;
+			if (list_cmd->name[i] == '>' || list_cmd->name[i] == '<')
+			{
+				list_cmd->type = OP;
+				list_cmd = list_cmd->next;
+			}
+			else
+			{
+				if (!list_cmd->prev || (list_cmd->prev && (list_cmd->prev->type == OP)))
+					list_cmd->type = CMD;
+				else
+					list_cmd->type = ARG;
+				list_cmd = list_cmd->next;
+			}
+>>>>>>> mjose.merge
 		}
 		else if (list_cmd->name[0] == ';' || list_cmd->name[0] == '|' || list_cmd->name[0] == '>' || list_cmd->name[0] == '<' || list_cmd->name[0] == '&')
 		{
 			list_cmd->type = OP;
 			list_cmd = list_cmd->next;
 		}
+<<<<<<< HEAD
 		else if (!list_cmd->prev || (list_cmd->prev && (list_cmd->prev->type == OP || list_cmd->prev->type == PA)))
+=======
+		else if (!list_cmd->prev || (list_cmd->prev && (list_cmd->prev->type == OP)))
+>>>>>>> mjose.merge
 		{
 			list_cmd->type = CMD;
 			list_cmd = list_cmd->next;
@@ -134,7 +195,11 @@ void	ft_lexeur(t_last *list_cmd)
 		}
 		else
 		{
+<<<<<<< HEAD
 			list_cmd->type = ARG;
+=======
+			list_cmd->type = CMD;
+>>>>>>> mjose.merge
 			list_cmd = list_cmd->next;
 		}
 	}

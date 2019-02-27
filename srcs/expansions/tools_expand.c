@@ -6,7 +6,11 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 01:23:51 by mjose             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/02/16 06:57:34 by mjose            ###   ########.fr       */
+=======
+/*   Updated: 2019/02/25 05:40:43 by mjose            ###   ########.fr       */
+>>>>>>> mjose.merge
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +28,10 @@ void	delete_letter_expand(t_expand **letter)
 		prev->next = next;
 	if (next)
 		next->prev = prev;
+<<<<<<< HEAD
 	free(*letter);
+=======
+>>>>>>> mjose.merge
 	if (next)
 		*letter = next;
 	else

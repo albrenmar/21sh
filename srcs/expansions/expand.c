@@ -6,7 +6,11 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/02/21 06:28:00 by mjose            ###   ########.fr       */
+=======
+/*   Updated: 2019/02/25 06:12:41 by mjose            ###   ########.fr       */
+>>>>>>> mjose.merge
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +80,7 @@ int			need_expand(char *to_transf)
 	return (0);
 }
 
+<<<<<<< HEAD
 void		scan_arg_transformer(char *arg)
 {
 	t_expand	*expand;
@@ -106,4 +111,41 @@ void		expand_transformer(t_last *cmd)
 			break ;
 	}
 	cmd = frst_cmd;
+=======
+void		scan_arg_transformer(char **arg)
+{
+	t_expand	*expand;
+	t_scan		*scan;
+	t_scan		*first_scan;
+	char		*new_arg;
+
+	scan = NULL;
+	scan = new_scan();
+	first_scan = scan;
+	scan_argument(*arg, scan);
+	new_arg = NULL;
+	while (scan && scan->sstrsing)
+	{
+		expand = NULL;
+		expand = new_expand(ft_strlen(scan->sstrsing));
+		create_list_expand(expand, scan->sstrsing);
+		transform(expand, &scan->sstrsing);
+		if (!new_arg)
+			new_arg = ft_strnew(1);
+		new_arg = ft_strjoinfree(new_arg, scan->sstrsing, 1);
+		scan = scan->next;
+	}
+	scan = first_scan;
+	ft_strdel(arg);
+	*arg = new_arg;
+}
+
+void		expand_transformer(char **value)
+{
+	if (*value)
+	{
+		if (need_expand(*value))
+			scan_arg_transformer(value);
+	}
+>>>>>>> mjose.merge
 }

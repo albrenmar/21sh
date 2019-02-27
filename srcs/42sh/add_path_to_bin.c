@@ -3,17 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   add_path_to_bin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:00:43 by alsomvil          #+#    #+#             */
 /*   Updated: 2019/02/12 03:05:01 by alsomvil         ###   ########.fr       */
+=======
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/10 15:00:43 by alsomvil          #+#    #+#             */
+/*   Updated: 2019/02/26 22:45:14 by abe              ###   ########.fr       */
+>>>>>>> mjose.merge
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
 
+<<<<<<< HEAD
 #define EXEC g_tracking.mysh->exec
+=======
+//#define EXEC g_tracking.mysh->exec
+>>>>>>> mjose.merge
 
 int		test_exist_fonction_two(char ***tab_cmd, char **pathlist)
 {
@@ -52,11 +63,20 @@ char	**test_exist_fonction(char **tab_cmd)
 	path = get_env_string("PATH");
 	pathlist = ft_strsplit(path, ':');
 	if ((access(tab_cmd[0], X_OK) == 0) || (test_exist_fonction_two(&tab_cmd, pathlist) == 1))
+<<<<<<< HEAD
 		return (tab_cmd);
 	else
 	{
 		printf("La commande %s n'existe pas\n", tab_cmd[i]);
 		EXEC->ret = -1;
+=======
+	{
+		return (tab_cmd);
+	}
+	else
+	{
+		//EXEC->ret = -1;
+>>>>>>> mjose.merge
 		return (NULL);
 	}
 	return (NULL);

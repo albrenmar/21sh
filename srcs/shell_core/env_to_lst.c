@@ -6,7 +6,11 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 23:10:09 by bsiche            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/02/17 07:27:55 by mjose            ###   ########.fr       */
+=======
+/*   Updated: 2019/02/25 04:42:14 by mjose            ###   ########.fr       */
+>>>>>>> mjose.merge
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +111,7 @@ t_lstcontainer		*emptyenv(void)
 	}
 	return (empty);
 }
+<<<<<<< HEAD
 
 char        **init_envp(t_lstcontainer *env)
 {
@@ -136,3 +141,5 @@ char        **init_envp(t_lstcontainer *env)
 	}
     return (envp);
 }
+=======
+>>>>>>> mjose.merge

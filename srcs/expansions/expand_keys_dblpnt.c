@@ -6,7 +6,11 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/02/19 04:25:22 by mjose            ###   ########.fr       */
+=======
+/*   Updated: 2019/02/22 07:34:29 by mjose            ###   ########.fr       */
+>>>>>>> mjose.merge
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +100,7 @@ void	exp_key_equal(char **str, t_expand *expand)
 	if (value1 && ft_strequ(value1, ""))
 		*str = value1;
 	else if (env_or_set == 1)
+<<<<<<< HEAD
 	{
 		*str = value2;
 		replace_env_str(str1, value2);
@@ -104,6 +109,11 @@ void	exp_key_equal(char **str, t_expand *expand)
 	else if (env_or_set == 2 || !env_or_set)
 		replace_env_set_str(str1, value2);
 		//add_to_env_set(str1, value2);
+=======
+		replace_env_str(str1, value2);
+	else if (env_or_set == 2 || !env_or_set)
+		replace_env_set_str(str1, value2);
+>>>>>>> mjose.merge
 	ft_strdel(&str1);
 	*str = value2;
 }
