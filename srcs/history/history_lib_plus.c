@@ -26,33 +26,39 @@ int		ft_isdigit_str(char* str)
 	return (1);
 }
 
-char		*builtin_s_args(char **tab)
+t_hist		*builtin_s_args(char **tab, t_hist *hist)
 {
 	int i;
 	int j;
 	int h;
 	char *str_ret;
 
-	i = 2;
+	i = 0;
 	j = 0;
 	h = 0;
 	while(tab[i])
 	{
+		j = 0;
 		while(tab[i][j])
 			j++;
 		i++;
 	}
-	str_ret = ft_memalloc(sizeof(char) * j+(i-2) + 1);
-	i = 2;
+	str_ret = ft_memalloc(sizeof(char) * j+i + 1);
+	i = 0;
 	j = 0;
 	while(tab[i])
 	{
+		j = 0;
 		while(tab[i][j])
 			str_ret[h++] = tab[i][j++];
 		i++;
-		if (tab[i+1])
+		if (tab[i])
 			str_ret[h++] = ' ';
 	}
 	str_ret[h] = '\0';
-	return str_ret;
+	if (hist)
+		hist_lst_add_next(hist, str_ret);
+	else
+		hist = hist_lst_create(str_ret);
+	return hist;
 }

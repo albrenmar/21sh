@@ -25,6 +25,6 @@ void	history_builtin_s(t_core *core)
 		return ;
 	else
 		core->hist = hist_delete_last(core->hist);
-	i = 0;
-	ft_putendl(builtin_s_args(core->arg));
+	core->hist = builtin_s_args(&core->arg[i], core->hist);
+	// BUG ON HISTORY CS
 }

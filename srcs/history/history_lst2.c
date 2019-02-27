@@ -133,16 +133,17 @@ t_hist		*hist_delete_last(t_hist *hist)
 {
 	t_hist *tmp;
 
-	while(hist)
+	while(hist->next)
 		hist = hist->next;
 	tmp = hist;
-	if (!(hist->previous))
+	if (hist && !(hist->previous))
 		hist = hist_free(hist);
 	else
 	{
+		hist = hist->previous;
 		free(tmp);
-		tmp = NULL;
-		hist->next = NULL;
+		tmp = 0;
+		hist->next = 0;
 		hist = hist_remap_index(hist);
 	}
 	return hist;

@@ -33,7 +33,7 @@ HEADERLIB 		= 	$(LIBFTDIR)/$(INCLUDES)/
 HEADER	 		= 	ft_ls.h
 
 DEBUG			=	-g3
-CFLAGS 			= 	 -g -Wall -Werror -Wextra
+CFLAGS 			= 	-g -Wall -Werror -Wextra
 LDFLAGS 		= 	-L$(LIBDIR) -lft -ltermcap
 
 CC 				= 	gcc $(CFLAGS)

@@ -131,6 +131,6 @@ void				history_builtin_digit(t_core *core);
 int					ft_isdigit_str(char* str);
 void				history_builtin_p(t_core *core);
 void				history_builtin_s(t_core *core);
-char				*builtin_s_args(char **tab);
+t_hist				*builtin_s_args(char **tab, t_hist *hist);
 t_hist				*hist_delete_last(t_hist *hist);
 #endif
