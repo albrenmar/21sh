@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/23 12:25:58 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/27 19:07:17 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,6 @@ int		main(int argc, char **argv, char **env)
 		g_tracking.swi = 0;
 		ft_putchar('\n');
 		hist_lst_add_next(g_tracking.mysh->hist, line);
-		// if (!ft_strcmp(line, "exit"))
-		// {
-		// 	printf("%s\n", "exit temporaire");
-		// 	exit(0);
-		// }
 		if (line && (cmd = ft_parseur(line)))
 		{
 			convert_list(cmd);
