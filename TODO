@@ -12,7 +12,7 @@ Partie Marc
 - Gestion d'errors pour les expansions.
 - Quiter le process en execution pour no importe quel commande avec ${VARNAME:?VARVALUE} en tant que VARNAME 
     no existe pas, ou elle a pas valeur. (A voir avec Abraham/et/ou/Alexandre.)
-- Ajuter les expansions dans l'autocomplete, entant que la line finis avec '/' (A voir avec Brendan).
+(X) - Ajuter les expansions dans l'autocomplete, entant que la line finis avec '/' (A voir avec Brendan). NORMALMENT EST GERE.
 
 Partie Alex
 - Gestion des quotes dans les doubles quotes et inversement
