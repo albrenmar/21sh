@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/26 02:49:02 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/27 18:29:11 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -361,6 +361,12 @@ char			**tab_dup(char **tob);
 int				jobs_builtin(void);
 int				errors_fg(int nb, int error);
 int				fg_builtin_output(t_jobs *tmp);
+char			*search_fd_reddir(char *str, int *nb);
+char			*search_reddir(char *str, int *nb);
+char			*search_normally_arg(char *str, int *nb);
+char			*search_symboll(char *str, int *nb);
+int				its_not_symbol(char c);
+char			*check_quote(char *line, int i, int *mv);
 
 
 void			interactive_check_set_shell_group(void);

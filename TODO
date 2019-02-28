@@ -14,6 +14,12 @@ Partie Marc
     no existe pas, ou elle a pas valeur. (A voir avec Abraham/et/ou/Alexandre.)
 - Ajuter les expansions dans l'autocomplete, entant que la line finis avec '/' (A voir avec Brendan).
 
+Partie Alex
+- Gestion des quotes dans les doubles quotes et inversement
+- Ajout string si manque quote
+- Gestion des messages d'erreurs
+- Boucle infini sur grep apres pipe
+- Set taille max commande
 
 MISC
 -Builtin cd
@@ -21,3 +27,4 @@ MISC
 -Ajouter tous la meilleure version des builtins (POSIX?)
 -ajouter env a execve
 -Faire que le parser reconaisse le signe = pour les cmd style "env HOME=TMP cd ~"
+-Gestion de l'env
