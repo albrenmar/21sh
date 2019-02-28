@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_analize.c                                       :+:      :+:    :+:   */
+/*   ft_parseur.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/28 00:03:14 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/28 05:28:39 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	*check_quote(char *line, int i, int *mv)
 	char	*ret;
 	char	*join;
 	char	*raccor;
+	char	*saveprompt;
 	int		nb;
 
 	ret = NULL;
@@ -39,8 +40,13 @@ char	*check_quote(char *line, int i, int *mv)
 		printf("IL FAUT FINIR LA LIGNE MALHEU\n");
 		*mv += i;
 		ret = ft_strndup(line, i);
-		join = ft_strdup("AJOUTLIGNE");
+		saveprompt = g_tracking.prompt;
+		g_tracking.prompt = ">";
+		get_key();
+		join = g_tracking.cmd;
 		raccor = ft_strjoin(ret, join);
+		g_tracking.prompt = saveprompt;
+		ft_putchar('\n');
 		return (raccor);
 	}
 	i++;
@@ -94,6 +100,7 @@ t_last	*ft_parseur(char *line)
 		templist = list_cmd;
 		list_cmd->name = temp;
 		temp = NULL;
+		//ATTENTION !! SEGFAULT ICI DANS LE CAS "dsf
 		while (line[i] && (temp = recup_cmd(&line[i], &i, 0)) != NULL)
 		{
 			list_cmd->next = create_new_list();
