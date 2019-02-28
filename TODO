@@ -1,7 +1,5 @@
 Partie Brendan
--S'assurer que tout est safe avec l'autocomplete(trouver source des segfault bizzare sur certains macs, ajouter l'expansion ~de Marc
-pour les variable d'env type ~/Documents
--CTRL+D/CTRL-C/quotes/Heredoc (déja écrit, a implementer quand Alex aura fini sa partie)
+-CTRL+D/CTRL-C
 -Type et Test, a adapter avec le tableau d'arg et non char **argv
 
 Partie Abraham
