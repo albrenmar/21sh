@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/26 02:49:33 by bsiche           ###   ########.fr        #
+#    Updated: 2019/02/27 18:25:57 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC = main.c \
 	  42sh/convert_list.c \
 	  42sh/create_fich.c \
 	  42sh/hashtables.c \
+	  42sh/search_arg.c \
 	  builtins/fg_bg_builtins.c \
 	  builtins/jobs_builtin.c \
 	  builtins/exit.c \
