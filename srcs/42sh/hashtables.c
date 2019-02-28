@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 17:17:08 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/26 16:28:47 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char		**hashed_command(char **tab_exec)
 	if (strchr(g_tracking.g_tab_exec[0], '/'))
 		return (NULL);
 	index = hash_maker(tab_exec[0]);
+	if (index < 0 || index > 26)
+		return (NULL);
 	newtab = tab_dup(tab_exec);
 	ft_strdel(&newtab[0]);
 	tmp = g_tracking.hashtable[index];
@@ -94,6 +96,8 @@ void		hash_binary(void)
 	if (strchr(g_tracking.g_tab_exec[0], '/'))
 		return ;
 	binaryhold = ft_strdup(g_tracking.g_tab_exec[0]);
+	if (binaryhold[0] < 65 || binaryhold[0] > 122)
+		return ;
 	if (!(test_exist_fonction(g_tracking.g_tab_exec)))
 		return ;
 	hashedvalue = hash_maker(binaryhold);

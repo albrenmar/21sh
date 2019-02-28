@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:00:43 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 14:00:26 by abe              ###   ########.fr       */
+/*   Updated: 2019/02/26 22:45:14 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ char	**test_exist_fonction(char **tab_cmd)
 	path = get_env_string("PATH");
 	pathlist = ft_strsplit(path, ':');
 	if ((access(tab_cmd[0], X_OK) == 0) || (test_exist_fonction_two(&tab_cmd, pathlist) == 1))
+	{
 		return (tab_cmd);
+	}
 	else
 	{
 		//EXEC->ret = -1;

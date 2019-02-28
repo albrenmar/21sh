@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abe <abe@student.42.fr>                    +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
 #    Updated: 2019/02/27 18:25:57 by alsomvil         ###   ########.fr        #
@@ -67,6 +67,8 @@ SRC = main.c \
 	  auto_complete/print_arg_list.c \
 	  auto_complete/send_color.c \
 	  auto_complete/var_list.c \
+	  back_search/init_search.c \
+	  back_search/search_lst.c \
 	  ft_ls/cmdparse.c \
 	  ft_ls/cmdparse_misc.c \
 	  ft_ls/color.c \

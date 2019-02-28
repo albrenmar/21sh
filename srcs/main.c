@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
 /*   Updated: 2019/02/27 19:07:17 by alsomvil         ###   ########.fr       */
@@ -49,7 +49,6 @@ int		main(int argc, char **argv, char **env)
 		}
 		jobs_notifications();
 		jobs_update_current();
-		//ft_build_test(line);
 		free(line);
 		line = NULL;
 	}

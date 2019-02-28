@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
 /*   Updated: 2019/02/27 18:29:11 by alsomvil         ###   ########.fr       */
@@ -45,6 +45,7 @@
 # define K_SPC		32
 # define K_BKSP		127
 # define K_TAB		9
+# define K_CTRLR	18
 # define K_DEL		"\x1b\x5b\x33\x7e"
 
 int		descrf[2];
@@ -172,6 +173,8 @@ typedef struct	s_tracking
 	char				*cmd;
 	char				*comp;
 	char				*prompt;
+	char				*search;
+	char				*found;
 	t_lstcontainer		*key_list;
 	int					swi;
 	int					buffsize;
@@ -321,6 +324,9 @@ t_hist			*hist_free(t_hist *hist);
 void			hist_save_file(t_hist *s_hist);
 t_hist			*hist_remap_index(t_hist *hist);
 t_hist			*hist_delete_index(t_hist *hist, int index);
+int     		begin_search(void);
+char         	*get_hist_ptr(char *needle);
+t_hist			*get_hist_nbr(int i);
 
 
 t_last			*create_new_list(void);
