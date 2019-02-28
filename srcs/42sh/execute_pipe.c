@@ -81,11 +81,6 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job)
 			setpgid(pid0, job->jpid);
 		}
 	}
-	else if (ft_strequ(ORDER->command[0], "set"))
-	{
-		show_setenv();
-		j = 0;
-	}
 	else
 		g_tracking.builtin = 1;
 }

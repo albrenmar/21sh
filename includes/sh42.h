@@ -18,8 +18,6 @@
 # include "expansions.h"
 # include "set.h"
 # include <sys/ioctl.h>
-# include <sys/types.h>
-# include <sys/wait.h>
 # include <termios.h>
 # include <curses.h>
 # include <term.h>
@@ -311,7 +309,6 @@ void			ft_add_env_string(char *s1, char *s2);
 char			*remove_env_string(char *str);
 char			*ft_true_pwd(void);
 void			add_missing_string();
-char			**init_envp(t_lstcontainer *env);
 
 
 void			hist_file_to_lst(void);

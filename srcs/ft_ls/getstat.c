@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getstat.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 18:47:53 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/15 08:20:41 by akira            ###   ########.fr       */
+/*   Updated: 2019/01/12 02:27:17 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	ft_special(t_ls *info, struct stat *tmp, char *str)
 		symlink = ft_strjoinfree(symlink, "\0", 1);
 		info->symlink = symlink;
 	}
-//	if (permission[0] == 'c' || permission[0] == 'b')
-//	{
-//		info->maj = major(tmp->st_rdev);
-//		info->min = minor(tmp->st_rdev);
-//	}
+	if (permission[0] == 'c' || permission[0] == 'b')
+	{
+		info->maj = major(tmp->st_rdev);
+		info->min = minor(tmp->st_rdev);
+	}
 	free(permission);
 }
 
@@ -61,13 +61,13 @@ void	getattribut(char *path, t_ls *info)
 	acl_t	acl;
 
 	acl = NULL;
-//	acl = acl_get_link_np(path, ACL_TYPE_EXTENDED);
+	acl = acl_get_link_np(path, ACL_TYPE_EXTENDED);
 	if (acl != NULL)
 		info->acl = '+';
-//	i = listxattr(path, NULL, 0, XATTR_NOFOLLOW);
+	i = listxattr(path, NULL, 0, XATTR_NOFOLLOW);
 	if (i != 0 && i != -1)
 		info->acl = '@';
-//	acl_free(acl);
+	acl_free(acl);
 	acl = NULL;
 }
 
