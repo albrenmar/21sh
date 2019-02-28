@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_analize.c                                       :+:      :+:    :+:   */
+/*   ft_parseur.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/28 00:03:14 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/28 06:01:37 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,33 @@ int		its_not_symbol(char c)
 		return (1);
 }
 
+int		ft_valid_quote(char *line, char c)
+{
+	int	flag;
+	int	i;
+
+	i = 0;
+	flag = 0; 
+	while (line[i])
+	{
+		if (line[i] == c)
+			flag++;
+		i++;
+	}
+	if ((flag % 2) == 0)
+		return (0);
+	else
+		return (1);
+}
+
 char	*check_quote(char *line, int i, int *mv)
 {
 	char	*ret;
 	char	*join;
 	char	*raccor;
+	char	*saveprompt;
 	int		nb;
+	int		test;
 
 	ret = NULL;
 	join = NULL;
@@ -36,12 +57,22 @@ char	*check_quote(char *line, int i, int *mv)
 		i++;
 	if (!line[i])
 	{
-		printf("IL FAUT FINIR LA LIGNE MALHEU\n");
 		*mv += i;
-		ret = ft_strndup(line, i);
-		join = ft_strdup("AJOUTLIGNE");
-		raccor = ft_strjoin(ret, join);
-		return (raccor);
+		ret = ft_strdup(line);
+		saveprompt = g_tracking.prompt;
+		g_tracking.prompt = ">";
+		test = ft_valid_quote(ret, '"');
+		while (test == 1)
+		{
+			get_key();
+			join = g_tracking.cmd;
+			ret = ft_strjoinfree(ret, join, 3);
+			test = ft_valid_quote(ret, '"');
+			ft_putchar('\n');
+		}
+		ft_putchar('\n');
+		g_tracking.prompt = saveprompt;
+		return (ret);
 	}
 	i++;
 	while (line[i] && its_not_symbol(line[i]) && line[i] != ' ')
@@ -94,6 +125,7 @@ t_last	*ft_parseur(char *line)
 		templist = list_cmd;
 		list_cmd->name = temp;
 		temp = NULL;
+		//ATTENTION !! SEGFAULT ICI DANS LE CAS "dsf
 		while (line[i] && (temp = recup_cmd(&line[i], &i, 0)) != NULL)
 		{
 			list_cmd->next = create_new_list();
