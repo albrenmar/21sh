@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/28 05:28:39 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/28 06:01:37 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,25 @@ int		its_not_symbol(char c)
 		return (1);
 }
 
+int		ft_valid_quote(char *line, char c)
+{
+	int	flag;
+	int	i;
+
+	i = 0;
+	flag = 0; 
+	while (line[i])
+	{
+		if (line[i] == c)
+			flag++;
+		i++;
+	}
+	if ((flag % 2) == 0)
+		return (0);
+	else
+		return (1);
+}
+
 char	*check_quote(char *line, int i, int *mv)
 {
 	char	*ret;
@@ -27,6 +46,7 @@ char	*check_quote(char *line, int i, int *mv)
 	char	*raccor;
 	char	*saveprompt;
 	int		nb;
+	int		test;
 
 	ret = NULL;
 	join = NULL;
@@ -37,17 +57,22 @@ char	*check_quote(char *line, int i, int *mv)
 		i++;
 	if (!line[i])
 	{
-		printf("IL FAUT FINIR LA LIGNE MALHEU\n");
 		*mv += i;
-		ret = ft_strndup(line, i);
+		ret = ft_strdup(line);
 		saveprompt = g_tracking.prompt;
 		g_tracking.prompt = ">";
-		get_key();
-		join = g_tracking.cmd;
-		raccor = ft_strjoin(ret, join);
-		g_tracking.prompt = saveprompt;
+		test = ft_valid_quote(ret, '"');
+		while (test == 1)
+		{
+			get_key();
+			join = g_tracking.cmd;
+			ret = ft_strjoinfree(ret, join, 3);
+			test = ft_valid_quote(ret, '"');
+			ft_putchar('\n');
+		}
 		ft_putchar('\n');
-		return (raccor);
+		g_tracking.prompt = saveprompt;
+		return (ret);
 	}
 	i++;
 	while (line[i] && its_not_symbol(line[i]) && line[i] != ' ')
