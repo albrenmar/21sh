@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 04:23:53 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 08:36:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,6 @@ int		get_key(void)
 	while (readloop(0) == 0)
 	{
 	}
-	tcsetattr(STDERR_FILENO, TCSANOW, &g_tracking.default_term);
+	tcsetattr(0, TCSANOW, &g_tracking.default_term);
 	return (1);
 }
