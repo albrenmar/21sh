@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/26 03:18:52 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 01:31:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,25 @@ int		single_key(char c)
 	if (c == 10 || c == 13)
 	{
 		ft_return();
-		g_tracking.swi = 1;
 		return (13);
 	}
 	if (c == K_TAB)
 	{
 		auto_complete();
 		return (12);
+	}
+	if (c == 04)
+	{
+		ctrl_d();
+		if (g_tracking.quotes == 10)
+			return (13);
+		else
+			return (12);
+	}
+	if (c == 03)
+	{
+		ctrl_c();
+		return (13);
 	}
 	return (0);
 }

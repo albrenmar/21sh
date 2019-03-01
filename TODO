@@ -1,5 +1,5 @@
 Partie Brendan
--CTRL+D/CTRL-C
+Rajouter "Dans des heredocs, valide" pour les heredoc, et quitter proprement le shell sans leaks degueulasses
 -Type et Test, a adapter avec le tableau d'arg et non char **argv
 
 Partie Abraham

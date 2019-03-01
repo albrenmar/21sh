@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/27 18:29:11 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 01:24:50 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ typedef struct	s_tracking
 	char				*search;
 	char				*found;
 	t_lstcontainer		*key_list;
+	int					quotes;
 	int					swi;
 	int					buffsize;
 	int					histindex;
@@ -309,6 +310,8 @@ void			ft_add_env_string(char *s1, char *s2);
 char			*remove_env_string(char *str);
 char			*ft_true_pwd(void);
 void			add_missing_string();
+void			ctrl_d(void);
+void			ctrl_c(void);
 
 
 void			hist_file_to_lst(void);
