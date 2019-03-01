@@ -3,8 +3,10 @@ Rajouter "Dans des heredocs, valide" pour les heredoc, et quitter proprement le 
 -Type et Test, a adapter avec le tableau d'arg et non char **argv
 
 Partie Abraham
--changer la structure des test_exists_fonction et hashed_command pour execution de fichiers
-que quand necessaire pour n'importe quel type de fichier
+-gerer l'execution (ou pas) de n'importe quel type de fichier, en changeant test_exists_fonction.
+-Si 42sh est lance avec des arguments, executer ces commandes et sortir
+-execve avec fichier executable qui est REG file (donc pas binaire ni dossier ni rien d'autre), faut que ca se execute en 
+demarrant un nouveau 42sh avec cette commande comme argument
 
 Partie Marc
 - Gestion d'errors pour les expansions.
