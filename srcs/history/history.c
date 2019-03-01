@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:53:06 by hdufer            #+#    #+#             */
-/*   Updated: 2019/02/18 16:48:41 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/01 17:10:12 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void		history_builtin_minus(t_core *core)
 					hist_file_to_lst(core);
 				if (!(flags & 64) && core->arg[1][i] == 'p' && (flags |= 64))
 					history_builtin_p(core);
-				if (!(flags & 128) && core->arg[1][i] == 's' && (flags |= 128))
+				if (!(flags & 128) && core->arg[1][i] == 's' && (flags |= 128) && ft_strchr(core->arg[1], 'p') == NULL)
 					history_builtin_s(core);
 				i++;
 			}

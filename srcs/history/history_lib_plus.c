@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 14:31:10 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/24 14:51:46 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/01 16:47:34 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_hist		*builtin_s_args(char **tab, t_hist *hist)
 	}
 	str_ret[h] = '\0';
 	if (hist)
-		hist_lst_add_next(hist, str_ret);
+		hist_lst_add_next(hist, ft_strdup(str_ret));
 	else
 		hist = hist_lst_create(str_ret);
 	return hist;
