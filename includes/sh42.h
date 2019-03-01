@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 06:36:38 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 07:32:09 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -414,6 +414,7 @@ void			free_job(t_jobs *job);
 void			jobs_notifications(void);
 void			jobs_update_current(void);
 
+int				main_test(t_last *arglist);
 char			**init_envp(t_lstcontainer *env);
 
 #endif

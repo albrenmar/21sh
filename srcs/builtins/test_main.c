@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 03:02:54 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 20:53:43 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 07:32:11 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		reverse(int i, int flag)
 	return (i);
 }
 
-int		main_test(int argc, char **argv)
+int		main_test(t_last *arglist)
 {
 	int		flag;
 	int		i;
@@ -74,6 +74,7 @@ int		main_test(int argc, char **argv)
 	flag = 1;
 	not = NULL;
 	i = -1;
+	/*
 	if (ft_strcmp(argv[0], "exit") == 0)
 	{
 		free_tab(argv);
@@ -95,7 +96,7 @@ int		main_test(int argc, char **argv)
 	ft_putnbr(i);
 	ft_putchar('\n');
 	free_tab(newtab);
-	free_tab(argv);
+	free_tab(argv);*/
 	return (0);
 }
 
