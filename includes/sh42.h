@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
 /*   Updated: 2019/03/01 01:24:50 by bsiche           ###   ########.fr       */
@@ -379,7 +379,7 @@ t_cmd			*new_process(t_jobs *job, pid_t cpid);
 
 void			continue_job(t_jobs *job, int foreground);
 void			hash_binary(void);
-int				hash_maker(const char *binary);
+int				hash_maker(const char c);
 t_hash			*new_binary_hash(char *binary, char *path, int hits);
 int				errors_hash(char *binary, int error);
 int				ft_hash(void);

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
 /*   Updated: 2019/02/28 14:33:46 by abe              ###   ########.fr       */
@@ -27,6 +27,7 @@ void		execute_two(char **tab_exec)
 	}
 	else if ((tab_exec_hold = test_exist_fonction(tab_exec_hold)))
 	{
+		// ft_putendl(tab_exec[0]);
 		execve(tab_exec_hold[0], tab_exec_hold, NULL);
 		perror("FAIL");
 		exit(-1);
