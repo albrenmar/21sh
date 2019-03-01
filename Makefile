@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/01 03:59:44 by bsiche           ###   ########.fr        #
+#    Updated: 2019/03/01 05:17:23 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=	42sh
 
 SRC = main.c \
+	  42sh/errors.c \
 	  42sh/ft_parseur.c \
 	  42sh/ft_lexeur.c \
 	  42sh/ft_modif_list.c \

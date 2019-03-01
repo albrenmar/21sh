@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 04:22:52 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 05:01:33 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -349,7 +349,7 @@ char			**create_tab_to_exec(t_last *list);
 void			execute_pipe(char **tab_exec, t_jobs *job);
 void			execute_two(char **tab_cmd);
 void			execute_pipe_two(char **tab_exec, t_jobs *job);
-char			**test_exist_fonction(char **tab_cmd);
+char			**test_exist_fonction(char **tab_cmd, int mode);
 int				error_lexer(t_last *list_cmd);
 void			create_fich(t_last *list);
 void			print_last(t_last *list);

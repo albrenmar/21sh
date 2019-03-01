@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 04:09:30 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/01 05:02:06 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		execute_two(char **tab_exec)
 		perror("FAIL");
 		exit(-1);
 	}
-	else if ((tab_exec_hold = test_exist_fonction(tab_exec_hold)))
+	else if ((test_exist_fonction(tab_exec_hold, 2)))
 	{
 		execve(tab_exec_hold[0], tab_exec_hold, NULL);
 		perror("FAIL");

@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/28 06:00:35 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/01 05:01:52 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void		hash_binary(void)
 	i = 0;
 	while (binaryhold[i] && (binaryhold[i] <= 65 || binaryhold[i] > 122))
 		i++;
-	if (!(test_exist_fonction(g_tracking.g_tab_exec)))
+	if (!(test_exist_fonction(g_tracking.g_tab_exec, 1)))
 		return ;
 	hashedvalue = hash_maker(binaryhold[i]);
 	insert_to_hashtable(hashedvalue, binaryhold, g_tracking.g_tab_exec[0]);
