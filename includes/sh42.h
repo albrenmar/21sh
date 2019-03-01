@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/22 12:34:13 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 15:11:48 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include "libft.h"
 # include "ft_ls.h"
 # include "minishell.h"
+# include "expansions.h"
+# include "set.h"
 # include <sys/ioctl.h>
 # include <termios.h>
 # include <curses.h>
@@ -26,7 +28,7 @@
 # include <time.h>
 # include <fcntl.h>
 
-# define USER		"alsomvil"
+# define USER		"bsiche"
 # define K_FN1		"\x1b\x4f\x50"
 # define K_FN2		"\x1b\x4f\x51"
 # define K_FN3		"\x1b\x4f\x52"
@@ -43,6 +45,7 @@
 # define K_SPC		32
 # define K_BKSP		127
 # define K_TAB		9
+# define K_CTRLR	18
 # define K_DEL		"\x1b\x5b\x33\x7e"
 
 int		descrf[2];
@@ -140,10 +143,23 @@ typedef struct	s_shell
 	t_lstcontainer	*env;
 	t_hist			*hist;
 	t_set_fd		*set_fd;
+	t_env_set		*setenv_lst;
+	char			**tab_env;
 }				t_shell;
+
+typedef struct		s_hash
+{
+    char			*binary;
+	char			*path;
+	int				totalhits;
+    struct s_hash	*nextbinary;
+}
+					t_hash;
 
 typedef struct	s_tracking
 {
+	char				**g_tab_exec;
+	int					builtin;
 	t_cursor			*pos;
 	struct termios		default_term;
 	struct termios		myterm;
@@ -151,16 +167,20 @@ typedef struct	s_tracking
 	struct s_cpaste		*cpaste;
 	struct s_auto		*aut;
 	struct s_shell		*mysh;
+	struct s_jobs		*jobs;
+	struct s_hash		*hashtable[27];
 	char				*str;
 	char				*cmd;
-	char				*comp;
 	char				*prompt;
+	char				*search;
+	char				*found;
 	t_lstcontainer		*key_list;
+	int					quotes;
+	int					bracket;
 	int					swi;
 	int					buffsize;
 	int					histindex;
 	int					histmax;
-	struct s_jobs		*jobs;
 	int					interactive;
 	int					lastreturn;
 	int					sterminal;
@@ -168,7 +188,7 @@ typedef struct	s_tracking
 	int					bg;
 	int					fg;
 	int					lastplace;
-	char				**orderhold;
+	// char				**orderhold;
 }				t_tracking;
 
 typedef struct	s_cmd
@@ -290,45 +310,70 @@ void			ft_add_env_string(char *s1, char *s2);
 char			*remove_env_string(char *str);
 char			*ft_true_pwd(void);
 void			add_missing_string();
+void			ctrl_d(void);
+void			ctrl_c(void);
+void			clean_up_leaks(void);
+t_ls			*ls_alloc(char *str);
 
 
-void							hist_file_to_lst(void);
-int								print_hist();
-int								get_last();
-int								go_to(int i);
-int								history_up(void);
-int								history_down(void);
-t_hist							*hist_lst_create(char *line);
-void							hist_lst_add_next(t_hist *hist, char *line);
-void							hist_print(t_hist *hist);
-t_hist							*hist_free(t_hist *hist);
-void							hist_save_file(t_hist *s_hist);
-t_hist							*hist_remap_index(t_hist *hist);
-t_hist							*hist_delete_index(t_hist *hist, int index);
+void			hist_file_to_lst(void);
+int				print_hist();
+int				get_last();
+int				go_to(int i);
+int				history_up(void);
+int				history_down(void);
+t_hist			*hist_lst_create(char *line);
+void			hist_lst_add_next(t_hist *hist, char *line);
+void			hist_print(t_hist *hist);
+t_hist			*hist_free(t_hist *hist);
+void			hist_save_file(t_hist *s_hist);
+t_hist			*hist_remap_index(t_hist *hist);
+t_hist			*hist_delete_index(t_hist *hist, int index);
+int     		begin_search(void);
+char         	*get_hist_ptr(char *needle);
+t_hist			*get_hist_nbr(int i);
 
 
-t_last							*create_new_list(void);
-t_last							*ft_parseur(char *line);
-void							ft_lexeur(t_last *list_cmd);
-void							tri_lexer(t_last *list_cmd);
-void							ft_ast(t_last *list_command);
-void							execute_ast(t_tree *tree, t_jobs *job);
-int								exec_command(t_last *list, int foreground, t_jobs *job);
-void							convert_list(t_last *list);
-int								its_reddir(t_last *list);
-int								its_fd_reddir(t_last *list);
-int								its_reddir_to_fd(t_last *list);
-int								its_pipe(t_last *list);
-int								its_separator(t_last *list);
-char							**create_tab_to_exec(t_last *list);
-void							execute_pipe(char **tab_exec, t_jobs *job);
-void							execute_two(char **tab_cmd);
-void							execute_pipe_two(char **tab_exec, t_jobs *job);
-char							**test_exist_fonction(char **tab_cmd);
-int								error_lexer(t_last *list_cmd);
-void							create_fich(t_last *list);
-void							print_last(t_last *list);
-int								its_eper(t_last *list);
+t_last			*create_new_list(void);
+t_last			*ft_parseur(char *line);
+void			ft_lexeur(t_last *list_cmd);
+void			tri_lexer(t_last *list_cmd);
+void			ft_ast(t_last *list_command);
+void			execute_ast(t_tree *tree, t_jobs *job);
+int				exec_command(t_last *list, int foreground, t_jobs *job);
+void			convert_list(t_last *list);
+int				its_reddir(t_last *list);
+int				its_fd_reddir(t_last *list);
+int				its_reddir_to_fd(t_last *list);
+int				its_pipe(t_last *list);
+int				its_separator(t_last *list);
+char			**create_tab_to_exec(t_last *list);
+void			execute_pipe(char **tab_exec, t_jobs *job);
+void			execute_two(char **tab_cmd);
+void			execute_pipe_two(char **tab_exec, t_jobs *job);
+char			**test_exist_fonction(char **tab_cmd, int mode);
+int				error_lexer(t_last *list_cmd);
+void			create_fich(t_last *list);
+void			print_last(t_last *list);
+int				its_eper(t_last *list);
+int				is_builtin(void);
+int				ft_exit(void);
+int				is_builtin_alone(void);
+int				ft_builtin_search(char *builtin);
+int				builtin_exec(t_last *arglist);
+void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
+char			**tab_dup(char **tob);
+int				jobs_builtin(void);
+int				errors_fg(int nb, int error);
+int				fg_builtin_output(t_jobs *tmp);
+char			*search_fd_reddir(char *str, int *nb);
+char			*search_reddir(char *str, int *nb);
+char			*search_normally_arg(char *str, int *nb);
+char			*search_symboll(char *str, int *nb);
+int				its_not_symbol(char c);
+char			*check_quote(char *line, int i);
+char			*check_bracket(char *line, int i, int *mv);
+int				ft_valid_quote(char *line, char c, int flag);
 
 
 void			interactive_check_set_shell_group(void);
@@ -336,6 +381,19 @@ void			set_shell_signal_handlers(void);
 void			set_process_signal_handlers(void);
 t_cmd			*new_process(t_jobs *job, pid_t cpid);
 
+void			continue_job(t_jobs *job, int foreground);
+void			hash_binary(void);
+int				hash_maker(const char c);
+t_hash			*new_binary_hash(char *binary, char *path, int hits);
+int				errors_hash(char *binary, int error);
+int				ft_hash(void);
+void			ft_hash_output(void);
+int				empty_hash_table(void);
+int				hash_update_commands(int j);
+char			**tab_format_hash(char *binary);
+char			**hashed_command(char **tab_exec);
+
+int				exec_errors(char **tab_exec, int mode);
 
 t_jobs			*new_job(t_last *part, int background);
 void			wait_for_job(t_jobs *job);
@@ -343,11 +401,12 @@ void			put_job_in_foreground(t_jobs *job, int cont);
 void			put_job_in_background(t_jobs *job, int cont);
 int				job_is_done(t_jobs *job);
 int				job_is_stopped(t_jobs *job);
-int				bg_builtin(int mode);
-int				fg_builtin(int mode);
+int				bg_builtin(void);
+int				fg_builtin(void);
 char			*parse_job_number(char *str);
 int				job_exists(int place);
 int				parse_job_sign(char *str);
+int				errors_jobs(char option, int nb, int error);
 int				errors_bg(int nb, int error);
 int				cmd_checker(t_last *part, int mode, t_jobs *job);
 void			free_last(t_last **cmd);
@@ -359,5 +418,8 @@ void			show_job_info(t_jobs *job, const char *status, int mode);
 void			free_job(t_jobs *job);
 void			jobs_notifications(void);
 void			jobs_update_current(void);
+
+int				main_test(t_last *arglist);
+char			**init_envp(t_lstcontainer *env);
 
 #endif

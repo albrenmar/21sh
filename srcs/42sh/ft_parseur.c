@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_analize.c                                       :+:      :+:    :+:   */
+/*   ft_parseur.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/20 17:24:58 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 15:19:22 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
 
-char	*check_quote(char *line, int *i, int *nb)
+int		its_not_symbol(char c)
 {
-	printf("%s\n", "modification de la commande sans quote");
-	exit (0);
-	return (line);
+	if (c == '|' || c == '>' || c == '<' || c == '&' || c == ';')
+		return (0);
+	else
+		return (1);
 }
 
 char	*recup_cmd(char *line, int *i, int nb)
@@ -25,64 +25,56 @@ char	*recup_cmd(char *line, int *i, int nb)
 	char	*test;
 
 	test = NULL;
-	if (!line[nb])
+	if (!line)
 		return (NULL);
-	if (line[nb] == '\'' || line[nb] == '\"')
-		return (check_quote(line, i, &nb));
-	while (line[nb])
+	while (line[nb] == ' ')
 	{
-		if (line[nb] == ';' || line[nb] == '|' || line[nb] == '&' || line[nb] == '>' || line[nb] == '<' || line[nb] == '(' || line[nb] == ')')
-		{
-			if (line[nb + 1] && (line[nb + 1] == line[nb]))
-			{
-				(*i) = (*i) + 2;
-				nb = nb + 2;
-				test = ft_strndup(line, nb);
-			}
-			else
-			{
-				(*i) = (*i) + 1;
-				nb = nb + 1;
-				if (line[nb] == '&')
-				{
-					nb++;
-					(*i)++;
-				}
-				test = ft_strndup(line, nb);
-			}
-		}
-		else
-		{
-			while (line[nb] && line[nb] != ' ' && line[nb] != ';' && line[nb] != '|' && line[nb] != '&' && line[nb] != '>' && line[nb] != '<' && line[nb] != '(' && line[nb] != ')')
-			{
-				nb++;
-				(*i)++;
-				if (line[nb] && ((line[nb] == '>') || line[nb] == '<') && line[nb - 1] && line[nb - 1] > 47 && line[nb - 1] < 58 && (nb < 2 || (nb > 1 && (!line[nb - 2] || (line[nb - 2] && line[nb - 2] == ' ')))))
-				{
-					nb++;
-					(*i)++;
-					if (line[nb] == line[nb - 1])
-					{
-						nb++;
-						(*i)++;
-					}
-					else if (line[nb] == '&')
-					{
-						nb++;
-						(*i)++;
-					}
-					break ;
-				}
-			}
-			test = ft_strndup(line, nb);
-		}
-		while (line[nb++] == ' ')
-			(*i)++;
-		return (test);
+		(*i)++;
+		nb++;
 	}
+	if (line[nb] == '"')
+		return (check_quote(&line[nb], 0));
+	else if (line[nb] == '$')
+	{
+		if (line[nb + 1] && line[nb + 1] == '{')
+			return (check_bracket(&line[nb], 0, i));
+	}
+	else if ((test = search_fd_reddir(&line[nb], i)))
+		return (test);
+	else if ((test = search_reddir(&line[nb], i)))
+		return (test);
+	else if ((test = search_symboll(&line[nb], i)))
+		return (test);
+	else
+		test = search_normally_arg(&line[nb], i);
 	return (test);
 }
 
+void	ft_modif_line(char *line)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	*new_line;
+	char	*temp;
+
+	i = 0;
+	j = 0;
+	new_line = NULL;
+	temp = NULL;
+	if (ft_valid_quote(line, '"', 0))
+	{
+		temp = check_quote(line, 0);
+		if (temp)
+			new_line = ft_strjoin(line, temp);
+	}
+	if (new_line)
+		printf("NEW_LINE = %s\n", new_line);
+	else
+		printf("LINE = %s\n", line);
+
+	exit (0);
+}
 
 t_last	*ft_parseur(char *line)
 {
@@ -95,13 +87,15 @@ t_last	*ft_parseur(char *line)
 	temp = NULL;
 	while (line[i] == ' ')
 		i++;
+	ft_modif_line(line);
 	if ((temp = recup_cmd(&line[i], &i, 0)) != NULL)
 	{
 		list_cmd = create_new_list();
 		templist = list_cmd;
-		list_cmd->name = ft_strdup(temp);
-		free(temp);
-		while ((temp = recup_cmd(&line[i], &i, 0)) != NULL)
+		list_cmd->name = temp;
+		temp = NULL;
+		//ATTENTION !! SEGFAULT ICI DANS LE CAS "dsf
+		while (line[i] && (temp = recup_cmd(&line[i], &i, 0)) != NULL)
 		{
 			list_cmd->next = create_new_list();
 			list_cmd->next->prev = list_cmd;
@@ -114,6 +108,7 @@ t_last	*ft_parseur(char *line)
 	}
 	else
 		return (NULL);
+	//print_last(list_cmd);
 	ft_lexeur(list_cmd);
 	if (error_lexer(list_cmd))
 		return (NULL);

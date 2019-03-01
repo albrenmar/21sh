@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   execute_ast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/22 12:27:57 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 07:40:54 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
+
+void	print_last(t_last *list)
+{
+	while (list)
+	{
+		printf("CMD = %s TYPE = %d\n", list->name, list->type);
+		list = list->next;
+	}
+}
 
 int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 {
@@ -23,6 +32,8 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 	temp_command = NULL;
 	pipe(descrf);
 	pipe(descrf_two);
+	if (!list_cmd)
+		return (0);
 	job = new_job(list_cmd, foreground);
 	g_tracking.mysh->set_fd = ft_memalloc(sizeof(t_set_fd));
 	g_tracking.mysh->set_fd->STDIN = 0;
@@ -62,29 +73,20 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 			redir = 0;
 		}
 	}
-	if (!g_tracking.interactive)
-		wait_for_job(job);
-	else if (!foreground)
-		put_job_in_foreground(job, 0);
-	else
-		put_job_in_background(job, 0);
-	if (g_tracking.fg == 1 || g_tracking.bg == 1)
+	if (g_tracking.builtin == 0)
 	{
-		if (g_tracking.fg == 1)
-			fg_builtin(4);
+		if (!g_tracking.interactive)
+			wait_for_job(job);
+		else if (!foreground)
+			put_job_in_foreground(job, 0);
 		else
-			bg_builtin(4);
+			put_job_in_background(job, 0);
 	}
-	/*if (g_tracking.lastreturn == 0 && cmd_checker(list_cmd, 0, job) == -1)
+	else
 	{
-		free_last(&list_cmd);
-		return (0);
+		g_tracking.builtin = 0;
+		g_tracking.lastreturn = builtin_exec(list_cmd);
 	}
-	else if (g_tracking.lastreturn != 0 && cmd_checker(list_cmd, -1, job) == -1)
-	{
-		free_last(&list_cmd);
-		return (0);
-	}*/
 	return (0);
 }
 
@@ -99,33 +101,28 @@ void		execute_ast(t_tree *tree, t_jobs *job)
 	{
 		if (tree->left && tree->left->type != SEP)
 		{
-			printf("____________________________________-\n");
-			printf("EXECUTE JOBS [1]\n");
 			if (ft_strlen(tree->cmd) == 1 && tree->cmd[0] == '&')
-			{
 				foreground = 1;
-				//printf("BACK !!!!!!!!!!!!!!!!!!!\n");
-			}
-			//print_last(tree->left->list_cmd);
 			ret = exec_command(tree->left->list_cmd, foreground, job);
-			printf("____________________________________-\n");
+			foreground = 0;
 		}
 		else if (tree->left && tree->left->type == SEP)
 			execute_ast(tree->left, job);
 		if (ft_strlen(tree->cmd) > 1)
-			printf("EN FONCTION DE [%s]\n", tree->cmd);
+		{
+			if (tree->cmd[0] == '&' && g_tracking.lastreturn == 1)
+				return ;
+			if (tree->cmd[0] == '|' && g_tracking.lastreturn == 0)
+				return ;
+			//printf("RETOUR NEXT = %d\n", g_tracking.lastreturn);
+		//	printf("EN FONCTION DE [%s]\n", tree->cmd);
+		}
 		if (tree->right && tree->right->type != SEP)
 		{
-			printf("____________________________________-\n");
-			printf("EXECUTE JOBS [2]\n");
 			if (tree->prev && ft_strlen(tree->prev->cmd) == 1 && tree->prev->cmd[0] == '&')
-			{
 				foreground = 1;
-				//printf("BACK !!!!!!!!!!!!!!!!!!!\n");
-			}
-			//print_last(tree->right->list_cmd);
-			printf("____________________________________-\n");
 			ret = exec_command(tree->right->list_cmd, foreground, job);
+			foreground = 0;
 		}
 		else if (tree->right)
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   auto_complete_parse.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/23 00:27:08 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/02/28 04:02:39 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		check_type(void)
 	char	*check;
 
 	check = g_tracking.aut->word;
-	if (check[0] == '/')
+	if (check[0] == '/' || check[0] == '~')
 		return (1);
 	if (check[1] != '\0')
 	{
@@ -95,6 +95,13 @@ int		sanitize_path(void)
 
 	i = ft_strlen(g_tracking.aut->word);
 	a = 0;
+	if (g_tracking.aut->word[0] == '~')
+	{
+		g_tracking.aut->path = ft_exp_complete(g_tracking.aut->word);
+		if (g_tracking.aut->path == NULL)
+			g_tracking.aut->path = ft_strdup(g_tracking.aut->word);
+		return (0);
+	}
 	while (g_tracking.aut->word[i] != '/' && i > 0)
 		i--;
 	path = ft_strnew(i);

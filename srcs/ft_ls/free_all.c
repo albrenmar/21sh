@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/23 01:01:42 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 07:21:41 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 06:08:55 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_lstcontainer	*free_all(t_lstcontainer *mainliste, char *dossier)
 	if (mainliste->firstelement != NULL)
 	{
 		ft_freestruct(mainliste->firstelement);
-		ft_lstdel(mainliste->firstelement, 0);
+		ft_lstdel(mainliste->firstelement, 1);
 	}
 	free(mainliste);
 	free(dossier);

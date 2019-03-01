@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   add_path_to_bin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:00:43 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/18 01:36:13 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 09:17:41 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
-
-//#define EXEC g_tracking.mysh->exec
 
 int		test_exist_fonction_two(char ***tab_cmd, char **pathlist)
 {
@@ -42,22 +40,30 @@ int		test_exist_fonction_two(char ***tab_cmd, char **pathlist)
 	return (0);
 }
 
-char	**test_exist_fonction(char **tab_cmd)
+char	**test_exist_fonction(char **tab_cmd, int mode)
 {
-	int		i;
-	char	**pathlist;
-	char	*path;
-
-	i = 0;
-	path = get_env_string("PATH");
-	pathlist = ft_strsplit(path, ':');
-	if ((access(tab_cmd[0], X_OK) == 0) || (test_exist_fonction_two(&tab_cmd, pathlist) == 1))
-		return (tab_cmd);
-	else
+	char		**pathlist;
+	char		*path;
+	struct stat	path_stat;
+    
+	stat(tab_cmd[0], &path_stat);
+	if (mode == 2 && (access(tab_cmd[0], F_OK) == 0) && (access(tab_cmd[0], X_OK) == 0))
 	{
-		printf("La commande %s n'existe pas\n", tab_cmd[i]);
-		//EXEC->ret = -1;
-		return (NULL);
+		if (tab_cmd[0][0] == '.' && tab_cmd[0][1] == '/' && S_ISREG(path_stat.st_mode))
+			return (tab_cmd);
+		if (tab_cmd[0][0] == '/')
+			return (tab_cmd);
+		path = get_env_string("PATH");
+		pathlist = ft_strsplit(path, ':');
+		if (test_exist_fonction_two(&tab_cmd, pathlist) == 1)
+			return (tab_cmd);
+	}
+	else if (mode == 1)
+	{
+		path = get_env_string("PATH");
+		pathlist = ft_strsplit(path, ':');
+		if (test_exist_fonction_two(&tab_cmd, pathlist) == 1)
+			return (tab_cmd);
 	}
 	return (NULL);
 }

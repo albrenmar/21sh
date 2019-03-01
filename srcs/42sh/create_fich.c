@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/20 21:32:23 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/26 01:29:36 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,38 @@
 
 void		set_fd(char c, int fd)
 {
-	if (c == '0')
-		g_tracking.mysh->set_fd->STDIN = fd;
-	else if (c == '1')
-		g_tracking.mysh->set_fd->STDOUT = fd;
-	else if (c == '2')
-		g_tracking.mysh->set_fd->STDERR = fd;
-	else if (c == '3')
-		g_tracking.mysh->set_fd->three = fd;
-	else if (c == '4')
-		g_tracking.mysh->set_fd->four = fd;
-	else if (c == '5')
-		g_tracking.mysh->set_fd->five = fd;
-	else if (c == '6')
-		g_tracking.mysh->set_fd->six = fd;
-	else if (c == '7')
-		g_tracking.mysh->set_fd->seven = fd;
-	else if (c == '8')
-		g_tracking.mysh->set_fd->eight = fd;
-	else if (c == '9')
-		g_tracking.mysh->set_fd->nine = fd;
+	if ((fd == 0 && g_tracking.mysh->set_fd->STDIN == 0) || (fd == 1 && g_tracking.mysh->set_fd->STDOUT == 1) ||(fd == 2 && g_tracking.mysh->set_fd->STDERR == 2))
+	{
+		if (c == '0')
+			dup2(g_tracking.mysh->set_fd->STDIN, fd);
+		if (c == '1')
+			dup2(g_tracking.mysh->set_fd->STDOUT, fd);
+		if (c == '2')
+			dup2(g_tracking.mysh->set_fd->STDERR, fd);
+	}
+	else
+	{
+		if (c == '0')
+			g_tracking.mysh->set_fd->STDIN = fd;
+		else if (c == '1')
+			g_tracking.mysh->set_fd->STDOUT = fd;
+		else if (c == '2')
+			g_tracking.mysh->set_fd->STDERR = fd;
+		else if (c == '3')
+			g_tracking.mysh->set_fd->three = fd;
+		else if (c == '4')
+			g_tracking.mysh->set_fd->four = fd;
+		else if (c == '5')
+			g_tracking.mysh->set_fd->five = fd;
+		else if (c == '6')
+			g_tracking.mysh->set_fd->six = fd;
+		else if (c == '7')
+			g_tracking.mysh->set_fd->seven = fd;
+		else if (c == '8')
+			g_tracking.mysh->set_fd->eight = fd;
+		else if (c == '9')
+			g_tracking.mysh->set_fd->nine = fd;
+	}
 }
 
 void		create_fich(t_last *list)

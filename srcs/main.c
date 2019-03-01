@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/22 12:28:18 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 09:00:32 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,17 @@ int		main(int argc, char **argv, char **env)
 	{
 		line = ft_strdup(g_tracking.cmd);
 		free(g_tracking.cmd);
-		g_tracking.swi = 0;
+		g_tracking.cmd = NULL;
+		tcsetattr(0, TCSANOW, &g_tracking.default_term);
 		ft_putchar('\n');
 		hist_lst_add_next(g_tracking.mysh->hist, line);
-		if (!ft_strcmp(line, "exit"))
-		{
-			printf("%s\n", "exit temporaire");
-			exit(0);
-		}
-		else if (line && (cmd = ft_parseur(line)))
+		if (line && (cmd = ft_parseur(line)))
 		{
 			convert_list(cmd);
 			ft_ast(cmd);
 		}
 		jobs_notifications();
 		jobs_update_current();
-		//ft_build_test(line);
 		free(line);
 		line = NULL;
 	}

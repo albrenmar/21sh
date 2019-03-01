@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/19 06:15:08 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 00:25:55 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,22 @@ void	ft_printlist(void)
 void	init_shell(char **environ)
 {
 	t_shell		*mysh;
+	int			i;
 
+	i = 0;
 	if (!(mysh = malloc(sizeof(t_shell))))
 	{
 		ft_putendl("Failled to allocate memory");
 		exit(EXIT_FAILURE);
 	}
+	while (i < 27)
+	{
+		g_tracking.hashtable[i] = NULL;
+		i++;
+	}
+	g_tracking.builtin = 0;
+	g_tracking.jobs = NULL;
+	g_tracking.lastreturn = 0;
 	g_tracking.mysh = mysh;
 	g_tracking.mysh->hist = NULL;
 	g_tracking.mysh->alias_lst = NULL;
@@ -45,4 +55,7 @@ void	init_shell(char **environ)
 	g_tracking.mysh->env = ft_env_to_lst(environ);
 	add_missing_string();
 	hist_file_to_lst();
+	g_tracking.mysh->tab_env = init_envp(g_tracking.mysh->env);
+	g_tracking.mysh->setenv_lst = NULL;
+	g_tracking.quotes = 0;
 }

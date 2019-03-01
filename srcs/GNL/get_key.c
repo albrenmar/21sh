@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/30 03:29:08 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 08:36:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,19 +110,35 @@ int		single_key(char c)
 	if (c == K_BKSP)
 	{
 		rem_from_str();
-		g_tracking.comp = ft_strdup(g_tracking.str);
 		return (12);
+	}
+	if (c == K_CTRLR)
+	{
+		begin_search();
+		return(12);
 	}
 	if (c == 10 || c == 13)
 	{
 		ft_return();
-		g_tracking.swi = 1;
 		return (13);
 	}
 	if (c == K_TAB)
 	{
 		auto_complete();
 		return (12);
+	}
+	if (c == 04)
+	{
+		ctrl_d();
+		if (g_tracking.quotes == 10)
+			return (13);
+		else
+			return (12);
+	}
+	if (c == 03)
+	{
+		ctrl_c();
+		return (13);
 	}
 	return (0);
 }
@@ -139,10 +155,7 @@ int		return_loop(int i, char *str)
 	if (check(str) == 1 || i == 12)
 		free(str);
 	else
-	{
 		add_to_str(str);
-		g_tracking.comp = ft_strdup(g_tracking.str);
-	}
 	return (0);
 }
 
@@ -184,6 +197,6 @@ int		get_key(void)
 	while (readloop(0) == 0)
 	{
 	}
-	tcsetattr(STDERR_FILENO, TCSANOW, &g_tracking.default_term);
+	tcsetattr(0, TCSANOW, &g_tracking.default_term);
 	return (1);
 }

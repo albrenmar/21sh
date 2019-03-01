@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
+#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/22 12:34:15 by alsomvil         ###   ########.fr        #
+#    Updated: 2019/03/01 09:30:56 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=	42sh
 
 SRC = main.c \
+	  42sh/errors.c \
 	  42sh/ft_parseur.c \
 	  42sh/ft_lexeur.c \
 	  42sh/ft_modif_list.c \
@@ -24,6 +25,19 @@ SRC = main.c \
 	  42sh/create_tab_to_exec.c \
 	  42sh/convert_list.c \
 	  42sh/create_fich.c \
+	  42sh/hashtables.c \
+	  42sh/search_arg.c \
+	  42sh/completion.c \
+	  builtins/fg_bg_builtins.c \
+	  builtins/jobs_builtin.c \
+	  builtins/exit.c \
+	  builtins/hash_builtin.c \
+	  builtins/builtins.c \
+	  builtins/set.c \
+	  builtins/type_main.c \
+	  builtins/test_main.c \
+	  builtins/test_two_arg.c \
+	  builtins/test_three_arg.c \
 	  Jobs/signal_handlers.c \
 	  Jobs/utils.c \
 	  Jobs/job_functions.c \
@@ -41,6 +55,7 @@ SRC = main.c \
 	  GNL/print_line.c \
 	  GNL/next_word.c \
 	  GNL/copy.c \
+	  GNL/ctrl.c \
 	  GNL/paste.c \
 	  GNL/get_key.c \
 	  auto_complete/auto_complete.c \
@@ -55,6 +70,8 @@ SRC = main.c \
 	  auto_complete/print_arg_list.c \
 	  auto_complete/send_color.c \
 	  auto_complete/var_list.c \
+	  back_search/init_search.c \
+	  back_search/search_lst.c \
 	  ft_ls/cmdparse.c \
 	  ft_ls/cmdparse_misc.c \
 	  ft_ls/color.c \
@@ -80,18 +97,36 @@ SRC = main.c \
 	  alias/alias_bin.c \
 	  alias/alias_file.c \
 	  alias/alias_struct.c \
-	  test/test_main.c \
-	  test/test_two_arg.c \
-	  test/test_three_arg.c \
 	  shell_core/copyenv.c \
 	  shell_core/env_to_lst.c \
 	  shell_core/init_shell.c \
 	  shell_core/get_pwd.c \
+	  shell_core/env_list_to_tab.c \
 	  history/history_lst.c \
 	  history/history_lst2.c \
 	  history/history_lst_options.c \
 	  history/history_loop.c \
-	  history/print_hist.c
+	  history/print_hist.c \
+	  expansions/expand.c \
+	  expansions/user.c \
+	  expansions/parm.c \
+	  expansions/transform.c \
+	  expansions/expand_tilde.c \
+	  expansions/tilde.c \
+	  expansions/tools_expand.c \
+	  expansions/home.c \
+	  expansions/expand_keys.c \
+	  expansions/check_sign_tools.c \
+	  expansions/hash_tools.c \
+	  expansions/percent_tools.c \
+	  expansions/expand_keys_dblpnt.c \
+	  expansions/expand_keys_adv.c \
+	  expansions/values.c \
+	  expansions/values_tools.c \
+	  expansions/environ.c \
+	  expansions/environ_set.c \
+	  expansions/scan.c \
+	  expansions/autocomplete/auto_com_expan.c
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A
@@ -118,7 +153,7 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
-FLAG = -g -fsanitize=address
+FLAG = 
 
 all : $(NAME)
 
