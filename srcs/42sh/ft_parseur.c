@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 08:07:40 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 11:33:57 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,72 +19,6 @@ int		its_not_symbol(char c)
 	else
 		return (1);
 }
-
-int		ft_valid_quote(char *line, char c)
-{
-	int	flag;
-	int	i;
-
-	i = 0;
-	flag = 0; 
-	while (line[i])
-	{
-		if (line[i] == c)
-			flag++;
-		i++;
-	}
-	if ((flag % 2) == 0)
-		return (0);
-	else
-		return (1);
-}
-
-char	*check_quote(char *line, int i, int *mv)
-{
-	char	*ret;
-	char	*join;
-	char	*raccor;
-	char	*saveprompt;
-	int		nb;
-	int		test;
-
-	ret = NULL;
-	join = NULL;
-	raccor = NULL;
-	nb = 0;
-	i++;
-	while (line[i] && line[i] != '"')
-		i++;
-	if (!line[i])
-	{
-		*mv += i;
-		ret = ft_strdup(line);
-		saveprompt = g_tracking.prompt;
-		g_tracking.prompt = ">";
-		test = ft_valid_quote(ret, '"');
-		while (test == 1)
-		{
-			g_tracking.quotes = 1;
-			get_key();
-			if (g_tracking.quotes == 10)
-				exit (0);
-			join = g_tracking.cmd;
-			ret = ft_strjoinfree(ret, join, 3);
-			test = ft_valid_quote(ret, '"');
-			ft_putchar('\n');
-		}
-		g_tracking.quotes = 0;
-		ft_putchar('\n');
-		g_tracking.prompt = saveprompt;
-		return (ret);
-	}
-	i++;
-	while (line[i] && its_not_symbol(line[i]) && line[i] != ' ')
-		i++;
-	*mv += i;
-	return (ft_strndup(line, i));
-}
-
 
 char	*recup_cmd(char *line, int *i, int nb)
 {
@@ -100,6 +34,11 @@ char	*recup_cmd(char *line, int *i, int nb)
 	}
 	if (line[nb] == '"')
 		return (check_quote(&line[nb], 0, i));
+	else if (line[nb] == '$')
+	{
+		if (line[nb + 1] && line[nb + 1] == '{')
+			return (check_bracket(&line[nb], 0, i));
+	}
 	else if ((test = search_fd_reddir(&line[nb], i)))
 		return (test);
 	else if ((test = search_reddir(&line[nb], i)))

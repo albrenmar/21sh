@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:06:56 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 08:20:31 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 11:15:16 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,13 @@ char	*search_normally_arg(char *str, int *nb)
 	char	*join;
 	char	*ret;
 	char	*temp;
+	char	*searchquotes;
 
 	i = 0;
 	ret = NULL;
 	temp = NULL;
 	join = NULL;
+	searchquotes = NULL;
 	stop = 0;
 	while (str[i] && its_not_symbol(str[i]) && str[i] != ' ')
 	{
@@ -101,6 +103,14 @@ char	*search_normally_arg(char *str, int *nb)
 		{
 			stop = i;
 			join = check_quote(&str[i], 0, nb);
+		}
+		if (str[i] == '$')
+		{
+			if (str[i + 1] && str[i + 1] == '{')
+			{
+				stop = i;
+				join = check_bracket(&str[i], 0, nb);
+			}
 		}
 		i++;
 	}
