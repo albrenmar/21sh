@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:06:56 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/27 18:40:44 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 08:04:38 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,36 @@ char	*search_reddir(char *str, int *nb)
 char	*search_normally_arg(char *str, int *nb)
 {
 	int		i;
+	int		stop;
 	char	*join;
 	char	*ret;
+	char	*temp;
 
 	i = 0;
 	ret = NULL;
+	temp = NULL;
+	join = NULL;
+	stop = 0;
 	while (str[i] && its_not_symbol(str[i]) && str[i] != ' ')
 	{
 		if (str[i] == '"')
 		{
+			stop = i;
 			join = check_quote(&str[i], 0, nb);
 		}
 		i++;
 	}
 	(*nb) += i;
-	if (i > 0)
-		ret = ft_strndup(str, i);
-	return (ret);
+	if (join)
+	{
+		ret = ft_strndup(str, stop);
+		temp = ft_strjoin(ret, join);
+	}
+	else if (i > 0)
+	{
+		temp = ft_strndup(str, i);
+		printf("TEST = %s\n", ret);
+	}
+	printf("TEMMMMMMMMP = %s\n", temp);
+	return (temp);
 }
