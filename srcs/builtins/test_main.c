@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 03:02:54 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 07:32:11 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 07:49:19 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,6 @@ int		ft_build_test(char *string)
 	argc = 0;
 	while (argv[argc])
 		argc++;
-	main_test(argc, argv);
+	main_test(NULL);
 	return (0);
 }

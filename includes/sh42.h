@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 07:32:09 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 07:45:42 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -359,7 +359,7 @@ int				is_builtin(void);
 int				ft_exit(void);
 int				is_builtin_alone(void);
 int				ft_builtin_search(char *builtin);
-int				builtin_exec(void);
+int				builtin_exec(t_last *arglist);
 void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
 char			**tab_dup(char **tob);
 int				jobs_builtin(void);
