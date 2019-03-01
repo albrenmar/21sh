@@ -30,3 +30,4 @@ MISC
 -Faire que le parser reconaisse le signe = pour les cmd style "env HOME=TMP cd ~"
 -Gestion de l'env
 -creer une fonction d'exit qui free proprement tout ce bordel
+-Ctrl-C fait des 'x'
