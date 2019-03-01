@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 13:43:28 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/01 16:53:20 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/01 19:05:15 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,4 @@ void	history_builtin_s(t_core *core)
 		if (core->hist)
 			core->hist = hist_delete_last(core->hist);
 	core->hist = builtin_s_args(&core->arg[i], core->hist);
-	// BUG ON HISTORY CS
 }
