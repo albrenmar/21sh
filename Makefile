@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/28 03:55:37 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/01 01:05:28 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRC = main.c \
 	  GNL/print_line.c \
 	  GNL/next_word.c \
 	  GNL/copy.c \
+	  GNL/ctrl.c \
 	  GNL/paste.c \
 	  GNL/get_key.c \
 	  auto_complete/auto_complete.c \

@@ -1,7 +1,5 @@
 Partie Brendan
--S'assurer que tout est safe avec l'autocomplete(trouver source des segfault bizzare sur certains macs, ajouter l'expansion ~de Marc
-pour les variable d'env type ~/Documents
--CTRL+D/CTRL-C/quotes/Heredoc (déja écrit, a implementer quand Alex aura fini sa partie)
+Rajouter "Dans des heredocs, valide" pour les heredoc, et quitter proprement le shell sans leaks degueulasses
 -Type et Test, a adapter avec le tableau d'arg et non char **argv
 
 Partie Abraham
@@ -21,7 +19,6 @@ Partie Alex
 - Ajout string si manque quote
 - Gestion des messages d'erreurs
 - Boucle infini sur grep apres pipe
-- Set taille max commande
 
 MISC
 -Builtin cd
@@ -30,3 +27,4 @@ MISC
 -ajouter env a execve
 -Faire que le parser reconaisse le signe = pour les cmd style "env HOME=TMP cd ~"
 -Gestion de l'env
+-creer une fonction d'exit qui free proprement tout ce bordel
