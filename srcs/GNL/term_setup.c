@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 05:23:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 08:35:27 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 09:21:31 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	get_term(void)
 	check_term(name_term);
 	tcgetattr(0, &default_term);
 	tcgetattr(0, &term);
-	term.c_lflag &= ~(ICANON | ECHO | ISIG);
+	term.c_lflag &= ~(ICANON | ECHO);
 	term.c_cc[VMIN] = 1;
 	term.c_cc[VTIME] = 0;
 	tcsetattr(0, TCSANOW, &term);
