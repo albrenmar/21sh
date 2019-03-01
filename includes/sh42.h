@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
 /*   Updated: 2019/03/01 07:45:42 by bsiche           ###   ########.fr       */
@@ -350,7 +350,7 @@ char			**create_tab_to_exec(t_last *list);
 void			execute_pipe(char **tab_exec, t_jobs *job);
 void			execute_two(char **tab_cmd);
 void			execute_pipe_two(char **tab_exec, t_jobs *job);
-char			**test_exist_fonction(char **tab_cmd);
+char			**test_exist_fonction(char **tab_cmd, int mode);
 int				error_lexer(t_last *list_cmd);
 void			create_fich(t_last *list);
 void			print_last(t_last *list);
@@ -380,7 +380,7 @@ t_cmd			*new_process(t_jobs *job, pid_t cpid);
 
 void			continue_job(t_jobs *job, int foreground);
 void			hash_binary(void);
-int				hash_maker(const char *binary);
+int				hash_maker(const char c);
 t_hash			*new_binary_hash(char *binary, char *path, int hits);
 int				errors_hash(char *binary, int error);
 int				ft_hash(void);
@@ -389,6 +389,8 @@ int				empty_hash_table(void);
 int				hash_update_commands(int j);
 char			**tab_format_hash(char *binary);
 char			**hashed_command(char **tab_exec);
+
+int				exec_errors(char **tab_exec, int mode);
 
 t_jobs			*new_job(t_last *part, int background);
 void			wait_for_job(t_jobs *job);
