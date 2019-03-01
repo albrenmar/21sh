@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 06:52:13 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/23 00:23:31 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 03:50:05 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ void	clean_up_autoc(void)
 	}
 	clean_up_pages();
 	free(g_tracking.aut);
+	g_tracking.aut = NULL;
 }

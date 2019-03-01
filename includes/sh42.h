@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 01:24:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 04:22:52 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <time.h>
 # include <fcntl.h>
 
-# define USER		"alsomvil"
+# define USER		"bsiche"
 # define K_FN1		"\x1b\x4f\x50"
 # define K_FN2		"\x1b\x4f\x51"
 # define K_FN3		"\x1b\x4f\x52"
@@ -171,7 +171,6 @@ typedef struct	s_tracking
 	struct s_hash		*hashtable[27];
 	char				*str;
 	char				*cmd;
-	char				*comp;
 	char				*prompt;
 	char				*search;
 	char				*found;
@@ -312,6 +311,7 @@ char			*ft_true_pwd(void);
 void			add_missing_string();
 void			ctrl_d(void);
 void			ctrl_c(void);
+void			clean_up_leaks(void);
 
 
 void			hist_file_to_lst(void);
