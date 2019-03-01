@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:29:52 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 01:23:27 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 04:23:40 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	cursor_reset(void)
 	g_tracking.pos->relx = 1;
 	g_tracking.pos->rely = 0;
 	g_tracking.pos->legacy = 0;
-//	g_tracking.swi = 0;
+	g_tracking.swi = 0;
 	g_tracking.cpaste = malloc(sizeof(t_cpaste));
 	g_tracking.cpaste->line = NULL;
 	g_tracking.buffsize = 1024;
