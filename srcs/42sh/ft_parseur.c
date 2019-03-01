@@ -32,14 +32,7 @@ char	*recup_cmd(char *line, int *i, int nb)
 		(*i)++;
 		nb++;
 	}
-	if (line[nb] == '"')
-		return (check_quote(&line[nb], 0));
-	else if (line[nb] == '$')
-	{
-		if (line[nb + 1] && line[nb + 1] == '{')
-			return (check_bracket(&line[nb], 0, i));
-	}
-	else if ((test = search_fd_reddir(&line[nb], i)))
+	if ((test = search_fd_reddir(&line[nb], i)))
 		return (test);
 	else if ((test = search_reddir(&line[nb], i)))
 		return (test);
@@ -50,7 +43,7 @@ char	*recup_cmd(char *line, int *i, int nb)
 	return (test);
 }
 
-void	ft_modif_line(char *line)
+char	*ft_modif_line(char **line)
 {
 	int		i;
 	int		j;
@@ -62,32 +55,45 @@ void	ft_modif_line(char *line)
 	j = 0;
 	new_line = NULL;
 	temp = NULL;
-	if (ft_valid_quote(line, '"', 0))
+	if (ft_valid_quote(*line, '"', 0))
 	{
-		temp = check_quote(line, 0);
-		if (temp)
-			new_line = ft_strjoin(line, temp);
+		temp = check_quote(*line, 0);
+		new_line = ft_strjoin(*line, temp);
+		*line = new_line;
+		printf("QUOTE LINE = %s\n", *line);
+		return (NULL);
 	}
-	if (new_line)
-		printf("NEW_LINE = %s\n", new_line);
+	else if (ft_valid_bracket(*line, '}', 0))
+	{
+		temp = check_bracket(*line, 0);
+		new_line = ft_strjoin(*line, temp);
+		*line = new_line;
+		printf("BRACKET LINE = %s\n", *line);
+		return (NULL);
+	}
 	else
-		printf("LINE = %s\n", line);
-
-	exit (0);
+		new_line = ft_strdup(*line);
+	return (new_line);
 }
 
-t_last	*ft_parseur(char *line)
+t_last	*ft_parseur(char *str)
 {
 	char	*temp;
 	int		i;
+	char	*line;
 	t_last	*list_cmd;
 	t_last	*templist;
 
 	i = 0;
 	temp = NULL;
-	while (line[i] == ' ')
+	line = NULL;
+	while (str[i] == ' ')
 		i++;
-	ft_modif_line(line);
+	while ((line = ft_modif_line(&str)) == NULL)
+		;
+	printf("FINAL LINE = %s\n", line);
+		//printf("LINE = %s\n", line);
+	//printf("LINE = %s\n", line);
 	if ((temp = recup_cmd(&line[i], &i, 0)) != NULL)
 	{
 		list_cmd = create_new_list();

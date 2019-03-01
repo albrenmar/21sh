@@ -56,8 +56,8 @@ char	*check_quote(char *line, int i)
 			exit (0);
 		join = g_tracking.cmd;
 		test = ft_valid_quote(join, '"', test);
-		printf("JOIN = %s\n", join);
-		printf("INT test = %d\n", test);
+		//printf("JOIN = %s\n", join);
+		//printf("INT test = %d\n", test);
 		if (!ret)
 			ret = ft_strdup(join);
 		else
@@ -72,34 +72,33 @@ char	*check_quote(char *line, int i)
 	return (ret);
 }
 
-int		ft_valid_bracket(char *line, char c)
+int		ft_valid_bracket(char *line, char c, int flag)
 {
-	int	flag;
 	int	i;
-	int	j;
-	int	quote;
-
+	int	accol;
+	
 	i = 0;
-	j = 0;
-	quote = 0;
-	flag = 1; 
+	accol = 0;
 	while (line[i])
-	{
-		//if (line[i] == c)
-		//	flag++;
-		if (line[i] == '"')
-			quote++;
-		if (line[i] == '}' && (quote % 2) == 0)
-			flag--;
 		i++;
+	while (i > 0)
+	{
+		if (line[i] == '"')
+			flag++;
+		else if (line[i] == '}' && flag % 2 == 0)
+			accol++;
+		else if (line[i] == '$' && line[i + 1] && line[i + 1] == '{' && flag % 2 == 0)
+		{
+			accol--;
+			if (accol < 0)
+				return (1);
+		}
+		i--;
 	}
-	if ((flag % 2) == 0)
-		return (0);
-	else
-		return (1);
+	return (0);
 }
 
-char	*check_bracket(char *line, int i, int *mv)
+char	*check_bracket(char *line, int i)
 {
 	char	*ret;
 	char	*join;
@@ -112,36 +111,30 @@ char	*check_bracket(char *line, int i, int *mv)
 	join = NULL;
 	raccor = NULL;
 	nb = 0;
+	test = 1;
 	i++;
-	while (line[i] && line[i] != '}')
+	while (line[i])
 		i++;
-	if (!line[i])
+	saveprompt = g_tracking.prompt;
+	g_tracking.prompt = ">";
+	if (test == 1)
 	{
-		*mv += i;
-		ret = ft_strdup(line);
-		saveprompt = g_tracking.prompt;
-		g_tracking.prompt = ">";
-		test = ft_valid_bracket(ret, '{');
-		while (test == 1)
+		g_tracking.bracket = 1;
+		get_key();
+		if (g_tracking.bracket == 10)
+			exit (0);
+		join = g_tracking.cmd;
+		test = ft_valid_bracket(join, '{', test);
+		if (!ret)
+			ret = ft_strdup(join);
+		else
 		{
-			g_tracking.bracket = 1;
-			get_key();
-			if (g_tracking.bracket == 10)
-				exit (0);
-			join = g_tracking.cmd;
-			raccor = check_quote(join, 0);
-			ret = ft_strjoinfree(ret, raccor, 3);
-			test = ft_valid_bracket(ret, '{');
-			ft_putchar('\n');
+			raccor = ft_strjoin(ret, join);
+			ret = raccor;
 		}
-		g_tracking.bracket = 0;
-		//ft_putchar('\n');
-		g_tracking.prompt = saveprompt;
-		return (ret);
+		ft_putchar('\n');
 	}
-	i++;
-	while (line[i] && its_not_symbol(line[i]) && line[i] != ' ')
-		i++;
-	*mv += i;
-	return (ft_strndup(line, i));
+	g_tracking.bracket = 0;
+	g_tracking.prompt = saveprompt;
+	return (ret);
 }

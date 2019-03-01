@@ -372,8 +372,9 @@ char			*search_normally_arg(char *str, int *nb);
 char			*search_symboll(char *str, int *nb);
 int				its_not_symbol(char c);
 char			*check_quote(char *line, int i);
-char			*check_bracket(char *line, int i, int *mv);
+char			*check_bracket(char *line, int i);
 int				ft_valid_quote(char *line, char c, int flag);
+int				ft_valid_bracket(char *line, char c, int flag);
 
 
 void			interactive_check_set_shell_group(void);
