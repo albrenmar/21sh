@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/01 04:13:19 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 05:17:12 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void		hist_lst_add_next(t_hist *hist, char *line)
 	new_node->previous = hist;
 	hist->next = new_node;
 	g_tracking.histmax = new_node->index;
-	free(line);
 	line = NULL;
 }
 

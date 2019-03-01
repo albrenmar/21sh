@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 05:01:33 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/01 07:20:26 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -388,6 +388,8 @@ int				empty_hash_table(void);
 int				hash_update_commands(int j);
 char			**tab_format_hash(char *binary);
 char			**hashed_command(char **tab_exec);
+
+int				exec_errors(char **tab_exec, int mode);
 
 t_jobs			*new_job(t_last *part, int background);
 void			wait_for_job(t_jobs *job);

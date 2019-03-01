@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 14:00:48 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 03:47:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 07:56:43 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ void		handle_sin(int sino)
 
 void		ft_siginit(void)
 {
-	signal(SIGABRT, handle_sin);
-	signal(SIGINT, handle_sin);
-	signal(SIGSTOP, handle_sin);
-	signal(SIGQUIT, handle_sin);
-	signal(SIGKILL, handle_sin);
-	signal(SIGCONT, handle_sin);
-	signal(SIGTSTP, handle_sin);
+	// signal(SIGABRT, handle_sin);
+	// signal(SIGINT, handle_sin);
+	// signal(SIGSTOP, handle_sin);
+	// signal(SIGQUIT, handle_sin);
+	// signal(SIGKILL, handle_sin);
+	// signal(SIGCONT, handle_sin);
+	// signal(SIGTSTP, handle_sin);
 	signal(SIGWINCH, handle_sin);
 }

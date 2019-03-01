@@ -6,9 +6,15 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 05:22:39 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/01 07:21:36 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
 
+int		exec_errors(char **tab_exec, int mode)
+{
+
+
+	return (-1);
+}
