@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:06:56 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 08:04:38 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 08:20:31 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,6 @@ char	*search_normally_arg(char *str, int *nb)
 		temp = ft_strjoin(ret, join);
 	}
 	else if (i > 0)
-	{
 		temp = ft_strndup(str, i);
-		printf("TEST = %s\n", ret);
-	}
-	printf("TEMMMMMMMMP = %s\n", temp);
 	return (temp);
 }
