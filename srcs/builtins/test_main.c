@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 03:02:54 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 07:49:19 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 07:55:20 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int		main_test(t_last *arglist)
 	flag = 1;
 	not = NULL;
 	i = -1;
+	ft_putendl("LOL");
 	/*
 	if (ft_strcmp(argv[0], "exit") == 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 05:23:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 07:52:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 09:21:31 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	get_term(void)
 {
 	char			*name_term;
 	struct termios	term;
+	struct termios	default_term;
+	
 
 	if (!(name_term = getenv("TERM")))
 	{
@@ -64,13 +66,14 @@ void	get_term(void)
 		exit(0);
 	}
 	check_term(name_term);
+	tcgetattr(0, &default_term);
 	tcgetattr(0, &term);
-	tcgetattr(0, &g_tracking.default_term);
 	term.c_lflag &= ~(ICANON | ECHO);
 	term.c_cc[VMIN] = 1;
 	term.c_cc[VTIME] = 0;
 	tcsetattr(0, TCSANOW, &term);
 	g_tracking.terminfo = malloc(sizeof(t_term_data*));
 	g_tracking.myterm = term;
+	g_tracking.default_term = default_term;
 	get_size();
 }
