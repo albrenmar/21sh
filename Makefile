@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/02/27 18:25:57 by alsomvil         ###   ########.fr        #
+#    Updated: 2019/03/01 09:30:56 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=	42sh
 
 SRC = main.c \
+	  42sh/errors.c \
 	  42sh/ft_parseur.c \
 	  42sh/ft_lexeur.c \
 	  42sh/ft_modif_list.c \
@@ -26,6 +27,7 @@ SRC = main.c \
 	  42sh/create_fich.c \
 	  42sh/hashtables.c \
 	  42sh/search_arg.c \
+	  42sh/completion.c \
 	  builtins/fg_bg_builtins.c \
 	  builtins/jobs_builtin.c \
 	  builtins/exit.c \
@@ -53,6 +55,7 @@ SRC = main.c \
 	  GNL/print_line.c \
 	  GNL/next_word.c \
 	  GNL/copy.c \
+	  GNL/ctrl.c \
 	  GNL/paste.c \
 	  GNL/get_key.c \
 	  auto_complete/auto_complete.c \
@@ -123,6 +126,7 @@ SRC = main.c \
 	  expansions/environ.c \
 	  expansions/environ_set.c \
 	  expansions/scan.c \
+	  expansions/autocomplete/auto_com_expan.c
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A
@@ -149,7 +153,7 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
-FLAG = -g -fsanitize=address
+FLAG = 
 
 all : $(NAME)
 

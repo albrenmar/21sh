@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 17:14:57 by abe              ###   ########.fr       */
+/*   Updated: 2019/03/01 08:09:20 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,18 @@ void		execute_two(char **tab_exec)
 
 	tab_exec_hold = tab_dup(tab_exec);
 	if (is_builtin())
-		exit (builtin_exec());
+		exit (builtin_exec(NULL));
 	if ((tab_exec = hashed_command(tab_exec)))
 	{
 		execve(tab_exec[0], tab_exec, NULL);
 		perror("FAIL");
+		exit(-1);
 	}
-	else if ((tab_exec_hold = test_exist_fonction(tab_exec_hold)))
+	else if ((test_exist_fonction(tab_exec_hold, 2)))
 	{
 		execve(tab_exec_hold[0], tab_exec_hold, NULL);
 		perror("FAIL");
+		exit(-1);
 	}
 	else
 	{

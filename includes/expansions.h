@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/25 05:09:09 by mjose            ###   ########.fr       */
+/*   Updated: 2019/02/28 03:53:02 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ int				have_setname(char *var);
 void			scan_arg_transformer(char **arg);
 t_scan			*new_scan(void);
 void			scan_argument(char *arg, t_scan *info_arg);
+char			*ft_exp_complete(char *arg);
 
 #endif
