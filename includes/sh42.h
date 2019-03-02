@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 11:11:46 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 15:11:48 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -371,8 +371,10 @@ char			*search_reddir(char *str, int *nb);
 char			*search_normally_arg(char *str, int *nb);
 char			*search_symboll(char *str, int *nb);
 int				its_not_symbol(char c);
-char			*check_quote(char *line, int i, int *mv);
-char			*check_bracket(char *line, int i, int *mv);
+char			*check_quote(char *line, int i);
+char			*check_bracket(char *line, int i);
+int				ft_valid_quote(char *line, char c, int flag);
+int				ft_valid_bracket(char *line, char c, int flag);
 
 
 void			interactive_check_set_shell_group(void);
