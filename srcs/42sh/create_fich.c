@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/02 03:49:55 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/02 06:24:44 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void		create_fich(t_last *list)
 		if (fd_open == NULL)
 			printf("ECHEC\n");
 		else
-//			set_fd(list->name[0], fd_open->_file); Modifie pour Marc :: compilation Linux, quiter line suivain et decomente cette, cest loriginal
-			set_fd(list->name[0], fd_open->_fileno);
+			set_fd(list->name[0], fd_open->_file); // ORIGINAL
+//			set_fd(list->name[0], fd_open->_fileno); // MJOSE
 	}
 	else if (its_reddir(list))
 	{
