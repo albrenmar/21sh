@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/01 09:30:56 by alsomvil         ###   ########.fr        #
+#    Updated: 2019/03/02 04:10:44 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,26 +38,26 @@ SRC = main.c \
 	  builtins/test_main.c \
 	  builtins/test_two_arg.c \
 	  builtins/test_three_arg.c \
-	  Jobs/signal_handlers.c \
-	  Jobs/utils.c \
-	  Jobs/job_functions.c \
-	  Jobs/errors.c \
-	  Jobs/ft_job_control.c \
-	  GNL/term_setup.c \
-	  GNL/stringsearch.c \
-	  GNL/signals.c \
-	  GNL/init_term.c \
-	  GNL/cursor_pos.c \
-	  GNL/cursor_check.c \
-	  GNL/cursor_arrows.c \
-	  GNL/term_size.c \
-	  GNL/lib_utf.c \
-	  GNL/print_line.c \
-	  GNL/next_word.c \
-	  GNL/copy.c \
-	  GNL/ctrl.c \
-	  GNL/paste.c \
-	  GNL/get_key.c \
+	  jobs/signal_handlers.c \
+	  jobs/utils.c \
+	  jobs/job_functions.c \
+	  jobs/errors.c \
+	  jobs/ft_job_control.c \
+	  gnl/term_setup.c \
+	  gnl/stringsearch.c \
+	  gnl/signals.c \
+	  gnl/init_term.c \
+	  gnl/cursor_pos.c \
+	  gnl/cursor_check.c \
+	  gnl/cursor_arrows.c \
+	  gnl/term_size.c \
+	  gnl/lib_utf.c \
+	  gnl/print_line.c \
+	  gnl/next_word.c \
+	  gnl/copy.c \
+	  gnl/ctrl.c \
+	  gnl/paste.c \
+	  gnl/get_key.c \
 	  auto_complete/auto_complete.c \
 	  auto_complete/auto_complete_cleanup.c \
 	  auto_complete/auto_complete_list.c \
