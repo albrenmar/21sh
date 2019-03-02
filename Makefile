@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/02 04:10:44 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/02 05:56:58 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC = main.c \
 	  builtins/hash_builtin.c \
 	  builtins/builtins.c \
 	  builtins/set.c \
+	  builtins/echo/exec.c \
 	  builtins/type_main.c \
 	  builtins/test_main.c \
 	  builtins/test_two_arg.c \
@@ -153,7 +154,7 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
-FLAG = 
+FLAG = -g -fsanitize=address 
 
 all : $(NAME)
 
