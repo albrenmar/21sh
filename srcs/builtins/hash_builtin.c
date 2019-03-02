@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hash_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 16:09:00 by abe              ###   ########.fr       */
+/*   Updated: 2019/03/01 05:05:26 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ int			hash_update_commands(int j)
 	while (g_tracking.g_tab_exec[j])
 	{
 		commandhold = tab_format_hash(g_tracking.g_tab_exec[j]);
-		if (!(test_exist_fonction(commandhold)))
+		if (!(test_exist_fonction(commandhold, 1)))
 		{
 			errors_hash(g_tracking.g_tab_exec[j], 1);
 			lastvalue = -1;
 		}
 		else
 		{
-			index = hash_maker(g_tracking.g_tab_exec[j]);
+			index = hash_maker(g_tracking.g_tab_exec[j][0]);
 			tmp = g_tracking.hashtable[index];
 			while (tmp)
 			{

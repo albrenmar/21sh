@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 14:18:37 by abe              ###   ########.fr       */
+/*   Updated: 2019/03/01 07:41:56 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int			is_builtin(void)
 {
 	if (ft_builtin_search("jobs") || ft_builtin_search("fg") ||
 		ft_builtin_search("bg") || ft_builtin_search("exit") ||
-		ft_builtin_search("set") || ft_builtin_search("hash"))
+		ft_builtin_search("set") || ft_builtin_search("hash") || 
+		ft_builtin_search("test"))
 		return (1);
 	return (0);
 }
@@ -61,7 +62,7 @@ int			ft_builtin_search(char *builtin)
 	return (0);
 }
 
-int			builtin_exec(void)
+int			builtin_exec(t_last *arglist)
 {
 	if (ft_builtin_search("jobs"))
 		return (jobs_builtin());
@@ -75,5 +76,7 @@ int			builtin_exec(void)
 		return (ft_exit());
 	else if (ft_builtin_search("hash"))
 		return (ft_hash());
+	else if (ft_builtin_search("test"))
+		return (main_test(arglist));
 	return (0);
 }

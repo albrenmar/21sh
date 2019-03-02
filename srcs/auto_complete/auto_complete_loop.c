@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/24 03:19:43 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/01 07:09:53 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	end_autocomplete(int i)
 			if ((g_tracking.aut->type != 2) && (g_tracking.aut->type != 1))
 				g_tracking.aut->to_add = ft_strjoinfree(g_tracking.aut->to_add, " ", 1);
 			add_to_str(g_tracking.aut->to_add);
+			g_tracking.aut->to_add = NULL;
 		}
 		else
 		{
@@ -86,7 +87,10 @@ int		get_new(t_list *buf)
 		back_to_pos();
 		tmp = buf->content;
 		if (g_tracking.aut->to_add)
+		{
 			free(g_tracking.aut->to_add);
+			g_tracking.aut->to_add = NULL;
+		}
 		g_tracking.aut->to_add = ft_strdup(tmp->name);
 		if (g_tracking.aut->type != 2)
 		{
@@ -111,6 +115,8 @@ void	completion_loop(t_lstcontainer *list)
 	line_per_page();
 	g_tracking.aut->page_lst = build_page_lst(list);
 	buf = g_tracking.aut->page_lst->firstelement;
+	if (!buf)
+		exit(0);
 	get_new(buf);
 	i = g_tracking.aut->line_up;
 	while ((i = read_loop()) != 0 && buf != NULL)
