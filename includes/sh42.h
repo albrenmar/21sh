@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/03 08:36:38 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/03 11:44:22 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,7 +224,6 @@ typedef struct	s_jobs
 	int				notified;
 	int				backstart;
 	struct termios	jterm;
-	// pid_t			lastpid;
 	struct s_cmd	*t_cmd;
 }				t_jobs;
 
@@ -339,6 +338,9 @@ int     		begin_search(void);
 char         	*get_hist_ptr(char *needle);
 t_hist			*get_hist_nbr(int i);
 
+void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
+int				fg_builtin_output(t_jobs *tmp);
+int				bg_builtin_output(t_jobs *tmp);
 
 t_last			*create_new_list(void);
 t_last			*ft_parseur(char *line);
@@ -362,16 +364,7 @@ int				error_lexer(t_last *list_cmd);
 void			create_fich(t_last *list);
 void			print_last(t_last *list);
 int				its_eper(t_last *list);
-int				is_builtin(void);
-int				ft_exit(void);
-int				is_builtin_alone(void);
-int				ft_builtin_search(char *builtin);
-int				builtin_exec(t_last *arglist);
-void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
 char			**tab_dup(char **tob);
-int				jobs_builtin(void);
-int				errors_fg(int nb, int error);
-int				fg_builtin_output(t_jobs *tmp);
 char			*search_fd_reddir(char *str, int *nb);
 char			*search_reddir(char *str, int *nb);
 char			*search_normally_arg(char *str, int *nb);
@@ -412,13 +405,10 @@ void			put_job_in_foreground(t_jobs *job, int cont);
 void			put_job_in_background(t_jobs *job, int cont);
 int				job_is_done(t_jobs *job);
 int				job_is_stopped(t_jobs *job);
-int				bg_builtin(void);
-int				fg_builtin(void);
 char			*parse_job_number(char *str);
 int				job_exists(int place);
 int				parse_job_sign(char *str);
 int				errors_jobs(char option, int nb, int error);
-int				errors_bg(int nb, int error);
 int				cmd_checker(t_last *part, int mode, t_jobs *job);
 void			free_last(t_last **cmd);
 char			*check_separator(t_last *part);

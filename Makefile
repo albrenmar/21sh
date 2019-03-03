@@ -6,7 +6,7 @@
 #    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/03 07:06:43 by abguimba         ###   ########.fr        #
+#    Updated: 2019/03/03 09:34:56 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC = main.c \
 	  42sh/hashtables.c \
 	  42sh/search_arg.c \
 	  42sh/completion.c \
+	  builtins/builtin_tools.c \
 	  builtins/fg_bg_builtins.c \
 	  builtins/jobs_builtin.c \
 	  builtins/exit.c \

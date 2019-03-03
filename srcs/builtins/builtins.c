@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/03 06:04:21 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/03 11:45:39 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int			is_builtin(void)
 		|| ft_builtin_search("bg") || ft_builtin_search("exit")
 		|| ft_builtin_search("set") || ft_builtin_search("echo")
 		|| ft_builtin_search("hash") || ft_builtin_search("test"))
+		// || ft_builtin_search("cd"))
 		return (1);
 	return (0);
 }
@@ -82,5 +83,7 @@ int			builtin_exec(t_last *arglist)
 		return (ft_hash());
 	else if (ft_builtin_search("test"))
 		return (main_test(arglist));
+	// else if (ft_builtin_search("cd"))
+	// 	return (cd_builtin());	
 	return (0);
 }

@@ -6,12 +6,22 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/03 07:05:25 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/03 11:45:00 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
+
+// int			errors_cd(char **tab_exec, int error)
+// {
+// 	if (error == 0)
+// 	{
+// 		ft_putstr_fd(SHELL_NAME, 2);
+// 		ft_putstr_fd(": cd: ", 2);
+// 		ft_putendl_fd(" too many arguments", 2);
+// 	}
+// }
 
 int			errors_hash(char *binary, int error)
 {
