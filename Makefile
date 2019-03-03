@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/02 05:56:58 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/03 07:06:43 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=	42sh
 
 SRC = main.c \
+	  42sh/tools.c \
 	  42sh/errors.c \
 	  42sh/ft_parseur.c \
 	  42sh/ft_lexeur.c \
@@ -39,10 +40,10 @@ SRC = main.c \
 	  builtins/test_main.c \
 	  builtins/test_two_arg.c \
 	  builtins/test_three_arg.c \
+	  builtins/builtin_errors.c \
 	  jobs/signal_handlers.c \
-	  jobs/utils.c \
+	  jobs/job_utils.c \
 	  jobs/job_functions.c \
-	  jobs/errors.c \
 	  jobs/ft_job_control.c \
 	  gnl/term_setup.c \
 	  gnl/stringsearch.c \

@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 09:23:09 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/03 05:59:59 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void		sig_int_handler(int signo)
 {
 	if (signo == SIGINT)
 	{
+		ft_putchar('\n');
 		if (g_tracking.str)
 			ioctl(STDERR_FILENO, TIOCSTI, "x03");
 		signal(SIGINT, sig_int_handler);
