@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 08:07:40 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 15:19:22 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,72 +20,6 @@ int		its_not_symbol(char c)
 		return (1);
 }
 
-int		ft_valid_quote(char *line, char c)
-{
-	int	flag;
-	int	i;
-
-	i = 0;
-	flag = 0; 
-	while (line[i])
-	{
-		if (line[i] == c)
-			flag++;
-		i++;
-	}
-	if ((flag % 2) == 0)
-		return (0);
-	else
-		return (1);
-}
-
-char	*check_quote(char *line, int i, int *mv)
-{
-	char	*ret;
-	char	*join;
-	char	*raccor;
-	char	*saveprompt;
-	int		nb;
-	int		test;
-
-	ret = NULL;
-	join = NULL;
-	raccor = NULL;
-	nb = 0;
-	i++;
-	while (line[i] && line[i] != '"')
-		i++;
-	if (!line[i])
-	{
-		*mv += i;
-		ret = ft_strdup(line);
-		saveprompt = g_tracking.prompt;
-		g_tracking.prompt = ">";
-		test = ft_valid_quote(ret, '"');
-		while (test == 1)
-		{
-			g_tracking.quotes = 1;
-			get_key();
-			if (g_tracking.quotes == 10)
-				exit (0);
-			join = g_tracking.cmd;
-			ret = ft_strjoinfree(ret, join, 3);
-			test = ft_valid_quote(ret, '"');
-			ft_putchar('\n');
-		}
-		g_tracking.quotes = 0;
-		ft_putchar('\n');
-		g_tracking.prompt = saveprompt;
-		return (ret);
-	}
-	i++;
-	while (line[i] && its_not_symbol(line[i]) && line[i] != ' ')
-		i++;
-	*mv += i;
-	return (ft_strndup(line, i));
-}
-
-
 char	*recup_cmd(char *line, int *i, int nb)
 {
 	char	*test;
@@ -98,9 +32,7 @@ char	*recup_cmd(char *line, int *i, int nb)
 		(*i)++;
 		nb++;
 	}
-	if (line[nb] == '"')
-		return (check_quote(&line[nb], 0, i));
-	else if ((test = search_fd_reddir(&line[nb], i)))
+	if ((test = search_fd_reddir(&line[nb], i)))
 		return (test);
 	else if ((test = search_reddir(&line[nb], i)))
 		return (test);
@@ -111,18 +43,52 @@ char	*recup_cmd(char *line, int *i, int nb)
 	return (test);
 }
 
+char	*ft_modif_line(char **line)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	*new_line;
+	char	*temp;
 
-t_last	*ft_parseur(char *line)
+	i = 0;
+	j = 0;
+	new_line = NULL;
+	temp = NULL;
+	if (ft_valid_quote(*line, '"', 0))
+	{
+		temp = check_quote(*line, 0);
+		new_line = ft_strjoin(*line, temp);
+		*line = new_line;
+		return (NULL);
+	}
+	else if (ft_valid_bracket(*line, '}', 0))
+	{
+		temp = check_bracket(*line, 0);
+		new_line = ft_strjoin(*line, temp);
+		*line = new_line;
+		return (NULL);
+	}
+	else
+		new_line = ft_strdup(*line);
+	return (new_line);
+}
+
+t_last	*ft_parseur(char *str)
 {
 	char	*temp;
 	int		i;
+	char	*line;
 	t_last	*list_cmd;
 	t_last	*templist;
 
 	i = 0;
 	temp = NULL;
-	while (line[i] == ' ')
+	line = NULL;
+	while (str[i] == ' ')
 		i++;
+	while ((line = ft_modif_line(&str)) == NULL)
+		;
 	if ((temp = recup_cmd(&line[i], &i, 0)) != NULL)
 	{
 		list_cmd = create_new_list();

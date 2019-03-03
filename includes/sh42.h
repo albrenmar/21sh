@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 07:45:42 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/02 05:44:18 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "ft_ls.h"
 # include "minishell.h"
 # include "expansions.h"
-# include "set.h"
+# include "builtins.h"
 # include <sys/ioctl.h>
 # include <termios.h>
 # include <curses.h>
@@ -176,6 +176,7 @@ typedef struct	s_tracking
 	char				*found;
 	t_lstcontainer		*key_list;
 	int					quotes;
+	int					bracket;
 	int					swi;
 	int					buffsize;
 	int					histindex;
@@ -370,7 +371,10 @@ char			*search_reddir(char *str, int *nb);
 char			*search_normally_arg(char *str, int *nb);
 char			*search_symboll(char *str, int *nb);
 int				its_not_symbol(char c);
-char			*check_quote(char *line, int i, int *mv);
+char			*check_quote(char *line, int i);
+char			*check_bracket(char *line, int i);
+int				ft_valid_quote(char *line, char c, int flag);
+int				ft_valid_bracket(char *line, char c, int flag);
 
 
 void			interactive_check_set_shell_group(void);

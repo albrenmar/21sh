@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getstat.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 18:47:53 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 02:27:17 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/02 03:55:52 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_stat2(t_ls *info, struct stat *tmp, time_t cur)
 	info->color = 0;
 	info->strpad = NULL;
 }
-
+/*
 void	getattribut(char *path, t_ls *info)
 {
 	int		i;
@@ -70,7 +70,7 @@ void	getattribut(char *path, t_ls *info)
 	acl_free(acl);
 	acl = NULL;
 }
-
+*/
 int		ft_stat(char *path, t_ls *info, char *option)
 {
 	struct stat		*tmp;
@@ -92,8 +92,8 @@ int		ft_stat(char *path, t_ls *info, char *option)
 		info->time = tmp->st_atime;
 	ft_stat2(info, tmp, cur);
 	ft_special(info, tmp, path);
-	if (checkoption(option, '@') == 1)
-		getattribut(path, info);
+//	if (checkoption(option, '@') == 1)
+//		getattribut(path, info);
 	free(tmp);
 	return (0);
 }

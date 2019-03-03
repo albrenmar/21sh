@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 07:41:56 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/02 05:24:11 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int			is_builtin(void)
 {
 	if (ft_builtin_search("jobs") || ft_builtin_search("fg") ||
 		ft_builtin_search("bg") || ft_builtin_search("exit") ||
-		ft_builtin_search("set") || ft_builtin_search("hash") || 
-		ft_builtin_search("test"))
+		ft_builtin_search("set") || ft_builtin_search("echo") ||
+		ft_builtin_search("hash") || ft_builtin_search("test"))
 		return (1);
 	return (0);
 }
@@ -72,6 +72,8 @@ int			builtin_exec(t_last *arglist)
 		return (bg_builtin());
 	else if (ft_builtin_search("set"))
 		return (show_setenv());
+	else if (ft_builtin_search("echo"))
+		return (check_and_exec_echo());
 	else if (ft_builtin_search("exit"))
 		return (ft_exit());
 	else if (ft_builtin_search("hash"))
