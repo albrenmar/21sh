@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/03 06:38:00 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/03 09:26:51 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int		main(int argc, char **argv, char **env)
 	t_tab	st_tab;
 	t_env	st_env;
 	t_last	*cmd;
-	// char	*prompt;
 
 	line = NULL;
 	if (argc > 1)
