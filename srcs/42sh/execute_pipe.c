@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 08:09:20 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/03 08:40:23 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,20 @@ void		execute_two(char **tab_exec)
 	if ((tab_exec = hashed_command(tab_exec)))
 	{
 		execve(tab_exec[0], tab_exec, NULL);
-		perror("FAIL");
 		exit(-1);
 	}
 	else if ((test_exist_fonction(tab_exec_hold, 2)))
 	{
 		execve(tab_exec_hold[0], tab_exec_hold, NULL);
-		perror("FAIL");
+		exec_errors(tab_exec, 0);
 		exit(-1);
 	}
 	else
 	{
-		ft_putstr_fd("La commande ", 2);
-		ft_putstr_fd(g_tracking.g_tab_exec[0], 2);
-		ft_putendl_fd(" n'existe pas", 2);
+		exec_errors(NULL, 1);
 		free_tab(tab_exec_hold);
 		exit(-1);
 	}
-	free_tab(tab_exec_hold);
 }
 
 
@@ -84,7 +80,18 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job)
 		}
 	}
 	else
+	{
+		// if (g_tracking.mysh->set_fd->STDIN != 0)
+		// 	dup2(g_tracking.mysh->set_fd->STDIN, 0);
+		// if (g_tracking.mysh->set_fd->STDOUT != 1)
+		// 	dup2(g_tracking.mysh->set_fd->STDOUT, 1);
+		// if (g_tracking.mysh->set_fd->STDERR != 2)
+		// 	dup2(g_tracking.mysh->set_fd->STDERR, 2);
+		// close(descrf_two[1]);
+		// dup2(descrf_two[0], 0);
+		// close(descrf_two[0]);
 		g_tracking.builtin = 1;
+	}
 }
 
 void		execute_pipe(char **tab_exec, t_jobs *job)
@@ -135,5 +142,19 @@ void		execute_pipe(char **tab_exec, t_jobs *job)
 		}
 	}
 	else
+	{
+		// if (g_tracking.mysh->set_fd->STDIN != 0)
+		// 	dup2(g_tracking.mysh->set_fd->STDIN, 0);
+		// if (g_tracking.mysh->set_fd->STDOUT != 1)
+		// 	dup2(g_tracking.mysh->set_fd->STDOUT, 1);
+		// if (g_tracking.mysh->set_fd->STDERR != 2)
+		// 	dup2(g_tracking.mysh->set_fd->STDERR, 2);
+		// close(descrf_two[0]);
+		// dup2(descrf_two[1], 1);
+		// close(descrf_two[1]);
+		// close(descrf[1]);
+		// dup2(descrf[0], 0);
+		// close(descrf[0]);
 		g_tracking.builtin = 1;
+	}
 }

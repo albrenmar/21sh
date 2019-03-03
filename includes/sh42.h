@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/02 05:44:18 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/03 08:36:38 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,30 @@
 # include <time.h>
 # include <fcntl.h>
 
-# define USER		"bsiche"
-# define K_FN1		"\x1b\x4f\x50"
-# define K_FN2		"\x1b\x4f\x51"
-# define K_FN3		"\x1b\x4f\x52"
-# define K_LEFT		"\x1b\x5b\x44"
-# define K_RIGHT	"\x1b\x5b\x43"
-# define K_DOWN		"\x1b\x5b\x42"
-# define K_UP		"\x1b\x5b\x41"
-# define K_LUP		"\x1b\x5b\x31\x3b\x32\x41"
-# define K_LDOWN	"\x1b\x5b\x31\x3b\x32\x42"
-# define K_WLEFT	"\x1b\x5b\x31\x3b\x32\x44"
-# define K_WRIGHT	"\x1b\x5b\x31\x3b\x32\x43"
-# define K_RTN		10
-# define K_RT		13
-# define K_SPC		32
-# define K_BKSP		127
-# define K_TAB		9
-# define K_CTRLR	18
-# define K_DEL		"\x1b\x5b\x33\x7e"
+# define ANSI_COLOR_BLUE	"\x1b[36m"
+# define ANSI_COLOR_GREEN	"\x1b[32m"
+# define ANSI_COLOR_DEFAULT "\x1b[0m"
+# define ANSI_COLOR_MAGENTA	"\x1b[35m"
+
+# define SHELL_NAME			"Fake minishell"
+# define K_FN1				"\x1b\x4f\x50"
+# define K_FN2				"\x1b\x4f\x51"
+# define K_FN3				"\x1b\x4f\x52"
+# define K_LEFT				"\x1b\x5b\x44"
+# define K_RIGHT			"\x1b\x5b\x43"
+# define K_DOWN				"\x1b\x5b\x42"
+# define K_UP				"\x1b\x5b\x41"
+# define K_LUP				"\x1b\x5b\x31\x3b\x32\x41"
+# define K_LDOWN			"\x1b\x5b\x31\x3b\x32\x42"
+# define K_WLEFT			"\x1b\x5b\x31\x3b\x32\x44"
+# define K_WRIGHT			"\x1b\x5b\x31\x3b\x32\x43"
+# define K_RTN				10
+# define K_RT				13
+# define K_SPC				32
+# define K_BKSP				127
+# define K_TAB				9
+# define K_CTRLR			18
+# define K_DEL				"\x1b\x5b\x33\x7e"
 
 int		descrf[2];
 int		descrf_two[2];
@@ -171,6 +176,7 @@ typedef struct	s_tracking
 	struct s_hash		*hashtable[27];
 	char				*str;
 	char				*cmd;
+	char				*cwd;
 	char				*prompt;
 	char				*search;
 	char				*found;
@@ -187,7 +193,7 @@ typedef struct	s_tracking
 	pid_t				spid;
 	int					bg;
 	int					fg;
-	int					lastplace;
+	// int					lastplace;
 	// char				**orderhold;
 }				t_tracking;
 
@@ -376,6 +382,8 @@ char			*check_bracket(char *line, int i);
 int				ft_valid_quote(char *line, char c, int flag);
 int				ft_valid_bracket(char *line, char c, int flag);
 
+void			get_coolprompt(void);
+void			print_prompt(void);
 
 void			interactive_check_set_shell_group(void);
 void			set_shell_signal_handlers(void);
@@ -394,7 +402,9 @@ int				hash_update_commands(int j);
 char			**tab_format_hash(char *binary);
 char			**hashed_command(char **tab_exec);
 
+int				argc_error(void);
 int				exec_errors(char **tab_exec, int mode);
+int				exec_errors_dir(char **tab_exec, int mode);
 
 t_jobs			*new_job(t_last *part, int background);
 void			wait_for_job(t_jobs *job);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 09:00:32 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/03 06:38:00 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,15 @@ int		main(int argc, char **argv, char **env)
 	t_tab	st_tab;
 	t_env	st_env;
 	t_last	*cmd;
-	char	*prompt;
+	// char	*prompt;
 
 	line = NULL;
+	if (argc > 1)
+		argc_error();
 	argc = 0;
 	argv = NULL;
 	//	set_env(&st_env, env);
 	cursorinit();
-	prompt = ft_strdup("Fake minishell > ");
-	g_tracking.prompt = ft_strdup(prompt);
-	g_tracking.pos->prompt = ft_strlen(prompt);
 	ft_siginit();
 	init_shell(env);
 	get_term();
@@ -43,7 +42,7 @@ int		main(int argc, char **argv, char **env)
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
 		ft_putchar('\n');
 		hist_lst_add_next(g_tracking.mysh->hist, line);
-		if (line && (cmd = ft_parseur(line)))
+		if ((ft_strlen(line) > 0) && (cmd = ft_parseur(line)))
 		{
 			convert_list(cmd);
 			ft_ast(cmd);
