@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/25 05:32:26 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/03 12:43:37 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	transform_if_tilde(t_expand **expand, char **str)
 	}
 }
 
-void	transform(t_expand *expand, char **str)
+int		transform(t_expand *expand, char **str)
 {
 	t_expand	*first_letter;
 	char		*tmp;
@@ -59,4 +59,7 @@ void	transform(t_expand *expand, char **str)
 			break ;
 	}
 	delete_list_expand(&first_letter);
+	if (!**str)
+		return (1);
+	return (0);
 }

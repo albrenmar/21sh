@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/03 09:34:56 by abguimba         ###   ########.fr        #
+#    Updated: 2019/03/04 13:56:33 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -129,6 +129,8 @@ SRC = main.c \
 	  expansions/environ.c \
 	  expansions/environ_set.c \
 	  expansions/scan.c \
+  	  expansions/quote.c \
+	  expansions/expand_error.c \
 	  expansions/autocomplete/auto_com_expan.c
 
 CLEAR_LINE	= \033[2K
