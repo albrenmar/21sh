@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 14:18:37 by abe              ###   ########.fr       */
+/*   Updated: 2019/03/03 11:45:39 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 int			is_builtin(void)
 {
-	if (ft_builtin_search("jobs") || ft_builtin_search("fg") ||
-		ft_builtin_search("bg") || ft_builtin_search("exit") ||
-		ft_builtin_search("set") || ft_builtin_search("hash"))
+	if (ft_builtin_search("jobs") || ft_builtin_search("fg")
+		|| ft_builtin_search("bg") || ft_builtin_search("exit")
+		|| ft_builtin_search("set") || ft_builtin_search("echo")
+		|| ft_builtin_search("hash") || ft_builtin_search("test"))
+		// || ft_builtin_search("cd"))
 		return (1);
 	return (0);
 }
@@ -37,6 +39,8 @@ int			is_builtin_alone(void)
 	{
 		if (tmp->name[i] == '|')
 			return (0);
+		// else if (tmp->name[i] == '>' || tmp->name[i] == '<')
+		// 	return (0);
 		i++;
 	}
 	return (1);
@@ -61,7 +65,7 @@ int			ft_builtin_search(char *builtin)
 	return (0);
 }
 
-int			builtin_exec(void)
+int			builtin_exec(t_last *arglist)
 {
 	if (ft_builtin_search("jobs"))
 		return (jobs_builtin());
@@ -71,9 +75,15 @@ int			builtin_exec(void)
 		return (bg_builtin());
 	else if (ft_builtin_search("set"))
 		return (show_setenv());
+	else if (ft_builtin_search("echo"))
+		return (check_and_exec_echo());
 	else if (ft_builtin_search("exit"))
 		return (ft_exit());
 	else if (ft_builtin_search("hash"))
 		return (ft_hash());
+	else if (ft_builtin_search("test"))
+		return (main_test(arglist));
+	// else if (ft_builtin_search("cd"))
+	// 	return (cd_builtin());	
 	return (0);
 }

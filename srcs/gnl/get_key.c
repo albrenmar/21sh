@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_key.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/26 03:18:52 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/03 07:35:57 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ int		single_key(char c)
 	if (c == K_BKSP)
 	{
 		rem_from_str();
-		g_tracking.comp = ft_strdup(g_tracking.str);
 		return (12);
 	}
 	if (c == K_CTRLR)
@@ -121,13 +120,25 @@ int		single_key(char c)
 	if (c == 10 || c == 13)
 	{
 		ft_return();
-		g_tracking.swi = 1;
 		return (13);
 	}
 	if (c == K_TAB)
 	{
 		auto_complete();
 		return (12);
+	}
+	if (c == 04)
+	{
+		ctrl_d();
+		if (g_tracking.quotes == 10)
+			return (13);
+		else
+			return (12);
+	}
+	if (c == 03)
+	{
+		ctrl_c();
+		return (13);
 	}
 	return (0);
 }
@@ -144,10 +155,7 @@ int		return_loop(int i, char *str)
 	if (check(str) == 1 || i == 12)
 		free(str);
 	else
-	{
 		add_to_str(str);
-		g_tracking.comp = ft_strdup(g_tracking.str);
-	}
 	return (0);
 }
 
@@ -184,11 +192,12 @@ int		get_key(void)
 	char	*test;
 
 	tcsetattr(0, TCSANOW, &g_tracking.myterm);
-	ft_putstr(g_tracking.prompt);
+	get_coolprompt();
+	print_prompt();
 	g_tracking.histindex = get_last() + 1;
 	while (readloop(0) == 0)
 	{
 	}
-	tcsetattr(STDERR_FILENO, TCSANOW, &g_tracking.default_term);
+	tcsetattr(0, TCSANOW, &g_tracking.default_term);
 	return (1);
 }
