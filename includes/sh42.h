@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/02 05:44:18 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/03 11:44:22 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,30 @@
 # include <time.h>
 # include <fcntl.h>
 
-# define USER		"bsiche"
-# define K_FN1		"\x1b\x4f\x50"
-# define K_FN2		"\x1b\x4f\x51"
-# define K_FN3		"\x1b\x4f\x52"
-# define K_LEFT		"\x1b\x5b\x44"
-# define K_RIGHT	"\x1b\x5b\x43"
-# define K_DOWN		"\x1b\x5b\x42"
-# define K_UP		"\x1b\x5b\x41"
-# define K_LUP		"\x1b\x5b\x31\x3b\x32\x41"
-# define K_LDOWN	"\x1b\x5b\x31\x3b\x32\x42"
-# define K_WLEFT	"\x1b\x5b\x31\x3b\x32\x44"
-# define K_WRIGHT	"\x1b\x5b\x31\x3b\x32\x43"
-# define K_RTN		10
-# define K_RT		13
-# define K_SPC		32
-# define K_BKSP		127
-# define K_TAB		9
-# define K_CTRLR	18
-# define K_DEL		"\x1b\x5b\x33\x7e"
+# define ANSI_COLOR_BLUE	"\x1b[36m"
+# define ANSI_COLOR_GREEN	"\x1b[32m"
+# define ANSI_COLOR_DEFAULT "\x1b[0m"
+# define ANSI_COLOR_MAGENTA	"\x1b[35m"
+
+# define SHELL_NAME			"Fake minishell"
+# define K_FN1				"\x1b\x4f\x50"
+# define K_FN2				"\x1b\x4f\x51"
+# define K_FN3				"\x1b\x4f\x52"
+# define K_LEFT				"\x1b\x5b\x44"
+# define K_RIGHT			"\x1b\x5b\x43"
+# define K_DOWN				"\x1b\x5b\x42"
+# define K_UP				"\x1b\x5b\x41"
+# define K_LUP				"\x1b\x5b\x31\x3b\x32\x41"
+# define K_LDOWN			"\x1b\x5b\x31\x3b\x32\x42"
+# define K_WLEFT			"\x1b\x5b\x31\x3b\x32\x44"
+# define K_WRIGHT			"\x1b\x5b\x31\x3b\x32\x43"
+# define K_RTN				10
+# define K_RT				13
+# define K_SPC				32
+# define K_BKSP				127
+# define K_TAB				9
+# define K_CTRLR			18
+# define K_DEL				"\x1b\x5b\x33\x7e"
 
 int		descrf[2];
 int		descrf_two[2];
@@ -171,6 +176,7 @@ typedef struct	s_tracking
 	struct s_hash		*hashtable[27];
 	char				*str;
 	char				*cmd;
+	char				*cwd;
 	char				*prompt;
 	char				*search;
 	char				*found;
@@ -187,7 +193,7 @@ typedef struct	s_tracking
 	pid_t				spid;
 	int					bg;
 	int					fg;
-	int					lastplace;
+	// int					lastplace;
 	// char				**orderhold;
 }				t_tracking;
 
@@ -218,7 +224,6 @@ typedef struct	s_jobs
 	int				notified;
 	int				backstart;
 	struct termios	jterm;
-	// pid_t			lastpid;
 	struct s_cmd	*t_cmd;
 }				t_jobs;
 
@@ -333,6 +338,9 @@ int     		begin_search(void);
 char         	*get_hist_ptr(char *needle);
 t_hist			*get_hist_nbr(int i);
 
+void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
+int				fg_builtin_output(t_jobs *tmp);
+int				bg_builtin_output(t_jobs *tmp);
 
 t_last			*create_new_list(void);
 t_last			*ft_parseur(char *line);
@@ -356,16 +364,7 @@ int				error_lexer(t_last *list_cmd);
 void			create_fich(t_last *list);
 void			print_last(t_last *list);
 int				its_eper(t_last *list);
-int				is_builtin(void);
-int				ft_exit(void);
-int				is_builtin_alone(void);
-int				ft_builtin_search(char *builtin);
-int				builtin_exec(t_last *arglist);
-void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
 char			**tab_dup(char **tob);
-int				jobs_builtin(void);
-int				errors_fg(int nb, int error);
-int				fg_builtin_output(t_jobs *tmp);
 char			*search_fd_reddir(char *str, int *nb);
 char			*search_reddir(char *str, int *nb);
 char			*search_normally_arg(char *str, int *nb);
@@ -376,6 +375,8 @@ char			*check_bracket(char *line, int i);
 int				ft_valid_quote(char *line, char c, int flag);
 int				ft_valid_bracket(char *line, char c, int flag);
 
+void			get_coolprompt(void);
+void			print_prompt(void);
 
 void			interactive_check_set_shell_group(void);
 void			set_shell_signal_handlers(void);
@@ -394,7 +395,9 @@ int				hash_update_commands(int j);
 char			**tab_format_hash(char *binary);
 char			**hashed_command(char **tab_exec);
 
+int				argc_error(void);
 int				exec_errors(char **tab_exec, int mode);
+int				exec_errors_dir(char **tab_exec, int mode);
 
 t_jobs			*new_job(t_last *part, int background);
 void			wait_for_job(t_jobs *job);
@@ -402,13 +405,10 @@ void			put_job_in_foreground(t_jobs *job, int cont);
 void			put_job_in_background(t_jobs *job, int cont);
 int				job_is_done(t_jobs *job);
 int				job_is_stopped(t_jobs *job);
-int				bg_builtin(void);
-int				fg_builtin(void);
 char			*parse_job_number(char *str);
 int				job_exists(int place);
 int				parse_job_sign(char *str);
 int				errors_jobs(char option, int nb, int error);
-int				errors_bg(int nb, int error);
 int				cmd_checker(t_last *part, int mode, t_jobs *job);
 void			free_last(t_last **cmd);
 char			*check_separator(t_last *part);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/02 05:24:11 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/03 11:45:39 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 int			is_builtin(void)
 {
-	if (ft_builtin_search("jobs") || ft_builtin_search("fg") ||
-		ft_builtin_search("bg") || ft_builtin_search("exit") ||
-		ft_builtin_search("set") || ft_builtin_search("echo") ||
-		ft_builtin_search("hash") || ft_builtin_search("test"))
+	if (ft_builtin_search("jobs") || ft_builtin_search("fg")
+		|| ft_builtin_search("bg") || ft_builtin_search("exit")
+		|| ft_builtin_search("set") || ft_builtin_search("echo")
+		|| ft_builtin_search("hash") || ft_builtin_search("test"))
+		// || ft_builtin_search("cd"))
 		return (1);
 	return (0);
 }
@@ -38,6 +39,8 @@ int			is_builtin_alone(void)
 	{
 		if (tmp->name[i] == '|')
 			return (0);
+		// else if (tmp->name[i] == '>' || tmp->name[i] == '<')
+		// 	return (0);
 		i++;
 	}
 	return (1);
@@ -80,5 +83,7 @@ int			builtin_exec(t_last *arglist)
 		return (ft_hash());
 	else if (ft_builtin_search("test"))
 		return (main_test(arglist));
+	// else if (ft_builtin_search("cd"))
+	// 	return (cd_builtin());	
 	return (0);
 }
