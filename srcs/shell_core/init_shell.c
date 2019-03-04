@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 00:25:55 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/04 14:14:11 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void	init_shell(char **environ)
 	hist_file_to_lst();
 	g_tracking.mysh->tab_env = init_envp(g_tracking.mysh->env);
 	g_tracking.mysh->setenv_lst = NULL;
+	g_tracking.mysh->expand_error = 0;
 	g_tracking.quotes = 0;
 }
