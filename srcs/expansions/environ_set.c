@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 08:40:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/25 06:08:29 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/02 04:02:46 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void		add_to_env_set(char *varname, char *varvalue)
 		first = g_tracking.mysh->setenv_lst;
 		while (env_list && env_list->param)
 			env_list = env_list->next;
-		free(&new_envvar);
+		free(new_envvar);
 		new_envvar = new_envset(varname, varvalue);
 		new_envvar->next = new_envset(NULL, NULL);
 		env_list->next = new_envvar;

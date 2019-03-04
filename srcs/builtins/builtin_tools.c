@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   auto_com_expan.c                                   :+:      :+:    :+:   */
+/*   builtin_tools.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 03:46:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/04 14:09:25 by mjose            ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
+/*   Updated: 2019/03/03 09:36:46 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expansions.h"
+#include "minishell.h"
+#include "sh42.h"
 
-char	*ft_exp_complete(char *arg)
+int			cd_args_len(void)
 {
-	char	*tmp;
+	char	**tmp;
+	int		i;
 
-	if (arg)
-	{
-		tmp = ft_strdup(arg);
-		expand_transformer(&tmp, 0);
-		return (tmp);
-	}
-	return (NULL);
+	i = 0;
+	tmp = g_tracking.g_tab_exec;
+	while (tmp[i])
+		i++;
+	return (i);
 }

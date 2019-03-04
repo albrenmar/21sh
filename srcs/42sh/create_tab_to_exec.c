@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 06:14:30 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/04 14:56:35 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	**create_tab_to_exec(t_last *list)
 	tab_exec = ft_memalloc(sizeof(char *) * (i + 1));
 	i = 0;
 	tab_exec[i] = list->name;
-	expand_transformer(&tab_exec[i]);
+	expand_transformer(&tab_exec[i], 1); // Modifie par MJOSE :: a parler avec Alsomvil
 	list = list->next;
 	i++;
 	while (list && list->type != CMD)
@@ -41,12 +41,21 @@ char	**create_tab_to_exec(t_last *list)
 		if (list->type == OPT || list->type == ARG)
 		{
 			tab_exec[i] = list->name;
-			expand_transformer(&tab_exec[i]);
+			if (expand_transformer(&tab_exec[i], 1) == 'E' // Modifie par MJOSE :: a parler avec Alsomvil// Modifie par MJOSE :: a parler avec Alsomvil
+				|| g_tracking.mysh->expand_error) // Modifie par MJOSE :: a parler avec Alsomvil
+			{ // Modifie par MJOSE :: a parler avec Alsomvil
+				rmv_tab_exec(&tab_exec[i], i); // Modifie par MJOSE :: a parler avec Alsomvil
+				tab_exec = NULL; // Modifie par MJOSE :: a parler avec Alsomvil
+				break ; // Modifie par MJOSE :: a parler avec Alsomvil
+			} // Modifie par MJOSE :: a parler avec Alsomvil
 			i++;
+			tab_exec[i] = NULL; // Modifie par MJOSE :: a parler avec Alsomvil
 		}
 		list = list->next;
 	}
-	tab_exec[i] = NULL;
+//	tab_exec[i] = NULL;
+	if (tab_exec)
+		tab_exec[i] = NULL;
 	/*i = 0;
 	while (tab_exec[i])
 	{

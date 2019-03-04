@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   auto_com_expan.c                                   :+:      :+:    :+:   */
+/*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 03:46:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/04 14:09:25 by mjose            ###   ########.fr       */
+/*   Created: 2019/03/01 07:59:43 by mjose             #+#    #+#             */
+/*   Updated: 2019/03/02 05:19:41 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expansions.h"
+#include "sh42.h"
 
-char	*ft_exp_complete(char *arg)
+void	exec_echo(void)
 {
-	char	*tmp;
+	char	**tab_arg;
 
-	if (arg)
+	tab_arg = g_tracking.g_tab_exec + 1;
+	while (*tab_arg)
 	{
-		tmp = ft_strdup(arg);
-		expand_transformer(&tmp, 0);
-		return (tmp);
+		ft_putstr(*tab_arg);
+		ft_putchar(' ');
+		tab_arg++;
 	}
-	return (NULL);
+	ft_putchar('\n');
+}
+
+int		check_and_exec_echo(void)
+{
+	char	**tab_arg;
+
+	tab_arg = g_tracking.g_tab_exec + 1;
+	if (!tab_arg)
+		ft_putchar('\n');
+	else
+		exec_echo();
+	return (0);
 }

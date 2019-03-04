@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_fich.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/26 01:29:36 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/02 06:24:44 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void		create_fich(t_last *list)
 		if (fd_open == NULL)
 			printf("ECHEC\n");
 		else
-			set_fd(list->name[0], fd_open->_file);
+			set_fd(list->name[0], fd_open->_file); // ORIGINAL
+//			set_fd(list->name[0], fd_open->_fileno); // MJOSE
 	}
 	else if (its_reddir(list))
 	{

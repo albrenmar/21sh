@@ -1,37 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   job_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/23 13:40:16 by abe              ###   ########.fr       */
+/*   Updated: 2019/03/03 07:07:39 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
-
-char			**tab_dup(char **tob)
-{
-	int			i;
-	char		**new;
-
-	i = 0;
-	while (tob[i])
-		i++;
-	if (!(new = malloc(sizeof(char*) * (i + 1))))
-			return (NULL);
-	i = 0;
-	while (tob[i])
-	{
-		new[i] = ft_strdup(tob[i]);
-		i++;
-	}
-	new[i] = NULL;
-	return (new);
-}
 
 int				suspended_jobs_count(void)
 {
