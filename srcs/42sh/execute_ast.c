@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_ast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/26 01:39:06 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 07:40:54 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 	else
 	{
 		g_tracking.builtin = 0;
-		g_tracking.lastreturn = builtin_exec();
+		g_tracking.lastreturn = builtin_exec(list_cmd);
 	}
 	return (0);
 }

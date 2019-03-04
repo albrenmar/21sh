@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_analize.c                                       :+:      :+:    :+:   */
+/*   ft_parseur.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/28 00:03:14 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 15:19:22 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,37 +20,6 @@ int		its_not_symbol(char c)
 		return (1);
 }
 
-char	*check_quote(char *line, int i, int *mv)
-{
-	char	*ret;
-	char	*join;
-	char	*raccor;
-	int		nb;
-
-	ret = NULL;
-	join = NULL;
-	raccor = NULL;
-	nb = 0;
-	i++;
-	while (line[i] && line[i] != '"')
-		i++;
-	if (!line[i])
-	{
-		printf("IL FAUT FINIR LA LIGNE MALHEU\n");
-		*mv += i;
-		ret = ft_strndup(line, i);
-		join = ft_strdup("AJOUTLIGNE");
-		raccor = ft_strjoin(ret, join);
-		return (raccor);
-	}
-	i++;
-	while (line[i] && its_not_symbol(line[i]) && line[i] != ' ')
-		i++;
-	*mv += i;
-	return (ft_strndup(line, i));
-}
-
-
 char	*recup_cmd(char *line, int *i, int nb)
 {
 	char	*test;
@@ -63,9 +32,7 @@ char	*recup_cmd(char *line, int *i, int nb)
 		(*i)++;
 		nb++;
 	}
-	if (line[nb] == '"')
-		return (check_quote(&line[nb], 0, i));
-	else if ((test = search_fd_reddir(&line[nb], i)))
+	if ((test = search_fd_reddir(&line[nb], i)))
 		return (test);
 	else if ((test = search_reddir(&line[nb], i)))
 		return (test);
@@ -76,24 +43,59 @@ char	*recup_cmd(char *line, int *i, int nb)
 	return (test);
 }
 
+char	*ft_modif_line(char **line)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	*new_line;
+	char	*temp;
 
-t_last	*ft_parseur(char *line)
+	i = 0;
+	j = 0;
+	new_line = NULL;
+	temp = NULL;
+	if (ft_valid_quote(*line, '"', 0))
+	{
+		temp = check_quote(*line, 0);
+		new_line = ft_strjoin(*line, temp);
+		*line = new_line;
+		return (NULL);
+	}
+	else if (ft_valid_bracket(*line, '}', 0))
+	{
+		temp = check_bracket(*line, 0);
+		new_line = ft_strjoin(*line, temp);
+		*line = new_line;
+		return (NULL);
+	}
+	else
+		new_line = ft_strdup(*line);
+	return (new_line);
+}
+
+t_last	*ft_parseur(char *str)
 {
 	char	*temp;
 	int		i;
+	char	*line;
 	t_last	*list_cmd;
 	t_last	*templist;
 
 	i = 0;
 	temp = NULL;
-	while (line[i] == ' ')
+	line = NULL;
+	while (str[i] == ' ')
 		i++;
+	while ((line = ft_modif_line(&str)) == NULL)
+		;
 	if ((temp = recup_cmd(&line[i], &i, 0)) != NULL)
 	{
 		list_cmd = create_new_list();
 		templist = list_cmd;
 		list_cmd->name = temp;
 		temp = NULL;
+		//ATTENTION !! SEGFAULT ICI DANS LE CAS "dsf
 		while (line[i] && (temp = recup_cmd(&line[i], &i, 0)) != NULL)
 		{
 			list_cmd->next = create_new_list();

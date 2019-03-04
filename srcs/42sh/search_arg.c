@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:06:56 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/27 18:40:44 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 15:11:52 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,48 @@ char	*search_reddir(char *str, int *nb)
 char	*search_normally_arg(char *str, int *nb)
 {
 	int		i;
-	char	*join;
-	char	*ret;
+	char	*temp;
 
 	i = 0;
-	ret = NULL;
-	while (str[i] && its_not_symbol(str[i]) && str[i] != ' ')
+	temp = NULL;
+	while (str[i])
 	{
-		if (str[i] == '"')
+		if (str[i] && str[i] == '"')
 		{
-			join = check_quote(&str[i], 0, nb);
+			i++;
+			while (str[i] && str[i] != '"')
+				i++;
+			i++;
+			if (!str[i] || str[i] == ' ')
+			{
+				temp = ft_strndup(str, i);
+				(*nb) += i;
+				return (temp);
+			}
 		}
-		i++;
+		else if (str[i] == '$' && str[i + 1] && str[i + 1] == '{')
+		{
+			i++;
+			while (str[i] && str[i] != '}')
+				i++;
+			i++;
+			if (!str[i] || str[i] == ' ')
+			{
+				temp = ft_strndup(str, i);
+				(*nb) += i;
+				return (temp);
+			}
+		}
+		else if (str[i] == ' ')
+		{
+			temp = ft_strndup(str, i);
+			(*nb) += i;
+			return (temp);
+		}
+		else
+			i++;
 	}
+	temp = ft_strndup(str, i);
 	(*nb) += i;
-	if (i > 0)
-		ret = ft_strndup(str, i);
-	return (ret);
+	return (temp);
 }
