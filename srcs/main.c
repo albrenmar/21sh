@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/26 06:29:27 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/03 09:26:51 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,14 @@ int		main(int argc, char **argv, char **env)
 	t_tab	st_tab;
 	t_env	st_env;
 	t_last	*cmd;
-	char	*prompt;
 
 	line = NULL;
+	if (argc > 1)
+		argc_error();
 	argc = 0;
 	argv = NULL;
 	//	set_env(&st_env, env);
 	cursorinit();
-	prompt = ft_strdup("Fake minishell > ");
-	g_tracking.prompt = ft_strdup(prompt);
-	g_tracking.pos->prompt = ft_strlen(prompt);
 	ft_siginit();
 	init_shell(env);
 	get_term();
@@ -39,22 +37,17 @@ int		main(int argc, char **argv, char **env)
 	{
 		line = ft_strdup(g_tracking.cmd);
 		free(g_tracking.cmd);
-		g_tracking.swi = 0;
+		g_tracking.cmd = NULL;
+		tcsetattr(0, TCSANOW, &g_tracking.default_term);
 		ft_putchar('\n');
 		hist_lst_add_next(g_tracking.mysh->hist, line);
-		// if (!ft_strcmp(line, "exit"))
-		// {
-		// 	printf("%s\n", "exit temporaire");
-		// 	exit(0);
-		// }
-		if (line && (cmd = ft_parseur(line)))
+		if ((ft_strlen(line) > 0) && (cmd = ft_parseur(line)))
 		{
 			convert_list(cmd);
 			ft_ast(cmd);
 		}
 		jobs_notifications();
 		jobs_update_current();
-		//ft_build_test(line);
 		free(line);
 		line = NULL;
 	}

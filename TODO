@@ -1,0 +1,31 @@
+Partie Brendan
+Rajouter "Dans des heredocs, valide" pour les heredoc, et quitter proprement le shell sans leaks degueulasses
+-Type et Test, a adapter avec le tableau d'arg et non char **argv
+
+Partie Abraham
+-fix redirection output des builtins quand il y a pas de fork
+
+Partie Marc
+- Gestion d'errors pour les expansions.
+- Quiter le process en execution pour no importe quel commande avec ${VARNAME:?VARVALUE} en tant que VARNAME 
+    no existe pas, ou elle a pas valeur. (A voir avec Abraham/et/ou/Alexandre.)
+(X) - Ajuter les expansions dans l'autocomplete, entant que la line finis avec '/' (A voir avec Brendan). NORMALMENT EST GERE.
+- Gerer l'expand recursive (${VARNAME:-${VARNAME:+VARVALUE}aaaaa}bbbb Par exemple).
+- Gerer l'expand avec espaces a l'interior. (En attendant que Alex me passe la bonne string).
+
+Partie Alex
+- Gestion des quotes dans les doubles quotes et inversement
+- Ajout string si manque quote
+- Gestion des messages d'erreurs
+- Boucle infini sur grep apres pipe
+
+MISC
+-Builtin cd
+-Ctrl-Z avec "cat" en cours
+-Ajouter builtins manquants (POSIX?)
+-ajouter env a execve
+-Faire que le parser reconaisse le signe = pour les cmd style "env HOME=TMP cd ~"
+-Gestion de l'env
+-creer une fonction d'exit qui free proprement tout ce bordel
+-Ctrl-C fait des 'x'
+-SEGV quand tu autocomplete un truc incorrect

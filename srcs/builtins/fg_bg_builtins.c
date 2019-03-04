@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   fg_bg_builtins.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 12:42:54 by abe              ###   ########.fr       */
+/*   Updated: 2019/03/03 11:42:06 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
-
-
 
 int			bg_builtin_output(t_jobs *tmp)
 {

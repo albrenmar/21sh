@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handlers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/22 12:30:09 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/03 05:59:59 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ void		sig_int_handler(int signo)
 	if (signo == SIGINT)
 	{
 		ft_putchar('\n');
-		// // print_prompt_pwd();
-		ft_putstr(g_tracking.prompt);
-		// ioctl(0,TIOCSTI, "\1\0");
+		if (g_tracking.str)
+			ioctl(STDERR_FILENO, TIOCSTI, "x03");
 		signal(SIGINT, sig_int_handler);
 	}
 }
