@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/03 12:22:55 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/04 20:53:23 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int		scan_arg_transformer(char **arg)
 	scan = NULL;
 	scan = new_scan();
 	first_scan = scan;
-	scan_argument(*arg, scan);
+	scan_argument(*arg, scan, 0);
 	new_arg = NULL;
 	while (scan && scan->sstrsing)
 	{
@@ -117,9 +117,17 @@ char		expand_transformer(char **value, int chg_value)
 		quote = unquote_value(value, quote);
 	if (quote != '\'' && quote != 'E' && *value)
 	{
-		if (need_expand(*value))
-			quote =	scan_arg_transformer(value);
-	}
+		if (need_expand(*value) && !is_simple_expand(*value))
+			quote = scan_arg_transformer(value);
+		else if (is_simple_expand(*value) > 0)
+			scan_simple_arg_transformer(value);
+/*		else if (is_simple_expand(*value) < 0)
+		{
+			print_exp_error(str_error);
+			ft_strdel(value);
+			*value = ft_strdup("");
+		}
+*/	}
 	else if (quote == 'E')
 	{
 		print_exp_error(str_error);

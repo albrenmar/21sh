@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/04 13:53:38 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/04 20:52:48 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,14 @@ int				have_envname(char *var);
 int				have_setname(char *var);
 int				scan_arg_transformer(char **arg);
 t_scan			*new_scan(void);
-void			scan_argument(char *arg, t_scan *info_arg);
+void			scan_argument(char *arg, t_scan *info_arg, int simple);
 char			*ft_exp_complete(char *arg);
 char			unquote_value(char **value, int quote);
 int				ft_iswhitespace(int c);
 void			print_exp_error(char *to_error);
 void			print_exp_error_eq(char *varname, char *value);
 void			rmv_tab_exec(char **tab_exec, int to);
+int				is_simple_expand(char *value);
+void			scan_simple_arg_transformer(char **arg);
 
 #endif
