@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/05 06:21:51 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/05 06:44:27 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,13 @@ void			transform_cwd(void)
 	home = ft_strdup(get_env_string("HOME"));
 	if (ft_strstr(g_tracking.cwd, home))
 	{
-		len = ft_strlen(home) - 1;
-		if (!(newcwd = malloc(sizeof(char) * ft_strlen(g_tracking.cwd) - len + 1)))
+		len = ft_strlen(home);
+		if (!(newcwd = malloc(sizeof(char) * ft_strlen(g_tracking.cwd) - len + 2)))
 			return ;
 		i = 0;
 		len = len + 2;
+		newcwd[i++] = '<';
+		newcwd[i++] = ' ';
 		newcwd[i++] = '~';
 		while (g_tracking.cwd[len] != '\0')
 		{
@@ -100,17 +102,17 @@ void			get_coolprompt(void)
 	memory = g_tracking.user;
 	g_tracking.user = ft_strjoin(g_tracking.user, "]");
 	ft_strdel(&memory);
-	g_tracking.cwd = ft_strdup("<");
+	g_tracking.cwd = ft_strdup("< ");
 	memory = g_tracking.cwd;
 	getcwd(buff, 4096 + 1);
 	g_tracking.cwd = ft_strjoin(g_tracking.cwd, buff);
 	ft_strdel(&memory);
 	memory = g_tracking.cwd;
-	g_tracking.cwd = ft_strjoin(g_tracking.cwd, ">");
+	g_tracking.cwd = ft_strjoin(g_tracking.cwd, " >");
 	ft_strdel(&memory);
 	prompt = ft_strdup(SHELL_NAME);
 	memory = prompt;
-	prompt = ft_strjoin(prompt, " $> ");
+	prompt = ft_strjoin(prompt, " $/> ");
 	ft_strdel(&memory);
 	g_tracking.prompt = ft_strdup(prompt);
 	g_tracking.pos->prompt = ft_strlen(prompt);
