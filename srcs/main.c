@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/03 09:26:51 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/05 01:17:10 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int		main(int argc, char **argv, char **env)
 		g_tracking.cmd = NULL;
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
 		ft_putchar('\n');
-		hist_lst_add_next(g_tracking.mysh->hist, line);
 		if ((ft_strlen(line) > 0) && (cmd = ft_parseur(line)))
 		{
+			hist_lst_add_next(g_tracking.mysh->hist, line);
 			convert_list(cmd);
 			ft_ast(cmd);
 		}
