@@ -4,6 +4,9 @@ Rajouter "Dans des heredocs, valide" pour les heredoc, et quitter proprement le 
 
 Partie Abraham
 -fix redirection output des builtins quand il y a pas de fork
+-Ctrl-Z avec "cat" en cours
+-verifier avec brendan que tab_exec doit etre clean
+-check coolprompt works when cd out of HOME
 
 Partie Marc
 - Gestion d'errors pour les expansions.
@@ -22,10 +25,8 @@ Partie Alex
 
 MISC
 -Builtin cd
--Ctrl-Z avec "cat" en cours
 -Ajouter builtins manquants (POSIX?)
 -ajouter env a execve
 -Faire que le parser reconaisse le signe = pour les cmd style "env HOME=TMP cd ~"
 -Gestion de l'env
 -creer une fonction d'exit qui free proprement tout ce bordel
--Ctrl-C fait des 'x'

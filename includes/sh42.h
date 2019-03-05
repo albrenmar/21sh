@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/05 03:30:37 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/05 06:34:54 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define ANSI_COLOR_DEFAULT "\x1b[0m"
 # define ANSI_COLOR_MAGENTA	"\x1b[35m"
 
-# define SHELL_NAME			""
+# define SHELL_NAME			"42sh"
 # define K_FN1				"\x1b\x4f\x50"
 # define K_FN2				"\x1b\x4f\x51"
 # define K_FN3				"\x1b\x4f\x52"
@@ -177,6 +177,7 @@ typedef struct	s_tracking
 	struct s_hash		*hashtable[27];
 	char				*str;
 	char				*cmd;
+	char				*user;
 	char				*cwd;
 	char				*prompt;
 	char				*search;
@@ -378,6 +379,9 @@ int				ft_valid_bracket(char *line, char c, int flag);
 
 void			get_coolprompt(void);
 void			print_prompt(void);
+void			transform_cwd(void);
+int				spaces_line_check(char *line);
+void			clean_tab_exec(char **tab_exec);
 
 void			interactive_check_set_shell_group(void);
 void			set_shell_signal_handlers(void);

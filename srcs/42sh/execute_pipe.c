@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/03 08:40:23 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/05 06:22:26 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void		execute_two(char **tab_exec)
 {
 	char	**tab_exec_hold;
 
+	clean_tab_exec(tab_exec);
 	tab_exec_hold = tab_dup(tab_exec);
 	if (is_builtin())
 		exit (builtin_exec(NULL));

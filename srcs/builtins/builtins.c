@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/05 04:03:12 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/05 03:33:10 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ int			is_builtin_alone(void)
 	{
 		if (tmp->name[i] == '|')
 			return (0);
-		// else if (tmp->name[i] == '>' || tmp->name[i] == '<')
-		// 	return (0);
 		i++;
 	}
 	return (1);
