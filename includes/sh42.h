@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/04 13:55:25 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/05 03:30:37 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define ANSI_COLOR_DEFAULT "\x1b[0m"
 # define ANSI_COLOR_MAGENTA	"\x1b[35m"
 
-# define SHELL_NAME			"Fake minishell"
+# define SHELL_NAME			""
 # define K_FN1				"\x1b\x4f\x50"
 # define K_FN2				"\x1b\x4f\x51"
 # define K_FN3				"\x1b\x4f\x52"
@@ -421,7 +421,7 @@ void			free_job(t_jobs *job);
 void			jobs_notifications(void);
 void			jobs_update_current(void);
 
-int				main_test(t_last *arglist);
+int				main_test();
 char			**init_envp(t_lstcontainer *env);
 
 #endif

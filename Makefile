@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/04 13:56:33 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/05 04:06:04 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,11 @@ SRC = main.c \
 	  42sh/hashtables.c \
 	  42sh/search_arg.c \
 	  42sh/completion.c \
+	  builtins/cd/cd_path.c \
+	  builtins/cd/directory.c \
+	  builtins/cd/ft_cd.c \
+	  builtins/cd/ft_cd2.c \
+	  builtins/cd/ft_dotdot.c \
 	  builtins/builtin_tools.c \
 	  builtins/fg_bg_builtins.c \
 	  builtins/jobs_builtin.c \
