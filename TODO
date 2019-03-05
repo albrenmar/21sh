@@ -6,7 +6,6 @@ Partie Abraham
 -fix redirection output des builtins quand il y a pas de fork
 -Ctrl-Z avec "cat" en cours
 -verifier avec brendan que tab_exec doit etre clean
--check coolprompt works when cd out of HOME
 
 Partie Marc
 - Gestion d'errors pour les expansions.
