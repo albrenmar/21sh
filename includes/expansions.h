@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/04 20:52:48 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/05 23:25:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_env_set
 
 typedef struct	s_scan
 {
-	char				*sstrsing;
+	char				*sstring;
 	int					error;
 	struct s_scan		*next;
 }				t_scan;
@@ -98,5 +98,10 @@ void			print_exp_error_eq(char *varname, char *value);
 void			rmv_tab_exec(char **tab_exec, int to);
 int				is_simple_expand(char *value);
 void			scan_simple_arg_transformer(char **arg);
+int				scan_tilde(char *arg, char **new_arg);
+int				scan_dollar(char *arg, char **new_arg);
+int				scan_dollar_key(char *arg, char **new_arg);
+int				scan_other(char *arg, char **new_arg);
+void			transform_simple(char **str);
 
 #endif

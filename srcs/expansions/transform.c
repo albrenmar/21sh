@@ -6,11 +6,12 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/03 12:43:37 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/05 23:30:27 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
+#include "sh42.h"
 
 void	transform_if_tilde(t_expand **expand, char **str)
 {
@@ -37,6 +38,24 @@ void	transform_if_tilde(t_expand **expand, char **str)
 	}
 }
 
+void	transform_simple(char **str)
+{
+	char	*run_str;
+	char	*new_str;
+
+	run_str = *str;
+	new_str = NULL;
+	if (run_str[0] =='$')
+		new_str = get_env_string(run_str + 1);
+	if (!new_str)
+		new_str = get_parm_string(run_str + 1);
+	if (new_str)
+	{
+		ft_strdel(str);
+		*str = new_str;
+	}
+}
+
 int		transform(t_expand *expand, char **str)
 {
 	t_expand	*first_letter;
@@ -45,6 +64,7 @@ int		transform(t_expand *expand, char **str)
 	first_letter = expand;
 	tmp = *str;
 	transform_if_tilde(&first_letter, str);
+	transform_simple(str);
 	while (expand->ltr && expand->ltr != '~')
 	{
 		if (expand->ltr == '$' && expand->next && expand->next->ltr == '{'

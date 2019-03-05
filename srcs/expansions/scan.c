@@ -6,13 +6,13 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 05:42:59 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/04 21:26:38 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/05 21:56:29 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 #include "sh42.h"
-
+/*
 void	split_arg(char *arg, int i, char *run_arg, t_scan *info_arg)
 {
 	if (run_arg[0])
@@ -31,18 +31,19 @@ void	split_arg(char *arg, int i, char *run_arg, t_scan *info_arg)
 	else if (arg[i])
 		scan_argument(arg + i, info_arg->next, 1);
 }
-
+*/
 void	scan_argument(char *arg, t_scan *info_arg, int simple)
 {
-	char	*run_arg;
-	int		i;
-	int		error;
+	char	*new_arg;
 	t_scan	*first;
+	char	*orig_arg;
+	int		i;
 
-	run_arg = ft_strnew(ft_strlen(arg));
+	new_arg = ft_strnew(ft_strlen(arg));
+	orig_arg = arg;
 	i = 0;
-	error = 0;
 	first = info_arg;
+/*	error = 0;
 	if (arg[i] && arg[i] != '$' && arg[i + 1] && arg[i + 1] != '{')
 		while (arg[i] && arg[i] != '$' && arg[i + 1] && arg[i + 1] != '{')
 		{
@@ -74,6 +75,27 @@ void	scan_argument(char *arg, t_scan *info_arg, int simple)
 		i++;
 	}
 	split_arg(arg, i, run_arg, info_arg);
+*/	while (arg[0])
+	{
+		if (arg[0] == '~')
+			i = scan_tilde(arg, &new_arg);
+		else if (arg[0] == '$')
+			i = scan_dollar(arg, &new_arg);
+		else
+			i = scan_other(arg, &new_arg);
+		info_arg->sstring = ft_strdup(new_arg);
+		ft_strdel(&new_arg);
+		if (arg[i])
+			arg = arg + i;
+		else
+			break ;
+		new_arg = ft_strnew(ft_strlen(arg));
+		info_arg->next = new_scan();
+		if (arg[0])
+			info_arg = info_arg->next;
+	}
+	info_arg->next = new_scan();
+	arg = orig_arg;
 	info_arg = first;
 }
 
@@ -89,22 +111,22 @@ void	scan_simple_arg_transformer(char **arg)
 	first_scan = scan;
 	scan_argument(*arg, scan, 1);
 	new_arg = NULL;
-	while (scan && scan->sstrsing)
+	while (scan && scan->sstring)
 	{
 		if (!new_arg)
 			new_arg = ft_strnew(1);
-		if (scan->sstrsing[0] == '$')
+		if (scan->sstring[0] == '$')
 		{
-			new_arg = ft_strjoinfree(new_arg, get_env_string(scan->sstrsing + 1), 3);
+			new_arg = ft_strjoinfree(new_arg, get_env_string(scan->sstring + 1), 3);
 			if (!new_arg)
-				new_arg = ft_strjoinfree(new_arg, get_parm_string(scan->sstrsing + 1), 3);
+				new_arg = ft_strjoinfree(new_arg, get_parm_string(scan->sstring + 1), 3);
 		}
 		else
-			new_arg = ft_strjoinfree(new_arg, scan->sstrsing, 1);
+			new_arg = ft_strjoinfree(new_arg, scan->sstring, 1);
 		if (!new_arg)
 		{
 			new_arg = ft_strnew(1);
-			new_arg = ft_strjoinfree(new_arg, scan->sstrsing, 1);
+			new_arg = ft_strjoinfree(new_arg, scan->sstring, 1);
 		}
 		scan = scan->next;
 	}
@@ -118,7 +140,7 @@ t_scan	*new_scan(void)
 	t_scan	*scan;
 
 	scan = (t_scan *)malloc(sizeof(t_scan));
-	scan->sstrsing = NULL;
+	scan->sstring = NULL;
 	scan->error = -1;
 	scan->next = NULL;
 	return (scan);
