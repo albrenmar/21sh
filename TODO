@@ -29,4 +29,3 @@ MISC
 -Gestion de l'env
 -creer une fonction d'exit qui free proprement tout ce bordel
 -Ctrl-C fait des 'x'
--SEGV quand tu autocomplete un truc incorrect
