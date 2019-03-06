@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 01:58:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 03:46:59 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,11 @@ void	back_up_err(char *err)
 	}
 }
 
-
 void	completion_loop(t_lstcontainer *list)
 {
 	char	*err;
+
+	err = NULL;
 	if (g_tracking.aut->err == 0)
 	{
 		tputs(tgetstr("vi", NULL), 1, yan_putchar);

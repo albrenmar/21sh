@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 01:51:11 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 03:40:51 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ t_auto	*init_auto(void)
 	aut->type = 0;
 	aut->hidden = 0;
 	aut->err = 0;
+	aut->to_add_y = 0;
 	return (aut);
 }
 

@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/06 00:30:53 by bsiche           ###   ########.fr        #
+#    Updated: 2019/03/06 03:51:21 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,9 @@ SRC = main.c \
 	  gnl/paste.c \
 	  gnl/get_key.c \
 	  auto_complete/auto_complete.c \
+	  auto_complete/auto_complete_check.c \
 	  auto_complete/auto_complete_cleanup.c \
+	  auto_complete/auto_complete_cursor.c \
 	  auto_complete/auto_complete_list.c \
 	  auto_complete/auto_complete_page.c \
 	  auto_complete/auto_complete_loop.c \
