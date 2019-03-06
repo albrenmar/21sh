@@ -66,6 +66,42 @@ int		its_pipe(t_last *list)
 	return (0);
 }
 
+char	*its_double_quote(int i, char *str, int *nb)
+{
+	char	*temp;
+
+	temp = NULL;
+	i++;
+	while (str[i] && str[i] != '"')
+		i++;
+	i++;
+	if (!str[i] || str[i] == ' ')
+	{
+		temp = ft_strndup(str, i);
+		(*nb) += i;
+		return (temp);
+	}
+	return (temp);
+}
+
+char	*its_quote(int i, char *str, int *nb, char c)
+{
+	char	*temp;
+
+	temp = NULL;
+	i++;
+	while (str[i] && str[i] != c)
+		i++;
+	i++;
+	if (!str[i] || str[i] == ' ')
+	{
+		temp = ft_strndup(str, i);
+		(*nb) += i;
+		return (temp);
+	}
+	return (temp);
+}
+
 int		its_separator(t_last *list)
 {
 	if (ft_strlen(list->name) == 2)

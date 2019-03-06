@@ -57,10 +57,16 @@ char	*ft_modif_line(char **line)
 	temp = NULL;
 	if (ft_valid_quote(*line, '"', 0))
 	{
-		temp = check_quote(*line, 0);
+		temp = check_quote(*line, 0, '"');
 		new_line = ft_strjoin(*line, temp);
 		*line = new_line;
-		printf("QUOTE LINE = %s\n", *line);
+		return (NULL);
+	}
+	else if (ft_valid_quote(*line, '\'', 0))
+	{
+		temp = check_quote(*line, 0, '\'');
+		new_line = ft_strjoin(*line, temp);
+		*line = new_line;
 		return (NULL);
 	}
 	else if (ft_valid_bracket(*line, '}', 0))
@@ -68,7 +74,6 @@ char	*ft_modif_line(char **line)
 		temp = check_bracket(*line, 0);
 		new_line = ft_strjoin(*line, temp);
 		*line = new_line;
-		printf("BRACKET LINE = %s\n", *line);
 		return (NULL);
 	}
 	else
@@ -91,9 +96,6 @@ t_last	*ft_parseur(char *str)
 		i++;
 	while ((line = ft_modif_line(&str)) == NULL)
 		;
-	printf("FINAL LINE = %s\n", line);
-		//printf("LINE = %s\n", line);
-	//printf("LINE = %s\n", line);
 	if ((temp = recup_cmd(&line[i], &i, 0)) != NULL)
 	{
 		list_cmd = create_new_list();

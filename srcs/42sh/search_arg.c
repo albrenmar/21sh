@@ -93,8 +93,23 @@ char	*search_normally_arg(char *str, int *nb)
 	{
 		if (str[i] && str[i] == '"')
 		{
+			temp = its_quote(i, str, nb, '"');
+			if (temp)
+			{
+				printf("TEST = %s\n", temp);
+				return (temp);
+			}
+		}
+		else if (str[i] && str[i] == '\'')
+		{
+			temp = its_quote(i, str, nb, '\'');
+			if (temp)
+				return (temp);
+		}
+		else if (str[i] == '$' && str[i + 1] && str[i + 1] == '{')
+		{
 			i++;
-			while (str[i] && str[i] != '"')
+			while (str[i] && str[i] != '}')
 				i++;
 			i++;
 			if (!str[i] || str[i] == ' ')

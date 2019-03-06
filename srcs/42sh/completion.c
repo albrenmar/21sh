@@ -29,7 +29,7 @@ int		ft_valid_quote(char *line, char c, int flag)
 		return (1);
 }
 
-char	*check_quote(char *line, int i)
+char	*check_quote(char *line, int i, char c)
 {
 	char	*ret;
 	char	*join;
@@ -55,9 +55,7 @@ char	*check_quote(char *line, int i)
 		if (g_tracking.quotes == 10)
 			exit (0);
 		join = g_tracking.cmd;
-		test = ft_valid_quote(join, '"', test);
-		//printf("JOIN = %s\n", join);
-		//printf("INT test = %d\n", test);
+		test = ft_valid_quote(join, c, test);
 		if (!ret)
 			ret = ft_strdup(join);
 		else
@@ -76,18 +74,24 @@ int		ft_valid_bracket(char *line, char c, int flag)
 {
 	int	i;
 	int	accol;
+	int	quote;
+	int double_quote;
 	
 	i = 0;
 	accol = 0;
+	quote = 0;
+	double_quote = 0;
 	while (line[i])
 		i++;
 	while (i > 0)
 	{
 		if (line[i] == '"')
-			flag++;
-		else if (line[i] == '}' && flag % 2 == 0)
+			double_quote++;
+		else if (line[i] == '\'')
+			quote++;
+		else if (line[i] == '}' && quote % 2 == 0 && double_quote % 2 == 0)
 			accol++;
-		else if (line[i] == '$' && line[i + 1] && line[i + 1] == '{' && flag % 2 == 0)
+		else if (line[i] == '$' && line[i + 1] && line[i + 1] == '{' && quote % 2 == 0 && double_quote % 2 == 0)
 		{
 			accol--;
 			if (accol < 0)
