@@ -4,7 +4,7 @@ Rajouter "Dans des heredocs, valide" pour les heredoc, et quitter proprement le 
 
 Partie Abraham
 -fix redirection output des builtins quand il y a pas de fork
--Ctrl-Z avec "cat" en cours
+-Ctrl-Z avec "cat" en cours interrompre system call (regardeer sigaction)
 -verifier avec brendan que tab_exec doit etre clean
 
 Partie Marc
