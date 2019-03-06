@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 04:18:51 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 21:09:43 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int			ft_exit(void)
 {
 	if (!g_tracking.jobs->next)
 	{
+		hist_save_file(g_tracking.mysh->hist);
 		clean_up_leaks();
 		clean_up_leaks();
 		ft_putendl("Exit");

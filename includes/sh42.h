@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 03:51:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 21:11:56 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -331,6 +331,7 @@ t_ls			*ls_alloc(char *str);
 
 
 void			hist_file_to_lst(void);
+char			*create_path_hist(void);
 int				print_hist();
 int				get_last();
 int				go_to(int i);
