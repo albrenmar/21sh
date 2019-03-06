@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_key.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/03 07:35:57 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/06 04:03:32 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int		single_key(char c)
 	if (c == K_CTRLR)
 	{
 		begin_search();
-		return(12);
+		return (12);
 	}
 	if (c == 10 || c == 13)
 	{

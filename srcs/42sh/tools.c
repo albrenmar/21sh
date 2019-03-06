@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/05 06:44:27 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/05 23:47:10 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void			print_prompt(void)
 	ft_putstr_fd(g_tracking.user, 2);
 	ft_putstr_fd(ANSI_COLOR_DEFAULT, 2);
 	ft_putchar_fd(' ', 2);
-	transform_cwd();
 	ft_putstr_fd(ANSI_COLOR_MAGENTA, 2);
 	ft_putstr_fd(g_tracking.cwd, 2);
 	ft_putstr_fd(ANSI_COLOR_DEFAULT, 2);
@@ -110,12 +109,15 @@ void			get_coolprompt(void)
 	memory = g_tracking.cwd;
 	g_tracking.cwd = ft_strjoin(g_tracking.cwd, " >");
 	ft_strdel(&memory);
+	transform_cwd();
 	prompt = ft_strdup(SHELL_NAME);
 	memory = prompt;
 	prompt = ft_strjoin(prompt, " $/> ");
 	ft_strdel(&memory);
 	g_tracking.prompt = ft_strdup(prompt);
-	g_tracking.pos->prompt = ft_strlen(prompt);
+	g_tracking.pos->prompt = utf_strlen(prompt) + utf_strlen(g_tracking.cwd);
+	g_tracking.pos->prompt += utf_strlen(g_tracking.user);
+	g_tracking.pos->prompt +=2;
 	ft_strdel(&prompt);
 }
 

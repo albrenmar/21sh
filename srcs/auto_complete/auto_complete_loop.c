@@ -6,40 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 07:09:53 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 03:46:59 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
-
-void	end_autocomplete(int i)
-{
-	print_line();
-	back_to_pos();
-	if (g_tracking.aut)
-	{
-		if (i == 1)
-		{
-			if (g_tracking.aut->type == 1)
-				escape_path();
-			if (g_tracking.aut->type == 2)
-				g_tracking.aut->to_add = ft_strjoinfree(g_tracking.aut->to_add, "} ", 1);
-			if ((g_tracking.aut->type != 2) && (g_tracking.aut->type != 1))
-				g_tracking.aut->to_add = ft_strjoinfree(g_tracking.aut->to_add, " ", 1);
-			add_to_str(g_tracking.aut->to_add);
-			g_tracking.aut->to_add = NULL;
-		}
-		else
-		{
-			if (g_tracking.aut->word)
-			{
-				add_to_str(g_tracking.aut->word);
-				g_tracking.aut->word = NULL;
-			}
-		}
-	}
-	tputs(tgetstr("ve", NULL), 1, yan_putchar);
-}
 
 int		read_loop(void)
 {
@@ -47,10 +18,7 @@ int		read_loop(void)
 
 	c = 0;
 	if (lstcontainer_size(g_tracking.aut->comp_list) == 1)
-	{
-		end_autocomplete(1);
-		return (0);
-	}
+		return (end_autocomplete(1));
 	read(STDERR_FILENO, &c, 8);
 	if (c == 4479771)
 		return (-1);
@@ -65,15 +33,9 @@ int		read_loop(void)
 	if (c == 2117491483)
 		return (3);
 	if (c == K_RTN || c == K_SPC)
-	{
-		end_autocomplete(1);
-		return (0);
-	}
+		return (end_autocomplete(1));
 	else
-	{
-		end_autocomplete(0);
-		return (0);
-	}
+		return (end_autocomplete(0));
 }
 
 int		get_new(t_list *buf)
@@ -104,15 +66,13 @@ int		get_new(t_list *buf)
 	return (0);
 }
 
-void	completion_loop(t_lstcontainer *list)
+void	actual_loop(t_lstcontainer *list)
 {
 	char			*new;
 	t_lstcontainer	*page;
 	t_list			*buf;
 	int				i;
 
-	tputs(tgetstr("vi", NULL), 1, yan_putchar);
-	line_per_page();
 	g_tracking.aut->page_lst = build_page_lst(list);
 	buf = g_tracking.aut->page_lst->firstelement;
 	if (!buf)
@@ -121,7 +81,7 @@ void	completion_loop(t_lstcontainer *list)
 	i = g_tracking.aut->line_up;
 	while ((i = read_loop()) != 0 && buf != NULL)
 	{
-		if (i == 3 || i == - 3)
+		if (i == 3 || i == -3)
 		{
 			if (g_tracking.aut->page_nbr > 0)
 			{
@@ -133,5 +93,43 @@ void	completion_loop(t_lstcontainer *list)
 			buf = move_arround(buf, i);
 		get_new(buf);
 	}
-	tputs(tgetstr("ve", NULL), 1, yan_putchar);
+}
+
+void	back_up_err(char *err)
+{
+	int		y;
+	int		ab;
+	int		winx;
+
+	ab = utf_strlen(g_tracking.str);
+	ab += g_tracking.pos->prompt;
+	ab += utf_strlen(err);
+	y = ab / g_tracking.terminfo->sizex;
+	y = y - (g_tracking.pos->y);
+	while (y != 0)
+	{
+		y--;
+		tputs(tgetstr("up ", NULL), 1, yan_putchar);
+	}
+}
+
+void	completion_loop(t_lstcontainer *list)
+{
+	char	*err;
+
+	err = NULL;
+	if (g_tracking.aut->err == 0)
+	{
+		tputs(tgetstr("vi", NULL), 1, yan_putchar);
+		line_per_page();
+		actual_loop(list);
+		tputs(tgetstr("ve", NULL), 1, yan_putchar);
+	}
+	if (g_tracking.aut->err == 2)
+	{
+		err = ft_strdup("Term size too small");
+		tputs(tgetstr("do ", NULL), 1, yan_putchar);
+		ft_putendl_fd(err, 2);
+		back_up_err(err);
+	}
 }

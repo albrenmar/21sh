@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/05 06:34:54 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/06 03:51:03 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,9 @@ typedef struct	s_auto
 	int				line_up;
 	int				last_page;
 	int				pad_lpage;
+	int				hidden;
+	int				err;
+	int				to_add_y;
 }				t_auto;
 
 typedef struct	s_cpaste
@@ -274,6 +277,8 @@ void			begin_paste(void);
 void			print_line_cpy(int start, int end);
 t_lstcontainer	*modified_ls(int argc, char **argv);
 int				auto_complete(void);
+void			check_hidden(void);
+int				check_type(void);
 void			get_line_col(void);
 void			get_max_size(void);
 void			ft_strpadding(void);
@@ -288,10 +293,12 @@ void			rem_str(char *str);
 void			assign_type(void);
 void			clean_up_autoc(void);
 int				ft_menuline(void);
+void			back_up_add(void);
+void			go_back_down(void);
 char			*send_color(int i);
 void			color(t_list *liste);
 int				print_menu(void);
-void			end_autocomplete(int i);
+int				end_autocomplete(int i);
 void			build_bin_lst(void);
 t_list			*move_arround(t_list *buf, int i);
 void			set_up_page(void);

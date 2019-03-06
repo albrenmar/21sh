@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/05 04:06:04 by bsiche           ###   ########.fr        #
+#    Updated: 2019/03/06 04:10:16 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,8 +51,9 @@ SRC = main.c \
 	  jobs/job_utils.c \
 	  jobs/job_functions.c \
 	  jobs/ft_job_control.c \
+	  gnl/add_to_str.c \
+	  gnl/rem_from_str.c \
 	  gnl/term_setup.c \
-	  gnl/stringsearch.c \
 	  gnl/signals.c \
 	  gnl/init_term.c \
 	  gnl/cursor_pos.c \
@@ -67,7 +68,9 @@ SRC = main.c \
 	  gnl/paste.c \
 	  gnl/get_key.c \
 	  auto_complete/auto_complete.c \
+	  auto_complete/auto_complete_check.c \
 	  auto_complete/auto_complete_cleanup.c \
+	  auto_complete/auto_complete_cursor.c \
 	  auto_complete/auto_complete_list.c \
 	  auto_complete/auto_complete_page.c \
 	  auto_complete/auto_complete_loop.c \
@@ -78,6 +81,7 @@ SRC = main.c \
 	  auto_complete/print_arg_list.c \
 	  auto_complete/send_color.c \
 	  auto_complete/var_list.c \
+	  auto_complete/end_autocomplete.c \
 	  back_search/init_search.c \
 	  back_search/search_lst.c \
 	  ft_ls/cmdparse.c \
