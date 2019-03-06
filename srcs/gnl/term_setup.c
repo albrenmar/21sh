@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 05:23:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/05 01:11:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 04:11:32 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	get_term(void)
 	char			*name_term;
 	struct termios	term;
 	struct termios	default_term;
-	
 
 	if (!(name_term = getenv("TERM")))
 	{

@@ -6,13 +6,13 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 14:00:48 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 03:47:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 04:04:17 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-void	set_back_term(void)
+void		set_back_term(void)
 {
 	tputs(tgetstr("ve", NULL), 1, yan_putchar);
 	tcsetattr(STDERR_FILENO, TCSANOW, &g_tracking.default_term);
