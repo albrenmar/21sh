@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/05 06:34:54 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/06 01:29:51 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ typedef struct	s_auto
 	int				line_up;
 	int				last_page;
 	int				pad_lpage;
+	int				hidden;
+	int				err;
 }				t_auto;
 
 typedef struct	s_cpaste
@@ -291,7 +293,7 @@ int				ft_menuline(void);
 char			*send_color(int i);
 void			color(t_list *liste);
 int				print_menu(void);
-void			end_autocomplete(int i);
+int				end_autocomplete(int i);
 void			build_bin_lst(void);
 t_list			*move_arround(t_list *buf, int i);
 void			set_up_page(void);

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/05 04:24:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 01:30:07 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@ int		loop_for_space(int i)
 	return (i);
 }
 
-void	asign_word(void)
+void	asign_word(int i, int a, int flag)
 {
-	int					i;
-	int					a;
-	int					flag;
-
 	if (ft_strlen(g_tracking.str) != 0)
 	{
 		flag = 0;
@@ -70,6 +66,8 @@ t_auto	*init_auto(void)
 	aut->lin_nbr = 0;
 	aut->line_up = 0;
 	aut->type = 0;
+	aut->hidden = 0;
+	aut->err = 0;
 	return (aut);
 }
 
@@ -93,7 +91,7 @@ int		auto_complete(void)
 		return (1);
 	build_bin_lst();
 	build_var_lst();
-	asign_word();
+	asign_word(0, 0, 0);
 	build_list();
 	clean_up_autoc();
 	return (0);

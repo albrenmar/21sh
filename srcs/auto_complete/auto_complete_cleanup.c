@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 06:52:13 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/05 04:24:31 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 00:29:04 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ void	clean_up_pages(void)
 	}
 }
 
+void	clean_up_tofree(void)
+{
+	free_all(g_tracking.aut->to_free, NULL);
+	g_tracking.aut->to_free = NULL;
+	ft_lstdel(g_tracking.aut->comp_list->firstelement, 0);
+	free(g_tracking.aut->comp_list);
+}
+
 void	clean_up_autoc(void)
 {
 	free(g_tracking.aut->word);
@@ -30,12 +38,7 @@ void	clean_up_autoc(void)
 	free(g_tracking.aut->path);
 	g_tracking.aut->path = NULL;
 	if (g_tracking.aut->to_free)
-	{
-		free_all(g_tracking.aut->to_free, NULL);
-		g_tracking.aut->to_free = NULL;
-		ft_lstdel(g_tracking.aut->comp_list->firstelement, 0);
-		free(g_tracking.aut->comp_list);
-	}
+		clean_up_tofree();
 	else
 	{
 		free_all(g_tracking.aut->comp_list, NULL);
