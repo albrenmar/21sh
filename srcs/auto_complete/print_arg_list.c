@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/24 03:17:37 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 01:45:25 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,19 +77,13 @@ int		ft_menuline()
 {
 	char		*res;
 
-//	if (ft_check() == 0)
-//	{
-		if (g_tracking.aut->menuline)
-		{
-			free(g_tracking.aut->menuline);
-			g_tracking.aut->menuline = NULL;
-		}
-		g_tracking.aut->menuline = ft_createline();
-		return (0);
-//	}
-//	else
-//		g_tracking.aut->menuline = (ft_strdup("(╯°□°）╯︵ ┻━┻ Term size too small to display all possibilities"));
-//	return (1);
+	if (g_tracking.aut->menuline)
+	{
+		free(g_tracking.aut->menuline);
+		g_tracking.aut->menuline = NULL;
+	}
+	g_tracking.aut->menuline = ft_createline();
+	return (0);
 }
 
 void	back_up_add(void)

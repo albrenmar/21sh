@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 01:34:37 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 01:58:50 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,40 @@ void	actual_loop(t_lstcontainer *list)
 	}
 }
 
+void	back_up_err(char *err)
+{
+	int		y;
+	int		ab;
+	int		winx;
+
+	ab = utf_strlen(g_tracking.str);
+	ab += g_tracking.pos->prompt;
+	ab += utf_strlen(err);
+	y = ab / g_tracking.terminfo->sizex;
+	y = y - (g_tracking.pos->y);
+	while (y != 0)
+	{
+		y--;
+		tputs(tgetstr("up ", NULL), 1, yan_putchar);
+	}
+}
+
+
 void	completion_loop(t_lstcontainer *list)
 {
+	char	*err;
 	if (g_tracking.aut->err == 0)
 	{
 		tputs(tgetstr("vi", NULL), 1, yan_putchar);
 		line_per_page();
 		actual_loop(list);
 		tputs(tgetstr("ve", NULL), 1, yan_putchar);
+	}
+	if (g_tracking.aut->err == 2)
+	{
+		err = ft_strdup("Term size too small");
+		tputs(tgetstr("do ", NULL), 1, yan_putchar);
+		ft_putendl_fd(err, 2);
+		back_up_err(err);
 	}
 }

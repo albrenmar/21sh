@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 00:38:28 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 01:53:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void				set_up_page(void)
 	int				nb;
 	int				page;
 
+	if (g_tracking.aut->lin_nbr < 1)
+	{
+		g_tracking.aut->err = 2;
+		return ;
+	}
 	nb = lstcontainer_size(g_tracking.aut->comp_list) - 1;
 	page = g_tracking.aut->lin_nbr * g_tracking.aut->col_nbr;
 	g_tracking.aut->per_page = page;
