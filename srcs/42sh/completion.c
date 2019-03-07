@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:13:59 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 15:17:21 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/07 22:15:26 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,36 @@
 
 int		ft_valid_quote(char *line, char c, int flag)
 {
-	int	i;
+	int		i;
+	int		chaine;
+	char	temp;
 
 	i = 0;
+	chaine = 0;
+	if (c == '"')
+		temp = '\'';
+	else if (c == '\'')
+		temp = '"';
 	while (line[i])
 	{
-		if (line[i] == c)
+		if (line[i] == temp && flag == 0)
+		{
+			i++;
+			chaine++;
+			while (line[i] && line[i] != temp)
+				i++;
+			if (!line[i])
+				return (0);
+			else
+				chaine--;
+		}
+		else if (line[i] == c && !flag && !chaine)
 			flag++;
+		else if (line[i] == c && flag)
+			flag--;
 		i++;
 	}
-	if ((flag % 2) == 0)
+	if (flag == 0)
 		return (0);
 	else
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 09:00:32 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/07 22:19:53 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ int		main(int argc, char **argv, char **env)
 			convert_list(cmd);
 			ft_ast(cmd);
 		}
+		printf("test\n");
 		jobs_notifications();
 		jobs_update_current();
-		free(line);
+		//free(line);
 		line = NULL;
 	}
 	return (0);
