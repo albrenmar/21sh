@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:13:59 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/08 00:15:13 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 00:18:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char	*check_quote(char *line, int i, char c)
 		i++;
 	prompt_size = g_tracking.pos->prompt;
 	saveprompt = g_tracking.prompt;
+	free(g_tracking.prompt);
 	g_tracking.prompt = ft_strdup(">");
 	while (test == 1)
 	{
@@ -87,6 +88,7 @@ char	*check_quote(char *line, int i, char c)
 		}
 		ft_putchar('\n');
 	}
+	free(g_tracking.prompt);
 	g_tracking.quotes = 0;
 	g_tracking.pos->prompt = prompt_size;
 	g_tracking.prompt = saveprompt;
