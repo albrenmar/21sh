@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 21:11:56 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 00:03:21 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -365,6 +365,7 @@ int				its_fd_reddir(t_last *list);
 int				its_reddir_to_fd(t_last *list);
 int				its_pipe(t_last *list);
 int				its_separator(t_last *list);
+char			*its_quote(int i, char *str, int *nb, char c);
 char			**create_tab_to_exec(t_last *list);
 void			execute_pipe(char **tab_exec, t_jobs *job);
 void			execute_two(char **tab_cmd);
@@ -380,7 +381,7 @@ char			*search_reddir(char *str, int *nb);
 char			*search_normally_arg(char *str, int *nb);
 char			*search_symboll(char *str, int *nb);
 int				its_not_symbol(char c);
-char			*check_quote(char *line, int i);
+char			*check_quote(char *line, int i, char c);
 char			*check_bracket(char *line, int i);
 int				ft_valid_quote(char *line, char c, int flag);
 int				ft_valid_bracket(char *line, char c, int flag);
