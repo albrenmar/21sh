@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:24:28 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/07 18:52:58 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/07 19:06:21 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,8 +163,6 @@ char 	*shebang_parse_switch(t_core *core, char *line)
 		else
 			i++;
 	}
-	if (tmp_line)
-		free(tmp_line);
 	show_line ? ft_putendl(show_line) : line;
 	return line ;
 }
