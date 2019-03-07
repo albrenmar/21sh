@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/05 23:47:10 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/07 03:47:39 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void			clean_tab_exec(char **tab_exec)
 {
 	int			i;
 
+	i = 0;
 	while (tab_exec[i] != '\0')
 	{
 		if (ft_strlen(tab_exec[i]) == 0)
