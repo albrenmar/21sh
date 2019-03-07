@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 04:03:32 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 00:24:57 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,8 @@ int		get_key(void)
 	char	*test;
 
 	tcsetattr(0, TCSANOW, &g_tracking.myterm);
-	get_coolprompt();
+	if (g_tracking.quotes != 1)
+		get_coolprompt();
 	print_prompt();
 	g_tracking.histindex = get_last() + 1;
 	while (readloop(0) == 0)
