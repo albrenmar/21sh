@@ -6,6 +6,7 @@ Partie Abraham
 -fix redirection output (>) ou (>>) des builtins quand il y a pas de fork
 -Ctrl-Z avec "cat" en cours interrompre system call (regardeer sigaction)
 -Ctrl-Z avec "cat" en cours (peut etre avec tous les systemcall), bug pour les prochaines commandes. faut arreter les systemcall lors de ctrlz
+-implementer sigaction sans bug niveau jobs!
 
 Partie Marc
 - Gestion d'errors pour les expansions.
