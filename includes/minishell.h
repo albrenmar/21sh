@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 09:25:57 by hdufer            #+#    #+#             */
-/*   Updated: 2019/02/18 14:32:39 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/07 18:33:47 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@
 # define ERROR_FLAGS_HIST core->arg[1][i] != 'c' && core->arg[1][i] != 'd' && core->arg[1][i] != 'a' \
 && core->arg[1][i] != 'n' && core->arg[1][i] != 'r' && core->arg[1][i] != 'w' \
 && core->arg[1][i] != 'p' && core->arg[1][i] != 's'
+# define EVENT_NOT_FUND_BASELINE {ft_putendl_fd("Event not found", 2); return baseline;}
 
 int					g_signal_c;
 typedef struct stat	t_stat;
@@ -133,4 +134,7 @@ void				history_builtin_p(t_core *core);
 void				history_builtin_s(t_core *core);
 t_hist				*builtin_s_args(char **tab, t_hist *hist);
 t_hist				*hist_delete_last(t_hist *hist);
+char				*ft_strrdup(char *line, int n);
+char			 	*shebang_parse_switch(t_core *core, char *line);
+char				*shebang_isspace(char *line, int i);
 #endif

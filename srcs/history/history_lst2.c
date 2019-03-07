@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/02/18 13:50:03 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/07 18:21:36 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,11 +133,13 @@ t_hist		*hist_delete_last(t_hist *hist)
 {
 	t_hist *tmp;
 
+	if (!hist)
+		return hist_free(hist);
 	while(hist->next)
 		hist = hist->next;
 	tmp = hist;
 	if (hist && !(hist->previous))
-		hist = hist_free(hist);
+		return hist_free(hist);
 	else
 	{
 		hist = hist->previous;

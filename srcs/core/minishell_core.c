@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 09:27:22 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/14 14:01:05 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/07 18:35:02 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,12 @@ void			minishell(int argc, char **argv, char **env)
 	{
 		g_signal_c = 0;
 		core->path = ft_parse_path(core);
-		core->arg = ft_split_whitespaces(core->line);
 		// Put history setup
 		history_setup(core);
+		// line shebang is changed;
+		core->line = shebang_parse_switch(core, core->line);
+		//end
+		core->arg = ft_split_whitespaces(core->line);
 		if (core->arg[0] != '\0' && ft_check_args(core->line) != ERROR)
 			ft_run_command(core);
 		free(core->line);

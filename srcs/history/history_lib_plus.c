@@ -6,13 +6,13 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 14:31:10 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/01 17:59:01 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/07 10:32:12 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int		ft_isdigit_str(char* str)
+int			ft_isdigit_str(char* str)
 {
 	int i;
 
@@ -24,6 +24,25 @@ int		ft_isdigit_str(char* str)
 		i++;
 	}
 	return (1);
+}
+
+char		*ft_strrdup(char *line, int n)
+{
+	char	*newline;
+	int		i;
+
+	i = 0;
+	newline = ft_memalloc(sizeof(line) * n+1);
+	if (!newline)
+		return (NULL);
+	while (line && n != i)
+	{
+		if(line[i])
+			newline[i] = line[i];
+		i++;
+	}
+	newline[i] = 0;
+	return (newline);
 }
 
 t_hist		*builtin_s_args(char **tab, t_hist *hist)

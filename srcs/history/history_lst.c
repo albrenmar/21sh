@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/02/18 16:53:20 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/07 18:18:59 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		hist_lst_add_next(t_hist *hist,char *line)
 {
 	t_hist	*new_node;
 
-	while (hist->next && hist->next != NULL)
+	while (hist && hist->next && hist->next != NULL)
 		hist = hist->next;
 	new_node = ft_memalloc(sizeof(*new_node));
 	new_node->index = hist->index + 1;

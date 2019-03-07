@@ -6,7 +6,7 @@
 #    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/13 09:28:25 by hdufer            #+#    #+#              #
-#    Updated: 2019/02/18 13:45:00 by hdufer           ###   ########.fr        #
+#    Updated: 2019/03/07 16:52:45 by hdufer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRCLST			=	create_lst.c count_lst.c delete_lst.c put_lst.c
 SRCBUILTIN		=	cd_builtin.c echo_builtin.c env_builtin.c env_builtin2.c \
 					env_builtin3.c exit_builtin.c run_cmd.c which_builtin.c \
 
-SRCHISTORY		=	history.c history_lst.c history_lst2.c history_lst_options.c history_lib_plus.c history_builtin_option.c
+SRCHISTORY		=	history.c history_lst.c history_lst2.c history_lst_options.c history_lib_plus.c history_builtin_option.c shebang.c shebang_plus.c
 SRCSIGN			=	signal.c
 
 
