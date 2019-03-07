@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/07 03:47:39 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/08 00:14:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ void			transform_cwd(void)
 
 void			print_prompt(void)
 {
+	if (g_tracking.quotes == 1)
+	{
+		ft_putstr_fd(g_tracking.prompt, 2);
+		return ;
+	}
 	ft_putstr_fd(ANSI_COLOR_BLUE, 2);
 	ft_putstr_fd(g_tracking.user, 2);
 	ft_putstr_fd(ANSI_COLOR_DEFAULT, 2);

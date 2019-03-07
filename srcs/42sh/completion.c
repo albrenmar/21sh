@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   completion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:13:59 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/07 22:15:26 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/08 00:15:13 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	*check_quote(char *line, int i, char c)
 	char	*saveprompt;
 	int		nb;
 	int		test;
+	int		prompt_size;
 
 	ret = NULL;
 	join = NULL;
@@ -66,8 +67,9 @@ char	*check_quote(char *line, int i, char c)
 	i++;
 	while (line[i])
 		i++;
+	prompt_size = g_tracking.pos->prompt;
 	saveprompt = g_tracking.prompt;
-	g_tracking.prompt = ">";
+	g_tracking.prompt = ft_strdup(">");
 	while (test == 1)
 	{
 		g_tracking.quotes = 1;
@@ -86,6 +88,7 @@ char	*check_quote(char *line, int i, char c)
 		ft_putchar('\n');
 	}
 	g_tracking.quotes = 0;
+	g_tracking.pos->prompt = prompt_size;
 	g_tracking.prompt = saveprompt;
 	return (ret);
 }
