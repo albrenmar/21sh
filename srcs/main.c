@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/05 05:51:25 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/07 02:29:18 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int		main(int argc, char **argv, char **env)
 	argc = 0;
 	argv = NULL;
 	//	set_env(&st_env, env);
+	// ft_siginit();
 	cursorinit();
-	ft_siginit();
 	init_shell(env);
 	get_term();
 	interactive_check_set_shell_group();
