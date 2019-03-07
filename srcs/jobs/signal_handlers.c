@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handlers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/07 05:02:22 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/07 06:50:44 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void					set_process_signal_handlers(void)
 	// signal(SIGKILL, SIG_DFL);
 	// signal(SIGSTOP, SIG_DFL);
 	struct sigaction	psa;
-    psa.sa_handler = SIG_DFL;
+    
+	psa.sa_handler = SIG_DFL;
     sigaction(SIGINT, &psa, NULL);
 	psa.sa_handler = SIG_DFL;
     sigaction(SIGQUIT, &psa, NULL);
@@ -56,15 +57,19 @@ void					set_process_signal_handlers(void)
 	psa.sa_handler = SIG_DFL;
     sigaction(SIGCONT, &psa, NULL);
 	psa.sa_handler = SIG_DFL;
-    sigaction(SIGTTOU, &psa, NULL);
-	psa.sa_handler = SIG_DFL;
     sigaction(SIGTTIN, &psa, NULL);
-	psa.sa_handler = SIG_DFL;
-    sigaction(SIGINT, &psa, NULL);
 	psa.sa_handler = SIG_DFL;
     sigaction(SIGTTOU, &psa, NULL);
 	psa.sa_handler = SIG_DFL;
     sigaction(SIGCHLD, &psa, NULL);
+
+	// signal(SIGINT, SIG_DFL);
+	// signal(SIGQUIT, SIG_DFL);
+	// signal(SIGTSTP, SIG_DFL);
+	// signal(SIGCONT, SIG_DFL);
+	// signal(SIGTTOU, SIG_DFL);
+	// signal(SIGTTIN, SIG_DFL);
+	// signal(SIGCHLD, SIG_DFL);
 }
 
 void					set_shell_signal_handlers(void)
@@ -91,4 +96,13 @@ void					set_shell_signal_handlers(void)
     sigaction(SIGTTOU, &psa, NULL);
 	psa.sa_handler = SIG_IGN;
     sigaction(SIGCHLD, &psa, NULL);
+
+	// signal(SIGWINCH, sig_winch_handler);
+	// signal(SIGINT, sig_int_handler);
+	// signal(SIGQUIT, SIG_IGN);
+	// signal(SIGTSTP, SIG_IGN);
+	// signal(SIGCONT, SIG_IGN);
+	// signal(SIGTTOU, SIG_IGN);
+	// signal(SIGTTIN, SIG_IGN);
+	// signal(SIGCHLD, SIG_IGN);
 }
