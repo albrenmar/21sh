@@ -5,8 +5,6 @@ Rajouter "Dans des heredocs, valide" pour les heredoc, et quitter proprement le 
 Partie Abraham
 -fix redirection output (>) ou (>>) des builtins quand il y a pas de fork
 -Ctrl-Z avec "cat" en cours interrompre system call (regardeer sigaction)
--regler bug signaux (passer a sigation)
--mettre bon exit avec Ctrl-D + Ctrl-D en ligne vide bug les signals
 
 Partie Marc
 - Gestion d'errors pour les expansions.
