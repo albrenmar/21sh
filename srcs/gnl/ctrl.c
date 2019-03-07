@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 00:53:23 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/07 01:56:11 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/07 03:58:59 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ctrl_d(void)
 	if (utf_strlen(g_tracking.str) == 0)
 	{
 		ft_putchar('\n');
+		tcsetattr(0, TCSANOW, &g_tracking.default_term);
 		ft_exit();
 	}
 	else
