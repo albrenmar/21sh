@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
 /*   Updated: 2019/03/07 01:55:43 by abguimba         ###   ########.fr       */
-=======
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 04:18:51 by bsiche           ###   ########.fr       */
->>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +60,6 @@ void		clean_up_leaks(void)
 
 int			ft_exit(void)
 {
-<<<<<<< HEAD
 	t_jobs	*tmp;
 
 	tmp = g_tracking.jobs;
@@ -85,16 +77,4 @@ int			ft_exit(void)
 	clean_up_leaks();
 	ft_putendl("Exit");
 	exit(0);
-=======
-	if (!g_tracking.jobs->next)
-	{
-		clean_up_leaks();
-		clean_up_leaks();
-		ft_putendl("Exit");
-		exit(0);
-	}
-	else
-		ft_putendl("There are still jobs running you idiot!");
-	return (1);
->>>>>>> alsomvil
 }

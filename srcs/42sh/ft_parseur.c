@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/07 22:22:44 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 15:19:22 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,7 @@ char	*ft_modif_line(char **line)
 	temp = NULL;
 	if (ft_valid_quote(*line, '"', 0))
 	{
-		temp = check_quote(*line, 0, '"');
-		new_line = ft_strjoin(*line, temp);
-		*line = new_line;
-		return (NULL);
-	}
-	else if (ft_valid_quote(*line, '\'', 0))
-	{
-		temp = check_quote(*line, 0, '\'');
+		temp = check_quote(*line, 0);
 		new_line = ft_strjoin(*line, temp);
 		*line = new_line;
 		return (NULL);
@@ -92,7 +85,6 @@ t_last	*ft_parseur(char *str)
 	i = 0;
 	temp = NULL;
 	line = NULL;
-	list_cmd = NULL;
 	while (str[i] == ' ')
 		i++;
 	while ((line = ft_modif_line(&str)) == NULL)
@@ -103,6 +95,7 @@ t_last	*ft_parseur(char *str)
 		templist = list_cmd;
 		list_cmd->name = temp;
 		temp = NULL;
+		//ATTENTION !! SEGFAULT ICI DANS LE CAS "dsf
 		while (line[i] && (temp = recup_cmd(&line[i], &i, 0)) != NULL)
 		{
 			list_cmd->next = create_new_list();

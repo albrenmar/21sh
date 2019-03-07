@@ -6,11 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:00:43 by alsomvil          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2019/03/03 08:29:48 by abguimba         ###   ########.fr       */
-=======
-/*   Updated: 2019/03/01 09:17:41 by abguimba         ###   ########.fr       */
->>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +47,8 @@ char	**test_exist_fonction(char **tab_cmd, int mode)
 	struct stat	path_stat;
     
 	stat(tab_cmd[0], &path_stat);
-<<<<<<< HEAD
 	if (ft_strchr(tab_cmd[0], '/') && S_ISREG(path_stat.st_mode) == 0)
 		return (NULL);
-=======
->>>>>>> alsomvil
 	if (mode == 2 && (access(tab_cmd[0], F_OK) == 0) && (access(tab_cmd[0], X_OK) == 0))
 	{
 		if (tab_cmd[0][0] == '.' && tab_cmd[0][1] == '/' && S_ISREG(path_stat.st_mode))

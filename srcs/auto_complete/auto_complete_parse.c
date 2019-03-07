@@ -3,47 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   auto_complete_parse.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
 /*   Updated: 2019/03/06 02:04:21 by bsiche           ###   ########.fr       */
-=======
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/28 04:02:39 by mjose            ###   ########.fr       */
->>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-<<<<<<< HEAD
-=======
-int		check_type(void)
-{
-	char	*check;
-
-	check = g_tracking.aut->word;
-	if (check[0] == '/' || check[0] == '~')
-		return (1);
-	if (check[1] != '\0')
-	{
-		if (check[0] == '.' && check[1] == '/')
-			return (1);
-		if (check[0] == '$' && check[1] == '{')
-			return (2);
-		if (check[2] != '\0')
-			if (check[0] == '.' && check[1] == '.' && check[2] == '/')
-				return (1);
-		if (check[ft_strlen(check) - 1] == '/')
-			return (1);
-	}
-	return (0);
-}
-
->>>>>>> alsomvil
 void	escape_path(void)
 {
 	t_lstcontainer	*tmp;
@@ -127,12 +95,9 @@ int		sanitize_path(void)
 
 void	assign_type(void)
 {
-<<<<<<< HEAD
 	int i;
 
 	i = 0;
-=======
->>>>>>> alsomvil
 	g_tracking.aut->path = NULL;
 	if (g_tracking.aut->word != NULL)
 	{
@@ -145,7 +110,6 @@ void	assign_type(void)
 		}
 		if (g_tracking.aut->type == 2)
 		{
-<<<<<<< HEAD
 			i = ft_strlen(g_tracking.aut->word);
 			g_tracking.aut->word = ft_strsub(g_tracking.aut->word, 2, i, 1);
 			complete_usr_var();
@@ -153,10 +117,3 @@ void	assign_type(void)
 	}
 	check_hidden();
 }
-=======
-			g_tracking.aut->word = ft_strsub(g_tracking.aut->word, 2, ft_strlen(g_tracking.aut->word) , 1);
-			complete_usr_var();
-		}
-	}
-}
->>>>>>> alsomvil

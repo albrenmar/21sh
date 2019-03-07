@@ -3,28 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fg_bg_builtins.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
 /*   Updated: 2019/03/05 04:04:00 by abguimba         ###   ########.fr       */
-=======
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 12:42:54 by abe              ###   ########.fr       */
->>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> alsomvil
 int			bg_builtin_output(t_jobs *tmp)
 {
 	if (tmp->background != 1)
@@ -94,11 +82,7 @@ int			bg_builtin(void)
 			tmp = tmp->next;
 		return (bg_builtin_output(tmp));
 	}
-<<<<<<< HEAD
 	errors_bg(0, 4);
-=======
-	ft_putendl("No jobs 😂");
->>>>>>> alsomvil
 	return (1);
 }
 
@@ -150,10 +134,6 @@ int			fg_builtin(void)
 			tmp = tmp->next;
 		return (fg_builtin_output(tmp));
 	}
-<<<<<<< HEAD
 	errors_fg(0, 4);
-=======
-	ft_putendl("No jobs 😂");
->>>>>>> alsomvil
 	return (1);
 }

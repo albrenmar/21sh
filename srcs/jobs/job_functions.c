@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   job_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/25 12:44:06 by abe              ###   ########.fr       */
+/*   Updated: 2019/03/07 06:08:54 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -322,6 +322,7 @@ void				put_job_in_foreground(t_jobs *job, int cont)
 	tcsetpgrp(g_tracking.sterminal, job->jpid);
 	if (cont)
 	{
+		// kill(job->jpid, SIGTTIN);
 		// tcsetattr(g_tracking.sterminal, TCSADRAIN, &job->jterm);
 		if (kill (- job->jpid, SIGCONT) < 0)
 			perror ("kill (SIGCONT)");
@@ -336,8 +337,10 @@ void				put_job_in_foreground(t_jobs *job, int cont)
 void				put_job_in_background(t_jobs *job, int cont)
 {
 	if (cont)
+	{
 		if (kill (-job->jpid, SIGCONT) < 0)
 			perror ("kill (SIGCONT)");
+	}
 }
 
 void				interactive_check_set_shell_group(void)

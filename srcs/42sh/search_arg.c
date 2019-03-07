@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:06:56 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/07 22:15:12 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 15:11:52 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,16 @@ char	*search_normally_arg(char *str, int *nb)
 	{
 		if (str[i] && str[i] == '"')
 		{
-			temp = its_quote(i, str, nb, '"');
-			if (temp)
+			i++;
+			while (str[i] && str[i] != '"')
+				i++;
+			i++;
+			if (!str[i] || str[i] == ' ')
+			{
+				temp = ft_strndup(str, i);
+				(*nb) += i;
 				return (temp);
-		}
-		else if (str[i] && str[i] == '\'')
-		{
-			temp = its_quote(i, str, nb, '\'');
-			if (temp)
-				return (temp);
+			}
 		}
 		else if (str[i] == '$' && str[i + 1] && str[i + 1] == '{')
 		{

@@ -6,11 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2019/03/04 13:53:38 by mjose            ###   ########.fr       */
-=======
-/*   Updated: 2019/02/28 03:53:02 by mjose            ###   ########.fr       */
->>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +40,7 @@ typedef struct	s_scan
 	struct s_scan		*next;
 }				t_scan;
 
-<<<<<<< HEAD
 char			expand_transformer(char **value, int chg_value);
-=======
-
-void			expand_transformer(char **value);
->>>>>>> alsomvil
 int				need_expand(char *to_transf);
 t_expand		*new_expand(int len);
 void			create_list_expand(t_expand *new_letter, char *line);
@@ -57,11 +48,7 @@ int				have_homedir(char *to_transf);
 int				check_have_homedir(struct passwd *user_inf, char *tmp_usr);
 int				have_parm(char *to_transf);
 int				is_to_add_or_mod_parm(char *to_transf);
-<<<<<<< HEAD
 int				transform(t_expand *expand, char **str);
-=======
-void			transform(t_expand *expand, char **str);
->>>>>>> alsomvil
 void			expand_tilde_only(char **str);
 char			*get_user_home(char *user);
 void			expand_tilde_path(char **str, t_expand **expand);
@@ -100,7 +87,6 @@ char			*value(char *val, t_expand *start);
 char			*value_asterisk(char *val, t_expand *start);
 int				have_envname(char *var);
 int				have_setname(char *var);
-<<<<<<< HEAD
 int				scan_arg_transformer(char **arg);
 t_scan			*new_scan(void);
 void			scan_argument(char *arg, t_scan *info_arg);
@@ -110,11 +96,5 @@ int				ft_iswhitespace(int c);
 void			print_exp_error(char *to_error);
 void			print_exp_error_eq(char *varname, char *value);
 void			rmv_tab_exec(char **tab_exec, int to);
-=======
-void			scan_arg_transformer(char **arg);
-t_scan			*new_scan(void);
-void			scan_argument(char *arg, t_scan *info_arg);
-char			*ft_exp_complete(char *arg);
->>>>>>> alsomvil
 
 #endif

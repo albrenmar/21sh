@@ -6,11 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 00:18:46 by bsiche            #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2019/03/06 01:35:08 by bsiche           ###   ########.fr       */
-=======
-/*   Updated: 2019/03/01 03:49:11 by bsiche           ###   ########.fr       */
->>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +79,8 @@ int		ft_edgecase(char *dossier)
 		dir = opendir(dossier);
 		if (errno == ENOTDIR)
 		{
-<<<<<<< HEAD
 			if (g_tracking.aut)
 				g_tracking.aut->err = 1;
-=======
-			err = ft_strdup("ft_ls: ");
-			err = ft_strjoinfree(err, truename(dossier), 1);
-			perror(err);
-			free(err);
->>>>>>> alsomvil
 			return (1);
 		}
 		if (dir)

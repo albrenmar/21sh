@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:13:59 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/07 22:15:26 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/01 15:17:21 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,22 @@
 
 int		ft_valid_quote(char *line, char c, int flag)
 {
-	int		i;
-	int		chaine;
-	char	temp;
+	int	i;
 
 	i = 0;
-	chaine = 0;
-	if (c == '"')
-		temp = '\'';
-	else if (c == '\'')
-		temp = '"';
 	while (line[i])
 	{
-		if (line[i] == temp && flag == 0)
-		{
-			i++;
-			chaine++;
-			while (line[i] && line[i] != temp)
-				i++;
-			if (!line[i])
-				return (0);
-			else
-				chaine--;
-		}
-		else if (line[i] == c && !flag && !chaine)
+		if (line[i] == c)
 			flag++;
-		else if (line[i] == c && flag)
-			flag--;
 		i++;
 	}
-	if (flag == 0)
+	if ((flag % 2) == 0)
 		return (0);
 	else
 		return (1);
 }
 
-char	*check_quote(char *line, int i, char c)
+char	*check_quote(char *line, int i)
 {
 	char	*ret;
 	char	*join;
@@ -75,7 +55,7 @@ char	*check_quote(char *line, int i, char c)
 		if (g_tracking.quotes == 10)
 			exit (0);
 		join = g_tracking.cmd;
-		test = ft_valid_quote(join, c, test);
+		test = ft_valid_quote(join, '"', test);
 		if (!ret)
 			ret = ft_strdup(join);
 		else
@@ -94,24 +74,18 @@ int		ft_valid_bracket(char *line, char c, int flag)
 {
 	int	i;
 	int	accol;
-	int	quote;
-	int double_quote;
 	
 	i = 0;
 	accol = 0;
-	quote = 0;
-	double_quote = 0;
 	while (line[i])
 		i++;
 	while (i > 0)
 	{
 		if (line[i] == '"')
-			double_quote++;
-		else if (line[i] == '\'')
-			quote++;
-		else if (line[i] == '}' && quote % 2 == 0 && double_quote % 2 == 0)
+			flag++;
+		else if (line[i] == '}' && flag % 2 == 0)
 			accol++;
-		else if (line[i] == '$' && line[i + 1] && line[i + 1] == '{' && quote % 2 == 0 && double_quote % 2 == 0)
+		else if (line[i] == '$' && line[i + 1] && line[i + 1] == '{' && flag % 2 == 0)
 		{
 			accol--;
 			if (accol < 0)

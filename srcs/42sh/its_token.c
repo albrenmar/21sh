@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 04:18:28 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/07 21:32:26 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/02/27 18:40:46 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,24 +64,6 @@ int		its_pipe(t_last *list)
 	if (list && list->name[i] && ft_strlen(list->name) == 1 && list->name[i] == '|')
 		return (1);
 	return (0);
-}
-
-char	*its_quote(int i, char *str, int *nb, char c)
-{
-	char	*temp;
-
-	temp = NULL;
-	i++;
-	while (str[i] && str[i] != c)
-		i++;
-	i++;
-	if (!str[i] || str[i] == ' ')
-	{
-		temp = ft_strndup(str, i);
-		(*nb) += i;
-		return (temp);
-	}
-	return (temp);
 }
 
 int		its_separator(t_last *list)
