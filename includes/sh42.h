@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
 /*   Updated: 2019/03/06 21:11:56 by bsiche           ###   ########.fr       */
+=======
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
+/*   Updated: 2019/03/01 15:11:48 by alsomvil         ###   ########.fr       */
+>>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +23,11 @@
 # include "ft_ls.h"
 # include "minishell.h"
 # include "expansions.h"
+<<<<<<< HEAD
 # include "builtins.h"
+=======
+# include "set.h"
+>>>>>>> alsomvil
 # include <sys/ioctl.h>
 # include <termios.h>
 # include <curses.h>
@@ -28,6 +39,7 @@
 # include <time.h>
 # include <fcntl.h>
 
+<<<<<<< HEAD
 # define ANSI_COLOR_BLUE	"\x1b[36m"
 # define ANSI_COLOR_GREEN	"\x1b[32m"
 # define ANSI_COLOR_DEFAULT "\x1b[0m"
@@ -52,6 +64,27 @@
 # define K_TAB				9
 # define K_CTRLR			18
 # define K_DEL				"\x1b\x5b\x33\x7e"
+=======
+# define USER		"bsiche"
+# define K_FN1		"\x1b\x4f\x50"
+# define K_FN2		"\x1b\x4f\x51"
+# define K_FN3		"\x1b\x4f\x52"
+# define K_LEFT		"\x1b\x5b\x44"
+# define K_RIGHT	"\x1b\x5b\x43"
+# define K_DOWN		"\x1b\x5b\x42"
+# define K_UP		"\x1b\x5b\x41"
+# define K_LUP		"\x1b\x5b\x31\x3b\x32\x41"
+# define K_LDOWN	"\x1b\x5b\x31\x3b\x32\x42"
+# define K_WLEFT	"\x1b\x5b\x31\x3b\x32\x44"
+# define K_WRIGHT	"\x1b\x5b\x31\x3b\x32\x43"
+# define K_RTN		10
+# define K_RT		13
+# define K_SPC		32
+# define K_BKSP		127
+# define K_TAB		9
+# define K_CTRLR	18
+# define K_DEL		"\x1b\x5b\x33\x7e"
+>>>>>>> alsomvil
 
 int		descrf[2];
 int		descrf_two[2];
@@ -95,9 +128,12 @@ typedef struct	s_auto
 	int				line_up;
 	int				last_page;
 	int				pad_lpage;
+<<<<<<< HEAD
 	int				hidden;
 	int				err;
 	int				to_add_y;
+=======
+>>>>>>> alsomvil
 }				t_auto;
 
 typedef struct	s_cpaste
@@ -153,7 +189,10 @@ typedef struct	s_shell
 	t_set_fd		*set_fd;
 	t_env_set		*setenv_lst;
 	char			**tab_env;
+<<<<<<< HEAD
 	int				expand_error;
+=======
+>>>>>>> alsomvil
 }				t_shell;
 
 typedef struct		s_hash
@@ -180,8 +219,11 @@ typedef struct	s_tracking
 	struct s_hash		*hashtable[27];
 	char				*str;
 	char				*cmd;
+<<<<<<< HEAD
 	char				*user;
 	char				*cwd;
+=======
+>>>>>>> alsomvil
 	char				*prompt;
 	char				*search;
 	char				*found;
@@ -198,7 +240,11 @@ typedef struct	s_tracking
 	pid_t				spid;
 	int					bg;
 	int					fg;
+<<<<<<< HEAD
 	// int					lastplace;
+=======
+	int					lastplace;
+>>>>>>> alsomvil
 	// char				**orderhold;
 }				t_tracking;
 
@@ -229,6 +275,10 @@ typedef struct	s_jobs
 	int				notified;
 	int				backstart;
 	struct termios	jterm;
+<<<<<<< HEAD
+=======
+	// pid_t			lastpid;
+>>>>>>> alsomvil
 	struct s_cmd	*t_cmd;
 }				t_jobs;
 
@@ -277,8 +327,11 @@ void			begin_paste(void);
 void			print_line_cpy(int start, int end);
 t_lstcontainer	*modified_ls(int argc, char **argv);
 int				auto_complete(void);
+<<<<<<< HEAD
 void			check_hidden(void);
 int				check_type(void);
+=======
+>>>>>>> alsomvil
 void			get_line_col(void);
 void			get_max_size(void);
 void			ft_strpadding(void);
@@ -293,12 +346,19 @@ void			rem_str(char *str);
 void			assign_type(void);
 void			clean_up_autoc(void);
 int				ft_menuline(void);
+<<<<<<< HEAD
 void			back_up_add(void);
 void			go_back_down(void);
 char			*send_color(int i);
 void			color(t_list *liste);
 int				print_menu(void);
 int				end_autocomplete(int i);
+=======
+char			*send_color(int i);
+void			color(t_list *liste);
+int				print_menu(void);
+void			end_autocomplete(int i);
+>>>>>>> alsomvil
 void			build_bin_lst(void);
 t_list			*move_arround(t_list *buf, int i);
 void			set_up_page(void);
@@ -331,7 +391,10 @@ t_ls			*ls_alloc(char *str);
 
 
 void			hist_file_to_lst(void);
+<<<<<<< HEAD
 char			*create_path_hist(void);
+=======
+>>>>>>> alsomvil
 int				print_hist();
 int				get_last();
 int				go_to(int i);
@@ -348,9 +411,12 @@ int     		begin_search(void);
 char         	*get_hist_ptr(char *needle);
 t_hist			*get_hist_nbr(int i);
 
+<<<<<<< HEAD
 void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
 int				fg_builtin_output(t_jobs *tmp);
 int				bg_builtin_output(t_jobs *tmp);
+=======
+>>>>>>> alsomvil
 
 t_last			*create_new_list(void);
 t_last			*ft_parseur(char *line);
@@ -365,6 +431,10 @@ int				its_fd_reddir(t_last *list);
 int				its_reddir_to_fd(t_last *list);
 int				its_pipe(t_last *list);
 int				its_separator(t_last *list);
+<<<<<<< HEAD
+=======
+char			*its_quote(int i, char *str, int *nb, char c);
+>>>>>>> alsomvil
 char			**create_tab_to_exec(t_last *list);
 void			execute_pipe(char **tab_exec, t_jobs *job);
 void			execute_two(char **tab_cmd);
@@ -374,22 +444,42 @@ int				error_lexer(t_last *list_cmd);
 void			create_fich(t_last *list);
 void			print_last(t_last *list);
 int				its_eper(t_last *list);
+<<<<<<< HEAD
 char			**tab_dup(char **tob);
+=======
+int				is_builtin(void);
+int				ft_exit(void);
+int				is_builtin_alone(void);
+int				ft_builtin_search(char *builtin);
+int				builtin_exec(t_last *arglist);
+void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
+char			**tab_dup(char **tob);
+int				jobs_builtin(void);
+int				errors_fg(int nb, int error);
+int				fg_builtin_output(t_jobs *tmp);
+>>>>>>> alsomvil
 char			*search_fd_reddir(char *str, int *nb);
 char			*search_reddir(char *str, int *nb);
 char			*search_normally_arg(char *str, int *nb);
 char			*search_symboll(char *str, int *nb);
 int				its_not_symbol(char c);
+<<<<<<< HEAD
 char			*check_quote(char *line, int i);
+=======
+char			*check_quote(char *line, int i, char c);
+>>>>>>> alsomvil
 char			*check_bracket(char *line, int i);
 int				ft_valid_quote(char *line, char c, int flag);
 int				ft_valid_bracket(char *line, char c, int flag);
 
+<<<<<<< HEAD
 void			get_coolprompt(void);
 void			print_prompt(void);
 void			transform_cwd(void);
 int				spaces_line_check(char *line);
 void			clean_tab_exec(char **tab_exec);
+=======
+>>>>>>> alsomvil
 
 void			interactive_check_set_shell_group(void);
 void			set_shell_signal_handlers(void);
@@ -408,9 +498,13 @@ int				hash_update_commands(int j);
 char			**tab_format_hash(char *binary);
 char			**hashed_command(char **tab_exec);
 
+<<<<<<< HEAD
 int				argc_error(void);
 int				exec_errors(char **tab_exec, int mode);
 int				exec_errors_dir(char **tab_exec, int mode);
+=======
+int				exec_errors(char **tab_exec, int mode);
+>>>>>>> alsomvil
 
 t_jobs			*new_job(t_last *part, int background);
 void			wait_for_job(t_jobs *job);
@@ -418,10 +512,19 @@ void			put_job_in_foreground(t_jobs *job, int cont);
 void			put_job_in_background(t_jobs *job, int cont);
 int				job_is_done(t_jobs *job);
 int				job_is_stopped(t_jobs *job);
+<<<<<<< HEAD
+=======
+int				bg_builtin(void);
+int				fg_builtin(void);
+>>>>>>> alsomvil
 char			*parse_job_number(char *str);
 int				job_exists(int place);
 int				parse_job_sign(char *str);
 int				errors_jobs(char option, int nb, int error);
+<<<<<<< HEAD
+=======
+int				errors_bg(int nb, int error);
+>>>>>>> alsomvil
 int				cmd_checker(t_last *part, int mode, t_jobs *job);
 void			free_last(t_last **cmd);
 char			*check_separator(t_last *part);
@@ -433,7 +536,11 @@ void			free_job(t_jobs *job);
 void			jobs_notifications(void);
 void			jobs_update_current(void);
 
+<<<<<<< HEAD
 int				main_test();
+=======
+int				main_test(t_last *arglist);
+>>>>>>> alsomvil
 char			**init_envp(t_lstcontainer *env);
 
 #endif

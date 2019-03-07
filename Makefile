@@ -3,17 +3,27 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
+<<<<<<< HEAD
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
 #    Updated: 2019/03/06 04:10:16 by bsiche           ###   ########.fr        #
+=======
+#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
+#    Updated: 2019/03/01 09:30:56 by alsomvil         ###   ########.fr        #
+>>>>>>> alsomvil
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=	42sh
 
 SRC = main.c \
+<<<<<<< HEAD
 	  42sh/tools.c \
+=======
+>>>>>>> alsomvil
 	  42sh/errors.c \
 	  42sh/ft_parseur.c \
 	  42sh/ft_lexeur.c \
@@ -29,23 +39,30 @@ SRC = main.c \
 	  42sh/hashtables.c \
 	  42sh/search_arg.c \
 	  42sh/completion.c \
+<<<<<<< HEAD
 	  builtins/cd/cd_path.c \
 	  builtins/cd/directory.c \
 	  builtins/cd/ft_cd.c \
 	  builtins/cd/ft_cd2.c \
 	  builtins/cd/ft_dotdot.c \
 	  builtins/builtin_tools.c \
+=======
+>>>>>>> alsomvil
 	  builtins/fg_bg_builtins.c \
 	  builtins/jobs_builtin.c \
 	  builtins/exit.c \
 	  builtins/hash_builtin.c \
 	  builtins/builtins.c \
 	  builtins/set.c \
+<<<<<<< HEAD
 	  builtins/echo/exec.c \
+=======
+>>>>>>> alsomvil
 	  builtins/type_main.c \
 	  builtins/test_main.c \
 	  builtins/test_two_arg.c \
 	  builtins/test_three_arg.c \
+<<<<<<< HEAD
 	  builtins/builtin_errors.c \
 	  jobs/signal_handlers.c \
 	  jobs/job_utils.c \
@@ -71,6 +88,30 @@ SRC = main.c \
 	  auto_complete/auto_complete_check.c \
 	  auto_complete/auto_complete_cleanup.c \
 	  auto_complete/auto_complete_cursor.c \
+=======
+	  Jobs/signal_handlers.c \
+	  Jobs/utils.c \
+	  Jobs/job_functions.c \
+	  Jobs/errors.c \
+	  Jobs/ft_job_control.c \
+	  GNL/term_setup.c \
+	  GNL/stringsearch.c \
+	  GNL/signals.c \
+	  GNL/init_term.c \
+	  GNL/cursor_pos.c \
+	  GNL/cursor_check.c \
+	  GNL/cursor_arrows.c \
+	  GNL/term_size.c \
+	  GNL/lib_utf.c \
+	  GNL/print_line.c \
+	  GNL/next_word.c \
+	  GNL/copy.c \
+	  GNL/ctrl.c \
+	  GNL/paste.c \
+	  GNL/get_key.c \
+	  auto_complete/auto_complete.c \
+	  auto_complete/auto_complete_cleanup.c \
+>>>>>>> alsomvil
 	  auto_complete/auto_complete_list.c \
 	  auto_complete/auto_complete_page.c \
 	  auto_complete/auto_complete_loop.c \
@@ -81,7 +122,10 @@ SRC = main.c \
 	  auto_complete/print_arg_list.c \
 	  auto_complete/send_color.c \
 	  auto_complete/var_list.c \
+<<<<<<< HEAD
 	  auto_complete/end_autocomplete.c \
+=======
+>>>>>>> alsomvil
 	  back_search/init_search.c \
 	  back_search/search_lst.c \
 	  ft_ls/cmdparse.c \
@@ -138,8 +182,11 @@ SRC = main.c \
 	  expansions/environ.c \
 	  expansions/environ_set.c \
 	  expansions/scan.c \
+<<<<<<< HEAD
   	  expansions/quote.c \
 	  expansions/expand_error.c \
+=======
+>>>>>>> alsomvil
 	  expansions/autocomplete/auto_com_expan.c
 
 CLEAR_LINE	= \033[2K
@@ -167,7 +214,11 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
+<<<<<<< HEAD
 FLAG = -g -fsanitize=address 
+=======
+FLAG = 
+>>>>>>> alsomvil
 
 all : $(NAME)
 

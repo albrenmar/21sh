@@ -6,7 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 06:52:13 by bsiche            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/06 00:29:04 by bsiche           ###   ########.fr       */
+=======
+/*   Updated: 2019/03/01 07:10:11 by bsiche           ###   ########.fr       */
+>>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +25,7 @@ void	clean_up_pages(void)
 	}
 }
 
+<<<<<<< HEAD
 void	clean_up_tofree(void)
 {
 	free_all(g_tracking.aut->to_free, NULL);
@@ -29,6 +34,8 @@ void	clean_up_tofree(void)
 	free(g_tracking.aut->comp_list);
 }
 
+=======
+>>>>>>> alsomvil
 void	clean_up_autoc(void)
 {
 	free(g_tracking.aut->word);
@@ -38,7 +45,16 @@ void	clean_up_autoc(void)
 	free(g_tracking.aut->path);
 	g_tracking.aut->path = NULL;
 	if (g_tracking.aut->to_free)
+<<<<<<< HEAD
 		clean_up_tofree();
+=======
+	{
+		free_all(g_tracking.aut->to_free, NULL);
+		g_tracking.aut->to_free = NULL;
+		ft_lstdel(g_tracking.aut->comp_list->firstelement, 0);
+		free(g_tracking.aut->comp_list);
+	}
+>>>>>>> alsomvil
 	else
 	{
 		free_all(g_tracking.aut->comp_list, NULL);
@@ -52,4 +68,8 @@ void	clean_up_autoc(void)
 	clean_up_pages();
 	free(g_tracking.aut);
 	g_tracking.aut = NULL;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> alsomvil

@@ -6,16 +6,44 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/06 03:50:24 by bsiche           ###   ########.fr       */
+=======
+/*   Updated: 2019/02/24 03:17:37 by bsiche           ###   ########.fr       */
+>>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
+<<<<<<< HEAD
 char			*ft_joinline(int col_nbr, int i, t_ls *arg)
 {
 	char		*line;
 	char		*sub;
+=======
+int		ft_check(void)
+{
+	int		flag;
+	int		space;
+	int		nb;
+
+	flag = 0;
+	if (g_tracking.aut->col_nbr == 0)
+		return (1);
+	space = g_tracking.aut->lin_nbr * g_tracking.aut->col_nbr;
+	nb = lstcontainer_size(g_tracking.aut->comp_list);
+	if (space < nb)
+		return (1);
+	else
+		return (0);
+}
+
+char	*ft_joinline(int col_nbr, int i, t_ls *arg)
+{
+	char	*line;
+	char	*sub;
+>>>>>>> alsomvil
 
 	line = ft_strnew(0);
 	sub = send_color(arg->color);
@@ -28,6 +56,7 @@ char			*ft_joinline(int col_nbr, int i, t_ls *arg)
 	return (line);
 }
 
+<<<<<<< HEAD
 char			*ft_createline(void)
 {
 	int			i;
@@ -35,6 +64,15 @@ char			*ft_createline(void)
 	t_ls		*arg;
 	int			col_nbr;
 	char		*fake;
+=======
+char	*ft_createline()
+{
+	int		i;
+	t_list	*tmp;
+	t_ls	*arg;
+	int		col_nbr;
+	char	*fake;
+>>>>>>> alsomvil
 
 	tmp = g_tracking.aut->page_lst->firstelement;
 	col_nbr = g_tracking.aut->col_nbr;
@@ -56,6 +94,7 @@ char			*ft_createline(void)
 	return (fake);
 }
 
+<<<<<<< HEAD
 int				ft_menuline(void)
 {
 	char		*res;
@@ -74,14 +113,63 @@ int				print_menu(void)
 	int			i;
 	int			j;
 	int			tmp;
+=======
+int		ft_menuline()
+{
+	char		*res;
+
+//	if (ft_check() == 0)
+//	{
+		if (g_tracking.aut->menuline)
+		{
+			free(g_tracking.aut->menuline);
+			g_tracking.aut->menuline = NULL;
+		}
+		g_tracking.aut->menuline = ft_createline();
+		return (0);
+//	}
+//	else
+//		g_tracking.aut->menuline = (ft_strdup("(╯°□°）╯︵ ┻━┻ Term size too small to display all possibilities"));
+//	return (1);
+}
+
+void	back_up_add(void)
+{
+	int		y;
+	int		ab;
+	int		winx;
+
+	ab = utf_strlen(g_tracking.str);
+	ab += g_tracking.pos->prompt;
+	ab += utf_strlen(g_tracking.aut->to_add);
+	y = ab / g_tracking.terminfo->sizex;
+	y = y - (g_tracking.pos->y);
+	while (y != 0)
+	{
+		y--;
+		tputs(tgetstr("up ", NULL), 1, yan_putchar);
+	}
+}
+
+int		print_menu(void)
+{
+	int		i;
+	int		j;
+	int		tmp;
+>>>>>>> alsomvil
 
 	i = g_tracking.aut->line_up + 1;
 	ft_putstr_nocar(g_tracking.aut->to_add);
 	back_up_add();
+<<<<<<< HEAD
 	i += g_tracking.aut->to_add_y;
 	j = ft_menuline();
 	tputs(tgetstr("do ", NULL), 1, yan_putchar);
 	go_back_down();
+=======
+	j = ft_menuline();
+	tputs(tgetstr("do ", NULL), 1, yan_putchar);
+>>>>>>> alsomvil
 	if (j == 0)
 	{
 		ft_putstr_nocar(g_tracking.aut->menuline);
@@ -94,4 +182,8 @@ int				print_menu(void)
 		}
 	}
 	return (j);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> alsomvil

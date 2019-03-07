@@ -6,7 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 18:47:53 by bsiche            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/06 01:37:14 by bsiche           ###   ########.fr       */
+=======
+/*   Updated: 2019/01/12 02:27:17 by bsiche           ###   ########.fr       */
+>>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +59,25 @@ void	ft_stat2(t_ls *info, struct stat *tmp, time_t cur)
 	info->strpad = NULL;
 }
 
+<<<<<<< HEAD
+=======
+void	getattribut(char *path, t_ls *info)
+{
+	int		i;
+	acl_t	acl;
+
+	acl = NULL;
+	acl = acl_get_link_np(path, ACL_TYPE_EXTENDED);
+	if (acl != NULL)
+		info->acl = '+';
+	i = listxattr(path, NULL, 0, XATTR_NOFOLLOW);
+	if (i != 0 && i != -1)
+		info->acl = '@';
+	acl_free(acl);
+	acl = NULL;
+}
+
+>>>>>>> alsomvil
 int		ft_stat(char *path, t_ls *info, char *option)
 {
 	struct stat		*tmp;
@@ -76,6 +99,11 @@ int		ft_stat(char *path, t_ls *info, char *option)
 		info->time = tmp->st_atime;
 	ft_stat2(info, tmp, cur);
 	ft_special(info, tmp, path);
+<<<<<<< HEAD
+=======
+	if (checkoption(option, '@') == 1)
+		getattribut(path, info);
+>>>>>>> alsomvil
 	free(tmp);
 	return (0);
 }

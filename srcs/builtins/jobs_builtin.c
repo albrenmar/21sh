@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   jobs_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
 /*   Updated: 2019/03/05 04:05:34 by abguimba         ###   ########.fr       */
+=======
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
+/*   Updated: 2019/02/25 12:44:10 by abe              ###   ########.fr       */
+>>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +148,10 @@ int			jobs_builtin(void)
 	tmp = g_tracking.jobs;
 	if (tmp && tmp->next)
 		return (jobs_builtin_parser(tmp, optionl, optionp, place));
+<<<<<<< HEAD
 	errors_jobs('a', 0, 4);
+=======
+	ft_putendl("No jobs bro");
+>>>>>>> alsomvil
 	return (1);
 }

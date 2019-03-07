@@ -6,12 +6,17 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/03 08:24:24 by abguimba         ###   ########.fr       */
+=======
+/*   Updated: 2019/03/01 07:21:36 by abguimba         ###   ########.fr       */
+>>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
 
+<<<<<<< HEAD
 int		argc_error(void)
 {
 	ft_putendl_fd("usage: ./42sh", 2);
@@ -68,5 +73,11 @@ int		exec_errors(char **tab_exec, int mode)
 		}
 		exec_errors_dir(tab_exec, mode);
 	}
+=======
+int		exec_errors(char **tab_exec, int mode)
+{
+
+
+>>>>>>> alsomvil
 	return (-1);
 }

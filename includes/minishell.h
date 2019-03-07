@@ -6,7 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:22:50 by alsomvil          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/05 03:58:26 by bsiche           ###   ########.fr       */
+=======
+/*   Updated: 2019/02/22 11:39:20 by alsomvil         ###   ########.fr       */
+>>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +40,10 @@
 # include <grp.h>
 # include <time.h>
 # include <fcntl.h>
+<<<<<<< HEAD
 # include <sys/wait.h>
+=======
+>>>>>>> alsomvil
 
 typedef struct	s_tab
 {
@@ -79,6 +86,10 @@ void			change_pwd(char ***env, char *pwd);
 void			change_last_pwd(char **env, char *pwd);
 char			*get_last_pwd(char **env);
 void			ft_echo(t_tab *st_tab, t_env *st_env);
+<<<<<<< HEAD
+=======
+void			ft_cd(t_env *st_env, t_tab *st_tab);
+>>>>>>> alsomvil
 void			ft_setenv(t_env *st_env, t_tab *st_tab);
 void			realize_built(t_tab *st_tab, t_env *st_env,
 		char **line, char **env);

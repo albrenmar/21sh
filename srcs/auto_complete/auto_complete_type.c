@@ -6,13 +6,21 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/06 03:34:30 by bsiche           ###   ########.fr       */
+=======
+/*   Updated: 2019/03/01 06:38:32 by bsiche           ###   ########.fr       */
+>>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
+<<<<<<< HEAD
 t_lstcontainer		*bin_ls(char *str)
+=======
+t_lstcontainer	*bin_ls(char *str)
+>>>>>>> alsomvil
 {
 	t_lstcontainer	*liste;
 	char			**taab;
@@ -25,7 +33,11 @@ t_lstcontainer		*bin_ls(char *str)
 	return (liste);
 }
 
+<<<<<<< HEAD
 void				bin_lst_folder(char *str)
+=======
+void	bin_lst_folder(char *str)
+>>>>>>> alsomvil
 {
 	t_lstcontainer	*local_lst;
 	t_list			*buf;
@@ -50,7 +62,11 @@ void				bin_lst_folder(char *str)
 	free_all(local_lst, NULL);
 }
 
+<<<<<<< HEAD
 void				build_bin_lst(void)
+=======
+void	build_bin_lst(void)
+>>>>>>> alsomvil
 {
 	char			*path;
 	char			**split;
@@ -74,7 +90,11 @@ void				build_bin_lst(void)
 	free_tab(split);
 }
 
+<<<<<<< HEAD
 void				complete_usr_var(void)
+=======
+void	complete_usr_var(void)
+>>>>>>> alsomvil
 {
 	t_lstcontainer	*list;
 
@@ -94,7 +114,11 @@ void				complete_usr_var(void)
 	}
 }
 
+<<<<<<< HEAD
 void				complete_usr_word(void)
+=======
+void	complete_usr_word(void)
+>>>>>>> alsomvil
 {
 	t_lstcontainer	*list;
 
@@ -118,4 +142,8 @@ void				complete_usr_word(void)
 			completion_loop(g_tracking.aut->comp_list);
 		}
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> alsomvil

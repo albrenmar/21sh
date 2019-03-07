@@ -6,7 +6,11 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/03 12:22:55 by mjose            ###   ########.fr       */
+=======
+/*   Updated: 2019/02/25 06:12:41 by mjose            ###   ########.fr       */
+>>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +80,11 @@ int			need_expand(char *to_transf)
 	return (0);
 }
 
+<<<<<<< HEAD
 int		scan_arg_transformer(char **arg)
+=======
+void		scan_arg_transformer(char **arg)
+>>>>>>> alsomvil
 {
 	t_expand	*expand;
 	t_scan		*scan;
@@ -93,8 +101,12 @@ int		scan_arg_transformer(char **arg)
 		expand = NULL;
 		expand = new_expand(ft_strlen(scan->sstrsing));
 		create_list_expand(expand, scan->sstrsing);
+<<<<<<< HEAD
 		if (transform(expand, &scan->sstrsing))
 			return (1);
+=======
+		transform(expand, &scan->sstrsing);
+>>>>>>> alsomvil
 		if (!new_arg)
 			new_arg = ft_strnew(1);
 		new_arg = ft_strjoinfree(new_arg, scan->sstrsing, 1);
@@ -103,6 +115,7 @@ int		scan_arg_transformer(char **arg)
 	scan = first_scan;
 	ft_strdel(arg);
 	*arg = new_arg;
+<<<<<<< HEAD
 	return (0);
 }
 
@@ -127,4 +140,15 @@ char		expand_transformer(char **value, int chg_value)
 		*value = ft_strdup("");
 	}
 	return (quote);
+=======
+}
+
+void		expand_transformer(char **value)
+{
+	if (*value)
+	{
+		if (need_expand(*value))
+			scan_arg_transformer(value);
+	}
+>>>>>>> alsomvil
 }

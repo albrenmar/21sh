@@ -6,7 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 05:04:47 by bsiche            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/06 01:41:45 by bsiche           ###   ########.fr       */
+=======
+/*   Updated: 2019/01/13 22:33:19 by bsiche           ###   ########.fr       */
+>>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +18,11 @@
 
 char	*send_color(int i)
 {
+<<<<<<< HEAD
+=======
+	if (i == 0)
+		return (NULL);
+>>>>>>> alsomvil
 	if (i == 1)
 		return ("\033[30;42m");
 	if (i == 2)
@@ -40,3 +49,7 @@ char	*send_color(int i)
 		return ("\033[0m");
 	return (NULL);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> alsomvil

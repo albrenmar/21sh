@@ -3,10 +3,17 @@ Rajouter "Dans des heredocs, valide" pour les heredoc, et quitter proprement le 
 -Type et Test, a adapter avec le tableau d'arg et non char **argv
 
 Partie Abraham
+<<<<<<< HEAD
 -fix redirection output (>) ou (>>) des builtins quand il y a pas de fork
 -Ctrl-Z avec "cat" en cours interrompre system call (regardeer sigaction)
 -Ctrl-Z avec "cat" en cours (peut etre avec tous les systemcall), bug pour les prochaines commandes. faut arreter les systemcall lors de ctrlz
 -implementer sigaction sans bug niveau jobs!
+=======
+-gerer l'execution (ou pas) de n'importe quel type de fichier, en changeant test_exists_fonction.
+-Si 42sh est lance avec des arguments, executer ces commandes et sortir
+-execve avec fichier executable qui est REG file (donc pas binaire ni dossier ni rien d'autre), faut que ca se execute en 
+demarrant un nouveau 42sh avec cette commande comme argument
+>>>>>>> alsomvil
 
 Partie Marc
 - Gestion d'errors pour les expansions.
@@ -15,7 +22,10 @@ Partie Marc
 (X) - Ajuter les expansions dans l'autocomplete, entant que la line finis avec '/' (A voir avec Brendan). NORMALMENT EST GERE.
 - Gerer l'expand recursive (${VARNAME:-${VARNAME:+VARVALUE}aaaaa}bbbb Par exemple).
 - Gerer l'expand avec espaces a l'interior. (En attendant que Alex me passe la bonne string).
+<<<<<<< HEAD
 - Controler SEGFAULT si EXEC_TAB null. // A parler avec Alsomvil
+=======
+>>>>>>> alsomvil
 
 Partie Alex
 - Gestion des quotes dans les doubles quotes et inversement
@@ -25,8 +35,17 @@ Partie Alex
 
 MISC
 -Builtin cd
+<<<<<<< HEAD
 -Ajouter builtins manquants (POSIX?)
+=======
+-Ctrl-Z avec "cat" en cours
+-Ajouter tous la meilleure version des builtins (POSIX?)
+>>>>>>> alsomvil
 -ajouter env a execve
 -Faire que le parser reconaisse le signe = pour les cmd style "env HOME=TMP cd ~"
 -Gestion de l'env
 -creer une fonction d'exit qui free proprement tout ce bordel
+<<<<<<< HEAD
+=======
+-Ctrl-C fait des 'x'
+>>>>>>> alsomvil

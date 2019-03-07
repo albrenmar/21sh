@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 04:48:12 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 03:54:08 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/01/20 05:03:02 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ void	move_right(void)
 		if (g_tracking.pos->abs < (utf_strlen(g_tracking.str)))
 		{
 			g_tracking.pos->abs += 1;
-			ab = g_tracking.pos->abs + g_tracking.pos->prompt;
-			x = ab % g_tracking.terminfo->sizex;
+   	   		ab = g_tracking.pos->abs + g_tracking.pos->prompt;
+		    x = ab % g_tracking.terminfo->sizex;
 			if (x != 0)
 				tputs(tgetstr("nd", NULL), 1, yan_putchar);
 			else
 			{
 				tputs(tgetstr("cr", NULL), 1, yan_putchar);
-				tputs(tgetstr("do", NULL), 1, yan_putchar);
+       	    	tputs(tgetstr("do", NULL), 1, yan_putchar);
 				g_tracking.pos->y++;
 			}
 		}

@@ -6,7 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/06 03:40:51 by bsiche           ###   ########.fr       */
+=======
+/*   Updated: 2019/03/01 07:03:10 by bsiche           ###   ########.fr       */
+>>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +23,17 @@ int		loop_for_space(int i)
 	return (i);
 }
 
+<<<<<<< HEAD
 void	asign_word(int i, int a, int flag)
 {
+=======
+void	asign_word(void)
+{
+	int					i;
+	int					a;
+	int					flag;
+
+>>>>>>> alsomvil
 	if (ft_strlen(g_tracking.str) != 0)
 	{
 		flag = 0;
@@ -60,15 +73,21 @@ t_auto	*init_auto(void)
 	aut->var_lst = NULL;
 	aut->to_free = NULL;
 	aut->to_add = NULL;
+<<<<<<< HEAD
 	aut->page_lst = NULL;
+=======
+>>>>>>> alsomvil
 	aut->size = 0;
 	aut->col_nbr = 0;
 	aut->lin_nbr = 0;
 	aut->line_up = 0;
 	aut->type = 0;
+<<<<<<< HEAD
 	aut->hidden = 0;
 	aut->err = 0;
 	aut->to_add_y = 0;
+=======
+>>>>>>> alsomvil
 	return (aut);
 }
 
@@ -92,7 +111,11 @@ int		auto_complete(void)
 		return (1);
 	build_bin_lst();
 	build_var_lst();
+<<<<<<< HEAD
 	asign_word(0, 0, 0);
+=======
+	asign_word();
+>>>>>>> alsomvil
 	build_list();
 	clean_up_autoc();
 	return (0);

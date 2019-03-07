@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   auto_com_expan.c                                   :+:      :+:    :+:   */
+/*   set.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 03:46:47 by mjose             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/03/04 14:09:25 by mjose            ###   ########.fr       */
-=======
-/*   Updated: 2019/02/28 04:06:45 by mjose            ###   ########.fr       */
->>>>>>> alsomvil
+/*   Created: 2019/02/18 03:47:54 by mjose             #+#    #+#             */
+/*   Updated: 2019/02/24 05:08:22 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expansions.h"
+#ifndef SET_H
+# define SET_H
 
-char	*ft_exp_complete(char *arg)
-{
-	char	*tmp;
+void			add_to_env_set(char *varname, char *varvalue);
+t_env_set		*new_envset(char *varname, char *varvalue);
+int				show_setenv(void);
+void			replace_env_set_str(char *varname, char *varvalue);
 
-	if (arg)
-	{
-		tmp = ft_strdup(arg);
-<<<<<<< HEAD
-		expand_transformer(&tmp, 0);
-=======
-		expand_transformer(&tmp);
->>>>>>> alsomvil
-		return (tmp);
-	}
-	return (NULL);
-}
+#endif

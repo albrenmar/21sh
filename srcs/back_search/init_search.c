@@ -6,13 +6,21 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 22:04:28 by bsiche            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/06 04:17:40 by bsiche           ###   ########.fr       */
+=======
+/*   Updated: 2019/02/26 03:30:20 by bsiche           ###   ########.fr       */
+>>>>>>> alsomvil
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
+<<<<<<< HEAD
 void		back_up(void)
+=======
+void	back_up(void)
+>>>>>>> alsomvil
 {
 	int		y;
 	int		i;
@@ -37,6 +45,7 @@ void		back_up(void)
 	}
 }
 
+<<<<<<< HEAD
 int			ft_return_key(void)
 {
 	if (g_tracking.found)
@@ -56,17 +65,44 @@ int			ft_return_key(void)
 }
 
 int			read_search(void)
+=======
+
+int		read_search()
+>>>>>>> alsomvil
 {
 	char	c;
 
 	c = 0;
 	read(STDERR_FILENO, &c, 1);
 	if (c == 10)
+<<<<<<< HEAD
 		return (ft_return_key());
 	if (c == 18)
 	{
 		if (g_tracking.histindex > 1)
 			g_tracking.histindex--;
+=======
+	{
+		if (g_tracking.found)
+		{
+			ft_bzero(g_tracking.str, g_tracking.buffsize);
+			g_tracking.pos->abs = 0;
+			add_to_str(ft_strdup(g_tracking.found));
+		}
+		else
+		{
+			print_line();
+			back_to_pos();
+		}
+		g_tracking.found = NULL;
+		g_tracking.search = NULL;
+		return (1);
+	}
+	if (c == 18)
+	{
+        if (g_tracking.histindex > 1)
+		   	g_tracking.histindex--;
+>>>>>>> alsomvil
 	}
 	if (c == 127)
 	{
@@ -84,7 +120,11 @@ int			read_search(void)
 	return (0);
 }
 
+<<<<<<< HEAD
 int			begin_search(void)
+=======
+int		begin_search(void)
+>>>>>>> alsomvil
 {
 	int		y;
 
