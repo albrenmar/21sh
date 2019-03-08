@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:29:52 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 04:23:40 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 03:16:10 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_key_list(void)
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_WLEFT));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_WRIGHT));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_DEL));
+	lstcontainer_add(g_tracking.key_list, ft_strdup(K_ESC));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_FN1));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_FN2));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_FN3));
@@ -57,6 +58,7 @@ void	cursor_reset(void)
 	g_tracking.buffsize = 1024;
 	g_tracking.search = NULL;
 	g_tracking.found = NULL;
+	g_tracking.quotes = 0;
 	if ((g_tracking.str = malloc(sizeof(char) * g_tracking.buffsize)) == NULL)
 	{
 		ft_putendl("Failled to allocate memory");

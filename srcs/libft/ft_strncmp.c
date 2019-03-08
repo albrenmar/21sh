@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 17:28:08 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/07 18:09:00 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 03:04:44 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 	unsigned char	*str2;
 
 	i = 0;
+	if (!s1 || !s2)
+		return (-255);
 	str = (unsigned char *)s1;
 	str2 = (unsigned char *)s2;
 	while ((str[i] || str2[i]) && i < n)

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/08 01:30:08 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 03:21:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int		ft_exec_key(char *str)
 		history_up();
 	if (ft_strcmp(str, K_DOWN) == 0)
 		history_down();
+	if (ft_strcmp(str, K_ESC) == 0)
+		return (6);
 	return (6);
 }
 
@@ -145,14 +147,14 @@ int		single_key(char c)
 
 int		check(char *str)
 {
-	if (strncmp(str, "\x1b\x5b", 2) == 0 || strncmp(str, "\x1b\x4f", 2) == 0)
+	if (ft_strncmp(str, "\x1b\x5b", 2) == 0 || ft_strncmp(str, "\x1b\x4f", 2) == 0)
 		return (1);
 	return (0);
 }
 
 int		return_loop(int i, char *str)
 {
-	if (check(str) == 1 || i == 12)
+	if (check(str) == 1 || i == 12 || i == 6)
 		free(str);
 	else
 		add_to_str(str);
