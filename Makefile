@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/04 13:56:33 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/06 04:10:16 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,11 @@ SRC = main.c \
 	  42sh/hashtables.c \
 	  42sh/search_arg.c \
 	  42sh/completion.c \
+	  builtins/cd/cd_path.c \
+	  builtins/cd/directory.c \
+	  builtins/cd/ft_cd.c \
+	  builtins/cd/ft_cd2.c \
+	  builtins/cd/ft_dotdot.c \
 	  builtins/builtin_tools.c \
 	  builtins/fg_bg_builtins.c \
 	  builtins/jobs_builtin.c \
@@ -46,8 +51,9 @@ SRC = main.c \
 	  jobs/job_utils.c \
 	  jobs/job_functions.c \
 	  jobs/ft_job_control.c \
+	  gnl/add_to_str.c \
+	  gnl/rem_from_str.c \
 	  gnl/term_setup.c \
-	  gnl/stringsearch.c \
 	  gnl/signals.c \
 	  gnl/init_term.c \
 	  gnl/cursor_pos.c \
@@ -62,7 +68,9 @@ SRC = main.c \
 	  gnl/paste.c \
 	  gnl/get_key.c \
 	  auto_complete/auto_complete.c \
+	  auto_complete/auto_complete_check.c \
 	  auto_complete/auto_complete_cleanup.c \
+	  auto_complete/auto_complete_cursor.c \
 	  auto_complete/auto_complete_list.c \
 	  auto_complete/auto_complete_page.c \
 	  auto_complete/auto_complete_loop.c \
@@ -73,6 +81,7 @@ SRC = main.c \
 	  auto_complete/print_arg_list.c \
 	  auto_complete/send_color.c \
 	  auto_complete/var_list.c \
+	  auto_complete/end_autocomplete.c \
 	  back_search/init_search.c \
 	  back_search/search_lst.c \
 	  ft_ls/cmdparse.c \

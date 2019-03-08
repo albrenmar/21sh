@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/03 09:26:51 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/07 02:29:18 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int		main(int argc, char **argv, char **env)
 	argc = 0;
 	argv = NULL;
 	//	set_env(&st_env, env);
+	// ft_siginit();
 	cursorinit();
-	ft_siginit();
 	init_shell(env);
 	get_term();
 	interactive_check_set_shell_group();
@@ -40,9 +40,9 @@ int		main(int argc, char **argv, char **env)
 		g_tracking.cmd = NULL;
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
 		ft_putchar('\n');
-		hist_lst_add_next(g_tracking.mysh->hist, line);
-		if ((ft_strlen(line) > 0) && (cmd = ft_parseur(line)))
+		if ((ft_strlen(line) > 0) && spaces_line_check(line) && (cmd = ft_parseur(line)))
 		{
+			hist_lst_add_next(g_tracking.mysh->hist, line);
 			convert_list(cmd);
 			ft_ast(cmd);
 		}

@@ -3,36 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   auto_complete_parse.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/28 04:02:39 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/06 02:04:21 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
-
-int		check_type(void)
-{
-	char	*check;
-
-	check = g_tracking.aut->word;
-	if (check[0] == '/' || check[0] == '~')
-		return (1);
-	if (check[1] != '\0')
-	{
-		if (check[0] == '.' && check[1] == '/')
-			return (1);
-		if (check[0] == '$' && check[1] == '{')
-			return (2);
-		if (check[2] != '\0')
-			if (check[0] == '.' && check[1] == '.' && check[2] == '/')
-				return (1);
-		if (check[ft_strlen(check) - 1] == '/')
-			return (1);
-	}
-	return (0);
-}
 
 void	escape_path(void)
 {
@@ -117,6 +95,9 @@ int		sanitize_path(void)
 
 void	assign_type(void)
 {
+	int i;
+
+	i = 0;
 	g_tracking.aut->path = NULL;
 	if (g_tracking.aut->word != NULL)
 	{
@@ -129,8 +110,10 @@ void	assign_type(void)
 		}
 		if (g_tracking.aut->type == 2)
 		{
-			g_tracking.aut->word = ft_strsub(g_tracking.aut->word, 2, ft_strlen(g_tracking.aut->word) , 1);
+			i = ft_strlen(g_tracking.aut->word);
+			g_tracking.aut->word = ft_strsub(g_tracking.aut->word, 2, i, 1);
 			complete_usr_var();
 		}
 	}
+	check_hidden();
 }

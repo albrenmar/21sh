@@ -6,13 +6,13 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 19:23:54 by bsiche            #+#    #+#             */
-/*   Updated: 2018/08/19 21:29:20 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/05 04:12:32 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "sh42.h"
 
-char	*ft_homepath(char *path, t_lstcontainer *env)
+char	*ft_homepath(char *path)
 {
 	int		i;
 	char	*new;
@@ -26,8 +26,8 @@ char	*ft_homepath(char *path, t_lstcontainer *env)
 	if (new[i] == '~' && (new[i + 1] == '\0' || new[i + 1] == '/'))
 	{
 		new = ft_strsub(new, 1, ft_strlen(new), 1);
-		home = get_env_string(env, "HOME");
-		path = ft_strjoin(home, new, 2);
+		home = get_env_string("HOME");
+		path = ft_strjoinfree(home, new, 2);
 		new = NULL;
 	}
 	else
