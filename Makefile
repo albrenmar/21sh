@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/05 17:24:26 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/08 03:00:21 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -168,7 +168,7 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
-FLAG = -g #-fsanitize=address 
+FLAG = -g -fsanitize=address 
 
 all : $(NAME)
 
@@ -181,7 +181,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 			@gcc -c $(FLAG) $< -o $@  -I $(INCDIR)
 			@echo "$(CLEAR_LINE)$(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"
 complib :
-			@make -C $(LIB)
+			@make -C $(LIB) -j
 clean :
 			@echo -e "$(CLEAR_LINE)$(COL_RED)Cleaning objs dir$(COL_END)"
 			@rm -rf $(OBJDIR)

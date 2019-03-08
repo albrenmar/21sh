@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 04:18:28 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/08 02:29:05 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/08 03:05:14 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*its_quote(int i, char *str, int *nb, char c)
 	while (str[i] && str[i] != c)
 		i++;
 	i++;
-	while (str[i] && str[i] != ' ' && str[i] != '|' && str[i] != '&' && str[i] != '>' && str[i] != '<')
+	while (str[i] && str[i] != ' ' && str[i] != '|' && str[i] != '&' && str[i] != '>' && str[i] != '<' && str[i] == ';')
 		i++;
 	(*nb) += i;
 	temp = ft_strndup(str, i);
