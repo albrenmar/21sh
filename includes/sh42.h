@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/08 00:03:21 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/08 01:31:15 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define ANSI_COLOR_GREEN	"\x1b[32m"
 # define ANSI_COLOR_DEFAULT "\x1b[0m"
 # define ANSI_COLOR_MAGENTA	"\x1b[35m"
+# define ANSI_COLOR_RED		"\x1b[31m"
 
 # define SHELL_NAME			"42sh"
 # define K_FN1				"\x1b\x4f\x50"

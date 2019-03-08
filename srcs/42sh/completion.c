@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:13:59 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/08 00:25:59 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 01:32:04 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ char	*check_quote(char *line, int i, char c)
 		i++;
 	while (test == 1)
 	{
-		g_tracking.quotes = 1;
+		if (c == '"')
+			g_tracking.quotes = 1;
+		if (c == '\'')
+			g_tracking.quotes = 2;
 		get_key();
 		if (g_tracking.quotes == 10)
 			exit (0);
