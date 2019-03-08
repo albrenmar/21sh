@@ -67,7 +67,10 @@ char	*check_quote(char *line, int i, char c)
 		i++;
 	while (test == 1)
 	{
-		g_tracking.quotes = 1;
+		if (c == '"')
+			g_tracking.quotes = 1;
+		if (c == '\'')
+			g_tracking.quotes = 2;
 		get_key();
 		if (g_tracking.quotes == 10)
 			exit (0);

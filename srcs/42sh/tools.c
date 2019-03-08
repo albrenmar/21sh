@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/08 00:26:16 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 01:34:19 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,23 @@ void			transform_cwd(void)
 	}
 }
 
-void			print_prompt(void)
+void			set_prompt_quote(void)
 {
 	if (g_tracking.quotes == 1)
+		g_tracking.prompt = ft_strdup("dquotes >");
+	if (g_tracking.quotes == 2)
+		g_tracking.prompt = ft_strdup("quotes >");
+	g_tracking.pos->prompt = utf_strlen(g_tracking.prompt);
+}
+
+
+void		print_prompt(void)
+{
+	if (g_tracking.quotes == 1 || g_tracking.quotes == 2)
 	{
-		ft_putstr_fd("quotes >", 2);
+		ft_putstr_fd(ANSI_COLOR_RED, 2);
+		ft_putstr_fd(g_tracking.prompt, 2);
+		ft_putstr_fd(ANSI_COLOR_DEFAULT, 2);
 		return ;
 	}
 	ft_putstr_fd(ANSI_COLOR_BLUE, 2);
@@ -99,7 +111,12 @@ void			get_coolprompt(void)
 	char	*prompt;
 	char	*memory;
 	char	buff[4096 + 1];
-	
+
+	if (g_tracking.quotes == 1 || g_tracking.quotes == 2)
+	{
+		set_prompt_quote();
+		return ;
+	}
 	g_tracking.user = ft_strdup("[");
 	memory = g_tracking.user;
 	g_tracking.user = ft_strjoin(g_tracking.user, getlogin());

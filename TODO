@@ -22,6 +22,7 @@ Partie Alex
 - Ajout string si manque quote
 - Gestion des messages d'erreurs
 - Boucle infini sur grep apres pipe
+- Ecrire la fonction qui auitte quote et dquote proprement en cas dr ctrl D ou ctrl C(remplace le gros exit si g_tracking.quotes == 10)
 
 MISC
 -Builtin cd

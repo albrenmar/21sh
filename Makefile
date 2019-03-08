@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/06 04:10:16 by bsiche           ###   ########.fr        #
+#    Updated: 2019/03/05 17:24:26 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -138,6 +138,7 @@ SRC = main.c \
 	  expansions/environ.c \
 	  expansions/environ_set.c \
 	  expansions/scan.c \
+	  expansions/scan_tilde.c \
   	  expansions/quote.c \
 	  expansions/expand_error.c \
 	  expansions/autocomplete/auto_com_expan.c
@@ -167,7 +168,7 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
-FLAG = -g -fsanitize=address 
+FLAG = -g #-fsanitize=address 
 
 all : $(NAME)
 
