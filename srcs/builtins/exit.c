@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 04:18:51 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/07 01:55:43 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,21 @@ void		clean_up_leaks(void)
 
 int			ft_exit(void)
 {
-	if (!g_tracking.jobs->next)
+	t_jobs	*tmp;
+
+	tmp = g_tracking.jobs;
+	while (tmp && tmp->next)
 	{
-		clean_up_leaks();
-		clean_up_leaks();
-		ft_putendl("Exit");
-		exit(0);
+		if (tmp->background == 1)
+		{
+			ft_putendl("There are still background jobs running!");
+			return (1);
+		}
+		tmp = tmp->next;
 	}
-	else
-		ft_putendl("There are still jobs running you idiot!");
-	return (1);
+	hist_save_file(g_tracking.mysh->hist);
+	clean_up_leaks();
+	clean_up_leaks();
+	ft_putendl("Exit");
+	exit(0);
 }

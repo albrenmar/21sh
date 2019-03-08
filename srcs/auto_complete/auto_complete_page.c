@@ -6,22 +6,23 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 06:46:55 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 03:37:44 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-void	line_per_page(void)
+void				line_per_page(void)
 {
-	int		nb;
-	int		rest;
-	int		i;
-	int		lin;
+	int				nb;
+	int				rest;
+	int				i;
+	int				lin;
 
 	nb = lstcontainer_size(g_tracking.aut->comp_list);
 	rest = nb - (g_tracking.aut->per_page * (g_tracking.aut->page_nbr));
-	g_tracking.aut->line_up = (nb + g_tracking.aut->col_nbr - 1) / g_tracking.aut->col_nbr;
+	g_tracking.aut->line_up = (nb + g_tracking.aut->col_nbr - 1)
+	/ g_tracking.aut->col_nbr;
 	if (g_tracking.aut->line_up > g_tracking.aut->lin_nbr)
 		g_tracking.aut->line_up = g_tracking.aut->lin_nbr;
 	lin = (rest + g_tracking.aut->col_nbr - 1) / g_tracking.aut->col_nbr;
@@ -29,19 +30,29 @@ void	line_per_page(void)
 	g_tracking.aut->pad_lpage = lin;
 }
 
-void	set_up_page(void)
+void				set_up_page(void)
 {
-	int		nb;
-	int		page;
+	int				nb;
+	int				page;
 
+	if (g_tracking.aut->lin_nbr < 1)
+	{
+		g_tracking.aut->err = 2;
+		return ;
+	}
 	nb = lstcontainer_size(g_tracking.aut->comp_list) - 1;
 	page = g_tracking.aut->lin_nbr * g_tracking.aut->col_nbr;
+	if (page < 1)
+	{
+		g_tracking.aut->err = 2;
+		return ;
+	}
 	g_tracking.aut->per_page = page;
 	g_tracking.aut->page_nbr = nb / page;
 	g_tracking.aut->active_page = 0;
 }
 
-void	change_page(int i, t_lstcontainer *list)
+void				change_page(int i, t_lstcontainer *list)
 {
 	free(g_tracking.aut->page_lst);
 	g_tracking.aut->page_lst = NULL;
@@ -51,7 +62,7 @@ void	change_page(int i, t_lstcontainer *list)
 		if (g_tracking.aut->active_page < g_tracking.aut->page_nbr)
 			g_tracking.aut->active_page++;
 	}
-	if (i == - 3)
+	if (i == -3)
 	{
 		if (g_tracking.aut->active_page > 0)
 			g_tracking.aut->active_page--;
@@ -59,13 +70,13 @@ void	change_page(int i, t_lstcontainer *list)
 	g_tracking.aut->page_lst = build_page_lst(list);
 }
 
-t_lstcontainer	*build_page_lst(t_lstcontainer *list)
+t_lstcontainer		*build_page_lst(t_lstcontainer *list)
 {
-	t_lstcontainer		*page_lst;
-	t_list				*buf;
-	t_ls				*tmp;
-	int					begin;
-	int					end;
+	t_lstcontainer	*page_lst;
+	t_list			*buf;
+	t_ls			*tmp;
+	int				begin;
+	int				end;
 
 	begin = g_tracking.aut->active_page * g_tracking.aut->per_page;
 	end = g_tracking.aut->per_page * (g_tracking.aut->active_page + 1);
@@ -81,13 +92,13 @@ t_lstcontainer	*build_page_lst(t_lstcontainer *list)
 	return (page_lst);
 }
 
-void		join_page_nbr(void)
+void				join_page_nbr(void)
 {
-	char	*page_nbr;
-	char	*total_page;
-	char	*message;
-	int		i;
-	int		j;
+	char			*page_nbr;
+	char			*total_page;
+	char			*message;
+	int				i;
+	int				j;
 
 	if (g_tracking.aut->active_page == g_tracking.aut->page_nbr)
 	{
@@ -106,6 +117,5 @@ void		join_page_nbr(void)
 	message = ft_strjoinfree(message, "/", 1);
 	message = ft_strjoinfree(message, total_page, 3);
 	ft_putstr(message);
-//	tputs(tgetstr("up ", NULL), 1, yan_putchar);
 	free(message);
 }

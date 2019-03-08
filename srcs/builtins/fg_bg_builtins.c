@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/03 11:42:06 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/05 04:04:00 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int			bg_builtin(void)
 			tmp = tmp->next;
 		return (bg_builtin_output(tmp));
 	}
-	ft_putendl("No jobs 😂");
+	errors_bg(0, 4);
 	return (1);
 }
 
@@ -134,6 +134,6 @@ int			fg_builtin(void)
 			tmp = tmp->next;
 		return (fg_builtin_output(tmp));
 	}
-	ft_putendl("No jobs 😂");
+	errors_fg(0, 4);
 	return (1);
 }
