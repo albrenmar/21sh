@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 17:21:08 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/05 22:00:35 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/08 01:09:55 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int		scan_tilde(char *arg, char **new_arg)
 			return (++i);
 		}
 		else if (arg[i] == '$' || ft_iswhitespace(arg[i]))
-			return (--i);
+			return (i);
 		fill_arg[i] = arg[i];
 		i++;
 	}

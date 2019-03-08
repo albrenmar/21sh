@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 05:42:59 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/05 21:56:29 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/08 01:10:55 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	split_arg(char *arg, int i, char *run_arg, t_scan *info_arg)
 		scan_argument(arg + i, info_arg->next, 1);
 }
 */
-void	scan_argument(char *arg, t_scan *info_arg, int simple)
+void	scan_argument(char *arg, t_scan *info_arg, int simple, char quote)
 {
 	char	*new_arg;
 	t_scan	*first;
@@ -98,7 +98,7 @@ void	scan_argument(char *arg, t_scan *info_arg, int simple)
 	arg = orig_arg;
 	info_arg = first;
 }
-
+/*
 void	scan_simple_arg_transformer(char **arg)
 {
 	t_expand	*expand;
@@ -134,7 +134,7 @@ void	scan_simple_arg_transformer(char **arg)
 	ft_strdel(arg);
 	*arg = new_arg;
 }
-
+*/
 t_scan	*new_scan(void)
 {
 	t_scan	*scan;
