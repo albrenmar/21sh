@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/04 13:53:38 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/08 00:29:42 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_env_set
 
 typedef struct	s_scan
 {
-	char				*sstrsing;
+	char				*sstring;
 	int					error;
 	struct s_scan		*next;
 }				t_scan;
@@ -87,14 +87,22 @@ char			*value(char *val, t_expand *start);
 char			*value_asterisk(char *val, t_expand *start);
 int				have_envname(char *var);
 int				have_setname(char *var);
-int				scan_arg_transformer(char **arg);
+int				scan_arg_transformer(char **arg, char quote);
 t_scan			*new_scan(void);
-void			scan_argument(char *arg, t_scan *info_arg);
+void			scan_argument(char *arg, t_scan *info_arg, int simple,
+					char quote);
 char			*ft_exp_complete(char *arg);
 char			unquote_value(char **value, int quote);
 int				ft_iswhitespace(int c);
 void			print_exp_error(char *to_error);
 void			print_exp_error_eq(char *varname, char *value);
 void			rmv_tab_exec(char **tab_exec, int to);
+int				is_simple_expand(char *value);
+void			scan_simple_arg_transformer(char **arg);
+int				scan_tilde(char *arg, char **new_arg);
+int				scan_dollar(char *arg, char **new_arg);
+int				scan_dollar_key(char *arg, char **new_arg);
+int				scan_other(char *arg, char **new_arg);
+void			transform_simple(char **str);
 
 #endif
