@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 07:58:05 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 00:33:28 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,9 @@ void	get_max_size(void)
 		buf = buf->next;
 	}
 	g_tracking.aut->size = size;
-	g_tracking.aut->col_nbr = g_tracking.terminfo->sizex / (g_tracking.aut->size + 6);
-	g_tracking.aut->lin_nbr  = g_tracking.terminfo->sizey - 2;
+	g_tracking.aut->col_nbr =
+	g_tracking.terminfo->sizex / (g_tracking.aut->size + 6);
+	g_tracking.aut->lin_nbr = g_tracking.terminfo->sizey - 2;
 	if (g_tracking.aut->lin_nbr > 4)
 		g_tracking.aut->lin_nbr = 4;
 	ft_strpadding();
@@ -92,5 +93,5 @@ void	get_line_col(void)
 
 	max = g_tracking.aut->size;
 	g_tracking.aut->col_nbr = g_tracking.terminfo->sizex / (max);
-	g_tracking.aut->lin_nbr  = g_tracking.terminfo->sizey - 2;
+	g_tracking.aut->lin_nbr = g_tracking.terminfo->sizey - 2;
 }

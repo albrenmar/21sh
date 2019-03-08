@@ -6,11 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 03:47:41 by bsiche            #+#    #+#             */
-/*   Updated: 2018/08/06 04:00:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/05 04:02:44 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "sh42.h"
 
 char		*dotdot2(t_lstcontainer *new)
 {
@@ -23,8 +23,8 @@ char		*dotdot2(t_lstcontainer *new)
 		buf = new->firstelement;
 		while (buf)
 		{
-			path = ft_strjoin(path, "/", 1);
-			path = ft_strjoin(path, buf->content, 1);
+			path = ft_strjoinfree(path, "/", 1);
+			path = ft_strjoinfree(path, buf->content, 1);
 			buf = buf->next;
 		}
 	}
@@ -46,8 +46,8 @@ char		*ft_dotdot(t_lstcontainer *new)
 	{
 		if (ft_strcmp(buf->content, "..") == 0)
 		{
-			new->remove(new, buf);
-			new->remove(new, buf->prev);
+			new->remove(new, buf, 0);
+			new->remove(new, buf->prev, 0);
 		}
 		buf = buf->next;
 	}
@@ -67,7 +67,7 @@ char		*ft_dot(char *path)
 		while (buf)
 		{
 			if (ft_strcmp(buf->content, ".") == 0)
-				new->remove(new, buf);
+				new->remove(new, buf, 0);
 			buf = buf->next;
 		}
 		free(path);

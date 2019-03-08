@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 00:53:23 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 08:38:12 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 01:37:06 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ void	ctrl_d(void)
 		return ;
 	}
 	if (utf_strlen(g_tracking.str) == 0)
-		exit(0);
+	{
+		ft_putchar('\n');
+		tcsetattr(0, TCSANOW, &g_tracking.default_term);
+		ft_exit();
+	}
 	else
 		rem_from_str_del();
 }
