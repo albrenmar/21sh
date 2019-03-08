@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 07:40:54 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/08 06:05:12 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 	redir = 0;
 	tab_exec = NULL;
 	temp_command = NULL;
-	pipe(descrf);
-	pipe(descrf_two);
+	descrf_two[0] = 0;
+	descrf_two[1] = 0;
+	descrf[0] = 0;
+	descrf[1] = 0;
 	if (!list_cmd)
 		return (0);
 	job = new_job(list_cmd, foreground);
@@ -49,6 +51,10 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 		else if (list_cmd->type == OP && its_pipe(list_cmd) && temp_command && redir == 0)
 		{
 			tab_exec = create_tab_to_exec(temp_command);
+			if (!descrf_two[0])
+				pipe(descrf_two);
+			if (!descrf[0])
+				pipe(descrf);
 			execute_pipe(tab_exec, job);
 			tab_exec = NULL;
 			temp_command = NULL;
@@ -86,6 +92,16 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 	{
 		g_tracking.builtin = 0;
 		g_tracking.lastreturn = builtin_exec(list_cmd);
+	}
+	if (descrf_two[0])
+	{
+		close(descrf_two[0]);
+		close(descrf_two[1]);
+	}
+	if (descrf[0])
+	{
+		close(descrf[0]);
+		close(descrf[1]);
 	}
 	return (0);
 }

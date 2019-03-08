@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/08 01:31:15 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 03:15:55 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 # define K_BKSP				127
 # define K_TAB				9
 # define K_CTRLR			18
+# define K_ESC				"\x1b\x1b"
 # define K_DEL				"\x1b\x5b\x33\x7e"
 
 int		descrf[2];

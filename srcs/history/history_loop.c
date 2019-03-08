@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 04:01:56 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 02:52:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int		history_up(void)
 	t_hist	*history;
 	int		i;
 
+	if (g_tracking.quotes != 0)
+		return (0);
 	g_tracking.pos->abs = utf_strlen(g_tracking.str);
 	back_to_pos();
 	if (g_tracking.histindex > 1)
@@ -91,6 +93,8 @@ int		history_down(void)
 	t_hist	*history;
 	int		i;
 
+	if (g_tracking.quotes != 0)
+		return (0);
 	if (g_tracking.histindex == 1)
 		g_tracking.histindex++;
 	if (g_tracking.histindex <= g_tracking.histmax)

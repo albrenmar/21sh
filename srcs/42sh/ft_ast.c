@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 02:25:05 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/24 18:44:35 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/08 06:03:21 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,6 @@ void		create_ast(t_tree *tree, t_last *list_command)
 void		ft_ast(t_last *list_command)
 {
 	t_tree	*tree;
-	pipe(descrf);
-	pipe(descrf_two);
 	t_jobs	*job;
 
 	tree = new_branch();

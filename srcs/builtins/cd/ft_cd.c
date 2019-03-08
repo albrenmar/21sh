@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/28 15:17:02 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/05 04:10:20 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 03:33:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_changedir(char option, char *path)
 {
 	char	*truepwd;
 	char	*oldpwd;
+	char	*newpwd;
 
 	if (getright(path) == 0)
 	{
@@ -55,7 +56,11 @@ void	ft_changedir(char option, char *path)
 		if (option != 'P')
 			replace_env_str("PWD", path);
 		else
+		{
+			free(truepwd);
+			truepwd = ft_true_pwd();
 			replace_env_str("PWD", truepwd);
+		}
 		replace_env_str("OLDPWD", oldpwd);
 		free(truepwd);
 		truepwd = NULL;

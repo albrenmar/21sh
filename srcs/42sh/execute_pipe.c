@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/07 03:47:27 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/08 06:07:49 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,12 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job)
 				dup2(g_tracking.mysh->set_fd->STDOUT, 1);
 			if (g_tracking.mysh->set_fd->STDERR != 2)
 				dup2(g_tracking.mysh->set_fd->STDERR, 2);
-			close(descrf_two[1]);
-			dup2(descrf_two[0], 0);
-			close(descrf_two[0]);
+			if (descrf_two[0])
+			{
+				close(descrf_two[1]);
+				dup2(descrf_two[0], 0);
+				close(descrf_two[0]);
+			}
 			execute_two(tab_exec);
 		}
 		else
@@ -101,6 +104,11 @@ void		execute_pipe(char **tab_exec, t_jobs *job)
 	int		j;
 	int		status;
 
+	if (descrf[0])
+	{
+		close(descrf[0]);
+		close(descrf[1]);
+	}
 	descrf[0] = descrf_two[0];
 	descrf[1] = descrf_two[1];
 	pipe(descrf_two);
