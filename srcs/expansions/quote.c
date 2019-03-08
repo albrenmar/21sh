@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 01:52:42 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/03 11:31:56 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/08 03:36:02 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ char	unquote_value(char **value, int quote)
 			quote = 'E';
 			break ;
 		}
-		new_value[i++] = *scan;
+		if (*scan != '"' && *scan != '\'')
+			new_value[i++] = *scan;
 		if (*scan)
 			scan++;
 	}
