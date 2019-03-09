@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/09 03:18:28 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/09 05:32:03 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,22 +83,15 @@ int		scan_arg_transformer(char **arg, char quote)
 	t_scan		*first_scan;
 	char		*new_arg;
 
-	scan = NULL;
 	scan = new_scan();
 	first_scan = scan;
 	scan_argument(*arg, scan, 0, quote);
 	new_arg = NULL;
 	while (scan && scan->sstring)
 	{
-		expand = NULL;
 		expand = new_expand(ft_strlen(scan->sstring));
 		create_list_expand(expand, scan->sstring);
-		if (scan->sstring[0] != '~' && !quote)
-		{
-			if (transform(expand, &scan->sstring))
-				return (1);
-		}
-		else if (scan->sstring[0] == '$')
+		if ((scan->sstring[0] != '~' && !quote) || scan->sstring[0] == '$')
 			if (transform(expand, &scan->sstring))
 				return (1);
 		if (!new_arg)
