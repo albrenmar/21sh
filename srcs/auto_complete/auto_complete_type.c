@@ -6,13 +6,13 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/23 00:11:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 03:34:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-t_lstcontainer	*bin_ls(char *str)
+t_lstcontainer		*bin_ls(char *str)
 {
 	t_lstcontainer	*liste;
 	char			**taab;
@@ -25,12 +25,16 @@ t_lstcontainer	*bin_ls(char *str)
 	return (liste);
 }
 
-void	bin_lst_folder(char *str)
+void				bin_lst_folder(char *str)
 {
 	t_lstcontainer	*local_lst;
 	t_list			*buf;
 	t_ls			*tmp;
+	t_ls			*new;
 
+	local_lst = NULL;
+	buf = NULL;
+	tmp = NULL;
 	local_lst = bin_ls(str);
 	if (local_lst)
 	{
@@ -38,18 +42,23 @@ void	bin_lst_folder(char *str)
 		while (buf)
 		{
 			tmp = buf->content;
-			lstcontainer_add(g_tracking.aut->bin_lst, tmp);
+			new = ls_alloc(tmp->name);
+			lstcontainer_add(g_tracking.aut->bin_lst, new);
 			buf = buf->next;
 		}
 	}
+	free_all(local_lst, NULL);
 }
 
-void	build_bin_lst(void)
+void				build_bin_lst(void)
 {
 	char			*path;
 	char			**split;
 	int				i;
 
+	path = NULL;
+	split = NULL;
+	i = 0;
 	path = get_env_string("PATH");
 	g_tracking.aut->bin_lst = lstcontainer_new();
 	if (!path)
@@ -65,7 +74,7 @@ void	build_bin_lst(void)
 	free_tab(split);
 }
 
-void	complete_usr_var(void)
+void				complete_usr_var(void)
 {
 	t_lstcontainer	*list;
 
@@ -85,7 +94,7 @@ void	complete_usr_var(void)
 	}
 }
 
-void	complete_usr_word(void)
+void				complete_usr_word(void)
 {
 	t_lstcontainer	*list;
 
@@ -96,7 +105,10 @@ void	complete_usr_word(void)
 	{
 		build_comp(list);
 		if (g_tracking.aut->comp_list->firstelement == NULL)
+		{
+			free(g_tracking.aut->comp_list);
 			build_comp(g_tracking.aut->bin_lst);
+		}
 		g_tracking.aut->to_add = NULL;
 		if (g_tracking.aut->comp_list->firstelement != NULL)
 		{

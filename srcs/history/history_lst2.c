@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/21 20:35:09 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 21:12:07 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 // Save history into ~.shell_history
 void		hist_save_file(t_hist *hist)
 {
-	int fd;
-	char **line;
+	int 	fd;
+	char	**line;
+	char	*path;
 
-	fd = open("/goinfre/.shell_history", O_WRONLY | O_CREAT  | O_TRUNC, 00777);
+	path = create_path_hist();
+	fd = open(path, O_WRONLY | O_CREAT  | O_TRUNC, 00777);
 	if (fd < 0)
 	{
-		ft_putendl_fd("Error while opening/creating .shell_history", 2);
+		ft_putendl_fd("Error while opening/creating .42hist", 2);
 		return;
 	}
 	if (!hist)

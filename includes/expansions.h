@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/22 09:04:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/08 00:29:42 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,14 @@ typedef struct	s_env_set
 	struct s_env_set	*next;
 }				t_env_set;
 
-typedef struct 	s_scan
+typedef struct	s_scan
 {
-	char				*sstrsing;
+	char				*sstring;
 	int					error;
 	struct s_scan		*next;
 }				t_scan;
 
-
-void			expand_transformer(t_last *cmd);
+char			expand_transformer(char **value, int chg_value);
 int				need_expand(char *to_transf);
 t_expand		*new_expand(int len);
 void			create_list_expand(t_expand *new_letter, char *line);
@@ -49,7 +48,7 @@ int				have_homedir(char *to_transf);
 int				check_have_homedir(struct passwd *user_inf, char *tmp_usr);
 int				have_parm(char *to_transf);
 int				is_to_add_or_mod_parm(char *to_transf);
-void			transform(t_expand *expand, char **str);
+int				transform(t_expand *expand, char **str);
 void			expand_tilde_only(char **str);
 char			*get_user_home(char *user);
 void			expand_tilde_path(char **str, t_expand **expand);
@@ -88,8 +87,22 @@ char			*value(char *val, t_expand *start);
 char			*value_asterisk(char *val, t_expand *start);
 int				have_envname(char *var);
 int				have_setname(char *var);
-void			scan_arg_transformer(char **arg);
+int				scan_arg_transformer(char **arg, char quote);
 t_scan			*new_scan(void);
-void			scan_argument(char *arg, t_scan *info_arg);
+void			scan_argument(char *arg, t_scan *info_arg, int simple,
+					char quote);
+char			*ft_exp_complete(char *arg);
+char			unquote_value(char **value, int quote);
+int				ft_iswhitespace(int c);
+void			print_exp_error(char *to_error);
+void			print_exp_error_eq(char *varname, char *value);
+void			rmv_tab_exec(char **tab_exec, int to);
+int				is_simple_expand(char *value);
+void			scan_simple_arg_transformer(char **arg);
+int				scan_tilde(char *arg, char **new_arg);
+int				scan_dollar(char *arg, char **new_arg);
+int				scan_dollar_key(char *arg, char **new_arg);
+int				scan_other(char *arg, char **new_arg);
+void			transform_simple(char **str);
 
 #endif

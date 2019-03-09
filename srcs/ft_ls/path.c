@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 00:18:46 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 07:03:13 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 01:35:08 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,12 @@ int		ft_edgecase(char *dossier)
 		dir = opendir(dossier);
 		if (errno == ENOTDIR)
 		{
-			closedir(dir);
-			err = ft_strdup("ft_ls: ");
-			err = ft_strjoinfree(err, truename(dossier), 1);
-			perror(err);
-			free(err);
+			if (g_tracking.aut)
+				g_tracking.aut->err = 1;
 			return (1);
 		}
-		closedir(dir);
+		if (dir)
+			closedir(dir);
 	}
 	return (0);
 }

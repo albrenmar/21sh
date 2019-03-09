@@ -6,33 +6,16 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/13 21:04:47 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/06 03:50:24 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-int		ft_check(void)
+char			*ft_joinline(int col_nbr, int i, t_ls *arg)
 {
-	int		flag;
-	int		space;
-	int		nb;
-
-	flag = 0;
-	if (g_tracking.aut->col_nbr == 0)
-		return (1);
-	space = g_tracking.aut->lin_nbr * g_tracking.aut->col_nbr;
-	nb = lstcontainer_size(g_tracking.aut->comp_list);
-	if (space < nb)
-		return (1);
-	else
-		return (0);
-}
-
-char	*ft_joinline(int col_nbr, int i, t_ls *arg)
-{
-	char	*line;
-	char	*sub;
+	char		*line;
+	char		*sub;
 
 	line = ft_strnew(0);
 	sub = send_color(arg->color);
@@ -45,13 +28,13 @@ char	*ft_joinline(int col_nbr, int i, t_ls *arg)
 	return (line);
 }
 
-char	*ft_createline()
+char			*ft_createline(void)
 {
-	int		i;
-	t_list	*tmp;
-	t_ls	*arg;
-	int		col_nbr;
-	char	*fake;
+	int			i;
+	t_list		*tmp;
+	t_ls		*arg;
+	int			col_nbr;
+	char		*fake;
 
 	tmp = g_tracking.aut->page_lst->firstelement;
 	col_nbr = g_tracking.aut->col_nbr;
@@ -73,35 +56,32 @@ char	*ft_createline()
 	return (fake);
 }
 
-int		ft_menuline()
+int				ft_menuline(void)
 {
 	char		*res;
 
-//	if (ft_check() == 0)
-//	{
-		if (g_tracking.aut->menuline)
-		{
-			free(g_tracking.aut->menuline);
-			g_tracking.aut->menuline = NULL;
-		}
-		g_tracking.aut->menuline = ft_createline();
-		return (0);
-//	}
-//	else
-//		g_tracking.aut->menuline = (ft_strdup("(╯°□°）╯︵ ┻━┻ Term size too small to display all possibilities"));
-//	return (1);
+	if (g_tracking.aut->menuline)
+	{
+		free(g_tracking.aut->menuline);
+		g_tracking.aut->menuline = NULL;
+	}
+	g_tracking.aut->menuline = ft_createline();
+	return (0);
 }
 
-int		print_menu(void)
+int				print_menu(void)
 {
-	int		i;
-	int		j;
-	int		tmp;
+	int			i;
+	int			j;
+	int			tmp;
 
 	i = g_tracking.aut->line_up + 1;
 	ft_putstr_nocar(g_tracking.aut->to_add);
+	back_up_add();
+	i += g_tracking.aut->to_add_y;
 	j = ft_menuline();
 	tputs(tgetstr("do ", NULL), 1, yan_putchar);
+	go_back_down();
 	if (j == 0)
 	{
 		ft_putstr_nocar(g_tracking.aut->menuline);
