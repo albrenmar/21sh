@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 17:21:08 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/08 01:09:55 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/09 02:56:14 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,18 @@ int		scan_other(char *arg, char **new_arg)
 int		scan_dollar_key(char *arg, char **new_arg)
 {
 	int		i;
+	int		j;
 	char	*fill_arg;
 
-	i = 1;
+	i = 2;
+	j = 1;
 	fill_arg = *new_arg;
 	while (arg[i] && arg[i] != '}')
 	{
-		fill_arg[i] = arg[i];
+		fill_arg[j] = arg[i];
 		i++;
+		j++;
 	}
-	fill_arg[i] = arg[i];
 	return (++i);
 }
 
