@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/08 00:29:42 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/09 05:17:33 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ void			scan_argument(char *arg, t_scan *info_arg, int simple,
 					char quote);
 char			*ft_exp_complete(char *arg);
 char			unquote_value(char **value, int quote);
+void			reassign_value(char **value, char *new_value, int quote);
+int				quote_error(char *scan, int open_key, int quote);
+void			unquote(char **value, int *quote);
 int				ft_iswhitespace(int c);
 void			print_exp_error(char *to_error);
 void			print_exp_error_eq(char *varname, char *value);

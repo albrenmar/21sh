@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/08 01:24:13 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/10 14:58:54 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,29 +76,22 @@ int			need_expand(char *to_transf)
 	return (0);
 }
 
-int		scan_arg_transformer(char **arg, char quote)
+int			scan_arg_transformer(char **arg, char quote)
 {
 	t_expand	*expand;
 	t_scan		*scan;
 	t_scan		*first_scan;
 	char		*new_arg;
 
-	scan = NULL;
 	scan = new_scan();
 	first_scan = scan;
 	scan_argument(*arg, scan, 0, quote);
 	new_arg = NULL;
 	while (scan && scan->sstring)
 	{
-		expand = NULL;
 		expand = new_expand(ft_strlen(scan->sstring));
 		create_list_expand(expand, scan->sstring);
-		if (scan->sstring[0] != '~' && !quote)
-		{
-			if (transform(expand, &scan->sstring))
-				return (1);
-		}
-		else if (scan->sstring[0] == '$')
+		if ((scan->sstring[0] != '~' && !quote) || scan->sstring[0] == '$')
 			if (transform(expand, &scan->sstring))
 				return (1);
 		if (!new_arg)
@@ -122,24 +115,15 @@ char		expand_transformer(char **value, int chg_value)
 	if (chg_value)
 		quote = unquote_value(value, quote);
 	if (quote != '\'' && quote != 'E' && *value)
-	{
-//		if (need_expand(*value)/* && !is_simple_expand(*value)*/)
-			quote = scan_arg_transformer(value, quote);
-/*		else if (is_simple_expand(*value) > 0)
-			scan_simple_arg_transformer(value);*/
-/*		else if (is_simple_expand(*value) < 0)
-		{
-			print_exp_error(str_error);
-			ft_strdel(value);
-			*value = ft_strdup("");
-		}
-*/	}
+		quote = scan_arg_transformer(value, quote);
 	else if (quote == 'E')
 	{
 		print_exp_error(str_error);
 		ft_strdel(value);
 		*value = ft_strdup("");
 	}
+	if (quote == 1)
+		*value = ft_strdup("");
 	ft_strdel(&str_error);
 	return (quote);
 }
