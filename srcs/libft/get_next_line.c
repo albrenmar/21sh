@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/17 00:49:03 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/05 15:24:45 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/10 19:15:00 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		readline(t_fd *fd)
 	char	tmp[BUFF_SIZE + 1];
 	int		loop;
 
+	tmp[0] = '\0';
+	loop = 0;
 	loop = read(fd->number, tmp, BUFF_SIZE);
 	tmp[loop] = '\0';
 	if ((fd->buff = ft_strjoinfree(fd->buff, tmp, 1)) == NULL)
@@ -109,3 +111,4 @@ int		get_next_line(int const fd, char **line)
 	}
 	return (a);
 }
+
