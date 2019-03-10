@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/13 06:57:18 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/10 15:39:23 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,24 @@ void	exp_key_double_hash(char **str, t_expand *expand)
 	to_srch = get_asterisk_value(expand);
 	tmp3 = to_srch;
 	tmp2 = value_var;
-	while (ft_strstr(tmp2, to_srch))
-		tmp2++;
-	if (tmp2)
-		while (*tmp3 != '\0' && *(tmp3 + 1) == *tmp2)
-		{
+	if (value_var)
+	{
+		while (ft_strstr(tmp2, to_srch))
 			tmp2++;
-			tmp3++;
-		}
-	ft_strdel(str);
-	*str = ft_strdup(tmp2);
+		if (tmp2)
+			while (*tmp3 != '\0' && *(tmp3 + 1) == *tmp2)
+			{
+				tmp2++;
+				tmp3++;
+			}
+		ft_strdel(str);
+		*str = ft_strdup(tmp2);
+	}
+	else
+	{
+		ft_strdel(str);
+		*str = ft_strdup("");
+	}
 }
 
 void	exp_key_double_percent(char **str, t_expand *expand)
