@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/09 05:32:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/10 14:58:54 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int			need_expand(char *to_transf)
 	return (0);
 }
 
-int		scan_arg_transformer(char **arg, char quote)
+int			scan_arg_transformer(char **arg, char quote)
 {
 	t_expand	*expand;
 	t_scan		*scan;
@@ -122,6 +122,8 @@ char		expand_transformer(char **value, int chg_value)
 		ft_strdel(value);
 		*value = ft_strdup("");
 	}
+	if (quote == 1)
+		*value = ft_strdup("");
 	ft_strdel(&str_error);
 	return (quote);
 }

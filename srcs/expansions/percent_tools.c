@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 05:33:22 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/13 06:35:04 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/10 16:03:46 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ void	select_last_not_found(char **str, char *value, char *srch, char *found)
 		i++;
 	}
 	*str = tmp;
+	if (!**str)
+	{
+		ft_strdel(str);
+		*str = value;
+	}
 }
 
 void	select_not_found(char **str, char *value_var, char *to_srch)

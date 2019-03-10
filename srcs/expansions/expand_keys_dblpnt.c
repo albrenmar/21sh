@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/04 11:29:23 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/09 06:14:43 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	exp_key_inter(char **str, t_expand *expand)
 	if (!value1)
 		value1 = get_parm_string(str1);
 	value2 = str2;
-//	ft_strdel(str);
 	free(*str);
 	if (value1)
 		*str = value1;
@@ -82,7 +81,6 @@ void	exp_key_equal(char **str, t_expand *expand)
 
 	str1 = NULL;
 	str2 = NULL;
-	value1 = NULL;
 	str1 = get_varname(expand);
 	str2 = get_value(expand);
 	value1 = get_env_string(str1);

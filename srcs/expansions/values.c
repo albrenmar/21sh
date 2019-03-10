@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 06:10:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/14 07:14:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/10 16:20:28 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_value_asterisk(t_expand *expand)
 	t_expand	*to_run;
 
 	i = 0;
-	to_run = expand->next->next;
+	to_run = expand->next;
 	while (to_run->ltr != ':' && to_run->ltr != '%')
 		to_run = to_run->next;
 	if (to_run->ltr == '%')
@@ -47,7 +47,7 @@ char	*get_asterisk_value(t_expand *expand)
 	t_expand	*to_run;
 
 	i = 0;
-	to_run = expand->next->next;
+	to_run = expand->next;
 	while (to_run->ltr != ':' && to_run->ltr != '#')
 		to_run = to_run->next;
 	if (to_run->ltr == '#')
@@ -59,7 +59,7 @@ char	*get_asterisk_value(t_expand *expand)
 		to_run = to_run->prev;
 	}
 	start = to_run->next->next;
-	while (start->ltr != '}')
+	while (start && start->ltr != '*'/*->ltr != '}'*/)
 	{
 		start = start->next;
 		i++;
@@ -76,7 +76,7 @@ char	*get_value(t_expand *expand)
 	t_expand	*to_run;
 
 	i = 0;
-	to_run = expand->next->next;
+	to_run = expand->next;
 	while (to_run->ltr != ':' && to_run->ltr != '#' && to_run->ltr != '%')
 		to_run = to_run->next;
 	if (to_run->ltr == '#' || to_run->ltr == '%')
@@ -88,10 +88,15 @@ char	*get_value(t_expand *expand)
 	start = to_run->next->next;
 	while (start->ltr != '}')
 	{
-		start = start->next;
-		i++;
+		if (start->next && start->next->ltr)
+		{
+			start = start->next;
+			i++;
+		}
+		else
+			break ;
 	}
-	val = ft_strnew(i);
+	val = ft_strnew(i + 1);
 	return (value(val, to_run->next->next));
 }
 
@@ -102,7 +107,8 @@ char	*get_varname(t_expand *expand)
 	t_expand	*to_run;
 
 	i = 0;
-	to_run = expand->next->next;
+//	to_run = expand->next->next;
+	to_run = expand->next;
 	if (to_run->ltr == '#' && to_run->ltr == '%')
 		to_run = to_run->next;
 	while (to_run->ltr != ':' && to_run->ltr != '}'
@@ -111,7 +117,7 @@ char	*get_varname(t_expand *expand)
 		to_run = to_run->next;
 		i++;
 	}
-	var = ft_strnew(i);
-	to_run = expand->next->next;
+	var = ft_strnew(i + 1);
+	to_run = expand->next;
 	return (varname(var, to_run));
 }
