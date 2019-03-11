@@ -6,12 +6,21 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/11 11:16:55 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/11 16:21:35 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 #include "sh42.h"
+
+void	exp_key_altern(char **str, t_expand *expand)
+{
+	t_analyzer	to_analy;
+
+	init_analyzer(&to_analy, str, expand);
+	ft_strdel(str);
+	*str = ft_strdup(to_analy.varvalue);
+}
 
 void	exp_key_double_hash(char **str, t_expand *expand)
 {
@@ -28,11 +37,11 @@ void	exp_key_double_hash(char **str, t_expand *expand)
 		run_wildcard++;
 	if (to_analy.varvalue && !to_analy.asterisk)
 	{
-		if (ft_strstr(run_varvalue, run_wildcard))
-		{
-			ft_strdel(str);
+		ft_strdel(str);
+		if (ft_strnstr(run_varvalue, run_wildcard, to_analy.wlcd_len))
 			*str = ft_strdup(run_varvalue + to_analy.wlcd_len);
-		}
+		else
+			*str = ft_strdup(to_analy.varvalue);
 	}
 	else if (to_analy.varvalue && to_analy.start_astrsk)
 	{
@@ -56,7 +65,7 @@ void	exp_key_double_hash(char **str, t_expand *expand)
 	{
 		run_wildcard[to_analy.wlcd_len] = '\0';
 		ft_strdel(str);
-		if (ft_strstr(run_varvalue, run_wildcard))
+		if (ft_strnstr(run_varvalue, run_wildcard, to_analy.vvlu_len))
 			*str = ft_strdup("");
 		else
 			*str = ft_strdup(to_analy.varvalue);
@@ -65,7 +74,55 @@ void	exp_key_double_hash(char **str, t_expand *expand)
 
 void	exp_key_double_percent(char **str, t_expand *expand)
 {
-	char	*varname;
+	t_analyzer	to_analy;
+	char		*run_varvalue;
+	char		*run_wildcard;
+	int			i;
+
+	i = 0;
+	init_analyzer(&to_analy, str, expand);
+	run_varvalue = to_analy.varvalue;
+	run_wildcard = to_analy.wildcard;
+	if (to_analy.start_astrsk)
+		run_wildcard++;
+	if (to_analy.start_astrsk)
+		run_wildcard++;
+	if (to_analy.varvalue && !to_analy.asterisk)
+	{
+		run_varvalue = ft_strrev(to_analy.varvalue, 0);
+		run_wildcard = ft_strrev(to_analy.wildcard, 0);
+		ft_strdel(str);
+		if (ft_strnstr(run_varvalue, run_wildcard, to_analy.wlcd_len))
+		{
+			*str = ft_strdup(run_varvalue + to_analy.wlcd_len);
+			*str = ft_strrev(*str, 1);
+		}
+		else
+			*str = ft_strdup(to_analy.varvalue);
+	}
+	else if (to_analy.varvalue && to_analy.start_astrsk)
+	{
+		run_varvalue = ft_strrev(to_analy.varvalue, 0);
+		run_wildcard = ft_strrev(to_analy.wildcard + 1, 0);
+		ft_strdel(str);
+		if (ft_strnstr(run_varvalue, run_wildcard, to_analy.wlcd_len))
+			*str = ft_strdup("");
+		else
+			*str = ft_strdup(to_analy.varvalue);
+	}
+	else if (to_analy.varvalue && to_analy.end_astrsk)
+	{
+		run_wildcard[to_analy.wlcd_len] = '\0';
+		while (*run_varvalue && !ft_strnstr(run_varvalue, run_wildcard, to_analy.wlcd_len))
+		{
+			run_varvalue++;
+			i++;
+		}
+		run_varvalue = ft_strrev(to_analy.varvalue, 0);
+		ft_strdel(str);
+		*str = ft_strdup(ft_strrev(run_varvalue + (to_analy.vvlu_len - i), 0));
+	}
+/*	char	*varname;
 	char	*value_var;
 	char	*to_srch;
 	char	*found;
@@ -86,5 +143,5 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 	{
 		ft_strdel(str);
 		*str = ft_strnew(0);
-	}
+	}*/
 }

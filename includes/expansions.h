@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/11 08:50:46 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/11 16:22:06 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void			exp_key_unique_percent(char **str, t_expand *expand);
 char			*get_value_asterisk(t_expand *expand);
 void			exp_key_double_percent(char **str, t_expand *expand);
 void			exp_key_double_hash(char **str, t_expand *expand);
+void			exp_key_altern(char **str, t_expand *expand);
 void			transform_if_tilde(t_expand **expand, char **str);
 char			is_two_points_sign(t_expand *to_run);
 char			is_diferent_sign(t_expand *to_run);

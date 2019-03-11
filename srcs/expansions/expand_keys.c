@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/10 15:46:14 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/11 16:17:14 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,8 @@ t_expand	*expand_keys(t_expand *expand, char **str)
 		exp_key_unique_percent(str, expand);
 	else if (sign == '5')
 		exp_key_double_percent(str, expand);
+	else if (sign == '*')
+		exp_key_altern(str, expand);
 	update_list_expand(&expand, str);
 	return (expand);
 }
