@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/08 01:34:19 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/11 13:47:05 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void		print_prompt(void)
 	ft_putstr_fd(ANSI_COLOR_DEFAULT, 2);
 }
 
-void			get_coolprompt(void)
+void		get_coolprompt(void)
 {
 	char	*prompt;
 	char	*memory;
