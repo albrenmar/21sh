@@ -22,6 +22,11 @@ Partie Alex
 - Ecrire la fonction qui auitte quote et dquote proprement en cas dr ctrl D ou ctrl C(remplace le gros exit si g_tracking.quotes == 10)
 - close apres creation fichier
 
+Partie Hassan
+- Builtin fc
+- Implementation des differents builtins
+- Env avec les builtins
+
 MISC
 -Ajouter builtins manquants (POSIX?)
 -ajouter env a execve
