@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/09 05:17:33 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/11 08:50:46 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ typedef struct	s_scan
 	int					error;
 	struct s_scan		*next;
 }				t_scan;
+
+typedef struct	s_analyzer
+{
+	char		*orig_str;
+	int			orig_len;
+	char		*varname;
+	int			vnme_len;
+	char		*varvalue;
+	int			vvlu_len;
+	char		*wildcard;
+	int			wlcd_len;
+	int			asterisk;
+	int			start_astrsk;
+	int			end_astrsk;
+}				t_analyzer;
+
 
 char			expand_transformer(char **value, int chg_value);
 int				need_expand(char *to_transf);
@@ -107,5 +123,7 @@ int				scan_dollar(char *arg, char **new_arg);
 int				scan_dollar_key(char *arg, char **new_arg);
 int				scan_other(char *arg, char **new_arg);
 void			transform_simple(char **str);
+void			init_analyzer(t_analyzer *to_analy, char **str,
+					t_expand *expand);
 
 #endif
