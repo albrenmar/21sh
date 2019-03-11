@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/05 23:30:27 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/10 14:37:49 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	transform_simple(char **str)
 
 	run_str = *str;
 	new_str = NULL;
-	if (run_str[0] =='$')
+	if (run_str[0] == '$')
 		new_str = get_env_string(run_str + 1);
-	if (!new_str)
+	if (run_str[0] == '$' && !new_str)
 		new_str = get_parm_string(run_str + 1);
 	if (new_str)
 	{
@@ -67,8 +67,8 @@ int		transform(t_expand *expand, char **str)
 	transform_simple(str);
 	while (expand->ltr && expand->ltr != '~')
 	{
-		if (expand->ltr == '$' && expand->next && expand->next->ltr == '{'
-				&& !expand->prev && tmp[ft_strlen(tmp) - 1] == '}')
+		if (expand->ltr == '$'/* && expand->next && expand->next->ltr == '{'
+				&& !expand->prev && tmp[ft_strlen(tmp) - 1] == '}'*/)
 		{
 			first_letter = expand_keys(expand, str);
 			expand = first_letter;

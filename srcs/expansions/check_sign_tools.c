@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 02:40:58 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/12 05:04:14 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/11 16:38:21 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ char		is_diferent_sign(t_expand *to_run)
 			&& to_run->prev && to_run->prev->ltr != '{'
 			&& to_run->prev->ltr != '%')
 		return ('5');
+	else if ((to_run->ltr == '#' && !to_run->next) || (to_run->ltr == '%'
+			&& !to_run->next))
+		return ('*');
 	return ('\0');
 }
 
