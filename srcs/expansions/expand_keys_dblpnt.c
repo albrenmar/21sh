@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/09 06:14:43 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/12 20:28:19 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	exp_key_plus(char **str, t_expand *expand)
 	{
 		*str = value2;
 		ft_strdel(&value1);
+		if (!value2)
+			*str = ft_strdup("");
 	}
 	else
 	{
