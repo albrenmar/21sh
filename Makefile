@@ -6,7 +6,7 @@
 #    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/14 16:20:53 by hdufer           ###   ########.fr        #
+#    Updated: 2019/03/14 19:08:59 by hdufer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,6 +121,7 @@ SRC = main.c \
 	  history/print_hist.c \
 	  history/shebang.c \
 	  history/history_lib_plus.c \
+	  history/hassantest.c \
 	  expansions/expand.c \
 	  expansions/user.c \
 	  expansions/parm.c \
