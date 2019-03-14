@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:24:28 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/14 18:53:37 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/14 19:02:17 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	*shebang_last(char *baseline, char *line, char *last_line)
 	nline = ft_strdup(last_line);
 	nline = ft_strjoinfree(nline, hist->line, 1);
 	nline = ft_strjoinfree(nline, &line[i], 1);
+	g_tracking.shebang = 2;
 	return nline;
 }
 
@@ -65,6 +66,7 @@ char	*shebang_word(char *baseline, char *line, char *last_line)
 	nline = ft_strdup(last_line);
 	nline = ft_strjoinfree(nline, hist->line, 1);
 	nline = ft_strjoinfree(nline, &line[i], 1);
+	g_tracking.shebang = 2;
 	return nline;
 }
 
@@ -101,6 +103,7 @@ char	*shebang_num_pos(char *baseline, char *line, char *last_line)
 	nline = ft_strdup(last_line);
 	nline = ft_strjoinfree(nline, hist->line, 1);
 	nline = ft_strjoinfree(nline, &line[i], 1);
+	g_tracking.shebang = 2;
 	return nline;
 }
 
@@ -125,13 +128,11 @@ char	*shebang_num_neg(char *baseline, char *line, char *last_line)
 	tmp = ft_strrdup(line, i);
 	while (hist->next)
 	{
-		ft_putendl(hist->line);
 		if (hist->index != ft_atoi(tmp))
 			hist = hist->next;
 		else
 			break;
 	}
-	ft_putendl(hist->line);
 	if ((!hist->next && hist->index != ft_atoi(tmp))|| i == 0 || i >= 5)
 		{
 			free(tmp);
@@ -141,6 +142,7 @@ char	*shebang_num_neg(char *baseline, char *line, char *last_line)
 	nline = ft_strdup(last_line);
 	nline = ft_strjoinfree(nline, hist->line, 1);
 	nline = ft_strjoinfree(nline, &line[i], 1);
+	g_tracking.shebang = 2;
 	return nline;
 }
 
@@ -151,7 +153,7 @@ char 	*shebang_parse_switch(char *line)
 
 	i = 0;
 	g_tracking.shebang = 0;
-	while (g_tracking.shebang == 0 && line && line[i])
+	while (g_tracking.shebang != 1 && line && line[i])
 	{
 		if (line[i] && line[i] == '!')
 		{
@@ -182,5 +184,6 @@ char 	*shebang_parse_switch(char *line)
 		else
 			i++;
 	}
+	line && g_tracking.shebang == 2 ? ft_putendl(line) : NULL;
 	return line ;
 }
