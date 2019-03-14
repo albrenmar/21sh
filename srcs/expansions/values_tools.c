@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 06:23:41 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/14 07:19:39 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/10 20:51:36 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*value(char *val, t_expand *start)
 	int		i;
 
 	i = 0;
-	while (start->ltr != '}')
+	while (start && start->ltr)
 	{
 		val[i++] = start->ltr;
 		start = start->next;

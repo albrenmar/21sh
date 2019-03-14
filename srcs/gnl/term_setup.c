@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 05:23:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/11 11:33:17 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/11 10:56:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	check_term(char *name)
 	int			a;
 	char		buf[1024];
 
-	if (isatty(0) != 1)
-	{
-		ft_putendl("Not a terminal");
-		exit(0);
-	}
+//	if (isatty(0) != 1)
+//	{
+//		ft_putendl("Not a terminal");
+//		exit(0);
+//	}
 	a = tgetent(buf, name);
 	if (a == 0)
 		ft_putendl("No such entry in terminal database");
