@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/10 14:58:54 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/14 04:38:42 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int			scan_arg_transformer(char **arg, char quote)
 	t_scan		*scan;
 	t_scan		*first_scan;
 	char		*new_arg;
+	int			ret;
 
 	scan = new_scan();
 	first_scan = scan;
@@ -92,8 +93,11 @@ int			scan_arg_transformer(char **arg, char quote)
 		expand = new_expand(ft_strlen(scan->sstring));
 		create_list_expand(expand, scan->sstring);
 		if ((scan->sstring[0] != '~' && !quote) || scan->sstring[0] == '$')
-			if (transform(expand, &scan->sstring))
+		{
+			ret = transform(expand, &scan->sstring);
+			if (ret == 1)
 				return (1);
+		}
 		if (!new_arg)
 			new_arg = ft_strnew(1);
 		new_arg = ft_strjoinfree(new_arg, scan->sstring, 1);
@@ -107,16 +111,18 @@ int			scan_arg_transformer(char **arg, char quote)
 
 char		expand_transformer(char **value, int chg_value)
 {
-	char	quote;
-	char	*str_error;
+	char		quote;
+	char		*str_error;
+	t_unquoter	*to_unquot;
 
 	quote = 0;
 	str_error = ft_strdup(*value);
 	if (chg_value)
-		quote = unquote_value(value, quote);
+		to_unquot = unquote_value(value);
+//		quote = unquote_value(value, quote);
 	if (quote != '\'' && quote != 'E' && *value)
 		quote = scan_arg_transformer(value, quote);
-	else if (quote == 'E')
+	if (quote == 'E')
 	{
 		print_exp_error(str_error);
 		ft_strdel(value);
