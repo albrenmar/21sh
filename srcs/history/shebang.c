@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:24:28 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/14 18:50:45 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/14 18:53:37 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,12 +139,8 @@ char	*shebang_num_neg(char *baseline, char *line, char *last_line)
 			return NULL;
 		}
 	nline = ft_strdup(last_line);
-	ft_putendl("last_line:");
-	ft_putendl(nline);
 	nline = ft_strjoinfree(nline, hist->line, 1);
-	ft_putendl("Premierjoin :");
 	nline = ft_strjoinfree(nline, &line[i], 1);
-	ft_putendl("secondjoin");
 	return nline;
 }
 
