@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:24:28 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/07 19:06:21 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/14 15:03:03 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*shebang_word(t_hist *hist, t_core *core, char *baseline, char *line, char 
 		hist = hist->next;
 	while (hist->previous && ft_strncmp(hist->line, line, i) != 0)
 		hist = hist->previous;
-	if (!hist->previous || i == 0 ||ft_strncmp(hist->line, line, i) != 0)
+	if ((!hist->previous && ft_strncmp(hist->line, line, i) != 0) || i == 0)
 		{
 			ft_putendl_fd("Event not found", 2);
 			return baseline;
@@ -81,7 +81,7 @@ char	*shebang_num_pos(t_hist *hist, t_core *core, char *baseline, char *line, ch
 	tmp = ft_strrdup(line, i);
 	while (hist->previous && hist->index != ft_atoi(tmp))
 		hist = hist->previous;
-	if (!hist->previous || i == 0 || i <= 5 || hist->index != ft_atoi(tmp))
+	if ((!hist->previous && hist->index != ft_atoi(tmp))|| i == 0 || i >= 5)
 		{
 			free(tmp);
 			ft_putendl_fd("Event not found", 2);
@@ -114,7 +114,7 @@ char	*shebang_num_neg(t_hist *hist, t_core *core, char *baseline, char *line, ch
 	tmp = ft_strrdup(line, i);
 	while (hist->next && hist->index != ft_atoi(tmp))
 		hist = hist->next;
-	if (!hist->next || i == 0 || i <= 5 || hist->index != ft_atoi(tmp))
+	if ((!hist->next && hist->index != ft_atoi(tmp))|| i == 0 || i >= 5)
 		{
 			free(tmp);
 			ft_putendl_fd("Event not found", 2);
