@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hist.c                                       :+:      :+:    :+:   */
+/*   hassantest.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/21 20:26:47 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/14 17:56:15 by hdufer           ###   ########.fr       */
+/*   Created: 2019/03/14 19:07:42 by hdufer            #+#    #+#             */
+/*   Updated: 2019/03/14 19:10:54 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-int		print_hist()
+int		history(void)
 {
-	t_hist		*history;
+	char **av;
+	int	i;
 
-	history = g_tracking.mysh->hist;
-	if (!history)
-		return (1);
-	while (history)
+	i = 0;
+	av = g_tracking.g_tab_exec;
+	while (av[i])
 	{
-		ft_putendl(history->line);
-		history = history->next;
+		ft_putendl(av[i]);
+		i++;
 	}
 	return (0);
 }
