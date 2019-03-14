@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 01:52:42 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/09 05:13:24 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/14 04:39:41 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		quote_error(char *scan, int open_key, int quote)
 		return ('E');
 	else if (*scan == '{' && ft_iswhitespace(*(scan + 1)))
 		return ('E');
-	return (0);
+	return (quote);
 }
 
 void	reassign_value(char **value, char *new_value, int quote)
@@ -66,15 +66,88 @@ void	reassign_value(char **value, char *new_value, int quote)
 	}
 }
 
-char	unquote_value(char **value, int quote)
+t_unquoter	*new_unquoted_value(void)
 {
-	char	*new_value;
-	char	*scan;
-	int		i;
-	int		open_key;
+	t_unquoter	*value;
 
-	scan = ft_strdup(*value);
-	new_value = ft_strnew(ft_strlen(*value));
+	value = (t_unquoter *)malloc(sizeof(t_unquoter));
+	value->str_unquoted = NULL;
+	value->next = (t_unquoter *)malloc(sizeof(t_unquoter));
+	value->next->str_unquoted = NULL;
+	value->next->next = NULL;
+	return (value);
+}
+
+void	copy_to_quote(char **old, char **new, char *type)
+{
+	char	*run_old;
+	char	*run_new;
+
+	run_old = *old;
+	run_new = *new;
+	while (*run_old && (*run_old != '\'' || *run_old != '"'))
+		*(run_new++) = *(run_old++);
+	if (*run_old && *run_old == '\'')
+		*type = '\'';
+	else if (*run_old && *run_old == '"')
+		*type = '"';
+	*old = run_old;
+}
+
+void	copy_new_value(char **old, t_unquoter **new)
+{
+	char		*run_old;
+	char		*run_new;
+	t_unquoter	*unq_new;
+
+	run_old = *old;
+	unq_new = *new;
+	run_new = unq_new->str_unquoted;
+
+	while (*run_old)
+	{
+		if (!unq_new->type)
+			copy_to_quote(&run_old, &run_new, &unq_new->next->type);
+		else
+			while (*run_old && *run_old != unq_new->type)
+				*(run_new++) = *(run_old++);
+		*old = run_old;
+	}
+}
+
+t_unquoter	*unquote_value(char **value)
+{
+	char		*new_value;
+	char		*scan;
+	int			i;
+	int			open_key;
+	int			orig_quote;
+	t_unquoter	*to_unquot;
+	t_unquoter	*first;
+
+//	scan = ft_strdup(*value);
+	scan = *value;
+	to_unquot = new_unquoted_value();
+	to_unquot->type = '\0';
+	to_unquot->error = 0;
+	first = to_unquot;
+	while (*scan)
+	{
+		to_unquot->str_unquoted = ft_strnew(ft_strlen(scan));
+		if (!to_unquot->type)
+			if (*scan && (*scan == '\'' || *scan == '"'))
+			{
+				to_unquot->type = *scan;
+				scan++;
+			}
+		copy_new_value(&scan, &to_unquot);
+		if (*scan && *scan + 1)
+		{
+			to_unquot->next = new_unquoted_value();
+			to_unquot = to_unquot->next;
+		}
+	}
+/*	new_value = ft_strnew(ft_strlen(*value));
 	i = 0;
 	open_key = 0;
 	while (*scan != '\0')
@@ -84,7 +157,7 @@ char	unquote_value(char **value, int quote)
 			open_key++;
 		else if (open_key == 1 && *scan == '}')
 			open_key = 0;
-		else if ((quote = quote_error(scan, open_key, quote)))
+		else if ((quote = quote_error(scan, open_key, quote)) == 'E')
 			break ;
 		if (*scan != '"' && *scan != '\'')
 			new_value[i++] = *scan;
@@ -92,5 +165,5 @@ char	unquote_value(char **value, int quote)
 			scan++;
 	}
 	reassign_value(value, new_value, quote);
-	return (quote);
+*/	return (first);
 }
