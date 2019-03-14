@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/08 05:56:21 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/11 14:04:39 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		main(int argc, char **argv, char **env)
 		{
 			hist_lst_add_next(g_tracking.mysh->hist, line);
 			convert_list(cmd);
+			print_last(cmd);
 			ft_ast(cmd);
 		}
 		jobs_notifications();

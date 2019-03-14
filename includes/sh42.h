@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/08 03:15:55 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/11 15:55:06 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -387,6 +387,8 @@ char			*check_quote(char *line, int i, char c);
 char			*check_bracket(char *line, int i);
 int				ft_valid_quote(char *line, char c, int flag);
 int				ft_valid_bracket(char *line, char c, int flag);
+int				its_heredoc(t_last *list);
+int				its_indir(t_last *list);
 
 void			get_coolprompt(void);
 void			print_prompt(void);

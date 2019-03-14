@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/08 06:05:12 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/12 13:19:38 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,24 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 			temp_command = NULL;
 			list_cmd = list_cmd->next;
 		}
-		else if (list_cmd->type == OP && (its_reddir(list_cmd) || its_fd_reddir(list_cmd)))
+		else if (list_cmd->type == OP && (its_reddir(list_cmd) || its_fd_reddir(list_cmd) || its_indir(list_cmd)))
 		{
-			redir++;
-			create_fich(list_cmd);
-			list_cmd = list_cmd->next;
+			if (its_indir(list_cmd) && !its_heredoc(list_cmd))
+			{
+				printf("CHEVRON A GAUCHE\n");
+				list_cmd = list_cmd->next;
+			}
+			else if (its_heredoc(list_cmd))
+			{
+				printf("HEREDOC A CREER\n");
+				list_cmd = list_cmd->next;
+			}
+			else
+			{
+				redir++;
+				create_fich(list_cmd);
+				list_cmd = list_cmd->next;
+			}
 		}
 		else if (!temp_command)
 			list_cmd = list_cmd->next;
