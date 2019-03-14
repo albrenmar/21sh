@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/06 21:12:07 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/14 18:47:17 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void		hist_save_file(t_hist *hist)
 		hist = hist->previous;
 	while(hist)
 	{
-		ft_putendl_fd(hist->line, fd);
+		if (hist->line != NULL && ft_strlen(hist->line) > 0)
+			ft_putendl_fd(hist->line, fd);
 		if (hist->next)
 			hist = hist->next;
 		else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/11 13:44:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/14 18:50:56 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ int		main(int argc, char **argv, char **env)
 		g_tracking.cmd = NULL;
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
 		ft_putchar('\n');
-		if ((ft_strlen(line) > 0) && spaces_line_check(line) && (cmd = ft_parseur(line)))
+		if ((line = shebang_parse_switch(line)) != NULL)
 		{
-			hist_lst_add_next(g_tracking.mysh->hist, line);
-			convert_list(cmd);
-			ft_ast(cmd);
+			if ((ft_strlen(line) > 0) && spaces_line_check(line) && (cmd = ft_parseur(line)))
+			{
+				hist_lst_add_next(g_tracking.mysh->hist, line);
+				convert_list(cmd);
+				ft_ast(cmd);
+			}
 		}
 		jobs_notifications();
 		jobs_update_current();

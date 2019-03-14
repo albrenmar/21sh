@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/08 03:15:55 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/14 19:10:59 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,7 @@ typedef struct	s_tracking
 	pid_t				spid;
 	int					bg;
 	int					fg;
+	int					shebang;
 	// int					lastplace;
 	// char				**orderhold;
 }				t_tracking;
@@ -331,7 +332,10 @@ void			ctrl_c(void);
 void			clean_up_leaks(void);
 t_ls			*ls_alloc(char *str);
 
-
+int				ft_isspace(int c);
+int				ft_isdigit_str(char* str);
+char			*ft_strrdup(char *line, int n);
+t_hist			*builtin_s_args(char **tabb, t_hist *hist);
 void			hist_file_to_lst(void);
 char			*create_path_hist(void);
 int				print_hist();
@@ -349,6 +353,8 @@ t_hist			*hist_delete_index(t_hist *hist, int index);
 int     		begin_search(void);
 char         	*get_hist_ptr(char *needle);
 t_hist			*get_hist_nbr(int i);
+char		 	*shebang_parse_switch(char *line);
+int				history(void);
 
 void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
 int				fg_builtin_output(t_jobs *tmp);
