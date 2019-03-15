@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 01:52:42 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/14 04:39:41 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/15 03:27:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ t_unquoter	*new_unquoted_value(void)
 
 	value = (t_unquoter *)malloc(sizeof(t_unquoter));
 	value->str_unquoted = NULL;
+	value->type = '\0';
 	value->next = (t_unquoter *)malloc(sizeof(t_unquoter));
 	value->next->str_unquoted = NULL;
 	value->next->next = NULL;
@@ -85,12 +86,14 @@ void	copy_to_quote(char **old, char **new, char *type)
 
 	run_old = *old;
 	run_new = *new;
-	while (*run_old && (*run_old != '\'' || *run_old != '"'))
+	while (*run_old && *run_old != '\'' && *run_old != '"')
 		*(run_new++) = *(run_old++);
 	if (*run_old && *run_old == '\'')
 		*type = '\'';
 	else if (*run_old && *run_old == '"')
 		*type = '"';
+	else
+		*type = '\0';
 	*old = run_old;
 }
 
@@ -104,14 +107,17 @@ void	copy_new_value(char **old, t_unquoter **new)
 	unq_new = *new;
 	run_new = unq_new->str_unquoted;
 
-	while (*run_old)
+	if (*run_old)
 	{
 		if (!unq_new->type)
 			copy_to_quote(&run_old, &run_new, &unq_new->next->type);
 		else
 			while (*run_old && *run_old != unq_new->type)
 				*(run_new++) = *(run_old++);
-		*old = run_old;
+		if (*run_old)
+			*old = run_old + 1;
+		else
+			*old = run_old;
 	}
 }
 
@@ -124,11 +130,12 @@ t_unquoter	*unquote_value(char **value)
 	int			orig_quote;
 	t_unquoter	*to_unquot;
 	t_unquoter	*first;
+	char		next_quote;
 
 //	scan = ft_strdup(*value);
 	scan = *value;
 	to_unquot = new_unquoted_value();
-	to_unquot->type = '\0';
+//	to_unquot->type = '\0';
 	to_unquot->error = 0;
 	first = to_unquot;
 	while (*scan)
@@ -143,8 +150,12 @@ t_unquoter	*unquote_value(char **value)
 		copy_new_value(&scan, &to_unquot);
 		if (*scan && *scan + 1)
 		{
+			next_quote = to_unquot->next->type;
+			if (next_quote < 0)
+				next_quote = '\0';
 			to_unquot->next = new_unquoted_value();
 			to_unquot = to_unquot->next;
+			to_unquot->type = next_quote;
 		}
 	}
 /*	new_value = ft_strnew(ft_strlen(*value));
