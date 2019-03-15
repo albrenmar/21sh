@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/14 04:38:42 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/15 00:46:47 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,37 +76,73 @@ int			need_expand(char *to_transf)
 	return (0);
 }
 
-int			scan_arg_transformer(char **arg, char quote)
+void		scan_arg_transformer(t_unquoter **check, char **value)
 {
 	t_expand	*expand;
 	t_scan		*scan;
 	t_scan		*first_scan;
+	t_unquoter	*checker;
 	char		*new_arg;
 	int			ret;
 
-	scan = new_scan();
-	first_scan = scan;
-	scan_argument(*arg, scan, 0, quote);
+	checker = *check;
 	new_arg = NULL;
-	while (scan && scan->sstring)
+	while (checker && checker->str_unquoted)
 	{
-		expand = new_expand(ft_strlen(scan->sstring));
-		create_list_expand(expand, scan->sstring);
-		if ((scan->sstring[0] != '~' && !quote) || scan->sstring[0] == '$')
+		if (checker->type != '\'')
 		{
-			ret = transform(expand, &scan->sstring);
-			if (ret == 1)
-				return (1);
+			scan = new_scan();
+			first_scan = scan;
+//		scan_argument(*arg, scan, 0, quote);
+			scan_argument(checker->str_unquoted, scan, 0, checker->type);
+			new_arg = NULL;
+			while (scan && scan->sstring)
+			{
+				expand = new_expand(ft_strlen(scan->sstring));
+				create_list_expand(expand, scan->sstring);
+//			if ((scan->sstring[0] != '~' && !quote) || scan->sstring[0] == '$')
+				if ((scan->sstring[0] != '~' && !checker->type) || scan->sstring[0] == '$')
+				{
+//				ret = transform(expand, &scan->sstring);
+					checker->error = transform(expand, &scan->sstring);
+/*				if (ret == 1)
+					return (1);
+*/				}
+				if (!new_arg)
+					new_arg = ft_strnew(1);
+				new_arg = ft_strjoinfree(new_arg, scan->sstring, 1);
+				scan = scan->next;
+			}
+			while (first_scan->sstring)
+			{
+				ft_strdel(&first_scan->sstring);
+				ft_memdel((void **)first_scan);
+				first_scan = first_scan->next;
+			}
+			if (first_scan)
+				ft_memdel((void **)first_scan);
+			first_scan = NULL;
+			if (new_arg)
+			{
+				ft_strdel(&checker->str_unquoted);
+				checker->str_unquoted = new_arg;
+			}
 		}
-		if (!new_arg)
-			new_arg = ft_strnew(1);
-		new_arg = ft_strjoinfree(new_arg, scan->sstring, 1);
-		scan = scan->next;
+		checker = checker->next;
+//		*arg = new_arg;
 	}
-	scan = first_scan;
-	ft_strdel(arg);
-	*arg = new_arg;
-	return (0);
+	checker = *check;
+	ft_strdel(value);
+	*value = ft_strnew(1);
+	while (checker->str_unquoted)
+	{
+		*value = ft_strjoinfree(*value, checker->str_unquoted, 2);
+		checker = checker->next;
+	}
+//	scan = first_scan;
+//	ft_strdel(arg);
+//	*arg = new_arg;
+//	return (0);
 }
 
 char		expand_transformer(char **value, int chg_value)
@@ -117,10 +153,13 @@ char		expand_transformer(char **value, int chg_value)
 
 	quote = 0;
 	str_error = ft_strdup(*value);
+	to_unquot = NULL;
 	if (chg_value)
 		to_unquot = unquote_value(value);
+	if (to_unquot)
+		scan_arg_transformer(&to_unquot, value);
 //		quote = unquote_value(value, quote);
-	if (quote != '\'' && quote != 'E' && *value)
+/*	if (quote != '\'' && quote != 'E' && *value)
 		quote = scan_arg_transformer(value, quote);
 	if (quote == 'E')
 	{
@@ -131,5 +170,6 @@ char		expand_transformer(char **value, int chg_value)
 	if (quote == 1)
 		*value = ft_strdup("");
 	ft_strdel(&str_error);
-	return (quote);
+	return (quote);*/
+	return (0);
 }

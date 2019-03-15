@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/14 04:41:26 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/14 23:05:20 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ char			*value(char *val, t_expand *start);
 char			*value_asterisk(char *val, t_expand *start);
 int				have_envname(char *var);
 int				have_setname(char *var);
-int				scan_arg_transformer(char **arg, char quote);
+void			scan_arg_transformer(t_unquoter **check, char **value);
 t_scan			*new_scan(void);
 void			scan_argument(char *arg, t_scan *info_arg, int simple,
 					char quote);
