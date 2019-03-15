@@ -6,12 +6,60 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/15 19:14:01 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/15 23:18:45 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
+
+t_last	*Check_exp_error(t_last *cmd)
+{
+	t_last		*list_for_free;
+	t_last		*begin;
+
+	begin = cmd;
+	list_for_free = NULL;
+	while (cmd)
+	{
+		g_tracking.mysh->err_expend = 0;
+		expand_transformer(&cmd->name, 1);
+		if (g_tracking.mysh->err_expend == 1)
+		{
+			while (cmd)
+			{
+				if ((ft_strlen(cmd->name) == 1) && cmd->name[0] == '|')
+				{
+					ft_putendl_fd("ERREUR EXPENSION", 2);
+					cmd = cmd->next;
+					cmd->prev->next = NULL;
+					//FREE LE DEBUT DE LIST DEPUIS CMD->PREV
+					cmd->prev = NULL;
+					begin = cmd;
+					//print_last(cmd);
+					break ;
+				}
+				else if ((ft_strlen(cmd->name) == 2) && its_separator(cmd))
+				{
+					ft_putendl_fd("ERREUR EXPENSION", 2);
+					//FREE LIST DEPUIS BEGIN
+					return (NULL);
+				}
+				else
+					cmd = cmd->next;
+			}
+			if (!cmd)
+			{
+				ft_putendl_fd("ERREUR EXPENSION", 2);
+				//FREE LIST DEPUIS BEGIN
+				return (NULL);
+			}
+		}
+		else
+			cmd = cmd->next;
+	}
+	return (begin);
+}
 
 int		main(int argc, char **argv, char **env)
 {
@@ -21,8 +69,6 @@ int		main(int argc, char **argv, char **env)
 	t_last	*cmd;
 
 	line = NULL;
-	if (argc > 2)
-		argc_error();
 	if (argc > 2)
 		argc_error();
 	argc = 0;
@@ -51,7 +97,9 @@ int		main(int argc, char **argv, char **env)
 			{
 				hist_lst_add_next(g_tracking.mysh->hist, line);
 				convert_list(cmd);
-				ft_ast(cmd);
+				cmd = Check_exp_error(cmd);
+				if (cmd)
+					ft_ast(cmd);
 			}
 		}
 		jobs_notifications();

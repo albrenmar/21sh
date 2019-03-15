@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/09 06:14:43 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/15 23:01:24 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	exp_key_inter(char **str, t_expand *expand)
 	else
 	{
 		ft_strdel(&value1);
+		g_tracking.mysh->err_expend = 1;
 		print_exp_error_eq(str1, str2);
 		ft_strdel(&str1);
 		ft_strdel(&str2);

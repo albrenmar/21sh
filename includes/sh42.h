@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/15 18:56:10 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/15 23:04:41 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ typedef struct	s_shell
 	t_env_set		*setenv_lst;
 	char			**tab_env;
 	int				expand_error;
+	int				err_expend;
 }				t_shell;
 
 typedef struct		s_hash

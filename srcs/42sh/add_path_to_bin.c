@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:00:43 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/15 01:44:43 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/15 19:29:59 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,14 @@ char	**test_exist_fonction(char **tab_cmd, int mode)
 	char		**pathlist;
 	char		*path;
 	struct stat	path_stat;
-    
+
 	stat(tab_cmd[0], &path_stat);
 	if (ft_strchr(tab_cmd[0], '/') && S_ISREG(path_stat.st_mode) == 0)
 		return (NULL);
-	if (mode == 2 && (access(tab_cmd[0], F_OK) == 0) && (access(tab_cmd[0], X_OK) == 0))
+	if (mode == 2 && (access(tab_cmd[0], F_OK & X_OK) == 0))
 	{
-		if (tab_cmd[0][0] == '.' && tab_cmd[0][1] == '/' && S_ISREG(path_stat.st_mode))
-			return (tab_cmd);
-		if (tab_cmd[0][0] == '/')
+		if (tab_cmd[0][0] == '/' || (tab_cmd[0][0] == '.'
+					&& tab_cmd[0][1] == '/' && S_ISREG(path_stat.st_mode)))
 			return (tab_cmd);
 		path = get_env_string("PATH");
 		pathlist = ft_strsplit(path, ':');
