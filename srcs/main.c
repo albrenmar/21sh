@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/15 01:45:12 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/15 16:56:11 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		main(int argc, char **argv, char **env)
 	if (ft_strcmp(argv[1], "-u") == 0)
 		g_tracking.unlink = 1;
 	else
-		g_tracking.unlink = 0;	
+		g_tracking.unlink = 0;
 	//	set_env(&st_env, env);
 	// ft_siginit();
 	cursorinit();
@@ -42,6 +42,8 @@ int		main(int argc, char **argv, char **env)
 		line = ft_strdup(g_tracking.cmd);
 		free(g_tracking.cmd);
 		g_tracking.cmd = NULL;
+		if (g_tracking.interactive == 1)
+			ft_putchar_fd('\n', 2);
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
 		if ((line = shebang_parse_switch(line)) != NULL)
 		{

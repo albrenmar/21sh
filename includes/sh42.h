@@ -169,9 +169,6 @@ typedef struct		s_hash
 
 typedef struct	s_tracking
 {
-	char				**g_tab_exec;
-	int					builtin;
-	t_cursor			*pos;
 	struct termios		default_term;
 	struct termios		myterm;
 	struct s_term_data	*terminfo;
@@ -180,6 +177,10 @@ typedef struct	s_tracking
 	struct s_shell		*mysh;
 	struct s_jobs		*jobs;
 	struct s_hash		*hashtable[27];
+	char				**g_tab_exec;
+	int					builtin;
+	t_cursor			*pos;
+	t_last				*temp_command;
 	char				*str;
 	char				*cmd;
 	char				*user;

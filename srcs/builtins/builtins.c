@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/14 19:10:07 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/15 16:27:41 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,6 @@ int			ft_builtin_search(char *builtin)
 		i++;
 	}
 	if (*builtin == '\0' && tmp[i] == '\0')
-		return (1);
-	return (0);
-}
-
-int			is_builtin(void)
-{
-	if (ft_builtin_search("jobs") || ft_builtin_search("fg")
-		|| ft_builtin_search("bg") || ft_builtin_search("exit")
-		|| ft_builtin_search("set") || ft_builtin_search("echo")
-		|| ft_builtin_search("hash") || ft_builtin_search("test")
-		|| ft_builtin_search("cd"))
 		return (1);
 	return (0);
 }

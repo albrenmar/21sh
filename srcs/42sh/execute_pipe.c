@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/14 19:44:34 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/15 16:36:22 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job)
 	pid_t	pid0;
 
 	g_tracking.g_tab_exec = tab_dup(tab_exec);
-	dprintf(2, "STDIN_EXEC = %d\n", g_tracking.mysh->set_fd->STDIN);
+	//dprintf(2, "STDIN_EXEC = %d\n", g_tracking.mysh->set_fd->STDIN);
 	if (!is_builtin_alone())
 	{
 		if (!is_builtin())
