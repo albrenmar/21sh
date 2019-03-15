@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/14 23:07:57 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/15 01:29:25 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ typedef struct	s_tracking
 	char				*search;
 	char				*found;
 	t_lstcontainer		*key_list;
+	int					linemode;
 	int					quotes;
 	int					bracket;
 	int					swi;

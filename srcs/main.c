@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/15 01:12:39 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/15 01:45:12 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ int		main(int argc, char **argv, char **env)
 		{
 			if ((ft_strlen(line) > 0) && spaces_line_check(line) && (cmd = ft_parseur(line)))
 			{
-				if (g_tracking.interactive == 1)
-					ft_putchar('\n');
 				hist_lst_add_next(g_tracking.mysh->hist, line);
 				convert_list(cmd);
 				ft_ast(cmd);

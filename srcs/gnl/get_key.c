@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/15 01:10:42 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/15 01:44:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,7 +194,7 @@ int		readloop(int i, int fd)
 
 int		get_key(void)
 {
-	char	*test;
+	char	*str;
 	int 	fd;
 
 	tcsetattr(0, TCSANOW, &g_tracking.myterm);
@@ -203,8 +203,20 @@ int		get_key(void)
 		print_prompt();
 	fd = STDIN_FILENO;
 	g_tracking.histindex = get_last() + 1;
-	while (readloop(0, fd) == 0)
+	if (g_tracking.linemode == 0)
 	{
+		while (readloop(0, fd) == 0)
+		{
+		}
+	}
+	else
+	{
+		tcsetattr(0, TCSANOW, &g_tracking.default_term);
+		get_next_line(0, &str);
+		g_tracking.cmd = ft_strdup(str);
+		g_tracking.str = NULL;
+		free(str);
+		str = NULL;
 	}
 	tcsetattr(0, TCSANOW, &g_tracking.default_term);
 	return (1);

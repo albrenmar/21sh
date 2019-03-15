@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 05:23:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/11 10:56:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/15 01:38:51 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,20 @@ void	check_term(char *name)
 	int			a;
 	char		buf[1024];
 
-//	if (isatty(0) != 1)
-//	{
-//		ft_putendl("Not a terminal");
-//		exit(0);
-//	}
+	if (!name)
+		return ;
 	a = tgetent(buf, name);
+	g_tracking.linemode = 0;
 	if (a == 0)
 		ft_putendl("No such entry in terminal database");
 	if (a == -1)
 		ft_putendl("Terminfo database could not be found");
 	if (a != 1)
-		exit(0);
+	{
+		ft_putendl("switching to basic line mode");
+		g_tracking.linemode = 1;
+	}
+		
 }
 
 int		clear_screen3(void)
@@ -62,7 +64,8 @@ void	get_term(void)
 	if (!(name_term = getenv("TERM")))
 	{
 		ft_putendl("No terminal found in ENV");
-		exit(0);
+		ft_putendl("switching to basic line mode");
+		g_tracking.linemode = 1;
 	}
 	check_term(name_term);
 	tcgetattr(0, &default_term);
@@ -70,7 +73,6 @@ void	get_term(void)
 	term.c_lflag &= ~(ICANON | ECHO | ISIG);
 	term.c_cc[VMIN] = 1;
 	term.c_cc[VTIME] = 0;
-	tcsetattr(0, TCSANOW, &term);
 	g_tracking.terminfo = malloc(sizeof(t_term_data*));
 	g_tracking.myterm = term;
 	g_tracking.default_term = default_term;
