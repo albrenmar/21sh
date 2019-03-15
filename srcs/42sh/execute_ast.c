@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/15 17:59:23 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/15 18:15:05 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,20 @@ char	*filename(void)
 
 	new = ft_strdup("/tmp/heredoc");
 	g_tracking.herenbr++;
-	nbr = ft_itoa(rand());
+	nbr = ft_itoa(g_tracking.herenbr);
 	if (!nbr)
 		return (NULL);
 	new = ft_strjoinfree(new, nbr, 3);
+	while (access(new , F_OK ) != -1 ) 
+	{
+		free(new);
+		new = ft_strdup("/tmp/heredoc");
+		g_tracking.herenbr++;
+		nbr = ft_itoa(g_tracking.herenbr);
+		if (!nbr)
+			return (NULL);
+		new = ft_strjoinfree(new, nbr, 3);
+	}
 	return (new);
 }
 
