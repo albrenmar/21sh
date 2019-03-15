@@ -6,18 +6,17 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 01:41:13 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/22 05:30:22 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/12 13:25:29 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
 
 int		error_lexer(t_last *list_cmd)
 {
-	if (list_cmd && list_cmd->type == OP && !its_reddir(list_cmd) && !its_fd_reddir(list_cmd))
+	if (list_cmd && list_cmd->type == OP && !its_reddir(list_cmd) && !its_fd_reddir(list_cmd) && !its_heredoc(list_cmd) && !its_indir(list_cmd))
 	{
-		printf("Error\n");
+		printf("ErrorLOL\n");
 		return (1);
 	}
 	while (list_cmd)

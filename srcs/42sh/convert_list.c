@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 07:07:00 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/22 05:47:11 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:05:21 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,53 @@ t_last		*new_list(void)
 void		convert_list(t_last *list)
 {
 	t_last	*begin;
+	t_last	*prev;
 
 	begin = list;
+	prev = NULL;
 	while (list)
 	{
-		if (!its_reddir(list) && !its_fd_reddir(list) && (!PREV || (PREV && (its_pipe(PREV) || PREV->type == SEP))))
+		if (!its_indir(list) && !its_heredoc(list) && !its_reddir(list) && !its_fd_reddir(list) && (!PREV || (PREV && (its_pipe(PREV) || PREV->type == SEP))))
 			LIST = CMD;
-		else if (its_pipe(list) || its_reddir(list) || its_fd_reddir(list))
+		else if (its_pipe(list) || its_reddir(list) || its_fd_reddir(list) || its_heredoc(list) || its_indir(list))
 			LIST = OP;
 		else if (its_separator(list) || its_eper(list))
 			LIST = SEP;
-		else if (PREV && (its_reddir(PREV) || its_fd_reddir(PREV)))
+		else if (PREV && (its_reddir(PREV) || its_fd_reddir(PREV) || its_indir(PREV) || its_heredoc(PREV)))
 				LIST = FICH;
 		else if (list->name[0] == '-')
 		{
 			if ((PREV && (PREV->type == CMD || PREV->type == FICH || PREV->type == OPT)))
-				LIST = OPT;
+			{
+				if (PREV->type == FICH)
+				{
+					prev = PREV;
+					while (prev && prev->type != CMD)
+						prev = prev->prev;
+					if (!prev)
+						LIST = CMD;
+					else
+						LIST = OPT;
+				}
+			}
 			else if (PREV && PREV->type == ARG)
 				LIST = ARG;
 		}
 		else if (PREV && (PREV->type == FICH || PREV->type == OPT || PREV->type == ARG))
-			LIST = ARG;
+		{
+			if (PREV->type == FICH)
+			{
+				prev = PREV;
+				while (prev && prev->type != CMD)
+					prev = prev->prev;
+				if (!prev)
+					LIST = CMD;
+				else
+					LIST = ARG;
+			}
+			else
+				LIST = ARG;
+		}
 		else if (its_pipe(list) || its_reddir(list) || its_fd_reddir(list))
 			LIST = OP;
 		else if (LIST != SEP && LIST != OP && (PREV && (PREV->type == OPT || PREV->type == CMD)))

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/15 01:29:25 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/15 23:04:41 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ typedef struct	s_shell
 	t_env_set		*setenv_lst;
 	char			**tab_env;
 	int				expand_error;
+	int				err_expend;
 }				t_shell;
 
 typedef struct		s_hash
@@ -169,9 +170,6 @@ typedef struct		s_hash
 
 typedef struct	s_tracking
 {
-	char				**g_tab_exec;
-	int					builtin;
-	t_cursor			*pos;
 	struct termios		default_term;
 	struct termios		myterm;
 	struct s_term_data	*terminfo;
@@ -180,6 +178,10 @@ typedef struct	s_tracking
 	struct s_shell		*mysh;
 	struct s_jobs		*jobs;
 	struct s_hash		*hashtable[27];
+	char				**g_tab_exec;
+	int					builtin;
+	t_cursor			*pos;
+	t_last				*temp_command;
 	char				*str;
 	char				*cmd;
 	char				*user;
@@ -396,6 +398,9 @@ char			*check_quote(char *line, int i, char c);
 char			*check_bracket(char *line, int i);
 int				ft_valid_quote(char *line, char c, int flag);
 int				ft_valid_bracket(char *line, char c, int flag);
+int				its_heredoc(t_last *list);
+int				its_indir(t_last *list);
+int				out_redir(t_last *list);
 
 void			get_coolprompt(void);
 void			print_prompt(void);
