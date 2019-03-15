@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_path_to_bin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:00:43 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/03 08:29:48 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/15 01:44:43 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int		test_exist_fonction_two(char ***tab_cmd, char **pathlist)
 
 	i = 0;
 	next_str = NULL;
+	if (!pathlist)
+		return (0);
 	while (pathlist[i])
 	{
 		addslash = ft_strjoin(pathlist[i], "/");

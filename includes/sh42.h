@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/15 16:09:18 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/15 01:29:25 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ typedef struct	s_tracking
 	char				*search;
 	char				*found;
 	t_lstcontainer		*key_list;
+	int					linemode;
 	int					quotes;
 	int					bracket;
 	int					swi;
@@ -334,7 +335,10 @@ void			ctrl_c(void);
 void			clean_up_leaks(void);
 t_ls			*ls_alloc(char *str);
 
-
+int				ft_isspace(int c);
+int				ft_isdigit_str(char* str);
+char			*ft_strrdup(char *line, int n);
+t_hist			*builtin_s_args(char **tabb, t_hist *hist);
 void			hist_file_to_lst(void);
 char			*create_path_hist(void);
 int				print_hist();
