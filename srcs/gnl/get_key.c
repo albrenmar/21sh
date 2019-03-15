@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/08 03:21:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/15 01:44:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,13 +161,16 @@ int		return_loop(int i, char *str)
 	return (0);
 }
 
-int		readloop(int i)
+int		readloop(int i, int fd)
 {
 	char	c;
 	char	*str;
+	int		test;
 
 	str = ft_strnew(0);
-	read(STDERR_FILENO, &c, 1);
+	test = read(fd, &c, 1);
+	if (test == 0)
+		exit(0);
 	str = ft_strjoinchar(str, c, 1);
 	i = single_key(c);
 	if (i == 13 || i == 10)
@@ -191,14 +194,29 @@ int		readloop(int i)
 
 int		get_key(void)
 {
-	char	*test;
+	char	*str;
+	int 	fd;
 
 	tcsetattr(0, TCSANOW, &g_tracking.myterm);
 	get_coolprompt();
-	print_prompt();
+	if (g_tracking.interactive == 1)
+		print_prompt();
+	fd = STDIN_FILENO;
 	g_tracking.histindex = get_last() + 1;
-	while (readloop(0) == 0)
+	if (g_tracking.linemode == 0)
 	{
+		while (readloop(0, fd) == 0)
+		{
+		}
+	}
+	else
+	{
+		tcsetattr(0, TCSANOW, &g_tracking.default_term);
+		get_next_line(0, &str);
+		g_tracking.cmd = ft_strdup(str);
+		g_tracking.str = NULL;
+		free(str);
+		str = NULL;
 	}
 	tcsetattr(0, TCSANOW, &g_tracking.default_term);
 	return (1);

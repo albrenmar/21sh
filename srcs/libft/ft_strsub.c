@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 04:57:22 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/11 16:24:40 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 23:33:10 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,17 @@
 
 char	*ft_strsub(const char *s, size_t start, size_t len, size_t freeit)
 {
-	size_t	i;
-	char	*nstring;
+	char		*new;
+	const char	*tmp;
 
-	if (s == NULL)
+	tmp = s;
+	if (!s || !(new = ft_strnew(len)))
 		return (NULL);
-	i = 0;
-	nstring = (char *)malloc(sizeof(char) * (len + 1));
-	if (nstring == NULL)
-		return (NULL);
-	while (i < len)
-	{
-		nstring[i] = s[start + i];
-		i++;
-	}
-	nstring[i] = '\0';
+	while (start--)
+		s++;
+	ft_strncpy(new, s, len);
+	new[len] = '\0';
 	if (freeit == 1)
-		free((char*)s);
-	return (nstring);
+		free((char*)tmp);
+	return (new);
 }

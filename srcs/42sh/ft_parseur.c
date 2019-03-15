@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/08 02:29:06 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/09 04:28:44 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,14 @@ t_last	*ft_parseur(char *str)
 		;
 	if ((temp = recup_cmd(&line[i], &i, 0)) != NULL)
 	{
+		i += ft_strlen(temp);
 		list_cmd = create_new_list();
 		templist = list_cmd;
 		list_cmd->name = temp;
 		temp = NULL;
 		while (line[i] && (temp = recup_cmd(&line[i], &i, 0)) != NULL)
 		{
+			i += ft_strlen(temp);
 			list_cmd->next = create_new_list();
 			list_cmd->next->prev = list_cmd;
 			list_cmd = list_cmd->next;

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 06:10:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/10 16:20:28 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/12 20:44:30 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ char	*get_value(t_expand *expand)
 		to_run = to_run->prev;
 	}
 	start = to_run->next->next;
-	while (start->ltr != '}')
+	while (start && start->ltr != '}')
 	{
-		if (start->next && start->next->ltr)
+		if (start/* && start->next->ltr*/)
 		{
 			start = start->next;
 			i++;
@@ -96,6 +96,8 @@ char	*get_value(t_expand *expand)
 		else
 			break ;
 	}
+	if (!i)
+		return (NULL);
 	val = ft_strnew(i + 1);
 	return (value(val, to_run->next->next));
 }
@@ -109,10 +111,10 @@ char	*get_varname(t_expand *expand)
 	i = 0;
 //	to_run = expand->next->next;
 	to_run = expand->next;
-	if (to_run->ltr == '#' && to_run->ltr == '%')
+	if (to_run->ltr == '#' || to_run->ltr == '%')
 		to_run = to_run->next;
-	while (to_run->ltr != ':' && to_run->ltr != '}'
-			&& to_run->ltr != '#' && to_run->ltr != '%')
+	while (to_run && to_run->ltr != ':' && to_run->ltr != '}'
+			&& (to_run->ltr != '#' || to_run->ltr != '%'))
 	{
 		to_run = to_run->next;
 		i++;

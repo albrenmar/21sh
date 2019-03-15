@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   hassantest.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/01 15:41:54 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/08 23:16:59 by bsiche           ###   ########.fr       */
+/*   Created: 2019/03/14 19:07:42 by hdufer            #+#    #+#             */
+/*   Updated: 2019/03/14 19:10:54 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "sh42.h"
 
-char	*ft_strchr(const char *s, int c)
+int		history(void)
 {
-	size_t	i;
+	char **av;
+	int	i;
 
 	i = 0;
-	while (s[i])
+	av = g_tracking.g_tab_exec;
+	while (av[i])
 	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)s + i);
+		ft_putendl(av[i]);
 		i++;
 	}
-	if (s[i] == (unsigned char)c)
-		return ((char *)s + i);
-	return (NULL);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/08 03:00:21 by bsiche           ###   ########.fr        #
+#    Updated: 2019/03/14 23:28:38 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,6 +119,9 @@ SRC = main.c \
 	  history/history_lst_options.c \
 	  history/history_loop.c \
 	  history/print_hist.c \
+	  history/shebang.c \
+	  history/history_lib_plus.c \
+	  history/hassantest.c \
 	  expansions/expand.c \
 	  expansions/user.c \
 	  expansions/parm.c \
@@ -141,6 +144,7 @@ SRC = main.c \
 	  expansions/scan_tilde.c \
   	  expansions/quote.c \
 	  expansions/expand_error.c \
+	  expansions/analyzer.c \
 	  expansions/autocomplete/auto_com_expan.c
 
 CLEAR_LINE	= \033[2K

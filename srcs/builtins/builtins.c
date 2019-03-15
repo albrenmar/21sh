@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/05 03:33:10 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/14 19:10:07 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			is_builtin(void)
 		|| ft_builtin_search("bg") || ft_builtin_search("exit")
 		|| ft_builtin_search("set") || ft_builtin_search("echo")
 		|| ft_builtin_search("hash") || ft_builtin_search("test")
-		|| ft_builtin_search("cd"))
+		|| ft_builtin_search("cd") || ft_builtin_search("history"))
 		return (1);
 	return (0);
 }
@@ -83,5 +83,7 @@ int			builtin_exec()
 		return (main_test());
 	 else if (ft_builtin_search("cd"))
 		return (ft_cd());
+	else if (ft_builtin_search("history"))
+		return (history());
 	return (0);
 }

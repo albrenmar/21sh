@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 04:18:28 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/08 03:05:14 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/09 04:29:11 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,18 @@ int		its_pipe(t_last *list)
 char	*its_quote(int i, char *str, int *nb, char c)
 {
 	char	*temp;
+	char	*forjoin;
 
 	temp = NULL;
+	forjoin = NULL;
 	i++;
 	while (str[i] && str[i] != c)
 		i++;
 	i++;
-	while (str[i] && str[i] != ' ' && str[i] != '|' && str[i] != '&' && str[i] != '>' && str[i] != '<' && str[i] == ';')
+	if (str[i] && (str[i] == '"' || str[i] == '\''))
+		return (its_quote(i, str, nb, str[i]));
+	while (str[i] && str[i] != ' ' && str[i] != '|' && str[i] != '&' && str[i] != '>' && str[i] != '<' && str[i] != ';')
 		i++;
-	(*nb) += i;
 	temp = ft_strndup(str, i);
 	return (temp);
 }
