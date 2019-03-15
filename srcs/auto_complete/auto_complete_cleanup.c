@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 06:52:13 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 00:29:04 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/15 23:57:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ void	clean_up_autoc(void)
 		clean_up_tofree();
 	else
 	{
-		free_all(g_tracking.aut->comp_list, NULL);
-		g_tracking.aut->comp_list = NULL;
+		if (g_tracking.aut->type != 2)
+		{
+			free_all(g_tracking.aut->comp_list, NULL);
+			g_tracking.aut->comp_list = NULL;
+		}
 		free_all(g_tracking.aut->bin_lst, NULL);
 		g_tracking.aut->bin_lst = NULL;
 	}
