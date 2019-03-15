@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 07:07:00 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/11 16:00:48 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:05:21 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		convert_list(t_last *list)
 	{
 		if (!its_indir(list) && !its_heredoc(list) && !its_reddir(list) && !its_fd_reddir(list) && (!PREV || (PREV && (its_pipe(PREV) || PREV->type == SEP))))
 			LIST = CMD;
-		else if (its_pipe(list) || its_reddir(list) || its_fd_reddir(list) || its_heredoc(list))
+		else if (its_pipe(list) || its_reddir(list) || its_fd_reddir(list) || its_heredoc(list) || its_indir(list))
 			LIST = OP;
 		else if (its_separator(list) || its_eper(list))
 			LIST = SEP;

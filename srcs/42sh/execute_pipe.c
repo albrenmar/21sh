@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/15 16:36:22 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/15 18:19:55 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,9 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job)
 				tcsetpgrp(g_tracking.sterminal, job->jpid);
 			set_process_signal_handlers();
 			if (g_tracking.mysh->set_fd->STDIN != 0)
-			{
-				dprintf(2, "OKMAGUEULE\n");
 				dup2(g_tracking.mysh->set_fd->STDIN, 0);
-			}
 			if (g_tracking.mysh->set_fd->STDOUT != 1)
-			{
-				dprintf(2, "OKMAGUEULE22222\n");
 				dup2(g_tracking.mysh->set_fd->STDOUT, 1);
-			}
 			if (g_tracking.mysh->set_fd->STDERR != 2)
 				dup2(g_tracking.mysh->set_fd->STDERR, 2);
 			if (descrf_two[0])

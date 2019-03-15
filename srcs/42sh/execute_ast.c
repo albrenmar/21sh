@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/15 18:15:05 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/15 18:58:06 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,8 @@ char	*filename(void)
 void	proto_heredoc(char **env, t_last *list, int fd)
 {
 	char	*str;
-	char	**argv;
-	char	**tab_exec;
 	
-	//argv = malloc(sizeof(char*) * 2);
-	//argv[0] = ft_strdup("cat");
-	//argv[1] = NULL;
+	str = NULL;
 	while (ft_strcmp(str, list->next->name) != 0)
 	{
 		g_tracking.quotes = 3;
@@ -67,7 +63,6 @@ void	proto_heredoc(char **env, t_last *list, int fd)
 			ft_putendl_fd(str, fd);
 		ft_putchar_fd('\n', 2);
 	}
-	//tab_exec = create_tab_to_exec(g_tracking.mysh->temp_command);
 	exit (0);
 }
 
@@ -118,12 +113,18 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 			if (its_indir(list_cmd) && !its_heredoc(list_cmd))
 			{
 				printf("CHEVRON A GAUCHE\n");
+				if ((g_tracking.mysh->set_fd->STDIN = out_redir(list_cmd)) == -1)
+					return (-1);
 				list_cmd = list_cmd->next;
 			}
 			else if (its_heredoc(list_cmd))
 			{
 				file = filename();
-				fd = open(file, O_CREAT | O_RDWR);
+				if ((fd = open(file, O_CREAT | O_RDWR)) == -1)
+				{
+					ft_putendl_fd("Couldn't create fich in /temp", 2);
+					return (-1);
+				}
 				redir++;
 				father = fork();
 				if (father == 0)
@@ -222,9 +223,7 @@ void		execute_ast(t_tree *tree, t_jobs *job)
 			foreground = 0;
 		}
 		else if (tree->right)
-		{
 			execute_ast(tree->right, job);
-		}
 	}
 	return ;
 }
