@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/11 15:55:06 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/15 16:09:18 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,9 @@ typedef struct	s_tracking
 	pid_t				spid;
 	int					bg;
 	int					fg;
+	int					shebang;
+	int					unlink;
+	int					herenbr;
 	// int					lastplace;
 	// char				**orderhold;
 }				t_tracking;
@@ -349,6 +352,8 @@ t_hist			*hist_delete_index(t_hist *hist, int index);
 int     		begin_search(void);
 char         	*get_hist_ptr(char *needle);
 t_hist			*get_hist_nbr(int i);
+char		 	*shebang_parse_switch(char *line);
+int				history(void);
 
 void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
 int				fg_builtin_output(t_jobs *tmp);

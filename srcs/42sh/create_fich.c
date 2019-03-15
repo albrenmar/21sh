@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/08 06:01:26 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/14 16:01:25 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,6 @@ void		create_fich(t_last *list)
 			temp = temp->next;
 		fd_fich = open(temp->name, O_CREAT | O_TRUNC | O_RDWR, 0644);
 		if (i < 2)
-		{
 			set_fd(list->name[0], fd_fich);
-		}
 	}
 }

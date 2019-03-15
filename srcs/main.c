@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/11 13:44:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/15 15:47:08 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ int		main(int argc, char **argv, char **env)
 	line = NULL;
 	if (argc > 1)
 		argc_error();
+	if (argc > 2)
+		argc_error();
+	argc = 0;
+	if (ft_strcmp(argv[1], "-u") == 0)
+		g_tracking.unlink = 1;
+	else
+		g_tracking.unlink = 0;
 	argc = 0;
 	argv = NULL;
 	//	set_env(&st_env, env);
@@ -38,12 +45,13 @@ int		main(int argc, char **argv, char **env)
 		free(g_tracking.cmd);
 		g_tracking.cmd = NULL;
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
-		ft_putchar('\n');
+		dprintf(2, "\n");
+		//ft_putchar('\n');
 		if ((ft_strlen(line) > 0) && spaces_line_check(line) && (cmd = ft_parseur(line)))
 		{
 			hist_lst_add_next(g_tracking.mysh->hist, line);
 			convert_list(cmd);
-			print_last(cmd);
+			//print_last(cmd);
 			ft_ast(cmd);
 		}
 		jobs_notifications();

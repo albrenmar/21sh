@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/12 13:19:38 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/15 16:18:42 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,61 @@ void	print_last(t_last *list)
 	}
 }
 
+char	*filename(void)
+{
+	char	*new;
+	char	*nbr;
+	int		i;
+
+	new = ft_strdup("/tmp/heredoc");
+	g_tracking.herenbr++;
+	nbr = ft_itoa(g_tracking.herenbr);
+	if (!nbr)
+		return (NULL);
+	new = ft_strjoinfree(new, nbr, 3);
+	return (new);
+}
+
+void	proto_heredoc(char **env, t_last *list)
+{
+	int		fd;
+	char	*str;
+	char	*file;
+	char	**argv;
+
+	str = ft_strnew(0);
+	file = filename();
+	//argv = malloc(sizeof(char*) * 2);
+	//argv[0] = ft_strdup("cat");
+	//argv[1] = NULL;
+	fd = open(file, O_CREAT | O_RDWR);
+	while (ft_strcmp(str, list->next->name) != 0)
+	{
+		g_tracking.quotes = 3;
+		get_key();
+		if (g_tracking.quotes == 10)
+			exit (0);
+		str = ft_strdup(g_tracking.cmd);
+		if (ft_strcmp(str, list->next->name) != 0)
+			ft_putendl_fd(str, fd);
+		ft_putchar('\n');
+	}
+	close (fd);
+	fd = open(file, O_RDONLY);
+	if (g_tracking.unlink == 1)
+	{
+		unlink(file);
+		g_tracking.herenbr--;
+	}
+	dup2(fd, 0);
+	//execve("/bin/cat", argv, env);
+	exit (0);
+}
+
 int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 {
 	t_last	*temp_command;
+	pid_t	father;
 	int		redir;
 	char	**tab_exec;
 
@@ -69,7 +121,19 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 			}
 			else if (its_heredoc(list_cmd))
 			{
-				printf("HEREDOC A CREER\n");
+				redir++;
+				father = fork();
+				if (father > 0)
+				{
+					wait(&father);
+					ft_putendl("test");
+					exit(0);
+				}
+				if (father == 0)
+					proto_heredoc(NULL, list_cmd);
+				
+				//create_heredoc(list_cmd);
+				//printf("HEREDOC A CREER\n");
 				list_cmd = list_cmd->next;
 			}
 			else
@@ -83,8 +147,9 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 			list_cmd = list_cmd->next;
 		else if (list_cmd->type == FICH || list_cmd->type == OPT || list_cmd->type == ARG)
 			list_cmd = list_cmd->next;
-		if (temp_command && (!list_cmd || (its_pipe(list_cmd) && redir != 0)))
+		if (temp_command && (!list_cmd || ((its_pipe(list_cmd) || its_heredoc(list_cmd)) && redir != 0)))
 		{
+			dprintf(2, "testLOOOL\n");
 			tab_exec = create_tab_to_exec(temp_command);
 			execute_pipe_two(tab_exec, job);
 			tab_exec = NULL;
