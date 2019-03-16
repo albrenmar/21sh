@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/15 00:46:47 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/16 00:39:03 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ void		scan_arg_transformer(t_unquoter **check, char **value)
 /*				if (ret == 1)
 					return (1);
 */				}
+				else if (scan->sstring[0] == '~')
+					transform_if_tilde(&expand, &scan->sstring);
 				if (!new_arg)
 					new_arg = ft_strnew(1);
 				new_arg = ft_strjoinfree(new_arg, scan->sstring, 1);
@@ -154,7 +156,7 @@ char		expand_transformer(char **value, int chg_value)
 	quote = 0;
 	str_error = ft_strdup(*value);
 	to_unquot = NULL;
-	if (chg_value)
+//	if (chg_value)
 		to_unquot = unquote_value(value);
 	if (to_unquot)
 		scan_arg_transformer(&to_unquot, value);
