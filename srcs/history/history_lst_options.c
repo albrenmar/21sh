@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/16 01:46:27 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/16 01:48:32 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	hist_file_to_lst(void)
 	char	*line;
 	char	*path;
 
-	line = ft_strnew(0);
+	line = NULL;
 	path = create_path_hist();
 	fd = open(path, O_CREAT | O_APPEND | O_RDWR, 00777);
 	if (fd < 0)
@@ -41,10 +41,10 @@ void	hist_file_to_lst(void)
 	{
 		if (ft_strcmp(line, "\n") != 0)
 			hist_lst_add_next(g_tracking.mysh->hist, line);
-		free(line);
+		if (line)
+			free(line);
 		line = ft_strnew(0);
 	}
-	free(line);
 	close(fd);
 	free(path);
 	free(line);
