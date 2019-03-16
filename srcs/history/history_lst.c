@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/14 18:45:17 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/16 01:43:59 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_hist		*hist_lst_create(char *line)
 
 	new_lst = malloc(sizeof(*new_lst));
 	new_lst->index = 1;
-	new_lst->line = ft_strdup(line);
+	new_lst->line = line;
 	new_lst->next = NULL;
 	new_lst->previous = NULL;
 	return (new_lst);

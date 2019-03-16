@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 06:52:13 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 00:29:04 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/16 01:23:50 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,16 @@ void	clean_up_autoc(void)
 	g_tracking.aut->path = NULL;
 	if (g_tracking.aut->to_free)
 		clean_up_tofree();
-	else
+	if (g_tracking.aut->var_lst)
 	{
-		free_all(g_tracking.aut->comp_list, NULL);
-		g_tracking.aut->comp_list = NULL;
+		free_all(g_tracking.aut->var_lst, NULL);
+		g_tracking.aut->var_lst = NULL;
+	}
+	if (g_tracking.aut->bin_lst)
+	{
 		free_all(g_tracking.aut->bin_lst, NULL);
 		g_tracking.aut->bin_lst = NULL;
 	}
-	free_all(g_tracking.aut->var_lst, NULL);
-	g_tracking.aut->var_lst = NULL;
 	free(g_tracking.aut->to_add);
 	clean_up_pages();
 	free(g_tracking.aut);

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/18 00:00:43 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/16 01:39:07 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,27 @@ t_lstcontainer		*alias_error(char *alias)
 t_keyval	*parse_alias(char *alias)
 {
 	t_lstcontainer	*split;
-	t_keyval		*alias_to_add;
+	t_keyval		*al_to_add;
 	t_list			*tmp;
 
-	alias_to_add = NULL;
+	al_to_add = NULL;
 	split = alias_error(alias);
-	if (!(alias_to_add = malloc(sizeof(struct s_keyval))) || split == NULL)
+	if (!(al_to_add = malloc(sizeof(struct s_keyval))) || split == NULL)
 		return (NULL);
 	tmp = split->firstelement;
-	alias_to_add->key = ft_strdup(tmp->content);
+	al_to_add->key = ft_strdup(tmp->content);
 	tmp = tmp->next;
-	alias_to_add->value = NULL;
+	al_to_add->value = NULL;
 	while (tmp)
 	{
-		if (!alias_to_add->value)
-			alias_to_add->value = ft_strnew(0);
-		alias_to_add->value = ft_strjoinfree(alias_to_add->value,
-		ft_strdup(tmp->content), 1);
+		if (!al_to_add->value)
+			al_to_add->value = ft_strnew(0);
+		al_to_add->value = ft_strjoinfree(al_to_add->value, tmp->content, 1);
 		tmp = tmp->next;
 	}
 	ft_freesplitlist(split);
-	return (alias_to_add);
+	free(alias);
+	return (al_to_add);
 }
 
 int		add_alias(char *alias)
