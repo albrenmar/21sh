@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/15 06:15:01 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/16 02:14:49 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ void		exp_key_unique_percent(char **str, t_expand *expand)
 	if (to_analy.varvalue)
 	{
 		to_analy.varvalue = ft_strrev(to_analy.varvalue, 1);
-		to_analy.wildcard = ft_strrev(to_analy.wildcard, 1);
+		if (to_analy.wildcard[0] == '*')
+			to_analy.wildcard = ft_strrev(ft_strdup(to_analy.wildcard + 1), 1);
+		else
+			to_analy.wildcard = ft_strrev(to_analy.wildcard, 1);
+		if (to_analy.wildcard[0] == '*')
+			to_analy.wildcard++;
 	}
 	if (to_analy.varvalue && ft_strnstr(to_analy.varvalue, to_analy.wildcard,
 			to_analy.wlcd_len))
