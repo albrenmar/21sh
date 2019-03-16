@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/11 16:17:14 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/15 06:15:01 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,21 @@
 
 void		exp_key_unique_percent(char **str, t_expand *expand)
 {
-	char		*varname;
-	char		*value_var;
-	char		*to_srch;
+	t_analyzer	to_analy;
 
-	varname = NULL;
-	to_srch = NULL;
-	varname = get_varname(expand);
-	value_var = get_env_string(varname);
-	to_srch = get_value(expand);
-	if (value_var)
+	init_analyzer(&to_analy, str, expand);
+	if (to_analy.varvalue)
 	{
-		value_var = ft_strrev(value_var, 1);
-		to_srch = ft_strrev(to_srch, 1);
+		to_analy.varvalue = ft_strrev(to_analy.varvalue, 1);
+		to_analy.wildcard = ft_strrev(to_analy.wildcard, 1);
 	}
-	if (value_var && ft_strnstr(value_var, to_srch, ft_strlen(to_srch)))
-		select_not_found(str, value_var, to_srch);
-	else if (value_var)
+	if (to_analy.varvalue && ft_strnstr(to_analy.varvalue, to_analy.wildcard,
+			to_analy.wlcd_len))
+		select_not_found(str, to_analy.varvalue, to_analy.wildcard);
+	else if (to_analy.varvalue)
 	{
 		ft_strdel(str);
-		*str = ft_strrev(value_var, 1);
+		*str = ft_strrev(to_analy.varvalue, 1);
 	}
 	else
 	{

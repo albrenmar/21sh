@@ -34,6 +34,8 @@ void	exp_key_plus(char **str, t_expand *expand)
 	{
 		*str = value2;
 		ft_strdel(&value1);
+		if (!value2)
+			*str = ft_strdup("");
 	}
 	else
 	{

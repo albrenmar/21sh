@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/11 16:22:06 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/14 23:05:20 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ typedef struct	s_analyzer
 	int			end_astrsk;
 }				t_analyzer;
 
+typedef struct	s_unquoter
+{
+	char				*str_unquoted;
+	char				type;
+	int					error;
+	struct s_unquoter	*next;
+}				t_unquoter;
 
 char			expand_transformer(char **value, int chg_value);
 int				need_expand(char *to_transf);
@@ -104,12 +111,12 @@ char			*value(char *val, t_expand *start);
 char			*value_asterisk(char *val, t_expand *start);
 int				have_envname(char *var);
 int				have_setname(char *var);
-int				scan_arg_transformer(char **arg, char quote);
+void			scan_arg_transformer(t_unquoter **check, char **value);
 t_scan			*new_scan(void);
 void			scan_argument(char *arg, t_scan *info_arg, int simple,
 					char quote);
 char			*ft_exp_complete(char *arg);
-char			unquote_value(char **value, int quote);
+t_unquoter		*unquote_value(char **value);
 void			reassign_value(char **value, char *new_value, int quote);
 int				quote_error(char *scan, int open_key, int quote);
 void			unquote(char **value, int *quote);
@@ -123,7 +130,7 @@ int				scan_tilde(char *arg, char **new_arg);
 int				scan_dollar(char *arg, char **new_arg);
 int				scan_dollar_key(char *arg, char **new_arg);
 int				scan_other(char *arg, char **new_arg);
-void			transform_simple(char **str);
+int				transform_simple(char **str);
 void			init_analyzer(t_analyzer *to_analy, char **str,
 					t_expand *expand);
 

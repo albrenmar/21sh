@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
 /*   Updated: 2019/03/15 23:18:45 by alsomvil         ###   ########.fr       */

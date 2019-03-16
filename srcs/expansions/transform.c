@@ -38,7 +38,7 @@ void	transform_if_tilde(t_expand **expand, char **str)
 	}
 }
 
-void	transform_simple(char **str)
+int		transform_simple(char **str)
 {
 	char	*run_str;
 	char	*new_str;
@@ -54,6 +54,13 @@ void	transform_simple(char **str)
 		ft_strdel(str);
 		*str = new_str;
 	}
+	else if (run_str[0] == '$')
+	{
+		ft_strdel(str);
+		*str = ft_strdup("");
+		return (1);
+	}
+	return (0);
 }
 
 int		transform(t_expand *expand, char **str)
@@ -64,7 +71,6 @@ int		transform(t_expand *expand, char **str)
 	first_letter = expand;
 	tmp = *str;
 	transform_if_tilde(&first_letter, str);
-	transform_simple(str);
 	while (expand->ltr && expand->ltr != '~')
 	{
 		if (expand->ltr == '$'/* && expand->next && expand->next->ltr == '{'
@@ -77,6 +83,11 @@ int		transform(t_expand *expand, char **str)
 			expand = expand->next;
 		else
 			break ;
+	}
+	if (transform_simple(str))
+	{
+		delete_list_expand(&first_letter);
+		return (2);
 	}
 	delete_list_expand(&first_letter);
 	if (!**str)
