@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lexeur.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 01:41:13 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/16 20:10:53 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/17 00:25:19 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		error_lexer(t_last *list_cmd)
 {
-	print_last(list_cmd);
-	exit(0);
+//	print_last(list_cmd);
+//	exit(0);
 	if (list_cmd && list_cmd->type == OP && !list_cmd->next)
 	{
 		printf("FUCK YOU\n");
