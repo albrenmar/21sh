@@ -1,13 +1,3 @@
-#!/bin/bash
-cp ../42sh .
-echo "          test expansion simple           "
-echo "echo \$HOME"
-echo "------------------------------------------"
-echo "echo \$HOME" | ./42sh
-echo "echo \$HOME" | /bin/bash
-sleep 0.5
-echo "------------------------------------------"
-echo "         test expansions complexe         "
 echo "                    %                     "
 echo "echo \${HOME%se}"
 echo "------------------------------------------"
