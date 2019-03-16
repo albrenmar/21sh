@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 03:34:30 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/16 01:16:03 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void				complete_usr_word(void)
 	list = NULL;
 	assign_type();
 	list = build_ls();
+	g_tracking.aut->to_free = list;
 	if (list != NULL && g_tracking.aut->type != 2)
 	{
 		build_comp(list);
