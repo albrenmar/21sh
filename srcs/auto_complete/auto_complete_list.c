@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 01:13:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/16 01:15:56 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,4 @@ void				build_comp(t_lstcontainer *list)
 			lstcontainer_add(g_tracking.aut->comp_list, tmp);
 		buf = buf->next;
 	}
-	if (i != 0)
-		g_tracking.aut->to_free = list;
 }

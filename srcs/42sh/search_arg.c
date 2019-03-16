@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:06:56 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/09 04:28:55 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:13:38 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ char	*search_normally_arg(char *str, int *nb)
 				return (temp);
 			}
 		}
-		else if (str[i] == ' ')
+		else if (str[i] == ' ' || !its_not_symbol(str[i]))
 		{
 			temp = ft_strndup(str, i);
 			return (temp);
