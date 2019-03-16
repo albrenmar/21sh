@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/16 02:17:53 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/16 16:49:55 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC = main.c \
 	  42sh/hashtables.c \
 	  42sh/search_arg.c \
 	  42sh/completion.c \
+	  42sh/check_quote.c \
 	  42sh/out_redir.c \
 	  builtins/cd/cd_path.c \
 	  builtins/cd/directory.c \
