@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 04:07:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/16 01:37:33 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char	*create_path(void)
 	path = ft_strjoinfree(path, "/42shrc", 1);
 	return (path);
 }
+
 int		init_alias(void)
 {
 	int				fd;

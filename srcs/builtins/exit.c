@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/07 01:55:43 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/16 01:37:39 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		clean_up_leaks(void)
 		free_keyval(g_tracking.mysh->alias_lst);
 		g_tracking.mysh->alias_lst = NULL;
 	}
+	if (g_tracking.mysh->hist)
 	ctrl_c();
 }
 
