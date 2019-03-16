@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/16 05:37:28 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/16 06:34:24 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		exp_key_unique_percent(char **str, t_expand *expand)
 	if (to_analy.varvalue)
 	{
 		to_analy.varvalue = ft_strrev(to_analy.varvalue, 1);
-		clean_nlzr_wildcard(&to_analy);
+		clean_nlzr_wildcard(&to_analy, 1);
 	}
 	if (to_analy.varvalue && ft_strnstr(to_analy.varvalue, to_analy.wildcard,
 			to_analy.wlcd_len))
@@ -43,6 +43,7 @@ void		exp_key_unique_hash(char **str, t_expand *expand)
 	t_analyzer	to_analy;
 
 	init_analyzer(&to_analy, str, expand);
+	clean_nlzr_wildcard(&to_analy, 0);
 	if (to_analy.varvalue && ft_strnstr(to_analy.varvalue, to_analy.wildcard,
 			to_analy.wlcd_len))
 		skip_found(str, to_analy.varvalue, to_analy.wildcard);

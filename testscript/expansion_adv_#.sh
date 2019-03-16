@@ -17,6 +17,24 @@ echo "echo \${HOME#/U*}" | ./42sh
 echo "echo \${HOME#/U*}" | /bin/bash
 sleep 0.5
 echo "------------------------------------------"
+echo "echo \${HOME#/}"
+echo "------------------------------------------"
+echo "echo \${HOME#/}" | ./42sh
+echo "echo \${HOME#/}" | /bin/bash
+sleep 0.5
+echo "------------------------------------------"
+echo "echo \${HOME#*/}"
+echo "------------------------------------------"
+echo "echo \${HOME#*/}" | ./42sh
+echo "echo \${HOME#*/}" | /bin/bash
+sleep 0.5
+echo "------------------------------------------"
+echo "echo \${HOME#/*}"
+echo "------------------------------------------"
+echo "echo \${HOME#/*}" | ./42sh
+echo "echo \${HOME#/*}" | /bin/bash
+sleep 0.5
+echo "------------------------------------------"
 echo "echo \${HOME#lo}"
 echo "------------------------------------------"
 echo "echo \${HOME#lo}" | ./42sh

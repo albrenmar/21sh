@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/16 03:22:05 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/16 06:35:34 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,6 @@ int				scan_other(char *arg, char **new_arg);
 int				transform_simple(char **str);
 void			init_analyzer(t_analyzer *to_analy, char **str,
 					t_expand *expand);
-void			clean_nlzr_wildcard(t_analyzer *to_analy);
+void			clean_nlzr_wildcard(t_analyzer *to_analy, int reverse);
 
 #endif
