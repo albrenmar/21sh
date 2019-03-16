@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/15 18:58:06 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/16 18:15:02 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*filename(void)
 	if (!nbr)
 		return (NULL);
 	new = ft_strjoinfree(new, nbr, 3);
-	while (access(new , F_OK ) != -1 ) 
+	while (access(new, F_OK) != -1)
 	{
 		free(new);
 		new = ft_strdup("/tmp/heredoc");
@@ -50,20 +50,20 @@ char	*filename(void)
 void	proto_heredoc(char **env, t_last *list, int fd)
 {
 	char	*str;
-	
+
 	str = NULL;
 	while (ft_strcmp(str, list->next->name) != 0)
 	{
 		g_tracking.quotes = 3;
 		get_key();
 		if (g_tracking.quotes == 10)
-			exit (0);
+			exit(0);
 		str = ft_strdup(g_tracking.cmd);
 		if (ft_strcmp(str, list->next->name) != 0)
 			ft_putendl_fd(str, fd);
 		ft_putchar_fd('\n', 2);
 	}
-	exit (0);
+	exit(0);
 }
 
 int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
@@ -131,7 +131,7 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 					proto_heredoc(NULL, list_cmd, fd);
 				else
 					wait(&father);
-				close (fd);
+				close(fd);
 				fd = open(file, O_RDONLY);
 				g_tracking.mysh->set_fd->STDIN = fd;
 				if (g_tracking.unlink == 1)
@@ -188,7 +188,7 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 	return (0);
 }
 
-void		execute_ast(t_tree *tree, t_jobs *job)
+void	execute_ast(t_tree *tree, t_jobs *job)
 {
 	int		ret;
 	int		foreground;
@@ -212,8 +212,6 @@ void		execute_ast(t_tree *tree, t_jobs *job)
 				return ;
 			if (tree->cmd[0] == '|' && g_tracking.lastreturn == 0)
 				return ;
-			//printf("RETOUR NEXT = %d\n", g_tracking.lastreturn);
-		//	printf("EN FONCTION DE [%s]\n", tree->cmd);
 		}
 		if (tree->right && tree->right->type != SEP)
 		{

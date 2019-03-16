@@ -6,14 +6,14 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/14 23:26:43 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/16 18:16:54 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
 
-void			clean_tab_exec(char **tab_exec)
+void	clean_tab_exec(char **tab_exec)
 {
 	int			i;
 
@@ -29,7 +29,7 @@ void			clean_tab_exec(char **tab_exec)
 	}
 }
 
-int				spaces_line_check(char *line)
+int		spaces_line_check(char *line)
 {
 	int			i;
 
@@ -44,7 +44,7 @@ int				spaces_line_check(char *line)
 	return (0);
 }
 
-void			transform_cwd(void)
+void	transform_cwd(void)
 {
 	char		*home;
 	int			len;
@@ -74,7 +74,7 @@ void			transform_cwd(void)
 	}
 }
 
-void			set_prompt_quote(void)
+void	set_prompt_quote(void)
 {
 	if (g_tracking.quotes == 1)
 		g_tracking.prompt = ft_strdup("dquotes >");
@@ -85,8 +85,7 @@ void			set_prompt_quote(void)
 	g_tracking.pos->prompt = utf_strlen(g_tracking.prompt);
 }
 
-
-void		print_prompt(void)
+void	print_prompt(void)
 {
 	if (g_tracking.quotes == 1 || g_tracking.quotes == 2 || g_tracking.quotes == 3)
 	{
@@ -108,7 +107,7 @@ void		print_prompt(void)
 	ft_putstr_fd(ANSI_COLOR_DEFAULT, 2);
 }
 
-void		get_coolprompt(void)
+void	get_coolprompt(void)
 {
 	char	*prompt;
 	char	*memory;
@@ -142,11 +141,11 @@ void		get_coolprompt(void)
 	g_tracking.prompt = ft_strdup(prompt);
 	g_tracking.pos->prompt = utf_strlen(prompt) + utf_strlen(g_tracking.cwd);
 	g_tracking.pos->prompt += utf_strlen(g_tracking.user);
-	g_tracking.pos->prompt +=2;
+	g_tracking.pos->prompt += 2;
 	ft_strdel(&prompt);
 }
 
-char			**tab_dup(char **tob)
+char	**tab_dup(char **tob)
 {
 	int			i;
 	char		**new;
@@ -155,7 +154,7 @@ char			**tab_dup(char **tob)
 	while (tob[i])
 		i++;
 	if (!(new = malloc(sizeof(char*) * (i + 1))))
-			return (NULL);
+		return (NULL);
 	i = 0;
 	while (tob[i])
 	{

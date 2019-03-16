@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/14 11:06:45 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/16 19:19:10 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,9 @@ char	*recup_cmd(char *line, int *i, int nb)
 
 char	*ft_modif_line(char **line)
 {
-	int		i;
-	int		j;
-	int		k;
 	char	*new_line;
 	char	*temp;
 
-	i = 0;
-	j = 0;
 	new_line = NULL;
 	temp = NULL;
 	if (ft_valid_quote(*line, '"', 0))
@@ -118,7 +113,6 @@ t_last	*ft_parseur(char *str)
 	else
 		return (NULL);
 	ft_lexeur(list_cmd);
-	//print_last(list_cmd);
 	if (error_lexer(list_cmd))
 		return (NULL);
 	return (list_cmd);
