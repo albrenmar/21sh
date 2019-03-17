@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 06:10:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/12 20:44:30 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/17 05:49:50 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,9 @@ char	*get_value(t_expand *expand)
 		to_run = to_run->next;
 	if (to_run->ltr == '#' || to_run->ltr == '%')
 	{
-		if (to_run->next->ltr == '#' || to_run->next->ltr == '%')
-			to_run = to_run->next;
+		if (to_run->next && to_run->prev)
+			if (to_run->next->ltr == '#' || to_run->next->ltr == '%')
+				to_run = to_run->next;
 		to_run = to_run->prev;
 	}
 	start = to_run->next->next;
