@@ -3,7 +3,10 @@ Rajouter "Dans des heredocs, valide" pour les heredoc, et quitter proprement le 
 -Type et Test, a adapter avec le tableau d'arg et non char **argv
 
 Partie Abraham
--fix redirection output des builtins quand il y a pas de fork
+-fix redirection output (>) ou (>>) des builtins quand il y a pas de fork
+-Ctrl-Z avec "cat" en cours interrompre system call (regardeer sigaction)
+-Ctrl-Z avec "cat" en cours (peut etre avec tous les systemcall), bug pour les prochaines commandes. faut arreter les systemcall lors de ctrlz
+-implementer sigaction sans bug niveau jobs!
 
 Partie Marc
 - Gestion d'errors pour les expansions.
@@ -15,18 +18,18 @@ Partie Marc
 - Controler SEGFAULT si EXEC_TAB null. // A parler avec Alsomvil
 
 Partie Alex
-- Gestion des quotes dans les doubles quotes et inversement
-- Ajout string si manque quote
 - Gestion des messages d'erreurs
-- Boucle infini sur grep apres pipe
+- Ecrire la fonction qui auitte quote et dquote proprement en cas dr ctrl D ou ctrl C(remplace le gros exit si g_tracking.quotes == 10)
+- close apres creation fichier
+
+Partie Hassan
+- Builtin fc
+- Implementation des differents builtins
+- Env avec les builtins
 
 MISC
--Builtin cd
--Ctrl-Z avec "cat" en cours
 -Ajouter builtins manquants (POSIX?)
 -ajouter env a execve
 -Faire que le parser reconaisse le signe = pour les cmd style "env HOME=TMP cd ~"
 -Gestion de l'env
 -creer une fonction d'exit qui free proprement tout ce bordel
--Ctrl-C fait des 'x'
--SEGV quand tu autocomplete un truc incorrect

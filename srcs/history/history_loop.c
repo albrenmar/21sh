@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/22 23:27:52 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/14 18:00:41 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ t_hist	*get_hist_nbr(int i)
 	t_hist	*history;
 
 	history = g_tracking.mysh->hist;
+	while (history->previous)
+		history = history->previous;
 	if (!history)
 		return (0);
 	while (history)
@@ -37,7 +39,7 @@ t_hist	*get_hist_nbr(int i)
 			return (history);
 		history = history->next;
 	}
-	return (g_tracking.mysh->hist);
+	return (history);
 }
 
 int		replace_str(int i, char *comp)
@@ -70,6 +72,10 @@ int		history_up(void)
 	t_hist	*history;
 	int		i;
 
+	if (g_tracking.quotes != 0)
+		return (0);
+	g_tracking.pos->abs = utf_strlen(g_tracking.str);
+	back_to_pos();
 	if (g_tracking.histindex > 1)
 		g_tracking.histindex--;
 	history = get_hist_nbr(g_tracking.histindex);
@@ -89,6 +95,8 @@ int		history_down(void)
 	t_hist	*history;
 	int		i;
 
+	if (g_tracking.quotes != 0)
+		return (0);
 	if (g_tracking.histindex == 1)
 		g_tracking.histindex++;
 	if (g_tracking.histindex <= g_tracking.histmax)

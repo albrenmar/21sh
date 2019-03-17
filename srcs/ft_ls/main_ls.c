@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 22:58:59 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 06:18:41 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 01:26:04 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,17 @@ t_lstcontainer		*type_ls(int argc, char **argv)
 	return (liste);
 }
 
+char				*get_option(void)
+{
+	char			*str;
+
+	if (g_tracking.aut->hidden == 0)
+		str = ft_strdup("-G");
+	else
+		str = ft_strdup("-aG");
+	return (str);
+}
+
 t_lstcontainer		*modified_ls(int argc, char **argv)
 {
 	int				i;
@@ -52,7 +63,7 @@ t_lstcontainer		*modified_ls(int argc, char **argv)
 	i = 1;
 	flag = 0;
 	called = 0;
-	str = ft_strdup("-G");
+	str = get_option();
 	if (argc == 1)
 	{
 		liste = ft_ls(".", str, 0);

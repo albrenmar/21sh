@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/23 01:01:42 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 06:08:55 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 01:24:27 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_lstcontainer	*free_all(t_lstcontainer *mainliste, char *dossier)
 	return (NULL);
 }
 
-void	ft_freestructlite(t_ls *tmp)
+void			ft_freestructlite(t_ls *tmp)
 {
 	free(tmp->name);
 	free(tmp->strlink);

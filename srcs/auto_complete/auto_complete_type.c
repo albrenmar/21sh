@@ -6,13 +6,13 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/01 06:38:32 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/16 01:16:03 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-t_lstcontainer	*bin_ls(char *str)
+t_lstcontainer		*bin_ls(char *str)
 {
 	t_lstcontainer	*liste;
 	char			**taab;
@@ -25,7 +25,7 @@ t_lstcontainer	*bin_ls(char *str)
 	return (liste);
 }
 
-void	bin_lst_folder(char *str)
+void				bin_lst_folder(char *str)
 {
 	t_lstcontainer	*local_lst;
 	t_list			*buf;
@@ -50,7 +50,7 @@ void	bin_lst_folder(char *str)
 	free_all(local_lst, NULL);
 }
 
-void	build_bin_lst(void)
+void				build_bin_lst(void)
 {
 	char			*path;
 	char			**split;
@@ -74,7 +74,7 @@ void	build_bin_lst(void)
 	free_tab(split);
 }
 
-void	complete_usr_var(void)
+void				complete_usr_var(void)
 {
 	t_lstcontainer	*list;
 
@@ -94,13 +94,14 @@ void	complete_usr_var(void)
 	}
 }
 
-void	complete_usr_word(void)
+void				complete_usr_word(void)
 {
 	t_lstcontainer	*list;
 
 	list = NULL;
 	assign_type();
 	list = build_ls();
+	g_tracking.aut->to_free = list;
 	if (list != NULL && g_tracking.aut->type != 2)
 	{
 		build_comp(list);

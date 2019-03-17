@@ -6,86 +6,91 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/28 15:17:02 by bsiche            #+#    #+#             */
-/*   Updated: 2018/08/29 23:05:27 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/08 03:33:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "sh42.h"
 
-int		ft_parsecd(t_cmdline *cmdline)
+int		ft_parsecd(char **av, char *option)
 {
 	int i;
 
 	i = 1;
-	while (cmdline->tab[i])
+	while (av[i])
 	{
-		if (ft_strcmp(cmdline->tab[i], "-") == 0)
+		if (ft_strcmp(av[i], "-") == 0)
 			return (i);
-		if (cmdline->tab[i][0] == '-')
+		if (av[i][0] == '-')
 		{
-			if (cmdline->tab[i][1] == 'P' || cmdline->tab[i][1] == 'L')
-				cmdline->option = cmdline->tab[i][1];
-			if (cmdline->tab[i][1] == '-')
+			if (av[i][1] == 'P' || av[i][1] == 'L')
+				*option = av[i][1];
+			if (av[i][1] == '-')
 			{
 				i++;
 				return (i);
 			}
-			if (cmdline->tab[i][1] != 'P' && cmdline->tab[i][1] != 'L'
-			&& cmdline->tab[i][1] != '-')
+			if (av[i][1] != 'P' && av[i][1] != 'L'
+			&& av[i][1] != '-')
 				return (i);
 		}
-		if (cmdline->tab[i][0] != '-')
+		if (av[i][0] != '-')
 			return (i);
 		i++;
 	}
 	return (i);
 }
 
-void	ft_changedir(t_lstcontainer *env, t_cmdline *cmdline, char *path)
+void	ft_changedir(char option, char *path)
 {
 	char	*truepwd;
 	char	*oldpwd;
+	char	*newpwd;
 
 	if (getright(path) == 0)
 	{
 		truepwd = ft_true_pwd();
-		replace_env_str(env, "TRUEOLDPWD", truepwd);
-		oldpwd = ft_strdup(get_env_string(env, "PWD"));
+		replace_env_str("TRUEOLDPWD", truepwd);
+		oldpwd = ft_strdup(get_env_string("PWD"));
 		chdir(path);
-		if (cmdline->option != 'P')
-			replace_env_str(env, "PWD", path);
+		if (option != 'P')
+			replace_env_str("PWD", path);
 		else
-			replace_env_str(env, "PWD", truepwd);
-		replace_env_str(env, "OLDPWD", oldpwd);
+		{
+			free(truepwd);
+			truepwd = ft_true_pwd();
+			replace_env_str("PWD", truepwd);
+		}
+		replace_env_str("OLDPWD", oldpwd);
 		free(truepwd);
 		truepwd = NULL;
 		free(oldpwd);
 	}
 }
 
-char	*buildpath(t_lstcontainer *env, t_cmdline *cmdline, char *path)
+char	*buildpath(char option, char *path)
 {
 	char	*pwd;
 	int		i;
 
 	pwd = NULL;
-	if (cmdline->option == 'P')
+	if (option == 'P')
 		pwd = ft_true_pwd();
 	else
-		pwd = ft_strdup(get_env_string(env, "PWD"));
+		pwd = ft_strdup(get_env_string("PWD"));
 	if (pwd == NULL)
 		pwd = ft_true_pwd();
 	i = ft_strlen(pwd);
 	if (pwd[i] != '/')
-		pwd = ft_strjoin(pwd, "/", 1);
+		pwd = ft_strjoinfree(pwd, "/", 1);
 	if (path[0] != '/')
-		path = ft_strjoin(pwd, path, 2);
+		path = ft_strjoinfree(pwd, path, 2);
 	path = ft_dot(path);
 	free(pwd);
 	return (path);
 }
 
-int		ft_cd2(t_cmdline *cmdline, t_lstcontainer *env, int i, char *path)
+int		ft_cd2(char option, int i, char *path)
 {
 	if (ft_strlen(path) == 0)
 		ft_putendl("cd: HOME not set");
@@ -93,43 +98,46 @@ int		ft_cd2(t_cmdline *cmdline, t_lstcontainer *env, int i, char *path)
 		return (0);
 	if (ft_strcmp(path, "/") == 0)
 	{
-		ft_changedir(env, cmdline, path);
+		ft_changedir(option, path);
 		return (0);
 	}
-	path = ft_homepath(path, env);
+	path = ft_homepath(path);
 	if (path[0] != '.' && path[0] != '/')
-		path = ft_cdpath(env, path);
-	if (cmdline->option != 'P')
-		path = buildpath(env, cmdline, path);
-	ft_changedir(env, cmdline, path);
+		path = ft_cdpath(path);
+	if (option != 'P')
+		path = buildpath(option, path);
+	ft_changedir(option, path);
 	if (i == 875)
 		ft_putendl(path);
 	free(path);
 	return (0);
 }
 
-int		ft_cd(t_cmdline *cmdline, t_lstcontainer *env)
+int		ft_cd(void)
 {
 	char			*path;
+	char			**av;
+	char			option;
 	int				i;
 
-	i = ft_parsecd(cmdline);
+	option = 'P';
+	av = g_tracking.g_tab_exec;
+	i = ft_parsecd(av, &option);
 	path = NULL;
-	if (!cmdline->tab[i] || ft_strcmp(cmdline->tab[i], "~") == 0)
-		path = ft_strdup(get_env_string(env, "HOME"));
+	if (!av[i] || ft_strcmp(av[i], "~") == 0)
+		path = ft_strdup(get_env_string("HOME"));
 	else
-		path = ft_strdup((cmdline->tab[i]));
-	if (ft_strcmp(cmdline->tab[i], "-") == 0)
+		path = ft_strdup((av[i]));
+	if (ft_strcmp(av[i], "-") == 0)
 	{
 		i = 875;
 		free(path);
-		path = ft_strdup(get_env_string(env, "OLDPWD"));
+		path = ft_strdup(get_env_string("OLDPWD"));
 		if (ft_strlen(path) == 0)
 		{
 			ft_putendl("OLDPWD not set");
 			return (0);
 		}
 	}
-	ft_cd2(cmdline, env, i, path);
-	return (0);
+	return (ft_cd2(option, i, path));
 }

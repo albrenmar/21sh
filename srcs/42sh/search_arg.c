@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:06:56 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 15:11:52 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:13:38 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,11 @@ char	*search_symboll(char *str, int *nb)
 		i++;
 		if (str[i] && str[i] == str[i - 1])
 			i++;
-		(*nb) += i;
 		ret = ft_strndup(str, i);
 		return (ret);
 	}
 	else if (str[i] == ';')
-	{
-		(*nb)++;
 		return (ft_strndup(str, 1));
-	}
 	return (NULL);
 }
 
@@ -53,7 +49,6 @@ char	*search_fd_reddir(char *str, int *nb)
 				i++;
 			if (str[i] && str[i] == '&')
 				i++;
-			(*nb) += i;
 			ret = ft_strndup(str, i);
 			return (ret);
 		}
@@ -75,7 +70,6 @@ char	*search_reddir(char *str, int *nb)
 			i++;
 		if (str[i] && str[i] == '&')
 			i++;
-		(*nb) += i;
 		ret = ft_strndup(str, i);
 		return (ret);
 	}
@@ -93,16 +87,15 @@ char	*search_normally_arg(char *str, int *nb)
 	{
 		if (str[i] && str[i] == '"')
 		{
-			i++;
-			while (str[i] && str[i] != '"')
-				i++;
-			i++;
-			if (!str[i] || str[i] == ' ')
-			{
-				temp = ft_strndup(str, i);
-				(*nb) += i;
+			temp = its_quote(i, str, nb, '"');
+			if (temp)
 				return (temp);
-			}
+		}
+		else if (str[i] && str[i] == '\'')
+		{
+			temp = its_quote(i, str, nb, '\'');
+			if (temp)
+				return (temp);
 		}
 		else if (str[i] == '$' && str[i + 1] && str[i + 1] == '{')
 		{
@@ -113,20 +106,17 @@ char	*search_normally_arg(char *str, int *nb)
 			if (!str[i] || str[i] == ' ')
 			{
 				temp = ft_strndup(str, i);
-				(*nb) += i;
 				return (temp);
 			}
 		}
-		else if (str[i] == ' ')
+		else if (str[i] == ' ' || !its_not_symbol(str[i]))
 		{
 			temp = ft_strndup(str, i);
-			(*nb) += i;
 			return (temp);
 		}
 		else
 			i++;
 	}
 	temp = ft_strndup(str, i);
-	(*nb) += i;
 	return (temp);
 }

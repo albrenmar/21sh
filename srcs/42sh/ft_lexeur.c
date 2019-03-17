@@ -3,21 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lexeur.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 01:41:13 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/22 05:30:22 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/17 00:25:19 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
 
 int		error_lexer(t_last *list_cmd)
 {
-	if (list_cmd && list_cmd->type == OP && !its_reddir(list_cmd) && !its_fd_reddir(list_cmd))
+//	print_last(list_cmd);
+//	exit(0);
+	if (list_cmd && list_cmd->type == OP && !list_cmd->next)
 	{
-		printf("Error\n");
+		printf("FUCK YOU\n");
+		return (1);
+	}
+	if (list_cmd && list_cmd->type == OP && !its_reddir(list_cmd) && !its_fd_reddir(list_cmd) && !its_heredoc(list_cmd) && !its_indir(list_cmd))
+	{
+		printf("ErrorLOL\n");
 		return (1);
 	}
 	while (list_cmd)
@@ -29,52 +35,52 @@ int		error_lexer(t_last *list_cmd)
 				if (list_cmd->next->next && (((ft_strlen(list_cmd->next->name) == 1) && ft_strlen(list_cmd->next->next->name) == 2)
 							|| ((ft_strlen(list_cmd->next->name) == 2) && (list_cmd->next->next && list_cmd->next->next->type == OP))))
 				{
-					printf("Error\n");
+					printf("Error1\n");
 					return (1);
 				}
 			}
 			else if (ft_strlen(list_cmd->name) == 1 && list_cmd->name[0] == '&')
 			{
-				printf("Error\n");
+				printf("Error2\n");
 				return (1);
 			}
 			else if (ft_strlen(list_cmd->name) == 1 && list_cmd->name[0] == '>')
 			{
-				if (ft_strlen(list_cmd->next->name) == 2 || list_cmd->next->name [0] == '>' || list_cmd->next->name[0] == ';' || (list_cmd->next->next && list_cmd->next->next->type == OP))
+				if (ft_strlen(list_cmd->next->name) == 2 || list_cmd->next->name[0] == '>' || list_cmd->next->name[0] == ';' || (list_cmd->next->next && list_cmd->next->next->type == OP))
 				{
-					printf("Error\n");
+					printf("Error3\n");
 					return (1);
 				}
 			}
 			else if (ft_strlen(list_cmd->name) == 1 && list_cmd->name[0] == '<')
 			{
-				if (ft_strlen(list_cmd->next->name) == 2 || list_cmd->next->name [0] == '<' || list_cmd->next->name[0] == ';' || (list_cmd->next->next && list_cmd->next->next->type == OP))
+				if (ft_strlen(list_cmd->next->name) == 2 || list_cmd->next->name[0] == '<' || list_cmd->next->name[0] == ';' || (list_cmd->next->next && list_cmd->next->next->type == OP))
 				{
-					printf("Error\n");
+					printf("Error4\n");
 					return (1);
 				}
 			}
 			else if (ft_strlen(list_cmd->name) == 2 && list_cmd->name[0] == ';')
 			{
-				printf("Error\n");
+				printf("Error5\n");
 				return (1);
 			}
 			else if (ft_strlen(list_cmd->name) == 2 || (list_cmd->next && ft_strlen(list_cmd->next->name) == 2))
 			{
 				if (ft_strlen(list_cmd->name) == 2 && list_cmd->name[0] == '|' && list_cmd->next->next && list_cmd->next->next->type == OP)
 				{
-					printf("Error\n");
+					printf("Error6\n");
 					return (1);
 				}
 				else if (ft_strlen(list_cmd->name) == 2 && list_cmd->name[0] != '|')
 				{
-					printf("Error\n");
+					printf("Error7\n");
 					return (1);
 				}
 			}
 			else if (list_cmd->next->next && (list_cmd->next->next->type == OP))
 			{
-				printf("Error\n");
+				printf("Error8\n");
 				return (1);
 			}
 		}

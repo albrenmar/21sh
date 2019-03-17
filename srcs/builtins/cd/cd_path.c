@@ -6,66 +6,66 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/28 19:07:24 by bsiche            #+#    #+#             */
-/*   Updated: 2018/07/31 18:48:09 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/05 04:06:25 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "sh42.h"
 
-char	*conc_and_free(char *path, char **tab)
+char	*conc_and_free(char *path, char **taab)
 {
 	int i;
 
 	i = 0;
-	if (tab != NULL)
+	if (taab != NULL)
 	{
-		while (tab[i])
+		while (taab[i])
 		{
-			free(tab[i]);
+			free(taab[i]);
 			i++;
 		}
 	}
-	free(tab);
+	free(taab);
 	return (path);
 }
 
-char	*cd_line(char **tab, char *cdline, char *path)
+char	*cd_line(char **taab, char *cdline, char *path)
 {
 	int i;
 
 	i = 0;
-	while (tab[i])
+	while (taab[i])
 	{
-		free(tab[i]);
+		free(taab[i]);
 		i++;
 	}
-	free(tab);
+	free(taab);
 	free(path);
 	return (cdline);
 }
 
-char	*ft_cdpath(t_lstcontainer *env, char *path)
+char	*ft_cdpath(char *path)
 {
-	char	**tab;
+	char	**taab;
 	char	*cdline;
 	int		i;
 	int		a;
 
 	i = 0;
-	tab = NULL;
-	cdline = get_env_string(env, "CDPATH");
+	taab = NULL;
+	cdline = get_env_string("CDPATH");
 	if (cdline)
-		tab = ft_strsplit(cdline, ':');
+		taab = ft_strsplit(cdline, ':');
 	if (cdline)
-		while (tab[i])
+		while (taab[i])
 		{
-			a = ft_strlen(tab[i]);
-			if (tab[i][a] != '/')
-				tab[i] = ft_strjoin(tab[i], "/", 1);
-			cdline = ft_strjoin(tab[i], path, 0);
+			a = ft_strlen(taab[i]);
+			if (taab[i][a] != '/')
+				taab[i] = ft_strjoinfree(taab[i], "/", 1);
+			cdline = ft_strjoinfree(taab[i], path, 0);
 			if (ft_isdir(cdline) == 1)
-				return (cd_line(tab, cdline, path));
+				return (cd_line(taab, cdline, path));
 			i++;
 		}
-	return (conc_and_free(path, tab));
+	return (conc_and_free(path, taab));
 }

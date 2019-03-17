@@ -6,11 +6,12 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/03 12:43:37 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/15 23:10:14 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
+#include "sh42.h"
 
 void	transform_if_tilde(t_expand **expand, char **str)
 {
@@ -37,6 +38,31 @@ void	transform_if_tilde(t_expand **expand, char **str)
 	}
 }
 
+int		transform_simple(char **str)
+{
+	char	*run_str;
+	char	*new_str;
+
+	run_str = *str;
+	new_str = NULL;
+	if (run_str[0] == '$')
+		new_str = get_env_string(run_str + 1);
+	if (run_str[0] == '$' && !new_str)
+		new_str = get_parm_string(run_str + 1);
+	if (new_str)
+	{
+		ft_strdel(str);
+		*str = new_str;
+	}
+	else if (run_str[0] == '$')
+	{
+		ft_strdel(str);
+		*str = ft_strdup("");
+		return (1);
+	}
+	return (0);
+}
+
 int		transform(t_expand *expand, char **str)
 {
 	t_expand	*first_letter;
@@ -47,8 +73,8 @@ int		transform(t_expand *expand, char **str)
 	transform_if_tilde(&first_letter, str);
 	while (expand->ltr && expand->ltr != '~')
 	{
-		if (expand->ltr == '$' && expand->next && expand->next->ltr == '{'
-				&& !expand->prev && tmp[ft_strlen(tmp) - 1] == '}')
+		if (expand->ltr == '$'/* && expand->next && expand->next->ltr == '{'
+				&& !expand->prev && tmp[ft_strlen(tmp) - 1] == '}'*/)
 		{
 			first_letter = expand_keys(expand, str);
 			expand = first_letter;
@@ -57,6 +83,11 @@ int		transform(t_expand *expand, char **str)
 			expand = expand->next;
 		else
 			break ;
+	}
+	if (transform_simple(str))
+	{
+		delete_list_expand(&first_letter);
+		return (2);
 	}
 	delete_list_expand(&first_letter);
 	if (!**str)

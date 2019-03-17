@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:26:05 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/12 02:15:31 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 01:32:37 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,19 @@ void	free_it(char **s1, char **s2, size_t free_level)
 	if (free_level == 1)
 	{
 		free((char *)(*s1));
+		s1 = NULL;
 	}
 	if (free_level == 2)
 	{
 		free((char *)(*s2));
+		s2 = NULL;
 	}
 	if (free_level == 3)
 	{
 		free((char *)(*s1));
+		s1 = NULL;
 		free((char *)(*s2));
+		s2 = NULL;
 	}
 }
 
@@ -46,10 +50,10 @@ char	*ft_strjoinfree(char *s1, char *s2, size_t free_level)
 	size_t	size_s1;
 	size_t	size_s2;
 
-	size_s1 = ft_strlen(s1);
-	size_s2 = ft_strlen(s2);
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
+	size_s1 = ft_strlen(s1);
+	size_s2 = ft_strlen(s2);
 	if ((nstring = malloc(sizeof(char) * (size_s1 + size_s2 + 1))) == NULL)
 		return (NULL);
 	i = 0;

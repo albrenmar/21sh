@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/04 13:56:33 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/17 01:20:22 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,13 @@ SRC = main.c \
 	  42sh/hashtables.c \
 	  42sh/search_arg.c \
 	  42sh/completion.c \
+	  42sh/check_quote.c \
+	  42sh/out_redir.c \
+	  builtins/cd/cd_path.c \
+	  builtins/cd/directory.c \
+	  builtins/cd/ft_cd.c \
+	  builtins/cd/ft_cd2.c \
+	  builtins/cd/ft_dotdot.c \
 	  builtins/builtin_tools.c \
 	  builtins/fg_bg_builtins.c \
 	  builtins/jobs_builtin.c \
@@ -46,9 +53,9 @@ SRC = main.c \
 	  jobs/job_utils.c \
 	  jobs/job_functions.c \
 	  jobs/ft_job_control.c \
+	  gnl/add_to_str.c \
+	  gnl/rem_from_str.c \
 	  gnl/term_setup.c \
-	  gnl/stringsearch.c \
-	  gnl/signals.c \
 	  gnl/init_term.c \
 	  gnl/cursor_pos.c \
 	  gnl/cursor_check.c \
@@ -61,8 +68,11 @@ SRC = main.c \
 	  gnl/ctrl.c \
 	  gnl/paste.c \
 	  gnl/get_key.c \
+	  gnl/get_cmd.c \
 	  auto_complete/auto_complete.c \
+	  auto_complete/auto_complete_check.c \
 	  auto_complete/auto_complete_cleanup.c \
+	  auto_complete/auto_complete_cursor.c \
 	  auto_complete/auto_complete_list.c \
 	  auto_complete/auto_complete_page.c \
 	  auto_complete/auto_complete_loop.c \
@@ -73,6 +83,7 @@ SRC = main.c \
 	  auto_complete/print_arg_list.c \
 	  auto_complete/send_color.c \
 	  auto_complete/var_list.c \
+	  auto_complete/end_autocomplete.c \
 	  back_search/init_search.c \
 	  back_search/search_lst.c \
 	  ft_ls/cmdparse.c \
@@ -110,6 +121,9 @@ SRC = main.c \
 	  history/history_lst_options.c \
 	  history/history_loop.c \
 	  history/print_hist.c \
+	  history/shebang.c \
+	  history/history_lib_plus.c \
+	  history/hassantest.c \
 	  expansions/expand.c \
 	  expansions/user.c \
 	  expansions/parm.c \
@@ -129,8 +143,10 @@ SRC = main.c \
 	  expansions/environ.c \
 	  expansions/environ_set.c \
 	  expansions/scan.c \
+	  expansions/scan_tilde.c \
   	  expansions/quote.c \
 	  expansions/expand_error.c \
+	  expansions/analyzer.c \
 	  expansions/autocomplete/auto_com_expan.c
 
 CLEAR_LINE	= \033[2K
@@ -171,7 +187,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 			@gcc -c $(FLAG) $< -o $@  -I $(INCDIR)
 			@echo "$(CLEAR_LINE)$(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"
 complib :
-			@make -C $(LIB)
+			@make -C $(LIB) -j
 clean :
 			@echo -e "$(CLEAR_LINE)$(COL_RED)Cleaning objs dir$(COL_END)"
 			@rm -rf $(OBJDIR)

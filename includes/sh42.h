@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/04 13:55:25 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/17 01:19:36 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@
 # define ANSI_COLOR_GREEN	"\x1b[32m"
 # define ANSI_COLOR_DEFAULT "\x1b[0m"
 # define ANSI_COLOR_MAGENTA	"\x1b[35m"
+# define ANSI_COLOR_RED		"\x1b[31m"
 
-# define SHELL_NAME			"Fake minishell"
+# define SHELL_NAME			"42sh"
 # define K_FN1				"\x1b\x4f\x50"
 # define K_FN2				"\x1b\x4f\x51"
 # define K_FN3				"\x1b\x4f\x52"
@@ -51,6 +52,7 @@
 # define K_BKSP				127
 # define K_TAB				9
 # define K_CTRLR			18
+# define K_ESC				"\x1b\x1b"
 # define K_DEL				"\x1b\x5b\x33\x7e"
 
 int		descrf[2];
@@ -95,6 +97,9 @@ typedef struct	s_auto
 	int				line_up;
 	int				last_page;
 	int				pad_lpage;
+	int				hidden;
+	int				err;
+	int				to_add_y;
 }				t_auto;
 
 typedef struct	s_cpaste
@@ -151,6 +156,7 @@ typedef struct	s_shell
 	t_env_set		*setenv_lst;
 	char			**tab_env;
 	int				expand_error;
+	int				err_expend;
 }				t_shell;
 
 typedef struct		s_hash
@@ -164,9 +170,6 @@ typedef struct		s_hash
 
 typedef struct	s_tracking
 {
-	char				**g_tab_exec;
-	int					builtin;
-	t_cursor			*pos;
 	struct termios		default_term;
 	struct termios		myterm;
 	struct s_term_data	*terminfo;
@@ -175,13 +178,19 @@ typedef struct	s_tracking
 	struct s_shell		*mysh;
 	struct s_jobs		*jobs;
 	struct s_hash		*hashtable[27];
+	char				**g_tab_exec;
+	int					builtin;
+	t_cursor			*pos;
+	t_last				*temp_command;
 	char				*str;
 	char				*cmd;
+	char				*user;
 	char				*cwd;
 	char				*prompt;
 	char				*search;
 	char				*found;
 	t_lstcontainer		*key_list;
+	int					linemode;
 	int					quotes;
 	int					bracket;
 	int					swi;
@@ -194,6 +203,9 @@ typedef struct	s_tracking
 	pid_t				spid;
 	int					bg;
 	int					fg;
+	int					shebang;
+	int					unlink;
+	int					herenbr;
 	// int					lastplace;
 	// char				**orderhold;
 }				t_tracking;
@@ -235,6 +247,9 @@ char			*ft_usrmode(mode_t mode);
 void			ft_printlist();
 char			*ft_true_pwd(void);
 int				get_key(void);
+void			ft_return(void);
+int				ft_exec_key(char *str);
+int				is_cmd(char *str);
 int				yan_putchar(int c);
 void			get_term(void);
 void			ft_siginit(void);
@@ -273,6 +288,8 @@ void			begin_paste(void);
 void			print_line_cpy(int start, int end);
 t_lstcontainer	*modified_ls(int argc, char **argv);
 int				auto_complete(void);
+void			check_hidden(void);
+int				check_type(void);
 void			get_line_col(void);
 void			get_max_size(void);
 void			ft_strpadding(void);
@@ -287,10 +304,12 @@ void			rem_str(char *str);
 void			assign_type(void);
 void			clean_up_autoc(void);
 int				ft_menuline(void);
+void			back_up_add(void);
+void			go_back_down(void);
 char			*send_color(int i);
 void			color(t_list *liste);
 int				print_menu(void);
-void			end_autocomplete(int i);
+int				end_autocomplete(int i);
 void			build_bin_lst(void);
 t_list			*move_arround(t_list *buf, int i);
 void			set_up_page(void);
@@ -320,9 +339,14 @@ void			ctrl_d(void);
 void			ctrl_c(void);
 void			clean_up_leaks(void);
 t_ls			*ls_alloc(char *str);
+int				ctrl_key(char c);
 
-
+int				ft_isspace(int c);
+int				ft_isdigit_str(char* str);
+char			*ft_strrdup(char *line, int n);
+t_hist			*builtin_s_args(char **tabb, t_hist *hist);
 void			hist_file_to_lst(void);
+char			*create_path_hist(void);
 int				print_hist();
 int				get_last();
 int				go_to(int i);
@@ -338,6 +362,8 @@ t_hist			*hist_delete_index(t_hist *hist, int index);
 int     		begin_search(void);
 char         	*get_hist_ptr(char *needle);
 t_hist			*get_hist_nbr(int i);
+char		 	*shebang_parse_switch(char *line);
+int				history(void);
 
 void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
 int				fg_builtin_output(t_jobs *tmp);
@@ -356,6 +382,7 @@ int				its_fd_reddir(t_last *list);
 int				its_reddir_to_fd(t_last *list);
 int				its_pipe(t_last *list);
 int				its_separator(t_last *list);
+char			*its_quote(int i, char *str, int *nb, char c);
 char			**create_tab_to_exec(t_last *list);
 void			execute_pipe(char **tab_exec, t_jobs *job);
 void			execute_two(char **tab_cmd);
@@ -371,13 +398,19 @@ char			*search_reddir(char *str, int *nb);
 char			*search_normally_arg(char *str, int *nb);
 char			*search_symboll(char *str, int *nb);
 int				its_not_symbol(char c);
-char			*check_quote(char *line, int i);
+char			*check_quote(char *line, int i, char c);
 char			*check_bracket(char *line, int i);
 int				ft_valid_quote(char *line, char c, int flag);
 int				ft_valid_bracket(char *line, char c, int flag);
+int				its_heredoc(t_last *list);
+int				its_indir(t_last *list);
+int				out_redir(t_last *list);
 
 void			get_coolprompt(void);
 void			print_prompt(void);
+void			transform_cwd(void);
+int				spaces_line_check(char *line);
+void			clean_tab_exec(char **tab_exec);
 
 void			interactive_check_set_shell_group(void);
 void			set_shell_signal_handlers(void);
@@ -421,7 +454,7 @@ void			free_job(t_jobs *job);
 void			jobs_notifications(void);
 void			jobs_update_current(void);
 
-int				main_test(t_last *arglist);
+int				main_test();
 char			**init_envp(t_lstcontainer *env);
 
 #endif

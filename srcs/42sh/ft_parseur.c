@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 15:19:22 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/16 19:19:10 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,21 @@ char	*recup_cmd(char *line, int *i, int nb)
 
 char	*ft_modif_line(char **line)
 {
-	int		i;
-	int		j;
-	int		k;
 	char	*new_line;
 	char	*temp;
 
-	i = 0;
-	j = 0;
 	new_line = NULL;
 	temp = NULL;
 	if (ft_valid_quote(*line, '"', 0))
 	{
-		temp = check_quote(*line, 0);
+		temp = check_quote(*line, 0, '"');
+		new_line = ft_strjoin(*line, temp);
+		*line = new_line;
+		return (NULL);
+	}
+	else if (ft_valid_quote(*line, '\'', 0))
+	{
+		temp = check_quote(*line, 0, '\'');
 		new_line = ft_strjoin(*line, temp);
 		*line = new_line;
 		return (NULL);
@@ -85,31 +87,31 @@ t_last	*ft_parseur(char *str)
 	i = 0;
 	temp = NULL;
 	line = NULL;
+	list_cmd = NULL;
 	while (str[i] == ' ')
 		i++;
 	while ((line = ft_modif_line(&str)) == NULL)
 		;
 	if ((temp = recup_cmd(&line[i], &i, 0)) != NULL)
 	{
+		i += ft_strlen(temp);
 		list_cmd = create_new_list();
 		templist = list_cmd;
 		list_cmd->name = temp;
 		temp = NULL;
-		//ATTENTION !! SEGFAULT ICI DANS LE CAS "dsf
 		while (line[i] && (temp = recup_cmd(&line[i], &i, 0)) != NULL)
 		{
+			i += ft_strlen(temp);
 			list_cmd->next = create_new_list();
 			list_cmd->next->prev = list_cmd;
 			list_cmd = list_cmd->next;
 			list_cmd->name = ft_strdup(temp);
-			free(temp);
 		}
 		list_cmd->next = NULL;
 		list_cmd = templist;
 	}
 	else
 		return (NULL);
-	//print_last(list_cmd);
 	ft_lexeur(list_cmd);
 	if (error_lexer(list_cmd))
 		return (NULL);
