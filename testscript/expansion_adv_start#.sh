@@ -1,10 +1,36 @@
 SUCCESS="\033[1;32m\t\tSUCCESS\033[1;37m"
 ERROR="\033[1;31m\t\t****ERROR****\033[1;37m"
-echo "                   *#*                    "
-echo "echo \${HOME#/U}"
+echo "                    #*                     "
+echo "echo \${#HOME}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#/U}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#/U}" | /bin/bash)
+CMD_42SH=$(echo "echo \${#HOME}" | ./42sh)
+CMD_BASH=$(echo "echo \${#HOME}" | /bin/bash)
+if [ $CMD_42SH == $CMD_BASH ]
+    then
+        echo $SUCCESS
+else
+        echo $ERROR
+        echo "$CMD_42SH"
+        echo "$CMD_BASH"
+fi
+sleep 0.5
+echo "echo \${#*HOME}"
+echo "------------------------------------------"
+CMD_42SH=$(echo "echo \${#*HOME}" | ./42sh)
+CMD_BASH=$(echo "echo \${#*HOME}" | /bin/bash)
+if [ $CMD_42SH == $CMD_BASH ]
+    then
+        echo $SUCCESS
+else
+        echo $ERROR
+        echo "$CMD_42SH"
+        echo "$CMD_BASH"
+fi
+sleep 0.5
+echo "echo \${#HOME*}"
+echo "------------------------------------------"
+CMD_42SH=$(echo "echo \${#HOME*}" | ./42sh)
+CMD_BASH=$(echo "echo \${#HOME*}" | /bin/bash)
 if [ $CMD_42SH == $CMD_BASH ]
     then
         echo $SUCCESS
@@ -15,10 +41,10 @@ else
 fi
 sleep 0.5
 echo "------------------------------------------"
-echo "echo \${HOME#*/U}"
+echo "echo \${#lolo}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#*/U}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#*/U}" | /bin/bash)
+CMD_42SH=$(echo "echo \${#lolo}" | ./42sh)
+CMD_BASH=$(echo "echo \${#lolo}" | /bin/bash)
 if [ $CMD_42SH == $CMD_BASH ]
     then
         echo $SUCCESS
@@ -29,10 +55,10 @@ else
 fi
 sleep 0.5
 echo "------------------------------------------"
-echo "echo \${HOME#/U*}"
+echo "echo \${#*lolo}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#/U*}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#/U*}" | /bin/bash)
+CMD_42SH=$(echo "echo \${#*lolo}" | ./42sh)
+CMD_BASH=$(echo "echo \${#*lolo}" | /bin/bash)
 if [ $CMD_42SH == $CMD_BASH ]
     then
         echo $SUCCESS
@@ -43,10 +69,10 @@ else
 fi
 sleep 0.5
 echo "------------------------------------------"
-echo "echo \${HOME#/}"
+echo "echo \${#lolo*}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#/}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#/}" | /bin/bash)
+CMD_42SH=$(echo "echo \${#lolo*}" | ./42sh)
+CMD_BASH=$(echo "echo \${#lolo*}" | /bin/bash)
 if [ $CMD_42SH == $CMD_BASH ]
     then
         echo $SUCCESS
@@ -57,10 +83,10 @@ else
 fi
 sleep 0.5
 echo "------------------------------------------"
-echo "echo \${HOME#*/}"
+echo "echo \${#}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#*/}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#*/}" | /bin/bash)
+CMD_42SH=$(echo "echo \${#}" | ./42sh)
+CMD_BASH=$(echo "echo \${#}" | /bin/bash)
 if [ $CMD_42SH == $CMD_BASH ]
     then
         echo $SUCCESS
@@ -71,38 +97,10 @@ else
 fi
 sleep 0.5
 echo "------------------------------------------"
-echo "echo \${HOME#/*}"
+echo "echo \${#*}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#/*}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#/*}" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
-    then
-        echo $SUCCESS
-else
-        echo $ERROR
-        echo "$CMD_42SH"
-        echo "$CMD_BASH"
-fi
-sleep 0.5
-echo "------------------------------------------"
-echo "echo \${HOME#lo}"
-echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#lo}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#lo}" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
-    then
-        echo $SUCCESS
-else
-        echo $ERROR
-        echo "$CMD_42SH"
-        echo "$CMD_BASH"
-fi
-sleep 0.5
-echo "------------------------------------------"
-echo "echo \${PEPE#lo}"
-echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${PEPE#lo}" | ./42sh)
-CMD_BASH=$(echo "echo \${PEPE#lo}" | /bin/bash)
+CMD_42SH=$(echo "echo \${#*}" | ./42sh)
+CMD_BASH=$(echo "echo \${#*}" | /bin/bash)
 if [ $CMD_42SH == $CMD_BASH ]
     then
         echo $SUCCESS

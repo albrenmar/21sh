@@ -1,10 +1,11 @@
 SUCCESS="\033[1;32m\t\tSUCCESS\033[1;37m"
 ERROR="\033[1;31m\t\t****ERROR****\033[1;37m"
-echo "                   *#*                    "
-echo "echo \${HOME#/U}"
+TEST="HOME:+"
+echo "                   *:+*                    "
+echo "echo \${$TEST}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#/U}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#/U}" | /bin/bash)
+CMD_42SH=$(echo "echo \${$TEST}" | ./42sh)
+CMD_BASH=$(echo "echo \${$TEST}" | /bin/bash)
 if [ $CMD_42SH == $CMD_BASH ]
     then
         echo $SUCCESS
@@ -14,11 +15,12 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
+TEST="HOME:+test"
 echo "------------------------------------------"
-echo "echo \${HOME#*/U}"
+echo "echo \${$TEST}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#*/U}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#*/U}" | /bin/bash)
+CMD_42SH=$(echo "echo \${$TEST}" | ./42sh)
+CMD_BASH=$(echo "echo \${$TEST}" | /bin/bash)
 if [ $CMD_42SH == $CMD_BASH ]
     then
         echo $SUCCESS
@@ -28,11 +30,12 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
+TEST="KK:+test"
 echo "------------------------------------------"
-echo "echo \${HOME#/U*}"
+echo "echo \${$TEST}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#/U*}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#/U*}" | /bin/bash)
+CMD_42SH=$(echo "echo \${$TEST}" | ./42sh)
+CMD_BASH=$(echo "echo \${$TEST}" | /bin/bash)
 if [ $CMD_42SH == $CMD_BASH ]
     then
         echo $SUCCESS
@@ -42,11 +45,12 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
+TEST=":+test"
 echo "------------------------------------------"
-echo "echo \${HOME#/}"
+echo "echo \${$TEST}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#/}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#/}" | /bin/bash)
+CMD_42SH=$(echo "echo \${$TEST}" | ./42sh)
+CMD_BASH=$(echo "echo \${$TEST}" | /bin/bash)
 if [ $CMD_42SH == $CMD_BASH ]
     then
         echo $SUCCESS
@@ -56,11 +60,12 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
+TEST=":+HOME"
 echo "------------------------------------------"
-echo "echo \${HOME#*/}"
+echo "echo \${$TEST}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#*/}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#*/}" | /bin/bash)
+CMD_42SH=$(echo "echo \${$TEST}" | ./42sh)
+CMD_BASH=$(echo "echo \${$TEST}" | /bin/bash)
 if [ $CMD_42SH == $CMD_BASH ]
     then
         echo $SUCCESS
@@ -70,39 +75,12 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
+TEST="HOME:+\$PWD"
 echo "------------------------------------------"
-echo "echo \${HOME#/*}"
+echo "echo \${$TEST}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#/*}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#/*}" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
-    then
-        echo $SUCCESS
-else
-        echo $ERROR
-        echo "$CMD_42SH"
-        echo "$CMD_BASH"
-fi
-sleep 0.5
-echo "------------------------------------------"
-echo "echo \${HOME#lo}"
-echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${HOME#lo}" | ./42sh)
-CMD_BASH=$(echo "echo \${HOME#lo}" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
-    then
-        echo $SUCCESS
-else
-        echo $ERROR
-        echo "$CMD_42SH"
-        echo "$CMD_BASH"
-fi
-sleep 0.5
-echo "------------------------------------------"
-echo "echo \${PEPE#lo}"
-echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${PEPE#lo}" | ./42sh)
-CMD_BASH=$(echo "echo \${PEPE#lo}" | /bin/bash)
+CMD_42SH=$(echo "echo \${$TEST}" | ./42sh)
+CMD_BASH=$(echo "echo \${$TEST}" | /bin/bash)
 if [ $CMD_42SH == $CMD_BASH ]
     then
         echo $SUCCESS

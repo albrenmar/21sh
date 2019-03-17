@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/17 01:20:22 by bsiche           ###   ########.fr        #
+#    Updated: 2019/03/17 20:28:27 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC = main.c \
 	  42sh/completion.c \
 	  42sh/check_quote.c \
 	  42sh/out_redir.c \
+	  42sh/parse.c \
 	  builtins/cd/cd_path.c \
 	  builtins/cd/directory.c \
 	  builtins/cd/ft_cd.c \
@@ -45,9 +46,10 @@ SRC = main.c \
 	  builtins/set.c \
 	  builtins/echo/exec.c \
 	  builtins/type_main.c \
-	  builtins/test_main.c \
-	  builtins/test_two_arg.c \
-	  builtins/test_three_arg.c \
+	  builtins/test/test_main.c \
+	  builtins/test/test_tab.c \
+	  builtins/test/test_two_arg.c \
+	  builtins/test/test_three_arg.c \
 	  builtins/builtin_errors.c \
 	  jobs/signal_handlers.c \
 	  jobs/job_utils.c \
@@ -86,6 +88,7 @@ SRC = main.c \
 	  auto_complete/end_autocomplete.c \
 	  back_search/init_search.c \
 	  back_search/search_lst.c \
+	  free_func/free_hist.c \
 	  ft_ls/cmdparse.c \
 	  ft_ls/cmdparse_misc.c \
 	  ft_ls/color.c \

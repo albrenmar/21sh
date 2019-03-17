@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 02:04:21 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 04:29:34 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		sanitize_path(void)
 
 	i = ft_strlen(g_tracking.aut->word);
 	a = 0;
-	if (g_tracking.aut->word[0] == '~')
+	if (g_tracking.aut->word[0] == '~' || g_tracking.aut->word[0] == '$')
 	{
 		g_tracking.aut->path = ft_exp_complete(g_tracking.aut->word);
 		if (g_tracking.aut->path == NULL)

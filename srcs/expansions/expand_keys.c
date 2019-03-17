@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/17 03:09:20 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/17 06:11:02 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,17 @@ void		exp_key_unique_hash(char **str, t_expand *expand)
 
 void		exp_key_start_hash(char **str, t_expand *expand)
 {
-	char		*varname;
-	char		*value;
+	t_analyzer	to_analy;
 
-	varname = get_varname(expand);
-	value = get_env_string(varname);
-	ft_strdel(str);
-	*str = ft_itoa(ft_strlen(value));
-	ft_strdel(&varname);
-	ft_strdel(&value);
+	init_analyzer(&to_analy, str, expand);
+	if ((!to_analy.end_astrsk && !to_analy.start_astrsk)
+		|| ft_strequ(to_analy.varname, "*"))
+	{
+		ft_strdel(str);
+		*str = ft_itoa(to_analy.vvlu_len);
+	}
+	else
+		print_exp_error(ft_strjoinfree("#", to_analy.varname, 0));
 }
 
 char		check_sign(t_expand *expand)

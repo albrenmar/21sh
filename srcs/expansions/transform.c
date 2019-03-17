@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/15 23:10:14 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/17 22:16:20 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,14 @@ int		transform(t_expand *expand, char **str)
 		else
 			break ;
 	}
-	if (transform_simple(str))
+	if (!g_tracking.mysh->err_expend && *str && transform_simple(str))
 	{
 		delete_list_expand(&first_letter);
 		return (2);
 	}
 	delete_list_expand(&first_letter);
-	if (!**str)
+//	if (!**str)
+	if (!g_tracking.mysh->err_expend && !**str)
 		return (1);
 	return (0);
 }
