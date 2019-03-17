@@ -6,13 +6,13 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/11 13:40:05 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 01:03:17 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
 
-void	err_check(int a, int i, int j)
+void		err_check(int a, int i, int j)
 {
 	char	*newstr;
 

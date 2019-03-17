@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/16 16:49:55 by alsomvil         ###   ########.fr        #
+#    Updated: 2019/03/17 01:20:22 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,6 @@ SRC = main.c \
 	  gnl/add_to_str.c \
 	  gnl/rem_from_str.c \
 	  gnl/term_setup.c \
-	  gnl/signals.c \
 	  gnl/init_term.c \
 	  gnl/cursor_pos.c \
 	  gnl/cursor_check.c \
@@ -69,6 +68,7 @@ SRC = main.c \
 	  gnl/ctrl.c \
 	  gnl/paste.c \
 	  gnl/get_key.c \
+	  gnl/get_cmd.c \
 	  auto_complete/auto_complete.c \
 	  auto_complete/auto_complete_check.c \
 	  auto_complete/auto_complete_cleanup.c \
@@ -174,7 +174,7 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
-FLAG = -g #-fsanitize=address 
+FLAG = -g -fsanitize=address 
 
 all : $(NAME)
 

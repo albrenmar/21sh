@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/15 23:04:41 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/17 01:19:36 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,6 +247,9 @@ char			*ft_usrmode(mode_t mode);
 void			ft_printlist();
 char			*ft_true_pwd(void);
 int				get_key(void);
+void			ft_return(void);
+int				ft_exec_key(char *str);
+int				is_cmd(char *str);
 int				yan_putchar(int c);
 void			get_term(void);
 void			ft_siginit(void);
@@ -336,6 +339,7 @@ void			ctrl_d(void);
 void			ctrl_c(void);
 void			clean_up_leaks(void);
 t_ls			*ls_alloc(char *str);
+int				ctrl_key(char c);
 
 int				ft_isspace(int c);
 int				ft_isdigit_str(char* str);
