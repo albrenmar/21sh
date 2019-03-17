@@ -15,6 +15,7 @@ select CHECK in ALL SIMPLE ADVANCED EXIT
                 echo "         test expansions advanced         "
                 source expansion_adv_%.sh
                 source expansion_adv_#.sh
+                source expansion_adv_start#.sh
         elif [ "$CHECK" == 'ADVANCED' ]
             then
                 clear

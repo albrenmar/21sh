@@ -1,6 +1,6 @@
 SUCCESS="\033[1;32m\t\tSUCCESS\033[1;37m"
 ERROR="\033[1;31m\t\t****ERROR****\033[1;37m"
-echo "                    %                     "
+echo "                    *%*                   "
 echo "echo \${HOME%se}"
 echo "------------------------------------------"
 CMD_42SH=$(echo "echo \${HOME%se}" | ./42sh)
