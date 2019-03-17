@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/17 22:24:53 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/17 22:55:02 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	exp_key_plus(char **str, t_expand *expand)
 		value1 = get_parm_string(str1);
 	value2 = str2;
 */	ft_strdel(str);
+	if (!to_analy.vnme_len)
+	{
+		print_exp_error_dpoints(to_analy.varname, to_analy.wildcard);
+		return ;
+	}
 //	ft_strdel(&str1);
 //	if (value1)
 	if (to_analy.varvalue)
