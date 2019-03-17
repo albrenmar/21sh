@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 04:42:04 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 20:30:38 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -345,6 +345,7 @@ int				ctrl_key(char c);
 
 int				ft_isspace(int c);
 int				ft_isdigit_str(char* str);
+int				is_escape(char *str, int i);
 char			*ft_strrdup(char *line, int n);
 t_hist			*builtin_s_args(char **tabb, t_hist *hist);
 void			hist_file_to_lst(void);

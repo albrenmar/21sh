@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/17 05:09:24 by bsiche           ###   ########.fr        #
+#    Updated: 2019/03/17 20:28:27 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC = main.c \
 	  42sh/completion.c \
 	  42sh/check_quote.c \
 	  42sh/out_redir.c \
+	  42sh/parse.c \
 	  builtins/cd/cd_path.c \
 	  builtins/cd/directory.c \
 	  builtins/cd/ft_cd.c \
