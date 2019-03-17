@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 05:31:34 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 02:35:15 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 03:47:40 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*get_perm(char *filename)
 {
 	t_lstcontainer	*liste;
 	char			**taab;
-	t_ls 			*new_ls;
+	t_ls			*new_ls;
 	char			*test;
 	t_list			*buf;
 
@@ -66,7 +66,6 @@ char	*get_perm(char *filename)
 	free_all(liste, NULL);
 	return (test);
 }
-
 
 int		b_to_g(char **argv, char *permission)
 {
@@ -121,20 +120,18 @@ int		rest_of_perm(char **argv, char *permission)
 	return (1);
 }
 
-int		two_arg(char **argv)
+int		two_arg(char **argv, int i)
 {
 	char	*permission;
-	int		i;
 
-	i = 1;
 	permission = NULL;
 	if (argv[0][0] != '-')
 		return (1);
 	if (argv[0][1] == 'z')
 	{
 		if (ft_strlen(argv[1]) == 0)
-			i = 0;
-		ft_putnbr(ft_strlen(argv[1]));
+			return (0);
+		return (1);
 	}
 	permission = get_perm(argv[1]);
 	if (!permission)
