@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/15 23:10:33 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/16 17:49:02 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ char	**create_tab_to_exec(t_last *list)
 	int			i;
 
 	begin = list;
-	i = 0;
-	i++;
+	i = 1;
 	list = list->next;
 	while (list && list->type != CMD)
 	{
@@ -28,22 +27,16 @@ char	**create_tab_to_exec(t_last *list)
 			i++;
 		list = list->next;
 	}
-	list = begin;
 	tab_exec = ft_memalloc(sizeof(char *) * (i + 1));
-	i = 0;
-	tab_exec[i] = list->name;
-	list = list->next;
-	i++;
-	while (list && list->type != CMD)
+	tab_exec[0] = begin->name;
+	begin = begin->next;
+	i = 1;
+	while (begin && begin->type != CMD)
 	{
-		if (list->type == OPT || list->type == ARG)
-		{
-			tab_exec[i] = list->name;
-			i++;
-		}
-		list = list->next;
+		if (begin->type == OPT || begin->type == ARG)
+			tab_exec[i++] = begin->name;
+		begin = begin->next;
 	}
-	if (tab_exec)
-		tab_exec[i] = NULL;
+	tab_exec[i] = NULL;
 	return (tab_exec);
 }

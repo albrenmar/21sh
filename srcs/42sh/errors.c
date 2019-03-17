@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/03 08:24:24 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/16 17:50:43 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		argc_error(void)
 int		exec_errors_dir(char **tab_exec, int mode)
 {
 	struct stat path_stat;
-	
+
 	stat(g_tracking.g_tab_exec[0], &path_stat);
 	if (ft_strchr(g_tracking.g_tab_exec[0], '/') &&
 	(access(g_tracking.g_tab_exec[0], F_OK) == 0) && S_ISDIR(path_stat.st_mode))

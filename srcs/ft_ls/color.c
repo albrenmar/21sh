@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 03:04:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/08 05:07:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 01:24:51 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	color(t_list *liste)
 void	ft_putcolor(int i)
 {
 	if (i == 1)
-		ft_putstr_fd("\033[30;42m",  STDERR_FILENO);
+		ft_putstr_fd("\033[30;42m", STDERR_FILENO);
 	if (i == 2)
 		ft_putstr_fd("\033[43m", STDERR_FILENO);
 	if (i == 3)
