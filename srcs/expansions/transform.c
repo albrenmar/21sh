@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/17 05:10:44 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/17 22:16:20 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		transform(t_expand *expand, char **str)
 		else
 			break ;
 	}
-	if (!g_tracking.mysh->err_expend && transform_simple(str))
+	if (!g_tracking.mysh->err_expend && *str && transform_simple(str))
 	{
 		delete_list_expand(&first_letter);
 		return (2);
