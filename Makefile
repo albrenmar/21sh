@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/17 04:04:33 by bsiche           ###   ########.fr        #
+#    Updated: 2019/03/17 05:01:48 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ SRC = main.c \
 	  auto_complete/end_autocomplete.c \
 	  back_search/init_search.c \
 	  back_search/search_lst.c \
+	  free_func/free_hist.c \
 	  ft_ls/cmdparse.c \
 	  ft_ls/cmdparse_misc.c \
 	  ft_ls/color.c \
