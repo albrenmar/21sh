@@ -6,11 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 18:05:11 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 20:33:51 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 01:29:43 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
 int		ft_isdigit(int c)
 {
@@ -26,7 +26,6 @@ int		ft_isinteg(char *str)
 	long	n;
 
 	i = 0;
-
 	if (!str)
 	{
 		ft_putendl("perdu");

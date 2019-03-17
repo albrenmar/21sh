@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/04 14:14:11 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/17 01:34:50 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,16 @@ void	ft_printlist(void)
 	}
 }
 
+void	init_global(void)
+{
+	g_tracking.builtin = 0;
+	g_tracking.jobs = NULL;
+	g_tracking.lastreturn = 0;
+	g_tracking.mysh = mysh;
+	g_tracking.mysh->hist = NULL;
+	g_tracking.mysh->alias_lst = NULL;
+}
+
 void	init_shell(char **environ)
 {
 	t_shell		*mysh;
@@ -45,12 +55,6 @@ void	init_shell(char **environ)
 		g_tracking.hashtable[i] = NULL;
 		i++;
 	}
-	g_tracking.builtin = 0;
-	g_tracking.jobs = NULL;
-	g_tracking.lastreturn = 0;
-	g_tracking.mysh = mysh;
-	g_tracking.mysh->hist = NULL;
-	g_tracking.mysh->alias_lst = NULL;
 	init_alias();
 	g_tracking.mysh->env = ft_env_to_lst(environ);
 	add_missing_string();
