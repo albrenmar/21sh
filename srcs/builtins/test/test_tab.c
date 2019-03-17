@@ -1,46 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   test_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/01 20:58:35 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 01:31:42 by bsiche           ###   ########.fr       */
+/*   Created: 2019/03/17 03:49:52 by bsiche            #+#    #+#             */
+/*   Updated: 2019/03/17 03:51:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "sh42.h"
 
-void	ft_putstr(char const *s)
+char	**copy_tab_minus_one(int argc, char **argv)
 {
-	int	i;
-
-	if (*s)
-	{
-		i = ft_strlen(s);
-		write(1, s, i);
-	}
-}
-
-void	ft_putstr_nocar(char const *s)
-{
-	char	*new;
+	char	**av;
 	int		i;
 	int		a;
 
-	new = ft_strnew(ft_strlen(s));
-	i = 0;
+	i = 1;
 	a = 0;
-	while (s[i] != '\0')
+	av = malloc(sizeof(char *) * (argc + 1));
+	while (argv[i])
 	{
-		if (s[i] != '\r')
-		{
-			new[a] = s[i];
-			a++;
-		}
+		av[a] = ft_strdup(argv[i]);
 		i++;
+		a++;
 	}
-	ft_putstr_fd(new, 0);
-	free(new);
+	av[a] = NULL;
+	return (av);
+}
+
+int		count_arg(char **taab)
+{
+	int		i;
+
+	i = 0;
+	if (!taab)
+		return (1);
+	while (taab[i])
+		i++;
+	return (i);
 }

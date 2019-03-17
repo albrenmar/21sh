@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/16 01:37:39 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 05:05:39 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ void		clean_up_leaks(void)
 	}
 	if (g_tracking.mysh->hist)
 	ctrl_c();
+	free(g_tracking.str);
+	free(g_tracking.cpaste->line);
+	//free(g_tracking.cpaste);
+	g_tracking.str = NULL;
 }
 
 int			ft_exit(void)
@@ -74,8 +78,8 @@ int			ft_exit(void)
 		tmp = tmp->next;
 	}
 	hist_save_file(g_tracking.mysh->hist);
+	free_hist();
 	clean_up_leaks();
 	clean_up_leaks();
-	ft_putendl("Exit");
 	exit(0);
 }

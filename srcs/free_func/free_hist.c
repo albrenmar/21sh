@@ -1,46 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   free_hist.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/01 20:58:35 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 01:31:42 by bsiche           ###   ########.fr       */
+/*   Created: 2019/03/17 04:38:33 by bsiche            #+#    #+#             */
+/*   Updated: 2019/03/17 04:58:09 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "sh42.h"
 
-void	ft_putstr(char const *s)
+void		free_hist(void)
 {
-	int	i;
+	t_hist	*hist;
+	t_hist	*next;
 
-	if (*s)
+	if (!g_tracking.mysh->hist)
+		return ;
+	hist = g_tracking.mysh->hist;
+	while (hist->previous)
+		hist = hist->previous;
+	while (hist)
 	{
-		i = ft_strlen(s);
-		write(1, s, i);
-	}
-}
-
-void	ft_putstr_nocar(char const *s)
-{
-	char	*new;
-	int		i;
-	int		a;
-
-	new = ft_strnew(ft_strlen(s));
-	i = 0;
-	a = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] != '\r')
+		if (hist->line)
 		{
-			new[a] = s[i];
-			a++;
+			free(hist->line);
+			hist->line = NULL;
 		}
-		i++;
+		next = hist->next;
+		free(hist);
+		hist = next;
 	}
-	ft_putstr_fd(new, 0);
-	free(new);
 }

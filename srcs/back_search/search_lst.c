@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/24 00:28:43 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 04:13:27 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 01:09:58 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int				ft_strstr_ptr(const char *haystack, const char *needle)
 
 	i = 0;
 	j = 0;
+	if (!haystack || !needle)
+		return (-1);
 	if (ft_strlen(needle) == 0)
 		return (-1);
 	while (haystack[i])

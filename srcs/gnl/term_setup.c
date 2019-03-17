@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 05:23:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/15 01:38:51 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 01:21:02 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	check_term(char *name)
 		ft_putendl("switching to basic line mode");
 		g_tracking.linemode = 1;
 	}
-		
 }
 
 int		clear_screen3(void)

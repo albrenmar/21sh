@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 06:17:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/04 11:55:30 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/17 06:12:17 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ void	print_exp_error_eq(char *varname, char *value)
 void	print_exp_error(char *to_error)
 {
 	ft_putstr_fd(SHELL_NAME, 2);
-	ft_putstr_fd(": ", 2);
+	ft_putstr_fd(": ${", 2);
 	ft_putstr_fd(to_error, 2);
-	ft_putendl_fd(": bad substitution", 2);
-	g_tracking.mysh->expand_error = 1;
+	ft_putendl_fd("}: bad substitution", 2);
+//	g_tracking.mysh->expand_error = 1;
+	g_tracking.mysh->err_expend = 1;
 }

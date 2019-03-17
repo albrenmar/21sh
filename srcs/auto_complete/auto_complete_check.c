@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 02:02:49 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 02:03:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 04:26:56 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,17 @@ void	check_hidden(void)
 int		check_type(void)
 {
 	char	*check;
+	int		i;
 
 	check = g_tracking.aut->word;
+	i = ft_strlen(check) - 1;
 	if (check[0] == '/' || check[0] == '~')
 		return (1);
 	if (check[1] != '\0')
 	{
 		if (check[0] == '.' && check[1] == '/')
+			return (1);
+		if (check[0] == '$' && check[i] == '/')
 			return (1);
 		if (check[0] == '$' && check[1] == '{')
 			return (2);

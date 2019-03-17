@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/15 23:04:41 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/17 20:30:38 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,6 +247,9 @@ char			*ft_usrmode(mode_t mode);
 void			ft_printlist();
 char			*ft_true_pwd(void);
 int				get_key(void);
+void			ft_return(void);
+int				ft_exec_key(char *str);
+int				is_cmd(char *str);
 int				yan_putchar(int c);
 void			get_term(void);
 void			ft_siginit(void);
@@ -322,7 +325,9 @@ int				init_alias(void);
 int				add_alias(char *alias);
 t_keyval		*parse_alias(char *alias);
 int				ft_build_test(char *string);
-int				two_arg(char **argv);
+int				two_arg(char **argv, int i);
+char			**copy_tab_minus_one(int argc, char **argv);
+int				count_arg(char **taab);
 int				three_arg(char **argv);
 t_lstcontainer	*type_ls(int argc, char **argv);
 char			*get_env_string(char *str);
@@ -336,9 +341,11 @@ void			ctrl_d(void);
 void			ctrl_c(void);
 void			clean_up_leaks(void);
 t_ls			*ls_alloc(char *str);
+int				ctrl_key(char c);
 
 int				ft_isspace(int c);
 int				ft_isdigit_str(char* str);
+int				is_escape(char *str, int i);
 char			*ft_strrdup(char *line, int n);
 t_hist			*builtin_s_args(char **tabb, t_hist *hist);
 void			hist_file_to_lst(void);
@@ -360,6 +367,7 @@ char         	*get_hist_ptr(char *needle);
 t_hist			*get_hist_nbr(int i);
 char		 	*shebang_parse_switch(char *line);
 int				history(void);
+void			free_hist(void);
 
 void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
 int				fg_builtin_output(t_jobs *tmp);

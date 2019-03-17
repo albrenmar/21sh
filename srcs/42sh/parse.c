@@ -1,46 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/01 20:58:35 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 01:31:42 by bsiche           ###   ########.fr       */
+/*   Created: 2019/03/17 20:28:07 by bsiche            #+#    #+#             */
+/*   Updated: 2019/03/17 20:30:01 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "sh42.h"
 
-void	ft_putstr(char const *s)
+int		is_escape(char *str, int i)
 {
-	int	i;
-
-	if (*s)
-	{
-		i = ft_strlen(s);
-		write(1, s, i);
-	}
-}
-
-void	ft_putstr_nocar(char const *s)
-{
-	char	*new;
-	int		i;
-	int		a;
-
-	new = ft_strnew(ft_strlen(s));
-	i = 0;
-	a = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] != '\r')
-		{
-			new[a] = s[i];
-			a++;
-		}
-		i++;
-	}
-	ft_putstr_fd(new, 0);
-	free(new);
+	if (!str || i == 0)
+		return (0);
+	if (ft_strlen(str) == 0)
+		return (0);
+	if (str[i - 1] == '\\')
+		return (1);
+	else
+		return (0);
 }
