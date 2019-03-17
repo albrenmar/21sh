@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/16 01:37:39 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 02:50:52 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,5 @@ int			ft_exit(void)
 	hist_save_file(g_tracking.mysh->hist);
 	clean_up_leaks();
 	clean_up_leaks();
-	ft_putendl("Exit");
 	exit(0);
 }
