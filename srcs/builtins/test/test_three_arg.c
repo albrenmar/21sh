@@ -6,13 +6,13 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 05:31:34 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 03:20:17 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 03:51:59 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-int		string_test(char **argv)
+int			string_test(char **argv)
 {
 	if (ft_strcmp(argv[1], "=") == 0)
 	{
@@ -46,10 +46,10 @@ long		get_nbr(char *str)
 	return (ft_atoi(str));
 }
 
-int		math_test(char **argv)
+int			math_test(char **argv)
 {
-	long		i;
-	long		j;
+	long	i;
+	long	j;
 
 	i = get_nbr(argv[0]);
 	j = get_nbr(argv[2]);
@@ -73,7 +73,7 @@ int		math_test(char **argv)
 	return (1);
 }
 
-int		three_arg(char **argv)
+int			three_arg(char **argv)
 {
 	int		i;
 

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 01:19:36 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 03:51:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -325,7 +325,9 @@ int				init_alias(void);
 int				add_alias(char *alias);
 t_keyval		*parse_alias(char *alias);
 int				ft_build_test(char *string);
-int				two_arg(char **argv);
+int				two_arg(char **argv, int i);
+char			**copy_tab_minus_one(int argc, char **argv);
+int				count_arg(char **taab);
 int				three_arg(char **argv);
 t_lstcontainer	*type_ls(int argc, char **argv);
 char			*get_env_string(char *str);

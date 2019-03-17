@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/17 01:20:22 by bsiche           ###   ########.fr        #
+#    Updated: 2019/03/17 04:04:33 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,9 +45,10 @@ SRC = main.c \
 	  builtins/set.c \
 	  builtins/echo/exec.c \
 	  builtins/type_main.c \
-	  builtins/test_main.c \
-	  builtins/test_two_arg.c \
-	  builtins/test_three_arg.c \
+	  builtins/test/test_main.c \
+	  builtins/test/test_tab.c \
+	  builtins/test/test_two_arg.c \
+	  builtins/test/test_three_arg.c \
 	  builtins/builtin_errors.c \
 	  jobs/signal_handlers.c \
 	  jobs/job_utils.c \

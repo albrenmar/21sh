@@ -6,30 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 03:02:54 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 03:15:38 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 03:52:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"sh42.h"
-
-char	**copy_tab_minus_one(int argc, char **argv)
-{
-	char	**av;
-	int		i;
-	int		a;
-
-	i = 1;
-	a = 0;
-	av = malloc(sizeof(char *) * (argc + 1));
-	while (argv[i])
-	{
-		av[a] = ft_strdup(argv[i]);
-		i++;
-		a++;
-	}
-	av[a] = NULL;
-	return (av);
-}
+#include "sh42.h"
 
 int		one_arg(char **argv)
 {
@@ -46,7 +27,7 @@ int		test_parse(int argc, char **argv)
 	if (argc == 1)
 		return (one_arg(argv));
 	if (argc == 2)
-		return (two_arg(argv));
+		return (two_arg(argv, 1));
 	if (argc == 3)
 		return (three_arg(argv));
 	ft_putendl_fd("Too many arguments", 2);
@@ -65,18 +46,6 @@ int		reverse(int i, int flag)
 	return (i);
 }
 
-int		count_arg(char **taab)
-{
-	int		i;
-
-	i = 0;
-	if (!taab)
-		return (1);
-	while (taab[i])
-		i++;
-	return (i);
-}
-
 int		main_test(void)
 {
 	int		flag;
@@ -87,7 +56,6 @@ int		main_test(void)
 
 	flag = 1;
 	not = NULL;
-
 	argc = count_arg(g_tracking.g_tab_exec);
 	argv = g_tracking.g_tab_exec;
 	argv = copy_tab_minus_one(argc, argv);
@@ -107,5 +75,5 @@ int		main_test(void)
 	ft_putnbr(i);
 	ft_putchar('\n');
 	free_tab(argv);
-	return (0);
+	return (i);
 }
