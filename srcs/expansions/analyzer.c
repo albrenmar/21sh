@@ -6,12 +6,30 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/10 18:01:55 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/11 16:27:19 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/16 06:36:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 #include "sh42.h"
+
+void	clean_nlzr_wildcard(t_analyzer *to_analy, int reverse)
+{
+	char	*tmp;
+
+	if (to_analy->wildcard[0] == '*')
+		to_analy->wildcard = ft_strrev(ft_strdup(to_analy->wildcard + 1), 1);
+	else
+		to_analy->wildcard = ft_strrev(to_analy->wildcard, 1);
+	if (to_analy->wildcard[0] == '*')
+	{
+		tmp = ft_strdup(to_analy->wildcard + 1);
+		ft_strdel(&to_analy->wildcard);
+		to_analy->wildcard = tmp;
+	}
+	if (!reverse)
+		to_analy->wildcard = ft_strrev(to_analy->wildcard, 1);
+}
 
 void	init_analyzer(t_analyzer *to_analy, char **str, t_expand *expand)
 {
