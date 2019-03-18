@@ -32,6 +32,8 @@ SRC = main.c \
 	  42sh/check_quote.c \
 	  42sh/out_redir.c \
 	  42sh/parse.c \
+	  42sh/execute_command.c \
+	  42sh/exec_create_fich.c \
 	  builtins/cd/cd_path.c \
 	  builtins/cd/directory.c \
 	  builtins/cd/ft_cd.c \
