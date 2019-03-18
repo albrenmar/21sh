@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/16 01:37:33 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/18 19:28:06 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		init_alias(void)
 	free(path);
 	if (fd == -1)
 	{
-		ft_putendl("Failed to create or load ~./aliasrc, please verify your read/write permissions");
+		ft_putendl(ALIAS_ERR);
 		return (-1);
 	}
 	alias_lst = lstcontainer_new();

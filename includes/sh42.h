@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 20:30:38 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/18 20:22:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@
 # define K_CTRLR			18
 # define K_ESC				"\x1b\x1b"
 # define K_DEL				"\x1b\x5b\x33\x7e"
+# define ALIAS_ERR			"Failed to create or load ~/42shrc, please check your read/write permissions"
+# define FGWRGJOB			": fg: wrong job_id usage, only one job supported "
+# define BGWRGJOB			": bg: wrong job_id usage, only one job supported "
 
 int		descrf[2];
 int		descrf_two[2];
@@ -206,6 +209,8 @@ typedef struct	s_tracking
 	int					shebang;
 	int					unlink;
 	int					herenbr;
+	int					redir;
+	int					foreground;
 	// int					lastplace;
 	// char				**orderhold;
 }				t_tracking;
@@ -322,8 +327,12 @@ void			line_per_page(void);
 void			escape_path(void);
 t_lstcontainer	*change_dir(void);
 int				init_alias(void);
-int				add_alias(char *alias);
+int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
+void			apply_alias(t_last *list);
+void			print_alias_lst(void);
+int				unalias(char *alias);
+int				unalias_blt(void);
 int				ft_build_test(char *string);
 int				two_arg(char **argv, int i);
 char			**copy_tab_minus_one(int argc, char **argv);
@@ -409,6 +418,14 @@ int				ft_valid_bracket(char *line, char c, int flag);
 int				its_heredoc(t_last *list);
 int				its_indir(t_last *list);
 int				out_redir(t_last *list);
+void			set_fd_and_descr(void);
+void			exec_in_pipe(t_last *list_cmd, t_jobs *job);
+int				exec_create_file(t_last **list_cmd);
+void			set_jobs(t_jobs *job, pid_t pid0);
+void			close_and_dup(int mode);
+void			set_new_process(t_jobs *job, pid_t pid0);
+void			swap_descrf(void);
+void			set_fd_before_exec(void);
 
 void			get_coolprompt(void);
 void			print_prompt(void);
@@ -458,7 +475,7 @@ void			free_job(t_jobs *job);
 void			jobs_notifications(void);
 void			jobs_update_current(void);
 
-int				main_test();
+int				main_test(int flag);
 char			**init_envp(t_lstcontainer *env);
 
 #endif

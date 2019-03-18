@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hassantest.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 19:07:42 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/14 19:10:54 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/18 20:28:07 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		history(void)
 {
-	char **av;
-	int	i;
+	char	**av;
+	int		i;
 
 	i = 0;
 	av = g_tracking.g_tab_exec;

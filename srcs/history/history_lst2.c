@@ -6,53 +6,50 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/17 05:10:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/18 20:33:03 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-// Save history into ~.shell_history
 void		hist_save_file(t_hist *hist)
 {
-	int 	fd;
+	int		fd;
 	char	**line;
 	char	*path;
 
 	path = create_path_hist();
-	fd = open(path, O_WRONLY | O_CREAT  | O_TRUNC, 00777);
+	fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, 00777);
 	free(path);
 	if (fd < 0)
 	{
 		ft_putendl_fd("Error while opening/creating .42hist", 2);
-		return;
+		return ;
 	}
 	if (!hist)
 	{
 		close(fd);
-		return;
+		return ;
 	}
 	while (hist->previous)
 		hist = hist->previous;
-	while(hist)
+	while (hist)
 	{
 		if (hist->line != NULL && ft_strlen(hist->line) > 0)
 			ft_putendl_fd(hist->line, fd);
 		if (hist->next)
 			hist = hist->next;
 		else
-			break;
+			break ;
 	}
 	lseek(fd, SEEK_SET, 0);
 	line = malloc(sizeof(line));
-	while(get_next_line(fd, line) == 1)
+	while (get_next_line(fd, line) == 1)
 		ft_putendl(*line);
 	free(line);
 	close(fd);
-
 }
 
-// Remap, reorganize all of the index
 t_hist		*hist_remap_index(t_hist *hist)
 {
 	int i;
@@ -67,12 +64,11 @@ t_hist		*hist_remap_index(t_hist *hist)
 		if (hist->next)
 			hist = hist->next;
 		else
-			break;
+			break ;
 	}
 	return (hist);
 }
 
-// Delete history line sotred at the index
 t_hist		*hist_delete_index(t_hist *hist, int index)
 {
 	t_hist	*tmp;

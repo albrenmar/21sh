@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_tools.c                                    :+:      :+:    :+:   */
+/*   print_last.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 20:14:31 by bsiche           ###   ########.fr       */
+/*   Created: 2019/03/18 16:41:33 by alsomvil          #+#    #+#             */
+/*   Updated: 2019/03/18 18:27:42 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
 #include "sh42.h"
 
-int			cd_args_len(void)
+void	print_last(t_last *list)
 {
-	char	**tmp;
-	int		i;
-
-	i = 0;
-	tmp = g_tracking.g_tab_exec;
-	while (tmp[i])
-		i++;
-	return (i);
+	while (list)
+	{
+		printf("CMD = %s TYPE = %d\n", list->name, list->type);
+		list = list->next;
+	}
 }
