@@ -3,25 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_errors.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/05 04:11:50 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/18 20:17:35 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
-
-// int			errors_cd(char **tab_exec, int error)
-// {
-// 	if (error == 0)
-// 	{
-// 		ft_putstr_fd(SHELL_NAME, 2);
-// 		ft_putstr_fd(": cd: ", 2);
-// 		ft_putendl_fd(" too many arguments", 2);
-// 	}
-// }
 
 int			errors_hash(char *binary, int error)
 {
@@ -39,7 +29,7 @@ int			errors_hash(char *binary, int error)
 int			errors_fg(int nb, int error)
 {
 	if (error == 1)
-		ft_putendl_fd(SHELL_NAME": fg: wrong job_id usage, only one job supported ", 2);
+		ft_putendl_fd(SHELL_NAMEFGWRGJOB, 2);
 	if (error == 2)
 	{
 		ft_putstr_fd(SHELL_NAME": fg: ", 2);
@@ -66,7 +56,7 @@ int			errors_bg(int nb, int error)
 		ft_putendl_fd(" is already in the background!", 2);
 	}
 	if (error == 1)
-		ft_putendl_fd(SHELL_NAME": bg: wrong job_id usage, only one job supported ", 2);
+		ft_putendl_fd(SHELL_NAMEFGWRGJOB, 2);
 	if (error == 2)
 	{
 		ft_putstr_fd(SHELL_NAME ": bg: ", 2);
@@ -84,14 +74,17 @@ int			errors_bg(int nb, int error)
 	return (1);
 }
 
+void		ft_error_job_1(void)
+{
+	ft_putstr_fd(SHELL_NAME": jobs: ", 2);
+	ft_putendl_fd("wrong options usage", 2);
+	ft_putendl_fd("jobs: usage: jobs [-lp] [\%jobid ...]", 2);
+}
+
 int			errors_jobs(char option, int nb, int error)
 {
 	if (error == 0)
-	{
-		ft_putstr_fd(SHELL_NAME": jobs: ", 2);
-		ft_putendl_fd("wrong options usage", 2);
-		ft_putendl_fd("jobs: usage: jobs [-lp] [\%jobid ...]", 2);
-	}
+		ft_error_job_1();
 	else if (error == 1)
 	{
 		ft_putstr_fd(SHELL_NAME": jobs: -", 2);
