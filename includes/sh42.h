@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/18 18:35:05 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/18 18:52:04 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,8 +324,12 @@ void			line_per_page(void);
 void			escape_path(void);
 t_lstcontainer	*change_dir(void);
 int				init_alias(void);
-int				add_alias(char *alias);
+int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
+void			apply_alias(t_last *list);
+void			print_alias_lst(void);
+int				unalias(char *alias);
+int				unalias_blt(void);
 int				ft_build_test(char *string);
 int				two_arg(char **argv, int i);
 char			**copy_tab_minus_one(int argc, char **argv);
