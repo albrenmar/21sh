@@ -25,7 +25,7 @@ if [ $CMD_42SH == $CMD_BASH ]
         echo "ENVAR OR SETVAR IS SETED CORRECTLY"
 else
         echo "$ERROR"
-        echo "ENVAR OR SETVAR IS SETED CORRECTLY"
+        echo "ENVAR OR SETVAR IS NOT SETED CORRECTLY"
         echo "$CMD_42SH"
         echo "$CMD_BASH"
 fi
@@ -55,7 +55,7 @@ if [ $CMD_42SH == $CMD_BASH ]
         echo "ENVAR OR SETVAR IS SETED CORRECTLY"
 else
         echo "$ERROR"
-        echo "ENVAR OR SETVAR IS SETED CORRECTLY"
+        echo "ENVAR OR SETVAR IS NOT SETED CORRECTLY"
         echo "$CMD_42SH"
         echo "$CMD_BASH"
 fi
@@ -85,7 +85,7 @@ if [ $CMD_42SH == $CMD_BASH ]
         echo "ENVAR OR SETVAR IS SETED CORRECTLY"
 else
         echo "$ERROR"
-        echo "ENVAR OR SETVAR IS SETED CORRECTLY"
+        echo "ENVAR OR SETVAR IS NOT SETED CORRECTLY"
         echo "$CMD_42SH"
         echo "$CMD_BASH"
 fi
@@ -115,7 +115,7 @@ if [ $CMD_42SH == $CMD_BASH ]
         echo "ENVAR OR SETVAR IS SETED CORRECTLY"
 else
         echo "$ERROR"
-        echo "ENVAR OR SETVAR IS SETED CORRECTLY"
+        echo "ENVAR OR SETVAR IS NOT SETED CORRECTLY"
         echo "$CMD_42SH"
         echo "$CMD_BASH"
 fi
@@ -144,7 +144,7 @@ if [ $CMD_42SH == $CMD_BASH ]
         echo "ENVAR OR SETVAR IS SETED CORRECTLY"
 else
         echo "$ERROR"
-        echo "ENVAR OR SETVAR IS SETED CORRECTLY"
+        echo "ENVAR OR SETVAR IS NOT SETED CORRECTLY"
         echo "$CMD_42SH"
         echo "$CMD_BASH"
 fi
@@ -173,7 +173,7 @@ if [ $CMD_42SH == $CMD_BASH ]
         echo "ENVAR OR SETVAR IS SETED CORRECTLY"
 else
         echo "$ERROR"
-        echo "ENVAR OR SETVAR IS SETED CORRECTLY"
+        echo "ENVAR OR SETVAR IS NOT SETED CORRECTLY"
         echo "$CMD_42SH"
         echo "$CMD_BASH"
 fi
