@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/18 19:21:30 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/18 19:27:45 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@
 # define K_CTRLR			18
 # define K_ESC				"\x1b\x1b"
 # define K_DEL				"\x1b\x5b\x33\x7e"
+# define ALIAS_ERR			"Failed to create or load ~/42shrc, please check your read/write permissions"
 
 int		descrf[2];
 int		descrf_two[2];
