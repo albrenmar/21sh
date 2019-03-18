@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 03:02:54 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 03:52:30 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/18 20:22:22 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,18 @@ int		one_arg(char **argv)
 		return (0);
 	else
 		return (1);
+}
+
+int		reverse(int i, int flag)
+{
+	if (flag == -1)
+	{
+		if (i == 1)
+			return (0);
+		if (i == 0)
+			return (1);
+	}
+	return (i);
 }
 
 int		test_parse(int argc, char **argv)
@@ -34,27 +46,13 @@ int		test_parse(int argc, char **argv)
 	return (-1);
 }
 
-int		reverse(int i, int flag)
+int		main_test(int flag)
 {
-	if (flag == -1)
-	{
-		if (i == 1)
-			return (0);
-		if (i == 0)
-			return (1);
-	}
-	return (i);
-}
-
-int		main_test(void)
-{
-	int		flag;
 	int		i;
 	int		argc;
 	char	**argv;
 	char	**not;
 
-	flag = 1;
 	not = NULL;
 	argc = count_arg(g_tracking.g_tab_exec);
 	argv = g_tracking.g_tab_exec;
@@ -72,8 +70,6 @@ int		main_test(void)
 	}
 	i = test_parse(argc, argv);
 	i = reverse(i, flag);
-	ft_putnbr(i);
-	ft_putchar('\n');
 	free_tab(argv);
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/18 19:03:46 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/18 19:28:47 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_lstcontainer		*alias_error(char *alias)
 	return (split);
 }
 
-t_keyval	*parse_alias(char *alias)
+t_keyval			*parse_alias(char *alias)
 {
 	t_lstcontainer	*split;
 	t_keyval		*al_to_add;
@@ -58,7 +58,7 @@ t_keyval	*parse_alias(char *alias)
 	return (al_to_add);
 }
 
-int		add_alias()
+int					add_alias(void)
 {
 	int				fd;
 	t_lstcontainer	*alias_lst;
@@ -80,7 +80,7 @@ int		add_alias()
 	return (0);
 }
 
-int		unalias_blt(void)
+int					unalias_blt(void)
 {
 	t_keyval		*tmp;
 	t_list			*buf;
@@ -105,7 +105,7 @@ int		unalias_blt(void)
 	return (0);
 }
 
-int		unalias(char *alias)
+int					unalias(char *alias)
 {
 	t_keyval		*tmp;
 	t_list			*buf;
@@ -121,7 +121,7 @@ int		unalias(char *alias)
 			if (ft_strcmp(tmp->key, alias) == 0)
 			{
 				lstcontainer_remove(g_tracking.mysh->alias_lst, buf, 1);
-				return(1);
+				return (1);
 			}
 		}
 		buf = buf->next;

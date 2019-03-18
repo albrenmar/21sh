@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 15:07:37 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/17 01:34:58 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/18 20:35:44 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	realize_built(t_tab *st_tab, t_env *st_env, char **line, char **env)
 	else if (ft_strcmp(st_tab->tab_word[0], "alias_print") == 0)
 		print_alias_lst();
 	else if (ft_strcmp(st_tab->tab_word[0], "unalias") == 0)
-		unalias(st_tab->tab_word[1]);	
+		unalias(st_tab->tab_word[1]);
 }
 
 char	*recup_path(char **env, char *str)
