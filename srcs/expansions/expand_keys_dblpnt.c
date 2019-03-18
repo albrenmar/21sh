@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/18 22:45:20 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/18 22:58:56 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,11 @@ void	exp_key_less(char **str, t_expand *expand)
 //	if (value1)
 	if (to_analy.varvalue[0])
 		*str = to_analy.varvalue;
+	else if (!to_analy.varname[0])
+	{
+		print_exp_error_dpoints(to_analy.varname, to_analy.wildcard, '-');
+		*str = ft_strdup(" ");
+	}
 //		*str = value1;
 	else
 		*str = to_analy.wildcard;
