@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 20:17:35 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/18 20:38:11 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			errors_hash(char *binary, int error)
 int			errors_fg(int nb, int error)
 {
 	if (error == 1)
-		ft_putendl_fd(SHELL_NAMEFGWRGJOB, 2);
+		ft_putendl_fd(SHELL_NAME FGWRGJOB, 2);
 	if (error == 2)
 	{
 		ft_putstr_fd(SHELL_NAME": fg: ", 2);
@@ -56,7 +56,7 @@ int			errors_bg(int nb, int error)
 		ft_putendl_fd(" is already in the background!", 2);
 	}
 	if (error == 1)
-		ft_putendl_fd(SHELL_NAMEFGWRGJOB, 2);
+		ft_putendl_fd(SHELL_NAME FGWRGJOB, 2);
 	if (error == 2)
 	{
 		ft_putstr_fd(SHELL_NAME ": bg: ", 2);
