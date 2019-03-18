@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/17 20:28:27 by bsiche           ###   ########.fr        #
+#    Updated: 2019/03/18 01:54:08 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,8 @@ SRC = main.c \
 	  42sh/check_quote.c \
 	  42sh/out_redir.c \
 	  42sh/parse.c \
+	  42sh/execute_command.c \
+	  42sh/exec_create_fich.c \
 	  builtins/cd/cd_path.c \
 	  builtins/cd/directory.c \
 	  builtins/cd/ft_cd.c \
@@ -177,7 +179,7 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
-FLAG = -g -fsanitize=address 
+FLAG = -g #-fsanitize=address 
 
 all : $(NAME)
 

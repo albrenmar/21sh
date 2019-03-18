@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/16 19:19:10 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/18 14:07:26 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,6 @@ t_last	*ft_parseur(char *str)
 		list_cmd = templist;
 	}
 	else
-		return (NULL);
-	ft_lexeur(list_cmd);
-	if (error_lexer(list_cmd))
 		return (NULL);
 	return (list_cmd);
 }

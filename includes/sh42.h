@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 20:30:38 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/18 18:52:04 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,8 @@ typedef struct	s_tracking
 	int					shebang;
 	int					unlink;
 	int					herenbr;
+	int					redir;
+	int					foreground;
 	// int					lastplace;
 	// char				**orderhold;
 }				t_tracking;
@@ -322,8 +324,12 @@ void			line_per_page(void);
 void			escape_path(void);
 t_lstcontainer	*change_dir(void);
 int				init_alias(void);
-int				add_alias(char *alias);
+int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
+void			apply_alias(t_last *list);
+void			print_alias_lst(void);
+int				unalias(char *alias);
+int				unalias_blt(void);
 int				ft_build_test(char *string);
 int				two_arg(char **argv, int i);
 char			**copy_tab_minus_one(int argc, char **argv);
@@ -409,6 +415,9 @@ int				ft_valid_bracket(char *line, char c, int flag);
 int				its_heredoc(t_last *list);
 int				its_indir(t_last *list);
 int				out_redir(t_last *list);
+void			set_fd_and_descr(void);
+void			exec_in_pipe(t_last *list_cmd, t_jobs *job);
+int				exec_create_file(t_last **list_cmd);
 
 void			get_coolprompt(void);
 void			print_prompt(void);

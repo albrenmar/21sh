@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/16 18:16:54 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/18 15:20:19 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int		spaces_line_check(char *line)
 	i = 0;
 	while (line[i] != '\0')
 	{
-		if (line[i] != ' ' && line[i] != '\n' && line[i] != '\t' && line[i] != '\v'
-		&& line[i] != '\r')
+		if (line[i] != ' ' && line[i] != '\n' && line[i] != '\t'
+				&& line[i] != '\v' && line[i] != '\r')
 			return (1);
 		i++;
 	}
@@ -87,7 +87,8 @@ void	set_prompt_quote(void)
 
 void	print_prompt(void)
 {
-	if (g_tracking.quotes == 1 || g_tracking.quotes == 2 || g_tracking.quotes == 3)
+	if (g_tracking.quotes == 1
+			|| g_tracking.quotes == 2 || g_tracking.quotes == 3)
 	{
 		ft_putstr_fd(ANSI_COLOR_RED, 2);
 		ft_putstr_fd(g_tracking.prompt, 2);
@@ -113,7 +114,8 @@ void	get_coolprompt(void)
 	char	*memory;
 	char	buff[4096 + 1];
 
-	if (g_tracking.quotes == 1 || g_tracking.quotes == 2 || g_tracking.quotes == 3)
+	if (g_tracking.quotes == 1 || g_tracking.quotes == 2
+			|| g_tracking.quotes == 3)
 	{
 		set_prompt_quote();
 		return ;
