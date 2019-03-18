@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   history_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/14 18:00:41 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/18 20:28:39 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "sh42.h"
+#include "sh42.h"
 
-int		get_last()
+int		get_last(void)
 {
 	t_hist	*history;
 
@@ -102,11 +102,11 @@ int		history_down(void)
 	if (g_tracking.histindex <= g_tracking.histmax)
 		g_tracking.histindex++;
 	if (g_tracking.histindex == g_tracking.histmax + 1)
-		{
-			comp = ft_strdup(g_tracking.str);
-			rem_str(comp);
-			free(comp);
-		}
+	{
+		comp = ft_strdup(g_tracking.str);
+		rem_str(comp);
+		free(comp);
+	}
 	history = get_hist_nbr(g_tracking.histindex);
 	if (!history)
 		return (0);
