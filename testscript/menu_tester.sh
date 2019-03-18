@@ -37,6 +37,7 @@ select CHECK in "COMPIL 42SH" "REMOVE 42SH" "NORM EXPANSIONS" ALL SIMPLE ADVANCE
                 source expansion_adv_+.sh
                 source expansion_adv_\?.sh
                 source expansion_adv_\=.sh
+                source expansion_adv_\-.sh
         elif [ "$CHECK" == 'ADVANCED' ]
             then
                 clear

@@ -6,13 +6,13 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/18 18:15:51 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/18 19:26:43 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-void	print_alias_lst(void)
+void		print_alias_lst(void)
 {
 	t_keyval		*tmp;
 	t_list			*buf;
@@ -33,7 +33,7 @@ void	print_alias_lst(void)
 	}
 }
 
-char	*return_alias(char *name)
+char		*return_alias(char *name)
 {
 	t_keyval		*tmp;
 	t_list			*buf;
@@ -53,7 +53,6 @@ char	*return_alias(char *name)
 	}
 	return (NULL);
 }
-
 
 void		apply_alias(t_last *list)
 {

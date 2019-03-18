@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/18 01:54:08 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/18 19:18:17 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = main.c \
 	  42sh/ft_modif_list.c \
 	  42sh/ft_ast.c \
 	  42sh/its_token.c \
+	  42sh/its_double_token.c \
 	  42sh/execute_ast.c \
 	  42sh/execute_pipe.c \
 	  42sh/add_path_to_bin.c \
@@ -34,6 +35,7 @@ SRC = main.c \
 	  42sh/parse.c \
 	  42sh/execute_command.c \
 	  42sh/exec_create_fich.c \
+	  42sh/set_exec_pipe.c \
 	  builtins/cd/cd_path.c \
 	  builtins/cd/directory.c \
 	  builtins/cd/ft_cd.c \

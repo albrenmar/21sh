@@ -6,19 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 14:07:26 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:15:38 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
-
-int		its_not_symbol(char c)
-{
-	if (c == '|' || c == '>' || c == '<' || c == '&' || c == ';')
-		return (0);
-	else
-		return (1);
-}
 
 char	*recup_cmd(char *line, int *i, int nb)
 {
@@ -43,37 +35,65 @@ char	*recup_cmd(char *line, int *i, int nb)
 	return (test);
 }
 
-char	*ft_modif_line(char **line)
+void	return_modif_line(char c, char **line)
 {
 	char	*new_line;
 	char	*temp;
 
-	new_line = NULL;
-	temp = NULL;
-	if (ft_valid_quote(*line, '"', 0))
+	if (c == '"')
 	{
 		temp = check_quote(*line, 0, '"');
 		new_line = ft_strjoin(*line, temp);
 		*line = new_line;
-		return (NULL);
 	}
-	else if (ft_valid_quote(*line, '\'', 0))
+	else if (c == '\'')
 	{
 		temp = check_quote(*line, 0, '\'');
 		new_line = ft_strjoin(*line, temp);
 		*line = new_line;
-		return (NULL);
 	}
-	else if (ft_valid_bracket(*line, '}', 0))
+	else
 	{
 		temp = check_bracket(*line, 0);
 		new_line = ft_strjoin(*line, temp);
 		*line = new_line;
+	}
+}
+
+char	*ft_modif_line(char **line)
+{
+	char	*temp;
+
+	temp = NULL;
+	if (ft_valid_quote(*line, '"', 0))
+	{
+		return_modif_line('"', line);
 		return (NULL);
 	}
-	else
-		new_line = ft_strdup(*line);
-	return (new_line);
+	else if (ft_valid_quote(*line, '\'', 0))
+	{
+		return_modif_line('\'', line);
+		return (NULL);
+	}
+	else if (ft_valid_bracket(*line, '}', 0))
+	{
+		return_modif_line('}', line);
+		return (NULL);
+	}
+	return (ft_strdup(*line));
+}
+
+void	add_cmd_to_list(int i, char *line, char *temp, t_last **list_cmd)
+{
+	while (line[i] && (temp = recup_cmd(&line[i], &i, 0)) != NULL)
+	{
+		i += ft_strlen(temp);
+		(*list_cmd)->next = create_new_list();
+		(*list_cmd)->next->prev = *list_cmd;
+		*list_cmd = (*list_cmd)->next;
+		(*list_cmd)->name = ft_strdup(temp);
+	}
+	(*list_cmd)->next = NULL;
 }
 
 t_last	*ft_parseur(char *str)
@@ -85,8 +105,6 @@ t_last	*ft_parseur(char *str)
 	t_last	*templist;
 
 	i = 0;
-	temp = NULL;
-	line = NULL;
 	list_cmd = NULL;
 	while (str[i] == ' ')
 		i++;
@@ -99,15 +117,7 @@ t_last	*ft_parseur(char *str)
 		templist = list_cmd;
 		list_cmd->name = temp;
 		temp = NULL;
-		while (line[i] && (temp = recup_cmd(&line[i], &i, 0)) != NULL)
-		{
-			i += ft_strlen(temp);
-			list_cmd->next = create_new_list();
-			list_cmd->next->prev = list_cmd;
-			list_cmd = list_cmd->next;
-			list_cmd->name = ft_strdup(temp);
-		}
-		list_cmd->next = NULL;
+		add_cmd_to_list(i, line, temp, &list_cmd);
 		list_cmd = templist;
 	}
 	else

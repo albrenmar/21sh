@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 06:37:34 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/13 21:13:44 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/18 20:35:05 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	ft_cd_two(t_tab *st_tab, t_env *st_env, char *pwd, char *buf)
 	{
 		chdir(st_tab->tab_word[1]);
 		change_last_pwd(st_env->env, pwd);
-	//	free(pwd);
 		pwd = getcwd(buf, SIZE_MAX);
 		change_pwd(&st_env->env, pwd);
 	}

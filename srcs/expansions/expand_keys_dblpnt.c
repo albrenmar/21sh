@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/18 21:37:25 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/18 22:58:56 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,9 @@ void	exp_key_equal(char **str, t_expand *expand)
 
 void	exp_key_less(char **str, t_expand *expand)
 {
-	char	*str1;
+	t_analyzer	to_analy;
+
+/*	char	*str1;
 	char	*str2;
 	char	*value1;
 	char	*value2;
@@ -91,16 +93,19 @@ void	exp_key_less(char **str, t_expand *expand)
 	if (!value1)
 		value1 = get_parm_string(str1);
 	value2 = str2;
+*/	init_analyzer(&to_analy, str, expand);
 	ft_strdel(str);
-	ft_strdel(&str1);
-	if (value1)
+//	ft_strdel(&str1);
+//	if (value1)
+	if (to_analy.varvalue[0])
+		*str = to_analy.varvalue;
+	else if (!to_analy.varname[0])
 	{
-		ft_strdel(&value2);
-		*str = value1;
+		print_exp_error_dpoints(to_analy.varname, to_analy.wildcard, '-');
+		*str = ft_strdup(" ");
 	}
+//		*str = value1;
 	else
-	{
-		ft_strdel(&value1);
-		*str = value2;
-	}
+		*str = to_analy.wildcard;
+//		*str = value2;
 }
