@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 18:28:54 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/18 19:19:19 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ char	**create_tab_to_exec(t_last *list)
 	i = 1;
 	while (begin && begin->type != CMD)
 	{
-		if ((begin->type == OPT || begin->type == ARG))
-//				&& !ft_strequ(begin->name, " ")) // MODIFIE POUR MJOSE
+		if (begin->type == OPT || begin->type == ARG)
 			tab_exec[i++] = begin->name;
 		begin = begin->next;
 	}

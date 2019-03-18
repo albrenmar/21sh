@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/18 18:52:04 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/18 19:21:30 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -418,6 +418,11 @@ int				out_redir(t_last *list);
 void			set_fd_and_descr(void);
 void			exec_in_pipe(t_last *list_cmd, t_jobs *job);
 int				exec_create_file(t_last **list_cmd);
+void			set_jobs(t_jobs *job, pid_t pid0);
+void			close_and_dup(int mode);
+void			set_new_process(t_jobs *job, pid_t pid0);
+void			swap_descrf(void);
+void			set_fd_before_exec(void);
 
 void			get_coolprompt(void);
 void			print_prompt(void);
