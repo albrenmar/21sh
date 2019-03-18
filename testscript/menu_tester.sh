@@ -1,9 +1,27 @@
 #!/bin/bash
 cp ../42sh .
 clear
-select CHECK in ALL SIMPLE ADVANCED EXIT
+select CHECK in "COMPIL 42SH" "REMOVE 42SH" "NORM EXPANSIONS" ALL SIMPLE ADVANCED EXIT
     do
         clear
+        if [ "$CHECK" == "COMPIL 42SH" ]
+            then
+                cd ..
+                make
+                cd testscript
+                cp ../42sh .
+        fi
+        if [ "$CHECK" == "REMOVE 42SH" ]
+            then
+                cd ..
+                make fclean
+                cd testscript
+                rm 42sh
+        fi
+        if [ "$CHECK" == "NORM EXPANSIONS" ]
+            then
+                norminette ../srcs/expansions | grep Error
+        fi
         if [ "$CHECK" == 'ALL' ] ||
            [ "$CHECK" == 'SIMPLE' ]
             then
@@ -17,6 +35,7 @@ select CHECK in ALL SIMPLE ADVANCED EXIT
                 source expansion_adv_#.sh
                 source expansion_adv_start#.sh
                 source expansion_adv_+.sh
+                source expansion_adv_\?.sh
         elif [ "$CHECK" == 'ADVANCED' ]
             then
                 clear
