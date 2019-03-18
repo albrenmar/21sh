@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   print_last.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/17 20:28:07 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/18 15:22:17 by alsomvil         ###   ########.fr       */
+/*   Created: 2019/03/18 16:41:33 by alsomvil          #+#    #+#             */
+/*   Updated: 2019/03/18 16:41:48 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-int		is_escape(char *str, int i)
+void	print_last(t_last *list)
 {
-	if (!str || i == 0)
-		return (0);
-	if (ft_strlen(str) == 0)
-		return (0);
-	if (str[i - 1] == '\\')
-		return (1);
-	else
-		return (0);
+	while (list)
+	{
+		printf("CMD = %s TYPE = %d\n", list->name, list->type);
+		list = list->next;
+	}
 }
+
