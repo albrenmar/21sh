@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/17 22:24:53 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/18 00:58:14 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,70 +18,37 @@ void	exp_key_plus(char **str, t_expand *expand)
 	t_analyzer	to_analy;
 
 	init_analyzer(&to_analy, str, expand);
-/*	char	*str1;
-	char	*str2;
-	char	*value1;
-	char	*value2;
-
-	str1 = NULL;
-	str2 = NULL;
-	str1 = get_varname(expand);
-	str2 = get_value(expand);
-	value1 = get_env_string(str1);
-	if (!value1)
-		value1 = get_parm_string(str1);
-	value2 = str2;
-*/	ft_strdel(str);
-//	ft_strdel(&str1);
-//	if (value1)
+	ft_strdel(str);
+	if (!to_analy.vnme_len)
+	{
+		print_exp_error_dpoints(to_analy.varname, to_analy.wildcard, '+');
+		return ;
+	}
 	if (to_analy.varvalue)
 	{
-//		*str = value2;
 		if (to_analy.wildcard)
 			*str = to_analy.wildcard;
 		else
 			*str = ft_strdup(" ");
-//		ft_strdel(&value1);
-//		if (!value2)
-//			*str = ft_strdup("");
 	}
 	else
 		*str = ft_strdup(" ");
-/*	else
-	{
-		ft_strdel(&value2);
-		*str = NULL;
-	}
-*/}
+}
 
 void	exp_key_inter(char **str, t_expand *expand)
 {
-	char	*str1;
-	char	*str2;
-	char	*value1;
-	char	*value2;
+	t_analyzer	to_analy;
 
-	str1 = NULL;
-	str2 = NULL;
-	str1 = get_varname(expand);
-	str2 = get_value(expand);
-	value1 = get_env_string(str1);
-	if (!value1)
-		value1 = get_parm_string(str1);
-	value2 = str2;
-	free(*str);
-	if (value1)
-		*str = value1;
-	else
+	init_analyzer(&to_analy, str, expand);
+	if (to_analy.varvalue)
 	{
-		ft_strdel(&value1);
-		g_tracking.mysh->err_expend = 1;
-		print_exp_error_eq(str1, str2);
-		ft_strdel(&str1);
-		ft_strdel(&str2);
-		*str = ft_strdup("");
-		g_tracking.mysh->expand_error = 1;
+		ft_strdel(str);
+		*str = to_analy.varvalue;
 	}
+	else if (to_analy.varname && to_analy.varname[0])
+		print_exp_error_eq(to_analy.varname, to_analy.wildcard);
+	else
+		print_exp_error_dpoints(to_analy.varname, to_analy.wildcard, '?');
 }
 
 void	exp_key_equal(char **str, t_expand *expand)

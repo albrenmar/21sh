@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:06:56 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/17 04:18:15 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/18 14:19:20 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,7 @@ char	*search_normally_arg(char *str, int *nb)
 			i++;
 	}
 	temp = ft_strndup(str, i);
-	return (temp);
+	if (ft_strlen(temp) > 0)
+		return (temp);
+	return (NULL);
 }

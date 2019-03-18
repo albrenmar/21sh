@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/15 23:18:45 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/18 14:45:12 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,11 @@ int		main(int argc, char **argv, char **env)
 			{
 				hist_lst_add_next(g_tracking.mysh->hist, line);
 				convert_list(cmd);
-				cmd = Check_exp_error(cmd);
-				if (cmd)
+				if (!error_lexer(cmd))
+				{
+					cmd = Check_exp_error(cmd);
 					ft_ast(cmd);
+				}
 			}
 		}
 		jobs_notifications();

@@ -22,6 +22,18 @@ void	rmv_tab_exec(char **tab_exec, int to)
 		ft_strdel(&tab_exec[i++]);
 }
 
+void	print_exp_error_dpoints(char *varname, char *value, int sign)
+{
+	ft_putstr_fd(SHELL_NAME, 2);
+	ft_putstr_fd(": ${", 2);
+	ft_putstr_fd(varname, 2);
+	ft_putchar_fd(':', 2);
+	ft_putchar_fd(sign, 2);
+	ft_putstr_fd(value, 2);
+	ft_putendl_fd("}: bad substitution", 2);
+	g_tracking.mysh->err_expend = 1;
+}
+
 void	print_exp_error_eq(char *varname, char *value)
 {
 	ft_putstr_fd(SHELL_NAME, 2);
@@ -29,7 +41,7 @@ void	print_exp_error_eq(char *varname, char *value)
 	ft_putstr_fd(varname, 2);
 	ft_putstr_fd(": ", 2);
 	ft_putendl_fd(value, 2);
-	g_tracking.mysh->expand_error = 1;
+	g_tracking.mysh->err_expend = 1;
 }
 
 void	print_exp_error(char *to_error)
@@ -38,6 +50,5 @@ void	print_exp_error(char *to_error)
 	ft_putstr_fd(": ${", 2);
 	ft_putstr_fd(to_error, 2);
 	ft_putendl_fd("}: bad substitution", 2);
-//	g_tracking.mysh->expand_error = 1;
 	g_tracking.mysh->err_expend = 1;
 }
