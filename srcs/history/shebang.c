@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:24:28 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/14 19:02:17 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/19 19:47:42 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,10 +159,13 @@ char 	*shebang_parse_switch(char *line)
 		{
 			i++;
 			tmp_line = ft_strrdup(line, i-1);
-			if (line[i] && line[i] == '!')
+			if (ft_iswhitespace(line[i]) || !line[i] || line[i] == ';')
+				i++;
+			else if (line[i] && line[i] == '!')
 			{
 				i++;
 				line = shebang_last(line, &line[i], tmp_line);
+				i = 0;
 			}
 			else if (line[i] && line[i] == '-')
 			{
@@ -171,14 +174,18 @@ char 	*shebang_parse_switch(char *line)
 					line = shebang_num_neg(line, &line[i], tmp_line);
 				else if (line[i])
 					line = shebang_word(line, &line[i], tmp_line);
+				i = 0;
 			}
 			else if (line[i] && ft_isdigit(line[i]))
 			{
 				line = shebang_num_pos(line, &line[i], tmp_line);
+				i = 0;
 			}
 			else if (line[i] && !ft_isdigit(line[i]))
+			{
 				line = shebang_word(line, &line[i], tmp_line);
-			i = 0;
+				i = 0;
+			}
 			free(tmp_line);
 		}
 		else
