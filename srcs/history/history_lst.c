@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/18 20:31:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/19 15:37:31 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void		hist_setup_file(void)
 void		hist_lst_add_next(t_hist *hist, char *line)
 {
 	t_hist	*new_node;
-
+	if (!hist || (!hist && !hist->line))
+		g_tracking.mysh->hist = hist_lst_create(line);
 	while (hist->next != NULL)
 		hist = hist->next;
 	new_node = ft_memalloc(sizeof(*new_node));
@@ -53,9 +54,9 @@ void		hist_lst_add_next(t_hist *hist, char *line)
 
 void		hist_print(t_hist *hist)
 {
-	while (hist->previous)
+	while (hist && hist->previous)
 		hist = hist->previous;
-	while (hist)
+	while (hist && hist->line)
 	{
 		ft_putnbr(hist->index);
 		ft_putchar(' ');
