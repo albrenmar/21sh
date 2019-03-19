@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/18 20:22:49 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/19 14:26:06 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -377,6 +377,11 @@ t_hist			*get_hist_nbr(int i);
 char		 	*shebang_parse_switch(char *line);
 int				history(void);
 void			free_hist(void);
+void			history_builtin_s(void);
+void			history_builtin(void);
+// void			history_setup(void);
+void			history_builtin_delete_index(int j);
+t_hist			*hist_delete_last(t_hist *hist);
 
 void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
 int				fg_builtin_output(t_jobs *tmp);

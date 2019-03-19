@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/18 19:18:17 by alsomvil         ###   ########.fr        #
+#    Updated: 2019/03/19 14:06:02 by hdufer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,6 +131,8 @@ SRC = main.c \
 	  history/shebang.c \
 	  history/history_lib_plus.c \
 	  history/hassantest.c \
+	  history/history_builtin_option.c \
+	  history/history.c \
 	  expansions/expand.c \
 	  expansions/user.c \
 	  expansions/parm.c \
