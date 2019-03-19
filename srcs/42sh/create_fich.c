@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/16 18:42:30 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/19 16:07:33 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ void		set_fd(char c, int fd)
 void		set_reddir_to_fd(t_last *list, int i)
 {
 	FILE	*fd_open;
+	int		fd;
 
 	fd_open = NULL;
+	fd = 0;
 	while (list->name[i] && list->name[i] > 47 && list->name[i] < 58)
 		i++;
 	if (i > 2)
@@ -72,11 +74,15 @@ void		set_reddir_to_fd(t_last *list, int i)
 	}
 	if (list->next && list->next->name[0] > 47 && list->next->name[0] < 58)
 		fd_open = fdopen(list->next->name[0] - '0', "r+");
-	else if (list->next)
+	else if (list->next && (ft_strlen(list->next->name) == 1) && !ft_strcmp(list->next->name, "-"))
+		fd = open("/dev/null", O_WRONLY);
+	else
 	{
 		printf("ERREUR NAME FD : [%s]\n", list->next->name);
 		return ;
 	}
+	if (fd)
+		set_fd(list->name[0], fd);
 	if (fd_open)
 		set_fd(list->name[0], fd_open->_file);
 }
@@ -103,16 +109,22 @@ void		create_fich(t_last *list)
 {
 	int		i;
 	int		ret;
+	t_last	*temp;
 
 	i = 0;
+	temp = list;
 	if (its_reddir_to_fd(list))
 		set_reddir_to_fd(list, i);
 	else if (its_reddir(list))
 	{
 		while (list->type != FICH)
 			list = list->next;
-		g_tracking.mysh->set_fd->STDOUT = open(list->name, O_CREAT
+		if (ft_strlen(temp->name) == 1)
+			g_tracking.mysh->set_fd->STDOUT = open(list->name, O_CREAT
 				| O_TRUNC | O_RDWR, 0644);
+		else
+			g_tracking.mysh->set_fd->STDOUT = open(list->name, O_CREAT
+				| O_APPEND | O_RDWR, 0644);
 	}
 	else if (its_fd_reddir(list))
 		set_reddir_fd(list, i);
