@@ -1,7 +1,7 @@
 SUCCESS="\033[1;32m\t\tSUCCESS\033[1;37m"
 ERROR="\033[1;31m\t\t****ERROR****\033[1;37m"
-TEST="HOME##"
-echo "                   *##*                    "
+TEST="HOME%%"
+echo "                   *%%*                    "
 echo "echo \${$TEST}"
 echo "------------------------------------------"
 CMD_42SH=$(echo "echo \${$TEST}" | ./42sh)
@@ -15,22 +15,7 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
-TEST="HOME##test"
-echo "------------------------------------------"
-echo "echo \${$TEST}"
-echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${$TEST}" | ./42sh)
-CMD_BASH=$(echo "echo \${$TEST}" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
-    then
-        echo $SUCCESS
-else
-        echo $ERROR
-        echo "$CMD_42SH"
-        echo "$CMD_BASH"
-fi
-sleep 0.5
-TEST="HOME##/U"
+TEST="HOME%%test"
 echo "------------------------------------------"
 echo "echo \${$TEST}"
 echo "------------------------------------------"
@@ -45,7 +30,7 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
-TEST="HOME##/U*"
+TEST="HOME%%/U"
 echo "------------------------------------------"
 echo "echo \${$TEST}"
 echo "------------------------------------------"
@@ -60,7 +45,7 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
-TEST="HOME##*/U"
+TEST="HOME%%/U*"
 echo "------------------------------------------"
 echo "echo \${$TEST}"
 echo "------------------------------------------"
@@ -75,7 +60,7 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
-TEST="HOME##*/U*"
+TEST="HOME%%*/U"
 echo "------------------------------------------"
 echo "echo \${$TEST}"
 echo "------------------------------------------"
@@ -90,7 +75,7 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
-TEST="HOME##/"
+TEST="HOME%%*/U*"
 echo "------------------------------------------"
 echo "echo \${$TEST}"
 echo "------------------------------------------"
@@ -105,7 +90,7 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
-TEST="HOME##/*"
+TEST="HOME%%/"
 echo "------------------------------------------"
 echo "echo \${$TEST}"
 echo "------------------------------------------"
@@ -120,7 +105,7 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
-TEST="HOME##*/"
+TEST="HOME%%/*"
 echo "------------------------------------------"
 echo "echo \${$TEST}"
 echo "------------------------------------------"
@@ -135,7 +120,7 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
-TEST="HOME##*/*"
+TEST="HOME%%*/"
 echo "------------------------------------------"
 echo "echo \${$TEST}"
 echo "------------------------------------------"
@@ -150,7 +135,7 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
-TEST="##test"
+TEST="HOME%%*/*"
 echo "------------------------------------------"
 echo "echo \${$TEST}"
 echo "------------------------------------------"
@@ -165,7 +150,7 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
-TEST="##\$HOME"
+TEST="%%test"
 echo "------------------------------------------"
 echo "echo \${$TEST}"
 echo "------------------------------------------"
@@ -180,7 +165,22 @@ else
         echo "$CMD_BASH"
 fi
 sleep 0.5
-TEST="HOME##\$PWD"
+TEST="%%\$HOME"
+echo "------------------------------------------"
+echo "echo \${$TEST}"
+echo "------------------------------------------"
+CMD_42SH=$(echo "echo \${$TEST}" | ./42sh)
+CMD_BASH=$(echo "echo \${$TEST}" | /bin/bash)
+if [ $CMD_42SH == $CMD_BASH ]
+    then
+        echo $SUCCESS
+else
+        echo $ERROR
+        echo "$CMD_42SH"
+        echo "$CMD_BASH"
+fi
+sleep 0.5
+TEST="HOME%%\$PWD"
 echo "------------------------------------------"
 echo "echo \${$TEST}"
 echo "------------------------------------------"

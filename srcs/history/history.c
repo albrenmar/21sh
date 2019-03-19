@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:53:06 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/19 19:36:55 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/19 22:51:22 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void		history_builtin(void)
 			while (g_tracking.g_tab_exec[1][i])
 			{
 				if (!(flags & 1) && g_tracking.g_tab_exec[1][i] == 'c' && (flags |= 1))
-					g_tracking.mysh->hist = hist_free();
+					free_hist();
 				// BUG WHEN -CDXXXXX 
 				if (!(flags & 2) && g_tracking.g_tab_exec[1][i] == 'd' && (flags |= 2))
 					history_builtin_delete_index(i);
