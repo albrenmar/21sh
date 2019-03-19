@@ -9,6 +9,11 @@ select CHECK in ALL "\${*%*}" "\${*%%*}" "\${*#*}" "\${*##*}" "\${#*}" "\${*:+*}
                 source expansion_adv_%.sh
         fi
         if [ "$CHECK" == 'ALL' ] ||
+           [ "$CHECK" == "\${*%%*}" ]
+            then
+                source expansion_adv_\%\%.sh
+        fi
+        if [ "$CHECK" == 'ALL' ] ||
            [ "$CHECK" == "\${*#*}" ]
             then
                 source expansion_adv_#.sh
