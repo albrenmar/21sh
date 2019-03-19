@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/11 16:21:35 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/19 22:44:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	exp_key_double_hash(char **str, t_expand *expand)
 		else
 			*str = ft_strdup(to_analy.varvalue);
 	}
-	else if (to_analy.varvalue && to_analy.start_astrsk)
+	else if (to_analy.varvalue && to_analy.start_astrsk && !to_analy.end_astrsk)
 	{
 		run_varvalue = ft_strrev(run_varvalue, 0);
 		run_wildcard = ft_strrev(run_wildcard, 0);
@@ -61,7 +61,7 @@ void	exp_key_double_hash(char **str, t_expand *expand)
 		else
 			*str = ft_strdup(to_analy.varvalue + (to_analy.vvlu_len - i));
 	}
-	else if (to_analy.varvalue && to_analy.end_astrsk)
+	else if (to_analy.varvalue && to_analy.end_astrsk && !to_analy.start_astrsk)
 	{
 		run_wildcard[to_analy.wlcd_len] = '\0';
 		ft_strdel(str);
@@ -69,6 +69,11 @@ void	exp_key_double_hash(char **str, t_expand *expand)
 			*str = ft_strdup("");
 		else
 			*str = ft_strdup(to_analy.varvalue);
+	}
+	else
+	{
+		ft_strdel(str);
+		*str = ft_strdup(" ");
 	}
 }
 
