@@ -59,6 +59,7 @@ else
         echo "$CMD_42SH"
         echo "$CMD_BASH"
 fi
+sleep 0.5
 TEST="HOME##*/U"
 echo "------------------------------------------"
 echo "echo \${$TEST}"
@@ -118,6 +119,7 @@ else
         echo "$CMD_42SH"
         echo "$CMD_BASH"
 fi
+sleep 0.5
 TEST="HOME##*/"
 echo "------------------------------------------"
 echo "echo \${$TEST}"

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/18 20:28:39 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/19 22:51:48 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ t_hist	*get_hist_nbr(int i)
 	t_hist	*history;
 
 	history = g_tracking.mysh->hist;
+	if (!history)
+		return (0);
 	while (history->previous)
 		history = history->previous;
 	if (!history)
