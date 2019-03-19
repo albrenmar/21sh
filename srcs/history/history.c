@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:53:06 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/19 14:11:12 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/19 19:21:40 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void		history_builtin(void)
 			while (g_tracking.g_tab_exec[1][i])
 			{
 				if (!(flags & 1) && g_tracking.g_tab_exec[1][i] == 'c' && (flags |= 1))
-					g_tracking.mysh->hist = hist_free(g_tracking.mysh->hist);
+					g_tracking.mysh->hist = hist_free();
 				// BUG WHEN -CDXXXXX 
 				if (!(flags & 2) && g_tracking.g_tab_exec[1][i] == 'd' && (flags |= 2))
 					history_builtin_delete_index(i);
