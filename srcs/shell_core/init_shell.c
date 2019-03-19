@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 02:40:28 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/19 23:05:54 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	init_shell(char **environ)
 	init_global();
 	init_alias();
 	g_tracking.mysh->env = ft_env_to_lst(environ);
+	g_tracking.mysh->hist = NULL;
 	add_missing_string();
 	hist_file_to_lst();
 	g_tracking.mysh->tab_env = init_envp(g_tracking.mysh->env);
