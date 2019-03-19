@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/19 14:06:02 by hdufer           ###   ########.fr        #
+#    Updated: 2019/03/19 23:04:40 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -156,6 +156,7 @@ SRC = main.c \
   	  expansions/quote.c \
 	  expansions/expand_error.c \
 	  expansions/analyzer.c \
+	  expansions/tools_double_hash.c \
 	  expansions/autocomplete/auto_com_expan.c
 
 CLEAR_LINE	= \033[2K
