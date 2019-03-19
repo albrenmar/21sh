@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   job_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/15 01:33:11 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/19 22:44:57 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,6 @@ void		jobs_notifications(void)
 				cmd = job->t_cmd;
 				while (cmd)
 				{
-					// ft_putendl("AA");
 					if (!WIFSIGNALED(cmd->status))
 					{
 						show_job_info(job, "Done           ", 1);
@@ -278,11 +277,7 @@ int			update_process_status(pid_t pid, int status)
 						if (WIFSTOPPED(status))
 							cmd->stopped = 1;
 						else
-						{
 							cmd->done = 1;
-							// if (WIFSIGNALED(status))
-       		             	// 	fprintf (stderr, "%d: Terminated by signal %d.\n", (int) pid, WTERMSIG (cmd->status));
-						}
 					}
 					cmd = cmd->next;
 				}
@@ -299,10 +294,7 @@ int			update_process_status(pid_t pid, int status)
 	else if (pid == 0 || errno == ECHILD)
 		return (-1);
 	else 
-	{
-		perror ("waitpid");
 		return (-1);
-	}
 }
 
 void		wait_for_job(t_jobs *job)
@@ -328,7 +320,6 @@ void				put_job_in_foreground(t_jobs *job, int cont)
 			perror ("kill (SIGCONT)");
 	}
 	wait_for_job(job);
-	// g_tracking.lastreturn = WEXITSTATUS(status);
 	tcsetpgrp(g_tracking.sterminal, g_tracking.spid);
 	tcgetattr(g_tracking.sterminal, &job->jterm);
 	// tcsetattr(g_tracking.sterminal, TCSADRAIN, &g_tracking.myterm);
@@ -355,7 +346,7 @@ void				interactive_check_set_shell_group(void)
 	g_tracking.spid = getpid();
 	if (setpgid(g_tracking.spid, g_tracking.spid) < 0)
 	{
-    	perror("Couldn't put the shell in its own process group");
+    	ft_putendl_fd("Couldn't put the shell in its own process group", 2);
 		exit(1);
 	}
 	tcsetpgrp(g_tracking.sterminal, g_tracking.spid);
@@ -388,16 +379,3 @@ int					job_is_stopped(t_jobs *job)
 	}
 	return (1);
 }
-/*
-t_jobs				*find_job (pid_t jpid)
-{
-  struct s_jobs		*j;
-
-	j = g_tracking.jobs;
-	while (j && j->jpid != jpid)
-	{
-		if (j->jpid == jpid)
-			return (j);
-	}
-	return (NULL);
-}*/
