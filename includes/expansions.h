@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/17 22:56:41 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/20 00:03:39 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,5 +136,10 @@ void			init_analyzer(t_analyzer *to_analy, char **str,
 void			clean_nlzr_wildcard(t_analyzer *to_analy, int reverse);
 void			str_uniq_percent_chgr(t_analyzer *to_analy, char **str);
 void			print_exp_error_dpoints(char *varname, char *value, int sign);
+void			asign_vrvlufnd(t_analyzer *nly, char **rvrvlu,
+					char **rwlcd, char **str);
+void			asgnvrvluastrk(t_analyzer *nly, char **rvrvlu,
+					char **rwlcd, char **str);
+void			rmv_str(char **str);
 
 #endif
