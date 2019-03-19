@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 17:52:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/01/18 00:53:05 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/18 20:34:16 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	recup_argument(t_tab *st_tab, t_env *st_env, char **line)
 		st_tab->tab_word = ft_strsplit(*line, ' ');
 	if (ft_strcmp(*line, "exit") == 0)
 	{
-
 		forfree(st_tab->tab_word);
 		free(*line);
 		exit(0);

@@ -6,24 +6,40 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/15 23:18:45 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:53:06 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
 
-t_last	*Check_exp_error(t_last *cmd)
+t_last	*check_exp_error(t_last *cmd)
 {
 	t_last		*list_for_free;
 	t_last		*begin;
+	t_last		*prev;
+	t_last		*next;
 
 	begin = cmd;
 	list_for_free = NULL;
+	prev = NULL;
+	next = NULL;
 	while (cmd)
 	{
 		g_tracking.mysh->err_expend = 0;
 		expand_transformer(&cmd->name, 1);
+		if (ft_strequ(cmd->name, " "))
+		{
+			ft_strdel(&cmd->name);
+			prev = cmd->prev;
+			next = cmd->next;
+			if (cmd->next)
+				cmd->next->prev = prev;
+			if (cmd->prev)
+				cmd->prev->next = next;
+			ft_memdel((void **)&cmd);
+			cmd = begin;
+		}
 		if (g_tracking.mysh->err_expend == 1)
 		{
 			while (cmd)
@@ -97,9 +113,11 @@ int		main(int argc, char **argv, char **env)
 			{
 				hist_lst_add_next(g_tracking.mysh->hist, line);
 				convert_list(cmd);
-				cmd = Check_exp_error(cmd);
-				if (cmd)
+				if (!error_lexer(cmd))
+				{
+					cmd = check_exp_error(cmd);
 					ft_ast(cmd);
+				}
 			}
 		}
 		jobs_notifications();

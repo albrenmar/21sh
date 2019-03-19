@@ -3,28 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/16 01:43:59 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/19 15:37:31 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 #include <errno.h>
 
-// Get all the entry from the file of history If it does not exist, it is created
 void		hist_setup_file(void)
 {
-	int fd;
-	char **line;
+	int		fd;
+	char	**line;
 
 	line = ft_memalloc(sizeof(line));
 	fd = open("/goinfre/.shell_history", O_CREAT | O_APPEND | O_RDWR, 00777);
 	if (fd < 0)
 	{
 		ft_putendl_fd("Error while opening/creating .shell_history", 2);
-		return;
+		return ;
 	}
 	if (get_next_line(fd, line) == 1)
 	{
@@ -36,11 +35,11 @@ void		hist_setup_file(void)
 	free(line);
 }
 
-// Add node at the end
 void		hist_lst_add_next(t_hist *hist, char *line)
 {
 	t_hist	*new_node;
-
+	if (!hist || (!hist && !hist->line))
+		g_tracking.mysh->hist = hist_lst_create(line);
 	while (hist->next != NULL)
 		hist = hist->next;
 	new_node = ft_memalloc(sizeof(*new_node));
@@ -53,13 +52,11 @@ void		hist_lst_add_next(t_hist *hist, char *line)
 	line = NULL;
 }
 
-// Print history list
 void		hist_print(t_hist *hist)
 {
-	while(hist->previous)
+	while (hist && hist->previous)
 		hist = hist->previous;
-	
-	while (hist)
+	while (hist && hist->line)
 	{
 		ft_putnbr(hist->index);
 		ft_putchar(' ');
@@ -67,10 +64,10 @@ void		hist_print(t_hist *hist)
 		if (hist->next)
 			hist = hist->next;
 		else
-			break;
+			break ;
 	}
 }
-// Create a new list
+
 t_hist		*hist_lst_create(char *line)
 {
 	t_hist	*new_lst;
@@ -82,15 +79,16 @@ t_hist		*hist_lst_create(char *line)
 	new_lst->previous = NULL;
 	return (new_lst);
 }
-// free/clear the history_lst and the file;
+
 t_hist		*hist_free(t_hist *hist)
 {
 	t_hist *tmp;
+
 	if (hist)
 	{
 		while (hist->next)
 			hist = hist->next;
-		while(hist)
+		while (hist)
 		{
 			tmp = hist;
 			hist = hist->previous;

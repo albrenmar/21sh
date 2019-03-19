@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/17 05:10:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/19 14:58:25 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,13 @@
 // Save history into ~.shell_history
 void		hist_save_file(t_hist *hist)
 {
-	int 	fd;
-	char	**line;
-	char	*path;
+	int fd;
+	char **line;
 
-	path = create_path_hist();
-	fd = open(path, O_WRONLY | O_CREAT  | O_TRUNC, 00777);
-	free(path);
+	fd = open("/goinfre/.shell_history", O_WRONLY | O_CREAT  | O_TRUNC, 00777);
 	if (fd < 0)
 	{
-		ft_putendl_fd("Error while opening/creating .42hist", 2);
+		ft_putendl_fd("Error while opening/creating .shell_history", 2);
 		return;
 	}
 	if (!hist)
@@ -36,8 +33,7 @@ void		hist_save_file(t_hist *hist)
 		hist = hist->previous;
 	while(hist)
 	{
-		if (hist->line != NULL && ft_strlen(hist->line) > 0)
-			ft_putendl_fd(hist->line, fd);
+		ft_putendl_fd(hist->line, fd);
 		if (hist->next)
 			hist = hist->next;
 		else
@@ -126,8 +122,31 @@ t_hist		*hist_delete_index(t_hist *hist, int index)
 			tmp = hist;
 			hist = hist->previous;
 			free(tmp);
+			hist->next = NULL;
 		}
 	}
 	hist = hist_remap_index(hist);
 	return (hist);
+}
+
+t_hist		*hist_delete_last(t_hist *hist)
+{
+	t_hist *tmp;
+
+	if (!g_tracking.mysh->hist)
+		return hist_free(g_tracking.mysh->hist);
+	while(g_tracking.mysh->hist->next)
+		g_tracking.mysh->hist = g_tracking.mysh->hist->next;
+	tmp = g_tracking.mysh->hist;
+	if (hist && !(g_tracking.mysh->hist->previous))
+		return hist_free(g_tracking.mysh->hist);
+	else
+	{
+		hist = hist->previous;
+		free(tmp);
+		tmp = 0;
+		hist->next = 0;
+		hist = hist_remap_index(hist);
+	}
+	return hist;
 }

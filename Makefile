@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/17 20:28:27 by bsiche           ###   ########.fr        #
+#    Updated: 2019/03/19 14:06:02 by hdufer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = main.c \
 	  42sh/ft_modif_list.c \
 	  42sh/ft_ast.c \
 	  42sh/its_token.c \
+	  42sh/its_double_token.c \
 	  42sh/execute_ast.c \
 	  42sh/execute_pipe.c \
 	  42sh/add_path_to_bin.c \
@@ -32,6 +33,9 @@ SRC = main.c \
 	  42sh/check_quote.c \
 	  42sh/out_redir.c \
 	  42sh/parse.c \
+	  42sh/execute_command.c \
+	  42sh/exec_create_fich.c \
+	  42sh/set_exec_pipe.c \
 	  builtins/cd/cd_path.c \
 	  builtins/cd/directory.c \
 	  builtins/cd/ft_cd.c \
@@ -127,6 +131,8 @@ SRC = main.c \
 	  history/shebang.c \
 	  history/history_lib_plus.c \
 	  history/hassantest.c \
+	  history/history_builtin_option.c \
+	  history/history.c \
 	  expansions/expand.c \
 	  expansions/user.c \
 	  expansions/parm.c \
@@ -177,7 +183,7 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
-FLAG = -g -fsanitize=address 
+FLAG = -g #-fsanitize=address 
 
 all : $(NAME)
 
