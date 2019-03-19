@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/19 14:26:06 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/19 18:52:31 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -367,7 +367,7 @@ int				history_down(void);
 t_hist			*hist_lst_create(char *line);
 void			hist_lst_add_next(t_hist *hist, char *line);
 void			hist_print(t_hist *hist);
-t_hist			*hist_free(t_hist *hist);
+t_hist			*hist_free(void);
 void			hist_save_file(t_hist *s_hist);
 t_hist			*hist_remap_index(t_hist *hist);
 t_hist			*hist_delete_index(t_hist *hist, int index);

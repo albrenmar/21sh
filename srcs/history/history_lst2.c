@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/19 14:58:25 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/19 19:21:24 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ t_hist		*hist_delete_index(t_hist *hist, int index)
 	if (hist->index == index)
 	{
 		if (!(hist->previous) && !(hist->next))
-			return (hist = hist_free(hist));
+			return (hist = hist_free());
 		if (hist->previous == NULL)
 		{
 			hist = hist->next;
@@ -134,12 +134,12 @@ t_hist		*hist_delete_last(t_hist *hist)
 	t_hist *tmp;
 
 	if (!g_tracking.mysh->hist)
-		return hist_free(g_tracking.mysh->hist);
+		return hist_free();
 	while(g_tracking.mysh->hist->next)
 		g_tracking.mysh->hist = g_tracking.mysh->hist->next;
 	tmp = g_tracking.mysh->hist;
 	if (hist && !(g_tracking.mysh->hist->previous))
-		return hist_free(g_tracking.mysh->hist);
+		return hist_free();
 	else
 	{
 		hist = hist->previous;
