@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fg_bg_builtins.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 20:19:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,14 @@ int			bg_builtin(void)
 	}
 	errors_bg(0, 4);
 	return (1);
+}
+
+int			fg_builtin_output(t_jobs *tmp)
+{
+	ft_putendl(tmp->name);
+	tmp->background = 0;
+	continue_job(tmp, 1);
+	return (0);
 }
 
 int			fg_builtin(void)

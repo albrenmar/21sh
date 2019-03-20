@@ -3,10 +3,13 @@ Rajouter "Dans des heredocs, valide" pour les heredoc, et quitter proprement le 
 -Type et Test, a adapter avec le tableau d'arg et non char **argv
 
 Partie Abraham
+-Wall -Wextra -Werror de mi parte (sauf srcs/builtins/builtins.c) (cp -rf include/* + libft.a && gcc -c -Wall -Wextra -Werror x.c)
 -fix redirection output (>) ou (>>) des builtins quand il y a pas de fork
 - '>' == '>>'
--norme et leaks de ma partie
 -Ctrl-C et Ctrl-D quittent heredoc
+-norme ma partie (sauf srcs/builtins/builtins.c)
+leaks de ma partie (sauf srcs/builtins/builtins.c)
+-"echo -a -b" boucle infini sur "while (list_cmd)" dans fonction exec_command
 -top | top ou cat | cat | cat bug le terminal
 
 Partie Marc
