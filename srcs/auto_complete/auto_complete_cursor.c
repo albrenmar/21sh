@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 03:49:52 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 03:52:11 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:00:21 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void			back_up_add(void)
 {
 	int			y;
 	int			ab;
-	int			winx;
 
 	ab = utf_strlen(g_tracking.str);
 	ab += g_tracking.pos->prompt;
@@ -37,7 +36,6 @@ void			go_back_down(void)
 {
 	int			y;
 	int			ab;
-	int			winx;
 
 	ab = utf_strlen(g_tracking.str);
 	ab += g_tracking.pos->prompt;

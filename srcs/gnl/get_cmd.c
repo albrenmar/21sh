@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 01:19:56 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:14:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_return(void)
 void	test_read(void)
 {
 	char	c[12];
-	char	*str;
 	int		i;
 
 	i = 0;
@@ -85,9 +84,9 @@ int		ft_exec_key(char *str)
 
 int		is_cmd(char *str)
 {
-	int		i;
-	t_list	*tmp;
-	int		flag;
+	unsigned long	i;
+	t_list			*tmp;
+	int				flag;
 
 	i = ft_strlen(str);
 	tmp = g_tracking.key_list->firstelement;
