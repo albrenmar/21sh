@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 04:28:50 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,6 @@ void	ft_return(void)
 	cursor_reset();
 }
 
-void	test_read(void)
-{
-	char	c[12];
-	char	*str;
-	int		i;
-
-	i = 0;
-	read(STDERR_FILENO, &c, 12);
-	while (c[i])
-	{
-		printf("0x%x\n", c[i]);
-		if (i != 6)
-			ft_putchar('.');
-		else
-			ft_putchar('\n');
-		i++;
-	}
-}
-
 void	test_read2(char *str)
 {
 	int		i;
@@ -54,12 +35,28 @@ void	test_read2(char *str)
 	}
 }
 
-int		ft_exec_key(char *str)
+void	left_right(char *str)
 {
 	if (ft_strcmp(str, K_LEFT) == 0)
 		move_left();
 	if (ft_strcmp(str, K_RIGHT) == 0)
 		move_right();
+}
+
+void	home_end(char *str)
+{
+	if (ft_strcmp(str, K_HOME) == 0)
+		go_home();
+	if (ft_strcmp(str, K_END) == 0)
+		go_end();
+}
+
+int		ft_exec_key(char *str)
+{
+	if (ft_strcmp(str, K_HOME) == 0 || ft_strcmp(str, K_END) == 0)
+		home_end(str);
+	if (ft_strcmp(str, K_LEFT) == 0 || ft_strcmp(str, K_RIGHT) == 0)
+		left_right(str);
 	if (ft_strcmp(str, K_WRIGHT) == 0)
 		next_word();
 	if (ft_strcmp(str, K_WLEFT) == 0)
@@ -78,16 +75,14 @@ int		ft_exec_key(char *str)
 		history_up();
 	if (ft_strcmp(str, K_DOWN) == 0)
 		history_down();
-	if (ft_strcmp(str, K_ESC) == 0)
-		return (6);
 	return (6);
 }
 
 int		is_cmd(char *str)
 {
-	int		i;
-	t_list	*tmp;
-	int		flag;
+	unsigned long	i;
+	t_list			*tmp;
+	int				flag;
 
 	i = ft_strlen(str);
 	tmp = g_tracking.key_list->firstelement;
@@ -103,6 +98,6 @@ int		is_cmd(char *str)
 		tmp = tmp->next;
 	}
 	if (flag == 0)
-		return (6);
+		return (7);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 04:48:12 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 03:13:59 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	the_edge(void)
 void	move_left(void)
 {
 	int		x;
-	int		y;
 	int		ab;
 	int		test;
 	int		flag;
@@ -53,7 +52,6 @@ void	move_right(void)
 {
 	int		i;
 	int		x;
-	int		y;
 	int		ab;
 
 	i = 0;

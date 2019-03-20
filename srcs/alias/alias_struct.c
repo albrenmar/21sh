@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 03:07:31 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 t_lstcontainer		*alias_error(char *alias)
 {
 	t_lstcontainer	*split;
-	t_keyval		*alias_to_add;
-	t_list			*tmp;
 
 	if (!alias)
 		return (NULL);
@@ -60,7 +58,6 @@ t_keyval			*parse_alias(char *alias)
 
 int					add_alias(void)
 {
-	int				fd;
 	t_lstcontainer	*alias_lst;
 	t_keyval		*alias_to_add;
 	char			**av;
@@ -82,8 +79,6 @@ int					add_alias(void)
 
 int					unalias_blt(void)
 {
-	t_keyval		*tmp;
-	t_list			*buf;
 	char			**av;
 
 	if (!g_tracking.mysh->alias_lst)

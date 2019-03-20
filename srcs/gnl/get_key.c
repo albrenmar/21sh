@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 04:28:43 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,35 @@ int		readloop(int i, int fd)
 			read(STDERR_FILENO, &c, 1);
 			str = ft_strjoinchar(str, c, 1);
 			i = is_cmd(str);
-			if (i == 6)
+			if (i >= 6)
 				break ;
 		}
 	}
 	return (return_loop(i, str));
 }
 
+void	test_read(void)
+{
+	char	c[12];
+	int		i;
+
+	i = 0;
+	read(STDERR_FILENO, &c, 12);
+	while (c[i])
+	{
+		printf("0x%x\n", c[i]);
+		if (i != 6)
+			ft_putchar('.');
+		else
+			ft_putchar('\n');
+		i++;
+	}
+}
+
+
 int		get_key(void)
 {
 	char	*str;
-	int		fd;
 
 	tcsetattr(0, TCSANOW, &g_tracking.myterm);
 	get_coolprompt();

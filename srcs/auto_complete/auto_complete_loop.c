@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 03:02:17 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int		read_loop(void)
 int		get_new(t_list *buf)
 {
 	t_ls		*tmp;
-	char		*menu_line;
 
 	if (buf)
 	{
@@ -68,8 +67,6 @@ int		get_new(t_list *buf)
 
 void	actual_loop(t_lstcontainer *list)
 {
-	char			*new;
-	t_lstcontainer	*page;
 	t_list			*buf;
 	int				i;
 
@@ -99,7 +96,6 @@ void	back_up_err(char *err)
 {
 	int		y;
 	int		ab;
-	int		winx;
 
 	ab = utf_strlen(g_tracking.str);
 	ab += g_tracking.pos->prompt;
