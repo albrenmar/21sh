@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 03:56:46 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 07:13:50 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		init_alias(void)
 	}
 	alias_lst = lstcontainer_new();
 	while (get_next_line(fd, &alias) != 0)
+  {
 		lstcontainer_add(alias_lst, parse_alias(alias));
 		free(alias);
 	}
