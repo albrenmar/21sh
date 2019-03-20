@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 03:50:24 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:01:58 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ char			*ft_createline(void)
 
 int				ft_menuline(void)
 {
-	char		*res;
 
 	if (g_tracking.aut->menuline)
 	{
@@ -73,7 +72,6 @@ int				print_menu(void)
 {
 	int			i;
 	int			j;
-	int			tmp;
 
 	i = g_tracking.aut->line_up + 1;
 	ft_putstr_nocar(g_tracking.aut->to_add);
