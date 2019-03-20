@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/19 18:52:31 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/20 04:16:07 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # define K_RIGHT			"\x1b\x5b\x43"
 # define K_DOWN				"\x1b\x5b\x42"
 # define K_UP				"\x1b\x5b\x41"
+# define K_END				"\x1b\x5b\x46"
+# define K_HOME				"\x1b\x5b\x48"
 # define K_LUP				"\x1b\x5b\x31\x3b\x32\x41"
 # define K_LDOWN			"\x1b\x5b\x31\x3b\x32\x42"
 # define K_WLEFT			"\x1b\x5b\x31\x3b\x32\x44"
@@ -271,6 +273,8 @@ int				utf_byte(char c);
 int				utf_strlen(char *str);
 int				get_nb_char(unsigned char c);
 int				utf_goto(char *str, int j);
+void			go_home(void);
+void			go_end(void);
 void		    print_line(void);
 void			correct_pos(void);
 void			back_to_pos(void);
