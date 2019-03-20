@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/20 02:14:17 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/20 22:55:46 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		transform_simple(char **str)
 		ft_strdel(str);
 		*str = new_str;
 	}
-	else if (run_str[0] == '$')
+	else if (run_str[0] == '$' && run_str[1])
 	{
 		ft_strdel(str);
 		*str = ft_strdup("");
