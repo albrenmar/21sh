@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:26:48 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 04:02:45 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:13:51 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	move_to_end(void)
 	int		i;
 
 	x = g_tracking.terminfo->sizex - 1;
+	i = 0;
 	tputs(tgetstr("up", NULL), 1, yan_putchar);
 	tputs(tgetstr("cr", NULL), 1, yan_putchar);
 	while (i < x)
@@ -51,7 +52,7 @@ void	move_to_end(void)
 	g_tracking.pos->y--;
 }
 
-void	move_cursor(int i, int x, int y, int ab)
+void	move_cursor(int i, int x, int ab)
 {
 	int		flag;
 
@@ -80,8 +81,6 @@ void	back_to_pos(void)
 {
 	int		i;
 	int		x;
-	int		y;
-	int		flag;
 	int		ab;
 
 	ab = utf_strlen(g_tracking.str);
@@ -89,5 +88,5 @@ void	back_to_pos(void)
 	g_tracking.pos->y = ab / g_tracking.terminfo->sizex;
 	i = g_tracking.pos->abs + g_tracking.pos->prompt;
 	x = (ab % g_tracking.terminfo->sizex);
-	move_cursor(i, x, y, ab);
+	move_cursor(i, x, ab);
 }

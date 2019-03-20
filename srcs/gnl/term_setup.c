@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   term_setup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 05:23:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/18 01:31:50 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 03:16:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	check_term(char *name)
 int		clear_screen3(void)
 {
 	char	*res;
-	char	*test;
 
 	back_home();
 	if ((res = tgetstr("cd", NULL)) == NULL)
