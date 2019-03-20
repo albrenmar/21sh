@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   auto_complete_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
 /*   Updated: 2019/03/20 03:00:32 by bsiche           ###   ########.fr       */

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cursor_pos.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:26:48 by bsiche            #+#    #+#             */
 /*   Updated: 2019/03/20 03:13:51 by bsiche           ###   ########.fr       */

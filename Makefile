@@ -59,6 +59,7 @@ SRC = main.c \
 	  jobs/job_utils.c \
 	  jobs/job_functions.c \
 	  jobs/ft_job_control.c \
+	  gnl/coolprompt.c \
 	  gnl/add_to_str.c \
 	  gnl/rem_from_str.c \
 	  gnl/term_setup.c \
