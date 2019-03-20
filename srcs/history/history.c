@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:53:06 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/21 16:30:02 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/19 22:51:22 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "sh42.h"
 
 // history builtin for delete index option
-void		history_builtin_delete_index(t_core *core, int j)
+void		history_builtin_delete_index(int j)
 {
 	char tmp[100000];
 	int i[2];
 	i[0] = 0;
 	i[1] = 0;
-	if (!(core->arg[1][j+1]) && (core->arg[2]))
+	if (!(g_tracking.g_tab_exec[1][j+1]) && (g_tracking.g_tab_exec[2]))
 	{
-		if (ft_isdigit(core->arg[2][i[1]]))
+		if (ft_isdigit(g_tracking.g_tab_exec[2][i[1]]))
 		{
-			while (core->arg[2][i[1]])
+			while (g_tracking.g_tab_exec[2][i[1]])
 			{
-				if (ft_isdigit(core->arg[2][i[1]]) && i[1] <= 100000)
+				if (ft_isdigit(g_tracking.g_tab_exec[2][i[1]]) && i[1] <= 100000)
 				{
-					tmp[i[0]] = core->arg[2][i[1]];
+					tmp[i[0]] = g_tracking.g_tab_exec[2][i[1]];
 					i[1]++;
 					j++;
 				}
@@ -44,19 +44,19 @@ void		history_builtin_delete_index(t_core *core, int j)
 			return;
 		}
 	}
-	else if (!(core->arg[1][j+1]) && !(core->arg[2]))
+	else if (!(g_tracking.g_tab_exec[1][j+1]) && !(g_tracking.g_tab_exec[2]))
 	{
 		ft_putendl_fd("history -d require valid argument: history -d [digit]",2);
 		return;
 	}
-	else if (ft_isdigit(core->arg[1][j+1]))
+	else if (ft_isdigit(g_tracking.g_tab_exec[1][j+1]))
 	{
 		j++;
-		while (core->arg[1][j])
+		while (g_tracking.g_tab_exec[1][j])
 		{
-			if (ft_isdigit(core->arg[1][j]) && j <= 100000)
+			if (ft_isdigit(g_tracking.g_tab_exec[1][j]) && j <= 100000)
 			{
-				tmp[i[0]] = core->arg[1][j];
+				tmp[i[0]] = g_tracking.g_tab_exec[1][j];
 				i[0]++;
 				j++;
 			}
@@ -67,35 +67,35 @@ void		history_builtin_delete_index(t_core *core, int j)
 			}
 		}
 	}
-	if (core->hist)
-		core->hist = hist_delete_index(core->hist, ft_atoi(tmp));
+	if (g_tracking.mysh->hist)
+		g_tracking.mysh->hist = hist_delete_index(g_tracking.mysh->hist, ft_atoi(tmp));
 }
 
 // Dispatch the action and do the history builtin
-void		history_builtin(t_core *core)
+void		history_builtin(void)
 {
 	int i = 0;
 	char flags = 0;
 
-	if (core->arg[1] == NULL)
-		hist_print(core->hist);
+	if (g_tracking.g_tab_exec[1] == NULL)
+		hist_print(g_tracking.mysh->hist);
 	else
 	{
-		if (core->arg[1][0] == '-')
+		if (g_tracking.g_tab_exec[1][0] == '-')
 		{
-			while (core->arg[1][i])
+			while (g_tracking.g_tab_exec[1][i])
 			{
-				if (!(flags & 1) && core->arg[1][i] == 'c' && (flags |= 1))
-					core->hist = hist_free(core->hist);
+				if (!(flags & 1) && g_tracking.g_tab_exec[1][i] == 'c' && (flags |= 1))
+					free_hist();
 				// BUG WHEN -CDXXXXX 
-				if (!(flags & 2) && core->arg[1][i] == 'd' && (flags |= 2))
-					history_builtin_delete_index(core, i);
-				if (!(flags & 4) && core->arg[1][i] == 'a' && (flags |= 4))
-					hist_save_file(core->hist);
-				if (!(flags & 8) && core->arg[1][i] == 'r' && (flags |= 8))
-					hist_file_to_lst(core);
-				if (!(flags & 16) && core->arg[1][i] == 'w' && (flags |= 16))
-					hist_save_file(core->hist);
+				if (!(flags & 2) && g_tracking.g_tab_exec[1][i] == 'd' && (flags |= 2))
+					history_builtin_delete_index(i);
+				if (!(flags & 4) && g_tracking.g_tab_exec[1][i] == 'a' && (flags |= 4))
+					hist_save_file(g_tracking.mysh->hist);
+				if (!(flags & 8) && g_tracking.g_tab_exec[1][i] == 'r' && (flags |= 8))
+					hist_file_to_lst();
+				if (!(flags & 16) && g_tracking.g_tab_exec[1][i] == 'w' && (flags |= 16))
+					hist_save_file(g_tracking.mysh->hist);
 				i++;
 			}
 			i = 1;
@@ -104,10 +104,10 @@ void		history_builtin(t_core *core)
 }
 
 // Setup the history list
-void		history_setup(t_core *core)
-{
-			if (core->hist == NULL || core->hist->line == NULL)
-				core->hist = hist_lst_create(core->line);
-			else
-				hist_lst_add_next(core->hist, core->line);
-}
+// void		history_setup(void)
+// {
+// 			if (g_tracking.mysh->hist == NULL || g_tracking.mysh->hist->line == NULL)
+// 				g_tracking.mysh->hist = hist_lst_create(g_tracking.->line);
+// 			else
+// 				hist_lst_add_next(g_tracking.mysh->hist, core->line);
+// }

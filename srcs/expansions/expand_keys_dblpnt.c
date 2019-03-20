@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/18 22:58:56 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/18 23:01:58 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,23 +80,8 @@ void	exp_key_less(char **str, t_expand *expand)
 {
 	t_analyzer	to_analy;
 
-/*	char	*str1;
-	char	*str2;
-	char	*value1;
-	char	*value2;
-
-	str1 = NULL;
-	str2 = NULL;
-	str1 = get_varname(expand);
-	str2 = get_value(expand);
-	value1 = get_env_string(str1);
-	if (!value1)
-		value1 = get_parm_string(str1);
-	value2 = str2;
-*/	init_analyzer(&to_analy, str, expand);
+	init_analyzer(&to_analy, str, expand);
 	ft_strdel(str);
-//	ft_strdel(&str1);
-//	if (value1)
 	if (to_analy.varvalue[0])
 		*str = to_analy.varvalue;
 	else if (!to_analy.varname[0])
@@ -104,8 +89,6 @@ void	exp_key_less(char **str, t_expand *expand)
 		print_exp_error_dpoints(to_analy.varname, to_analy.wildcard, '-');
 		*str = ft_strdup(" ");
 	}
-//		*str = value1;
 	else
 		*str = to_analy.wildcard;
-//		*str = value2;
 }

@@ -1,4 +1,4 @@
-select CHECK in ALL "\${*%*}" "\${*#*}" "\${#*}" "\${*:+*}" "\${*:?*}" "\${*:=*}" "\${*:-*}" RETURN EXIT
+select CHECK in ALL "\${*%*}" "\${*%%*}" "\${*#*}" "\${*##*}" "\${#*}" "\${*:+*}" "\${*:?*}" "\${*:=*}" "\${*:-*}" RETURN EXIT
     do
         clear
         echo "------------------------------------------"
@@ -9,9 +9,19 @@ select CHECK in ALL "\${*%*}" "\${*#*}" "\${#*}" "\${*:+*}" "\${*:?*}" "\${*:=*}
                 source expansion_adv_%.sh
         fi
         if [ "$CHECK" == 'ALL' ] ||
+           [ "$CHECK" == "\${*%%*}" ]
+            then
+                source expansion_adv_\%\%.sh
+        fi
+        if [ "$CHECK" == 'ALL' ] ||
            [ "$CHECK" == "\${*#*}" ]
             then
                 source expansion_adv_#.sh
+        fi
+        if [ "$CHECK" == 'ALL' ] ||
+           [ "$CHECK" == "\${*##*}" ]
+            then
+                source expansion_adv_\#\#.sh
         fi
         if [ "$CHECK" == 'ALL' ] ||
            [ "$CHECK" == "\${#*}" ]

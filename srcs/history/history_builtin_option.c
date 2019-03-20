@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hassantest.c                                       :+:      :+:    :+:   */
+/*   history_builtin_option.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/14 19:07:42 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/19 15:14:56 by hdufer           ###   ########.fr       */
+/*   Created: 2019/02/18 13:43:28 by hdufer            #+#    #+#             */
+/*   Updated: 2019/03/19 14:21:29 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-int		history(void)
+void	history_builtin_s(void)
 {
-	char	**av;
-	int		i;
+	int i;
+	int j;
+	int h;
 
-	i = 0;
-	av = g_tracking.g_tab_exec;
-	while (av[i])
-	{
-		ft_putendl(av[i]);
-		i++;
-	}
-	history_builtin();
-	return (0);
+	i = 2;
+	j = 0;
+	h = 0;
+	if (!(g_tracking.g_tab_exec[i]))
+		return ;
+	else
+		if (g_tracking.mysh->hist)
+			g_tracking.mysh->hist = hist_delete_last(g_tracking.mysh->hist);
+	g_tracking.mysh->hist = builtin_s_args(&g_tracking.g_tab_exec[i], g_tracking.mysh->hist);
 }

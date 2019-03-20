@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/11 16:21:35 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/20 00:59:11 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,41 +27,17 @@ void	exp_key_double_hash(char **str, t_expand *expand)
 	t_analyzer	to_analy;
 	char		*run_varvalue;
 	char		*run_wildcard;
-	int			i;
 
-	i = 0;
 	init_analyzer(&to_analy, str, expand);
 	run_varvalue = to_analy.varvalue;
 	run_wildcard = to_analy.wildcard;
 	if (to_analy.start_astrsk)
 		run_wildcard++;
 	if (to_analy.varvalue && !to_analy.asterisk)
-	{
-		ft_strdel(str);
-		if (ft_strnstr(run_varvalue, run_wildcard, to_analy.wlcd_len))
-			*str = ft_strdup(run_varvalue + to_analy.wlcd_len);
-		else
-			*str = ft_strdup(to_analy.varvalue);
-	}
-	else if (to_analy.varvalue && to_analy.start_astrsk)
-	{
-		run_varvalue = ft_strrev(run_varvalue, 0);
-		run_wildcard = ft_strrev(run_wildcard, 0);
-		if (!ft_strnstr(run_varvalue, run_wildcard, to_analy.wlcd_len))
-			while (!ft_strnstr(run_varvalue, run_wildcard, to_analy.wlcd_len))
-			{
-				run_varvalue++;
-				i++;
-				if (!run_varvalue || i > to_analy.vvlu_len)
-					break ;
-			}
-		ft_strdel(str);
-		if (i > to_analy.vvlu_len)
-			*str = ft_strdup(to_analy.varvalue);
-		else
-			*str = ft_strdup(to_analy.varvalue + (to_analy.vvlu_len - i));
-	}
-	else if (to_analy.varvalue && to_analy.end_astrsk)
+		asign_vrvlufnd(&to_analy, &run_varvalue, &run_wildcard, str);
+	else if (to_analy.varvalue && to_analy.start_astrsk && !to_analy.end_astrsk)
+		asgnvrvluastrk(&to_analy, &run_varvalue, &run_wildcard, str);
+	else if (to_analy.varvalue && to_analy.end_astrsk && !to_analy.start_astrsk)
 	{
 		run_wildcard[to_analy.wlcd_len] = '\0';
 		ft_strdel(str);
@@ -70,6 +46,8 @@ void	exp_key_double_hash(char **str, t_expand *expand)
 		else
 			*str = ft_strdup(to_analy.varvalue);
 	}
+	else
+		rmv_str(str);
 }
 
 void	exp_key_double_percent(char **str, t_expand *expand)
@@ -100,7 +78,7 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 		else
 			*str = ft_strdup(to_analy.varvalue);
 	}
-	else if (to_analy.varvalue && to_analy.start_astrsk)
+	else if (to_analy.varvalue && to_analy.start_astrsk && !to_analy.end_astrsk)
 	{
 		run_varvalue = ft_strrev(to_analy.varvalue, 0);
 		run_wildcard = ft_strrev(to_analy.wildcard + 1, 0);
@@ -110,7 +88,7 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 		else
 			*str = ft_strdup(to_analy.varvalue);
 	}
-	else if (to_analy.varvalue && to_analy.end_astrsk)
+	else if (to_analy.varvalue && to_analy.end_astrsk && !to_analy.start_astrsk)
 	{
 		run_wildcard[to_analy.wlcd_len] = '\0';
 		while (*run_varvalue && !ft_strnstr(run_varvalue, run_wildcard, to_analy.wlcd_len))
@@ -122,6 +100,8 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 		ft_strdel(str);
 		*str = ft_strdup(ft_strrev(run_varvalue + (to_analy.vvlu_len - i), 0));
 	}
+	else
+		rmv_str(str);
 /*	char	*varname;
 	char	*value_var;
 	char	*to_srch;
