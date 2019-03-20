@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 15:24:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/11 12:31:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:16:02 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 void	print_line(void)
 {
-	int		a;
-	int		i;
-	char	*end;
-	char	*str;
-
 	if (g_tracking.str != NULL)
 	{
 		clear_screen3();

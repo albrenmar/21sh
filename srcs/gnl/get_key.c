@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/18 18:50:38 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:16:20 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int		readloop(int i, int fd)
 int		get_key(void)
 {
 	char	*str;
-	int		fd;
 
 	tcsetattr(0, TCSANOW, &g_tracking.myterm);
 	get_coolprompt();
