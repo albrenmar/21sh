@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_tilde.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akira <akira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 02:50:02 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/11 05:52:58 by akira            ###   ########.fr       */
+/*   Updated: 2019/03/20 04:47:46 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	expand_tilde_pwd(char **str, t_expand **expand)
 		tmp[0] = path;
 		path = recup_expath(tmp, 0);
 	}
-	if (path)
+	if (path && path[0])
 	{
 		ft_strdel(str);
 		*str = path;
