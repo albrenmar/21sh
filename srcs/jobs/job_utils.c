@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/03 07:07:39 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int				suspended_jobs_count(void)
 	tmp = g_tracking.jobs;
 	while (tmp)
 	{
-		if (tmp->t_cmd)
+		if (tmp->t_command)
 		{
-			if (tmp->t_cmd->stopped == 1)
+			if (tmp->t_command->stopped == 1)
 			count++;
 		}
 		tmp = tmp->next;
@@ -94,52 +94,13 @@ char			*parse_job_number(char *str)
 	new[j] = '\0';
 	return (new);
 }
-/*
-void			jobs_debug(void)
-{
-	t_jobs		*tmp;
 
-	tmp = g_tracking.jobs;
-	while (tmp)
-	{
-		ft_putstr("PREV: ");
-		if (tmp->prev)
-			ft_putstr(tmp->prev->name);
-		else
-			ft_putstr("NULL         ");
-		ft_putstr("NAME: ");
-		ft_putstr(tmp->name);
-		ft_putstr("            ");
-		ft_putstr("NEXT: ");
-		if (tmp->next)
-			ft_putendl(tmp->next->name);
-		else
-			ft_putendl("NULL         ");
-		tmp = tmp->next;
-	}
-}
-
-int				get_job_number(void)
-{
-	t_jobs		*tmp;
-	int			i;
-
-	i = 0;
-	tmp = g_tracking.jobs;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
-}
-*/
 void			free_job(t_jobs *job)
 {
 	t_jobs		*hold;
-	t_cmd		*tmp;
+	t_comm		*tmp;
 	t_jobs		*hold2;
-	t_cmd		*cmd;
+	t_comm		*cmd;
 
 	hold = NULL;
 	hold2 = NULL;
@@ -147,7 +108,7 @@ void			free_job(t_jobs *job)
 		hold = job->prev;
 	if (job->next)
 		hold2 = job->next;
-	cmd = job->t_cmd;
+	cmd = job->t_command;
 	while (cmd)
 	{
 		tmp = cmd;
@@ -155,7 +116,6 @@ void			free_job(t_jobs *job)
 		free(tmp);
 	}
 	ft_strdel(&job->name);
-	// ft_strdel(&job->wd);
 	if (hold2)
 	{
 		if (job->prev == NULL)
@@ -165,8 +125,6 @@ void			free_job(t_jobs *job)
 		}
 		if (hold)
 			hold->next = hold2;
-		// else
-		// 	hold2->next = NULL;
 	}
 	if (hold)
 	{
@@ -180,33 +138,31 @@ void			free_job(t_jobs *job)
 		g_tracking.jobs = NULL;
 }
 
-t_cmd			*new_process(t_jobs *job, pid_t cpid)
+t_comm			*new_process(t_jobs *job, pid_t cpid)
 {
-	t_cmd		*tmp;
+	t_comm		*tmp;
 
-	if (job->t_cmd == NULL)
+	if (job->t_command == NULL)
 	{
-		if (!(job->t_cmd = malloc(sizeof(t_cmd))))
+		if (!(job->t_command = malloc(sizeof(t_comm))))
 			return (NULL);
-		job->t_cmd->next = NULL;
-		job->t_cmd->cpid = cpid;
-		job->t_cmd->done = 0;
-		job->t_cmd->stopped = 0;
-		// job->t_cmd->notified = 0;
+		job->t_command->next = NULL;
+		job->t_command->cpid = cpid;
+		job->t_command->done = 0;
+		job->t_command->stopped = 0;
 	}
 	else
 	{
-		tmp = job->t_cmd;
+		tmp = job->t_command;
 		while (tmp->next)
 			tmp = tmp->next;
-		if (!(tmp->next = malloc(sizeof(t_cmd))))
+		if (!(tmp->next = malloc(sizeof(t_comm))))
 			return (NULL);
 		tmp = tmp->next;
 		tmp->next = NULL;
 		tmp->cpid = cpid;
 		tmp->done = 0;
 		tmp->stopped = 0;
-		// tmp->notified = 0;
 	}
 	return (tmp);
 }
@@ -223,7 +179,6 @@ char			*job_name_maker(t_last *part)
 	head = part;
 	while (part && ft_strcmp(part->name, "&"))
 	{
-		// ft_putendl(part->name);
 		len = len + ft_strlen(part->name);
 		part = part->next;
 		spaces++;
@@ -261,7 +216,7 @@ t_jobs			*new_job(t_last *part, int background)
 			return (NULL);
 		tmp = g_tracking.jobs;
 		getcwd(tmp->wd, 4096);
-		tmp->t_cmd = NULL;
+		tmp->t_command = NULL;
 		tmp->prev = NULL;
 		tmp->current = 0;
 		tmp->currentback = 0;
@@ -292,7 +247,7 @@ t_jobs			*new_job(t_last *part, int background)
 			tmp->prev = hold->next;
 		else
 			tmp->prev = hold;
-		tmp->t_cmd = NULL;
+		tmp->t_command = NULL;
 		tmp->jpid = 0;
 		tmp->notified = 0;
 		tmp->current = 0;
@@ -306,81 +261,3 @@ t_jobs			*new_job(t_last *part, int background)
 	}
 	return (tmp);
 }
-
-/*static void		env_struct_picker_2(char *new, t_env *tmp)
-{
-	int		i;
-	int		nb;
-
-	i = 0;
-	nb = 0;
-	while (tmp->key[i] != '\0')
-	{
-		new[nb] = tmp->key[i];
-		nb++;
-		i++;
-	}
-	new[nb] = '=';
-	nb++;
-	i = 0;
-	while (tmp->value[i] != '\0')
-	{
-		new[nb] = tmp->value[i];
-		nb++;
-		i++;
-	}
-	new[nb] = '\0';
-}
-
-static char		*env_struct_picker(t_env **env, int nb)
-{
-	char	*new;
-	t_env	*tmp;
-
-	tmp = *env;
-	while (nb > 0)
-	{
-		tmp = tmp->next;
-		nb--;
-	}
-	nb = ft_strlen(tmp->value) + ft_strlen(tmp->key) + 1;
-	if (!(new = malloc(sizeof(char) * (nb + 1))))
-		return (NULL);
-	env_struct_picker_2(new, tmp);
-	return (new);
-}
-
-static int			env_struct_len(t_env **env)
-{
-	t_env	*tmp;
-	int		i;
-
-	tmp = *env;
-	i = 0;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
-}
-
-char		**envlist_to_tab(t_env **env)
-{
-	t_env	*tmp;
-	char	**tob;
-	int		i;
-
-	tmp = *env;
-	i = 0;
-	if (!(tob = (char**)malloc(sizeof(char*) * (env_struct_len(env) + 1))))
-		return (NULL);
-	while (tmp)
-	{
-		tob[i] = env_struct_picker(env, i);
-		tmp = tmp->next;
-		i++;
-	}
-	tob[i] = NULL;
-	return (tob);
-}*/

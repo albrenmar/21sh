@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/01 05:05:26 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,16 +140,23 @@ int			ft_hash(void)
 	int		j;	
 
 	j = 1;
-	if (g_tracking.g_tab_exec[1])
+	if (g_tracking.g_tab_exec[j])
 	{
-		while (g_tracking.g_tab_exec[j][0] == '-')
+		while (g_tracking.g_tab_exec[j] && g_tracking.g_tab_exec[j][0] == '-')
 		{
 			if (strchr(g_tracking.g_tab_exec[j], 'r'))
-				return (empty_hash_table());
+			{
+				empty_hash_table();
+				if (!(g_tracking.g_tab_exec[j + 1]))
+					return (0);
+			}
+			if (g_tracking.g_tab_exec[j] && g_tracking.g_tab_exec[j][1] != 'r')
+				errors_hash(g_tracking.g_tab_exec[j], 2);
 			j++;
 		}
 		if (g_tracking.g_tab_exec[j])
 			return (hash_update_commands(j));
+		return (0);
 	}
 	count = 0;
 	i = 0;	

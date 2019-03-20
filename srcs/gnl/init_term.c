@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   init_term.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:29:52 by bsiche            #+#    #+#             */
 /*   Updated: 2019/03/20 04:03:43 by bsiche           ###   ########.fr       */

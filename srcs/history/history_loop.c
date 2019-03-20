@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   history_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
 /*   Updated: 2019/03/20 03:22:46 by bsiche           ###   ########.fr       */
