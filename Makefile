@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/19 23:04:40 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/20 02:20:23 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -184,7 +184,7 @@ ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 LIB = ./srcs/libft
 LIBADD = ./srcs/libft/libft.a
 
-FLAG = -g -fsanitize=address 
+FLAG = -g #-Wall -Wextra -Werror #-fsanitize=address 
 
 all : $(NAME)
 
