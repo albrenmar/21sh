@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 03:50:23 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,6 @@
 # define K_CTRLR			18
 # define K_ESC				"\x1b\x1b"
 # define K_DEL				"\x1b\x5b\x33\x7e"
-# define ALIAS_ERR			"Failed to create or load ~/42shrc, please check your read/write permissions"
-# define FGWRGJOB			": fg: wrong job_id usage, only one job supported "
-# define BGWRGJOB			": bg: wrong job_id usage, only one job supported "
 
 int		descrf[2];
 int		descrf_two[2];
@@ -349,6 +346,9 @@ void			ctrl_c(void);
 void			clean_up_leaks(void);
 t_ls			*ls_alloc(char *str);
 int				ctrl_key(char c);
+void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
+int				fg_builtin_output(t_jobs *tmp);
+int				bg_builtin_output(t_jobs *tmp);
 
 int				ft_isspace(int c);
 int				ft_isdigit_str(char* str);
@@ -380,10 +380,6 @@ void			history_builtin(void);
 // void			history_setup(void);
 void			history_builtin_delete_index(int j);
 t_hist			*hist_delete_last(t_hist *hist);
-
-void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
-int				fg_builtin_output(t_jobs *tmp);
-int				bg_builtin_output(t_jobs *tmp);
 
 t_last			*create_new_list(void);
 t_last			*ft_parseur(char *line);

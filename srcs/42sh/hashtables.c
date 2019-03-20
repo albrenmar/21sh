@@ -6,28 +6,28 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 03:50:14 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
 
-char		**hashed_command(char **tab_exec, int index)
+char		**hashed_command(char **tab_exec, int i)
 {
 	char	**newtab;
 	t_hash	*tmp;
 
 	if (!(strchr(g_tracking.g_tab_exec[0], '/')))
 		return (NULL);
-	while (tab_exec[0][index] && (tab_exec[0][index] <= 65 || tab_exec[0][index] > 122))
-		index++;
-	index = hash_maker(tab_exec[0][index]);
-	if (index < 0 || index > 25)
+	while (tab_exec[0][i] && (tab_exec[0][i] <= 65 || tab_exec[0][i] > 122))
+		i++;
+	i = hash_maker(tab_exec[0][i]);
+	if (i < 0 || i > 25)
 		return (NULL);
 	newtab = tab_dup(tab_exec);
 	ft_strdel(&newtab[0]);
-	tmp = g_tracking.hashtable[index];
+	tmp = g_tracking.hashtable[i];
 	while (tmp)
 	{
 		if (!(ft_strcmp(tmp->binary, tab_exec[0])))

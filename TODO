@@ -9,7 +9,7 @@ Partie Abraham
 -Ctrl-C et Ctrl-D quittent heredoc
 -norme ma partie (sauf srcs/builtins/builtins.c)
 leaks de ma partie (sauf srcs/builtins/builtins.c)
--"echo -a -b" boucle infini
+-"echo -a -b" boucle infini sur "while (list_cmd)" dans fonction exec_command
 -top | top ou cat | cat | cat bug le terminal
 
 Partie Marc

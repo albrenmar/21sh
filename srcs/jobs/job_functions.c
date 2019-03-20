@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 03:48:16 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,14 +133,6 @@ void		continue_job(t_jobs *job, int foreground)
 		put_job_in_foreground(job, 1);
 	else
 		put_job_in_background(job, 1);
-}
-
-int			fg_builtin_output(t_jobs *tmp)
-{
-	ft_putendl(tmp->name);
-	tmp->background = 0;
-	continue_job(tmp, 1);
-	return (0);
 }
 
 void		jobs_notifications(void)

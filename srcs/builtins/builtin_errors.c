@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 03:57:50 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 04:55:56 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			errors_hash(char *binary, int error)
 int			errors_fg(int nb, int error)
 {
 	if (error == 1)
-		ft_putendl_fd(SHELL_NAME FGWRGJOB, 2);
+		ft_putendl_fd(SHELL_NAME": fg: only one job supported", 2);
 	if (error == 2)
 	{
 		ft_putstr_fd(SHELL_NAME": fg: ", 2);
@@ -63,7 +63,7 @@ int			errors_bg(int nb, int error)
 		ft_putendl_fd(" is already in the background!", 2);
 	}
 	if (error == 1)
-		ft_putendl_fd(SHELL_NAME FGWRGJOB, 2);
+		ft_putendl_fd(SHELL_NAME": bg: only one job supported", 2);
 	if (error == 2)
 	{
 		ft_putstr_fd(SHELL_NAME ": bg: ", 2);
