@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   shebang.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:24:28 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/19 19:47:42 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:24:10 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-char	*shebang_last(char *baseline, char *line, char *last_line)
+char	*shebang_last(char *line, char *last_line)
 {
 	char *nline;
 	t_hist *hist;
@@ -36,7 +36,7 @@ char	*shebang_last(char *baseline, char *line, char *last_line)
 	return nline;
 }
 
-char	*shebang_word(char *baseline, char *line, char *last_line)
+char	*shebang_word(char *line, char *last_line)
 {
 	char *nline;
 	int i;
@@ -70,7 +70,7 @@ char	*shebang_word(char *baseline, char *line, char *last_line)
 	return nline;
 }
 
-char	*shebang_num_pos(char *baseline, char *line, char *last_line)
+char	*shebang_num_pos(char *line, char *last_line)
 {
 	char *nline;
 	char *tmp;
@@ -107,7 +107,7 @@ char	*shebang_num_pos(char *baseline, char *line, char *last_line)
 	return nline;
 }
 
-char	*shebang_num_neg(char *baseline, char *line, char *last_line)
+char	*shebang_num_neg(char *line, char *last_line)
 {
 	char *nline;
 	char *tmp;
@@ -164,26 +164,26 @@ char 	*shebang_parse_switch(char *line)
 			else if (line[i] && line[i] == '!')
 			{
 				i++;
-				line = shebang_last(line, &line[i], tmp_line);
+				line = shebang_last(&line[i], tmp_line);
 				i = 0;
 			}
 			else if (line[i] && line[i] == '-')
 			{
 				i++;
 				if (line[i] && ft_isdigit(line[i]))
-					line = shebang_num_neg(line, &line[i], tmp_line);
+					line = shebang_num_neg(&line[i], tmp_line);
 				else if (line[i])
-					line = shebang_word(line, &line[i], tmp_line);
+					line = shebang_word(&line[i], tmp_line);
 				i = 0;
 			}
 			else if (line[i] && ft_isdigit(line[i]))
 			{
-				line = shebang_num_pos(line, &line[i], tmp_line);
+				line = shebang_num_pos(&line[i], tmp_line);
 				i = 0;
 			}
 			else if (line[i] && !ft_isdigit(line[i]))
 			{
-				line = shebang_word(line, &line[i], tmp_line);
+				line = shebang_word(&line[i], tmp_line);
 				i = 0;
 			}
 			free(tmp_line);
