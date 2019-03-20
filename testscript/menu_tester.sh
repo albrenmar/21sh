@@ -32,6 +32,7 @@ select CHECK in "COMPIL 42SH" "REMOVE 42SH" "NORM EXPANSIONS" ALL SIMPLE ADVANCE
                 echo "------------------------------------------"
                 echo "         test expansions advanced         "
                 source expansion_adv_%.sh
+                source expansion_adv_%\%.sh
                 source expansion_adv_#.sh
                 source expansion_adv_#\#.sh
                 source expansion_adv_start#.sh

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/17 22:16:20 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/20 02:14:17 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		transform(t_expand *expand, char **str)
 			first_letter = expand_keys(expand, str);
 			expand = first_letter;
 		}
-		if (expand->next)
+		if (expand->next && !g_tracking.mysh->err_expend)
 			expand = expand->next;
 		else
 			break ;
