@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_term.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:29:52 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/15 01:33:13 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 04:03:43 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	init_cpaste(void)
 
 void	init_key_list(void)
 {
-	char	*tmp;
-
 	g_tracking.key_list = lstcontainer_new();
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_LEFT));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_RIGHT));
@@ -42,6 +40,8 @@ void	init_key_list(void)
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_FN1));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_FN2));
 	lstcontainer_add(g_tracking.key_list, ft_strdup(K_FN3));
+	lstcontainer_add(g_tracking.key_list, ft_strdup(K_HOME));
+	lstcontainer_add(g_tracking.key_list, ft_strdup(K_END));
 }
 
 void	cursor_reset(void)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   auto_complete.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 03:40:51 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:00:07 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		loop_for_space(int i)
 	return (i);
 }
 
-void	asign_word(int i, int a, int flag)
+void	asign_word(int i, unsigned long a, int flag)
 {
 	if (ft_strlen(g_tracking.str) != 0)
 	{

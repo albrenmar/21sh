@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   history_lib_plus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 14:31:10 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/14 16:07:22 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:24:26 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sh42.h>
+#include "sh42.h"
 
 int			ft_isdigit_str(char* str)
 {

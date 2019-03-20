@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   add_to_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 01:03:17 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:10:22 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
 
-void		err_check(int a, int i, int j)
+void		err_check(int i, int j)
 {
 	char	*newstr;
 
 	newstr = NULL;
-	while ((i + j + 5) > g_tracking.buffsize)
+	while ((i + j + 7) > g_tracking.buffsize)
 	{
 		g_tracking.buffsize *= 2;
 		newstr = malloc(sizeof(char) * g_tracking.buffsize);
@@ -54,7 +54,7 @@ void		add_to_str(char *str)
 			len_src = ft_strlen(str);
 			len_dest = ft_strlen(g_tracking.str);
 			a = utf_goto(g_tracking.str, a);
-			err_check(a, len_dest, len_src);
+			err_check(len_dest, len_src);
 			if (a > utf_strlen(g_tracking.str))
 				a = ft_strlen(g_tracking.str);
 			ft_memmove(g_tracking.str + a + len_src, g_tracking.str

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/19 22:51:48 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:22:46 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int		replace_str(int i, char *comp)
 int		history_up(void)
 {
 	char	*comp;
-	char	*cur;
 	t_hist	*history;
 	int		i;
 
@@ -93,7 +92,6 @@ int		history_up(void)
 int		history_down(void)
 {
 	char	*comp;
-	char	*cur;
 	t_hist	*history;
 	int		i;
 

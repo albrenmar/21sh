@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 15:24:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/11 12:31:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 04:12:58 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 void	print_line(void)
 {
-	int		a;
-	int		i;
-	char	*end;
-	char	*str;
-
 	if (g_tracking.str != NULL)
 	{
 		clear_screen3();
@@ -46,12 +41,12 @@ void	print_line_cpy(int start, int end)
 	while (g_tracking.str[i])
 	{
 		if (i == start)
-			ft_putstr("\033[7m");
+			ft_putstr_fd("\033[7m", 0);
 		if (i == end)
-			ft_putstr("\033[0m");
-		ft_putchar(g_tracking.str[i]);
+			ft_putstr_fd("\033[0m", 0);
+		ft_putchar_fd(g_tracking.str[i], 0);
 		i++;
 	}
-	ft_putstr("\033[0m");
+	ft_putstr_fd("\033[0m", 0);
 	back_to_pos();
 }

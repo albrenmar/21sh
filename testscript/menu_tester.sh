@@ -22,13 +22,16 @@ select CHECK in "COMPIL 42SH" "REMOVE 42SH" "NORM EXPANSIONS" ALL SIMPLE ADVANCE
             then
                 norminette ../srcs/expansions | grep Error
         fi
-        if [ "$CHECK" == 'ALL' ] ||
-           [ "$CHECK" == 'SIMPLE' ]
+        if  [ "$CHECK" == 'SIMPLE' ]
             then
-                source expansion_simple.sh
+                source menu_exp_simple.sh
         fi
         if [ "$CHECK" == 'ALL' ]
             then
+                echo "------------------------------------------"
+                echo "         test expansions simple         "
+                source expansion_sim_~.sh
+                source expansion_sim_\$.sh
                 echo "------------------------------------------"
                 echo "         test expansions advanced         "
                 source expansion_adv_%.sh

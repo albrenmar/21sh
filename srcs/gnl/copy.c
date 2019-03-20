@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 19:41:54 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 05:01:40 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:11:37 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int		ft_mini_exec_key(char *str)
 
 int		mini_is_cmd(char *str)
 {
-	int		i;
-	t_list	*tmp;
-	int		flag;
+	unsigned long	i;
+	t_list			*tmp;
+	int				flag;
 
 	i = ft_strlen(str);
 	tmp = g_tracking.key_list->firstelement;
