@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/19 18:52:31 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:50:23 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,18 +211,16 @@ typedef struct	s_tracking
 	int					herenbr;
 	int					redir;
 	int					foreground;
-	// int					lastplace;
-	// char				**orderhold;
 }				t_tracking;
 
-typedef struct	s_cmd
+typedef struct	s_comm
 {
 	int				status;
-	struct s_cmd	*next;
+	struct s_comm	*next;
 	pid_t			cpid;
 	int				done;
 	int				stopped;
-}				t_cmd;
+}				t_comm;
 
 typedef struct	s_jobs
 {
@@ -242,7 +240,7 @@ typedef struct	s_jobs
 	int				notified;
 	int				backstart;
 	struct termios	jterm;
-	struct s_cmd	*t_cmd;
+	struct s_comm	*t_command;
 }				t_jobs;
 
 t_tracking		g_tracking;
@@ -441,7 +439,7 @@ void			clean_tab_exec(char **tab_exec);
 void			interactive_check_set_shell_group(void);
 void			set_shell_signal_handlers(void);
 void			set_process_signal_handlers(void);
-t_cmd			*new_process(t_jobs *job, pid_t cpid);
+t_comm			*new_process(t_jobs *job, pid_t cpid);
 
 void			continue_job(t_jobs *job, int foreground);
 void			hash_binary(void);
@@ -453,7 +451,7 @@ void			ft_hash_output(void);
 int				empty_hash_table(void);
 int				hash_update_commands(int j);
 char			**tab_format_hash(char *binary);
-char			**hashed_command(char **tab_exec);
+char			**hashed_command(char **tab_exec, int index);
 
 int				argc_error(void);
 int				exec_errors(char **tab_exec, int mode);

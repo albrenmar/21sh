@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jobs_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 20:23:39 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:43:39 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void		jobs_builtin_output(t_jobs *tmp, int mode, int number, int options)
 			{
 				if (tmp->background == 1)
 					ft_putstr("Running");
-				if (options != 1 && tmp->t_cmd->stopped == 1)
+				if (options != 1 && tmp->t_command->stopped == 1)
 					ft_putstr("Stopped");
 				else if (options == 1)
 					ft_putstr("Suspended");

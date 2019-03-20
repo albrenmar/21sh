@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/19 20:10:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 03:50:35 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		execute_two(char **tab_exec)
 	tab_exec_hold = tab_dup(tab_exec);
 	if (is_builtin())
 		exit(builtin_exec(NULL));
-	if ((tab_exec = hashed_command(tab_exec)))
+	if ((tab_exec = hashed_command(tab_exec, 0)))
 	{
 		execve(tab_exec[0], tab_exec, init_envp(g_tracking.mysh->env));
 		exit(-1);

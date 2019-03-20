@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/19 22:44:57 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 03:48:16 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		jobs_update_currentback(int mode)
 			tmp->currentback = 0;
 			tmp = tmp->next;
 		}
-		while (tmp->prev && tmp->t_cmd->stopped != 1)
+		while (tmp->prev && tmp->t_command->stopped != 1)
 			tmp = tmp->prev;
 		tmp->current = 1;
 		tmp->currentback = 0;
@@ -59,7 +59,7 @@ void		jobs_update_currentback(int mode)
 		tmp->currentback = 0;
 		while (tmp)
 		{
-			if (tmp->t_cmd->stopped == 1)
+			if (tmp->t_command->stopped == 1)
 			{
 				if (hold == NULL)
 				{
@@ -115,9 +115,9 @@ void		jobs_update_current(void)
 
 void		mark_job_as_running(t_jobs *job)
 {
-	t_cmd	*cmd;
+	t_comm	*cmd;
 
-	cmd = job->t_cmd;
+	cmd = job->t_command;
 	while (cmd)
 	{
 		cmd->stopped = 0;
@@ -148,7 +148,7 @@ void		jobs_notifications(void)
 	t_jobs	*job;
 	t_jobs	*joblast;
 	t_jobs	*jobnext;
-	t_cmd	*cmd;
+	t_comm	*cmd;
 
 	update_status();
 	joblast = NULL;
@@ -176,7 +176,7 @@ void		jobs_notifications(void)
 		{
 			if (job->background == 1)
 			{
-				cmd = job->t_cmd;
+				cmd = job->t_command;
 				while (cmd)
 				{
 					if (!WIFSIGNALED(cmd->status))
@@ -240,7 +240,7 @@ void		show_job_info(t_jobs *job, const char *status, int mode)
 	if (mode == 3)
 	{
 		ft_putstr("by signal: ");
-		ft_putnbr(WTERMSIG(job->t_cmd->status));
+		ft_putnbr(WTERMSIG(job->t_command->status));
 	}
 	ft_putchar(' ');
 	ft_putendl(job->name);
@@ -259,7 +259,7 @@ void		update_status(void)
 int			update_process_status(pid_t pid, int status)
 {
 	t_jobs	*job;
-	t_cmd	*cmd;
+	t_comm	*cmd;
 
 	if (pid > 0)
     {
@@ -268,7 +268,7 @@ int			update_process_status(pid_t pid, int status)
 		{
 			while (job)
 			{
-				cmd = job->t_cmd;
+				cmd = job->t_command;
 				while (cmd)
 				{
 					if (cmd->cpid == pid)
@@ -354,9 +354,9 @@ void				interactive_check_set_shell_group(void)
 
 int					job_is_done(t_jobs *job)
 {
-  struct s_cmd		*p;
+	t_comm			*p;
 
-	p = job->t_cmd;
+	p = job->t_command;
 	while (p)
 	{
 		if (p->done == 0)
@@ -368,9 +368,9 @@ int					job_is_done(t_jobs *job)
 
 int					job_is_stopped(t_jobs *job)
 {
-  struct s_cmd		*p;
+	t_comm			*p;
 
-	p = job->t_cmd;
+	p = job->t_command;
 	while (p)
 	{
 		if (p->stopped == 0)

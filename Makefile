@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/19 23:04:40 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/20 03:38:39 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ SRC = main.c \
 	  jobs/job_utils.c \
 	  jobs/job_functions.c \
 	  jobs/ft_job_control.c \
+	  gnl/coolprompt.c \
 	  gnl/add_to_str.c \
 	  gnl/rem_from_str.c \
 	  gnl/term_setup.c \

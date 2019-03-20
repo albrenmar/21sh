@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_errors.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 20:38:11 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:57:50 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ int			errors_hash(char *binary, int error)
 		ft_putstr_fd(SHELL_NAME": hash: ", 2);
 		ft_putstr_fd(binary, 2);
 		ft_putendl_fd(" not found", 2);
+	}
+	if (error == 2)
+	{
+		ft_putstr_fd(SHELL_NAME": hash: ", 2);
+		ft_putstr_fd(binary, 2);
+		ft_putendl_fd(" invalid option", 2);
+		ft_putendl_fd(SHELL_NAME": hash: usage: hash [-r] [arg]", 2);
 	}
 	return (-1);
 }

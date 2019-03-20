@@ -6,22 +6,20 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/03 05:45:07 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/20 03:50:14 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
 
-char		**hashed_command(char **tab_exec)
+char		**hashed_command(char **tab_exec, int index)
 {
 	char	**newtab;
-	int		index;
 	t_hash	*tmp;
 
 	if (!(strchr(g_tracking.g_tab_exec[0], '/')))
 		return (NULL);
-	index = 0;
 	while (tab_exec[0][index] && (tab_exec[0][index] <= 65 || tab_exec[0][index] > 122))
 		index++;
 	index = hash_maker(tab_exec[0][index]);
