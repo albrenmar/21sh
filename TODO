@@ -11,6 +11,8 @@ Partie Abraham
 leaks de ma partie (sauf srcs/builtins/builtins.c)
 -"echo -a -b" boucle infini sur "while (list_cmd)" dans fonction exec_command
 -top | top ou cat | cat | cat bug le terminal
+-verificar segv autocompletion solo en lo mio
+
 
 Partie Marc
 - Gestion d'errors pour les expansions.
