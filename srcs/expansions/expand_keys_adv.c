@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/20 00:04:04 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/20 02:15:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 
 	i = 0;
 	init_analyzer(&to_analy, str, expand);
+	if (!to_analy.varname[0])
+	{
+		print_exp_error(*str + 1);
+		return ;
+	}
 	run_varvalue = to_analy.varvalue;
 	run_wildcard = to_analy.wildcard;
 	if (to_analy.start_astrsk)
@@ -78,7 +83,7 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 		else
 			*str = ft_strdup(to_analy.varvalue);
 	}
-	else if (to_analy.varvalue && to_analy.start_astrsk)
+	else if (to_analy.varvalue && to_analy.start_astrsk && !to_analy.end_astrsk)
 	{
 		run_varvalue = ft_strrev(to_analy.varvalue, 0);
 		run_wildcard = ft_strrev(to_analy.wildcard + 1, 0);
@@ -88,7 +93,7 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 		else
 			*str = ft_strdup(to_analy.varvalue);
 	}
-	else if (to_analy.varvalue && to_analy.end_astrsk)
+	else if (to_analy.varvalue && to_analy.end_astrsk && !to_analy.start_astrsk)
 	{
 		run_wildcard[to_analy.wlcd_len] = '\0';
 		while (*run_varvalue && !ft_strnstr(run_varvalue, run_wildcard, to_analy.wlcd_len))
@@ -100,6 +105,8 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 		ft_strdel(str);
 		*str = ft_strdup(ft_strrev(run_varvalue + (to_analy.vvlu_len - i), 0));
 	}
+	else
+		rmv_str(str);
 /*	char	*varname;
 	char	*value_var;
 	char	*to_srch;

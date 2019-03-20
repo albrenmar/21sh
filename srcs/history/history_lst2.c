@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/19 19:39:17 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/19 23:14:19 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,11 @@ void		hist_save_file(t_hist *hist)
 	}
 	while (hist->previous)
 		hist = hist->previous;
-	while(hist)
+	while (hist)
 	{
-		ft_putendl_fd(hist->line, fd);
-		if (hist->next)
-			hist = hist->next;
-		else
-			break;
+		if (hist->line != NULL && ft_strlen(hist->line) > 0)
+			ft_putendl_fd(hist->line, fd);
+		hist = hist->next;
 	}
 	lseek(fd, SEEK_SET, 0);
 	line = malloc(sizeof(line));
