@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/06 03:37:44 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:01:32 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void				line_per_page(void)
 {
 	int				nb;
 	int				rest;
-	int				i;
 	int				lin;
 
 	nb = lstcontainer_size(g_tracking.aut->comp_list);

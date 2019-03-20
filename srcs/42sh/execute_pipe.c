@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 18:26:59 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/19 20:10:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void		execute_two(char **tab_exec)
 		exit(builtin_exec(NULL));
 	if ((tab_exec = hashed_command(tab_exec)))
 	{
-		execve(tab_exec[0], tab_exec, NULL);
+		execve(tab_exec[0], tab_exec, init_envp(g_tracking.mysh->env));
 		exit(-1);
 	}
 	else if ((test_exist_fonction(tab_exec_hold, 2)))
 	{
-		execve(tab_exec_hold[0], tab_exec_hold, NULL);
+		execve(tab_exec_hold[0], tab_exec_hold, init_envp(g_tracking.mysh->env));
 		exec_errors(tab_exec, 0);
 		exit(-1);
 	}

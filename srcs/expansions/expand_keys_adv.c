@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/20 00:59:11 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/20 03:16:42 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,69 +59,19 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 
 	i = 0;
 	init_analyzer(&to_analy, str, expand);
-	run_varvalue = to_analy.varvalue;
-	run_wildcard = to_analy.wildcard;
+	if (!to_analy.varname[0])
+	{
+		print_exp_error(*str + 1);
+		return ;
+	}
 	if (to_analy.start_astrsk)
-		run_wildcard++;
-	if (to_analy.start_astrsk)
-		run_wildcard++;
+		run_wildcard = run_wildcard + 2;
 	if (to_analy.varvalue && !to_analy.asterisk)
-	{
-		run_varvalue = ft_strrev(to_analy.varvalue, 0);
-		run_wildcard = ft_strrev(to_analy.wildcard, 0);
-		ft_strdel(str);
-		if (ft_strnstr(run_varvalue, run_wildcard, to_analy.wlcd_len))
-		{
-			*str = ft_strdup(run_varvalue + to_analy.wlcd_len);
-			*str = ft_strrev(*str, 1);
-		}
-		else
-			*str = ft_strdup(to_analy.varvalue);
-	}
+		ass_str_wout_ast(&to_analy, str);
 	else if (to_analy.varvalue && to_analy.start_astrsk && !to_analy.end_astrsk)
-	{
-		run_varvalue = ft_strrev(to_analy.varvalue, 0);
-		run_wildcard = ft_strrev(to_analy.wildcard + 1, 0);
-		ft_strdel(str);
-		if (ft_strnstr(run_varvalue, run_wildcard, to_analy.wlcd_len))
-			*str = ft_strdup("");
-		else
-			*str = ft_strdup(to_analy.varvalue);
-	}
+		ass_str_wstrt_ast(&to_analy, str);
 	else if (to_analy.varvalue && to_analy.end_astrsk && !to_analy.start_astrsk)
-	{
-		run_wildcard[to_analy.wlcd_len] = '\0';
-		while (*run_varvalue && !ft_strnstr(run_varvalue, run_wildcard, to_analy.wlcd_len))
-		{
-			run_varvalue++;
-			i++;
-		}
-		run_varvalue = ft_strrev(to_analy.varvalue, 0);
-		ft_strdel(str);
-		*str = ft_strdup(ft_strrev(run_varvalue + (to_analy.vvlu_len - i), 0));
-	}
+		ass_str_wend_ast(&to_analy, str);
 	else
 		rmv_str(str);
-/*	char	*varname;
-	char	*value_var;
-	char	*to_srch;
-	char	*found;
-
-	varname = NULL;
-	to_srch = NULL;
-	varname = get_varname(expand);
-	value_var = get_env_string(varname);
-	to_srch = get_value_asterisk(expand);
-	if (value_var && (found = ft_strstr(value_var, to_srch)))
-		select_last_not_found(str, value_var, to_srch, found);
-	else if (value_var)
-	{
-		ft_strdel(str);
-		*str = value_var;
-	}
-	else
-	{
-		ft_strdel(str);
-		*str = ft_strnew(0);
-	}*/
 }
