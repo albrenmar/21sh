@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/20 02:20:23 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/20 03:00:21 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -157,6 +157,7 @@ SRC = main.c \
 	  expansions/expand_error.c \
 	  expansions/analyzer.c \
 	  expansions/tools_double_hash.c \
+	  expansions/tools_double_percent.c \
 	  expansions/autocomplete/auto_com_expan.c
 
 CLEAR_LINE	= \033[2K

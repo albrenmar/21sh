@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/20 00:03:39 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/20 03:13:15 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,5 +141,8 @@ void			asign_vrvlufnd(t_analyzer *nly, char **rvrvlu,
 void			asgnvrvluastrk(t_analyzer *nly, char **rvrvlu,
 					char **rwlcd, char **str);
 void			rmv_str(char **str);
+void			ass_str_wout_ast(t_analyzer *to_analy, char **str);
+void			ass_str_wstrt_ast(t_analyzer *to_analy, char **str);
+void			ass_str_wend_ast(t_analyzer *to_analy, char **str);
 
 #endif
