@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 06:10:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/17 05:49:50 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/21 07:02:02 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,22 @@ char	*get_value(t_expand *expand)
 
 	i = 0;
 	to_run = expand->next;
-	while (to_run->ltr != ':' && to_run->ltr != '#' && to_run->ltr != '%')
+	while (to_run && to_run->ltr != ':' && to_run->ltr != '#'
+			&& to_run->ltr != '%' && to_run->ltr != '/')
 		to_run = to_run->next;
-	if (to_run->ltr == '#' || to_run->ltr == '%')
+	if (!to_run && to_run->prev->ltr == '$')
+		return(NULL);
+	if (to_run->ltr == '#' || to_run->ltr == '%' || to_run->ltr == '/')
 	{
 		if (to_run->next && to_run->prev)
 			if (to_run->next->ltr == '#' || to_run->next->ltr == '%')
 				to_run = to_run->next;
 		to_run = to_run->prev;
 	}
+	if (!to_run->next)
+		return (NULL);
+	if (!to_run->next->next)
+		return (ft_strdup(" "));
 	start = to_run->next->next;
 	while (start && start->ltr != '}')
 	{
@@ -115,7 +122,7 @@ char	*get_varname(t_expand *expand)
 	if (to_run->ltr == '#' || to_run->ltr == '%')
 		to_run = to_run->next;
 	while (to_run && to_run->ltr != ':' && to_run->ltr != '}'
-			&& (to_run->ltr != '#' || to_run->ltr != '%'))
+			&& to_run->ltr != '/' && (to_run->ltr != '#' || to_run->ltr != '%'))
 	{
 		to_run = to_run->next;
 		i++;

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 06:23:41 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/12 20:39:41 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/21 02:14:35 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*varname(char *var, t_expand *to_run)
 	if (to_run->ltr == '#' && to_run->ltr != '%')
 		to_run = to_run->next;
 	while (to_run && to_run->ltr != ':' && to_run->ltr != '}'
-			&& to_run->ltr != '#' && to_run->ltr != '%')
+			&& to_run->ltr != '#' && to_run->ltr != '%' && to_run->ltr != '/')
 	{
 		var[i++] = to_run->ltr;
 		to_run = to_run->next;
