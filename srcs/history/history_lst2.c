@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/21 17:43:15 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ void		hist_save_file(t_hist *hist)
 {
 	int fd;
 	char **line;
+	char *path;
 
-	fd = open("/goinfre/.shell_history", O_WRONLY | O_CREAT  | O_TRUNC, 00777);
+	path = create_path_hist();
+	fd = open(path, O_CREAT | O_APPEND | O_RDWR, 00777);
 	if (fd < 0)
 	{
-		ft_putendl_fd("Error while opening/creating .shell_history", 2);
+		ft_putendl_fd("Error while opening/creating .42hist", 2);
 		return;
 	}
 	if (!hist)
