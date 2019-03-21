@@ -6,11 +6,18 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 02:40:58 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/12 20:34:59 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/21 02:01:05 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
+
+char		is_slash_sign(t_expand *to_run)
+{
+	if (to_run->ltr == '/')
+		return ('/');
+	return ('\0');
+}
 
 char		is_diferent_sign(t_expand *to_run)
 {
