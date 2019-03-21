@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
 #    Updated: 2019/03/20 04:52:48 by mjose            ###   ########.fr        #
@@ -59,6 +59,7 @@ SRC = main.c \
 	  jobs/job_utils.c \
 	  jobs/job_functions.c \
 	  jobs/ft_job_control.c \
+	  gnl/coolprompt.c \
 	  gnl/add_to_str.c \
 	  gnl/rem_from_str.c \
 	  gnl/term_setup.c \
@@ -75,6 +76,7 @@ SRC = main.c \
 	  gnl/paste.c \
 	  gnl/get_key.c \
 	  gnl/get_cmd.c \
+	  gnl/home_end.c \
 	  auto_complete/auto_complete.c \
 	  auto_complete/auto_complete_check.c \
 	  auto_complete/auto_complete_cleanup.c \

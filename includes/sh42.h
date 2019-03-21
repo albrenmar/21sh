@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/19 18:52:31 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # define K_RIGHT			"\x1b\x5b\x43"
 # define K_DOWN				"\x1b\x5b\x42"
 # define K_UP				"\x1b\x5b\x41"
+# define K_END				"\x1b\x5b\x46"
+# define K_HOME				"\x1b\x5b\x48"
 # define K_LUP				"\x1b\x5b\x31\x3b\x32\x41"
 # define K_LDOWN			"\x1b\x5b\x31\x3b\x32\x42"
 # define K_WLEFT			"\x1b\x5b\x31\x3b\x32\x44"
@@ -54,9 +56,6 @@
 # define K_CTRLR			18
 # define K_ESC				"\x1b\x1b"
 # define K_DEL				"\x1b\x5b\x33\x7e"
-# define ALIAS_ERR			"Failed to create or load ~/42shrc, please check your read/write permissions"
-# define FGWRGJOB			": fg: wrong job_id usage, only one job supported "
-# define BGWRGJOB			": bg: wrong job_id usage, only one job supported "
 
 int		descrf[2];
 int		descrf_two[2];
@@ -211,18 +210,16 @@ typedef struct	s_tracking
 	int					herenbr;
 	int					redir;
 	int					foreground;
-	// int					lastplace;
-	// char				**orderhold;
 }				t_tracking;
 
-typedef struct	s_cmd
+typedef struct	s_comm
 {
 	int				status;
-	struct s_cmd	*next;
+	struct s_comm	*next;
 	pid_t			cpid;
 	int				done;
 	int				stopped;
-}				t_cmd;
+}				t_comm;
 
 typedef struct	s_jobs
 {
@@ -242,7 +239,7 @@ typedef struct	s_jobs
 	int				notified;
 	int				backstart;
 	struct termios	jterm;
-	struct s_cmd	*t_cmd;
+	struct s_comm	*t_command;
 }				t_jobs;
 
 t_tracking		g_tracking;
@@ -271,6 +268,8 @@ int				utf_byte(char c);
 int				utf_strlen(char *str);
 int				get_nb_char(unsigned char c);
 int				utf_goto(char *str, int j);
+void			go_home(void);
+void			go_end(void);
 void		    print_line(void);
 void			correct_pos(void);
 void			back_to_pos(void);
@@ -351,6 +350,9 @@ void			ctrl_c(void);
 void			clean_up_leaks(void);
 t_ls			*ls_alloc(char *str);
 int				ctrl_key(char c);
+void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
+int				fg_builtin_output(t_jobs *tmp);
+int				bg_builtin_output(t_jobs *tmp);
 
 int				ft_isspace(int c);
 int				ft_isdigit_str(char* str);
@@ -382,10 +384,6 @@ void			history_builtin(void);
 // void			history_setup(void);
 void			history_builtin_delete_index(int j);
 t_hist			*hist_delete_last(t_hist *hist);
-
-void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
-int				fg_builtin_output(t_jobs *tmp);
-int				bg_builtin_output(t_jobs *tmp);
 
 t_last			*create_new_list(void);
 t_last			*ft_parseur(char *line);
@@ -441,7 +439,7 @@ void			clean_tab_exec(char **tab_exec);
 void			interactive_check_set_shell_group(void);
 void			set_shell_signal_handlers(void);
 void			set_process_signal_handlers(void);
-t_cmd			*new_process(t_jobs *job, pid_t cpid);
+t_comm			*new_process(t_jobs *job, pid_t cpid);
 
 void			continue_job(t_jobs *job, int foreground);
 void			hash_binary(void);
@@ -453,7 +451,7 @@ void			ft_hash_output(void);
 int				empty_hash_table(void);
 int				hash_update_commands(int j);
 char			**tab_format_hash(char *binary);
-char			**hashed_command(char **tab_exec);
+char			**hashed_command(char **tab_exec, int index);
 
 int				argc_error(void);
 int				exec_errors(char **tab_exec, int mode);

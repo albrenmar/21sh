@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hist.c                                       :+:      :+:    :+:   */
+/*   home_end.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/21 20:26:47 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Created: 2019/03/20 04:04:23 by bsiche            #+#    #+#             */
+/*   Updated: 2019/03/20 04:16:27 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-int		print_hist()
+void		go_home(void)
 {
-	t_hist		*history;
+	print_line();
+	g_tracking.pos->abs = 0;
+	back_to_pos();
+}
 
-	history = g_tracking.mysh->hist;
-	if (!history)
-		return (1);
-	while (history)
-	{
-		ft_putendl(history->line);
-		history = history->next;
-	}
-	return (0);
+void		go_end(void)
+{
+	print_line();
+	g_tracking.pos->abs = utf_strlen(g_tracking.str);
+	back_to_pos();
 }

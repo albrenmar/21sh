@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/20 03:16:42 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/21 06:35:42 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,16 @@ void	exp_key_altern(char **str, t_expand *expand)
 
 	init_analyzer(&to_analy, str, expand);
 	ft_strdel(str);
-	*str = ft_strdup(to_analy.varvalue);
+	if (!to_analy.wildcard)
+	{
+		print_exp_str_error(*str);
+		ft_strdel(str);
+		*str = ft_strdup(" ");
+	}
+	else if (to_analy.varvalue)
+		*str = ft_strdup(to_analy.varvalue);
+	else
+		*str = ft_strdup(" ");
 }
 
 void	exp_key_double_hash(char **str, t_expand *expand)

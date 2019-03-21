@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/20 03:13:15 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/21 02:05:58 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void			exp_key_altern(char **str, t_expand *expand);
 void			transform_if_tilde(t_expand **expand, char **str);
 char			is_two_points_sign(t_expand *to_run);
 char			is_diferent_sign(t_expand *to_run);
+char			is_slash_sign(t_expand *to_run);
 void			skip_found(char **str, char *value_var, char *to_srch);
 void			select_not_found(char **str, char *value_var, char *to_srch);
 void			select_last_not_found(char **str, char *value_var,
@@ -123,6 +124,7 @@ void			unquote(char **value, int *quote);
 int				ft_iswhitespace(int c);
 void			print_exp_error(char *to_error);
 void			print_exp_error_eq(char *varname, char *value);
+void			print_exp_str_error(char *strerror);
 void			rmv_tab_exec(char **tab_exec, int to);
 int				is_simple_expand(char *value);
 void			scan_simple_arg_transformer(char **arg);

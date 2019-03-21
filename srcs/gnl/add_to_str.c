@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   add_to_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
 /*   Updated: 2019/03/20 03:10:22 by bsiche           ###   ########.fr       */

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 18:53:06 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/20 23:53:38 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,14 @@ t_last	*check_exp_error(t_last *cmd)
 					//FREE LIST DEPUIS BEGIN
 					return (NULL);
 				}
-				else
+				else if (cmd->next)
 					cmd = cmd->next;
+				else
+				{
+					ft_putendl_fd("ERREUR EXPENSION", 2);
+					//FREE LIST DEPUIS BEGIN
+					return (NULL);
+				}
 			}
 			if (!cmd)
 			{
@@ -116,7 +122,8 @@ int		main(int argc, char **argv, char **env)
 				if (!error_lexer(cmd))
 				{
 					cmd = check_exp_error(cmd);
-					ft_ast(cmd);
+					if (cmd)
+						ft_ast(cmd);
 				}
 			}
 		}

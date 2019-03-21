@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/16 00:39:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/21 00:21:55 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,8 +158,20 @@ char		expand_transformer(char **value, int chg_value)
 	to_unquot = NULL;
 //	if (chg_value)
 		to_unquot = unquote_value(value);
-	if (to_unquot)
+	if (to_unquot && (!ft_strstr(to_unquot->str_unquoted, "${}")
+			|| !ft_strstr(to_unquot->str_unquoted, "${}")))
 		scan_arg_transformer(&to_unquot, value);
+	else if ((to_unquot && ft_strequ(to_unquot->str_unquoted, "${}"))
+			|| ft_strequ(str_error, "${}")
+			|| ft_strstr(to_unquot->str_unquoted, "${}"))
+	{
+		if (ft_strequ(to_unquot->str_unquoted, "${}"))
+			print_exp_error(NULL);
+		else
+			print_exp_str_error(to_unquot->str_unquoted);
+		ft_strdel(value);
+		*value = ft_strdup(" ");
+	}
 //		quote = unquote_value(value, quote);
 /*	if (quote != '\'' && quote != 'E' && *value)
 		quote = scan_arg_transformer(value, quote);
