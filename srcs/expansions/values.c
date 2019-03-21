@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 06:10:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/21 06:31:59 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/21 07:02:02 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ char	*get_value(t_expand *expand)
 	}
 	if (!to_run->next)
 		return (NULL);
+	if (!to_run->next->next)
+		return (ft_strdup(" "));
 	start = to_run->next->next;
 	while (start && start->ltr != '}')
 	{
