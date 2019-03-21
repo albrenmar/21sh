@@ -53,3 +53,13 @@ void	print_exp_error(char *to_error)
 	ft_putendl_fd("}: bad substitution", 2);
 	g_tracking.mysh->err_expend = 1;
 }
+
+void	print_exp_str_error(char *strerror)
+{
+	ft_putstr_fd(SHELL_NAME, 2);
+	ft_putstr_fd(": ", 2);
+	if (strerror)
+		ft_putstr_fd(strerror, 2);
+	ft_putendl_fd(": bad substitution", 2);
+	g_tracking.mysh->err_expend = 1;
+}

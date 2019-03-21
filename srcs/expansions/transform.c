@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/20 22:55:46 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/21 01:40:43 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ int		transform_simple(char **str)
 	run_str = *str;
 	new_str = NULL;
 	if (run_str[0] == '$')
+	{
+
 		new_str = get_env_string(run_str + 1);
+	}
 	if (run_str[0] == '$' && !new_str)
 		new_str = get_parm_string(run_str + 1);
 	if (new_str)
