@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/21 17:43:15 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/21 21:52:48 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void		hist_save_file(t_hist *hist)
 	}
 	lseek(fd, SEEK_SET, 0);
 	line = malloc(sizeof(line));
-	while(get_next_line(fd, line) == 1)
-		ft_putendl(*line);
+	// while(get_next_line(fd, line) == 1)
+	// 	ft_putendl(*line);
 	free(line);
 	close(fd);
 
