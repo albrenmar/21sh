@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/21 17:05:02 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/21 17:44:22 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ void		hist_setup_file(void)
 	line = ft_memalloc(sizeof(line));
 	fd = open("/goinfre/.shell_history", O_CREAT | O_APPEND | O_RDWR, 00777);
 	if (fd < 0)
-	{
-		ft_putendl_fd("Error while opening/creating .shell_history", 2);
-		return ;
-	}
+		return ft_putendl_fd("Error while opening/creating .shell_history", 2);
 	if (get_next_line(fd, line) == 1)
 	{
 		g_tracking.mysh->hist = hist_lst_create(*line);
