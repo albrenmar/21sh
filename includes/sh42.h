@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/21 21:35:59 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/22 03:26:25 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,7 +244,7 @@ typedef struct	s_jobs
 
 t_tracking		g_tracking;
 
-void			init_shell(char **environ);
+void			init_shell(char **environ, char **argv);
 char			*ft_usrmode(mode_t mode);
 void			ft_printlist();
 char			*ft_true_pwd(void);
