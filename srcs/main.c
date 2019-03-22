@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 23:53:38 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/22 03:26:00 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int		main(int argc, char **argv, char **env)
 	//	set_env(&st_env, env);
 	// ft_siginit();
 	cursorinit();
-	init_shell(env);
+	init_shell(env, argv);
 	get_term();
 	interactive_check_set_shell_group();
 	set_shell_signal_handlers();
@@ -117,7 +117,8 @@ int		main(int argc, char **argv, char **env)
 		{
 			if ((ft_strlen(line) > 0) && spaces_line_check(line) && (cmd = ft_parseur(line)))
 			{
-				hist_lst_add_next(g_tracking.mysh->hist, line);
+				if (write(0, argv[0], 0) != -1)
+					hist_lst_add_next(g_tracking.mysh->hist, line);
 				convert_list(cmd);
 				if (!error_lexer(cmd))
 				{

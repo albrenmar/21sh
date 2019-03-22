@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst_options.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/21 17:15:38 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/22 03:05:24 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*create_path_hist(void)
 
 	path = ft_strdup("/Users/");
 	user = getlogin();
-	path = ft_strjoinfree(path, user, 1);// MJOSE LINUX
+	path = ft_strjoinfree(path, user, 1);
 	path = ft_strjoinfree(path, "/.42hist", 1);
 	return (path);
 }
