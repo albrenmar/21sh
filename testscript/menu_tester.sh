@@ -20,7 +20,7 @@ select CHECK in "COMPIL 42SH" "REMOVE 42SH" "NORM EXPANSIONS" ALL SIMPLE ADVANCE
         fi
         if [ "$CHECK" == "NORM EXPANSIONS" ]
             then
-                norminette ../srcs/expansions | grep Error
+                norminette ../srcs/expansions
         fi
         if  [ "$CHECK" == 'SIMPLE' ]
             then
