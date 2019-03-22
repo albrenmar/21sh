@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/22 04:45:24 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/22 06:54:22 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,11 @@ int			fg_exists(t_jobs *tmp, int mode)
 	else if (nb != 0)
 		return (fg_builtin_output(tmp));
 	}
-	else
-	{
-		while (tmp->prev)
-			tmp = tmp->prev;
-		while (tmp->next && tmp->place != nb)
-			tmp = tmp->next;
-		return (fg_builtin_output(tmp));
-	}
+	while (tmp->prev)
+		tmp = tmp->prev;
+	while (tmp->next && tmp->place != nb)
+		tmp = tmp->next;
+	return (fg_builtin_output(tmp));
 }
 
 int			fg_builtin(void)
