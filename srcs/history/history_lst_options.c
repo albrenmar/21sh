@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/22 03:05:24 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/22 03:40:36 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	hist_file_to_lst(void)
 		g_tracking.mysh->hist = hist_lst_create(NULL);
 	while ((t = get_next_line(fd, &line)) == 1 && line != NULL)
 	{
-		if (ft_strcmp(line, "\n") != 0)
-			hist_lst_add_next(g_tracking.mysh->hist, line);
+		// if (ft_strcmp(line, "\n") != 0)
+		// 	hist_lst_add_next(g_tracking.mysh->hist, line);
 		if (line)
 			free(line);
 		line = NULL;
