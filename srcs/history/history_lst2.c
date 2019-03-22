@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thegenius <thegenius@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/21 21:52:48 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/22 14:50:13 by thegenius        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,15 +138,15 @@ t_hist		*hist_delete_last(t_hist *hist)
 	while(g_tracking.mysh->hist->next)
 		g_tracking.mysh->hist = g_tracking.mysh->hist->next;
 	tmp = g_tracking.mysh->hist;
-	if (hist && !(g_tracking.mysh->hist->previous))
+	if (g_tracking.mysh->hist && !(g_tracking.mysh->hist->previous))
 		return hist_free();
 	else
 	{
-		hist = hist->previous;
+		g_tracking.mysh->hist = g_tracking.mysh->hist->previous;
 		free(tmp);
 		tmp = 0;
-		hist->next = 0;
-		hist = hist_remap_index(hist);
+		g_tracking.mysh->hist->next = NULL;
+		g_tracking.mysh->hist = hist_remap_index(g_tracking.mysh->hist);
 	}
-	return hist;
+	return g_tracking.mysh->hist;
 }

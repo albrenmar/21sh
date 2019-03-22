@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thegenius <thegenius@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/21 17:44:22 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/22 15:09:12 by thegenius        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void		hist_setup_file(void)
 	char	**line;
 
 	line = ft_memalloc(sizeof(line));
-	fd = open("/goinfre/.shell_history", O_CREAT | O_APPEND | O_RDWR, 00777);
+	
+	fd = open(create_path_hist(), O_CREAT | O_APPEND | O_RDWR, 00777);
 	if (fd < 0)
-		return ft_putendl_fd("Error while opening/creating .shell_history", 2);
+		return ft_putendl_fd("Error while opening/creating history file", 2);
 	if (get_next_line(fd, line) == 1)
 	{
 		g_tracking.mysh->hist = hist_lst_create(*line);
