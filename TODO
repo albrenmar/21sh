@@ -18,6 +18,7 @@ leaks de ma partie (sauf srcs/builtins/builtins.c)
 -forkear SIEMPRE (con builtin solo tambien) con '&' tanto como '|'
 -RECOMMENCER AST XDDD
 -limpiar la estructura global
+hacer bien los alias (en el lexer)
 
 Partie Marc
 - Gestion d'errors pour les expansions.
