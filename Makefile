@@ -6,7 +6,7 @@
 #    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/22 00:54:45 by abguimba         ###   ########.fr        #
+#    Updated: 2019/03/22 04:07:15 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,8 @@ SRC = main.c \
 	  builtins/cd/ft_cd2.c \
 	  builtins/cd/ft_dotdot.c \
 	  builtins/builtin_tools.c \
-	  builtins/fg_bg_builtins.c \
+	  builtins/bg.c \
+	  builtins/fg.c \
 	  builtins/jobs_builtin.c \
 	  builtins/exit.c \
 	  builtins/hash_builtin.c \
