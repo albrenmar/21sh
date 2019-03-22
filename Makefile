@@ -3,12 +3,24 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/20 04:52:48 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/22 00:54:45 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
+CLEAR_LINE	= \033[2K
+BEGIN_LINE	= \033[A
+COL_END		= \033[0m
+COL_RED		= \033[1;31m
+COL_GREEN	= \033[1;32m
+COL_YELLOW	= \033[1;33m
+COL_BLUE	= \033[1;34m
+COL_VIOLET	= \033[1;35m
+COL_CYAN	= \033[1;36m
+COL_WHITE	= \033[1;37m
 
 NAME :=	42sh
 
@@ -162,58 +174,50 @@ SRC = main.c \
 	  expansions/tools_double_percent.c \
 	  expansions/autocomplete/auto_com_expan.c
 
-CLEAR_LINE	= \033[2K
-BEGIN_LINE	= \033[A
-COL_END		= \033[0m
-COL_RED		= \033[1;31m
-COL_GREEN	= \033[1;32m
-COL_YELLOW	= \033[1;33m
-COL_BLUE	= \033[1;34m
-COL_VIOLET	= \033[1;35m
-COL_CYAN	= \033[1;36m
-COL_WHITE	= \033[1;37m
-
-OBJ = $(SRC:.c=.o)
-SRCDIR = srcs
-OBJDIR = obj
-INCDIR = includes
+OBJ := $(SRC:.c=.o)
 
 PWD := $(shell pwd)
 
-SRCP =		$(addprefix $(SRCDIR)/, $(SRC))
-OBJP =		$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
-ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
+SRCDIR := srcs
+OBJDIR := obj
 
-LIB = ./srcs/libft
-LIBADD = ./srcs/libft/libft.a
+SRCP :=		$(addprefix $(SRCDIR)/, $(SRC))
+OBJP :=		$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
+ONLYDIR :=	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 
-FLAG = -g -fsanitize=address #-Wall -Wextra -Werror 
+LIB := -L srcs/libft/ -lft
 
-all : $(NAME)
+INC := -I includes
 
-$(NAME) : complib $(OBJP)
-			@gcc $(FLAG) $(OBJP) -o $(NAME) -ltermcap -I $(INCDIR) $(LIBADD)
-			@echo -e "$(CLEAR_LINE)$(COL_CYAN)All done $(COL_END)ᕦ(ò_óˇ)ᕤ"
+FLAG := -g -fsanitize=address #-Wall -Wextra -Werror 
+
+TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
+CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')
+
+all : libft_comp $(NAME)
+
+$(NAME) : $(OBJP)
+			@gcc $(FLAG) $(OBJP) -o $(NAME) -ltermcap $(INC) $(LIB) 
+			@echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Finished compilation. Output file : $(COL_VIOLET)$(PWD)/$(NAME)$(COL_BLUE) ᕦ(ò_óˇ)ᕤ$(COL_END)"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 			@mkdir -p $(ONLYDIR)
-			@gcc -c $(FLAG) $< -o $@  -I $(INCDIR)
-			@echo "$(CLEAR_LINE)$(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"
-complib :
-			@make -C $(LIB) -j
+			@gcc -c $(FLAG) $(INC) $< -o $@
+			@echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"
+
+libft_comp:
+			@make -C srcs/libft
+
 clean :
-			@echo -e "$(CLEAR_LINE)$(COL_RED)Cleaning objs dir$(COL_END)"
 			@rm -rf $(OBJDIR)
-			@echo -e "$(CLEAR_LINE)$(COL_GREEN)Done ✓$(COL_END)"
-			@echo -e "$(CLEAR_LINE)$(COL_RED)Cleaning lib dir$(COL_END)"
-			@make clean -C $(LIB)
-			@echo -e "$(CLEAR_LINE)$(COL_GREEN)Done ✓$(COL_END)"
+			@make clean -C srcs/libft
+			@echo "$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Removed $(COL_VIOLET)compiled objects.$(COL_END)"
 
 fclean :	clean
 			@rm -rf $(NAME)
-			@make fclean -C $(LIB)
-
-
+			@make fclean -C srcs/libft
+			@echo "$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Removed $(COL_VIOLET)$(NAME)$(COL_END)"
+			
 re :		fclean all
 
 .PHONY: ft_printf clean fclean all re

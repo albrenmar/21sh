@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hassantest.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 19:07:42 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/21 14:48:51 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int		history(void)
 
 	i = 0;
 	av = g_tracking.g_tab_exec;
-	while (av[i])
-	{
-		ft_putendl(av[i]);
-		i++;
-	}
+	// while (av[i])
+	// {
+	// 	ft_putendl(av[i]);
+	// 	i++;
+	// }
 	history_builtin();
 	return (0);
 }
