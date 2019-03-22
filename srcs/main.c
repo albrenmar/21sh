@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/22 23:45:29 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/22 23:54:46 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,10 @@ void	set_up(char **argv, char **env)
 	set_shell_signal_handlers();
 }
 
-void	main_loop(char **argv)
+void	main_loop(char *line, char **argv)
 {
+	t_last	*cmd;
+
 	if ((ft_strlen(line) > 0) && spaces_line_check(line)
 	&& (cmd = ft_parseur(line)))
 	{
@@ -118,11 +120,11 @@ int		main(int argc, char **argv, char **env)
 	char	*line;
 	t_tab	st_tab;
 	t_env	st_env;
-	t_last	*cmd;
 
 	line = NULL;
 	if (argc > 2)
 		argc_error();
+	set_up(argv, env);
 	while (get_key() > 0)
 	{
 		line = ft_strdup(g_tracking.cmd);
@@ -132,7 +134,7 @@ int		main(int argc, char **argv, char **env)
 			ft_putchar_fd('\n', 2);
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
 		if ((line = shebang_parse_switch(line)) != NULL)
-			main_loop(argv);
+			main_loop(line, argv);
 		jobs_notifications();
 		jobs_update_current();
 		free(line);
