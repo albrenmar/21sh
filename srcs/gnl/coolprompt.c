@@ -6,18 +6,17 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 09:49:55 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 09:58:08 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
 
-void	transform_cwd(void)
+void	transform_cwd(int i)
 {
 	char		*home;
 	int			len;
 	char		*n;
-	int			i;
 
 	home = ft_strdup(get_env_string("HOME"));
 	if (ft_strstr(g_tracking.cwd, home))
@@ -25,7 +24,6 @@ void	transform_cwd(void)
 		len = ft_strlen(home);
 		if (!(n = malloc(sizeof(char) * ft_strlen(g_tracking.cwd) - len + 2)))
 			return ;
-		i = 0;
 		len = len + 2;
 		n[i++] = '<';
 		n[i++] = ' ';
@@ -78,6 +76,9 @@ void	print_prompt(void)
 
 void	get_coolprompt_cont(int mode, char *memory, char *prompt)
 {
+	int	i;
+
+	i = 0;
 	if (mode == 1)
 	{
 		memory = g_tracking.cwd;
@@ -87,7 +88,7 @@ void	get_coolprompt_cont(int mode, char *memory, char *prompt)
 	memory = g_tracking.cwd;
 	g_tracking.cwd = ft_strjoinfree(g_tracking.cwd, " >", 1);
 	if (get_env_string("HOME"))
-		transform_cwd();
+		transform_cwd(i);
 	prompt = ft_strdup(SHELL_NAME);
 	prompt = ft_strjoinfree(prompt, " $/> ", 1);
 	g_tracking.prompt = ft_strdup(prompt);
@@ -108,8 +109,7 @@ void	get_coolprompt(void)
 	ft_strdel(&g_tracking.prompt);
 	ft_strdel(&g_tracking.cwd);
 	ft_strdel(&g_tracking.user);
-	if (g_tracking.quotes == 1 || g_tracking.quotes == 2
-	|| g_tracking.quotes == 3)
+	if (g_tracking.quotes >= 1 && g_tracking.quotes <= 3)
 		return (set_prompt_quote());
 	g_tracking.user = ft_strdup("[");
 	g_tracking.user = ft_strjoinfree(g_tracking.user, getlogin(), 1);

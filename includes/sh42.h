@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 09:44:31 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 09:58:19 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -432,7 +432,7 @@ void			set_fd_before_exec(void);
 
 void			get_coolprompt(void);
 void			print_prompt(void);
-void			transform_cwd(void);
+void			transform_cwd(int i);
 int				spaces_line_check(char *line);
 void			clean_tab_exec(char **tab_exec);
 
