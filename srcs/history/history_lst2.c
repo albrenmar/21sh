@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/23 06:28:23 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 09:07:40 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		hist_save_file(t_hist *hist)
 	lseek(fd, SEEK_SET, 0);
 	line = malloc(sizeof(line));
 	free(line);
+	free(path);
 	close(fd);
 
 }
