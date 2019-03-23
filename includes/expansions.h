@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/21 02:05:58 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 05:04:36 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,27 @@ typedef struct	s_unquoter
 	struct s_unquoter	*next;
 }				t_unquoter;
 
+typedef struct	s_scan_arg
+{
+	t_expand	*expand;
+	t_scan		*scan;
+	t_scan		*first_scan;
+	t_unquoter	*checker;
+	char		*new_arg;
+	int			ret;
+}				t_scan_arg;
+
+typedef struct	s_dataq
+{
+	char		*new_value;
+	char		*scan;
+	t_unquoter	*to_unquot;
+	t_unquoter	*first;
+	char		next_quote;
+}				t_dataq;
+
+
+
 char			expand_transformer(char **value, int chg_value);
 int				need_expand(char *to_transf);
 t_expand		*new_expand(int len);
@@ -71,7 +92,7 @@ int				have_homedir(char *to_transf);
 int				check_have_homedir(struct passwd *user_inf, char *tmp_usr);
 int				have_parm(char *to_transf);
 int				is_to_add_or_mod_parm(char *to_transf);
-int				transform(t_expand *expand, char **str);
+void			transform(t_expand *expand, char **str);
 void			expand_tilde_only(char **str);
 char			*get_user_home(char *user);
 void			expand_tilde_path(char **str, t_expand **expand);
@@ -87,7 +108,7 @@ t_expand		*expand_keys(t_expand *expand, char **str);
 char			check_sign(t_expand *expand);
 void			exp_key_less(char **str, t_expand *expand);
 char			*get_varname(t_expand *expand);
-char			*get_value(t_expand *expand);
+char			*get_value(t_expand *expand, int i);
 void			exp_key_equal(char **str, t_expand *expand);
 void			exp_key_inter(char **str, t_expand *expand);
 void			exp_key_plus(char **str, t_expand *expand);
@@ -146,5 +167,11 @@ void			rmv_str(char **str);
 void			ass_str_wout_ast(t_analyzer *to_analy, char **str);
 void			ass_str_wstrt_ast(t_analyzer *to_analy, char **str);
 void			ass_str_wend_ast(t_analyzer *to_analy, char **str);
+void			expan_arg(t_scan_arg *scarg);
+void			fill_scarg(t_scan_arg *scarg);
+t_unquoter		*new_unquoted_value(void);
+void			copy_to_quote(char **old, char **new, char *type);
+void			copy_new_value(char **old, t_unquoter **new);
+t_unquoter		*quote_checker(t_unquoter *to_unquot, char **ascan);
 
 #endif

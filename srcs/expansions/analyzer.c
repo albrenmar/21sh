@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/10 18:01:55 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/18 21:17:21 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 04:49:10 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	init_analyzer(t_analyzer *to_analy, char **str, t_expand *expand)
 	to_analy->vnme_len = ft_strlen(to_analy->varname);
 	to_analy->varvalue = ft_strdup(get_env_string(to_analy->varname));
 	to_analy->vvlu_len = ft_strlen(to_analy->varvalue);
-	to_analy->wildcard = get_value(expand);
+	to_analy->wildcard = get_value(expand, 0);
 	to_analy->wlcd_len = ft_strlen(to_analy->wildcard);
 	to_analy->start_astrsk = 0;
 	to_analy->end_astrsk = 0;
