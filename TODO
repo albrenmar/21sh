@@ -26,7 +26,7 @@ leaks de ma partie (sauf srcs/builtins/builtins.c)
 
 Partie Marc
 - Gestion d'errors pour les expansions.
-- Quiter le process en execution pour no importe quel commande avec ${VARNAME:?VARVALUE} en tant que VARNAME 
+- Quiter le process en execution pour no importe quel commande avec ${VARNAME:?VARVALUE} en tant que VARNAME
     no existe pas, ou elle a pas valeur. (A voir avec Abraham/et/ou/Alexandre.)
 (X) - Ajuter les expansions dans l'autocomplete, entant que la line finis avec '/' (A voir avec Brendan). NORMALMENT EST GERE.
 - Gerer l'expand recursive (${VARNAME:-${VARNAME:+VARVALUE}aaaaa}bbbb Par exemple).
@@ -39,9 +39,9 @@ Partie Alex
 - close apres creation fichier
 
 Partie Hassan
-- Builtin fc
-- Implementation des differents builtins
-- Env avec les builtins
+- history bug to fix
+- history -ps 1 bug
+- fc
 
 MISC
 -Ajouter builtins manquants (POSIX?)
