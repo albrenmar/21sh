@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/23 09:07:40 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 11:53:21 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ t_hist		*hist_remap_index(t_hist *hist)
 	int i;
 
 	i = 1;
+	if (!hist)
+		return NULL;
 	while (hist->previous)
 		hist = hist->previous;
 	while (hist)
@@ -72,7 +74,9 @@ t_hist		*hist_delete_index(t_hist *hist, int index)
 {
 	t_hist	*tmp;
 
-	if (index <= 0)
+	if (!hist || !hist->line)
+		return NULL;
+	if (index < 1)
 	{
 		ft_putendl_fd("history position out of range", 2);
 		return (hist);
@@ -142,9 +146,8 @@ t_hist		*hist_delete_last(t_hist *hist)
 	else
 	{
 		hist = hist->previous;
+		tmp->index = 0;
 		free(tmp);
-		tmp = 0;
-		hist->next = 0;
 		hist = hist_remap_index(hist);
 	}
 	return hist;

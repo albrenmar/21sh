@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/21 17:44:22 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/23 12:08:43 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ t_hist		*hist_lst_create(char *line)
 
 	if ((new_lst = malloc(sizeof(*new_lst))) == NULL)
 		return (NULL);
-	new_lst->index = 0;
+	if (!line)
+		new_lst->index = 0;
+	else
+		new_lst->index = 1;
 	new_lst->line = line;
 	new_lst->next = NULL;
 	new_lst->previous = NULL;
