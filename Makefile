@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/22 04:07:15 by abguimba         ###   ########.fr        #
+#    Updated: 2019/03/23 02:52:16 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,8 @@ SRC = main.c \
 	  builtins/builtins.c \
 	  builtins/set.c \
 	  builtins/echo/exec.c \
-	  builtins/type_main.c \
+	  builtins/type/type_main.c \
+	  builtins/type/is_cmd.c \
 	  builtins/test/test_main.c \
 	  builtins/test/test_tab.c \
 	  builtins/test/test_two_arg.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/22 03:26:25 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 02:54:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,7 @@ typedef struct	s_tracking
 	char				*search;
 	char				*found;
 	t_lstcontainer		*key_list;
+	t_lstcontainer		*builtin_list;
 	int					linemode;
 	int					quotes;
 	int					bracket;
@@ -329,6 +330,7 @@ int				init_alias(void);
 int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
 void			apply_alias(t_last *list);
+char			*return_alias(char *name);
 void			print_alias_lst(void);
 int				unalias(char *alias);
 int				unalias_blt(void);
@@ -353,6 +355,8 @@ int				ctrl_key(char c);
 void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
 int				fg_builtin_output(t_jobs *tmp);
 int				bg_builtin_output(t_jobs *tmp);
+int				type_main(void);
+char			*exist_fonction(char *cmd);
 
 int				ft_isspace(int c);
 int				ft_isdigit_str(char* str);
