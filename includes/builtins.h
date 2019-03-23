@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/22 04:07:48 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 01:11:20 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,13 @@ int				is_builtin(void);
 int				ft_exit(void);
 int				builtin_exec();
 int				jobs_builtin(void);
-int				errors_fg(int nb, int error);
-int				errors_bg(int nb, int error);
+int				errors_fg(int nb, int error, char *hold);
+int				errors_bg(int nb, int error, char *hold);
 int		        ft_cd(void);
 int		        ft_isdir(char *path);
 int		        ft_handlestat(struct stat *tmp, char *permission, char *path);
 char	        *ft_homepath(char *path);
 char	        *ft_cdpath(char *path);
-char	        *cd_line(char **tab, char *cdline, char *path);
-char	        *conc_and_free(char *path, char **tab);
 char		    *ft_dot(char *path);
 int		        getright(char *str);
 int				bg_builtin(void);

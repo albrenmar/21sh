@@ -14,11 +14,11 @@ leaks de ma partie (sauf srcs/builtins/builtins.c)
 -verificar segv autocompletion solo en lo mio
 -verificar history funciona con hdufer
 -demander de completer si "ls &&" ou "ls ||"
--builtin solo con & no funciona mal 
+-builtin solo con & no funciona bien
 -forkear SIEMPRE (con builtin solo tambien) con '&' tanto como '|'
 -RECOMMENCER AST XDDD
 -limpiar la estructura global
-hacer bien los alias (en el lexer)
+-hacer bien los alias (en el lexer)
 
 Partie Marc
 - Gestion d'errors pour les expansions.

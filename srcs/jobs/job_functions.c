@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 00:43:04 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -298,7 +298,10 @@ void		wait_for_job(t_jobs *job)
 	while (!update_process_status(pid, status) && !job_is_stopped(job) &&
 	!job_is_done(job))
 		pid = waitpid(WAIT_ANY, &status, WUNTRACED);
-	g_tracking.lastreturn = WEXITSTATUS(status);
+	if (WIFSIGNALED(status) || WIFSTOPPED(status))
+		g_tracking.lastreturn = 1;
+	else
+		g_tracking.lastreturn = WEXITSTATUS(status);
 }
 
 void				put_job_in_foreground(t_jobs *job, int cont)
