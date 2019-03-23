@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/21 21:52:48 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/23 09:07:40 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		hist_save_file(t_hist *hist)
 	char *path;
 
 	path = create_path_hist();
-	fd = open(path, O_CREAT | O_APPEND | O_RDWR, 00777);
+	fd = open(path, O_CREAT | O_TRUNC | O_RDWR, 00777);
 	if (fd < 0)
 	{
 		ft_putendl_fd("Error while opening/creating .42hist", 2);
@@ -41,9 +41,8 @@ void		hist_save_file(t_hist *hist)
 	}
 	lseek(fd, SEEK_SET, 0);
 	line = malloc(sizeof(line));
-	// while(get_next_line(fd, line) == 1)
-	// 	ft_putendl(*line);
 	free(line);
+	free(path);
 	close(fd);
 
 }

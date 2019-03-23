@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/23 09:59:39 by abguimba         ###   ########.fr        #
+#    Updated: 2019/03/23 05:27:32 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,8 @@ SRC = main.c \
 	  builtins/builtins.c \
 	  builtins/set.c \
 	  builtins/echo/exec.c \
-	  builtins/type_main.c \
+	  builtins/type/type_main.c \
+	  builtins/type/is_cmd.c \
 	  builtins/test/test_main.c \
 	  builtins/test/test_tab.c \
 	  builtins/test/test_two_arg.c \
@@ -99,6 +100,7 @@ SRC = main.c \
 	  gnl/get_cmd.c \
 	  gnl/home_end.c \
 	  auto_complete/auto_complete.c \
+	  auto_complete/auto_complete_bin.c \
 	  auto_complete/auto_complete_check.c \
 	  auto_complete/auto_complete_cleanup.c \
 	  auto_complete/auto_complete_cursor.c \
@@ -181,6 +183,9 @@ SRC = main.c \
 	  expansions/analyzer.c \
 	  expansions/tools_double_hash.c \
 	  expansions/tools_double_percent.c \
+ 	  expansions/scarg.c \
+	  expansions/tools_quote.c \
+	  expansions/varname.c \
 	  expansions/autocomplete/auto_com_expan.c
 
 OBJ := $(SRC:.c=.o)

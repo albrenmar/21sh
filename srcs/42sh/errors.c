@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 09:47:06 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/22 23:39:51 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		argc_error(void)
 {
-	ft_putendl_fd("usage: ./42sh", 2);
+	ft_putendl_fd("usage: ./42sh [-u]", 2);
 	return (ft_exit(1, EXIT_FAILURE));
 }
 
