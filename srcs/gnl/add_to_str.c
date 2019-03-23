@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_to_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 03:10:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 23:52:41 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ void		err_check(int i, int j)
 	char	*newstr;
 
 	newstr = NULL;
-	while ((i + j + 7) > g_tracking.buffsize)
-	{
+	while ((i + j + 10) > g_tracking.buffsize)
 		g_tracking.buffsize *= 2;
-		newstr = malloc(sizeof(char) * g_tracking.buffsize);
-		newstr = ft_strcpy(newstr, g_tracking.str);
-		free(g_tracking.str);
-		g_tracking.str = newstr;
-	}
+	newstr = malloc(sizeof(char) * g_tracking.buffsize);
+	ft_bzero(newstr, g_tracking.buffsize);
+	newstr = ft_strcpy(newstr, g_tracking.str);
+	free(g_tracking.str);
+	g_tracking.str = newstr;
 }
 
 void		print_and_free(char *str, int i)
