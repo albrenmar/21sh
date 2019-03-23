@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 02:54:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 03:12:25 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -484,5 +484,6 @@ void			jobs_update_current(void);
 
 int				main_test(int flag);
 char			**init_envp(t_lstcontainer *env);
+int				exist_builtin(char *cmd);
 
 #endif

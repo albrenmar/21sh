@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 00:07:42 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 02:46:11 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 03:12:20 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		exist_builtin(char *cmd)
 	if (!g_tracking.builtin_list)
 		return (0);
 	tmp = g_tracking.builtin_list->firstelement;
-	if (!tmp)
+	if (!tmp || !cmd)
 		return (0);
 	while (tmp)
 	{
