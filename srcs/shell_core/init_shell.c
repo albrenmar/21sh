@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/22 03:39:46 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 02:31:33 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init_shell(char **environ, char **argv)
 	if (!(mysh = malloc(sizeof(t_shell))))
 	{
 		ft_putendl("Failled to allocate memory");
-		exit(EXIT_FAILURE);
+		ft_exit(1, EXIT_FAILURE);
 	}
 	while (i < 27)
 	{

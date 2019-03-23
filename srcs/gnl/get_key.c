@@ -61,7 +61,7 @@ int		readloop(int i, int fd)
 
 	str = ft_strnew(0);
 	if ((read(fd, &c, 1)) == 0)
-		ft_exit();
+		ft_exit(1, EXIT_SUCCESS);
 	str = ft_strjoinchar(str, c, 1);
 	i = single_key(c);
 	if (i == 13 || i == 10)

@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 09:50:46 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int			hash_update_commands(int j)
 	t_hash	*tmp;
 	int		index;
 
+	index = 0;
+	tmp = NULL;
 	lastvalue = 0;
+	commandhold = NULL;
 	while (g_tracking.g_tab_exec[j])
 	{
 		commandhold = tab_format_hash(g_tracking.g_tab_exec[j]);
@@ -41,36 +44,10 @@ int			hash_update_commands(int j)
 			lastvalue = -1;
 		}
 		else
-		{
-			index = hash_maker(g_tracking.g_tab_exec[j][0]);
-			tmp = g_tracking.hashtable[index];
-			while (tmp)
-			{
-				if (!(ft_strcmp(g_tracking.g_tab_exec[j], tmp->binary)))
-				{
-					ft_strdel(&tmp->path);
-					tmp->path = ft_strdup(commandhold[0]);
-					tmp->totalhits = 0;
-					break ;
-				}
-				if (!tmp->nextbinary)
-					break ;
-				tmp = tmp->nextbinary;
-			}
-			if (tmp)
-			{
-				if (!tmp->nextbinary && ft_strcmp(g_tracking.g_tab_exec[j], tmp->binary))
-					tmp->nextbinary = new_binary_hash(g_tracking.g_tab_exec[j], commandhold[0], 0);
-			}
-			else
-			{
-				g_tracking.hashtable[index] = new_binary_hash(g_tracking.g_tab_exec[j], commandhold[0], 0);
-			}
-		}
+			hash_update_helper(tmp, index, j, commandhold);
 		j++;
-		if (commandhold[0])
-			ft_strdel(&commandhold[0]);
 	}
+	free_tab(commandhold);
 	return (lastvalue);
 }
 
@@ -97,38 +74,21 @@ int			empty_hash_table(void)
 		i++;
 	}
 	return (0);
-}		
+}
 
 void		ft_hash_output(void)
 {
 	int		i;
 	int		spaces;
-	int		totalhitshold;
 	t_hash	*tmp;
-	
+
 	i = 0;
+	spaces = 0;
 	while (i < 27)
 	{
 		tmp = g_tracking.hashtable[i];
 		if (tmp)
-		{
-			while (tmp)
-			{
-				spaces = 3;
-				totalhitshold = tmp->totalhits;
-				while (totalhitshold / 10)
-				{
-					totalhitshold = totalhitshold / 10;
-					spaces -= 1;
-				}
-				while (spaces-- > 0)
-					ft_putchar(' ');
-				ft_putnbr(tmp->totalhits);
-				ft_putstr("    ");
-				ft_putendl(tmp->path);
-				tmp = tmp->nextbinary;
-			}
-		}
+			ft_hash_output_helper(tmp, spaces);
 		i++;
 	}
 }
@@ -137,29 +97,13 @@ int			ft_hash(void)
 {
 	int		count;
 	int		i;
-	int		j;	
+	int		j;
 
 	j = 1;
 	if (g_tracking.g_tab_exec[j])
-	{
-		while (g_tracking.g_tab_exec[j] && g_tracking.g_tab_exec[j][0] == '-')
-		{
-			if (strchr(g_tracking.g_tab_exec[j], 'r'))
-			{
-				empty_hash_table();
-				if (!(g_tracking.g_tab_exec[j + 1]))
-					return (0);
-			}
-			if (g_tracking.g_tab_exec[j] && g_tracking.g_tab_exec[j][1] != 'r')
-				errors_hash(g_tracking.g_tab_exec[j], 2);
-			j++;
-		}
-		if (g_tracking.g_tab_exec[j])
-			return (hash_update_commands(j));
-		return (0);
-	}
+		return (ft_hash_arg(j));
 	count = 0;
-	i = 0;	
+	i = 0;
 	while (i < 27)
 	{
 		if (g_tracking.hashtable[i])

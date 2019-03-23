@@ -15,10 +15,10 @@
 int		argc_error(void)
 {
 	ft_putendl_fd("usage: ./42sh [-u]", 2);
-	exit(1);
+	return (ft_exit(1, EXIT_FAILURE));
 }
 
-int		exec_errors_dir(char **tab_exec, int mode)
+int		exec_errors_dir(void)
 {
 	struct stat path_stat;
 
@@ -49,6 +49,7 @@ int		exec_errors_dir(char **tab_exec, int mode)
 
 int		exec_errors(char **tab_exec, int mode)
 {
+	(void)tab_exec;
 	if (mode == 0)
 	{
 		ft_putstr_fd(SHELL_NAME, 2);
@@ -66,7 +67,7 @@ int		exec_errors(char **tab_exec, int mode)
 			ft_putendl_fd(": Permission denied", 2);
 			return (-1);
 		}
-		exec_errors_dir(tab_exec, mode);
+		exec_errors_dir();
 	}
 	return (-1);
 }
