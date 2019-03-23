@@ -7,7 +7,7 @@ select CHECK in "COMPIL 42SH" "REMOVE 42SH" "NORM EXPANSIONS" ALL SIMPLE ADVANCE
         if [ "$CHECK" == "COMPIL 42SH" ]
             then
                 cd ..
-                make
+                make -j
                 cd testscript
                 cp ../42sh .
         fi

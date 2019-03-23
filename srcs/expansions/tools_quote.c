@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 03:09:44 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 03:12:30 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 03:45:21 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_unquoter	*new_unquoted_value(void)
 	return (value);
 }
 
-void	copy_to_quote(char **old, char **new, char *type)
+void		copy_to_quote(char **old, char **new, char *type)
 {
 	char	*run_old;
 	char	*run_new;
@@ -43,7 +43,7 @@ void	copy_to_quote(char **old, char **new, char *type)
 	*old = run_old;
 }
 
-void	copy_new_value(char **old, t_unquoter **new)
+void		copy_new_value(char **old, t_unquoter **new)
 {
 	char		*run_old;
 	char		*run_new;
@@ -52,7 +52,6 @@ void	copy_new_value(char **old, t_unquoter **new)
 	run_old = *old;
 	unq_new = *new;
 	run_new = unq_new->str_unquoted;
-
 	if (*run_old)
 	{
 		if (!unq_new->type)

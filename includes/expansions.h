@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 03:16:50 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 03:40:52 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int				have_homedir(char *to_transf);
 int				check_have_homedir(struct passwd *user_inf, char *tmp_usr);
 int				have_parm(char *to_transf);
 int				is_to_add_or_mod_parm(char *to_transf);
-int				transform(t_expand *expand, char **str);
+void			transform(t_expand *expand, char **str);
 void			expand_tilde_only(char **str);
 char			*get_user_home(char *user);
 void			expand_tilde_path(char **str, t_expand **expand);

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 01:03:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 03:22:02 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 03:37:28 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		expan_arg(t_scan_arg *scarg)
 	create_list_expand(scarg->expand, scarg->scan->sstring);
 	if ((scarg->scan->sstring[0] != '~' && !scarg->checker->type)
 			|| scarg->scan->sstring[0] == '$')
-		scarg->checker->error = transform(scarg->expand, &scarg->scan->sstring);
+		transform(scarg->expand, &scarg->scan->sstring);
 	else if (scarg->scan->sstring[0] == '~')
 		transform_if_tilde(&scarg->expand, &scarg->scan->sstring);
 	if (!scarg->new_arg)
