@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 08:47:37 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/24 00:35:15 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void				put_job_in_foreground(t_jobs *job, int cont)
 	wait_for_job(job);
 	tcsetpgrp(g_tracking.sterminal, g_tracking.spid);
 	tcgetattr(g_tracking.sterminal, &job->jterm);
-	tcsetattr(g_tracking.sterminal, TCSADRAIN, &g_tracking.myterm);
 }
 
 void				put_job_in_background(t_jobs *job, int cont)
