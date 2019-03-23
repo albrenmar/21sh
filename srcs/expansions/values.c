@@ -6,13 +6,13 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 06:10:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/14 07:14:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 05:07:03 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 
-char	*get_value_asterisk(t_expand *expand)
+char		*get_value_asterisk(t_expand *expand)
 {
 	int			i;
 	char		*value;
@@ -20,7 +20,7 @@ char	*get_value_asterisk(t_expand *expand)
 	t_expand	*to_run;
 
 	i = 0;
-	to_run = expand->next->next;
+	to_run = expand->next;
 	while (to_run->ltr != ':' && to_run->ltr != '%')
 		to_run = to_run->next;
 	if (to_run->ltr == '%')
@@ -39,7 +39,7 @@ char	*get_value_asterisk(t_expand *expand)
 	return (value_asterisk(value, to_run->next->next));
 }
 
-char	*get_asterisk_value(t_expand *expand)
+char		*get_asterisk_value(t_expand *expand)
 {
 	int			i;
 	char		*val;
@@ -47,7 +47,7 @@ char	*get_asterisk_value(t_expand *expand)
 	t_expand	*to_run;
 
 	i = 0;
-	to_run = expand->next->next;
+	to_run = expand->next;
 	while (to_run->ltr != ':' && to_run->ltr != '#')
 		to_run = to_run->next;
 	if (to_run->ltr == '#')
@@ -59,7 +59,7 @@ char	*get_asterisk_value(t_expand *expand)
 		to_run = to_run->prev;
 	}
 	start = to_run->next->next;
-	while (start->ltr != '}')
+	while (start && start->ltr != '*')
 	{
 		start = start->next;
 		i++;
@@ -68,50 +68,60 @@ char	*get_asterisk_value(t_expand *expand)
 	return (value(val, to_run->next->next));
 }
 
-char	*get_value(t_expand *expand)
+t_expand	*run_to_value(t_expand *ato_run)
 {
-	int			i;
+	t_expand	*to_run;
+
+	to_run = ato_run;
+	if (to_run->ltr == '#' || to_run->ltr == '%' || to_run->ltr == '/')
+	{
+		if (to_run->next && to_run->prev)
+			if (to_run->next->ltr == '#' || to_run->next->ltr == '%')
+				to_run = to_run->next;
+		to_run = to_run->prev;
+	}
+	return (to_run);
+}
+
+int			val_len(t_expand *start)
+{
+	int i;
+
+	i = 0;
+	while (start && start->ltr != '}')
+	{
+		if (start)
+		{
+			start = start->next;
+			i++;
+		}
+		else
+			break ;
+	}
+	return (i);
+}
+
+char		*get_value(t_expand *expand, int i)
+{
 	char		*val;
 	t_expand	*start;
 	t_expand	*to_run;
 
-	i = 0;
-	to_run = expand->next->next;
-	while (to_run->ltr != ':' && to_run->ltr != '#' && to_run->ltr != '%')
+	to_run = expand->next;
+	while (to_run && to_run->ltr != ':' && to_run->ltr != '#'
+			&& to_run->ltr != '%' && to_run->ltr != '/')
 		to_run = to_run->next;
-	if (to_run->ltr == '#' || to_run->ltr == '%')
-	{
-		if (to_run->next->ltr == '#' || to_run->next->ltr == '%')
-			to_run = to_run->next;
-		to_run = to_run->prev;
-	}
+	if (!to_run && to_run->prev->ltr == '$')
+		return (NULL);
+	to_run = run_to_value(to_run);
+	if (!to_run->next)
+		return (NULL);
+	if (!to_run->next->next)
+		return (ft_strdup(" "));
 	start = to_run->next->next;
-	while (start->ltr != '}')
-	{
-		start = start->next;
-		i++;
-	}
-	val = ft_strnew(i);
+	i = val_len(start);
+	if (!i)
+		return (NULL);
+	val = ft_strnew(i + 1);
 	return (value(val, to_run->next->next));
-}
-
-char	*get_varname(t_expand *expand)
-{
-	int			i;
-	char		*var;
-	t_expand	*to_run;
-
-	i = 0;
-	to_run = expand->next->next;
-	if (to_run->ltr == '#' && to_run->ltr == '%')
-		to_run = to_run->next;
-	while (to_run->ltr != ':' && to_run->ltr != '}'
-			&& to_run->ltr != '#' && to_run->ltr != '%')
-	{
-		to_run = to_run->next;
-		i++;
-	}
-	var = ft_strnew(i);
-	to_run = expand->next->next;
-	return (varname(var, to_run));
 }

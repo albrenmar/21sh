@@ -6,15 +6,22 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 02:40:58 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/12 05:04:14 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/21 02:01:05 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 
+char		is_slash_sign(t_expand *to_run)
+{
+	if (to_run->ltr == '/')
+		return ('/');
+	return ('\0');
+}
+
 char		is_diferent_sign(t_expand *to_run)
 {
-	if (to_run->ltr == '#' && to_run->prev && to_run->prev->ltr == '{')
+	if (to_run->ltr == '#' && to_run->prev && to_run->prev->ltr == '$')
 		return ('@');
 	else if (to_run->ltr == '#' && to_run->next && to_run->next->ltr != '}'
 			&& to_run->prev && to_run->prev->ltr != '{'
@@ -34,6 +41,9 @@ char		is_diferent_sign(t_expand *to_run)
 			&& to_run->prev && to_run->prev->ltr != '{'
 			&& to_run->prev->ltr != '%')
 		return ('5');
+	else if ((to_run->ltr == '#' && !to_run->next) || (to_run->ltr == '%'
+			&& !to_run->next))
+		return ('*');
 	return ('\0');
 }
 

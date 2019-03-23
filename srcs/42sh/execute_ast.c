@@ -3,189 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   execute_ast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/14 08:11:31 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
+#include <stdlib.h>
 
-#define ORDER g_tracking.mysh->order
-#define EXEC g_tracking.mysh->exec
-
-/*void		execute(void)
+void	set_fd_and_descr(void)
 {
-	if (EXEC->sym[0][0] == '|')
-		test_pipe();
-	else if (EXEC->sym[0][0] == '>')
-		test_redir();
-}*/
-
-t_order		*new_order(void)
-{
-	t_order		*order;
-
-	order = ft_memalloc(sizeof(t_order));
-	order->command = NULL;
-	order->next = NULL;
-	order->prev = NULL;
-	order->temp_command = NULL;
-	order->temp_command_next = NULL;
-	return (order);
+	descrf_two[0] = 0;
+	descrf_two[1] = 0;
+	descrf[0] = 0;
+	descrf[1] = 0;
+	g_tracking.redir = 0;
+	g_tracking.mysh->set_fd = ft_memalloc(sizeof(t_set_fd));
+	g_tracking.mysh->set_fd->STDIN = 0;
+	g_tracking.mysh->set_fd->STDOUT = 1;
+	g_tracking.mysh->set_fd->STDERR = 2;
 }
 
-char		**copy_tab(char **copy)
+void	exec_in_pipe(t_last *list_cmd, t_jobs *job)
 {
-	int		i;
-	int		j;
-	char	**tabcpy;
+	char	**tab_exec;
 
-	i = 0;
-	j = 0;
-	while (copy[i])
-		i++;
-	tabcpy = ft_memalloc(sizeof(char *) * (i + 1));
-	tabcpy[i] = NULL;
-	i = 0;
-	while (copy[i])
-	{
-		tabcpy[i] = ft_strdup(copy[i]);
-		i++;
-	}
-	tabcpy[i] = NULL;
-	return (tabcpy);
+	tab_exec = create_tab_to_exec(g_tracking.temp_command);
+	if (!descrf_two[0])
+		pipe(descrf_two);
+	if (!descrf[0])
+		pipe(descrf);
+	execute_pipe(tab_exec, job);
+	tab_exec = NULL;
+	g_tracking.temp_command = NULL;
+	list_cmd = list_cmd->next;
 }
 
-void		add_to_exec(int mode)
+void	exec_left_branch(t_tree *tree, t_jobs *job)
 {
-	if (ORDER)
-	{
-		while (ORDER->next)
-		{
-			ORDER = ORDER->next;
-		}
-		ORDER->next = new_order();
-		ORDER->next->prev = ORDER;
-		ORDER = ORDER->next;
-	}
-	else
-		ORDER = new_order();
-	ORDER->command = copy_tab(EXEC->left);
-	if (EXEC->sym && mode == 0)
-		ORDER->sym = ft_strdup(EXEC->sym[0]);
-	else
-		ORDER->sym = NULL;
+	if (ft_strlen(tree->cmd) == 1 && tree->cmd[0] == '&')
+		g_tracking.foreground = 1;
+	exec_command(tree->left->list_cmd, g_tracking.foreground, job);
+	g_tracking.foreground = 0;
 }
 
-void		exec_command(void)
+void	exec_right_branch(t_tree *tree, t_jobs *job)
 {
-	int		status;
-	t_order		*temp_command;
-	t_order		*temp_command_next;
-	pid_t	gpid;
-	pipe(descrf);
-	pipe(descrf_two);
-	int		j;
-	int		close_fd;
-
-	j = 0;
-	EXEC->pid_exec = 0;
-	EXEC->gpid = 0;
-	while (ORDER->prev)
-		ORDER = ORDER->prev;
-	/*EXEC->gpid = (gpid = fork());
-	if (gpid == 0)
-	{
-	*/	if (!ORDER->next)
-		{
-			execute_pipe_two(0);
-			//exit (0);
-			ORDER = ORDER->next;
-		}
-		while (ORDER)
-		{
-			while (ORDER && ORDER->sym && ORDER->sym[0] == '|')
-			{
-				descrf[0] = descrf_two[0];
-				descrf[1] = descrf_two[1];
-				pipe(descrf_two);
-				execute_pipe();
-				ORDER = ORDER->next;
-				if (!ORDER->next)
-				{
-					execute_pipe_two(0);
-					ORDER = ORDER->next;
-				}
-			}
-			if (ORDER && ORDER->sym && ORDER->sym[0] == '>')
-			{
-				temp_command = ORDER;
-				while (ORDER && ORDER->sym && ORDER->sym[0] == '>')
-				{
-					ORDER = ORDER->next;
-					if (ft_strlen(ORDER->sym) == 1)
-						close_fd = open(ORDER->command[0], O_CREAT | O_TRUNC | O_RDWR, 0644);
-					else
-						close_fd = open(ORDER->command[0], O_CREAT | O_APPEND | O_RDWR, 0644);
-				}
-				ORDER = ORDER->next;
-				temp_command_next = ORDER;
-				ORDER = temp_command;
-				execute_pipe_two(close_fd);
-				close(close_fd);
-				ORDER = temp_command_next;
-			}
-		}
-		/*exit (0);
-	}
-	else
-	{
-		waitpid(gpid, &status, WUNTRACED);
-		j = WEXITSTATUS(status);
-	}
-	if (j == 0)
-		EXEC->ret = 1;
-	else
-		EXEC->ret = -1;*/
+	if (tree->prev && ft_strlen(tree->prev->cmd) == 1
+			&& tree->prev->cmd[0] == '&')
+		g_tracking.foreground = 1;
+	exec_command(tree->right->list_cmd, g_tracking.foreground, job);
+	g_tracking.foreground = 0;
 }
 
-void		execute_ast(t_tree *tree, t_tab_arg *tab_arg)
+void	execute_ast(t_tree *tree, t_jobs *job)
 {
-	if (tree->left)
-		execute_ast(tree->left, tab_arg);
-	if (tree->type == OP)
-		EXEC->sym = tree->cmd;
-	if ((!EXEC->left || !EXEC->right) && !tree->left)
+	g_tracking.foreground = 0;
+	if (tree->type == SEP)
 	{
-		if (!EXEC->left)
-			EXEC->left = tree->cmd;
-		else
-			EXEC->right = tree->cmd;
-	}
-	if (EXEC->left && EXEC->right)
-	{
-		if ((ft_strlen(EXEC->sym[0]) == 2) && ((EXEC->sym[0][0] == '|') || EXEC->sym[0][0] == '&'))
+		if (tree->left && tree->left->type != SEP)
+			exec_left_branch(tree, job);
+		else if (tree->left && tree->left->type == SEP)
+			execute_ast(tree->left, job);
+		if (ft_strlen(tree->cmd) > 1)
 		{
-			add_to_exec(1);
-			if (EXEC->ret == 0)
-				exec_command();
-			if ((EXEC->ret == 1 && EXEC->sym[0][0] == '&') || (EXEC->ret == -1 && EXEC->sym[0][0] == '|'))
-				EXEC->ret = 0;
-			ORDER = NULL;
+			if (tree->cmd[0] == '&' && g_tracking.lastreturn == 1)
+				return ;
+			if (tree->cmd[0] == '|' && g_tracking.lastreturn == 0)
+				return ;
 		}
-		else
-			add_to_exec(0);
-		EXEC->left = EXEC->right;
-		EXEC->right = NULL;
-		return ;
+		if (tree->right && tree->right->type != SEP)
+			exec_right_branch(tree, job);
+		else if (tree->right)
+			execute_ast(tree->right, job);
 	}
-	if (tree->type == OP &&
-			(ft_strlen(tree->name) != 2 || (tree->name[0] != '|' && tree->name[0] != '&')))
-		EXEC->sym = tree->cmd;
-	if (tree->right)
-		execute_ast(tree->right, tab_arg);
 	return ;
 }

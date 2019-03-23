@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/02/11 22:01:26 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/22 03:39:46 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,41 @@ void	ft_printlist(void)
 	}
 }
 
-void	init_shell(char **environ)
+void	init_global(void)
+{
+	g_tracking.builtin = 0;
+	g_tracking.jobs = NULL;
+	g_tracking.lastreturn = 0;
+	g_tracking.mysh->hist = NULL;
+	g_tracking.mysh->alias_lst = NULL;
+}
+
+void	init_shell(char **environ, char **argv)
 {
 	t_shell		*mysh;
+	int			i;
 
+	i = 0;
 	if (!(mysh = malloc(sizeof(t_shell))))
 	{
 		ft_putendl("Failled to allocate memory");
 		exit(EXIT_FAILURE);
 	}
+	while (i < 27)
+	{
+		g_tracking.hashtable[i] = NULL;
+		i++;
+	}
 	g_tracking.mysh = mysh;
-	g_tracking.mysh->hist = NULL;
-	g_tracking.mysh->alias_lst = NULL;
+	init_global();
 	init_alias();
 	g_tracking.mysh->env = ft_env_to_lst(environ);
-	g_tracking.mysh->exec = NULL;
-	g_tracking.mysh->order = NULL;
+	g_tracking.mysh->hist = NULL;
 	add_missing_string();
-	hist_file_to_lst();
+	if (write(0, argv[0], 0) != -1)
+		hist_file_to_lst();
+	g_tracking.mysh->tab_env = init_envp(g_tracking.mysh->env);
+	g_tracking.mysh->setenv_lst = NULL;
+	g_tracking.mysh->expand_error = 0;
+	g_tracking.quotes = 0;
 }

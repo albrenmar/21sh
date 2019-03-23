@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/15 04:56:48 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 05:36:21 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,26 +76,51 @@ int			need_expand(char *to_transf)
 	return (0);
 }
 
-void		expand_transformer(t_last *cmd)
+void		scan_arg_transformer(t_unquoter **check, char **value)
 {
-	t_expand	*expand;
-	t_last		*frst_cmd;
+	t_scan_arg	scarg;
 
-	expand = NULL;
-	frst_cmd = cmd;
-	while (cmd && cmd->name)
+	scarg.checker = *check;
+	scarg.new_arg = NULL;
+	while (scarg.checker && scarg.checker->str_unquoted)
 	{
-		if (need_expand(cmd->name))
-		{
-			expand = new_expand(ft_strlen(cmd->name));
-			create_list_expand(expand, cmd->name);
-			transform(expand, &cmd->name);
-		}
-		ft_putendl(cmd->name);
-		if (cmd->next)
-			cmd = cmd->next;
-		else
-			break ;
+		if (scarg.checker->type != '\'')
+			fill_scarg(&scarg);
+		scarg.checker = scarg.checker->next;
 	}
-	cmd = frst_cmd;
+	scarg.checker = *check;
+	ft_strdel(value);
+	*value = ft_strnew(1);
+	while (scarg.checker->str_unquoted)
+	{
+		*value = ft_strjoinfree(*value, scarg.checker->str_unquoted, 2);
+		scarg.checker = scarg.checker->next;
+	}
+}
+
+char		expand_transformer(char **value)
+{
+	char		quote;
+	char		*str_error;
+	t_unquoter	*to_unquot;
+
+	quote = 0;
+	str_error = ft_strdup(*value);
+	to_unquot = NULL;
+	to_unquot = unquote_value(value);
+	if (to_unquot && (!ft_strstr(to_unquot->str_unquoted, "${}")
+			|| !ft_strstr(to_unquot->str_unquoted, "${}")))
+		scan_arg_transformer(&to_unquot, value);
+	else if ((to_unquot && ft_strequ(to_unquot->str_unquoted, "${}"))
+			|| ft_strequ(str_error, "${}")
+			|| ft_strstr(to_unquot->str_unquoted, "${}"))
+	{
+		if (ft_strequ(to_unquot->str_unquoted, "${}"))
+			print_exp_error(NULL);
+		else
+			print_exp_str_error(to_unquot->str_unquoted);
+		ft_strdel(value);
+		*value = ft_strdup(" ");
+	}
+	return (0);
 }

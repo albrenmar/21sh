@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   auto_complete_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/23 00:08:39 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 03:00:32 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-t_lstcontainer	*change_dir(void)
+t_lstcontainer		*change_dir(void)
 {
 	if (g_tracking.aut->path != NULL)
 	{
@@ -22,11 +22,10 @@ t_lstcontainer	*change_dir(void)
 	return (NULL);
 }
 
-void	print_list2(t_lstcontainer *list)
+void				print_list2(t_lstcontainer *list)
 {
-	t_ls		*tmp;
-	t_list		*buf;
-	int			i;
+	t_ls			*tmp;
+	t_list			*buf;
 
 	buf = ft_lstgetfirst(list->firstelement);
 	while (buf)
@@ -37,7 +36,7 @@ void	print_list2(t_lstcontainer *list)
 	}
 }
 
-void			check_for_escape()
+void				check_for_escape(void)
 {
 	t_lstcontainer	*new;
 	t_list			*buf;
@@ -53,13 +52,13 @@ void			check_for_escape()
 			path = ft_strjoinfree(path, buf->content, 1);
 			buf = buf->next;
 		}
-		free (g_tracking.aut->path);
+		free(g_tracking.aut->path);
 		g_tracking.aut->path = path;
 	}
 	ft_freesplitlist(new);
 }
 
-t_lstcontainer	*build_ls(void)
+t_lstcontainer		*build_ls(void)
 {
 	t_lstcontainer	*liste;
 	char			**taab;
@@ -79,11 +78,11 @@ t_lstcontainer	*build_ls(void)
 	return (liste);
 }
 
-void	build_comp(t_lstcontainer *list)
+void				build_comp(t_lstcontainer *list)
 {
-	t_ls		*tmp;
-	t_list		*buf;
-	int			i;
+	t_ls			*tmp;
+	t_list			*buf;
+	int				i;
 
 	i = ft_strlen(g_tracking.aut->word);
 	g_tracking.aut->comp_list = lstcontainer_new();
@@ -100,6 +99,4 @@ void	build_comp(t_lstcontainer *list)
 			lstcontainer_add(g_tracking.aut->comp_list, tmp);
 		buf = buf->next;
 	}
-	if (i != 0)
-		g_tracking.aut->to_free = list;
 }

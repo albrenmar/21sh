@@ -6,13 +6,13 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 17:42:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/20 20:28:07 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/17 01:33:05 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *nptr)
+int			ft_atoi(const char *nptr)
 {
 	size_t	i;
 	size_t	number;

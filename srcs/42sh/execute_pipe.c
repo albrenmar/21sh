@@ -3,111 +3,90 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/02/14 09:03:10 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
 #include "../../includes/sh42.h"
 
-#define ORDER g_tracking.mysh->order
-#define EXEC g_tracking.mysh->exec
-
-void		execute_two(void)
+void		execute_two(char **tab_exec)
 {
-	if ((ORDER->command = test_exist_fonction(ORDER->command)))
+	char	**tab_exec_hold;
+
+	tab_exec_hold = tab_dup(tab_exec);
+	if (is_builtin())
+		exit(builtin_exec(NULL));
+	if ((tab_exec = hashed_command(tab_exec, 0)))
 	{
-		execve(ORDER->command[0], ORDER->command, NULL);
-		perror("FAIL");
+		execve(tab_exec[0], tab_exec, init_envp(g_tracking.mysh->env));
+		exit(-1);
+	}
+	else if ((test_exist_fonction(tab_exec_hold, 2)))
+	{
+		execve(tab_exec_hold[0], tab_exec_hold, init_envp(g_tracking.mysh->env));
+		exec_errors(tab_exec, 0);
+		exit(-1);
 	}
 	else
 	{
+		exec_errors(NULL, 1);
+		free_tab(tab_exec_hold);
 		exit(-1);
 	}
 }
 
-void		execute_pipe_two(int fd)
+void		execute_pipe_two(char **tab_exec, t_jobs *job)
 {
-	int		status;
-	int		j;
 	pid_t	pid0;
-	g_tracking.mysh->exec->pid_exec = (pid0 = fork());
-	if (pid0 == 0)
+
+	g_tracking.g_tab_exec = tab_dup(tab_exec);
+	if (!is_builtin_alone())
 	{
-		if (fd != 0)
+		if (!is_builtin())
+			hash_binary();
+		pid0 = fork();
+		if (pid0 == 0)
 		{
-			dup2(fd, 1);
+			set_jobs(job, pid0);
+			set_fd_before_exec();
+			close_and_dup(2);
+			execute_two(tab_exec);
 		}
-		close(descrf_two[1]);
-		dup2(descrf_two[0], 0);
-		close(descrf_two[0]);
-		if ((ORDER->command = test_exist_fonction(ORDER->command)))
+		else
+			set_new_process(job, pid0);
+	}
+	else
+		g_tracking.builtin = 1;
+}
+
+void		execute_pipe(char **tab_exec, t_jobs *job)
+{
+	pid_t	pid0;
+
+	swap_descrf();
+	pipe(descrf_two);
+	g_tracking.g_tab_exec = tab_dup(tab_exec);
+	if (!is_builtin_alone())
+	{
+		if (!is_builtin())
+			hash_binary();
+		pid0 = fork();
+		if (pid0 == 0)
 		{
-			execve(ORDER->command[0], ORDER->command, NULL);
-			perror("FAIL");
+			set_jobs(job, pid0);
+			set_fd_before_exec();
+			close_and_dup(1);
+			execute_two(tab_exec);
 		}
 		else
 		{
-			exit(-1);
+			close(descrf_two[1]);
+			set_new_process(job, pid0);
 		}
 	}
 	else
-	{
-		waitpid(pid0, &status, WUNTRACED);
-		j = WEXITSTATUS(status);
-	}
-	if (j != 0)
-		EXEC->ret = -1;
-	dprintf(2, "TEST1 =%d\n", EXEC->ret);
-	return ;
+		g_tracking.builtin = 1;
 }
-
-void		execute_pipe(void)
-{
-	pid_t	pid0;
-	int		j;
-	int		status;
-
-	g_tracking.mysh->exec->pid_exec = (pid0 = fork());
-	if (pid0 == 0)
-	{
-		close(descrf_two[0]);
-		dup2(descrf_two[1], 1);
-		close(descrf_two[1]);
-		close(descrf[1]);
-		dup2(descrf[0], 0);
-		close(descrf[0]);
-		execute_two();
-	}
-	else
-	{
-		close(descrf_two[1]);
-		j = WEXITSTATUS(status);
-	}
-	if (j != 0)
-		EXEC->ret = -1;
-	dprintf(2, "TEST =%d\n", EXEC->ret);
-	return ;
-}
-
-/*void		test_pipe(void)
-{
-	if (g_tracking.mysh->exec->sym && ft_strlen(g_tracking.mysh->exec->sym[0]) != 2)
-	{
-		descrf[0] = descrf_two[0];
-		descrf[1] = descrf_two[1];
-		pipe(descrf_two);
-		execute_pipe();
-	}
-	else
-	{
-		execute_pipe_two();
-		close(descrf[0]);
-		close(descrf[1]);
-		close(descrf_two[0]);
-		close(descrf_two[1]);
-	}
-}*/

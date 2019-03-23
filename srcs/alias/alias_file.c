@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alias_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/21 18:03:47 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 07:17:27 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 char	*create_path(void)
 {
 	char	*path;
+	char	*user;
 
 	path = ft_strdup("/Users/");
-	path = ft_strjoinfree(path, USER, 1);
+	user = getlogin();
+	path = ft_strjoinfree(path, user, 1);
 	path = ft_strjoinfree(path, "/42shrc", 1);
 	return (path);
 }
+
 int		init_alias(void)
 {
 	int				fd;
@@ -34,13 +37,15 @@ int		init_alias(void)
 	free(path);
 	if (fd == -1)
 	{
-		ft_putendl("Failed to create or load ~./aliasrc, please verify your read/write permissions");
+		ft_putstr_fd("Failed to create or load ~/42shrc, ", 2);
+		ft_putstr_fd("please check your read/write permissions", 2);
 		return (-1);
 	}
 	alias_lst = lstcontainer_new();
 	while (get_next_line(fd, &alias) != 0)
 	{
 		lstcontainer_add(alias_lst, parse_alias(alias));
+		free(alias);
 	}
 	close(fd);
 	g_tracking.mysh->alias_lst = alias_lst;

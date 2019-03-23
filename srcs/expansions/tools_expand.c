@@ -3,14 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   tools_expand.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 01:23:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/14 06:13:43 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
+#include "sh42.h"
+
+int		is_simple_expand(char *value)
+{
+	int		i;
+
+	i = 0;
+	while (value[i])
+	{
+		if (value[i] == '$' && value[i + 1] && !ft_iswhitespace(value[i + 1])
+				&& value[i + 1] != '{')
+			return (1);
+		else if (value[i] == '$' && value[i + 1]
+				&& !ft_iswhitespace(value[i + 1]) && value[i + 1] == '{')
+		{
+			while (value[i] && value[i] != ':' && value[i] != '#'
+				&& value[i] != '%')
+			{
+				if (value[i] == '}')
+					return (1);
+				i++;
+			}
+		}
+		else if (value[i] == '$' && value[i + 1] && value[i + 1] == '{'
+				&& value[i + 2] && ft_iswhitespace(value[i + 2]))
+			return (-1);
+		i++;
+	}
+	return (0);
+}
 
 void	delete_letter_expand(t_expand **letter)
 {
@@ -23,7 +53,6 @@ void	delete_letter_expand(t_expand **letter)
 		prev->next = next;
 	if (next)
 		next->prev = prev;
-	free(*letter);
 	if (next)
 		*letter = next;
 	else
@@ -48,6 +77,18 @@ void	delete_list_expand(t_expand **letter)
 	*letter = NULL;
 }
 
+void	update_envp(void)
+{
+	int		i;
+
+	i = 0;
+	while (g_tracking.mysh->tab_env[i])
+		ft_strdel(&g_tracking.mysh->tab_env[i++]);
+	if (g_tracking.mysh->tab_env)
+		free(g_tracking.mysh->tab_env);
+	g_tracking.mysh->tab_env = init_envp(g_tracking.mysh->env);
+}
+
 void	update_list_expand(t_expand **letter, char **str)
 {
 	t_expand	*new_letter;
@@ -57,4 +98,5 @@ void	update_list_expand(t_expand **letter, char **str)
 	new_letter = new_expand(ft_strlen(*str));
 	*letter = new_letter;
 	create_list_expand(*letter, *str);
+	update_envp();
 }

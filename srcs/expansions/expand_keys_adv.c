@@ -3,65 +3,83 @@
 /*                                                        :::      ::::::::   */
 /*   expand_keys_adv.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/13 06:57:18 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 06:21:55 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 #include "sh42.h"
 
+void	exp_key_altern(char **str, t_expand *expand)
+{
+	t_analyzer	to_analy;
+
+	init_analyzer(&to_analy, str, expand);
+	ft_strdel(str);
+	if (!to_analy.wildcard)
+	{
+		print_exp_str_error(*str);
+		ft_strdel(str);
+		*str = ft_strdup(" ");
+	}
+	else if (to_analy.varvalue)
+		*str = ft_strdup(to_analy.varvalue);
+	else
+		*str = ft_strdup(" ");
+}
+
 void	exp_key_double_hash(char **str, t_expand *expand)
 {
-	char	*varname;
-	char	*value_var;
-	char	*to_srch;
-	char	*tmp2;
-	char	*tmp3;
+	t_analyzer	to_analy;
+	char		*run_varvalue;
+	char		*run_wildcard;
 
-	varname = NULL;
-	to_srch = NULL;
-	varname = get_varname(expand);
-	value_var = get_env_string(varname);
-	to_srch = get_asterisk_value(expand);
-	tmp3 = to_srch;
-	tmp2 = value_var;
-	while (ft_strstr(tmp2, to_srch))
-		tmp2++;
-	if (tmp2)
-		while (*tmp3 != '\0' && *(tmp3 + 1) == *tmp2)
-		{
-			tmp2++;
-			tmp3++;
-		}
-	ft_strdel(str);
-	*str = ft_strdup(tmp2);
+	init_analyzer(&to_analy, str, expand);
+	run_varvalue = to_analy.varvalue;
+	run_wildcard = to_analy.wildcard;
+	if (to_analy.start_astrsk)
+		run_wildcard++;
+	if (to_analy.varvalue && !to_analy.asterisk)
+		asign_vrvlufnd(&to_analy, &run_varvalue, &run_wildcard, str);
+	else if (to_analy.varvalue && to_analy.start_astrsk && !to_analy.end_astrsk)
+		asgnvrvluastrk(&to_analy, &run_varvalue, &run_wildcard, str);
+	else if (to_analy.varvalue && to_analy.end_astrsk && !to_analy.start_astrsk)
+	{
+		run_wildcard[to_analy.wlcd_len] = '\0';
+		ft_strdel(str);
+		if (ft_strnstr(run_varvalue, run_wildcard, to_analy.vvlu_len))
+			*str = ft_strdup("");
+		else
+			*str = ft_strdup(to_analy.varvalue);
+	}
+	else
+		rmv_str(str);
 }
 
 void	exp_key_double_percent(char **str, t_expand *expand)
 {
-	char	*varname;
-	char	*value_var;
-	char	*to_srch;
-	char	*found;
+	t_analyzer	to_analy;
+//	char		*run_wildcard;
+	int			i;
 
-	varname = NULL;
-	to_srch = NULL;
-	varname = get_varname(expand);
-	value_var = get_env_string(varname);
-	to_srch = get_value_asterisk(expand);
-	if (value_var && (found = ft_strstr(value_var, to_srch)))
-		select_last_not_found(str, value_var, to_srch, found);
-	else if (value_var)
+	i = 0;
+	init_analyzer(&to_analy, str, expand);
+	if (!to_analy.varname[0])
 	{
-		ft_strdel(str);
-		*str = value_var;
+		print_exp_error(*str + 1);
+		return ;
 	}
+//	if (to_analy.start_astrsk)
+//		run_wildcard = run_wildcard + 2;
+	if (to_analy.varvalue && !to_analy.asterisk)
+		ass_str_wout_ast(&to_analy, str);
+	else if (to_analy.varvalue && to_analy.start_astrsk && !to_analy.end_astrsk)
+		ass_str_wstrt_ast(&to_analy, str);
+	else if (to_analy.varvalue && to_analy.end_astrsk && !to_analy.start_astrsk)
+		ass_str_wend_ast(&to_analy, str);
 	else
-	{
-		ft_strdel(str);
-		*str = ft_strnew(0);
-	}
+		rmv_str(str);
 }

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   var_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/23 00:06:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-t_ls	*ls_alloc(char	*str)
+t_ls				*ls_alloc(char *str)
 {
-	t_ls	*info;
+	t_ls			*info;
 
 	info = malloc(sizeof(t_ls) + 1);
 	info->name = ft_strdup(str);
@@ -35,7 +35,7 @@ t_ls	*ls_alloc(char	*str)
 	return (info);
 }
 
-void	build_var_lst()
+void				build_var_lst(void)
 {
 	t_list			*buf;
 	t_keyval		*tmp;

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/01/21 20:35:09 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 06:28:23 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ void		hist_save_file(t_hist *hist)
 {
 	int fd;
 	char **line;
+	char *path;
 
-	fd = open("/goinfre/.shell_history", O_WRONLY | O_CREAT  | O_TRUNC, 00777);
+	path = create_path_hist();
+	fd = open(path, O_CREAT | O_TRUNC | O_RDWR, 00777);
 	if (fd < 0)
 	{
-		ft_putendl_fd("Error while opening/creating .shell_history", 2);
+		ft_putendl_fd("Error while opening/creating .42hist", 2);
 		return;
 	}
 	if (!hist)
@@ -31,18 +33,14 @@ void		hist_save_file(t_hist *hist)
 	}
 	while (hist->previous)
 		hist = hist->previous;
-	while(hist)
+	while (hist)
 	{
-		ft_putendl_fd(hist->line, fd);
-		if (hist->next)
-			hist = hist->next;
-		else
-			break;
+		if (hist->line != NULL && ft_strlen(hist->line) > 0)
+			ft_putendl_fd(hist->line, fd);
+		hist = hist->next;
 	}
 	lseek(fd, SEEK_SET, 0);
 	line = malloc(sizeof(line));
-	while(get_next_line(fd, line) == 1)
-		ft_putendl(*line);
 	free(line);
 	close(fd);
 
@@ -99,7 +97,7 @@ t_hist		*hist_delete_index(t_hist *hist, int index)
 	if (hist->index == index)
 	{
 		if (!(hist->previous) && !(hist->next))
-			return (hist = hist_free(hist));
+			return (hist = hist_free());
 		if (hist->previous == NULL)
 		{
 			hist = hist->next;
@@ -122,8 +120,31 @@ t_hist		*hist_delete_index(t_hist *hist, int index)
 			tmp = hist;
 			hist = hist->previous;
 			free(tmp);
+			hist->next = NULL;
 		}
 	}
 	hist = hist_remap_index(hist);
 	return (hist);
+}
+
+t_hist		*hist_delete_last(t_hist *hist)
+{
+	t_hist *tmp;
+
+	if (!g_tracking.mysh->hist)
+		return hist_free();
+	while(g_tracking.mysh->hist->next)
+		g_tracking.mysh->hist = g_tracking.mysh->hist->next;
+	tmp = g_tracking.mysh->hist;
+	if (hist && !(g_tracking.mysh->hist->previous))
+		return hist_free();
+	else
+	{
+		hist = hist->previous;
+		free(tmp);
+		tmp = 0;
+		hist->next = 0;
+		hist = hist_remap_index(hist);
+	}
+	return hist;
 }

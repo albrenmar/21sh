@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   auto_complete_cleanup.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 06:52:13 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/23 00:23:31 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ void	clean_up_pages(void)
 	}
 }
 
+void	clean_up_tofree(void)
+{
+	free_all(g_tracking.aut->to_free, NULL);
+	g_tracking.aut->to_free = NULL;
+	ft_lstdel(g_tracking.aut->comp_list->firstelement, 0);
+	free(g_tracking.aut->comp_list);
+}
+
 void	clean_up_autoc(void)
 {
 	free(g_tracking.aut->word);
@@ -30,22 +38,19 @@ void	clean_up_autoc(void)
 	free(g_tracking.aut->path);
 	g_tracking.aut->path = NULL;
 	if (g_tracking.aut->to_free)
+		clean_up_tofree();
+	if (g_tracking.aut->var_lst)
 	{
-		free_all(g_tracking.aut->to_free, NULL);
-		g_tracking.aut->to_free = NULL;
-		ft_lstdel(g_tracking.aut->comp_list->firstelement, 0);
-		free(g_tracking.aut->comp_list);
-	}
-	else
-	{
-		free_all(g_tracking.aut->comp_list, NULL);
-		g_tracking.aut->comp_list = NULL;
-		free_all(g_tracking.aut->bin_lst, NULL);
-		g_tracking.aut->bin_lst = NULL;
-		if (g_tracking.aut->type != 2)
-			free_all(g_tracking.aut->var_lst, NULL);
+		free_all(g_tracking.aut->var_lst, NULL);
 		g_tracking.aut->var_lst = NULL;
 	}
+	if (g_tracking.aut->bin_lst)
+	{
+		free_all(g_tracking.aut->bin_lst, NULL);
+		g_tracking.aut->bin_lst = NULL;
+	}
+	free(g_tracking.aut->to_add);
 	clean_up_pages();
 	free(g_tracking.aut);
+	g_tracking.aut = NULL;
 }

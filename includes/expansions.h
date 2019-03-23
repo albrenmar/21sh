@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansions.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/14 07:17:29 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 05:40:19 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,71 @@
 
 typedef struct	s_expand
 {
-	char			ltr;
-	int				len;
-	int				idx;
-	struct s_expand	*next;
-	struct s_expand	*prev;
+	char				ltr;
+	int					len;
+	int					idx;
+	struct s_expand		*next;
+	struct s_expand		*prev;
 }				t_expand;
 
-typedef struct	s_args
+typedef struct	s_env_set
 {
-	struct s_keyval	*param;
-	struct s_args	*next;
-}				t_args;
+	struct s_keyval		*param;
+	struct s_env_set	*next;
+}				t_env_set;
 
-void			expand_transformer(t_last *cmd);
+typedef struct	s_scan
+{
+	char				*sstring;
+	int					error;
+	struct s_scan		*next;
+}				t_scan;
+
+typedef struct	s_analyzer
+{
+	char		*orig_str;
+	int			orig_len;
+	char		*varname;
+	int			vnme_len;
+	char		*varvalue;
+	int			vvlu_len;
+	char		*wildcard;
+	int			wlcd_len;
+	int			asterisk;
+	int			start_astrsk;
+	int			end_astrsk;
+}				t_analyzer;
+
+typedef struct	s_unquoter
+{
+	char				*str_unquoted;
+	char				type;
+	int					error;
+	struct s_unquoter	*next;
+}				t_unquoter;
+
+typedef struct	s_scan_arg
+{
+	t_expand	*expand;
+	t_scan		*scan;
+	t_scan		*first_scan;
+	t_unquoter	*checker;
+	char		*new_arg;
+	int			ret;
+}				t_scan_arg;
+
+typedef struct	s_dataq
+{
+	char		*new_value;
+	char		*scan;
+	t_unquoter	*to_unquot;
+	t_unquoter	*first;
+	char		next_quote;
+}				t_dataq;
+
+
+
+char			expand_transformer(char **value);
 int				need_expand(char *to_transf);
 t_expand		*new_expand(int len);
 void			create_list_expand(t_expand *new_letter, char *line);
@@ -57,7 +108,7 @@ t_expand		*expand_keys(t_expand *expand, char **str);
 char			check_sign(t_expand *expand);
 void			exp_key_less(char **str, t_expand *expand);
 char			*get_varname(t_expand *expand);
-char			*get_value(t_expand *expand);
+char			*get_value(t_expand *expand, int i);
 void			exp_key_equal(char **str, t_expand *expand);
 void			exp_key_inter(char **str, t_expand *expand);
 void			exp_key_plus(char **str, t_expand *expand);
@@ -68,9 +119,11 @@ void			exp_key_unique_percent(char **str, t_expand *expand);
 char			*get_value_asterisk(t_expand *expand);
 void			exp_key_double_percent(char **str, t_expand *expand);
 void			exp_key_double_hash(char **str, t_expand *expand);
-void			transform_if_tilde(t_expand *expand, char **str);
+void			exp_key_altern(char **str, t_expand *expand);
+void			transform_if_tilde(t_expand **expand, char **str);
 char			is_two_points_sign(t_expand *to_run);
 char			is_diferent_sign(t_expand *to_run);
+char			is_slash_sign(t_expand *to_run);
 void			skip_found(char **str, char *value_var, char *to_srch);
 void			select_not_found(char **str, char *value_var, char *to_srch);
 void			select_last_not_found(char **str, char *value_var,
@@ -78,5 +131,46 @@ void			select_last_not_found(char **str, char *value_var,
 char			*varname(char *var, t_expand *to_run);
 char			*value(char *val, t_expand *start);
 char			*value_asterisk(char *val, t_expand *start);
+int				have_envname(char *var);
+int				have_setname(char *var);
+void			scan_arg_transformer(t_unquoter **check, char **value);
+t_scan			*new_scan(void);
+void			scan_argument(char *arg, t_scan *info_arg);
+char			*ft_exp_complete(char *arg);
+t_unquoter		*unquote_value(char **value);
+void			reassign_value(char **value, char *new_value, int quote);
+int				quote_error(char *scan, int open_key, int quote);
+void			unquote(char **value, int *quote);
+int				ft_iswhitespace(int c);
+void			print_exp_error(char *to_error);
+void			print_exp_error_eq(char *varname, char *value);
+void			print_exp_str_error(char *strerror);
+void			rmv_tab_exec(char **tab_exec, int to);
+int				is_simple_expand(char *value);
+void			scan_simple_arg_transformer(char **arg);
+int				scan_tilde(char *arg, char **new_arg);
+int				scan_dollar(char *arg, char **new_arg);
+int				scan_dollar_key(char *arg, char **new_arg);
+int				scan_other(char *arg, char **new_arg);
+int				transform_simple(char **str);
+void			init_analyzer(t_analyzer *to_analy, char **str,
+					t_expand *expand);
+void			clean_nlzr_wildcard(t_analyzer *to_analy, int reverse);
+void			str_uniq_percent_chgr(t_analyzer *to_analy, char **str);
+void			print_exp_error_dpoints(char *varname, char *value, int sign);
+void			asign_vrvlufnd(t_analyzer *nly, char **rvrvlu,
+					char **rwlcd, char **str);
+void			asgnvrvluastrk(t_analyzer *nly, char **rvrvlu,
+					char **rwlcd, char **str);
+void			rmv_str(char **str);
+void			ass_str_wout_ast(t_analyzer *to_analy, char **str);
+void			ass_str_wstrt_ast(t_analyzer *to_analy, char **str);
+void			ass_str_wend_ast(t_analyzer *to_analy, char **str);
+void			expan_arg(t_scan_arg *scarg);
+void			fill_scarg(t_scan_arg *scarg);
+t_unquoter		*new_unquoted_value(void);
+void			copy_to_quote(char **old, char **new, char *type);
+void			copy_new_value(char **old, t_unquoter **new);
+t_unquoter		*quote_checker(t_unquoter *to_unquot, char **ascan);
 
 #endif
