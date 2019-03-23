@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hist.c                                       :+:      :+:    :+:   */
+/*   job_control_errors.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/21 20:26:47 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 14:32:21 by hdufer           ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
+/*   Updated: 2019/03/23 08:24:39 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-int		print_hist(void)
+int			job_control_errors(pid_t pid, int mode, int returnvalue)
 {
-	t_hist		*history;
-
-	history = g_tracking.mysh->hist;
-	if (!history)
-		return (1);
-	history = hist_remap_index(history);
-	while (history)
+	if (mode == 0)
 	{
-		ft_putendl(history->line);
-		history = history->next;
+		ft_putstr_fd(SHELL_NAME": No child process with id ", 2);
+		ft_putnbr_fd(pid, 2);
 	}
-	return (0);
+	return (returnvalue);
 }

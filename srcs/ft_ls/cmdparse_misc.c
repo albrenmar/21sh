@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmdparse_misc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 22:28:10 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/18 20:21:06 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 02:36:41 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_usage(char invalid)
 	ft_putchar(invalid);
 	ft_putchar('\n');
 	ft_putendl("usage: ft_ls [-1adlrtuSRG@] [file ...]");
-	exit(0);
+	ft_exit(1, EXIT_SUCCESS);
 }
 
 int		checkoption(char *option, char c)

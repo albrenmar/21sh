@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 04:35:32 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,28 @@ void		clean_up_leaks(void)
 	g_tracking.str = NULL;
 }
 
-int			ft_exit(void)
+int			ft_exit(int process, int exitcode)
 {
 	t_jobs	*tmp;
 
-	tmp = g_tracking.jobs;
-	while (tmp && tmp->next)
+	if (process == 1)
 	{
-		if (tmp->background == 1)
+		tmp = g_tracking.jobs;
+		while (tmp && tmp->next)
 		{
-			ft_putendl("There are still background jobs running!");
-			return (1);
+			if (tmp->background == 1)
+			{
+				ft_putendl("There are still background jobs running!");
+				return (1);
+			}
+			tmp = tmp->next;
 		}
-		tmp = tmp->next;
 	}
 	hist_save_file(g_tracking.mysh->hist);
 	free_hist();
 	clean_up_leaks();
 	clean_up_leaks();
-	exit(0);
+	empty_hash_table();
+	free_all_jobs();
+	exit(exitcode);
 }
