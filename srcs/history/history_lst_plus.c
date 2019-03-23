@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/23 14:34:40 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/23 18:45:38 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ t_hist		*hist_remap_index(t_hist *hist)
 	return (hist);
 }
 
-t_hist		*hist_delete_index_setup(t_hist *hist, int index)
+int			hist_delete_index_setup(t_hist *hist, int index)
 {
 	if (index < 1)
 	{
 		ft_putendl_fd("history position out of range", 2);
-		return (hist);
+		return (1);
 	}
 	while (hist->index > index)
 	{
 		if (hist->previous == NULL)
 		{
 			ft_putendl_fd("history position out of range", 2);
-			return (hist);
+			return (1);
 		}
 		hist = hist->previous;
 	}
@@ -54,11 +54,11 @@ t_hist		*hist_delete_index_setup(t_hist *hist, int index)
 		if (hist->next == NULL)
 		{
 			ft_putendl_fd("history position out of range", 2);
-			return (hist);
+			return (1);
 		}
 		hist = hist->next;
 	}
-	return (NULL);
+	return (0);
 }
 
 t_hist		*hist_delete_index_check(t_hist *hist, int index)
@@ -86,11 +86,11 @@ t_hist		*hist_delete_index(t_hist *hist, int index)
 {
 	t_hist	*tmp;
 
-	if (!hist || !hist->line)
+	if (!hist || (!hist->line && hist->index != 0))
 		return (NULL);
-	if ((hist = hist_delete_index_setup(hist, index)) != NULL)
+	if ((hist_delete_index_setup(hist, index)) != 0)
 		return (hist);
-	if (hist->index == index)
+	if (hist && hist->index == index)
 	{
 		if ((hist = hist_delete_index_check(hist, index)) != NULL)
 			return (hist);

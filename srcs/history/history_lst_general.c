@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 14:32:39 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/23 16:21:48 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/23 18:40:01 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void		history_builtin_delete_index_return(int j, char *tmp, int i[2])
 		ft_atoi(tmp));
 }
 
-void		history_builtin_delete_index_check(int j, char *tmp, int i[2])
+int			history_builtin_delete_index_check(int j, char *tmp, int i[2])
 {
 	if (ft_isdigit(g_tracking.g_tab_exec[2][i[1]]))
 	{
@@ -83,22 +83,29 @@ void		history_builtin_delete_index_check(int j, char *tmp, int i[2])
 			else
 			{
 				ft_putendl_fd("history position out of range", 2);
-				return ;
+				return (0);
 			}
 		}
 	}
 	else
-		return (ft_putendl_fd("history position out of range", 2));
+	{
+		ft_putendl_fd("history position out of range", 2);
+		return (1);
+	}
+	return (1);
 }
 
 void		history_builtin_delete_index(int j)
 {
-	char	tmp[100000];
+	char	tmp[1024];
 	int		i[2];
 
 	i[0] = 0;
 	i[1] = 0;
 	if (!(g_tracking.g_tab_exec[1][j + 1]) && (g_tracking.g_tab_exec[2]))
-		history_builtin_delete_index_check(j, tmp, &i[2]);
+	{
+		if (history_builtin_delete_index_check(j, tmp, &i[2]) == 0)
+			return ;
+	}
 	history_builtin_delete_index_return(j, tmp, &i[2]);
 }

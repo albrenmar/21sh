@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:24:28 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/23 16:06:39 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/23 18:56:11 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	shebang_parse_switch_plus(char *line, int i, char *tmp_line)
 		line = shebang_last(&line[i], tmp_line);
 		i = 0;
 	}
-	if (line[i] && line[i] == '-')
+	else if (line[i] && line[i] == '-')
 	{
 		i++;
 		if (line[i] && ft_isdigit(line[i]))
@@ -52,12 +52,12 @@ void	shebang_parse_switch_plus(char *line, int i, char *tmp_line)
 			line = shebang_word(&line[i], tmp_line);
 		i = 0;
 	}
-	if (line[i] && ft_isdigit(line[i]))
+	else if (line[i] && ft_isdigit(line[i]))
 	{
 		line = shebang_num_pos(&line[i], tmp_line);
 		i = 0;
 	}
-	if (line[i] && !ft_isdigit(line[i]))
+	else if (line[i] && !ft_isdigit(line[i]))
 	{
 		line = shebang_word(&line[i], tmp_line);
 		i = 0;
