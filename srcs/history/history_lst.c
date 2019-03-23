@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/23 14:08:06 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/23 20:28:23 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,34 @@ void		hist_setup_file(void)
 	free(line);
 }
 
+t_hist		*hist_remap_null(t_hist *hist, char *line)
+{
+	t_hist	*tmp;
+
+	g_tracking.hist_first++;
+	if (!hist || !line)
+		return (NULL);
+	while (hist->previous)
+		hist = hist->previous;
+	if (hist->line == NULL && hist->next && hist->next->line)
+	{
+		tmp = hist;
+		hist = hist->next;
+		free(tmp->line);
+		free(tmp);
+		tmp->line = NULL;
+		tmp = NULL;
+		hist = hist_remap_index(hist);
+	}
+	return (hist);
+}
+
 void		hist_lst_add_next(t_hist *hist, char *line)
 {
 	t_hist	*new_node;
 
+	if (g_tracking.hist_first == 0)
+		hist = hist_remap_null(hist, line);
 	if (!hist)
 	{
 		g_tracking.mysh->hist = hist_lst_create(NULL);

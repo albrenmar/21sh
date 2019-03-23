@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:24:28 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/23 18:56:11 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/23 19:29:17 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*shebang_last(char *line, char *last_line)
 
 	i = 0;
 	hist = g_tracking.mysh->hist;
-	if (!hist || hist->line == NULL)
+	if (!hist || (!hist->line && hist->index != 0))
 	{
 		ft_putendl_fd("Event not found", 2);
 		g_tracking.shebang = 1;
@@ -35,13 +35,12 @@ char	*shebang_last(char *line, char *last_line)
 	return (nline);
 }
 
-void	shebang_parse_switch_plus(char *line, int i, char *tmp_line)
+char	*shebang_parse_switch_plus(char *line, int i, char *tmp_line)
 {
 	if (line[i] && line[i] == '!')
 	{
 		i++;
 		line = shebang_last(&line[i], tmp_line);
-		i = 0;
 	}
 	else if (line[i] && line[i] == '-')
 	{
@@ -50,18 +49,13 @@ void	shebang_parse_switch_plus(char *line, int i, char *tmp_line)
 			line = shebang_num_neg(&line[i], tmp_line);
 		else if (line[i])
 			line = shebang_word(&line[i], tmp_line);
-		i = 0;
 	}
 	else if (line[i] && ft_isdigit(line[i]))
-	{
 		line = shebang_num_pos(&line[i], tmp_line);
-		i = 0;
-	}
 	else if (line[i] && !ft_isdigit(line[i]))
-	{
 		line = shebang_word(&line[i], tmp_line);
-		i = 0;
-	}
+	i = 0;
+	return (line);
 }
 
 char	*shebang_parse_switch(char *line)
@@ -71,7 +65,7 @@ char	*shebang_parse_switch(char *line)
 
 	i = 0;
 	g_tracking.shebang = 0;
-	while (g_tracking.shebang != 1 && line && line[i])
+	while (line && line[i] && g_tracking.shebang != 1)
 	{
 		if (line[i] && line[i] == '!')
 		{
@@ -81,8 +75,7 @@ char	*shebang_parse_switch(char *line)
 				i++;
 			else
 			{
-				shebang_parse_switch_plus(line, i, tmp_line);
-				i = 0;
+				line = shebang_parse_switch_plus(line, i, tmp_line);
 			}
 			free(tmp_line);
 		}
