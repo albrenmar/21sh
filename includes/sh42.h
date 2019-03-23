@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 03:12:25 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 11:06:51 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -388,6 +388,9 @@ void			history_builtin(void);
 // void			history_setup(void);
 void			history_builtin_delete_index(int j);
 t_hist			*hist_delete_last(t_hist *hist);
+void			history_builtin_p(void);
+void			history_builtin_digit(void);
+void			hist_save_file_w(char *path);
 
 t_last			*create_new_list(void);
 t_last			*ft_parseur(char *line);
