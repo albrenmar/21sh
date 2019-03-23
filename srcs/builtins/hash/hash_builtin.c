@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 05:03:29 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 09:50:46 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int			hash_update_commands(int j)
 	t_hash	*tmp;
 	int		index;
 
+	index = 0;
+	tmp = NULL;
 	lastvalue = 0;
 	commandhold = NULL;
 	while (g_tracking.g_tab_exec[j])
@@ -81,6 +83,7 @@ void		ft_hash_output(void)
 	t_hash	*tmp;
 
 	i = 0;
+	spaces = 0;
 	while (i < 27)
 	{
 		tmp = g_tracking.hashtable[i];

@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 03:05:26 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 09:51:40 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void		sig_int_handler(int signo)
 
 void		sig_winch_handler(int signo)
 {
-	int			i;
 	int			y;
 
 	if (signo == SIGWINCH)

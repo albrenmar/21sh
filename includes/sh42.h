@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 08:59:58 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 09:44:31 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -458,7 +458,7 @@ void			hash_update_helper(t_hash *tmp, int index, int j, char **c);
 
 int				argc_error(void);
 int				exec_errors(char **tab_exec, int mode);
-int				exec_errors_dir(char **tab_exec, int mode);
+int				exec_errors_dir(void);
 
 t_jobs			*new_job_helper(t_jobs *tmp);
 char			*job_name_maker_helper(int spaces, int len, t_last *head);
