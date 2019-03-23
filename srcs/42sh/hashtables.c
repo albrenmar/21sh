@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 04:32:43 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,10 @@ void		insert_to_hashtable(int key, char *binary, char *path)
 			tmp->totalhits += 1;
 		}
 		else
-		{
 			tmp->nextbinary = new_binary_hash(binary, path, 1);
-		}
 	}
 	else
-	{
 		g_tracking.hashtable[key] = new_binary_hash(binary, path, 1);
-	}
 }
 
 int			hash_maker(const char c)
@@ -95,6 +91,7 @@ void		hash_binary(void)
 	char	*binaryhold;
 	int		i;
 
+	binaryhold = NULL;
 	if (strchr(g_tracking.g_tab_exec[0], '/'))
 		return ;
 	binaryhold = ft_strdup(g_tracking.g_tab_exec[0]);
@@ -102,8 +99,9 @@ void		hash_binary(void)
 	while (binaryhold[i] && (binaryhold[i] <= 65 || binaryhold[i] > 122))
 		i++;
 	if (!(test_exist_fonction(g_tracking.g_tab_exec, 1)))
-		return ;
+		return (ft_strdel(&binaryhold));
 	hashedvalue = hash_maker(binaryhold[i]);
 	if (hashedvalue >= 0 && hashedvalue <= 25)
 		insert_to_hashtable(hashedvalue, binaryhold, g_tracking.g_tab_exec[0]);
+	ft_strdel(&binaryhold);
 }

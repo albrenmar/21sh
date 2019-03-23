@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 03:12:25 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 20:26:39 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,7 @@ typedef struct	s_tracking
 	int					herenbr;
 	int					redir;
 	int					foreground;
+	int					hist_first;
 }				t_tracking;
 
 typedef struct	s_comm
@@ -353,8 +354,8 @@ void			clean_up_leaks(void);
 t_ls			*ls_alloc(char *str);
 int				ctrl_key(char c);
 void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
-int				fg_builtin_output(t_jobs *tmp);
-int				bg_builtin_output(t_jobs *tmp);
+int				bg_builtin_output(t_jobs *tmp, char *hold);
+int				fg_builtin_output(t_jobs *tmp, char *hold);
 int				type_main(void);
 char			*exist_fonction(char *cmd);
 
@@ -380,7 +381,6 @@ t_hist			*hist_delete_index(t_hist *hist, int index);
 int     		begin_search(void);
 char         	*get_hist_ptr(char *needle);
 t_hist			*get_hist_nbr(int i);
-char		 	*shebang_parse_switch(char *line);
 int				history(void);
 void			free_hist(void);
 void			history_builtin_s(void);
@@ -388,6 +388,13 @@ void			history_builtin(void);
 // void			history_setup(void);
 void			history_builtin_delete_index(int j);
 t_hist			*hist_delete_last(t_hist *hist);
+void			history_builtin_p(void);
+void			history_builtin_digit(void);
+void			hist_save_file_w(char *path);
+char			*shebang_num_neg(char *line, char *last_line);
+char			*shebang_num_pos(char *line, char *last_line);
+char			*shebang_word(char *line, char *last_line);
+char		 	*shebang_parse_switch(char *line);
 
 t_last			*create_new_list(void);
 t_last			*ft_parseur(char *line);
@@ -436,7 +443,7 @@ void			set_fd_before_exec(void);
 
 void			get_coolprompt(void);
 void			print_prompt(void);
-void			transform_cwd(void);
+void			transform_cwd(int i);
 int				spaces_line_check(char *line);
 void			clean_tab_exec(char **tab_exec);
 
@@ -456,11 +463,16 @@ int				empty_hash_table(void);
 int				hash_update_commands(int j);
 char			**tab_format_hash(char *binary);
 char			**hashed_command(char **tab_exec, int index);
+int				ft_hash_arg(int j);
+void			ft_hash_output_helper(t_hash *tmp, int spaces);
+void			hash_update_helper(t_hash *tmp, int index, int j, char **c);
 
 int				argc_error(void);
 int				exec_errors(char **tab_exec, int mode);
-int				exec_errors_dir(char **tab_exec, int mode);
+int				exec_errors_dir(void);
 
+t_jobs			*new_job_helper(t_jobs *tmp);
+char			*job_name_maker_helper(int spaces, int len, t_last *head);
 t_jobs			*new_job(t_last *part, int background);
 void			wait_for_job(t_jobs *job);
 void			put_job_in_foreground(t_jobs *job, int cont);
@@ -475,12 +487,23 @@ int				cmd_checker(t_last *part, int mode, t_jobs *job);
 void			free_last(t_last **cmd);
 char			*check_separator(t_last *part);
 int				suspended_jobs_count(void);
+void			free_all_jobs(void);
 void			update_status(void);
 int				update_process_status(pid_t pid, int status);
 void			show_job_info(t_jobs *job, const char *status, int mode);
 void			free_job(t_jobs *job);
 void			jobs_notifications(void);
 void			jobs_update_current(void);
+int				update_st_help(t_jobs *job, pid_t pid, t_comm *cmd, int status);
+void			free_j_help(int mode, t_jobs *job, t_jobs *hold, t_jobs *hold2);
+int				job_control_errors(pid_t pid, int mode, int returnvalue);
+t_jobs			*jobs_update_help(t_jobs *tmp, t_jobs *hold);
+void			setup_curr_back(t_jobs *tmp, int curr, int back);
+void			jobs_updater(t_jobs *tmp, t_jobs *hold);
+void			jobs_update_currentback(int mode);
+void			show_job_info_helper(t_jobs *job, int mode);
+void			jobs_notifications_output(t_jobs *job);
+void			jobs_notif_helper(t_jobs *job, t_jobs *last, t_jobs *next);
 
 int				main_test(int flag);
 char			**init_envp(t_lstcontainer *env);
