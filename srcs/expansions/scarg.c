@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 01:03:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 01:04:02 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 03:22:02 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		expan_arg(t_scan_arg *scarg)
 	scarg->scan = scarg->scan->next;
 }
 
-void	fill_scarg(t_scan_arg *scarg)
+void		fill_scarg(t_scan_arg *scarg)
 {
 	scarg->scan = new_scan();
 	scarg->first_scan = scarg->scan;

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 01:52:42 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 03:13:27 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 03:20:50 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void		unquote(char **value, int *quote)
 
 int			quote_error(char *scan, int open_key, int quote)
 {
-
 	if (quote && open_key && ft_iswhitespace(*scan))
 		return ('E');
 	else if (*scan == '{' && ft_iswhitespace(*(scan + 1)))
