@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 07:18:12 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 10:32:12 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ void			free_job(t_jobs *job)
 		{
 			job->next->prev = job->prev ? job->prev : NULL;
 			tmpelement = job->next;
-			cmd = job->t_command;
-			while (cmd)
-			{
-				tmp = cmd;
-				cmd = cmd->next;
-				free(tmp);
-			}
+		}
+		cmd = job->t_command;
+		while (cmd)
+		{
+			tmp = cmd;
+			cmd = cmd->next;
+			free(tmp);
 		}
 		ft_strdel(&job->name);
 		free(job);
