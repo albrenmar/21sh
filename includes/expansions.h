@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/21 02:05:58 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 01:05:16 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,17 @@ typedef struct	s_unquoter
 	int					error;
 	struct s_unquoter	*next;
 }				t_unquoter;
+
+typedef struct	s_scan_arg
+{
+	t_expand	*expand;
+	t_scan		*scan;
+	t_scan		*first_scan;
+	t_unquoter	*checker;
+	char		*new_arg;
+	int			ret;
+}				t_scan_arg;
+
 
 char			expand_transformer(char **value, int chg_value);
 int				need_expand(char *to_transf);
@@ -146,5 +157,7 @@ void			rmv_str(char **str);
 void			ass_str_wout_ast(t_analyzer *to_analy, char **str);
 void			ass_str_wstrt_ast(t_analyzer *to_analy, char **str);
 void			ass_str_wend_ast(t_analyzer *to_analy, char **str);
+void			expan_arg(t_scan_arg *scarg);
+void			fill_scarg(t_scan_arg *scarg);
 
 #endif
