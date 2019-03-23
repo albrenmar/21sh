@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansions.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 05:40:19 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 08:58:55 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,5 +172,7 @@ t_unquoter		*new_unquoted_value(void);
 void			copy_to_quote(char **old, char **new, char *type);
 void			copy_new_value(char **old, t_unquoter **new);
 t_unquoter		*quote_checker(t_unquoter *to_unquot, char **ascan);
+void			clean_unquoter(t_unquoter *unq);
+void			end_analyzer(t_analyzer to_analy);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/23 05:27:32 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/23 08:10:59 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -178,7 +178,8 @@ SRC = main.c \
  	  expansions/scarg.c \
 	  expansions/tools_quote.c \
 	  expansions/varname.c \
-	  expansions/autocomplete/auto_com_expan.c
+	  expansions/autocomplete/auto_com_expan.c \
+	  expansions/clean_unquoter.c \
 
 OBJ := $(SRC:.c=.o)
 
@@ -195,7 +196,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -g -fsanitize=address #-Wall -Wextra -Werror 
+FLAG := -g #-fsanitize=address #-Wall -Wextra -Werror 
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')

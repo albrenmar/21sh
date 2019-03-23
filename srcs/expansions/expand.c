@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 05:36:21 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 09:04:34 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,21 +93,20 @@ void		scan_arg_transformer(t_unquoter **check, char **value)
 	*value = ft_strnew(1);
 	while (scarg.checker->str_unquoted)
 	{
-		*value = ft_strjoinfree(*value, scarg.checker->str_unquoted, 2);
+		*value = ft_strjoinfree(*value, scarg.checker->str_unquoted, 1);
 		scarg.checker = scarg.checker->next;
 	}
 }
 
 char		expand_transformer(char **value)
 {
-	char		quote;
 	char		*str_error;
 	t_unquoter	*to_unquot;
+	t_unquoter	*first;
 
-	quote = 0;
-	str_error = ft_strdup(*value);
 	to_unquot = NULL;
 	to_unquot = unquote_value(value);
+	first = to_unquot;
 	if (to_unquot && (!ft_strstr(to_unquot->str_unquoted, "${}")
 			|| !ft_strstr(to_unquot->str_unquoted, "${}")))
 		scan_arg_transformer(&to_unquot, value);
@@ -122,5 +121,6 @@ char		expand_transformer(char **value)
 		ft_strdel(value);
 		*value = ft_strdup(" ");
 	}
+	clean_unquoter(first);
 	return (0);
 }
