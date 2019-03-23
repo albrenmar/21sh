@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/21 13:38:00 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/23 03:14:37 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int			is_builtin(void)
 		|| ft_builtin_search("set") || ft_builtin_search("echo")
 		|| ft_builtin_search("hash") || ft_builtin_search("test")
 		|| ft_builtin_search("cd") || ft_builtin_search("history")
-		|| ft_builtin_search("alias") || ft_builtin_search("unalias"))
+		|| ft_builtin_search("alias") || ft_builtin_search("unalias")
+		|| ft_builtin_search("type"))
 		return (1);
 	return (0);
 }
@@ -90,5 +91,7 @@ int			builtin_exec(void)
 		return (add_alias());
 	else if (ft_builtin_search("unalias"))
 		return (unalias_blt());
+	else if (ft_builtin_search("type"))
+		return (type_main());
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/22 03:26:00 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/22 23:54:46 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,28 +83,48 @@ t_last	*check_exp_error(t_last *cmd)
 	return (begin);
 }
 
-int		main(int argc, char **argv, char **env)
+void	set_up(char **argv, char **env)
 {
-	char	*line;
-	t_tab	st_tab;
-	t_env	st_env;
-	t_last	*cmd;
-
-	line = NULL;
-	if (argc > 2)
-		argc_error();
-	argc = 0;
 	if (ft_strcmp(argv[1], "-u") == 0)
 		g_tracking.unlink = 1;
 	else
 		g_tracking.unlink = 0;
-	//	set_env(&st_env, env);
-	// ft_siginit();
 	cursorinit();
 	init_shell(env, argv);
 	get_term();
 	interactive_check_set_shell_group();
 	set_shell_signal_handlers();
+}
+
+void	main_loop(char *line, char **argv)
+{
+	t_last	*cmd;
+
+	if ((ft_strlen(line) > 0) && spaces_line_check(line)
+	&& (cmd = ft_parseur(line)))
+	{
+		if (write(0, argv[0], 0) != -1)
+			hist_lst_add_next(g_tracking.mysh->hist, line);
+		convert_list(cmd);
+		if (!error_lexer(cmd))
+		{
+			cmd = check_exp_error(cmd);
+			if (cmd)
+				ft_ast(cmd);
+		}
+	}
+}
+
+int		main(int argc, char **argv, char **env)
+{
+	char	*line;
+	t_tab	st_tab;
+	t_env	st_env;
+
+	line = NULL;
+	if (argc > 2)
+		argc_error();
+	set_up(argv, env);
 	while (get_key() > 0)
 	{
 		line = ft_strdup(g_tracking.cmd);
@@ -114,20 +134,7 @@ int		main(int argc, char **argv, char **env)
 			ft_putchar_fd('\n', 2);
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
 		if ((line = shebang_parse_switch(line)) != NULL)
-		{
-			if ((ft_strlen(line) > 0) && spaces_line_check(line) && (cmd = ft_parseur(line)))
-			{
-				if (write(0, argv[0], 0) != -1)
-					hist_lst_add_next(g_tracking.mysh->hist, line);
-				convert_list(cmd);
-				if (!error_lexer(cmd))
-				{
-					cmd = check_exp_error(cmd);
-					if (cmd)
-						ft_ast(cmd);
-				}
-			}
-		}
+			main_loop(line, argv);
 		jobs_notifications();
 		jobs_update_current();
 		free(line);
