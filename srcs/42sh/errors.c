@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 02:35:02 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		argc_error(void)
 {
 	ft_putendl_fd("usage: ./42sh", 2);
-	exit(1);
+	return (ft_exit(1, EXIT_FAILURE));
 }
 
 int		exec_errors_dir(char **tab_exec, int mode)

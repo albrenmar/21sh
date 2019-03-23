@@ -20,6 +20,7 @@ leaks de ma partie (sauf srcs/builtins/builtins.c)
 -limpiar la estructura global
 -hacer bien los alias (en el lexer)
 
+
 Partie Marc
 - Gestion d'errors pour les expansions.
 - Quiter le process en execution pour no importe quel commande avec ${VARNAME:?VARVALUE} en tant que VARNAME 

@@ -6,7 +6,7 @@
 #    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/22 04:07:15 by abguimba         ###   ########.fr        #
+#    Updated: 2019/03/23 08:54:51 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,12 +53,13 @@ SRC = main.c \
 	  builtins/cd/ft_cd.c \
 	  builtins/cd/ft_cd2.c \
 	  builtins/cd/ft_dotdot.c \
+	  builtins/hash/hash_builtin.c \
+	  builtins/hash/hash_args.c \
 	  builtins/builtin_tools.c \
 	  builtins/bg.c \
 	  builtins/fg.c \
 	  builtins/jobs_builtin.c \
 	  builtins/exit.c \
-	  builtins/hash_builtin.c \
 	  builtins/builtins.c \
 	  builtins/set.c \
 	  builtins/echo/exec.c \
@@ -72,6 +73,13 @@ SRC = main.c \
 	  jobs/job_utils.c \
 	  jobs/job_functions.c \
 	  jobs/ft_job_control.c \
+	  jobs/job_tools.c \
+	  jobs/job_helpers.c \
+	  jobs/update_jobs.c \
+	  jobs/jobs_output.c \
+	  jobs/job_control_errors.c \
+	  jobs/jobs_update_command.c \
+	  jobs/job_checks.c \
 	  gnl/coolprompt.c \
 	  gnl/add_to_str.c \
 	  gnl/rem_from_str.c \

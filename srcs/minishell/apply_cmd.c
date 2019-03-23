@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   apply_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 17:52:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 20:34:16 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 02:36:41 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+#include "../../includes/sh42.h"
 
 void	create_tab_path(t_tab *st_tab, char **env)
 {
@@ -49,7 +50,7 @@ void	recup_argument(t_tab *st_tab, t_env *st_env, char **line)
 	{
 		forfree(st_tab->tab_word);
 		free(*line);
-		exit(0);
+		ft_exit(1, EXIT_SUCCESS);
 	}
 }
 

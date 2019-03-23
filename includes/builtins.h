@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 01:11:20 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 01:49:47 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int				check_and_exec_echo(void);
 int				is_builtin_alone(void);
 int				ft_builtin_search(char *builtin);
 int				is_builtin(void);
-int				ft_exit(void);
+int				ft_exit(int process, int exitcode);
 int				builtin_exec();
 int				jobs_builtin(void);
 int				errors_fg(int nb, int error, char *hold);

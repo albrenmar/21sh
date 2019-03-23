@@ -1,46 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   job_control_errors.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/01 20:58:35 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 07:00:54 by abguimba         ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
+/*   Updated: 2019/03/23 08:24:39 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "sh42.h"
 
-void	ft_putstr(char const *s)
+int			job_control_errors(pid_t pid, int mode, int returnvalue)
 {
-	int	i;
-
-	if (*s)
+	if (mode == 0)
 	{
-		i = ft_strlen(s);
-		write(1, s, i);
+		ft_putstr_fd(SHELL_NAME": No child process with id ", 2);
+		ft_putnbr_fd(pid, 2);
 	}
-}
-
-void	ft_putstr_nocar(char const *s)
-{
-	char	*new;
-	int		i;
-	int		a;
-
-	new = ft_strnew(ft_strlen(s));
-	i = 0;
-	a = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] != '\r')
-		{
-			new[a] = s[i];
-			a++;
-		}
-		i++;
-	}
-	ft_putstr_fd(new, 0);
-	free(new);
+	return (returnvalue);
 }

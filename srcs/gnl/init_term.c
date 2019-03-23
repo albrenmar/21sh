@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:29:52 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 04:03:43 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 02:28:39 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	cursor_reset(void)
 	if ((g_tracking.str = malloc(sizeof(char) * g_tracking.buffsize)) == NULL)
 	{
 		ft_putendl("Failled to allocate memory");
-		exit(EXIT_FAILURE);
+		ft_exit(1, EXIT_FAILURE);
 	}
 	ft_bzero(g_tracking.str, g_tracking.buffsize);
 }
@@ -73,7 +73,7 @@ void	cursorinit(void)
 	if ((g_tracking.pos = malloc(sizeof(t_cursor) + 1)) == NULL)
 	{
 		ft_putendl("Failled to allocate memory");
-		exit(EXIT_FAILURE);
+		ft_exit(1, EXIT_FAILURE);
 	}
 	cursor_reset();
 	init_key_list();

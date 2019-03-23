@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 02:36:41 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	proto_heredoc(char **env)
 		g_tracking.quotes = 3;
 		get_key();
 		if (g_tracking.quotes == 10)
-			exit (0);
+			ft_exit (1, 0);
 		str = ft_strdup(g_tracking.cmd);
 		if (ft_strcmp(str, "end") != 0)
 			ft_putendl_fd(str, fd);
@@ -61,7 +61,7 @@ void	proto_heredoc(char **env)
 		}
 		dup2(fd, 0);
 		execve("/bin/cat", argv, env);
-		exit(0);
+		ft_exit(1, EXIT_SUCCESS);
 }
 
 void	fork_to_cat(char **env)
@@ -73,7 +73,7 @@ void	fork_to_cat(char **env)
 	{
 		wait(&father);
 		ft_putendl("test");
-		exit(0);
+		ft_exit(1, EXIT_SUCCESS);
 	}
 	if (father == 0)
 		proto_heredoc(env);	

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/21 13:38:00 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/23 04:02:59 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int			builtin_exec(void)
 	else if (ft_builtin_search("echo"))
 		return (check_and_exec_echo());
 	else if (ft_builtin_search("exit"))
-		return (ft_exit());
+		return (ft_exit(1, EXIT_SUCCESS));
 	else if (ft_builtin_search("hash"))
 		return (ft_hash());
 	else if (ft_builtin_search("test"))

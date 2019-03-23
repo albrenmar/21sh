@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 01:20:00 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 08:59:58 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -452,11 +452,16 @@ int				empty_hash_table(void);
 int				hash_update_commands(int j);
 char			**tab_format_hash(char *binary);
 char			**hashed_command(char **tab_exec, int index);
+int				ft_hash_arg(int j);
+void			ft_hash_output_helper(t_hash *tmp, int spaces);
+void			hash_update_helper(t_hash *tmp, int index, int j, char **c);
 
 int				argc_error(void);
 int				exec_errors(char **tab_exec, int mode);
 int				exec_errors_dir(char **tab_exec, int mode);
 
+t_jobs			*new_job_helper(t_jobs *tmp);
+char			*job_name_maker_helper(int spaces, int len, t_last *head);
 t_jobs			*new_job(t_last *part, int background);
 void			wait_for_job(t_jobs *job);
 void			put_job_in_foreground(t_jobs *job, int cont);
@@ -471,12 +476,23 @@ int				cmd_checker(t_last *part, int mode, t_jobs *job);
 void			free_last(t_last **cmd);
 char			*check_separator(t_last *part);
 int				suspended_jobs_count(void);
+void			free_all_jobs(void);
 void			update_status(void);
 int				update_process_status(pid_t pid, int status);
 void			show_job_info(t_jobs *job, const char *status, int mode);
 void			free_job(t_jobs *job);
 void			jobs_notifications(void);
 void			jobs_update_current(void);
+int				update_st_help(t_jobs *job, pid_t pid, t_comm *cmd, int status);
+void			free_j_help(int mode, t_jobs *job, t_jobs *hold, t_jobs *hold2);
+int				job_control_errors(pid_t pid, int mode, int returnvalue);
+t_jobs			*jobs_update_help(t_jobs *tmp, t_jobs *hold);
+void			setup_curr_back(t_jobs *tmp, int curr, int back);
+void			jobs_updater(t_jobs *tmp, t_jobs *hold);
+void			jobs_update_currentback(int mode);
+void			show_job_info_helper(t_jobs *job, int mode);
+void			jobs_notifications_output(t_jobs *job);
+void			jobs_notif_helper(t_jobs *job, t_jobs *last, t_jobs *next);
 
 int				main_test(int flag);
 char			**init_envp(t_lstcontainer *env);
