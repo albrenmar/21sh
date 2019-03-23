@@ -6,7 +6,7 @@
 #    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/23 11:08:13 by hdufer           ###   ########.fr        #
+#    Updated: 2019/03/23 16:18:32 by hdufer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -149,11 +149,14 @@ SRC = main.c \
 	  shell_core/get_pwd.c \
 	  shell_core/env_list_to_tab.c \
 	  history/history_lst.c \
-	  history/history_lst2.c \
+	  history/history_lst_plus.c \
 	  history/history_lst_options.c \
 	  history/history_loop.c \
+	  history/history_lst_general.c \
 	  history/print_hist.c \
 	  history/shebang.c \
+	  history/shebang_plus.c \
+	  history/shebang_extra.c \
 	  history/history_lib_plus.c \
 	  history/hassantest.c \
 	  history/history_builtin_option.c \
@@ -204,7 +207,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -g # -fsanitize=address -Wall -Wextra -Werror 
+FLAG := -g # -fsanitize=address -Wall -Wextra -Werror
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')
@@ -212,7 +215,7 @@ CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e '
 all : libft_comp $(NAME)
 
 $(NAME) : $(OBJP)
-			@gcc $(FLAG) $(OBJP) -o $(NAME) -ltermcap $(INC) $(LIB) 
+			@gcc $(FLAG) $(OBJP) -o $(NAME) -ltermcap $(INC) $(LIB)
 			@echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Finished compilation. Output file : $(COL_VIOLET)$(PWD)/$(NAME)$(COL_BLUE) ᕦ(ò_óˇ)ᕤ$(COL_END)"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
@@ -232,7 +235,7 @@ fclean :	clean
 			@rm -rf $(NAME)
 			@make fclean -C srcs/libft
 			@echo "$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Removed $(COL_VIOLET)$(NAME)$(COL_END)"
-			
+
 re :		fclean all
 
 .PHONY: ft_printf clean fclean all re

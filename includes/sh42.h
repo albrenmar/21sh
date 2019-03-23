@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 11:06:51 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/23 16:15:53 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -380,7 +380,6 @@ t_hist			*hist_delete_index(t_hist *hist, int index);
 int     		begin_search(void);
 char         	*get_hist_ptr(char *needle);
 t_hist			*get_hist_nbr(int i);
-char		 	*shebang_parse_switch(char *line);
 int				history(void);
 void			free_hist(void);
 void			history_builtin_s(void);
@@ -391,6 +390,10 @@ t_hist			*hist_delete_last(t_hist *hist);
 void			history_builtin_p(void);
 void			history_builtin_digit(void);
 void			hist_save_file_w(char *path);
+char			*shebang_num_neg(char *line, char *last_line);
+char			*shebang_num_pos(char *line, char *last_line);
+char			*shebang_word(char *line, char *last_line);
+char		 	*shebang_parse_switch(char *line);
 
 t_last			*create_new_list(void);
 t_last			*ft_parseur(char *line);
