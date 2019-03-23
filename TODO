@@ -19,6 +19,7 @@ leaks de ma partie (sauf srcs/builtins/builtins.c)
 -RECOMMENCER AST XDDD
 -limpiar la estructura global
 -hacer bien los alias (en el lexer)
+-verificar no errores con valgrind, wall wextra werror y fsanitize- address
 
 
 Partie Marc
