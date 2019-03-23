@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 10:31:57 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 22:46:16 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void		scan_arg_transformer(t_unquoter **check, char **value)
 		*value = ft_strjoinfree(*value, scarg.checker->str_unquoted, 1);
 		scarg.checker = scarg.checker->next;
 	}
-//	clean_unquoter(*check);
 }
 
 char		expand_transformer(char **value)
