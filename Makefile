@@ -207,7 +207,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -g  -fsanitize=address -Wall -Wextra -Werror
+FLAG := -g  #-fsanitize=address -Wall -Wextra -Werror
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')
