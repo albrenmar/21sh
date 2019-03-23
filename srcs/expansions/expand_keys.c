@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_keys.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/21 02:03:44 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 05:36:42 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void		exp_key_start_hash(char **str, t_expand *expand)
 char		check_sign(t_expand *expand)
 {
 	t_expand	*to_run;
-	int			ctrl;
 	char		sign;
 
 	to_run = expand;

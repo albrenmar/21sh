@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_keys_adv.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/21 06:35:42 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 06:01:33 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ void	exp_key_double_hash(char **str, t_expand *expand)
 void	exp_key_double_percent(char **str, t_expand *expand)
 {
 	t_analyzer	to_analy;
-	char		*run_varvalue;
-	char		*run_wildcard;
+//	char		*run_wildcard;
 	int			i;
 
 	i = 0;
@@ -73,8 +72,8 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 		print_exp_error(*str + 1);
 		return ;
 	}
-	if (to_analy.start_astrsk)
-		run_wildcard = run_wildcard + 2;
+//	if (to_analy.start_astrsk)
+//		run_wildcard = run_wildcard + 2;
 	if (to_analy.varvalue && !to_analy.asterisk)
 		ass_str_wout_ast(&to_analy, str);
 	else if (to_analy.varvalue && to_analy.start_astrsk && !to_analy.end_astrsk)

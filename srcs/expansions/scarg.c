@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scarg.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 01:03:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 03:37:28 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 05:41:58 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void		fill_scarg(t_scan_arg *scarg)
 {
 	scarg->scan = new_scan();
 	scarg->first_scan = scarg->scan;
-	scan_argument(scarg->checker->str_unquoted, scarg->scan, 0,
-		scarg->checker->type);
+	scan_argument(scarg->checker->str_unquoted, scarg->scan);
 	scarg->new_arg = NULL;
 	while (scarg->scan && scarg->scan->sstring)
 		expan_arg(scarg);

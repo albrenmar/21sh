@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansions.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 05:04:36 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 05:40:19 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ typedef struct	s_dataq
 
 
 
-char			expand_transformer(char **value, int chg_value);
+char			expand_transformer(char **value);
 int				need_expand(char *to_transf);
 t_expand		*new_expand(int len);
 void			create_list_expand(t_expand *new_letter, char *line);
@@ -135,8 +135,7 @@ int				have_envname(char *var);
 int				have_setname(char *var);
 void			scan_arg_transformer(t_unquoter **check, char **value);
 t_scan			*new_scan(void);
-void			scan_argument(char *arg, t_scan *info_arg, int simple,
-					char quote);
+void			scan_argument(char *arg, t_scan *info_arg);
 char			*ft_exp_complete(char *arg);
 t_unquoter		*unquote_value(char **value);
 void			reassign_value(char **value, char *new_value, int quote);

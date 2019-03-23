@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parm.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 06:10:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 05:38:32 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 char	*get_parm_string(char *str)
 {
 	t_env_set	*tmp;
-	t_keyval	*buf;
 
 	if (g_tracking.mysh->setenv_lst == NULL)
 		return (NULL);

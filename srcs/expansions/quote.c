@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quote.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 01:52:42 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 03:20:50 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 05:38:53 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void		reassign_value(char **value, char *new_value, int quote)
 
 t_unquoter	*unquote_value(char **value)
 {
-	char		*new_value;
 	char		*scan;
 	t_unquoter	*to_unquot;
 	t_unquoter	*first;

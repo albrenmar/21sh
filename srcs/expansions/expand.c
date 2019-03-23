@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 01:06:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 05:36:21 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void		scan_arg_transformer(t_unquoter **check, char **value)
 	}
 }
 
-char		expand_transformer(char **value, int chg_value)
+char		expand_transformer(char **value)
 {
 	char		quote;
 	char		*str_error;
