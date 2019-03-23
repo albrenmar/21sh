@@ -19,6 +19,8 @@ leaks de ma partie (sauf srcs/builtins/builtins.c)
 -RECOMMENCER AST XDDD
 -limpiar la estructura global
 -hacer bien los alias (en el lexer)
+-boucle infinie "sleep 10 || sleep 20 || sleep 30" y Ctrl-Z
+-verificar no se printea prompt duplicado cuando recorres historico
 -verificar no errores con valgrind, wall wextra werror y fsanitize- address
 
 
