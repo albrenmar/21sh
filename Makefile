@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/23 01:04:46 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/23 03:14:20 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -174,6 +174,7 @@ SRC = main.c \
 	  expansions/tools_double_hash.c \
 	  expansions/tools_double_percent.c \
 	  expansions/scarg.c \
+	  expansions/tools_quote.c \
 	  expansions/autocomplete/auto_com_expan.c
 
 OBJ := $(SRC:.c=.o)

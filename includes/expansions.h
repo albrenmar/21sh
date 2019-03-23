@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 01:05:16 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 03:16:50 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,16 @@ typedef struct	s_scan_arg
 	char		*new_arg;
 	int			ret;
 }				t_scan_arg;
+
+typedef struct	s_dataq
+{
+	char		*new_value;
+	char		*scan;
+	t_unquoter	*to_unquot;
+	t_unquoter	*first;
+	char		next_quote;
+}				t_dataq;
+
 
 
 char			expand_transformer(char **value, int chg_value);
@@ -159,5 +169,9 @@ void			ass_str_wstrt_ast(t_analyzer *to_analy, char **str);
 void			ass_str_wend_ast(t_analyzer *to_analy, char **str);
 void			expan_arg(t_scan_arg *scarg);
 void			fill_scarg(t_scan_arg *scarg);
+t_unquoter		*new_unquoted_value(void);
+void			copy_to_quote(char **old, char **new, char *type);
+void			copy_new_value(char **old, t_unquoter **new);
+t_unquoter		*quote_checker(t_unquoter *to_unquot, char **ascan);
 
 #endif
