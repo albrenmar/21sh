@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 17:21:08 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/09 02:56:14 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 03:23:04 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,7 @@ int		scan_dollar(char *arg, char **new_arg)
 	fill_arg = *new_arg;
 	fill_arg[0] = arg[0];
 	if (arg[i] && arg[i] == '{')
-	{
 		return (scan_dollar_key(arg, &fill_arg));
-/*		while (arg[i] && arg[i] != '}')
-		{
-			fill_arg[i] = arg[i];
-			i++;
-		}
-		if (arg[i])
-			return (++i);
-		return (i);
-*/	}
 	while (arg && arg[i])
 	{
 		if (arg[i] == '/' || arg[i] == '~')

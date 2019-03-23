@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/23 03:07:11 by bsiche           ###   ########.fr        #
+#    Updated: 2019/03/23 05:27:32 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -175,6 +175,9 @@ SRC = main.c \
 	  expansions/analyzer.c \
 	  expansions/tools_double_hash.c \
 	  expansions/tools_double_percent.c \
+ 	  expansions/scarg.c \
+	  expansions/tools_quote.c \
+	  expansions/varname.c \
 	  expansions/autocomplete/auto_com_expan.c
 
 OBJ := $(SRC:.c=.o)
