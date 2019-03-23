@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scan.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 05:42:59 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/09 06:05:47 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 05:45:53 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		scan_it(char *arg, char **new_arg)
 	return (scan_other(arg, new_arg));
 }
 
-void	scan_argument(char *arg, t_scan *info_arg, int simple, char quote)
+void	scan_argument(char *arg, t_scan *info_arg)
 {
 	char	*new_arg;
 	t_scan	*first;

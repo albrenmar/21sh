@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/22 23:54:46 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 05:41:17 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_last	*check_exp_error(t_last *cmd)
 	while (cmd)
 	{
 		g_tracking.mysh->err_expend = 0;
-		expand_transformer(&cmd->name, 1);
+		expand_transformer(&cmd->name);
 		if (ft_strequ(cmd->name, " "))
 		{
 			ft_strdel(&cmd->name);
