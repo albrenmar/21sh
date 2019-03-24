@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/10 18:01:55 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 04:49:10 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 08:57:25 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ void	clean_nlzr_wildcard(t_analyzer *to_analy, int reverse)
 	}
 	if (!reverse)
 		to_analy->wildcard = ft_strrev(to_analy->wildcard, 1);
+}
+
+void	end_analyzer(t_analyzer to_analy)
+{
+	ft_strdel(&to_analy.varname);
+	ft_strdel(&to_analy.varvalue);
+	ft_strdel(&to_analy.wildcard);
 }
 
 void	init_analyzer(t_analyzer *to_analy, char **str, t_expand *expand)

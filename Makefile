@@ -190,7 +190,8 @@ SRC = main.c \
  	  expansions/scarg.c \
 	  expansions/tools_quote.c \
 	  expansions/varname.c \
-	  expansions/autocomplete/auto_com_expan.c
+	  expansions/autocomplete/auto_com_expan.c \
+	  expansions/clean_unquoter.c \
 
 OBJ := $(SRC:.c=.o)
 
