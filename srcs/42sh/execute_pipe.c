@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 04:41:46 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/24 05:00:51 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,16 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job)
 			execute_two(tab_exec);
 		}
 		else
+		{
+			free_tab(tab_exec);
 			set_new_process(job, pid0);
+		}
 	}
 	else
+	{
+		free_tab(tab_exec);
 		g_tracking.builtin = 1;
+	}
 }
 
 void		execute_pipe(char **tab_exec, t_jobs *job)
@@ -87,10 +93,14 @@ void		execute_pipe(char **tab_exec, t_jobs *job)
 		}
 		else
 		{
+			free_tab(tab_exec);
 			close(descrf_two[1]);
 			set_new_process(job, pid0);
 		}
 	}
 	else
+	{
+		free_tab(tab_exec);
 		g_tracking.builtin = 1;
+	}
 }
