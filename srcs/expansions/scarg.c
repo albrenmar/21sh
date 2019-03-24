@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 01:03:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 05:41:58 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/24 04:34:41 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void		expan_arg(t_scan_arg *scarg)
 
 void		fill_scarg(t_scan_arg *scarg)
 {
+	t_scan	*head;
+
 	scarg->scan = new_scan();
+	head = scarg->scan;
 	scarg->first_scan = scarg->scan;
 	scan_argument(scarg->checker->str_unquoted, scarg->scan);
 	scarg->new_arg = NULL;
@@ -41,12 +44,13 @@ void		fill_scarg(t_scan_arg *scarg)
 		ft_memdel((void **)scarg->first_scan);
 		scarg->first_scan = scarg->first_scan->next;
 	}
-	if (scarg->first_scan)
-		ft_memdel((void **)scarg->first_scan);
-	scarg->first_scan = NULL;
+//	if (scarg->first_scan)
+//		ft_memdel((void **)scarg->first_scan);
+//	scarg->first_scan = NULL;
 	if (scarg->new_arg)
 	{
 		ft_strdel(&scarg->checker->str_unquoted);
 		scarg->checker->str_unquoted = scarg->new_arg;
 	}
+	scan_lstdel(head);
 }
