@@ -3,24 +3,18 @@ Rajouter "Dans des heredocs, valide" pour les heredoc, et quitter proprement le 
 -Type et Test, a adapter avec le tableau d'arg et non char **argv
 
 Partie Abraham
--Wall -Wextra -Werror de mi parte (sauf srcs/builtins/builtins.c) (cp -rf include/* + libft.a && gcc -c -Wall -Wextra -Werror x.c)
 -fix redirection output (>) ou (>>) des builtins quand il y a pas de fork
 - '>' == '>>'
 -Ctrl-C et Ctrl-D quittent heredoc
--norme ma partie (sauf srcs/builtins/builtins.c)
 leaks de ma partie (sauf srcs/builtins/builtins.c)
 -"echo -a -b" boucle infini sur "while (list_cmd)" dans fonction exec_command
 -top | top ou cat | cat | cat bug le terminal
--verificar segv autocompletion solo en lo mio
 -verificar history funciona con hdufer
 -demander de completer si "ls &&" ou "ls ||"
 -builtin solo con & no funciona bien
 -forkear SIEMPRE (con builtin solo tambien) con '&' tanto como '|'
--RECOMMENCER AST XDDD
 -limpiar la estructura global
 -hacer bien los alias (en el lexer)
--verificar procesos que acaban en background tienen el + o el -
--boucle infinie "sleep 10 || sleep 20 || sleep 30" y Ctrl-Z
 -verificar no se printea prompt duplicado cuando recorres historico
 -verificar no errores con valgrind, wall wextra werror y fsanitize- address
 
