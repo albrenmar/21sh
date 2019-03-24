@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   home.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 01:20:02 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 05:38:24 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 10:03:15 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char	*get_home_value(void)
 {
 	char	*home;
 
-	if ((home = ft_strdup(get_env_string("HOME"))) && ft_strequ(home, ""))
+	home = NULL;
+	if ((home = get_env_string("HOME")) && ft_strequ(home, ""))
 		return (home);
 	else if ((home = get_parm_string("HOME")) && ft_strequ(home, ""))
 		return (home);
