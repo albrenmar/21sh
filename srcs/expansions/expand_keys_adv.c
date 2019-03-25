@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 22:55:09 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/25 07:20:26 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	exp_key_altern(char **str, t_expand *expand)
 		*str = ft_strdup(to_analy.varvalue);
 	else
 		*str = ft_strdup(" ");
+	end_analyzer(to_analy);
 }
 
 void	exp_key_double_hash(char **str, t_expand *expand)

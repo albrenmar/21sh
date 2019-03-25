@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 20:26:39 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/25 00:26:13 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,6 @@
 # define K_CTRLR			18
 # define K_ESC				"\x1b\x1b"
 # define K_DEL				"\x1b\x5b\x33\x7e"
-
-int		descrf[2];
-int		descrf_two[2];
 
 typedef struct	s_cursor
 {
@@ -411,29 +408,29 @@ int				its_pipe(t_last *list);
 int				its_separator(t_last *list);
 char			*its_quote(int i, char *str, int *nb, char c);
 char			**create_tab_to_exec(t_last *list);
-void			execute_pipe(char **tab_exec, t_jobs *job);
+int				execute_pipe(t_last **list, t_jobs *job, int readpipe);
 void			execute_two(char **tab_cmd);
-void			execute_pipe_two(char **tab_exec, t_jobs *job);
+void			execute_pipe_two(char **tab_exec, t_jobs *job, int readpipe);
 char			**test_exist_fonction(char **tab_cmd, int mode);
 int				error_lexer(t_last *list_cmd);
-void			create_fich(t_last *list);
+int				create_fich(t_last *list);
 void			print_last(t_last *list);
 int				its_eper(t_last *list);
 char			**tab_dup(char **tob);
-char			*search_fd_reddir(char *str, int *nb);
-char			*search_reddir(char *str, int *nb);
+char			*search_fd_reddir(char *str);
+char			*search_reddir(char *str);
 char			*search_normally_arg(char *str, int *nb);
-char			*search_symboll(char *str, int *nb);
+char			*search_symboll(char *str);
 int				its_not_symbol(char c);
 char			*check_quote(char *line, int i, char c);
 char			*check_bracket(char *line, int i);
 int				ft_valid_quote(char *line, char c, int flag);
-int				ft_valid_bracket(char *line, char c, int flag);
+int				ft_valid_bracket(char *line);
 int				its_heredoc(t_last *list);
 int				its_indir(t_last *list);
 int				out_redir(t_last *list);
 void			set_fd_and_descr(void);
-void			exec_in_pipe(t_last *list_cmd, t_jobs *job);
+void			exec_in_pipe(t_last *list_cmd, t_jobs *job, int descrf[2]);
 int				exec_create_file(t_last **list_cmd);
 void			set_jobs(t_jobs *job, pid_t pid0);
 void			close_and_dup(int mode);

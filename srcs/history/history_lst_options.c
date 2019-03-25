@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/23 20:25:55 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/25 17:43:27 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	hist_print(t_hist *hist)
 {
 	t_hist *hist_count;
 
+	hist = hist_remap_index(hist);
 	hist_count = hist;
 	while (hist_count && hist_count->next)
 		hist_count = hist_count->next;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_expand.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 01:23:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/25 05:56:56 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	delete_letter_expand(t_expand **letter)
 		prev->next = next;
 	if (next)
 		next->prev = prev;
+//	free(*letter);
 	if (next)
 		*letter = next;
 	else
@@ -92,11 +93,21 @@ void	update_envp(void)
 void	update_list_expand(t_expand **letter, char **str)
 {
 	t_expand	*new_letter;
+	char		*cop_str;
 
+	cop_str = ft_strdup(*str);
 	delete_list_expand(letter);
+//	expand_lstdel(*letter);
 	*letter = NULL;
 	new_letter = new_expand(ft_strlen(*str));
 	*letter = new_letter;
-	create_list_expand(*letter, *str);
+	if (cop_str[0] == '0')
+	{
+		cop_str[0] = '1';
+		create_list_expand(*letter, cop_str);
+	}
+	else
+		create_list_expand(*letter, *str);
+	ft_strdel(&cop_str);
 	update_envp();
 }
