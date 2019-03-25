@@ -6,13 +6,13 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 02:36:41 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/25 01:35:22 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
 
-void	proto_heredoc(char **env, t_last *list, int fd)
+void	proto_heredoc(t_last *list, int fd)
 {
 	char	*str;
 
@@ -26,7 +26,7 @@ void	proto_heredoc(char **env, t_last *list, int fd)
 		str = ft_strdup(g_tracking.cmd);
 		if (ft_strcmp(str, list->next->name) != 0)
 			ft_putendl_fd(str, fd);
-		ft_putchar_fd('\n', 2);
+		ft_putchar_fd('\n', 0);
 	}
 	ft_exit(1, EXIT_SUCCESS);
 }
@@ -35,7 +35,6 @@ char	*filename(void)
 {
 	char	*new;
 	char	*nbr;
-	int		i;
 
 	new = ft_strdup("/tmp/heredoc");
 	g_tracking.herenbr++;
@@ -68,10 +67,9 @@ int		exec_create_heredoc(t_last **list_cmd)
 		ft_putendl_fd("Couldn't create fich in /temp", 2);
 		return (-1);
 	}
-	g_tracking.redir++;
 	father = fork();
 	if (father == 0)
-		proto_heredoc(NULL, *list_cmd, fd);
+		proto_heredoc(*list_cmd, fd);
 	else
 		wait(&father);
 	close(fd);
@@ -101,8 +99,8 @@ int		exec_create_file(t_last **list_cmd)
 	}
 	else
 	{
-		g_tracking.redir++;
-		create_fich(*list_cmd);
+		if (create_fich(*list_cmd) == -1)
+			return (-1);
 		*list_cmd = (*list_cmd)->next;
 	}
 	return (0);

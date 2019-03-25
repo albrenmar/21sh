@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:13:59 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 02:36:41 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/24 04:28:42 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		valid_bracket(char *line, int quote, int double_quote, int *accol)
 	return (0);
 }
 
-int		ft_valid_bracket(char *line, char c, int flag)
+int		ft_valid_bracket(char *line)
 {
 	int	i;
 	int	accol;
@@ -69,7 +69,7 @@ char	*check_bracket(char *line, int i)
 	if (g_tracking.bracket == 10)
 		ft_exit(1, EXIT_SUCCESS);
 	join = g_tracking.cmd;
-	ft_valid_bracket(join, '{', 0);
+	ft_valid_bracket(join);
 	if (!ret)
 		ret = ft_strdup(join);
 	else

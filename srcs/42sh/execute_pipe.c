@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 04:41:46 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/25 02:08:28 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,20 @@ void		execute_two(char **tab_exec)
 	}
 }
 
-void		execute_pipe_two(char **tab_exec, t_jobs *job)
+void		close_fd_magueule(void)
+{
+	if (g_tracking.mysh->set_fd->STDIN != 0
+			&& g_tracking.mysh->set_fd->STDIN > 2)
+		close(g_tracking.mysh->set_fd->STDIN);
+	if (g_tracking.mysh->set_fd->STDOUT != 1
+			&& g_tracking.mysh->set_fd->STDOUT > 2)
+		close(g_tracking.mysh->set_fd->STDOUT);
+	if (g_tracking.mysh->set_fd->STDERR != 2
+			&& g_tracking.mysh->set_fd->STDERR > 2)
+		close(g_tracking.mysh->set_fd->STDERR);
+}
+
+void		execute_pipe_two(char **tab_exec, t_jobs *job, int readpipe)
 {
 	pid_t	pid0;
 
@@ -54,23 +67,34 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job)
 		if (pid0 == 0)
 		{
 			set_jobs(job, pid0);
+			dup2(readpipe, 0);
+			if (readpipe > 2)
+				close(readpipe);
+			dprintf(2, "UIIIIIIIIIIIIIIIIIIIII\n");
 			set_fd_before_exec();
-			close_and_dup(2);
 			execute_two(tab_exec);
 		}
 		else
+		{
+			if (readpipe > 2)
+				close(readpipe);
 			set_new_process(job, pid0);
+			close_fd_magueule();
+		}
 	}
 	else
 		g_tracking.builtin = 1;
 }
 
-void		execute_pipe(char **tab_exec, t_jobs *job)
+int			execute_pipe(t_last **list_cmd, t_jobs *job, int readpipe)
 {
 	pid_t	pid0;
+	char	**tab_exec;
+	int		descrf[2];
 
-	swap_descrf();
-	pipe(descrf_two);
+	pipe(descrf);
+	tab_exec = create_tab_to_exec(g_tracking.temp_command);
+	*list_cmd = (*list_cmd)->next;
 	free_tab(g_tracking.g_tab_exec);
 	g_tracking.g_tab_exec = tab_dup(tab_exec);
 	if (!is_builtin_alone())
@@ -80,17 +104,26 @@ void		execute_pipe(char **tab_exec, t_jobs *job)
 		pid0 = fork();
 		if (pid0 == 0)
 		{
+			dup2(readpipe, 0);
+			if (readpipe > 2)
+				close(readpipe);
+			close(descrf[0]);
+			dup2(descrf[1], 1);
+			close(descrf[1]);
 			set_jobs(job, pid0);
 			set_fd_before_exec();
-			close_and_dup(1);
 			execute_two(tab_exec);
 		}
 		else
 		{
-			close(descrf_two[1]);
+			close(descrf[1]);
+			if (readpipe > 2)
+				close(readpipe);
 			set_new_process(job, pid0);
+			return (descrf[0]);
 		}
 	}
 	else
 		g_tracking.builtin = 1;
+	return (0);
 }
