@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:40:13 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/25 02:22:29 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/25 02:42:56 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,8 @@ int		init_exec(t_last **list_cmd, t_jobs *job, int readpipe)
 	{
 		if (exec_create_file(list_cmd) == -1)
 		{
-			//close(readpipe);
-			test = open("/dev/null", O_WRONLY);
-			dup2(readpipe, test);
-			close(readpipe);
-			close(test);
-			printf("READPIPE = %d\n", readpipe);
+			if (readpipe > 2)
+				close(readpipe);
 			return (-1);
 		}
 	}

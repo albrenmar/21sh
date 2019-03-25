@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
 #    Updated: 2019/03/25 01:40:46 by alsomvil         ###   ########.fr        #
@@ -191,7 +191,8 @@ SRC = main.c \
  	  expansions/scarg.c \
 	  expansions/tools_quote.c \
 	  expansions/varname.c \
-	  expansions/autocomplete/auto_com_expan.c
+	  expansions/autocomplete/auto_com_expan.c \
+	  expansions/clean_unquoter.c \
 
 OBJ := $(SRC:.c=.o)
 

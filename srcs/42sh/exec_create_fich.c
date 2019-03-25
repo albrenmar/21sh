@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/25 01:35:22 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/25 02:37:11 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	proto_heredoc(t_last *list, int fd)
 		str = ft_strdup(g_tracking.cmd);
 		if (ft_strcmp(str, list->next->name) != 0)
 			ft_putendl_fd(str, fd);
-		ft_putchar_fd('\n', 0);
+		ft_putchar_fd('\n', 2);
 	}
 	ft_exit(1, EXIT_SUCCESS);
 }
