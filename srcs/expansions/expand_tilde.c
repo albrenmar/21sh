@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 02:50:02 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/20 04:47:46 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/25 06:57:09 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	expand_tilde_pwd(char **str, t_expand **expand)
 		ft_strdel(str);
 		*str = path;
 	}
-	update_list_expand(expand, str);
+//	update_list_expand(expand, str);
 }
 
 void	expand_tilde_user(char **str, t_expand **expand)
@@ -82,11 +82,12 @@ void	expand_tilde_user(char **str, t_expand **expand)
 	}
 	home = get_user_home(user);
 	ft_strdel(str);
+	ft_strdel(&user);
 	if (!tmp_path)
 		*str = home;
 	else
 		*str = ft_strjoinfree(home, tmp_path, 3);
-	update_list_expand(expand, str);
+//	update_list_expand(expand, str);
 }
 
 void	expand_tilde_path(char **str, t_expand **expand)
@@ -98,7 +99,7 @@ void	expand_tilde_path(char **str, t_expand **expand)
 	str_tmp = ft_strjoinfree(home, *str + 1, 1);
 	ft_strdel(str);
 	*str = str_tmp;
-	update_list_expand(expand, str);
+//	update_list_expand(expand, str);
 }
 
 void	expand_tilde_only(char **str)
