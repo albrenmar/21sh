@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/21 02:03:44 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/25 06:02:53 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void		exp_key_unique_percent(char **str, t_expand *expand)
 		clean_nlzr_wildcard(&to_analy, 1);
 	}
 	str_uniq_percent_chgr(&to_analy, str);
+	end_analyzer(to_analy);
 }
 
 void		exp_key_unique_hash(char **str, t_expand *expand)
@@ -65,7 +66,6 @@ void		exp_key_start_hash(char **str, t_expand *expand)
 char		check_sign(t_expand *expand)
 {
 	t_expand	*to_run;
-	int			ctrl;
 	char		sign;
 
 	to_run = expand;
@@ -110,6 +110,8 @@ t_expand	*expand_keys(t_expand *expand, char **str)
 		exp_key_double_percent(str, expand);
 	else if (sign == '*' || sign == '/')
 		exp_key_altern(str, expand);
-	update_list_expand(&expand, str);
-	return (expand);
+//	update_list_expand(&expand, str);
+/*	if (!expand->ltr)
+		return (NULL);
+	*/return (expand);
 }

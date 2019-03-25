@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ctrl.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 00:53:23 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/24 00:12:48 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ctrl_d(void)
 	{
 		ft_putchar('\n');
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
-		ft_exit();
+		ft_exit(1, EXIT_SUCCESS);
 	}
 	else
 		rem_from_str_del();
@@ -33,6 +33,8 @@ void	ctrl_d(void)
 
 void	ctrl_c(void)
 {
+	clear_screen3();
+	print_prompt();
 	free(g_tracking.str);
 	free(g_tracking.cpaste->line);
 	free(g_tracking.cpaste);

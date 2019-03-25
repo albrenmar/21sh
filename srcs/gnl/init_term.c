@@ -3,18 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   init_term.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:29:52 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 04:03:43 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 02:33:34 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
 
-int		yan_putchar(int c)
+void	init_builtin_list(void)
 {
-	return (write(STDERR_FILENO, &c, 1));
+	g_tracking.builtin_list = lstcontainer_new();
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("jobs"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("fg"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("exit"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("bg"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("echo"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("set"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("test"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("history"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("hash"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("cd"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("unalias"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("alias"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("type"));
 }
 
 void	init_cpaste(void)
@@ -63,7 +76,7 @@ void	cursor_reset(void)
 	if ((g_tracking.str = malloc(sizeof(char) * g_tracking.buffsize)) == NULL)
 	{
 		ft_putendl("Failled to allocate memory");
-		exit(EXIT_FAILURE);
+		ft_exit(1, EXIT_FAILURE);
 	}
 	ft_bzero(g_tracking.str, g_tracking.buffsize);
 }
@@ -73,8 +86,9 @@ void	cursorinit(void)
 	if ((g_tracking.pos = malloc(sizeof(t_cursor) + 1)) == NULL)
 	{
 		ft_putendl("Failled to allocate memory");
-		exit(EXIT_FAILURE);
+		ft_exit(1, EXIT_FAILURE);
 	}
 	cursor_reset();
 	init_key_list();
+	init_builtin_list();
 }

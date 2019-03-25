@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   coolprompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 06:46:50 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 08:58:45 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
 
-void	transform_cwd(void)
+void	transform_cwd(int i)
 {
 	char		*home;
 	int			len;
 	char		*n;
-	int			i;
 
 	home = ft_strdup(get_env_string("HOME"));
 	if (ft_strstr(g_tracking.cwd, home))
@@ -25,7 +24,6 @@ void	transform_cwd(void)
 		len = ft_strlen(home);
 		if (!(n = malloc(sizeof(char) * ft_strlen(g_tracking.cwd) - len + 2)))
 			return ;
-		i = 0;
 		len = len + 2;
 		n[i++] = '<';
 		n[i++] = ' ';
@@ -39,6 +37,7 @@ void	transform_cwd(void)
 		ft_strdel(&g_tracking.cwd);
 		g_tracking.cwd = n;
 	}
+	free(home);
 }
 
 void	set_prompt_quote(void)
@@ -77,21 +76,21 @@ void	print_prompt(void)
 
 void	get_coolprompt_cont(int mode, char *memory, char *prompt)
 {
+	int	i;
+
+	i = 0;
 	if (mode == 1)
 	{
 		memory = g_tracking.cwd;
-		g_tracking.cwd = ft_strjoin(g_tracking.cwd, "No environment");
+		g_tracking.cwd = ft_strjoinfree(g_tracking.cwd, "No environment", 1);
 		ft_strdel(&memory);
 	}
 	memory = g_tracking.cwd;
-	g_tracking.cwd = ft_strjoin(g_tracking.cwd, " >");
-	ft_strdel(&memory);
+	g_tracking.cwd = ft_strjoinfree(g_tracking.cwd, " >", 1);
 	if (get_env_string("HOME"))
-		transform_cwd();
+		transform_cwd(i);
 	prompt = ft_strdup(SHELL_NAME);
-	memory = prompt;
-	prompt = ft_strjoin(prompt, " $/> ");
-	ft_strdel(&memory);
+	prompt = ft_strjoinfree(prompt, " $/> ", 1);
 	g_tracking.prompt = ft_strdup(prompt);
 	g_tracking.pos->prompt = utf_strlen(prompt) + utf_strlen(g_tracking.cwd);
 	g_tracking.pos->prompt += utf_strlen(g_tracking.user);
@@ -105,23 +104,21 @@ void	get_coolprompt(void)
 	char	*memory;
 	char	buff[4096 + 1];
 
-	if (g_tracking.quotes == 1 || g_tracking.quotes == 2
-	|| g_tracking.quotes == 3)
+	memory = NULL;
+	prompt = NULL;
+	ft_strdel(&g_tracking.prompt);
+	ft_strdel(&g_tracking.cwd);
+	ft_strdel(&g_tracking.user);
+	if (g_tracking.quotes >= 1 && g_tracking.quotes <= 3)
 		return (set_prompt_quote());
 	g_tracking.user = ft_strdup("[");
-	memory = g_tracking.user;
-	g_tracking.user = ft_strjoin(g_tracking.user, getlogin());
-	ft_strdel(&memory);
-	memory = g_tracking.user;
-	g_tracking.user = ft_strjoin(g_tracking.user, "]");
-	ft_strdel(&memory);
+	g_tracking.user = ft_strjoinfree(g_tracking.user, getlogin(), 1);
+	g_tracking.user = ft_strjoinfree(g_tracking.user, "]", 1);
 	g_tracking.cwd = ft_strdup("< ");
 	if (get_env_string("HOME"))
 	{
-		memory = g_tracking.cwd;
 		getcwd(buff, 4096 + 1);
-		g_tracking.cwd = ft_strjoin(g_tracking.cwd, buff);
-		ft_strdel(&memory);
+		g_tracking.cwd = ft_strjoinfree(g_tracking.cwd, buff, 1);
 		return (get_coolprompt_cont(2, memory, prompt));
 	}
 	return (get_coolprompt_cont(1, memory, prompt));

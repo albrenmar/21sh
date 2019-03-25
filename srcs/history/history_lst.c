@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 20:30:46 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ void		hist_setup_file(void)
 	line = ft_memalloc(sizeof(line));
 	fd = open("/goinfre/.shell_history", O_CREAT | O_APPEND | O_RDWR, 00777);
 	if (fd < 0)
-	{
-		ft_putendl_fd("Error while opening/creating .shell_history", 2);
-		return ;
-	}
+		return (ft_putendl_fd("Error while opening/creating hist file", 2));
 	if (get_next_line(fd, line) == 1)
 	{
 		g_tracking.mysh->hist = hist_lst_create(*line);
@@ -35,10 +32,34 @@ void		hist_setup_file(void)
 	free(line);
 }
 
+t_hist		*hist_remap_null(t_hist *hist, char *line)
+{
+	t_hist	*tmp;
+
+	g_tracking.hist_first++;
+	if (!hist || !line)
+		return (NULL);
+	while (hist->previous)
+		hist = hist->previous;
+	if (hist->line == NULL && hist->next && hist->next->line)
+	{
+		tmp = hist;
+		hist = hist->next;
+		free(tmp->line);
+		free(tmp);
+		tmp->line = NULL;
+		tmp = NULL;
+		hist = hist_remap_index(hist);
+	}
+	return (hist);
+}
+
 void		hist_lst_add_next(t_hist *hist, char *line)
 {
 	t_hist	*new_node;
 
+	if (g_tracking.hist_first == 0)
+		hist = hist_remap_null(hist, line);
 	if (!hist)
 	{
 		g_tracking.mysh->hist = hist_lst_create(NULL);
@@ -46,29 +67,16 @@ void		hist_lst_add_next(t_hist *hist, char *line)
 	}
 	while (hist->next != NULL)
 		hist = hist->next;
-	new_node = ft_memalloc(sizeof(*new_node));
-	new_node->index = hist->index + 1;
-	new_node->line = ft_strdup(line);
-	new_node->next = NULL;
-	new_node->previous = hist;
-	hist->next = new_node;
-	g_tracking.histmax = new_node->index;
-	line = NULL;
-}
-
-void		hist_print(t_hist *hist)
-{
-	while (hist && hist->previous)
-		hist = hist->previous;
-	while (hist && hist->line)
+	if (line)
 	{
-		ft_putnbr(hist->index);
-		ft_putchar(' ');
-		ft_putendl(hist->line);
-		if (hist->next)
-			hist = hist->next;
-		else
-			break ;
+		new_node = ft_memalloc(sizeof(*new_node));
+		new_node->index = hist->index + 1;
+		new_node->line = ft_strdup(line);
+		new_node->next = NULL;
+		new_node->previous = hist;
+		hist->next = new_node;
+		g_tracking.histmax = new_node->index;
+		line = NULL;
 	}
 }
 
@@ -78,7 +86,10 @@ t_hist		*hist_lst_create(char *line)
 
 	if ((new_lst = malloc(sizeof(*new_lst))) == NULL)
 		return (NULL);
-	new_lst->index = 1;
+	if (!line)
+		new_lst->index = 0;
+	else
+		new_lst->index = 1;
 	new_lst->line = line;
 	new_lst->next = NULL;
 	new_lst->previous = NULL;
@@ -88,11 +99,12 @@ t_hist		*hist_lst_create(char *line)
 t_hist		*hist_free(void)
 {
 	t_hist *tmp;
+
 	if (g_tracking.mysh->hist)
 	{
 		while (g_tracking.mysh->hist->next)
 			g_tracking.mysh->hist = g_tracking.mysh->hist->next;
-		while(g_tracking.mysh->hist)
+		while (g_tracking.mysh->hist)
 		{
 			tmp = g_tracking.mysh->hist;
 			g_tracking.mysh->hist = g_tracking.mysh->hist->previous;

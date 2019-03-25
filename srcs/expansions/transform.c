@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/21 01:40:43 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/25 07:04:45 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ int		transform_simple(char **str)
 	run_str = *str;
 	new_str = NULL;
 	if (run_str[0] == '$')
-	{
-
-		new_str = get_env_string(run_str + 1);
-	}
+		new_str = ft_strdup(get_env_string(run_str + 1));
 	if (run_str[0] == '$' && !new_str)
 		new_str = get_parm_string(run_str + 1);
 	if (new_str)
@@ -66,7 +63,7 @@ int		transform_simple(char **str)
 	return (0);
 }
 
-int		transform(t_expand *expand, char **str)
+void	transform(t_expand *expand, char **str)
 {
 	t_expand	*first_letter;
 	char		*tmp;
@@ -76,8 +73,7 @@ int		transform(t_expand *expand, char **str)
 	transform_if_tilde(&first_letter, str);
 	while (expand->ltr && expand->ltr != '~')
 	{
-		if (expand->ltr == '$'/* && expand->next && expand->next->ltr == '{'
-				&& !expand->prev && tmp[ft_strlen(tmp) - 1] == '}'*/)
+		if (expand->ltr == '$' && expand->next)
 		{
 			first_letter = expand_keys(expand, str);
 			expand = first_letter;
@@ -85,16 +81,14 @@ int		transform(t_expand *expand, char **str)
 		if (expand->next && !g_tracking.mysh->err_expend)
 			expand = expand->next;
 		else
+		{
+//			expand_lstdel(first_letter);
 			break ;
+		}
 	}
 	if (!g_tracking.mysh->err_expend && *str && transform_simple(str))
-	{
 		delete_list_expand(&first_letter);
-		return (2);
-	}
-	delete_list_expand(&first_letter);
-//	if (!**str)
-	if (!g_tracking.mysh->err_expend && !**str)
-		return (1);
-	return (0);
+//	delete_list_expand(&first_letter);
+//	expand_lstdel(first_letter);
+//	expand = NULL ;
 }

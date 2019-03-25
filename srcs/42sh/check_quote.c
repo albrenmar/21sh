@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 16:47:21 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 02:36:41 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*check_quote(char *line, int i, char c)
 			g_tracking.quotes = 2;
 		get_key();
 		if (g_tracking.quotes == 10)
-			exit(0);
+			ft_exit(1, EXIT_SUCCESS);
 		test = ft_valid_quote(g_tracking.cmd, c, test);
 		if (!ret)
 			ret = ft_strdup(g_tracking.cmd);

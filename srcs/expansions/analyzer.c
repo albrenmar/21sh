@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/10 18:01:55 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/18 21:17:21 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 08:57:25 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ void	clean_nlzr_wildcard(t_analyzer *to_analy, int reverse)
 		to_analy->wildcard = ft_strrev(to_analy->wildcard, 1);
 }
 
+void	end_analyzer(t_analyzer to_analy)
+{
+	ft_strdel(&to_analy.varname);
+	ft_strdel(&to_analy.varvalue);
+	ft_strdel(&to_analy.wildcard);
+}
+
 void	init_analyzer(t_analyzer *to_analy, char **str, t_expand *expand)
 {
 	to_analy->orig_str = *str;
@@ -39,7 +46,7 @@ void	init_analyzer(t_analyzer *to_analy, char **str, t_expand *expand)
 	to_analy->vnme_len = ft_strlen(to_analy->varname);
 	to_analy->varvalue = ft_strdup(get_env_string(to_analy->varname));
 	to_analy->vvlu_len = ft_strlen(to_analy->varvalue);
-	to_analy->wildcard = get_value(expand);
+	to_analy->wildcard = get_value(expand, 0);
 	to_analy->wlcd_len = ft_strlen(to_analy->wildcard);
 	to_analy->start_astrsk = 0;
 	to_analy->end_astrsk = 0;

@@ -3,12 +3,24 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/20 04:52:48 by mjose            ###   ########.fr        #
+#    Updated: 2019/03/25 06:00:23 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
+CLEAR_LINE	= \033[2K
+BEGIN_LINE	= \033[A
+COL_END		= \033[0m
+COL_RED		= \033[1;31m
+COL_GREEN	= \033[1;32m
+COL_YELLOW	= \033[1;33m
+COL_BLUE	= \033[1;34m
+COL_VIOLET	= \033[1;35m
+COL_CYAN	= \033[1;36m
+COL_WHITE	= \033[1;37m
 
 NAME :=	42sh
 
@@ -31,6 +43,7 @@ SRC = main.c \
 	  42sh/search_arg.c \
 	  42sh/completion.c \
 	  42sh/check_quote.c \
+	  42sh/print_last.c \
 	  42sh/out_redir.c \
 	  42sh/parse.c \
 	  42sh/execute_command.c \
@@ -41,15 +54,18 @@ SRC = main.c \
 	  builtins/cd/ft_cd.c \
 	  builtins/cd/ft_cd2.c \
 	  builtins/cd/ft_dotdot.c \
+	  builtins/hash/hash_builtin.c \
+	  builtins/hash/hash_args.c \
 	  builtins/builtin_tools.c \
-	  builtins/fg_bg_builtins.c \
+	  builtins/bg.c \
+	  builtins/fg.c \
 	  builtins/jobs_builtin.c \
 	  builtins/exit.c \
-	  builtins/hash_builtin.c \
 	  builtins/builtins.c \
 	  builtins/set.c \
 	  builtins/echo/exec.c \
-	  builtins/type_main.c \
+	  builtins/type/type_main.c \
+	  builtins/type/is_cmd.c \
 	  builtins/test/test_main.c \
 	  builtins/test/test_tab.c \
 	  builtins/test/test_two_arg.c \
@@ -59,6 +75,13 @@ SRC = main.c \
 	  jobs/job_utils.c \
 	  jobs/job_functions.c \
 	  jobs/ft_job_control.c \
+	  jobs/job_tools.c \
+	  jobs/job_helpers.c \
+	  jobs/update_jobs.c \
+	  jobs/jobs_output.c \
+	  jobs/job_control_errors.c \
+	  jobs/jobs_update_command.c \
+	  jobs/job_checks.c \
 	  gnl/coolprompt.c \
 	  gnl/add_to_str.c \
 	  gnl/rem_from_str.c \
@@ -78,6 +101,7 @@ SRC = main.c \
 	  gnl/get_cmd.c \
 	  gnl/home_end.c \
 	  auto_complete/auto_complete.c \
+	  auto_complete/auto_complete_bin.c \
 	  auto_complete/auto_complete_check.c \
 	  auto_complete/auto_complete_cleanup.c \
 	  auto_complete/auto_complete_cursor.c \
@@ -126,15 +150,19 @@ SRC = main.c \
 	  shell_core/get_pwd.c \
 	  shell_core/env_list_to_tab.c \
 	  history/history_lst.c \
-	  history/history_lst2.c \
+	  history/history_lst_plus.c \
 	  history/history_lst_options.c \
 	  history/history_loop.c \
+	  history/history_lst_general.c \
 	  history/print_hist.c \
 	  history/shebang.c \
+	  history/shebang_plus.c \
+	  history/shebang_extra.c \
 	  history/history_lib_plus.c \
 	  history/hassantest.c \
 	  history/history_builtin_option.c \
 	  history/history.c \
+	  history/history_lst_exec.c\
 	  expansions/expand.c \
 	  expansions/user.c \
 	  expansions/parm.c \
@@ -160,59 +188,55 @@ SRC = main.c \
 	  expansions/analyzer.c \
 	  expansions/tools_double_hash.c \
 	  expansions/tools_double_percent.c \
-	  expansions/autocomplete/auto_com_expan.c
+ 	  expansions/scarg.c \
+	  expansions/tools_quote.c \
+	  expansions/varname.c \
+	  expansions/autocomplete/auto_com_expan.c \
+	  expansions/clean_unquoter.c \
 
-CLEAR_LINE	= \033[2K
-BEGIN_LINE	= \033[A
-COL_END		= \033[0m
-COL_RED		= \033[1;31m
-COL_GREEN	= \033[1;32m
-COL_YELLOW	= \033[1;33m
-COL_BLUE	= \033[1;34m
-COL_VIOLET	= \033[1;35m
-COL_CYAN	= \033[1;36m
-COL_WHITE	= \033[1;37m
-
-OBJ = $(SRC:.c=.o)
-SRCDIR = srcs
-OBJDIR = obj
-INCDIR = includes
+OBJ := $(SRC:.c=.o)
 
 PWD := $(shell pwd)
 
-SRCP =		$(addprefix $(SRCDIR)/, $(SRC))
-OBJP =		$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
-ONLYDIR =	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
+SRCDIR := srcs
+OBJDIR := obj
 
-LIB = ./srcs/libft
-LIBADD = ./srcs/libft/libft.a
+SRCP :=		$(addprefix $(SRCDIR)/, $(SRC))
+OBJP :=		$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
+ONLYDIR :=	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 
-FLAG = -g -fsanitize=address #-Wall -Wextra -Werror 
+LIB := -L srcs/libft/ -lft
 
-all : $(NAME)
+INC := -I includes
 
-$(NAME) : complib $(OBJP)
-			@gcc $(FLAG) $(OBJP) -o $(NAME) -ltermcap -I $(INCDIR) $(LIBADD)
-			@echo -e "$(CLEAR_LINE)$(COL_CYAN)All done $(COL_END)ᕦ(ò_óˇ)ᕤ"
+FLAG := -g  #-fsanitize=address #-Wall -Wextra -Werror
+
+TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
+CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')
+
+all : libft_comp $(NAME)
+
+$(NAME) : $(OBJP)
+			@gcc $(FLAG) $(OBJP) -o $(NAME) -ltermcap $(INC) $(LIB)
+			@echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Finished compilation. Output file : $(COL_VIOLET)$(PWD)/$(NAME)$(COL_BLUE) ᕦ(ò_óˇ)ᕤ$(COL_END)"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 			@mkdir -p $(ONLYDIR)
-			@gcc -c $(FLAG) $< -o $@  -I $(INCDIR)
-			@echo "$(CLEAR_LINE)$(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"
-complib :
-			@make -C $(LIB) -j
+			@gcc -c $(FLAG) $(INC) $< -o $@
+			@echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"
+
+libft_comp:
+			@make -C srcs/libft
+
 clean :
-			@echo -e "$(CLEAR_LINE)$(COL_RED)Cleaning objs dir$(COL_END)"
 			@rm -rf $(OBJDIR)
-			@echo -e "$(CLEAR_LINE)$(COL_GREEN)Done ✓$(COL_END)"
-			@echo -e "$(CLEAR_LINE)$(COL_RED)Cleaning lib dir$(COL_END)"
-			@make clean -C $(LIB)
-			@echo -e "$(CLEAR_LINE)$(COL_GREEN)Done ✓$(COL_END)"
+			@make clean -C srcs/libft
+			@echo "$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Removed $(COL_VIOLET)compiled objects.$(COL_END)"
 
 fclean :	clean
 			@rm -rf $(NAME)
-			@make fclean -C $(LIB)
-
+			@make fclean -C srcs/libft
+			@echo "$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Removed $(COL_VIOLET)$(NAME)$(COL_END)"
 
 re :		fclean all
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_key.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 04:28:43 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/22 23:37:21 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		readloop(int i, int fd)
 
 	str = ft_strnew(0);
 	if ((read(fd, &c, 1)) == 0)
-		ft_exit();
+		ft_exit(1, EXIT_SUCCESS);
 	str = ft_strjoinchar(str, c, 1);
 	i = single_key(c);
 	if (i == 13 || i == 10)
@@ -100,7 +100,6 @@ void	test_read(void)
 		i++;
 	}
 }
-
 
 int		get_key(void)
 {
