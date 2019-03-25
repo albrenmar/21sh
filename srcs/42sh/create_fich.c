@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/25 01:21:25 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/25 03:57:44 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ int			set_reddir_to_fd(t_last *list, int i)
 	fd_open = NULL;
 	fd_in = 0;
 	fd_out = 0;
-	if ((fd_in = len_input_fd(list->name)) > 9 || (list->next && (fd_out = len_input_fd(list->next->name)) > 9))
+	fd_in = len_input_fd(list->name);
+	if (list->next)
+		fd_out = len_input_fd(list->next->name);
+	if (fd_in > 9 || fd_out > 9)
 	{
 		ft_putendl_fd("42sh: Bad file descriptor", 2);
 		return (-1);
@@ -79,7 +82,8 @@ int			set_reddir_to_fd(t_last *list, int i)
 			return (-1);
 		}
 	}
-	else if (list->next && (ft_strlen(list->next->name) == 1) && !ft_strcmp(list->next->name, "-"))
+	else if (list->next && (ft_strlen(list->next->name) == 1)
+			&& !ft_strcmp(list->next->name, "-"))
 		fd_out = open("/dev/null", O_WRONLY);
 	else
 	{
@@ -108,16 +112,14 @@ void		set_reddir_fd(t_last *list)
 		next_set_fd(fd_in, fd_out);
 }
 
-int		create_fich(t_last *list)
+int			create_fich(t_last *list)
 {
-	int		i;
 	t_last	*temp;
 
-	i = 0;
 	temp = list;
 	if (its_reddir_to_fd(list))
 	{
-		if (set_reddir_to_fd(list, i) == -1)
+		if (set_reddir_to_fd(list, 0) == -1)
 			return (-1);
 	}
 	else if (its_reddir(list))

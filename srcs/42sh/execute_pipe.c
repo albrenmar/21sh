@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/25 02:43:45 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/25 03:54:13 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,18 @@ void		execute_two(char **tab_exec)
 	}
 	else if ((test_exist_fonction(tab_exec_hold, 2)))
 	{
-		execve(tab_exec_hold[0], tab_exec_hold, init_envp(g_tracking.mysh->env));
+		execve(tab_exec_hold[0], tab_exec_hold,
+				init_envp(g_tracking.mysh->env));
 		exec_errors(tab_exec, 0);
 		free_tab(tab_exec_hold);
 		ft_exit(0, EXIT_FAILURE);
 	}
-	else
-	{
-		exec_errors(NULL, 1);
-		free_tab(tab_exec_hold);
-		ft_exit(0, EXIT_FAILURE);
-	}
+	exec_errors(NULL, 1);
+	free_tab(tab_exec_hold);
+	ft_exit(0, EXIT_FAILURE);
 }
 
-void		close_fd_magueule(void)
+void		close_fd(void)
 {
 	if (g_tracking.mysh->set_fd->STDIN != 0
 			&& g_tracking.mysh->set_fd->STDIN > 2)
@@ -78,7 +76,7 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job, int readpipe)
 			if (readpipe > 2)
 				close(readpipe);
 			set_new_process(job, pid0);
-			close_fd_magueule();
+			close_fd();
 		}
 	}
 	else
@@ -94,9 +92,9 @@ int			execute_pipe(t_last **list_cmd, t_jobs *job, int readpipe)
 	char	**tab_exec;
 	int		descrf[2];
 
+	*list_cmd = (*list_cmd)->next;
 	pipe(descrf);
 	tab_exec = create_tab_to_exec(g_tracking.temp_command);
-	*list_cmd = (*list_cmd)->next;
 	free_tab(g_tracking.g_tab_exec);
 	g_tracking.g_tab_exec = tab_dup(tab_exec);
 	if (!is_builtin_alone())
@@ -125,10 +123,7 @@ int			execute_pipe(t_last **list_cmd, t_jobs *job, int readpipe)
 			return (descrf[0]);
 		}
 	}
-	else
-	{
-		free_tab(tab_exec);
-		g_tracking.builtin = 1;
-	}
+	free_tab(tab_exec);
+	g_tracking.builtin = 1;
 	return (0);
 }

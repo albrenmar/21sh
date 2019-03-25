@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:40:13 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/25 02:42:56 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/25 03:46:03 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,8 @@ int		init_exec(t_last **list_cmd, t_jobs *job, int readpipe)
 			return (-1);
 		}
 	}
-	else if (!g_tracking.temp_command)
-		*list_cmd = (*list_cmd)->next;
-	else if ((*list_cmd)->type == FICH || (*list_cmd)->type == OPT
-			|| (*list_cmd)->type == ARG)
+	else if (!g_tracking.temp_command || (*list_cmd)->type == FICH
+			|| (*list_cmd)->type == OPT || (*list_cmd)->type == ARG)
 		*list_cmd = (*list_cmd)->next;
 	return (readpipe);
 }

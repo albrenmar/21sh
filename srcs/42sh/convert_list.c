@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 07:07:00 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/25 01:46:01 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/25 03:39:14 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,5 @@ void		convert_list(t_last *list)
 			tokenize_list(list);
 		list = list->next;
 	}
-	//print_last(begin);
-	//exit (0);
 	apply_alias(begin);
 }
