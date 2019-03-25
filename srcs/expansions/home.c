@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 01:20:02 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 10:03:15 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/25 00:58:42 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 char	*get_user_home(char *user)
 {
 	struct passwd	*user_inf;
+	char			*home_dir;
 
 	user_inf = getpwnam(user);
-	return (ft_strdup(user_inf->pw_dir));
+	home_dir = ft_strdup(user_inf->pw_dir);
+	return (home_dir);
 }
 
 char	*get_home_value(void)
