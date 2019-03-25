@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 01:03:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/24 06:50:51 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/25 06:08:44 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		expand_lstdel(t_expand *expan_head)
 	if (expan_head == NULL)
 		return ;
 	element = expan_head;
-	while (element)
+	while ((void *)element != NULL)
 	{
 		next = element->next;
 		ft_memdel((void *)&element);
@@ -32,19 +32,29 @@ void		expan_arg(t_scan_arg *scarg)
 {
 	t_expand	*expan_head;
 
-	scarg->expand = new_expand(ft_strlen(scarg->scan->sstring));
-	expan_head = scarg->expand;
-	create_list_expand(scarg->expand, scarg->scan->sstring);
 	if ((scarg->scan->sstring[0] != '~' && !scarg->checker->type)
 			|| scarg->scan->sstring[0] == '$')
+	{
+		scarg->expand = new_expand(ft_strlen(scarg->scan->sstring));
+		expan_head = scarg->expand;
+		create_list_expand(scarg->expand, scarg->scan->sstring);
 		transform(scarg->expand, &scarg->scan->sstring);
+		expand_lstdel(expan_head);
+	}
 	else if (scarg->scan->sstring[0] == '~')
+	{
+		scarg->expand = new_expand(ft_strlen(scarg->scan->sstring));
+		expan_head = scarg->expand;
+		create_list_expand(scarg->expand, scarg->scan->sstring);
 		transform_if_tilde(&scarg->expand, &scarg->scan->sstring);
+		expand_lstdel(expan_head);
+	}
 	if (!scarg->new_arg)
 		scarg->new_arg = ft_strnew(1);
 	scarg->new_arg = ft_strjoinfree(scarg->new_arg, scarg->scan->sstring, 1);
 	scarg->scan = scarg->scan->next;
-	expand_lstdel(expan_head);
+//	expand_lstdel(expan_head);
+	scarg->expand = NULL;
 }
 
 void		fill_scarg(t_scan_arg *scarg)
