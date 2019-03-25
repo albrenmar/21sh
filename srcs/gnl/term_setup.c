@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 05:23:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 02:44:38 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/24 05:35:40 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		yan_putchar(int c)
 {
-	return (write(STDERR_FILENO, &c, 1));
+	return (write(STDIN_FILENO, &c, 1));
 }
 
 

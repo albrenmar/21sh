@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/24 05:19:15 by abe              ###   ########.fr       */
+/*   Updated: 2019/03/25 01:54:05 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,6 @@ void	main_loop(char *line, char **argv)
 int		main(int argc, char **argv, char **env)
 {
 	char	*line;
-	t_tab	st_tab;
-	t_env	st_env;
 
 	line = NULL;
 	if (argc > 2)
@@ -131,7 +129,7 @@ int		main(int argc, char **argv, char **env)
 		free(g_tracking.cmd);
 		g_tracking.cmd = NULL;
 		if (g_tracking.interactive == 1)
-			ft_putchar_fd('\n', 2);
+			ft_putchar_fd('\n', 0);
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
 		if ((line = shebang_parse_switch(line)) != NULL)
 			main_loop(line, argv);
