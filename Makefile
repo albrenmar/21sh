@@ -43,6 +43,7 @@ SRC = main.c \
 	  42sh/search_arg.c \
 	  42sh/completion.c \
 	  42sh/check_quote.c \
+	  42sh/print_last.c \
 	  42sh/out_redir.c \
 	  42sh/parse.c \
 	  42sh/execute_command.c \
