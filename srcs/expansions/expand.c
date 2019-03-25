@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 22:46:16 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/25 07:14:10 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,18 +100,19 @@ void		scan_arg_transformer(t_unquoter **check, char **value)
 
 char		expand_transformer(char **value)
 {
-	char		*str_error;
+	char		*str_orig;
 	t_unquoter	*to_unquot;
 	t_unquoter	*first;
 
 	to_unquot = NULL;
 	to_unquot = unquote_value(value);
 	first = to_unquot;
+	str_orig = ft_strdup(*value);
 	if (to_unquot && (!ft_strstr(to_unquot->str_unquoted, "${}")
 			|| !ft_strstr(to_unquot->str_unquoted, "${}")))
 		scan_arg_transformer(&to_unquot, value);
 	else if ((to_unquot && ft_strequ(to_unquot->str_unquoted, "${}"))
-			|| ft_strequ(str_error, "${}")
+			|| ft_strequ(str_orig, "${}")
 			|| ft_strstr(to_unquot->str_unquoted, "${}"))
 	{
 		if (ft_strequ(to_unquot->str_unquoted, "${}"))
@@ -121,6 +122,7 @@ char		expand_transformer(char **value)
 		ft_strdel(value);
 		*value = ft_strdup(" ");
 	}
+	ft_strdel(&str_orig);
 	clean_unquoter(first);
 	return (0);
 }
