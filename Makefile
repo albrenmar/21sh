@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/25 01:40:46 by alsomvil         ###   ########.fr        #
+#    Updated: 2019/03/25 04:09:54 by alsomvil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ COL_VIOLET	= \033[1;35m
 COL_CYAN	= \033[1;36m
 COL_WHITE	= \033[1;37m
 
-NAME :=	WLH
+NAME :=	42sh
 
 SRC = main.c \
 	  42sh/tools.c \
@@ -209,7 +209,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -g -fsanitize=address #-Wall -Wextra -Werror
+FLAG := -g #-fsanitize=address -Wall -Wextra -Werror
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')

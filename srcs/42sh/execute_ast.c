@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/24 04:42:09 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/25 04:09:09 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,37 @@ void	exec_right_branch(t_tree *tree, t_jobs *job)
 	g_tracking.foreground = 0;
 }
 
+void	free_branch(t_last *list)
+{
+	t_last *temp_list;
+
+	while (list)
+	{
+		temp_list = list->next;
+		free(list->name);
+		list = list->next;
+		free(temp_list);
+	}
+}
+
+void	free_ast(t_tree *tree)
+{
+	if (tree->type == SEP)
+	{
+		if (tree->left && tree->left->type != SEP)
+			free_branch(tree->left->list_cmd);
+		else if (tree->left && tree->left->type == SEP)
+			free_ast(tree->left);
+		free(tree->cmd);
+		if (tree->right && tree->right->type != SEP)
+			free_branch(tree->right->list_cmd);
+		else if (tree->right)
+			free_ast(tree->right);
+	}
+	free_ast(tree);
+	return ;
+}
+
 void	execute_ast(t_tree *tree, t_jobs *job)
 {
 	g_tracking.foreground = 0;
@@ -60,5 +91,5 @@ void	execute_ast(t_tree *tree, t_jobs *job)
 		else if (tree->right)
 			execute_ast(tree->right, job);
 	}
-	return ;
+	free_ast(tree);
 }
