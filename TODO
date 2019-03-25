@@ -17,7 +17,8 @@ leaks de ma partie (sauf srcs/builtins/builtins.c)
 -hacer bien los alias (en el lexer)
 -verificar no se printea prompt duplicado cuando recorres historico
 -verificar no errores con valgrind, wall wextra werror y fsanitize- address
-
+-bug "sleep 10 || sleep 20 || sleep 30 &" and then fg %3
+-fg bugs
 
 Partie Marc
 - Gestion d'errors pour les expansions.
