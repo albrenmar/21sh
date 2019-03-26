@@ -35,8 +35,8 @@ Partie Alex
 - close apres creation fichier
 
 Partie Hassan
-- history bug to fix
-- history -ps 1 bug
+- history -d negative
+- history -d begin end
 - fc
 
 MISC
