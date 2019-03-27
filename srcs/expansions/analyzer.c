@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/10 18:01:55 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 08:57:25 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/27 04:27:54 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_analyzer(t_analyzer *to_analy, char **str, t_expand *expand)
 	to_analy->wlcd_len = ft_strlen(to_analy->wildcard);
 	to_analy->start_astrsk = 0;
 	to_analy->end_astrsk = 0;
-	if (to_analy->wildcard && (to_analy->wildcard[to_analy->wlcd_len - 1] == '*'
+	if (to_analy->wildcard[0] && (to_analy->wildcard[to_analy->wlcd_len - 1] == '*'
 			|| to_analy->wildcard[0] == '*'))
 	{
 		to_analy->asterisk = 1;
