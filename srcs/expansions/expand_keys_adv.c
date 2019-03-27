@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/27 04:09:01 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/27 04:30:38 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	exp_key_altern(char **str, t_expand *expand)
 	t_analyzer	to_analy;
 
 	init_analyzer(&to_analy, str, expand);
-	if (!to_analy.wildcard && (!to_analy.varvalue
+	if (!to_analy.wlcd_len && (!to_analy.varvalue
 			|| ft_strequ(to_analy.varname, "")))
 	{
 		if (!to_analy.varvalue && to_analy.wildcard)
