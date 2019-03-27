@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 06:10:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 05:07:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/27 04:25:27 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ char		*get_value(t_expand *expand, int i)
 	if (!to_run->next)
 		return (NULL);
 	if (!to_run->next->next)
-		return (ft_strdup(" "));
+		return (ft_strdup(""));
 	start = to_run->next->next;
 	i = val_len(start);
 	if (!i)
