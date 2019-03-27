@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/25 07:20:26 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/27 04:09:01 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,28 @@ void	exp_key_altern(char **str, t_expand *expand)
 	t_analyzer	to_analy;
 
 	init_analyzer(&to_analy, str, expand);
-	ft_strdel(str);
-	if (!to_analy.wildcard)
+	if (!to_analy.wildcard && (!to_analy.varvalue
+			|| ft_strequ(to_analy.varname, "")))
 	{
-		print_exp_str_error(*str);
+		if (!to_analy.varvalue && to_analy.wildcard)
+			print_exp_error(*str + 1);
+		else
+			print_exp_str_error(*str);
+		ft_strdel(str);
+		*str = ft_strdup(" ");
+		end_analyzer(to_analy);
+		return ;
+	}
+	if (to_analy.varvalue)
+	{
+		ft_strdel(str);
+		*str = ft_strdup(to_analy.varvalue);
+	}
+	else
+	{
 		ft_strdel(str);
 		*str = ft_strdup(" ");
 	}
-	else if (to_analy.varvalue)
-		*str = ft_strdup(to_analy.varvalue);
-	else
-		*str = ft_strdup(" ");
 	end_analyzer(to_analy);
 }
 
