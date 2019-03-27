@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 02:49:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 08:51:55 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/27 06:14:16 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ void	ass_str_wout_ast(t_analyzer *to_analy, char **str)
 		}
 		else
 			*str = ft_strdup(to_analy->varvalue);
+		ft_strdel(&run_varvalue);
+		ft_strdel(&run_wildcard);
 	}
 }
