@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 08:58:45 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/27 06:21:12 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,7 @@ void	get_coolprompt_cont(int mode, char *memory, char *prompt)
 
 	i = 0;
 	if (mode == 1)
-	{
-		memory = g_tracking.cwd;
 		g_tracking.cwd = ft_strjoinfree(g_tracking.cwd, "No environment", 1);
-		ft_strdel(&memory);
-	}
-	memory = g_tracking.cwd;
 	g_tracking.cwd = ft_strjoinfree(g_tracking.cwd, " >", 1);
 	if (get_env_string("HOME"))
 		transform_cwd(i);
