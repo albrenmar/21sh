@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/27 06:12:01 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/27 07:14:12 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 	if (!to_analy.varname[0])
 	{
 		print_exp_error(*str + 1);
+		end_analyzer(to_analy);
 		return ;
 	}
 	if (to_analy.start_astrsk)
