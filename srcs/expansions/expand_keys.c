@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/27 08:09:33 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/27 08:25:25 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		exp_key_unique_hash(char **str, t_expand *expand)
 	else if (to_analy.varvalue)
 	{
 		ft_strdel(str);
-		*str = to_analy.varvalue;
+		*str = ft_strdup(to_analy.varvalue);
 	}
 	else
 	{
