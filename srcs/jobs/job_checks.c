@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/27 03:16:45 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/27 07:55:13 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void				put_job_in_foreground(t_jobs *job, int cont)
 	tcsetpgrp(g_tracking.sterminal, job->jpid);
 	if (cont)
 	{
-		if (job->savedterm == 1)
+		if (job->startback != 1)
 			tcsetattr(g_tracking.sterminal, TCSADRAIN, &job->jterm);
 		kill(-job->jpid, SIGCONT);
 	}
 	wait_for_job(job);
 	tcsetpgrp(g_tracking.sterminal, g_tracking.spid);
 	tcgetattr(g_tracking.sterminal, &job->jterm);
-	job->savedterm = 1;
+	job->startback = 0;
 }
 
 void				put_job_in_background(t_jobs *job, int cont)

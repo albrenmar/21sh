@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coolprompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/27 06:21:12 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/27 07:14:22 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	get_coolprompt(void)
 {
 	char	*prompt;
 	char	*memory;
-	char	buff[4096 + 1];
+	char	*buff;
 
 	memory = NULL;
 	prompt = NULL;
@@ -110,9 +110,9 @@ void	get_coolprompt(void)
 	g_tracking.user = ft_strjoinfree(g_tracking.user, getlogin(), 1);
 	g_tracking.user = ft_strjoinfree(g_tracking.user, "]", 1);
 	g_tracking.cwd = ft_strdup("< ");
-	if (get_env_string("HOME"))
+	if (get_env_string("PWD"))
 	{
-		getcwd(buff, 4096 + 1);
+		buff = get_env_string("PWD");
 		g_tracking.cwd = ft_strjoinfree(g_tracking.cwd, buff, 1);
 		return (get_coolprompt_cont(2, memory, prompt));
 	}

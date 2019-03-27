@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 02:31:33 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/27 07:54:04 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,12 @@ void	init_shell(char **environ, char **argv)
 	i = 0;
 	if (!(mysh = malloc(sizeof(t_shell))))
 	{
-		ft_putendl("Failled to allocate memory");
+		ft_putendl("Failed to allocate memory");
 		ft_exit(1, EXIT_FAILURE);
 	}
-	while (i < 27)
-	{
+	while (i++ < 27)
 		g_tracking.hashtable[i] = NULL;
-		i++;
-	}
+	g_tracking.cwd = NULL;
 	g_tracking.mysh = mysh;
 	init_global();
 	init_alias();

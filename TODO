@@ -21,6 +21,7 @@ leaks de ma partie (sauf srcs/builtins/builtins.c)
 -fg bugs
 -double free con "ls &" y "sleep 100", probar los dos
 -./42sh -> ./42sh -> ./42sh et kill le premier ou le dernier -> bug
+-coolprompt cogiendo home del env y no de getcwd
 
 Partie Marc
 - Gestion d'errors pour les expansions.
