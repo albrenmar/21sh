@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 10:32:12 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/27 03:15:46 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ t_jobs			*new_job(t_last *part, int background)
 	else
 		tmp = new_job_helper(tmp);
 	getcwd(tmp->wd, 4096);
+	tmp->savedterm = 0;
 	tmp->t_command = NULL;
 	tmp->current = 0;
 	tmp->currentback = 0;
