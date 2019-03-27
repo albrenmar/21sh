@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/27 03:16:54 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/27 05:42:36 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int		single_key(char c)
 	}
 	if (c == K_TAB)
 	{
-		//auto_complete();
-		ft_putnbr(g_tracking.pos->abs);
+		auto_complete();
 		return (12);
 	}
 	return (ctrl_key(c));

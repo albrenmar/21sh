@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/26 15:09:16 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/27 04:18:07 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ typedef struct	s_shell
 	char			**tab_env;
 	int				expand_error;
 	int				err_expend;
+	int				errchk;
 }				t_shell;
 
 typedef struct		s_hash

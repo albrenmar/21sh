@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:40:13 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/26 16:29:14 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/27 04:47:56 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int		init_exec(t_last **list_cmd, t_jobs *job, int readpipe)
 	{
 		if (exec_create_file(list_cmd) == -1)
 		{
+			g_tracking.temp_command = NULL;
 			if (readpipe > 2)
 				close(readpipe);
-			return (-1);
 		}
 	}
 	else if (!g_tracking.temp_command || (*list_cmd)->type == FICH
@@ -67,6 +67,7 @@ int		exec_command(t_last *list_cmd, int foreground, t_jobs *job)
 	readpipe = 0;
 	tab_exec = NULL;
 	g_tracking.temp_command = NULL;
+	g_tracking.mysh->errchk = 0;
 	if (!list_cmd)
 		return (0);
 	job = new_job(list_cmd, foreground);
