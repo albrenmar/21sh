@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 23:52:41 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/27 03:52:15 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		err_check(int i, int j)
 	char	*newstr;
 
 	newstr = NULL;
-	while ((i + j + 10) > g_tracking.buffsize)
+	while ((i + j + 50) > g_tracking.buffsize)
 		g_tracking.buffsize *= 2;
 	newstr = malloc(sizeof(char) * g_tracking.buffsize);
 	ft_bzero(newstr, g_tracking.buffsize);
@@ -54,7 +54,7 @@ void		add_to_str(char *str)
 			len_dest = ft_strlen(g_tracking.str);
 			a = utf_goto(g_tracking.str, a);
 			err_check(len_dest, len_src);
-			if (a > utf_strlen(g_tracking.str))
+			if (a > ft_strlen(g_tracking.str))
 				a = ft_strlen(g_tracking.str);
 			ft_memmove(g_tracking.str + a + len_src, g_tracking.str
 			+ a, len_dest - a + 1);
