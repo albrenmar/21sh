@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:40:13 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/27 04:47:56 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/27 07:47:20 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	wait_job(int foreground, t_last *list_cmd, t_jobs *job)
 		g_tracking.builtin = 0;
 		g_tracking.lastreturn = builtin_exec(list_cmd);
 	}
+	free_tab(g_tracking.g_tab_exec);
+	g_tracking.g_tab_exec = NULL;
 }
 
 int		init_exec(t_last **list_cmd, t_jobs *job, int readpipe)
