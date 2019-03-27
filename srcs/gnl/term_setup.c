@@ -6,11 +6,17 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 05:23:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 03:16:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/24 05:35:40 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
+
+int		yan_putchar(int c)
+{
+	return (write(STDIN_FILENO, &c, 1));
+}
+
 
 void	check_term(char *name)
 {

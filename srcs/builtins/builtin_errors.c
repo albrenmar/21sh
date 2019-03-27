@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_errors.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 20:38:11 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 01:14:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,20 @@ int			errors_hash(char *binary, int error)
 		ft_putstr_fd(binary, 2);
 		ft_putendl_fd(" not found", 2);
 	}
+	if (error == 2)
+	{
+		ft_putstr_fd(SHELL_NAME": hash: ", 2);
+		ft_putstr_fd(binary, 2);
+		ft_putendl_fd(" invalid option", 2);
+		ft_putendl_fd(SHELL_NAME": hash: usage: hash [-r] [arg]", 2);
+	}
 	return (-1);
 }
 
-int			errors_fg(int nb, int error)
+int			errors_fg(int nb, int error, char *hold)
 {
 	if (error == 1)
-		ft_putendl_fd(SHELL_NAME FGWRGJOB, 2);
+		ft_putendl_fd(SHELL_NAME": fg: only one job supported", 2);
 	if (error == 2)
 	{
 		ft_putstr_fd(SHELL_NAME": fg: ", 2);
@@ -44,10 +51,11 @@ int			errors_fg(int nb, int error)
 	}
 	else if (error == 4)
 		ft_putendl_fd(SHELL_NAME": fg: no jobs!", 2);
+	ft_strdel(&hold);
 	return (1);
 }
 
-int			errors_bg(int nb, int error)
+int			errors_bg(int nb, int error, char *hold)
 {
 	if (error == 0)
 	{
@@ -56,7 +64,7 @@ int			errors_bg(int nb, int error)
 		ft_putendl_fd(" is already in the background!", 2);
 	}
 	if (error == 1)
-		ft_putendl_fd(SHELL_NAME FGWRGJOB, 2);
+		ft_putendl_fd(SHELL_NAME": bg: only one job supported", 2);
 	if (error == 2)
 	{
 		ft_putstr_fd(SHELL_NAME ": bg: ", 2);
@@ -71,6 +79,7 @@ int			errors_bg(int nb, int error)
 	}
 	else if (error == 4)
 		ft_putendl_fd(SHELL_NAME": bg: no jobs!", 2);
+	ft_strdel(&hold);
 	return (1);
 }
 

@@ -15,12 +15,13 @@ select CHECK in "COMPIL 42SH" "REMOVE 42SH" "NORM EXPANSIONS" ALL SIMPLE ADVANCE
             then
                 cd ..
                 make fclean
+                rm -r 42sh.dSYM
                 cd testscript
                 rm 42sh
         fi
         if [ "$CHECK" == "NORM EXPANSIONS" ]
             then
-                norminette ../srcs/expansions | grep Error
+                norminette ../srcs/expansions
         fi
         if  [ "$CHECK" == 'SIMPLE' ]
             then

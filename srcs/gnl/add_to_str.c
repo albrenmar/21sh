@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 03:10:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/27 05:51:42 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ void		err_check(int i, int j)
 	char	*newstr;
 
 	newstr = NULL;
-	while ((i + j + 7) > g_tracking.buffsize)
-	{
+	while ((i + j + 20) > g_tracking.buffsize)
 		g_tracking.buffsize *= 2;
-		newstr = malloc(sizeof(char) * g_tracking.buffsize);
-		newstr = ft_strcpy(newstr, g_tracking.str);
-		free(g_tracking.str);
-		g_tracking.str = newstr;
-	}
+	newstr = malloc(sizeof(char) * g_tracking.buffsize);
+	ft_bzero(newstr, g_tracking.buffsize);
+	newstr = ft_strcpy(newstr, g_tracking.str);
+	free(g_tracking.str);
+	g_tracking.str = newstr;
 }
 
 void		print_and_free(char *str, int i)
@@ -55,7 +54,7 @@ void		add_to_str(char *str)
 			len_dest = ft_strlen(g_tracking.str);
 			a = utf_goto(g_tracking.str, a);
 			err_check(len_dest, len_src);
-			if (a > utf_strlen(g_tracking.str))
+			if (a > ft_strlen(g_tracking.str))
 				a = ft_strlen(g_tracking.str);
 			ft_memmove(g_tracking.str + a + len_src, g_tracking.str
 			+ a, len_dest - a + 1);

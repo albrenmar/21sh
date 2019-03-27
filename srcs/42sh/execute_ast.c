@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_ast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 16:44:05 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/25 04:09:09 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,11 @@
 
 void	set_fd_and_descr(void)
 {
-	descrf_two[0] = 0;
-	descrf_two[1] = 0;
-	descrf[0] = 0;
-	descrf[1] = 0;
 	g_tracking.redir = 0;
 	g_tracking.mysh->set_fd = ft_memalloc(sizeof(t_set_fd));
 	g_tracking.mysh->set_fd->STDIN = 0;
 	g_tracking.mysh->set_fd->STDOUT = 1;
 	g_tracking.mysh->set_fd->STDERR = 2;
-}
-
-void	exec_in_pipe(t_last *list_cmd, t_jobs *job)
-{
-	char	**tab_exec;
-
-	tab_exec = create_tab_to_exec(g_tracking.temp_command);
-	if (!descrf_two[0])
-		pipe(descrf_two);
-	if (!descrf[0])
-		pipe(descrf);
-	execute_pipe(tab_exec, job);
-	tab_exec = NULL;
-	g_tracking.temp_command = NULL;
-	list_cmd = list_cmd->next;
 }
 
 void	exec_left_branch(t_tree *tree, t_jobs *job)
@@ -56,6 +37,37 @@ void	exec_right_branch(t_tree *tree, t_jobs *job)
 		g_tracking.foreground = 1;
 	exec_command(tree->right->list_cmd, g_tracking.foreground, job);
 	g_tracking.foreground = 0;
+}
+
+void	free_branch(t_last *list)
+{
+	t_last *temp_list;
+
+	while (list)
+	{
+		temp_list = list->next;
+		free(list->name);
+		list = list->next;
+		free(temp_list);
+	}
+}
+
+void	free_ast(t_tree *tree)
+{
+	if (tree->type == SEP)
+	{
+		if (tree->left && tree->left->type != SEP)
+			free_branch(tree->left->list_cmd);
+		else if (tree->left && tree->left->type == SEP)
+			free_ast(tree->left);
+		free(tree->cmd);
+		if (tree->right && tree->right->type != SEP)
+			free_branch(tree->right->list_cmd);
+		else if (tree->right)
+			free_ast(tree->right);
+	}
+	free_ast(tree);
+	return ;
 }
 
 void	execute_ast(t_tree *tree, t_jobs *job)
@@ -79,5 +91,5 @@ void	execute_ast(t_tree *tree, t_jobs *job)
 		else if (tree->right)
 			execute_ast(tree->right, job);
 	}
-	return ;
+	free_ast(tree);
 }

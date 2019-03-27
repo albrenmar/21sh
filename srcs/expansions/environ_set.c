@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environ_set.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 08:40:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/02 04:02:46 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/23 05:35:26 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void		add_to_env_set(char *varname, char *varvalue)
 	t_env_set	*first;
 	t_env_set	*new_envvar;
 
+	new_envvar = NULL;
 	if (g_tracking.mysh->setenv_lst == NULL)
 	{
 		g_tracking.mysh->setenv_lst = new_envset(varname, varvalue);

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 07:07:00 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 18:15:36 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/25 04:20:09 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_last		*new_list(void)
 	new->name = NULL;
 	new->next = NULL;
 	new->prev = NULL;
+	new->type = 0;
 	return (new);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/05 04:04:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 01:49:47 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,19 @@ int				check_and_exec_echo(void);
 int				is_builtin_alone(void);
 int				ft_builtin_search(char *builtin);
 int				is_builtin(void);
-int				ft_exit(void);
+int				ft_exit(int process, int exitcode);
 int				builtin_exec();
 int				jobs_builtin(void);
-int				errors_fg(int nb, int error);
-int				bg_builtin(void);
-int				fg_builtin(void);
-int				errors_bg(int nb, int error);
+int				errors_fg(int nb, int error, char *hold);
+int				errors_bg(int nb, int error, char *hold);
 int		        ft_cd(void);
 int		        ft_isdir(char *path);
 int		        ft_handlestat(struct stat *tmp, char *permission, char *path);
 char	        *ft_homepath(char *path);
 char	        *ft_cdpath(char *path);
-char	        *cd_line(char **tab, char *cdline, char *path);
-char	        *conc_and_free(char *path, char **tab);
 char		    *ft_dot(char *path);
 int		        getright(char *str);
+int				bg_builtin(void);
+int				fg_builtin(void);
 
 #endif

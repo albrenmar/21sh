@@ -6,30 +6,28 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/03 05:45:07 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 04:32:43 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "sh42.h"
 
-char		**hashed_command(char **tab_exec)
+char		**hashed_command(char **tab_exec, int i)
 {
 	char	**newtab;
-	int		index;
 	t_hash	*tmp;
 
 	if (!(strchr(g_tracking.g_tab_exec[0], '/')))
 		return (NULL);
-	index = 0;
-	while (tab_exec[0][index] && (tab_exec[0][index] <= 65 || tab_exec[0][index] > 122))
-		index++;
-	index = hash_maker(tab_exec[0][index]);
-	if (index < 0 || index > 25)
+	while (tab_exec[0][i] && (tab_exec[0][i] <= 65 || tab_exec[0][i] > 122))
+		i++;
+	i = hash_maker(tab_exec[0][i]);
+	if (i < 0 || i > 25)
 		return (NULL);
 	newtab = tab_dup(tab_exec);
 	ft_strdel(&newtab[0]);
-	tmp = g_tracking.hashtable[index];
+	tmp = g_tracking.hashtable[i];
 	while (tmp)
 	{
 		if (!(ft_strcmp(tmp->binary, tab_exec[0])))
@@ -76,14 +74,10 @@ void		insert_to_hashtable(int key, char *binary, char *path)
 			tmp->totalhits += 1;
 		}
 		else
-		{
 			tmp->nextbinary = new_binary_hash(binary, path, 1);
-		}
 	}
 	else
-	{
 		g_tracking.hashtable[key] = new_binary_hash(binary, path, 1);
-	}
 }
 
 int			hash_maker(const char c)
@@ -97,6 +91,7 @@ void		hash_binary(void)
 	char	*binaryhold;
 	int		i;
 
+	binaryhold = NULL;
 	if (strchr(g_tracking.g_tab_exec[0], '/'))
 		return ;
 	binaryhold = ft_strdup(g_tracking.g_tab_exec[0]);
@@ -104,8 +99,9 @@ void		hash_binary(void)
 	while (binaryhold[i] && (binaryhold[i] <= 65 || binaryhold[i] > 122))
 		i++;
 	if (!(test_exist_fonction(g_tracking.g_tab_exec, 1)))
-		return ;
+		return (ft_strdel(&binaryhold));
 	hashedvalue = hash_maker(binaryhold[i]);
 	if (hashedvalue >= 0 && hashedvalue <= 25)
 		insert_to_hashtable(hashedvalue, binaryhold, g_tracking.g_tab_exec[0]);
+	ft_strdel(&binaryhold);
 }

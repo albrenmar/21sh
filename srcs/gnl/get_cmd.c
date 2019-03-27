@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 04:28:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/22 23:35:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,6 @@ void	ft_return(void)
 	free(g_tracking.cpaste);
 	g_tracking.str = NULL;
 	cursor_reset();
-}
-
-void	test_read2(char *str)
-{
-	int		i;
-
-	i = 0;
-	ft_putchar('\n');
-	while (str[i])
-	{
-		printf("0x%x\n", str[i]);
-		i++;
-	}
 }
 
 void	left_right(char *str)

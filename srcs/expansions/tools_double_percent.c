@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 02:49:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/20 03:10:19 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/27 06:55:01 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	ass_str_wend_ast(t_analyzer *to_analy, char **str)
 	}
 	run_varvalue = ft_strrev(to_analy->varvalue, 0);
 	ft_strdel(str);
-	*str = ft_strdup(ft_strrev(run_varvalue + (to_analy->vvlu_len - i), 0));
+	*str = ft_strrev(run_varvalue + (to_analy->vvlu_len - i), 0);
+	ft_strdel(&run_varvalue);
 }
 
 void	ass_str_wstrt_ast(t_analyzer *to_analy, char **str)
@@ -48,6 +49,8 @@ void	ass_str_wstrt_ast(t_analyzer *to_analy, char **str)
 		*str = ft_strdup("");
 	else
 		*str = ft_strdup(to_analy->varvalue);
+	ft_strdel(&run_varvalue);
+	ft_strdel(&run_wildcard);
 }
 
 void	ass_str_wout_ast(t_analyzer *to_analy, char **str)
@@ -67,5 +70,7 @@ void	ass_str_wout_ast(t_analyzer *to_analy, char **str)
 		}
 		else
 			*str = ft_strdup(to_analy->varvalue);
+		ft_strdel(&run_varvalue);
+		ft_strdel(&run_wildcard);
 	}
 }

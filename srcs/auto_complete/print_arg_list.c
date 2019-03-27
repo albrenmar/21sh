@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 03:01:58 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/22 23:32:35 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ char			*ft_createline(void)
 
 int				ft_menuline(void)
 {
-
 	if (g_tracking.aut->menuline)
 	{
 		free(g_tracking.aut->menuline);

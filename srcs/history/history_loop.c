@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 03:22:46 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/23 23:58:07 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		replace_str(int i, char *comp)
 		{
 			if (ft_strlen(history->line) > 0)
 			{
-				rem_str(comp);
+				ctrl_c();
 				add_to_str(ft_strdup(history->line));
 			}
 			return (0);
@@ -104,7 +104,7 @@ int		history_down(void)
 	if (g_tracking.histindex == g_tracking.histmax + 1)
 	{
 		comp = ft_strdup(g_tracking.str);
-		rem_str(comp);
+		ctrl_c();
 		free(comp);
 	}
 	history = get_hist_nbr(g_tracking.histindex);

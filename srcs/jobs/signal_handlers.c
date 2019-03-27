@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 01:43:35 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 09:51:40 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void		sig_int_handler(int signo)
 
 void		sig_winch_handler(int signo)
 {
-	int			i;
 	int			y;
 
 	if (signo == SIGWINCH)
@@ -42,11 +41,6 @@ void		sig_winch_handler(int signo)
 
 void		set_process_signal_handlers(void)
 {
-	// signal(SIGKILL, SIG_DFL);
-	// signal(SIGSTOP, SIG_DFL);
-	// signal(SIGSEGV, SIG_DFL);
-	// signal(SIGABRT, SIG_DFL);
-
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
 	signal(SIGTSTP, SIG_DFL);
@@ -60,11 +54,6 @@ void		set_process_signal_handlers(void)
 
 void		set_shell_signal_handlers(void)
 {
-	// signal(SIGSEGV, SIG_IGN);
-	// signal(SIGKILL, SIG_IGN);
-	// signal(SIGABRT, SIG_IGN);
-	// signal(SIGSTOP, SIG_IGN);
-
 	signal(SIGINT, sig_int_handler);
 	signal(SIGWINCH, sig_winch_handler);
 	signal(SIGQUIT, SIG_IGN);

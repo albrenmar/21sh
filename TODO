@@ -5,13 +5,23 @@ Rajouter "Dans des heredocs, valide" pour les heredoc, et quitter proprement le 
 Partie Abraham
 -fix redirection output (>) ou (>>) des builtins quand il y a pas de fork
 - '>' == '>>'
--norme et leaks de ma partie
 -Ctrl-C et Ctrl-D quittent heredoc
+leaks de ma partie (sauf srcs/builtins/builtins.c)
+-"echo -a -b" boucle infini sur "while (list_cmd)" dans fonction exec_command
 -top | top ou cat | cat | cat bug le terminal
+-verificar history funciona con hdufer
+-demander de completer si "ls &&" ou "ls ||"
+-builtin solo con & no funciona bien
+-forkear SIEMPRE (con builtin solo tambien) con '&' tanto como '|'
+-limpiar la estructura global
+-hacer bien los alias (en el lexer)
+-verificar no se printea prompt duplicado cuando recorres historico
+-verificar no errores con valgrind, wall wextra werror y fsanitize- address
+
 
 Partie Marc
 - Gestion d'errors pour les expansions.
-- Quiter le process en execution pour no importe quel commande avec ${VARNAME:?VARVALUE} en tant que VARNAME 
+- Quiter le process en execution pour no importe quel commande avec ${VARNAME:?VARVALUE} en tant que VARNAME
     no existe pas, ou elle a pas valeur. (A voir avec Abraham/et/ou/Alexandre.)
 (X) - Ajuter les expansions dans l'autocomplete, entant que la line finis avec '/' (A voir avec Brendan). NORMALMENT EST GERE.
 - Gerer l'expand recursive (${VARNAME:-${VARNAME:+VARVALUE}aaaaa}bbbb Par exemple).
@@ -24,9 +34,9 @@ Partie Alex
 - close apres creation fichier
 
 Partie Hassan
-- Builtin fc
-- Implementation des differents builtins
-- Env avec les builtins
+- history -d negative
+- history -d begin end
+- fc
 
 MISC
 -Ajouter builtins manquants (POSIX?)

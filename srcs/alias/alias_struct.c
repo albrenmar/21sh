@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   alias_struct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
 /*   Updated: 2019/03/20 03:07:31 by bsiche           ###   ########.fr       */

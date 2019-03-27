@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 03:00:07 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/24 00:14:55 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void	build_list(void)
 	else
 	{
 		g_tracking.aut->comp_list = build_ls();
+		if (!g_tracking.aut->comp_list)
+			return;
 		get_max_size();
 		set_up_page();
 		completion_loop(g_tracking.aut->comp_list);

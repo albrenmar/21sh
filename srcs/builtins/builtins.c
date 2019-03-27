@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/19 19:31:44 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/23 10:19:57 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int			is_builtin(void)
 		|| ft_builtin_search("set") || ft_builtin_search("echo")
 		|| ft_builtin_search("hash") || ft_builtin_search("test")
 		|| ft_builtin_search("cd") || ft_builtin_search("history")
-		|| ft_builtin_search("alias") || ft_builtin_search("unalias"))
+		|| ft_builtin_search("alias") || ft_builtin_search("unalias")
+		|| ft_builtin_search("type"))
 		return (1);
 	return (0);
 }
@@ -64,6 +65,23 @@ int			ft_builtin_search(char *builtin)
 	return (0);
 }
 
+int			builtin_exec_cont(void)
+{
+	if (ft_builtin_search("test"))
+		return (main_test(1));
+	else if (ft_builtin_search("cd"))
+		return (ft_cd());
+	else if (ft_builtin_search("history"))
+		return (history());
+	else if (ft_builtin_search("alias"))
+		return (add_alias());
+	else if (ft_builtin_search("unalias"))
+		return (unalias_blt());
+	else if (ft_builtin_search("type"))
+		return (type_main());
+	return (0);
+}
+
 int			builtin_exec(void)
 {
 	if (ft_builtin_search("jobs"))
@@ -77,18 +95,9 @@ int			builtin_exec(void)
 	else if (ft_builtin_search("echo"))
 		return (check_and_exec_echo());
 	else if (ft_builtin_search("exit"))
-		return (ft_exit());
+		return (ft_exit(1, EXIT_SUCCESS));
 	else if (ft_builtin_search("hash"))
 		return (ft_hash());
-	else if (ft_builtin_search("test"))
-		return (main_test(1));
-	else if (ft_builtin_search("cd"))
-		return (ft_cd());
-	else if (ft_builtin_search("history"))
-		return (history());
-	else if (ft_builtin_search("alias"))
-		return (add_alias());
-	else if (ft_builtin_search("unalias"))
-		return (unalias_blt());
-	return (0);
+	else
+		return (builtin_exec_cont());
 }

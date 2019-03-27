@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   completion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:13:59 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/16 17:18:43 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/24 04:28:42 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		valid_bracket(char *line, int quote, int double_quote, int *accol)
 	return (0);
 }
 
-int		ft_valid_bracket(char *line, char c, int flag)
+int		ft_valid_bracket(char *line)
 {
 	int	i;
 	int	accol;
@@ -67,9 +67,9 @@ char	*check_bracket(char *line, int i)
 	g_tracking.quotes = 3;
 	get_key();
 	if (g_tracking.bracket == 10)
-		exit(0);
+		ft_exit(1, EXIT_SUCCESS);
 	join = g_tracking.cmd;
-	ft_valid_bracket(join, '{', 0);
+	ft_valid_bracket(join);
 	if (!ret)
 		ret = ft_strdup(join);
 	else

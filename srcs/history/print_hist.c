@@ -6,19 +6,20 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:26:47 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/14 17:56:15 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/23 14:32:21 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-int		print_hist()
+int		print_hist(void)
 {
 	t_hist		*history;
 
 	history = g_tracking.mysh->hist;
 	if (!history)
 		return (1);
+	history = hist_remap_index(history);
 	while (history)
 	{
 		ft_putendl(history->line);

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 18:15:38 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/24 04:33:42 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ char	*recup_cmd(char *line, int *i, int nb)
 		(*i)++;
 		nb++;
 	}
-	if ((test = search_fd_reddir(&line[nb], i)))
+	if ((test = search_fd_reddir(&line[nb])))
 		return (test);
-	else if ((test = search_reddir(&line[nb], i)))
+	else if ((test = search_reddir(&line[nb])))
 		return (test);
-	else if ((test = search_symboll(&line[nb], i)))
+	else if ((test = search_symboll(&line[nb])))
 		return (test);
 	else
 		test = search_normally_arg(&line[nb], i);
@@ -43,19 +43,19 @@ void	return_modif_line(char c, char **line)
 	if (c == '"')
 	{
 		temp = check_quote(*line, 0, '"');
-		new_line = ft_strjoin(*line, temp);
+		new_line = ft_strjoinfree(*line, temp, 1);
 		*line = new_line;
 	}
 	else if (c == '\'')
 	{
 		temp = check_quote(*line, 0, '\'');
-		new_line = ft_strjoin(*line, temp);
+		new_line = ft_strjoinfree(*line, temp, 1);
 		*line = new_line;
 	}
 	else
 	{
 		temp = check_bracket(*line, 0);
-		new_line = ft_strjoin(*line, temp);
+		new_line = ft_strjoinfree(*line, temp, 1);
 		*line = new_line;
 	}
 }
@@ -75,7 +75,7 @@ char	*ft_modif_line(char **line)
 		return_modif_line('\'', line);
 		return (NULL);
 	}
-	else if (ft_valid_bracket(*line, '}', 0))
+	else if (ft_valid_bracket(*line))
 	{
 		return_modif_line('}', line);
 		return (NULL);

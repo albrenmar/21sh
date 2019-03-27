@@ -6,13 +6,13 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:06:56 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 19:04:45 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/24 04:26:30 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
 
-char	*search_symboll(char *str, int *nb)
+char	*search_symboll(char *str)
 {
 	int		i;
 	char	*ret;
@@ -32,7 +32,7 @@ char	*search_symboll(char *str, int *nb)
 	return (NULL);
 }
 
-char	*search_fd_reddir(char *str, int *nb)
+char	*search_fd_reddir(char *str)
 {
 	int		i;
 	char	*ret;
@@ -56,7 +56,7 @@ char	*search_fd_reddir(char *str, int *nb)
 	return (NULL);
 }
 
-char	*search_reddir(char *str, int *nb)
+char	*search_reddir(char *str)
 {
 	int		i;
 	char	*ret;
