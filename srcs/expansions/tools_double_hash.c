@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 22:52:02 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/20 00:02:40 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/27 08:59:55 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,19 @@ void	asgnvrvluastrk(t_analyzer *nly, char **rvrvlu, char **rwlcd, char **str)
 {
 	char	*run_varvalue;
 	char	*run_wildcard;
+	char	*cop_varvalue;
 	int		i;
 
 	i = 0;
 	run_varvalue = ft_strrev(*rvrvlu, 0);
+	cop_varvalue = run_varvalue;
 	run_wildcard = ft_strrev(*rwlcd, 0);
 	if (!ft_strnstr(run_varvalue, run_wildcard, nly->wlcd_len))
-		while (!ft_strnstr(run_varvalue, run_wildcard, nly->wlcd_len))
+		while (!ft_strnstr(cop_varvalue, run_wildcard, nly->wlcd_len))
 		{
-			run_varvalue++;
+			cop_varvalue++;
 			i++;
-			if (!run_varvalue || i > nly->vvlu_len)
+			if (!cop_varvalue || i > nly->vvlu_len)
 				break ;
 		}
 	ft_strdel(str);
@@ -41,6 +43,8 @@ void	asgnvrvluastrk(t_analyzer *nly, char **rvrvlu, char **rwlcd, char **str)
 		*str = ft_strdup(nly->varvalue);
 	else
 		*str = ft_strdup(nly->varvalue + (nly->vvlu_len - i));
+	ft_strdel(&run_wildcard);
+	ft_strdel(&run_varvalue);
 }
 
 void	asign_vrvlufnd(t_analyzer *nly, char **rvrvlu, char **rwlcd, char **str)
