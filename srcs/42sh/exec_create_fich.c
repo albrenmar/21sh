@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/25 02:37:11 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/27 04:42:57 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,11 @@ int		exec_create_file(t_last **list_cmd)
 	if (its_indir(*list_cmd) && !its_heredoc(*list_cmd))
 	{
 		if ((g_tracking.mysh->set_fd->STDIN = out_redir(*list_cmd)) == -1)
+		{
+			g_tracking.mysh->set_fd->STDIN = 0;
+			*list_cmd = (*list_cmd)->next;
 			return (-1);
+		}
 		*list_cmd = (*list_cmd)->next;
 	}
 	else if (its_heredoc(*list_cmd))

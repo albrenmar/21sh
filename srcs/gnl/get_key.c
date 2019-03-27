@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/22 23:37:21 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/27 03:16:54 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int		single_key(char c)
 	}
 	if (c == K_TAB)
 	{
-		auto_complete();
+		//auto_complete();
+		ft_putnbr(g_tracking.pos->abs);
 		return (12);
 	}
 	return (ctrl_key(c));
@@ -73,7 +74,7 @@ int		readloop(int i, int fd)
 	{
 		while (42)
 		{
-			read(STDERR_FILENO, &c, 1);
+			read(fd, &c, 1);
 			str = ft_strjoinchar(str, c, 1);
 			i = is_cmd(str);
 			if (i >= 6)
