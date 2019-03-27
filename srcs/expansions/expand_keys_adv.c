@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/27 07:14:12 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/27 08:07:38 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	exp_key_double_hash(char **str, t_expand *expand)
 	}
 	else
 		rmv_str(str);
+	end_analyzer(to_analy);
 }
 
 void	exp_key_double_percent(char **str, t_expand *expand)
