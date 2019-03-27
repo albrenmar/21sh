@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/25 17:49:35 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/26 14:26:27 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,10 @@ t_hist		*hist_delete_last(t_hist *hist)
 	{
 		hist = hist->previous;
 		tmp->index = 0;
+		free(tmp->line);
 		free(tmp);
 		hist = hist_remap_index(hist);
+		hist->next = NULL;
 	}
 	return (hist);
 }
