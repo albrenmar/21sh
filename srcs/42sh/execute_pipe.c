@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/27 05:59:59 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/27 08:32:04 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job, int readpipe)
 	pid_t	pid0;
 
 	free_tab(g_tracking.g_tab_exec);
+	g_tracking.g_tab_exec = NULL;
 	g_tracking.g_tab_exec = tab_dup(tab_exec);
 //	dprintf(2, "TEST= %d\n", g_tracking.mysh->errchk);
 	if (!is_builtin_alone())
@@ -79,6 +80,7 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job, int readpipe)
 			set_new_process(job, pid0);
 			g_tracking.mysh->errchk = 0;
 			close_fd();
+			free_tab(tab_exec);
 		}
 	}
 	else
@@ -98,6 +100,7 @@ int			execute_pipe(t_last **list_cmd, t_jobs *job, int readpipe)
 	pipe(descrf);
 	tab_exec = create_tab_to_exec(g_tracking.temp_command);
 	free_tab(g_tracking.g_tab_exec);
+	g_tracking.g_tab_exec = NULL;
 	g_tracking.g_tab_exec = tab_dup(tab_exec);
 //	dprintf(2, "TESTIIIIIIIIII= %d\n", g_tracking.mysh->errchk);
 	if (!is_builtin_alone())
@@ -123,6 +126,7 @@ int			execute_pipe(t_last **list_cmd, t_jobs *job, int readpipe)
 			if (readpipe > 2)
 				close(readpipe);
 			set_new_process(job, pid0);
+			free_tab(tab_exec);
 			return (descrf[0]);
 		}
 	}
