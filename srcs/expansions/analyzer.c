@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/10 18:01:55 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/27 04:27:54 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/27 05:12:32 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ void	clean_nlzr_wildcard(t_analyzer *to_analy, int reverse)
 	char	*tmp;
 
 	if (to_analy->wildcard[0] == '*')
-		to_analy->wildcard = ft_strrev(ft_strdup(to_analy->wildcard + 1), 1);
+	{
+		tmp = ft_strrev(ft_strdup(to_analy->wildcard + 1), 1);
+		ft_strdel(&to_analy->wildcard);
+		to_analy->wildcard = tmp;
+	}
 	else
 		to_analy->wildcard = ft_strrev(to_analy->wildcard, 1);
 	if (to_analy->wildcard[0] == '*')
