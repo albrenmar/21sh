@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_key.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/27 05:42:36 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/27 09:17:08 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,18 +104,16 @@ void	test_read(void)
 int		get_key(void)
 {
 	char	*str;
+	char	*memory;
 
 	tcsetattr(0, TCSANOW, &g_tracking.myterm);
 	get_coolprompt();
+	memory = g_tracking.cwd;
 	if (g_tracking.interactive == 1)
 		print_prompt();
 	g_tracking.histindex = get_last() + 1;
 	if (g_tracking.linemode == 0)
-	{
-		while (readloop(0, STDIN_FILENO) == 0)
-		{
-		}
-	}
+		while (readloop(0, STDIN_FILENO) == 0);
 	else
 	{
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
@@ -126,5 +124,6 @@ int		get_key(void)
 		str = NULL;
 	}
 	tcsetattr(0, TCSANOW, &g_tracking.default_term);
+	ft_strdel(&memory);
 	return (1);
 }
