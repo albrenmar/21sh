@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:00:43 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 05:07:13 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/27 09:20:06 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ char				**test_exist_fonction(char **tab_cmd, int mode)
 			freeing_paths(path, pathlist);
 			return (tab_cmd);
 		}
+		freeing_paths(path, pathlist);
 		return (NULL);
 	}
 	else

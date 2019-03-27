@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/27 07:22:19 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/27 09:23:21 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,14 @@ void		clean_up_leaks(void)
 	g_tracking.str = NULL;
 	free(g_tracking.terminfo);
 	g_tracking.terminfo = NULL;
+	free_tab(g_tracking.g_tab_exec);
+	g_tracking.g_tab_exec = NULL;
+	ft_strdel(&g_tracking.prompt);
+	g_tracking.prompt = NULL;
+	ft_strdel(&g_tracking.user);
+	g_tracking.user = NULL;
+	ft_strdel(&g_tracking.cwd);
+	g_tracking.cwd = NULL;
 }
 
 int			ft_exit(int process, int exitcode)

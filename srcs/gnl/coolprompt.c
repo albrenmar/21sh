@@ -6,13 +6,13 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/27 07:14:22 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/27 09:05:28 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sh42.h"
 
-void	transform_cwd(int i)
+void			transform_cwd(int i)
 {
 	char		*home;
 	int			len;
@@ -40,18 +40,35 @@ void	transform_cwd(int i)
 	free(home);
 }
 
-void	set_prompt_quote(void)
+void			set_prompt_quote(void)
 {
+	char		*memory;
+
+	memory = g_tracking.prompt;
 	if (g_tracking.quotes == 1)
+	{
 		g_tracking.prompt = ft_strdup("dquotes >");
+		ft_strdel(&memory);
+		memory = NULL;
+	}
 	if (g_tracking.quotes == 2)
+	{
 		g_tracking.prompt = ft_strdup("quotes >");
+		ft_strdel(&memory);
+		memory = NULL;
+	}
 	if (g_tracking.quotes == 3)
+	{
 		g_tracking.prompt = ft_strdup(">");
+		ft_strdel(&memory);
+		memory = NULL;
+	}
 	g_tracking.pos->prompt = utf_strlen(g_tracking.prompt);
+	ft_strdel(&memory);
+	memory = NULL;
 }
 
-void	print_prompt(void)
+void			print_prompt(void)
 {
 	if (g_tracking.quotes == 1
 			|| g_tracking.quotes == 2 || g_tracking.quotes == 3)
@@ -74,9 +91,9 @@ void	print_prompt(void)
 	ft_putstr_fd(ANSI_COLOR_DEFAULT, 2);
 }
 
-void	get_coolprompt_cont(int mode, char *memory, char *prompt)
+void			get_coolprompt_cont(int mode, char *memory, char *prompt)
 {
-	int	i;
+	int			i;
 
 	i = 0;
 	if (mode == 1)
@@ -86,6 +103,8 @@ void	get_coolprompt_cont(int mode, char *memory, char *prompt)
 		transform_cwd(i);
 	prompt = ft_strdup(SHELL_NAME);
 	prompt = ft_strjoinfree(prompt, " $/> ", 1);
+	ft_strdel(&g_tracking.prompt);
+	g_tracking.prompt = NULL;
 	g_tracking.prompt = ft_strdup(prompt);
 	g_tracking.pos->prompt = utf_strlen(prompt) + utf_strlen(g_tracking.cwd);
 	g_tracking.pos->prompt += utf_strlen(g_tracking.user);
@@ -93,11 +112,11 @@ void	get_coolprompt_cont(int mode, char *memory, char *prompt)
 	ft_strdel(&prompt);
 }
 
-void	get_coolprompt(void)
+void			get_coolprompt(void)
 {
-	char	*prompt;
-	char	*memory;
-	char	*buff;
+	char		*prompt;
+	char		*memory;
+	char		*buff;
 
 	memory = NULL;
 	prompt = NULL;

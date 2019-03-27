@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/27 07:54:04 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/27 08:49:02 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void	init_global(void)
 	g_tracking.lastreturn = 0;
 	g_tracking.mysh->hist = NULL;
 	g_tracking.mysh->alias_lst = NULL;
+	g_tracking.g_tab_exec = NULL;
+	g_tracking.prompt = NULL;
+	g_tracking.cwd = NULL;
+	g_tracking.user = NULL;
 }
 
 void	init_shell(char **environ, char **argv)
