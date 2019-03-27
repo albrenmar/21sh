@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 13:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/27 03:52:15 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/27 05:51:42 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		err_check(int i, int j)
 	char	*newstr;
 
 	newstr = NULL;
-	while ((i + j + 50) > g_tracking.buffsize)
+	while ((i + j + 20) > g_tracking.buffsize)
 		g_tracking.buffsize *= 2;
 	newstr = malloc(sizeof(char) * g_tracking.buffsize);
 	ft_bzero(newstr, g_tracking.buffsize);
