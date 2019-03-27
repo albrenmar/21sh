@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/27 04:43:00 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/03/27 05:59:59 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job, int readpipe)
 
 	free_tab(g_tracking.g_tab_exec);
 	g_tracking.g_tab_exec = tab_dup(tab_exec);
-	dprintf(2, "TEST= %d\n", g_tracking.mysh->errchk);
+//	dprintf(2, "TEST= %d\n", g_tracking.mysh->errchk);
 	if (!is_builtin_alone())
 	{
 		if (!is_builtin())
@@ -99,7 +99,7 @@ int			execute_pipe(t_last **list_cmd, t_jobs *job, int readpipe)
 	tab_exec = create_tab_to_exec(g_tracking.temp_command);
 	free_tab(g_tracking.g_tab_exec);
 	g_tracking.g_tab_exec = tab_dup(tab_exec);
-	dprintf(2, "TESTIIIIIIIIII= %d\n", g_tracking.mysh->errchk);
+//	dprintf(2, "TESTIIIIIIIIII= %d\n", g_tracking.mysh->errchk);
 	if (!is_builtin_alone())
 	{
 		if (!is_builtin())
