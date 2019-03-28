@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/27 08:49:02 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/28 04:48:05 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	init_global(void)
 	g_tracking.prompt = NULL;
 	g_tracking.cwd = NULL;
 	g_tracking.user = NULL;
+	g_tracking.cwd = NULL;
 }
 
 void	init_shell(char **environ, char **argv)
