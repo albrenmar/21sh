@@ -17,13 +17,11 @@ leaks de ma partie (sauf srcs/builtins/builtins.c)
 -hacer bien los alias (en el lexer)
 -verificar no se printea prompt duplicado cuando recorres historico
 -verificar no errores con valgrind, wall wextra werror y fsanitize- address
--bug "sleep 10 || sleep 20 || sleep 30 &" and then fg %3
 -ver si descomentar free_ast
--fg bugs
 -double free con "ls &" y "sleep 100", probar los dos
 -verificar que liens symboliques funcionan bien
+-probar 21sh con la correccion
 -./42sh -> ./42sh -> ./42sh et kill le premier ou le dernier -> bug
--bug historique, g_tracking.cwd
 
 Partie Marc
 - Gestion d'errors pour les expansions.

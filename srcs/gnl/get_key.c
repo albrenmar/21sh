@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/27 10:26:27 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/28 05:04:58 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,9 @@ void	test_read(void)
 int		get_key(void)
 {
 	char	*str;
-	char	*memory;
 
 	tcsetattr(0, TCSANOW, &g_tracking.myterm);
 	get_coolprompt();
-	memory = g_tracking.cwd;
 	if (g_tracking.interactive == 1)
 		print_prompt();
 	g_tracking.histindex = get_last() + 1;
@@ -124,7 +122,5 @@ int		get_key(void)
 		str = NULL;
 	}
 	tcsetattr(0, TCSANOW, &g_tracking.default_term);
-	ft_strdel(&memory);
-	memory = NULL;
 	return (1);
 }

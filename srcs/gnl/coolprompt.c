@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/27 10:08:16 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/28 04:48:28 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void			transform_cwd(int i)
 		}
 		n[i] = '\0';
 		ft_strdel(&g_tracking.cwd);
+		g_tracking.cwd = NULL;
 		g_tracking.cwd = n;
 	}
 	free(home);
@@ -122,6 +123,7 @@ void			get_coolprompt(void)
 	prompt = NULL;
 	ft_strdel(&g_tracking.prompt);
 	ft_strdel(&g_tracking.cwd);
+	g_tracking.cwd = NULL;
 	ft_strdel(&g_tracking.user);
 	if (g_tracking.quotes >= 1 && g_tracking.quotes <= 3)
 		return (set_prompt_quote());

@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/27 10:38:18 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/28 05:15:02 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,9 @@ int		main(int argc, char **argv, char **env)
 		jobs_update_current();
 		free(line);
 		line = NULL;
+		g_tracking.sterminal = STDIN_FILENO;
+		if (!(isatty(g_tracking.sterminal)))
+			ft_exit(0, 0);
 	}
 	return (0);
 }
