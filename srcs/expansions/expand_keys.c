@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/27 05:00:16 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/27 09:37:45 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,20 @@ void		exp_key_unique_hash(char **str, t_expand *expand)
 	else if (to_analy.varvalue)
 	{
 		ft_strdel(str);
-		*str = to_analy.varvalue;
+		*str = ft_strdup(to_analy.varvalue);
 	}
 	else
 	{
 		ft_strdel(str);
 		*str = ft_strdup("");
 	}
+	end_analyzer(to_analy);
 }
 
 void		exp_key_start_hash(char **str, t_expand *expand)
 {
 	t_analyzer	to_analy;
+	char		*to_error;
 
 	init_analyzer(&to_analy, str, expand);
 	if ((!to_analy.end_astrsk && !to_analy.start_astrsk)
@@ -60,7 +62,12 @@ void		exp_key_start_hash(char **str, t_expand *expand)
 		*str = ft_itoa(to_analy.vvlu_len);
 	}
 	else
-		print_exp_error(ft_strjoinfree("#", to_analy.varname, 0));
+	{
+		to_error = ft_strjoinfree("#", to_analy.varname, 0);
+		print_exp_error(to_error);
+		ft_strdel(&to_error);
+	}
+	end_analyzer(to_analy);
 }
 
 char		check_sign(t_expand *expand)
