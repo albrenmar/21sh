@@ -22,7 +22,6 @@ leaks de ma partie (sauf srcs/builtins/builtins.c)
 -verificar que liens symboliques funcionan bien
 -./42sh < Makefile o ./42sh < TODO -> segfult
 -probar 21sh con la correccion
--./42sh -> ./42sh -> ./42sh et kill le premier ou le dernier -> bug
 
 Partie Marc
 - Gestion d'errors pour les expansions.
