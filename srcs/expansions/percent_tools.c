@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 05:33:22 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/23 09:11:07 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/28 05:33:59 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	str_uniq_percent_chgr(t_analyzer *to_analy, char **str)
 	{
 		ft_strdel(str);
 		*str = ft_strrev(ft_strstr(to_analy->varvalue,
-			to_analy->wildcard) + 1, 0);
+			to_analy->wildcard) + to_analy->wlcd_len, 0);
 	}
 	else if (to_analy->varvalue)
 	{
