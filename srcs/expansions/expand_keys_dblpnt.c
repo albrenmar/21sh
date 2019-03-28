@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/28 01:58:29 by mjose            ###   ########.fr       */
+/*   Updated: 2019/03/28 02:07:14 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	exp_key_plus(char **str, t_expand *expand)
 	{
 		print_exp_error_dpoints(to_analy.varname, to_analy.wildcard, '+');
 		end_analyzer(to_analy);
+		*str = ft_strdup(" ");
 		return ;
 	}
 	if (to_analy.varvalue && to_analy.varvalue[0])
