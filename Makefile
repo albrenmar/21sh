@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/27 09:45:46 by abguimba         ###   ########.fr        #
+#    Updated: 2019/03/28 01:54:11 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -210,7 +210,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -g  -fsanitize=address #-Wall -Wextra -Werror
+FLAG := -g  #-fsanitize=address #-Wall -Wextra -Werror
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')
