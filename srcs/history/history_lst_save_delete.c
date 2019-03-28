@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 14:32:39 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/26 17:12:49 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/28 15:55:50 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,32 +67,38 @@ int			delete_index_special_neg(void)
 	return (0);
 }
 
-int			delete_index_neg(void)
+int			delete_index_neg(int index)
 {
-	t_hist *tmp;
+	t_hist	*tmp;
+	t_hist	*tmpo;
 
-	if (g_tracking.mysh->hist)
-	{
-		if (delete_index_special_neg())
-			return (1);
-		if (g_tracking.mysh->hist->previous && g_tracking.mysh->hist->next)
+	tmpo = g_tracking.mysh->hist;
+	while (tmpo->next)
+		tmpo = tmpo->next;
+	if ((tmp->index - index) == g_tracking.mysh->hist->index)
+		if (g_tracking.mysh->hist)
 		{
-			tmp = g_tracking.mysh->hist;
-			g_tracking.mysh->hist->previous->next = g_tracking.mysh->hist->next;
-			g_tracking.mysh->hist->next->previous =\
-			g_tracking.mysh->hist->previous;
-			free(tmp->line);
-			free(tmp);
-			g_tracking.mysh->hist = hist_remap_index(g_tracking.mysh->hist);
-			return (1);
+			if (delete_index_special_neg())
+				return (1);
+			if (g_tracking.mysh->hist->previous && g_tracking.mysh->hist->next)
+			{
+				tmp = g_tracking.mysh->hist;
+				g_tracking.mysh->hist->previous->next =\
+				g_tracking.mysh->hist->next;
+				g_tracking.mysh->hist->next->previous =\
+				g_tracking.mysh->hist->previous;
+				free(tmp->line);
+				free(tmp);
+				g_tracking.mysh->hist = hist_remap_index(g_tracking.mysh->hist);
+				return (1);
+			}
 		}
-	}
 	return (0);
 }
 
 int			delete_index_dispatch(int index)
 {
-	if (ft_isdigit_str(g_tracking.g_tab_exec[2]) > 0)
+	if (ft_atoi(g_tracking.g_tab_exec[2]) > 0)
 	{
 		if ((index = search_index_to_delete(ft_atoi(g_tracking.g_tab_exec[2])))\
 		== 0)
@@ -100,12 +106,12 @@ int			delete_index_dispatch(int index)
 		if (delete_index(index) == 0)
 			return (0);
 	}
-	if (ft_isdigit_str(g_tracking.g_tab_exec[2]) < 0)
+	if (ft_atoi(g_tracking.g_tab_exec[2]) < 0)
 	{
 		if ((index = search_index_to_delete_neg(\
 		ft_atoi(g_tracking.g_tab_exec[2]))) == 0)
 			return (0);
-		if (delete_index_neg() == 0)
+		if (delete_index_neg(index) == 0)
 			return (0);
 	}
 	return (1);
