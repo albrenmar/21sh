@@ -21,6 +21,7 @@ leaks de ma partie (sauf srcs/builtins/builtins.c)
 -ver si descomentar free_ast
 -fg bugs
 -double free con "ls &" y "sleep 100", probar los dos
+-verificar que liens symboliques funcionan bien
 -./42sh -> ./42sh -> ./42sh et kill le premier ou le dernier -> bug
 -bug historique, g_tracking.cwd
 
