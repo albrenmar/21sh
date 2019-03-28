@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/27 07:50:42 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/28 06:49:33 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -351,6 +351,7 @@ void			ctrl_c(void);
 void			clean_up_leaks(void);
 t_ls			*ls_alloc(char *str);
 int				ctrl_key(char c);
+void			is_still_atty();
 void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
 int				bg_builtin_output(t_jobs *tmp, char *hold);
 int				fg_builtin_output(t_jobs *tmp, char *hold);

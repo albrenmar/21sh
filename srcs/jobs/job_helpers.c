@@ -6,11 +6,25 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 07:19:10 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/28 06:49:09 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
+
+void		is_still_atty()
+{
+	int		sterminal;
+	int		isinteractive;
+
+	sterminal = STDIN_FILENO;
+	isinteractive = isatty(sterminal);
+	if (isinteractive)
+	{
+		while (tcgetpgrp (sterminal) != (g_tracking.spid = getpgrp ()))
+			kill (- g_tracking.spid, SIGTTIN);
+	}
+}
 
 t_jobs		*new_job_helper(t_jobs *tmp)
 {

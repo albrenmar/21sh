@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/28 05:04:58 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/28 06:50:40 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int		readloop(int i, int fd)
 				break ;
 		}
 	}
+	is_still_atty();
 	return (return_loop(i, str));
 }
 
