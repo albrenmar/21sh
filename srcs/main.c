@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/28 05:24:31 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/28 06:31:01 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ t_last	*check_exp_error(t_last *cmd)
 				cmd->next->prev = prev;
 			if (cmd->prev)
 				cmd->prev->next = next;
-			ft_memdel((void **)&cmd);
+			if (!cmd->next && !cmd->prev)
+				ft_memdel((void **)&begin);
+			else
+				ft_memdel((void **)&cmd);
 			cmd = begin;
 		}
 		if (g_tracking.mysh->err_expend == 1)
