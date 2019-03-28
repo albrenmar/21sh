@@ -20,6 +20,7 @@ leaks de ma partie (sauf srcs/builtins/builtins.c)
 -ver si descomentar free_ast
 -double free con "ls &" y "sleep 100", probar los dos
 -verificar que liens symboliques funcionan bien
+-./42sh < Makefile o ./42sh < TODO -> segfult
 -probar 21sh con la correccion
 -./42sh -> ./42sh -> ./42sh et kill le premier ou le dernier -> bug
 

@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 05:23:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/28 05:22:10 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/28 05:25:14 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	get_term(void)
 	check_term(name_term);
 	tcgetattr(0, &default_term);
 	tcgetattr(0, &term);
-	term.c_lflag &= ~(ICANON | ECHO);
+	term.c_lflag &= ~(ICANON | ECHO | ISIG);
 	term.c_cc[VMIN] = 1;
 	term.c_cc[VTIME] = 0;
 	g_tracking.terminfo = malloc(sizeof(t_term_data*));
