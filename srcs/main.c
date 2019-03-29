@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/28 06:40:46 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/03/28 15:46:30 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	set_up(char **argv, char **env)
 	get_term();
 	interactive_check_set_shell_group();
 	set_shell_signal_handlers();
+	g_tracking.hist_first = 0;
 }
 
 void	main_loop(char *line, char **argv)

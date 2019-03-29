@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by alsomvil          #+#    #+#              #
-#    Updated: 2019/03/28 05:41:30 by abguimba         ###   ########.fr        #
+#    Updated: 2019/03/28 18:38:16 by hdufer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,6 +155,7 @@ SRC = main.c \
 	  history/history_loop.c \
 	  history/history_lst_save_delete.c \
 	  history/history_lst_delete.c \
+	  history/history_lst_delete_multiple.c \
 	  history/print_hist.c \
 	  history/shebang.c \
 	  history/shebang_plus.c \

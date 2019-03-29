@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/26 14:26:27 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/28 18:26:17 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_hist		*hist_remap_index(t_hist *hist)
 		return (NULL);
 	while (hist->previous)
 		hist = hist->previous;
-	if (hist && hist->index == 0 && hist->next)
+	if (hist && hist->index == 0 && hist->next && hist->next->line)
 		hist = hist->next;
 	while (hist)
 	{

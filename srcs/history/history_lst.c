@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/26 14:27:27 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/28 18:13:28 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,20 @@ t_hist		*hist_remap_null(t_hist *hist, char *line)
 {
 	t_hist	*tmp;
 
-	g_tracking.hist_first++;
 	if (!hist || !line)
 		return (NULL);
 	while (hist->previous)
 		hist = hist->previous;
-	if (hist->line == NULL && hist->next && hist->next->line)
+	if (hist->line == NULL && hist->index == 0\
+	&& hist->next && hist->next->line)
 	{
 		tmp = hist;
 		hist = hist->next;
 		free(tmp->line);
 		free(tmp);
-		tmp->line = NULL;
+		hist->previous = NULL;
 		tmp = NULL;
-		hist = hist_remap_index(hist);
+		g_tracking.hist_first++;
 	}
 	return (hist);
 }
@@ -59,13 +59,16 @@ void		hist_lst_add_next(t_hist *hist, char *line)
 	t_hist	*new_node;
 
 	if (g_tracking.hist_first == 0)
+	{
 		hist = hist_remap_null(hist, line);
+		g_tracking.mysh->hist = hist;
+	}
 	if (!hist)
 	{
 		g_tracking.mysh->hist = hist_lst_create(NULL);
 		hist = g_tracking.mysh->hist;
 	}
-	while (hist->next != NULL)
+	while (hist->next)
 		hist = hist->next;
 	if (line)
 	{
@@ -83,7 +86,9 @@ void		hist_lst_add_next(t_hist *hist, char *line)
 t_hist		*hist_lst_create(char *line)
 {
 	t_hist	*new_lst;
+	t_hist	*hist;
 
+	hist = g_tracking.mysh->hist;
 	if ((new_lst = malloc(sizeof(*new_lst))) == NULL)
 		return (NULL);
 	if (!line)
