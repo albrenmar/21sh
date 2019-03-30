@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst_plus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thegenius <thegenius@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/28 18:26:17 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/30 14:02:19 by thegenius        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_hist		*hist_remap_index(t_hist *hist)
 	i = 1;
 	if (!hist)
 		return (NULL);
-	while (hist->previous)
+	while (hist && hist->previous)
 		hist = hist->previous;
 	if (hist && hist->index == 0 && hist->next && hist->next->line)
 		hist = hist->next;
@@ -127,7 +127,7 @@ t_hist		*hist_delete_last(t_hist *hist)
 		hist = hist->previous;
 		tmp->index = 0;
 		free(tmp->line);
-		free(tmp);
+		// free(tmp);
 		hist = hist_remap_index(hist);
 		hist->next = NULL;
 	}

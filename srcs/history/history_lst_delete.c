@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst_delete.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thegenius <thegenius@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 14:35:43 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/28 15:45:33 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/30 14:04:23 by thegenius        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int			delete_index_special(void)
 		g_tracking.mysh->hist = g_tracking.mysh->hist->next;
 		free(tmp->line);
 		free(tmp);
+		g_tracking.mysh->hist->previous = NULL;
 		g_tracking.mysh->hist = hist_remap_index(g_tracking.mysh->hist);
 		return (1);
 	}
@@ -89,11 +90,11 @@ int			delete_index(int index)
 		if (g_tracking.mysh->hist->previous && g_tracking.mysh->hist->next)
 		{
 			tmp = g_tracking.mysh->hist;
-			g_tracking.mysh->hist->previous->next = g_tracking.mysh->hist->next;
-			g_tracking.mysh->hist->next->previous =\
-			g_tracking.mysh->hist->previous;
+			tmp->previous->next = tmp->next;
+			tmp->next->previous =\
+			tmp->previous;
 			free(tmp->line);
-			free(tmp);
+			// free(tmp);
 			g_tracking.mysh->hist = hist_remap_index(g_tracking.mysh->hist);
 			return (1);
 		}
@@ -113,14 +114,14 @@ void		history_builtin_delete_index(int j)
 		if (delete_index_dispatch(ft_atoi(g_tracking.g_tab_exec[2])) == 0)
 			return (ft_putendl("History position out of range"));
 	}
-	// else if (!g_tracking.g_tab_exec[1][j + 1] && g_tracking.g_tab_exec[2]\
-	// && ft_isdigit_str(g_tracking.g_tab_exec[2]) && g_tracking.g_tab_exec[3]\
-	// && ft_isdigit_str(g_tracking.g_tab_exec[3]))
-	// {
-	// 	if (delete_dispatch_multiple(ft_atoi(g_tracking.g_tab_exec[2])\
-	// 	, ft_atoi(g_tracking.g_tab_exec[3])) == 0)
-	// 		return (ft_putendl("History position out of range"));
-	// }
+	else if (!g_tracking.g_tab_exec[1][j + 1] && g_tracking.g_tab_exec[2]\
+	&& ft_isdigit_str(g_tracking.g_tab_exec[2]) && g_tracking.g_tab_exec[3]\
+	&& ft_isdigit_str(g_tracking.g_tab_exec[3]))
+	{
+		if (delete_dispatch_multiple(ft_atoi(g_tracking.g_tab_exec[2])\
+		, ft_atoi(g_tracking.g_tab_exec[3])) == 0)
+			return (ft_putendl("History position out of range"));
+	}
 	else
 		return (ft_putendl(\
 		"history -d [index] || history -d [begin index] [end index]"));

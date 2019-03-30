@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst_delete_multiple.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thegenius <thegenius@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 13:39:57 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/28 14:27:57 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/03/30 14:11:29 by thegenius        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int			delete_dispatch_multiple(int first_i, int second_i)
 		return (delete_index_neg(first_i));
 	if (first_i > 0 && second_i > 0)
 	{
-		while (tmp_min != tmp_big)
+		while (tmp_min <= tmp_big)
 		{
-			if ((tmp_min = search_index_to_delete(tmp_min)) == 0)
+			if (search_index_to_delete(tmp_min) == 0)
 				return (0);
 			if (delete_index(tmp_min) == 0)
 				return (0);
