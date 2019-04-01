@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:24:28 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/23 19:29:17 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/04/01 15:17:28 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,16 @@ char	*shebang_parse_switch_plus(char *line, int i, char *tmp_line)
 	return (line);
 }
 
+int		shebang_incorect_event(char *line, int i)
+{
+	if (!line[i])
+	{
+		ft_putendl_fd("Event not found", 2);
+		return (1);
+	}
+	return (0);
+}
+
 char	*shebang_parse_switch(char *line)
 {
 	int		i;
@@ -70,13 +80,13 @@ char	*shebang_parse_switch(char *line)
 		if (line[i] && line[i] == '!')
 		{
 			i++;
+			if (shebang_incorect_event(line, i) == 1)
+				return (NULL);
 			tmp_line = ft_strrdup(line, i - 1);
-			if (ft_iswhitespace(line[i]) || !line[i] || line[i] == ';')
+			if (line[i] && (line[i] == ';' || ft_iswhitespace(line[i])))
 				i++;
 			else
-			{
 				line = shebang_parse_switch_plus(line, i, tmp_line);
-			}
 			free(tmp_line);
 		}
 		else
