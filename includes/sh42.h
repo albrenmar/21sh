@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thegenius <thegenius@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/30 14:07:01 by thegenius        ###   ########.fr       */
+/*   Updated: 2019/04/01 16:21:35 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -402,6 +402,7 @@ int				delete_index_dispatch(int index);
 int				delete_index_neg(int index);
 int				delete_index_special_neg(void);
 int				delete_dispatch_multiple(int i, int j);
+t_hist			*hist_remap_null(t_hist *hist);
 
 t_last			*create_new_list(void);
 t_last			*ft_parseur(char *line);

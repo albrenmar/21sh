@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/04/01 14:04:08 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/04/01 16:20:53 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ t_hist		*hist_remap_index(t_hist *hist)
 	int i;
 
 	i = 1;
+	if (g_tracking.hist_first == 0)
+	{
+		hist = hist_remap_null(hist);
+		g_tracking.mysh->hist = hist;
+	}
 	if (!hist)
 		return (NULL);
 	while (hist && hist->previous)
