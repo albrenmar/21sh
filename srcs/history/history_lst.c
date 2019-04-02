@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/04/02 09:40:53 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/04/02 17:43:56 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ t_hist		*hist_remap_null(t_hist *hist)
 		tmp = NULL;
 		g_tracking.hist_first++;
 	}
+	if (g_tracking.hist_first)
+		g_tracking.hist_first = 0;
 	return (hist);
 }
 
