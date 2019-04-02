@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 14:35:43 by hdufer            #+#    #+#             */
-/*   Updated: 2019/04/01 16:18:37 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/04/02 17:29:32 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			delete_index_special(void)
 	{
 		tmp = g_tracking.mysh->hist;
 		g_tracking.mysh->hist = g_tracking.mysh->hist->next;
-		free(tmp->line);
+		ft_strdel(&tmp->line);
 		free(tmp);
 		g_tracking.mysh->hist->previous = NULL;
 		g_tracking.mysh->hist = hist_remap_index(g_tracking.mysh->hist);
@@ -93,8 +93,9 @@ int			delete_index(int index)
 			tmp->previous->next = tmp->next;
 			tmp->next->previous =\
 			tmp->previous;
-			free(tmp->line);
-			// free(tmp);
+			ft_strdel(&tmp->line);
+			free(tmp);
+			tmp = NULL;
 			g_tracking.mysh->hist = hist_remap_index(g_tracking.mysh->hist);
 			return (1);
 		}
@@ -108,13 +109,13 @@ void		history_builtin_delete_index(int j)
 	long	index;
 
 	index = 0;
-	if (!g_tracking.g_tab_exec[1][j + 1] && g_tracking.g_tab_exec[2]\
-	&& ft_isdigit_str(g_tracking.g_tab_exec[2]) && !g_tracking.g_tab_exec[3])
+	if (g_tracking.g_tab_exec[2]\
+	&& ft_isdigit_str(g_tracking.g_tab_exec[2]) && g_tracking.g_tab_exec[3] == NULL)
 	{
 		if (delete_index_dispatch(ft_atoi(g_tracking.g_tab_exec[2])) == 0)
 			return (ft_putendl("History position out of range"));
 	}
-	else if (!g_tracking.g_tab_exec[1][j + 1] && g_tracking.g_tab_exec[2]\
+	else if (g_tracking.g_tab_exec[2]\
 	&& ft_isdigit_str(g_tracking.g_tab_exec[2]) && g_tracking.g_tab_exec[3]\
 	&& ft_isdigit_str(g_tracking.g_tab_exec[3]))
 	{

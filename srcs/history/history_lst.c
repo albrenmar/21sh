@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/04/01 16:21:48 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/04/02 09:40:53 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ t_hist		*hist_remap_null(t_hist *hist)
 
 	if (!hist)
 		return (NULL);
-	while (hist->previous)
+	while (hist && hist->previous)
 		hist = hist->previous;
 	if (hist->line == NULL && hist->index == 0\
 	&& hist->next && hist->next->line)
 	{
 		tmp = hist;
 		hist = hist->next;
-		free(tmp->line);
+		ft_strdel(&tmp->line);
 		free(tmp);
 		hist->previous = NULL;
 		tmp = NULL;
@@ -113,7 +113,7 @@ t_hist		*hist_free(void)
 		{
 			tmp = g_tracking.mysh->hist;
 			g_tracking.mysh->hist = g_tracking.mysh->hist->previous;
-			free(tmp->line);
+			ft_strdel(&tmp->line);
 			tmp->line = NULL;
 			free(tmp);
 			tmp = NULL;

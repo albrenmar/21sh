@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:02:27 by hdufer            #+#    #+#             */
-/*   Updated: 2019/04/01 16:20:53 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/04/02 12:06:38 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ t_hist		*hist_delete_last(t_hist *hist)
 	{
 		hist = hist->previous;
 		tmp->index = 0;
-		free(tmp->line);
+		ft_strdel(&tmp->line);
 		// free(tmp);
 		hist = hist_remap_index(hist);
 		hist->next = NULL;

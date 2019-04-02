@@ -6,7 +6,7 @@
 /*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 14:32:39 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/28 15:55:50 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/04/02 17:31:08 by hdufer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int			delete_index_special_neg(void)
 	{
 		tmp = g_tracking.mysh->hist;
 		g_tracking.mysh->hist = g_tracking.mysh->hist->next;
-		free(tmp->line);
+		ft_strdel(&tmp->line);
 		free(tmp);
 		g_tracking.mysh->hist = hist_remap_index(g_tracking.mysh->hist);
 		return (1);
@@ -87,7 +87,7 @@ int			delete_index_neg(int index)
 				g_tracking.mysh->hist->next;
 				g_tracking.mysh->hist->next->previous =\
 				g_tracking.mysh->hist->previous;
-				free(tmp->line);
+				ft_strdel(&tmp->line);
 				free(tmp);
 				g_tracking.mysh->hist = hist_remap_index(g_tracking.mysh->hist);
 				return (1);
@@ -105,6 +105,7 @@ int			delete_index_dispatch(int index)
 			return (0);
 		if (delete_index(index) == 0)
 			return (0);
+		return (1);
 	}
 	if (ft_atoi(g_tracking.g_tab_exec[2]) < 0)
 	{
@@ -113,6 +114,7 @@ int			delete_index_dispatch(int index)
 			return (0);
 		if (delete_index_neg(index) == 0)
 			return (0);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
