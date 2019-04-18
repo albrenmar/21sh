@@ -1,93 +1,53 @@
-==75237== Memcheck, a memory error detector
-==75237== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==75237== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==75237== Command: ./42sh
-==75237== 
-==75237== Syscall param msg->desc.port.name points to uninitialised byte(s)
-==75237==    at 0x10043D34A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)
-==75237==    by 0x10043C796: mach_msg (in /usr/lib/system/libsystem_kernel.dylib)
-==75237==    by 0x100436485: task_set_special_port (in /usr/lib/system/libsystem_kernel.dylib)
-==75237==    by 0x1005D210E: _os_trace_create_debug_control_port (in /usr/lib/system/libsystem_trace.dylib)
-==75237==    by 0x1005D2458: _libtrace_init (in /usr/lib/system/libsystem_trace.dylib)
-==75237==    by 0x10013B9DF: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==75237==    by 0x100069A1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==75237==    by 0x100069C1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==75237==    by 0x1000654A9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==75237==    by 0x100065440: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==75237==    by 0x100064523: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==75237==    by 0x1000645B8: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==75237==  Address 0x1048dcd2c is on thread 1's stack
-==75237==  in frame #2, created by task_set_special_port (???:)
-==75237== 
+==8900== Memcheck, a memory error detector
+==8900== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==8900== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==8900== Command: ./42sh
+==8900== 
+==8900== Syscall param msg->desc.port.name points to uninitialised byte(s)
+==8900==    at 0x10042134A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)
+==8900==    by 0x100420796: mach_msg (in /usr/lib/system/libsystem_kernel.dylib)
+==8900==    by 0x10041A485: task_set_special_port (in /usr/lib/system/libsystem_kernel.dylib)
+==8900==    by 0x1005B610E: _os_trace_create_debug_control_port (in /usr/lib/system/libsystem_trace.dylib)
+==8900==    by 0x1005B6458: _libtrace_init (in /usr/lib/system/libsystem_trace.dylib)
+==8900==    by 0x10011F9DF: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==8900==    by 0x10004DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==8900==    by 0x10004DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==8900==    by 0x1000494A9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==8900==    by 0x100049440: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==8900==    by 0x100048523: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==8900==    by 0x1000485B8: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==8900==  Address 0x1048c0d2c is on thread 1's stack
+==8900==  in frame #2, created by task_set_special_port (???:)
+==8900== 
 42sh: ${:-/Users/mjose}: bad substitution
-==75237== Invalid read of size 8
-==75237==    at 0x10000472B: convert_list (convert_list.c:102)
-==75237==    by 0x10000127A: main_loop (main.c:80)
-==75237==    by 0x1000013D0: main (main.c:110)
-==75237==  Address 0x100c0f1a8 is 8 bytes inside a block of size 32 free'd
-==75237==    at 0x1000EAE2B: free (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==75237==    by 0x10002BE4C: ft_free (garbage_free.c:64)
-==75237==    by 0x100021DE9: ft_lstdelcmd (cmd_expan_checker.c:29)
-==75237==    by 0x10002236D: rmv_invalid_expansion (cmd_tools.c:74)
-==75237==    by 0x100021F7C: re_format_line (cmd_expan_checker.c:69)
-==75237==    by 0x100022108: check_exp_error (cmd_expan_checker.c:105)
-==75237==    by 0x100001265: main_loop (main.c:78)
-==75237==    by 0x1000013D0: main (main.c:110)
-==75237==  Block was alloc'd at
-==75237==    at 0x1000EAA46: malloc (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==75237==    by 0x10002BFAC: ft_malloc (garbage_malloc.c:56)
-==75237==    by 0x100002A43: create_new_list (ft_modif_list.c:19)
-==75237==    by 0x10000256C: ft_parseur (ft_parseur.c:117)
-==75237==    by 0x100001206: main_loop (main.c:72)
-==75237==    by 0x1000013D0: main (main.c:110)
-==75237== 
-==75237== Invalid read of size 1
-==75237==    at 0x100002FCB: its_indir (its_token.c:43)
-==75237==    by 0x100004733: convert_list (convert_list.c:102)
-==75237==    by 0x10000127A: main_loop (main.c:80)
-==75237==    by 0x1000013D0: main (main.c:110)
-==75237==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
-==75237== 
-==75237== 
-==75237== Process terminating with default action of signal 11 (SIGSEGV)
-==75237==  Access not within mapped region at address 0x0
-==75237==    at 0x100002FCB: its_indir (its_token.c:43)
-==75237==    by 0x100004733: convert_list (convert_list.c:102)
-==75237==    by 0x10000127A: main_loop (main.c:80)
-==75237==    by 0x1000013D0: main (main.c:110)
-==75237==  If you believe this happened as a result of a stack
-==75237==  overflow in your program's main thread (unlikely but
-==75237==  possible), you can try to increase the size of the
-==75237==  main thread stack using the --main-stacksize= flag.
-==75237==  The main thread stack size used in this run was 8388608.
-==75237== 
-==75237== HEAP SUMMARY:
-==75237==     in use at exit: 31,089 bytes in 409 blocks
-==75237==   total heap usage: 1,517 allocs, 1,108 frees, 79,265 bytes allocated
-==75237== 
-==75237== 72 bytes in 3 blocks are possibly lost in loss record 106 of 138
-==75237==    at 0x1000EB0B2: calloc (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==75237==    by 0x100646832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
-==75237==    by 0x100659D6A: map_images (in /usr/lib/libobjc.A.dylib)
-==75237==    by 0x10005903B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==75237==    by 0x100059255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
-==75237==    by 0x10029400A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
-==75237==    by 0x100646072: _objc_init (in /usr/lib/libobjc.A.dylib)
-==75237==    by 0x10022768D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
-==75237==    by 0x10022763A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
-==75237==    by 0x10013B9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==75237==    by 0x100069A1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==75237==    by 0x100069C1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==75237== 
-==75237== LEAK SUMMARY:
-==75237==    definitely lost: 0 bytes in 0 blocks
-==75237==    indirectly lost: 0 bytes in 0 blocks
-==75237==      possibly lost: 72 bytes in 3 blocks
-==75237==    still reachable: 13,139 bytes in 253 blocks
-==75237==         suppressed: 17,878 bytes in 153 blocks
-==75237== Reachable blocks (those to which a pointer was found) are not shown.
-==75237== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==75237== 
-==75237== For counts of detected and suppressed errors, rerun with: -v
-==75237== Use --track-origins=yes to see where uninitialised values come from
-==75237== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 12 from 12)
+==8900== 
+==8900== HEAP SUMMARY:
+==8900==     in use at exit: 25,338 bytes in 176 blocks
+==8900==   total heap usage: 1,534 allocs, 1,358 frees, 79,625 bytes allocated
+==8900== 
+==8900== 72 bytes in 3 blocks are possibly lost in loss record 32 of 56
+==8900==    at 0x1000CF0B2: calloc (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==8900==    by 0x10062A832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==8900==    by 0x10063DD6A: map_images (in /usr/lib/libobjc.A.dylib)
+==8900==    by 0x10003D03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==8900==    by 0x10003D255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==8900==    by 0x10027800A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==8900==    by 0x10062A072: _objc_init (in /usr/lib/libobjc.A.dylib)
+==8900==    by 0x10020B68D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==8900==    by 0x10020B63A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==8900==    by 0x10011F9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==8900==    by 0x10004DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==8900==    by 0x10004DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==8900== 
+==8900== LEAK SUMMARY:
+==8900==    definitely lost: 0 bytes in 0 blocks
+==8900==    indirectly lost: 0 bytes in 0 blocks
+==8900==      possibly lost: 72 bytes in 3 blocks
+==8900==    still reachable: 7,388 bytes in 20 blocks
+==8900==         suppressed: 17,878 bytes in 153 blocks
+==8900== Reachable blocks (those to which a pointer was found) are not shown.
+==8900== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==8900== 
+==8900== For counts of detected and suppressed errors, rerun with: -v
+==8900== Use --track-origins=yes to see where uninitialised values come from
+==8900== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
