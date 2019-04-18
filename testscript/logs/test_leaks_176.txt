@@ -1,93 +1,53 @@
-==75002== Memcheck, a memory error detector
-==75002== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==75002== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==75002== Command: ./42sh
-==75002== 
-==75002== Syscall param msg->desc.port.name points to uninitialised byte(s)
-==75002==    at 0x10043D34A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)
-==75002==    by 0x10043C796: mach_msg (in /usr/lib/system/libsystem_kernel.dylib)
-==75002==    by 0x100436485: task_set_special_port (in /usr/lib/system/libsystem_kernel.dylib)
-==75002==    by 0x1005D210E: _os_trace_create_debug_control_port (in /usr/lib/system/libsystem_trace.dylib)
-==75002==    by 0x1005D2458: _libtrace_init (in /usr/lib/system/libsystem_trace.dylib)
-==75002==    by 0x10013B9DF: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==75002==    by 0x100069A1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==75002==    by 0x100069C1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==75002==    by 0x1000654A9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==75002==    by 0x100065440: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==75002==    by 0x100064523: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==75002==    by 0x1000645B8: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==75002==  Address 0x1048dcd2c is on thread 1's stack
-==75002==  in frame #2, created by task_set_special_port (???:)
-==75002== 
+==8567== Memcheck, a memory error detector
+==8567== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==8567== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==8567== Command: ./42sh
+==8567== 
+==8567== Syscall param msg->desc.port.name points to uninitialised byte(s)
+==8567==    at 0x10042134A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)
+==8567==    by 0x100420796: mach_msg (in /usr/lib/system/libsystem_kernel.dylib)
+==8567==    by 0x10041A485: task_set_special_port (in /usr/lib/system/libsystem_kernel.dylib)
+==8567==    by 0x1005B610E: _os_trace_create_debug_control_port (in /usr/lib/system/libsystem_trace.dylib)
+==8567==    by 0x1005B6458: _libtrace_init (in /usr/lib/system/libsystem_trace.dylib)
+==8567==    by 0x10011F9DF: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==8567==    by 0x10004DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==8567==    by 0x10004DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==8567==    by 0x1000494A9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==8567==    by 0x100049440: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==8567==    by 0x100048523: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==8567==    by 0x1000485B8: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==8567==  Address 0x1048c0d2c is on thread 1's stack
+==8567==  in frame #2, created by task_set_special_port (???:)
+==8567== 
 42sh: ${:+HOME}: bad substitution
-==75002== Invalid read of size 8
-==75002==    at 0x10000472B: convert_list (convert_list.c:102)
-==75002==    by 0x10000127A: main_loop (main.c:80)
-==75002==    by 0x1000013D0: main (main.c:110)
-==75002==  Address 0x100c0efc8 is 8 bytes inside a block of size 32 free'd
-==75002==    at 0x1000EAE2B: free (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==75002==    by 0x10002BE4C: ft_free (garbage_free.c:64)
-==75002==    by 0x100021DE9: ft_lstdelcmd (cmd_expan_checker.c:29)
-==75002==    by 0x10002236D: rmv_invalid_expansion (cmd_tools.c:74)
-==75002==    by 0x100021F7C: re_format_line (cmd_expan_checker.c:69)
-==75002==    by 0x100022108: check_exp_error (cmd_expan_checker.c:105)
-==75002==    by 0x100001265: main_loop (main.c:78)
-==75002==    by 0x1000013D0: main (main.c:110)
-==75002==  Block was alloc'd at
-==75002==    at 0x1000EAA46: malloc (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==75002==    by 0x10002BFAC: ft_malloc (garbage_malloc.c:56)
-==75002==    by 0x100002A43: create_new_list (ft_modif_list.c:19)
-==75002==    by 0x10000256C: ft_parseur (ft_parseur.c:117)
-==75002==    by 0x100001206: main_loop (main.c:72)
-==75002==    by 0x1000013D0: main (main.c:110)
-==75002== 
-==75002== Invalid read of size 1
-==75002==    at 0x100002FCB: its_indir (its_token.c:43)
-==75002==    by 0x100004733: convert_list (convert_list.c:102)
-==75002==    by 0x10000127A: main_loop (main.c:80)
-==75002==    by 0x1000013D0: main (main.c:110)
-==75002==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
-==75002== 
-==75002== 
-==75002== Process terminating with default action of signal 11 (SIGSEGV)
-==75002==  Access not within mapped region at address 0x0
-==75002==    at 0x100002FCB: its_indir (its_token.c:43)
-==75002==    by 0x100004733: convert_list (convert_list.c:102)
-==75002==    by 0x10000127A: main_loop (main.c:80)
-==75002==    by 0x1000013D0: main (main.c:110)
-==75002==  If you believe this happened as a result of a stack
-==75002==  overflow in your program's main thread (unlikely but
-==75002==  possible), you can try to increase the size of the
-==75002==  main thread stack using the --main-stacksize= flag.
-==75002==  The main thread stack size used in this run was 8388608.
-==75002== 
-==75002== HEAP SUMMARY:
-==75002==     in use at exit: 31,088 bytes in 409 blocks
-==75002==   total heap usage: 1,512 allocs, 1,103 frees, 78,947 bytes allocated
-==75002== 
-==75002== 72 bytes in 3 blocks are possibly lost in loss record 106 of 138
-==75002==    at 0x1000EB0B2: calloc (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==75002==    by 0x100646832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
-==75002==    by 0x100659D6A: map_images (in /usr/lib/libobjc.A.dylib)
-==75002==    by 0x10005903B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==75002==    by 0x100059255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
-==75002==    by 0x10029400A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
-==75002==    by 0x100646072: _objc_init (in /usr/lib/libobjc.A.dylib)
-==75002==    by 0x10022768D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
-==75002==    by 0x10022763A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
-==75002==    by 0x10013B9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==75002==    by 0x100069A1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==75002==    by 0x100069C1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==75002== 
-==75002== LEAK SUMMARY:
-==75002==    definitely lost: 0 bytes in 0 blocks
-==75002==    indirectly lost: 0 bytes in 0 blocks
-==75002==      possibly lost: 72 bytes in 3 blocks
-==75002==    still reachable: 13,138 bytes in 253 blocks
-==75002==         suppressed: 17,878 bytes in 153 blocks
-==75002== Reachable blocks (those to which a pointer was found) are not shown.
-==75002== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==75002== 
-==75002== For counts of detected and suppressed errors, rerun with: -v
-==75002== Use --track-origins=yes to see where uninitialised values come from
-==75002== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 12 from 12)
+==8567== 
+==8567== HEAP SUMMARY:
+==8567==     in use at exit: 25,338 bytes in 176 blocks
+==8567==   total heap usage: 1,529 allocs, 1,353 frees, 79,306 bytes allocated
+==8567== 
+==8567== 72 bytes in 3 blocks are possibly lost in loss record 32 of 56
+==8567==    at 0x1000CF0B2: calloc (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==8567==    by 0x10062A832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==8567==    by 0x10063DD6A: map_images (in /usr/lib/libobjc.A.dylib)
+==8567==    by 0x10003D03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==8567==    by 0x10003D255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==8567==    by 0x10027800A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==8567==    by 0x10062A072: _objc_init (in /usr/lib/libobjc.A.dylib)
+==8567==    by 0x10020B68D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==8567==    by 0x10020B63A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==8567==    by 0x10011F9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==8567==    by 0x10004DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==8567==    by 0x10004DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==8567== 
+==8567== LEAK SUMMARY:
+==8567==    definitely lost: 0 bytes in 0 blocks
+==8567==    indirectly lost: 0 bytes in 0 blocks
+==8567==      possibly lost: 72 bytes in 3 blocks
+==8567==    still reachable: 7,388 bytes in 20 blocks
+==8567==         suppressed: 17,878 bytes in 153 blocks
+==8567== Reachable blocks (those to which a pointer was found) are not shown.
+==8567== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==8567== 
+==8567== For counts of detected and suppressed errors, rerun with: -v
+==8567== Use --track-origins=yes to see where uninitialised values come from
+==8567== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)

@@ -1,1 +1,1 @@
-42sh: command 73756{HOME} not found
+42sh: command 6127{HOME} not found
