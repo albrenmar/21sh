@@ -6,15 +6,15 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 00:23:13 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/23 00:22:30 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/02 06:55:26 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh42.h"
+#include "sh21.h"
 
 void			free_null(char *str)
 {
-	free(str);
+	ft_free(str);
 	str = NULL;
 }
 
@@ -39,7 +39,7 @@ void			ft_freestruct(t_list *liste)
 		free_null(tmp->strpermission);
 		free_null(tmp->symlink);
 		free_null(tmp->strpad);
-		free(buf->content);
+		ft_free(buf->content);
 		buf->content = NULL;
 		buf = buf->next;
 	}

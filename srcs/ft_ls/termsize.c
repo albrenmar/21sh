@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   termsize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 23:44:50 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/18 20:41:41 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/03/29 01:18:09 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/ioctl.h>
 #include <unistd.h>
-#include "sh42.h"
+#include "sh21.h"
 
 int		maxsize(t_list *liste)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   jobs_output.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/24 00:28:07 by abguimba         ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/15 03:49:08 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh42.h"
+#include "sh21.h"
 
 void		jobs_notif_helper(t_jobs *job, t_jobs *last, t_jobs *next)
 {
@@ -42,6 +42,9 @@ void		jobs_notif_helper(t_jobs *job, t_jobs *last, t_jobs *next)
 
 void		jobs_notifications_output(t_jobs *job)
 {
+	t_comm	*cmd;
+
+	cmd = job->t_command;
 	if (job->backstart == 1)
 	{
 		job->backstart = 0;
@@ -55,7 +58,9 @@ void		jobs_notifications_output(t_jobs *job)
 		else
 			ft_putchar(' ');
 		ft_putchar(' ');
-		ft_putnbr(job->jpid);
+		while (cmd->next)
+			cmd = cmd->next;
+		ft_putnbr(cmd->cpid);
 		ft_putchar('\n');
 	}
 }

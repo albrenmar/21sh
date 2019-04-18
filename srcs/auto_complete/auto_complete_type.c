@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   auto_complete_type.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 03:08:42 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/16 01:03:11 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh42.h"
+#include "sh21.h"
 
 void				complete_usr_var(void)
 {
@@ -25,6 +25,7 @@ void				complete_usr_var(void)
 		if (g_tracking.aut->comp_list->firstelement != NULL)
 		{
 			get_max_size();
+			end_word(1);
 			rem_str(g_tracking.aut->word);
 			set_up_page();
 			completion_loop(g_tracking.aut->comp_list);
@@ -45,13 +46,14 @@ void				complete_usr_word(void)
 		build_comp(list);
 		if (g_tracking.aut->comp_list->firstelement == NULL)
 		{
-			free(g_tracking.aut->comp_list);
+			ft_free(g_tracking.aut->comp_list);
 			build_comp(g_tracking.aut->bin_lst);
 		}
 		g_tracking.aut->to_add = NULL;
 		if (g_tracking.aut->comp_list->firstelement != NULL)
 		{
 			get_max_size();
+			end_word(1);
 			rem_str(g_tracking.aut->word);
 			set_up_page();
 			completion_loop(g_tracking.aut->comp_list);

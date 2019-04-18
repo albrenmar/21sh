@@ -3,116 +3,116 @@ ERROR="\033[1;31m\t\t****ERROR****\033[1;37m"
 echo "                    #*                     "
 echo "echo \${#HOME}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${#HOME}" | ./42sh)
+CMD_21sh=$(echo "echo \${#HOME}" | ./21sh)
 CMD_BASH=$(echo "echo \${#HOME}" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 echo "echo \${#*HOME}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${#*HOME}" | ./42sh)
+CMD_21sh=$(echo "echo \${#*HOME}" | ./21sh)
 CMD_BASH=$(echo "echo \${#*HOME}" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 echo "echo \${#HOME*}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${#HOME*}" | ./42sh)
+CMD_21sh=$(echo "echo \${#HOME*}" | ./21sh)
 CMD_BASH=$(echo "echo \${#HOME*}" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 echo "------------------------------------------"
 echo "echo \${#lolo}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${#lolo}" | ./42sh)
+CMD_21sh=$(echo "echo \${#lolo}" | ./21sh)
 CMD_BASH=$(echo "echo \${#lolo}" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 echo "------------------------------------------"
 echo "echo \${#*lolo}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${#*lolo}" | ./42sh)
+CMD_21sh=$(echo "echo \${#*lolo}" | ./21sh)
 CMD_BASH=$(echo "echo \${#*lolo}" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 echo "------------------------------------------"
 echo "echo \${#lolo*}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${#lolo*}" | ./42sh)
+CMD_21sh=$(echo "echo \${#lolo*}" | ./21sh)
 CMD_BASH=$(echo "echo \${#lolo*}" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 echo "------------------------------------------"
 echo "echo \${#}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${#}" | ./42sh)
+CMD_21sh=$(echo "echo \${#}" | ./21sh)
 CMD_BASH=$(echo "echo \${#}" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 echo "------------------------------------------"
 echo "echo \${#*}"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo \${#*}" | ./42sh)
+CMD_21sh=$(echo "echo \${#*}" | ./21sh)
 CMD_BASH=$(echo "echo \${#*}" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 #echo "-----------------------------------------"
 #echo "test autre"
 #echo "-----------------------------------------"
-#echo "echo '$HOME'" | ./42sh
+#echo "echo '$HOME'" | ./21sh
 #echo "echo '$HOME'" | /bin/bash
 #echo "-----------------------------------------"

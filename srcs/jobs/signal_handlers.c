@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handlers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/28 05:22:36 by abguimba         ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/15 03:49:08 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "sh42.h"
+#include "sh21.h"
+
+void		sig_quit_handler(int signo)
+{
+	if (signo == SIGQUIT)
+	{
+		ft_putendl("Quit: 3");
+		signal(SIGQUIT, sig_quit_handler);
+	}
+}
 
 void		sig_int_handler(int signo)
 {
@@ -56,7 +64,7 @@ void		set_shell_signal_handlers(void)
 {
 	signal(SIGINT, sig_int_handler);
 	signal(SIGWINCH, sig_winch_handler);
-	signal(SIGQUIT, SIG_IGN);
+	signal(SIGQUIT, sig_quit_handler);
 	signal(SIGTSTP, SIG_IGN);
 	signal(SIGCONT, SIG_IGN);
 	signal(SIGTTIN, SIG_IGN);

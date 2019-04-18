@@ -4,126 +4,126 @@ TEST="~"
 echo "                   *~*                    "
 echo "echo $TEST"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo $TEST" | ./42sh)
+CMD_21sh=$(echo "echo $TEST" | ./21sh)
 CMD_BASH=$(echo "echo $TEST" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 TEST="~/"
 echo "echo $TEST"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo $TEST" | ./42sh)
+CMD_21sh=$(echo "echo $TEST" | ./21sh)
 CMD_BASH=$(echo "echo $TEST" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 TEST="~/test"
 echo "echo $TEST"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo $TEST" | ./42sh)
+CMD_21sh=$(echo "echo $TEST" | ./21sh)
 CMD_BASH=$(echo "echo $TEST" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 TEST="test~"
 echo "echo $TEST"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo $TEST" | ./42sh)
+CMD_21sh=$(echo "echo $TEST" | ./21sh)
 CMD_BASH=$(echo "echo $TEST" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 TEST="/~"
 echo "echo $TEST"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo $TEST" | ./42sh)
+CMD_21sh=$(echo "echo $TEST" | ./21sh)
 CMD_BASH=$(echo "echo $TEST" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
-TEST="~alsomvil"
+TEST="~bsiche"
 echo "echo $TEST"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo $TEST" | ./42sh)
+CMD_21sh=$(echo "echo $TEST" | ./21sh)
 CMD_BASH=$(echo "echo $TEST" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
-TEST="test/~alsomvil/"
+TEST="test/~bsiche"
 echo "echo $TEST"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo $TEST" | ./42sh)
+CMD_21sh=$(echo "echo $TEST" | ./21sh)
 CMD_BASH=$(echo "echo $TEST" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 TEST="~+"
 echo "echo $TEST"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo $TEST" | ./42sh)
+CMD_21sh=$(echo "echo $TEST" | ./21sh)
 CMD_BASH=$(echo "echo $TEST" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5
 TEST="~-"
 echo "echo $TEST"
 echo "------------------------------------------"
-CMD_42SH=$(echo "echo $TEST" | ./42sh)
+CMD_21sh=$(echo "echo $TEST" | ./21sh)
 CMD_BASH=$(echo "echo $TEST" | /bin/bash)
-if [ $CMD_42SH == $CMD_BASH ]
+if [ $CMD_21sh == $CMD_BASH ]
     then
         echo $SUCCESS
 else
         echo $ERROR
-        echo "$CMD_42SH"
+        echo "$CMD_21sh"
         echo "$CMD_BASH"
 fi
 sleep 0.5

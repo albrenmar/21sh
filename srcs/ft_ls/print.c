@@ -6,11 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 20:14:05 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 01:25:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/02 06:55:26 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh42.h"
+#include "sh21.h"
 
 void	ft_step(t_list *liste, int nb, size_t nopad, int g)
 {
@@ -27,7 +27,7 @@ void	ft_step(t_list *liste, int nb, size_t nopad, int g)
 			ft_putcolor(tmp->color);
 		if ((buf->index) > nopad)
 		{
-			free(tmp->name);
+			ft_free(tmp->name);
 			tmp->name = ft_strtrim(tmp->name);
 		}
 		ft_putstr(tmp->name);

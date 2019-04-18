@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   type_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 00:07:42 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 03:12:20 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/16 01:15:59 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh42.h"
+#include "sh21.h"
 
 int		type_error(char *cmd)
 {
@@ -20,7 +20,7 @@ int		type_error(char *cmd)
 	err = ft_strjoinfree(err, cmd, 1);
 	err = ft_strjoinfree(err, " not found", 1);
 	ft_putendl_fd(err, 2);
-	free(err);
+	ft_free(err);
 	err = NULL;
 	return (1);
 }
@@ -58,7 +58,7 @@ int		type_check(char *cmd)
 	dummy = exist_fonction(cmd);
 	if (dummy)
 		flag = 1;
-	free(dummy);
+	ft_free(dummy);
 	return (flag);
 }
 
@@ -86,6 +86,7 @@ int		type_print(char *cmd)
 		dummy = ft_strjoinfree(dummy, exist_fonction(cmd), 3);
 	if (dummy)
 		ft_putendl(dummy);
+	ft_strdel(&dummy);
 	return (0);
 }
 

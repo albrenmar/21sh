@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   auto_complete_page.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 03:01:32 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/02 06:55:26 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh42.h"
+#include "sh21.h"
 
 void				line_per_page(void)
 {
@@ -53,7 +53,7 @@ void				set_up_page(void)
 
 void				change_page(int i, t_lstcontainer *list)
 {
-	free(g_tracking.aut->page_lst);
+	ft_free(g_tracking.aut->page_lst);
 	g_tracking.aut->page_lst = NULL;
 	g_tracking.aut->last_page = g_tracking.aut->active_page;
 	if (i == 3)
@@ -116,5 +116,5 @@ void				join_page_nbr(void)
 	message = ft_strjoinfree(message, "/", 1);
 	message = ft_strjoinfree(message, total_page, 3);
 	ft_putstr(message);
-	free(message);
+	ft_free(message);
 }

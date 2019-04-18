@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main_ls.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 22:58:59 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/15 00:09:00 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh42.h"
+#include "sh21.h"
 
 t_lstcontainer		*type_ls(int argc, char **argv)
 {
@@ -26,18 +26,18 @@ t_lstcontainer		*type_ls(int argc, char **argv)
 	str = ft_strdup("-ld");
 	if (argc == 1)
 	{
-		liste = ft_ls(".", str, 0);
-		free(str);
+		liste = ft_ls(".", str);
+		ft_free(str);
 		return (liste);
 	}
 	i = ft_option(argv, &str, &flag);
 	while (argc > i && flag != 1)
 	{
-		liste = ft_ls(argv[i], str, called);
+		liste = ft_ls(argv[i], str);
 		i++;
 		called = 1;
 	}
-	free(str);
+	ft_free(str);
 	return (liste);
 }
 
@@ -66,17 +66,17 @@ t_lstcontainer		*modified_ls(int argc, char **argv)
 	str = get_option();
 	if (argc == 1)
 	{
-		liste = ft_ls(".", str, 0);
-		free(str);
+		liste = ft_ls(".", str);
+		ft_free(str);
 		return (liste);
 	}
 	i = ft_option(argv, &str, &flag);
 	while (argc > i && flag != 1)
 	{
-		liste = ft_ls(argv[i], str, called);
+		liste = ft_ls(argv[i], str);
 		i++;
 		called = 1;
 	}
-	free(str);
+	ft_free(str);
 	return (liste);
 }

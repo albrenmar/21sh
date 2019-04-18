@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env_to_lst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 23:10:09 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/08 09:40:09 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh42.h"
+#include "sh21.h"
 
 t_keyval			*ft_env2(t_lstcontainer *split)
 {
@@ -18,7 +18,7 @@ t_keyval			*ft_env2(t_lstcontainer *split)
 	t_list			*tmp;
 
 	tmp = split->firstelement;
-	buf = malloc(sizeof(*buf));
+	buf = ft_malloc(sizeof(struct s_keyval));
 	buf->key = ft_strdup(tmp->content);
 	buf->value = ft_strnew(0);
 	tmp = tmp->next;
@@ -39,7 +39,7 @@ void				add_missing_string(void)
 		replace_env_str("PWD", pwd);
 	ft_add_env_string("TRUEPWD", pwd);
 	ft_add_env_string("TRUEOLDPWD", pwd);
-	free(pwd);
+	ft_free(pwd);
 }
 
 t_lstcontainer		*ft_env_to_lst(char **environ)
@@ -73,10 +73,12 @@ t_lstcontainer		*copyenv(void)
 	t_keyval		*buf;
 
 	envcpy = lstcontainer_new();
-	tmp = g_tracking.mysh->env->firstelement;
+	tmp = NULL;
+	if (g_tracking.mysh->env)
+		tmp = g_tracking.mysh->env->firstelement;
 	while (tmp)
 	{
-		buf = malloc(sizeof(*buf));
+		buf = ft_malloc(sizeof(*buf));
 		buf->key = ft_strdup(((t_keyval*)tmp->content)->key);
 		buf->value = ft_strdup(((t_keyval*)tmp->content)->value);
 		envcpy->add(envcpy, buf);
@@ -96,7 +98,7 @@ t_lstcontainer		*emptyenv(void)
 	tmp = g_tracking.mysh->env->firstelement;
 	while (tmp)
 	{
-		buf = malloc(sizeof(*buf));
+		buf = ft_malloc(sizeof(*buf));
 		buf->key = ft_strdup(((t_keyval*)tmp->content)->key);
 		if (ft_strcmp(buf->key, "PATH") == 0)
 			buf->value = ft_strdup(((t_keyval*)tmp->content)->value);

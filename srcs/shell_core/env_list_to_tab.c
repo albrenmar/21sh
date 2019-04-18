@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env_list_to_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 04:40:40 by mjose             #+#    #+#             */
-/*   Updated: 2019/02/25 04:42:02 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/02 06:55:43 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh42.h"
+#include "sh21.h"
 
 char				**init_envp(t_lstcontainer *env)
 {
@@ -23,7 +23,7 @@ char				**init_envp(t_lstcontainer *env)
 	if (env != NULL)
 	{
 		i = env->size(env) + 1;
-		envp = malloc(sizeof(char *) * i + 1);
+		envp = ft_malloc(sizeof(char *) * i + 1);
 		i = 0;
 		tmp = env->firstelement;
 		while (tmp)

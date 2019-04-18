@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/12/02 18:27:43 by cababou           #+#    #+#              #
-#    Updated: 2019/03/10 19:01:25 by bsiche           ###   ########.fr        #
+#    Created: 2017/12/02 18:27:43 by bsiche            #+#    #+#              #
+#    Updated: 2019/04/16 04:17:53 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,8 +87,12 @@ SRC =		ft_atoi.c \
 	ft_strsplitlst.c \
 	ft_tablen.c	\
 	ft_split_whitespace.c \
+	ft_split_whitespaces.c \
 	get_next_line.c \
-	listcontainer_fastsize.c
+	listcontainer_fastsize.c \
+	garbage_free.c \
+	garbage_init.c \
+	garbage_malloc.c \
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A
@@ -105,12 +109,14 @@ OBJ := 	$(SRC:.c=.o)
 
 PWD :=		$(shell pwd)
 
+INC := -I ../../includes
+
 OBJDIR := 	obj
 
 OBJP :=		$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 ONLYDIR :=	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 
-FLAG := -g -Wall -Wextra -Werror
+FLAG := -Wall -Wextra -Werror
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell ls $(PWD)/obj/ 2> /dev/null | wc -l | sed -e 's/ //g')
@@ -124,7 +130,7 @@ $(NAME) : $(OBJP)
 
 $(OBJDIR)/%.o: %.c
 			@mkdir -p $(ONLYDIR)
-			@gcc -g -c -Wall -Wextra -Werror $< -o $@
+			@gcc -g -c -Wall -Wextra -Werror $(INC) $< -o $@ 
 			@echo "$(CLEAR_LINE)$(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"
 
 clean :

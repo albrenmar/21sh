@@ -3,18 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   alias_struct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 03:07:31 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/16 01:20:34 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh42.h"
+#include "sh21.h"
+
+int					check_forbidden_char(char *str)
+{
+	int		i;
+	int		flag;
+
+	i = 0;
+	flag = 0;
+	while (str[i])
+	{
+		if (str[i] == '$' || str[i] == '-' || str[i] == '/'
+		|| str[i] == '~')
+			flag = 1;
+		i++;
+	}
+	if (flag == 1)
+	{
+		ft_putstr("forbidden char in alias : ");
+		ft_putendl(str);
+	}
+	return (flag);
+}
 
 t_lstcontainer		*alias_error(char *alias)
 {
 	t_lstcontainer	*split;
+	t_list			*tmp;
+	char			*alias_test;
 
 	if (!alias)
 		return (NULL);
@@ -24,6 +48,13 @@ t_lstcontainer		*alias_error(char *alias)
 		ft_putstr("Wrong alias : ");
 		ft_putendl(alias);
 		ft_putendl("Usage: Alias [alias]=[cmd]");
+		ft_freesplitlist(split);
+		return (NULL);
+	}
+	tmp = split->firstelement;
+	alias_test = tmp->content;
+	if ((check_forbidden_char(alias_test) != 0))
+	{
 		ft_freesplitlist(split);
 		return (NULL);
 	}
@@ -39,7 +70,7 @@ t_keyval			*parse_alias(char *alias)
 
 	al_to_add = NULL;
 	split = alias_error(alias);
-	if (!(al_to_add = malloc(sizeof(struct s_keyval))) || split == NULL)
+	if (!split || !(al_to_add = ft_malloc(sizeof(struct s_keyval))))
 		return (NULL);
 	tmp = split->firstelement;
 	al_to_add->key = ft_strdup(tmp->content);
@@ -72,54 +103,8 @@ int					add_alias(void)
 	alias = ft_strdup(av[1]);
 	alias_lst = g_tracking.mysh->alias_lst;
 	alias_to_add = parse_alias(alias);
+	ft_strdel(&alias);
 	if (alias_lst && alias_to_add)
-		lstcontainer_add(alias_lst, parse_alias(alias));
-	return (0);
-}
-
-int					unalias_blt(void)
-{
-	char			**av;
-
-	if (!g_tracking.mysh->alias_lst)
-		return (1);
-	av = g_tracking.g_tab_exec;
-	if (!av[1])
-	{
-		ft_putendl_fd("unalias [-a] [name … ]", 2);
-		return (1);
-	}
-	if (ft_strcmp(av[1], "-a") == 0)
-	{
-		ft_lstdel(g_tracking.mysh->alias_lst->firstelement, 1);
-		free(g_tracking.mysh->alias_lst);
-		g_tracking.mysh->alias_lst = lstcontainer_new();
-	}
-	else
-		unalias(av[1]);
-	return (0);
-}
-
-int					unalias(char *alias)
-{
-	t_keyval		*tmp;
-	t_list			*buf;
-
-	if (!g_tracking.mysh->alias_lst || !alias)
-		return (1);
-	buf = ft_lstgetfirst(g_tracking.mysh->alias_lst->firstelement);
-	while (buf)
-	{
-		tmp = buf->content;
-		if (tmp)
-		{
-			if (ft_strcmp(tmp->key, alias) == 0)
-			{
-				lstcontainer_remove(g_tracking.mysh->alias_lst, buf, 1);
-				return (1);
-			}
-		}
-		buf = buf->next;
-	}
+		lstcontainer_add(alias_lst, alias_to_add);
 	return (0);
 }

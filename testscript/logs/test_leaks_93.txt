@@ -1,0 +1,111 @@
+==73818== Memcheck, a memory error detector
+==73818== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==73818== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==73818== Command: ./21sh
+==73818== 
+==73818== Syscall param msg->desc.port.name points to uninitialised byte(s)
+==73818==    at 0x10043D34A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)
+==73818==    by 0x10043C796: mach_msg (in /usr/lib/system/libsystem_kernel.dylib)
+==73818==    by 0x100436485: task_set_special_port (in /usr/lib/system/libsystem_kernel.dylib)
+==73818==    by 0x1005D210E: _os_trace_create_debug_control_port (in /usr/lib/system/libsystem_trace.dylib)
+==73818==    by 0x1005D2458: _libtrace_init (in /usr/lib/system/libsystem_trace.dylib)
+==73818==    by 0x10013B9DF: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==73818==    by 0x100069A1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==73818==    by 0x100069C1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==73818==    by 0x1000654A9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==73818==    by 0x100065440: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==73818==    by 0x100064523: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==73818==    by 0x1000645B8: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==73818==  Address 0x1048dcd2c is on thread 1's stack
+==73818==  in frame #2, created by task_set_special_port (???:)
+==73818== 
+==73819== 
+==73819== HEAP SUMMARY:
+==73819==     in use at exit: 36,459 bytes in 205 blocks
+==73819==   total heap usage: 1,544 allocs, 1,339 frees, 94,338 bytes allocated
+==73819== 
+==73819== 72 bytes in 3 blocks are possibly lost in loss record 42 of 77
+==73819==    at 0x1000EB0B2: calloc (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==73819==    by 0x100646832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==73819==    by 0x100659D6A: map_images (in /usr/lib/libobjc.A.dylib)
+==73819==    by 0x10005903B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==73819==    by 0x100059255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==73819==    by 0x10029400A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==73819==    by 0x100646072: _objc_init (in /usr/lib/libobjc.A.dylib)
+==73819==    by 0x10022768D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==73819==    by 0x10022763A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==73819==    by 0x10013B9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==73819==    by 0x100069A1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==73819==    by 0x100069C1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==73819== 
+==73819== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 72 of 77
+==73819==    at 0x1000EAA46: malloc (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==73819==    by 0x10057E103: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==73819==    by 0x100579FB5: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==73819==    by 0x100587AC0: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==73819==    by 0x100587A91: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==73819==    by 0x10057A0AD: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==73819==    by 0x10013BB20: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==73819==    by 0x100304436: fork (in /usr/lib/system/libsystem_c.dylib)
+==73819==    by 0x100006ECA: pipe_2_exec (execute_pipe_two.c:79)
+==73819==    by 0x100007025: execute_pipe_two (execute_pipe_two.c:110)
+==73819==    by 0x10000659D: init_pipe_two (execute_command.c:90)
+==73819==    by 0x1000066B5: exec_command (execute_command.c:115)
+==73819== 
+==73819== 2,064 (16 direct, 2,048 indirect) bytes in 1 blocks are definitely lost in loss record 73 of 77
+==73819==    at 0x1000EAA46: malloc (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==73819==    by 0x10057E103: _nc_table_new (in /usr/lib/system/libsystem_notify.dylib)
+==73819==    by 0x100579FC6: _notify_init_globals (in /usr/lib/system/libsystem_notify.dylib)
+==73819==    by 0x100587AC0: _os_once (in /usr/lib/system/libsystem_platform.dylib)
+==73819==    by 0x100587A91: _os_alloc_once (in /usr/lib/system/libsystem_platform.dylib)
+==73819==    by 0x10057A0AD: _notify_fork_child (in /usr/lib/system/libsystem_notify.dylib)
+==73819==    by 0x10013BB20: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==73819==    by 0x100304436: fork (in /usr/lib/system/libsystem_c.dylib)
+==73819==    by 0x100006ECA: pipe_2_exec (execute_pipe_two.c:79)
+==73819==    by 0x100007025: execute_pipe_two (execute_pipe_two.c:110)
+==73819==    by 0x10000659D: init_pipe_two (execute_command.c:90)
+==73819==    by 0x1000066B5: exec_command (execute_command.c:115)
+==73819== 
+==73819== LEAK SUMMARY:
+==73819==    definitely lost: 32 bytes in 2 blocks
+==73819==    indirectly lost: 4,096 bytes in 2 blocks
+==73819==      possibly lost: 72 bytes in 3 blocks
+==73819==    still reachable: 8,079 bytes in 36 blocks
+==73819==         suppressed: 24,180 bytes in 162 blocks
+==73819== Reachable blocks (those to which a pointer was found) are not shown.
+==73819== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==73819== 
+==73819== For counts of detected and suppressed errors, rerun with: -v
+==73819== Use --track-origins=yes to see where uninitialised values come from
+==73819== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==73818== 
+==73818== HEAP SUMMARY:
+==73818==     in use at exit: 25,338 bytes in 176 blocks
+==73818==   total heap usage: 1,972 allocs, 1,796 frees, 94,722 bytes allocated
+==73818== 
+==73818== 72 bytes in 3 blocks are possibly lost in loss record 32 of 56
+==73818==    at 0x1000EB0B2: calloc (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==73818==    by 0x100646832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==73818==    by 0x100659D6A: map_images (in /usr/lib/libobjc.A.dylib)
+==73818==    by 0x10005903B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==73818==    by 0x100059255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==73818==    by 0x10029400A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==73818==    by 0x100646072: _objc_init (in /usr/lib/libobjc.A.dylib)
+==73818==    by 0x10022768D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==73818==    by 0x10022763A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==73818==    by 0x10013B9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==73818==    by 0x100069A1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==73818==    by 0x100069C1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==73818== 
+==73818== LEAK SUMMARY:
+==73818==    definitely lost: 0 bytes in 0 blocks
+==73818==    indirectly lost: 0 bytes in 0 blocks
+==73818==      possibly lost: 72 bytes in 3 blocks
+==73818==    still reachable: 7,388 bytes in 20 blocks
+==73818==         suppressed: 17,878 bytes in 153 blocks
+==73818== Reachable blocks (those to which a pointer was found) are not shown.
+==73818== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==73818== 
+==73818== For counts of detected and suppressed errors, rerun with: -v
+==73818== Use --track-origins=yes to see where uninitialised values come from
+==73818== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)

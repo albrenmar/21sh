@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cursor_arrows.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 04:48:12 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 03:13:59 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/15 00:09:00 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
+#include "sh21.h"
 
 void	the_edge(void)
 {

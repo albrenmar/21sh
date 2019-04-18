@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   hash_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 09:50:46 by abguimba         ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/15 01:50:41 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "sh42.h"
+#include "sh21.h"
 
 char		**tab_format_hash(char *binary)
 {
 	char	**new;
 
-	if (!(new = malloc(sizeof(char*) * 2)))
+	if (!(new = ft_malloc(sizeof(char*) * 2)))
 		return (NULL);
 	new[0] = ft_strdup(binary);
 	new[1] = NULL;
@@ -38,7 +37,7 @@ int			hash_update_commands(int j)
 	while (g_tracking.g_tab_exec[j])
 	{
 		commandhold = tab_format_hash(g_tracking.g_tab_exec[j]);
-		if (!(test_exist_fonction(commandhold, 1)))
+		if (!(test_exist_fonct(commandhold, 1, NULL, NULL)))
 		{
 			errors_hash(g_tracking.g_tab_exec[j], 1);
 			lastvalue = -1;
@@ -68,7 +67,7 @@ int			empty_hash_table(void)
 			ft_strdel(&hold->path);
 			ft_strdel(&hold->binary);
 			hold->nextbinary = NULL;
-			free(hold);
+			ft_free(hold);
 		}
 		g_tracking.hashtable[i] = NULL;
 		i++;

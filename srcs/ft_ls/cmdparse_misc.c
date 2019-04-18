@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   cmdparse_misc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 22:28:10 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 02:36:41 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/05 17:27:16 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh42.h"
+#include "sh21.h"
 
 t_ls	*str_alloc(void)
 {
 	t_ls	*info;
 
-	info = malloc(sizeof(t_ls) + 1);
+	info = ft_malloc(sizeof(t_ls) + 1);
 	info->name = NULL;
 	info->path = NULL;
 	info->symlink = NULL;
@@ -40,7 +40,7 @@ void	ft_usage(char invalid)
 	ft_putchar(invalid);
 	ft_putchar('\n');
 	ft_putendl("usage: ft_ls [-1adlrtuSRG@] [file ...]");
-	ft_exit(1, EXIT_SUCCESS);
+	ft_exit2(EXIT_SUCCESS);
 }
 
 int		checkoption(char *option, char c)
@@ -77,7 +77,7 @@ char	*clean1(char *option, int i, int j)
 				i++;
 		}
 		newstr[j] = '\0';
-		free(option);
+		ft_free(option);
 		return (newstr);
 	}
 	return (option);
