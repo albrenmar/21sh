@@ -1,7 +1,7 @@
 ==74055== Memcheck, a memory error detector
 ==74055== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
 ==74055== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==74055== Command: ./21sh
+==74055== Command: ./42sh
 ==74055== 
 ==74055== Syscall param msg->desc.port.name points to uninitialised byte(s)
 ==74055==    at 0x10043D34A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)
@@ -19,7 +19,7 @@
 ==74055==  Address 0x1048dcd2c is on thread 1's stack
 ==74055==  in frame #2, created by task_set_special_port (???:)
 ==74055== 
-21sh: ${a/}: bad substitution
+42sh: ${a/}: bad substitution
 ==74058== 
 ==74058== HEAP SUMMARY:
 ==74058==     in use at exit: 36,465 bytes in 207 blocks

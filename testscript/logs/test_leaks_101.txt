@@ -1,7 +1,7 @@
 ==73930== Memcheck, a memory error detector
 ==73930== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
 ==73930== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==73930== Command: ./21sh
+==73930== Command: ./42sh
 ==73930== 
 ==73930== Syscall param msg->desc.port.name points to uninitialised byte(s)
 ==73930==    at 0x10043D34A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)

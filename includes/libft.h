@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 01:51:43 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/15 03:23:35 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/18 02:15:06 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 # define GARBAGE	0
-# define PROGRAM	"21sh"
+# define PROGRAM	"42sh"
 
 void				*ft_memset(void *b, int c, size_t len);
 

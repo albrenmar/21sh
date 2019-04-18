@@ -1,1 +1,1 @@
-21sh: command 0HOME not found
+42sh: command 0HOME not found

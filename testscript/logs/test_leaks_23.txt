@@ -1,7 +1,7 @@
 ==72924== Memcheck, a memory error detector
 ==72924== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
 ==72924== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==72924== Command: ./21sh
+==72924== Command: ./42sh
 ==72924== 
 ==72924== Syscall param msg->desc.port.name points to uninitialised byte(s)
 ==72924==    at 0x10043D34A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)

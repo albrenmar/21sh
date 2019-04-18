@@ -1,7 +1,7 @@
 ==75211== Memcheck, a memory error detector
 ==75211== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
 ==75211== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==75211== Command: ./21sh
+==75211== Command: ./42sh
 ==75211== 
 ==75211== Syscall param msg->desc.port.name points to uninitialised byte(s)
 ==75211==    at 0x10043D34A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/14 23:47:17 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/18 02:11:24 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define BUILTINS_H
 
 # include "libft.h"
-# include "sh21.h"
+# include "sh42.h"
 
 void			free_and_null(void *ptr);
 int				ft_exit3(int exitcode, int mode);

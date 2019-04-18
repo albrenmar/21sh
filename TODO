@@ -14,7 +14,7 @@ Partie Abraham
 -arreglar tmpenv y probar leaks 
 -make good tmpenv (with quotes)
 -make good alias (with quotes)
--for rendu 21sh -> norme, auteur, headers, printfs, forbidden functions, unused functions, testfiles
+-for rendu 42sh -> norme, auteur, headers, printfs, forbidden functions, unused functions, testfiles
 
 Partie Marc
 - Gerer l'expand recursive (${VARNAME:-${VARNAME:+VARVALUE}aaaaa}bbbb Par exemple).
@@ -39,7 +39,7 @@ MISC
 -verifier liens symboliques marchent bien sur proompt et pwd
 -full clean global
 -verifier exit works perfectly
--tester 21sh avec correction du 42sh
+-tester 42sh avec correction du 42sh
 -bultin unset, export (and test them when good local variables are set)
 -verifier unsetenv and setenv
 -${kk;=xd} -> segfault expansions
@@ -53,7 +53,7 @@ MISC
 -"HAHAHAHEHHE=toto HAHA=XD env | grep HAHA ; a=b c=t caca=xd ; HIHIHI=ta HIHIHIHIHIH=ti env | grep HIHIHI ; set | tail -3"
 -"mkdir test ; cd test ; ls -a ; ls | cat | wc -c > fifi ; cat fifi"
 -"HOME=XD env | grep HOME= ; a=b ; env -i || ls && HOME=XDA env | grep HOME= || c=d ; HOME=XDO cd"
--"ls | ./21sh" 
--"env -i PATH=/tmp ./21sh"
+-"ls | ./42sh" 
+-"env -i PATH=/tmp ./42sh"
 -"HOME=XD cd ; a=b || ls && HOME=XDA cd || c=d"
 - 

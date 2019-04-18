@@ -1,1 +1,1 @@
-21sh: /Users/mjose/Users/mjose/Projects/21sh/testscript: no such file or directory
+42sh: /Users/mjose/Users/mjose/Projects/42sh/testscript: no such file or directory

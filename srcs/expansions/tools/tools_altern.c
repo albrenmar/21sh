@@ -6,12 +6,12 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 03:46:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/29 03:53:01 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
-#include "sh21.h"
+#include "sh42.h"
 
 void	reassign_str_altern(char **str, t_analyzer *to_analy)
 {

@@ -1,7 +1,7 @@
 ==73593== Memcheck, a memory error detector
 ==73593== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
 ==73593== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==73593== Command: ./21sh
+==73593== Command: ./42sh
 ==73593== 
 ==73593== Syscall param msg->desc.port.name points to uninitialised byte(s)
 ==73593==    at 0x10043D34A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)
@@ -19,7 +19,7 @@
 ==73593==  Address 0x1048dcd2c is on thread 1's stack
 ==73593==  in frame #2, created by task_set_special_port (???:)
 ==73593== 
-21sh: test${}: bad substitution
+42sh: test${}: bad substitution
 ==73593== Invalid read of size 8
 ==73593==    at 0x10000472B: convert_list (convert_list.c:102)
 ==73593==    by 0x10000127A: main_loop (main.c:80)

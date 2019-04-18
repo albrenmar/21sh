@@ -1,1 +1,1 @@
-21sh: /Users/mjose/: is a directory
+42sh: /Users/mjose/: is a directory

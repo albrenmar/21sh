@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/16 04:17:58 by bsiche           ###   ########.fr        #
+#    Updated: 2019/04/18 02:13:34 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,42 +22,42 @@ COL_VIOLET	= \033[1;35m
 COL_CYAN	= \033[1;36m
 COL_WHITE	= \033[1;37m
 
-NAME :=	21sh
+NAME :=	42sh
 
 SRC = main.c \
 	  test_option.c \
-	  21sh/reddir_tools.c \
-	  21sh/tools.c \
-	  21sh/errors.c \
-	  21sh/ft_parseur.c \
-	  21sh/ft_lexeur.c \
-	  21sh/ft_modif_list.c \
-	  21sh/ft_ast.c \
-	  21sh/its_token.c \
-	  21sh/its_double_token.c \
-	  21sh/execute_ast.c \
-	  21sh/execute_pipe.c \
-	  21sh/add_path_to_bin.c \
-	  21sh/create_tab_to_exec.c \
-	  21sh/convert_list.c \
-	  21sh/create_fich.c \
-	  21sh/hashtables.c \
-	  21sh/search_arg.c \
-	  21sh/completion.c \
-	  21sh/check_quote.c \
-	  21sh/out_redir.c \
-	  21sh/parse.c \
-	  21sh/execute_command.c \
-	  21sh/exec_create_fich.c \
-	  21sh/set_exec_pipe.c \
-	  21sh/execute_pipe_two.c \
-	  21sh/its_pipe.c \
-	  21sh/ft_quotes.c \
-	  21sh/alias_and_env_tools.c \
-	  21sh/alias_and_env.c \
-	  21sh/unexpected_token.c \
-	  21sh/exec_sh.c \
-	  21sh/exit_reddir.c \
+	  42sh/reddir_tools.c \
+	  42sh/tools.c \
+	  42sh/errors.c \
+	  42sh/ft_parseur.c \
+	  42sh/ft_lexeur.c \
+	  42sh/ft_modif_list.c \
+	  42sh/ft_ast.c \
+	  42sh/its_token.c \
+	  42sh/its_double_token.c \
+	  42sh/execute_ast.c \
+	  42sh/execute_pipe.c \
+	  42sh/add_path_to_bin.c \
+	  42sh/create_tab_to_exec.c \
+	  42sh/convert_list.c \
+	  42sh/create_fich.c \
+	  42sh/hashtables.c \
+	  42sh/search_arg.c \
+	  42sh/completion.c \
+	  42sh/check_quote.c \
+	  42sh/out_redir.c \
+	  42sh/parse.c \
+	  42sh/execute_command.c \
+	  42sh/exec_create_fich.c \
+	  42sh/set_exec_pipe.c \
+	  42sh/execute_pipe_two.c \
+	  42sh/its_pipe.c \
+	  42sh/ft_quotes.c \
+	  42sh/alias_and_env_tools.c \
+	  42sh/alias_and_env.c \
+	  42sh/unexpected_token.c \
+	  42sh/exec_sh.c \
+	  42sh/exit_reddir.c \
 	  builtins/env/env.c \
 	  builtins/export/export.c \
 	  builtins/export/export_error.c \

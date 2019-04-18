@@ -1,5 +1,5 @@
-21sh
-21sh.dSYM
+42sh
+42sh.dSYM
 expansion_adv_##.sh
 expansion_adv_#.sh
 expansion_adv_%%.sh

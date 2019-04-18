@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   garbage_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 08:41:47 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/02 05:06:02 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "sh21.h"
+#include "sh42.h"
 
 int		garbage_init(void)
 {

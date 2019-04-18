@@ -1,7 +1,7 @@
 ==73085== Memcheck, a memory error detector
 ==73085== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
 ==73085== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==73085== Command: ./21sh
+==73085== Command: ./42sh
 ==73085== 
 ==73085== Syscall param msg->desc.port.name points to uninitialised byte(s)
 ==73085==    at 0x10043D34A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)
