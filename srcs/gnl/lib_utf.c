@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lib_utf.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 15:24:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/11 13:35:32 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
-
-int			utf_byte(char c)
-{
-	if ((c & 0xC0) != 0x80)
-		return (0);
-	return (1);
-}
+#include "sh42.h"
 
 int			get_nb_char(unsigned char c)
 {

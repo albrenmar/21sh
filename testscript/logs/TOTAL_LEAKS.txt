@@ -1,0 +1,1271 @@
+ls
+==4443==    definitely lost: 0 bytes in 0 blocks
+==4443==    indirectly lost: 0 bytes in 0 blocks
+==4443== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+~
+==4471==    definitely lost: 128 bytes in 3 blocks
+==4468==    definitely lost: 0 bytes in 0 blocks
+==4471==    indirectly lost: 5,435 bytes in 22 blocks
+==4468==    indirectly lost: 0 bytes in 0 blocks
+==4471== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==4468== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~/
+==4489==    definitely lost: 128 bytes in 3 blocks
+==4482==    definitely lost: 0 bytes in 0 blocks
+==4489==    indirectly lost: 5,435 bytes in 22 blocks
+==4482==    indirectly lost: 0 bytes in 0 blocks
+==4489== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==4482== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+/~
+==4504==    definitely lost: 32 bytes in 2 blocks
+==4501==    definitely lost: 0 bytes in 0 blocks
+==4504==    indirectly lost: 4,096 bytes in 2 blocks
+==4501==    indirectly lost: 0 bytes in 0 blocks
+==4504== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4501== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test~/
+==4519==    definitely lost: 32 bytes in 2 blocks
+==4516==    definitely lost: 0 bytes in 0 blocks
+==4519==    indirectly lost: 4,096 bytes in 2 blocks
+==4516==    indirectly lost: 0 bytes in 0 blocks
+==4519== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4516== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test/~/
+==4533==    definitely lost: 32 bytes in 2 blocks
+==4530==    definitely lost: 0 bytes in 0 blocks
+==4533==    indirectly lost: 4,096 bytes in 2 blocks
+==4530==    indirectly lost: 0 bytes in 0 blocks
+==4533== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4530== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+/~/
+==4547==    definitely lost: 32 bytes in 2 blocks
+==4544==    definitely lost: 0 bytes in 0 blocks
+==4547==    indirectly lost: 4,096 bytes in 2 blocks
+==4544==    indirectly lost: 0 bytes in 0 blocks
+==4547== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4544== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+/~/test
+==4562==    definitely lost: 32 bytes in 2 blocks
+==4558==    definitely lost: 0 bytes in 0 blocks
+==4562==    indirectly lost: 4,096 bytes in 2 blocks
+==4558==    indirectly lost: 0 bytes in 0 blocks
+==4562== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4558== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+~~
+==4576==    definitely lost: 32 bytes in 2 blocks
+==4573==    definitely lost: 0 bytes in 0 blocks
+==4576==    indirectly lost: 4,096 bytes in 2 blocks
+==4573==    indirectly lost: 0 bytes in 0 blocks
+==4576== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4573== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+~~~~~~
+==4592==    definitely lost: 32 bytes in 2 blocks
+==4589==    definitely lost: 0 bytes in 0 blocks
+==4592==    indirectly lost: 4,096 bytes in 2 blocks
+==4589==    indirectly lost: 0 bytes in 0 blocks
+==4592== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4589== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+~bsiche
+==4610==    definitely lost: 128 bytes in 3 blocks
+==4603==    definitely lost: 0 bytes in 0 blocks
+==4610==    indirectly lost: 5,435 bytes in 22 blocks
+==4603==    indirectly lost: 0 bytes in 0 blocks
+==4610== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==4603== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+/~bsiche
+==4631==    definitely lost: 32 bytes in 2 blocks
+==4621==    definitely lost: 0 bytes in 0 blocks
+==4631==    indirectly lost: 4,096 bytes in 2 blocks
+==4621==    indirectly lost: 0 bytes in 0 blocks
+==4631== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4621== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test/~bsiche
+==4650==    definitely lost: 32 bytes in 2 blocks
+==4642==    definitely lost: 0 bytes in 0 blocks
+==4650==    indirectly lost: 4,096 bytes in 2 blocks
+==4642==    indirectly lost: 0 bytes in 0 blocks
+==4650== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4642== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+~bsiche/
+==4665==    definitely lost: 128 bytes in 3 blocks
+==4662==    definitely lost: 0 bytes in 0 blocks
+==4665==    indirectly lost: 5,435 bytes in 22 blocks
+==4662==    indirectly lost: 0 bytes in 0 blocks
+==4665== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==4662== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~bsiche/test
+==4681==    definitely lost: 128 bytes in 3 blocks
+==4676==    definitely lost: 0 bytes in 0 blocks
+==4681==    indirectly lost: 5,435 bytes in 22 blocks
+==4676==    indirectly lost: 0 bytes in 0 blocks
+==4681== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==4676== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~bsiche/test/~
+==4762==    definitely lost: 128 bytes in 3 blocks
+==4694==    definitely lost: 0 bytes in 0 blocks
+==4762==    indirectly lost: 5,435 bytes in 22 blocks
+==4694==    indirectly lost: 0 bytes in 0 blocks
+==4762== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==4694== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~bsiche/test/~/
+==4778==    definitely lost: 128 bytes in 3 blocks
+==4773==    definitely lost: 0 bytes in 0 blocks
+==4778==    indirectly lost: 5,435 bytes in 22 blocks
+==4773==    indirectly lost: 0 bytes in 0 blocks
+==4778== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==4773== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~bsiche/test/~bsiche
+==4800==    definitely lost: 128 bytes in 3 blocks
+==4789==    definitely lost: 0 bytes in 0 blocks
+==4800==    indirectly lost: 5,435 bytes in 22 blocks
+==4789==    indirectly lost: 0 bytes in 0 blocks
+==4800== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==4789== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~bsiche/test/~bsiche/test
+==4815==    definitely lost: 128 bytes in 3 blocks
+==4811==    definitely lost: 0 bytes in 0 blocks
+==4815==    indirectly lost: 5,435 bytes in 22 blocks
+==4811==    indirectly lost: 0 bytes in 0 blocks
+==4815== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==4811== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~~bsiche/test/~bsiche/test
+==4843==    definitely lost: 32 bytes in 2 blocks
+==4826==    definitely lost: 0 bytes in 0 blocks
+==4843==    indirectly lost: 4,096 bytes in 2 blocks
+==4826==    indirectly lost: 0 bytes in 0 blocks
+==4843== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4826== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+~~/bsiche/test/~bsiche/test
+==4912==    definitely lost: 32 bytes in 2 blocks
+==4906==    definitely lost: 0 bytes in 0 blocks
+==4912==    indirectly lost: 4,096 bytes in 2 blocks
+==4906==    indirectly lost: 0 bytes in 0 blocks
+==4912== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4906== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+/~~/bsiche/test/~bsiche/test
+==4927==    definitely lost: 32 bytes in 2 blocks
+==4923==    definitely lost: 0 bytes in 0 blocks
+==4927==    indirectly lost: 4,096 bytes in 2 blocks
+==4923==    indirectly lost: 0 bytes in 0 blocks
+==4927== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4923== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+~bsiche/~bsiche/
+==4948==    definitely lost: 128 bytes in 3 blocks
+==4938==    definitely lost: 0 bytes in 0 blocks
+==4948==    indirectly lost: 5,435 bytes in 22 blocks
+==4938==    indirectly lost: 0 bytes in 0 blocks
+==4948== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==4938== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~+
+==4962==    definitely lost: 32 bytes in 2 blocks
+==4959==    definitely lost: 0 bytes in 0 blocks
+==4962==    indirectly lost: 4,096 bytes in 2 blocks
+==4959==    indirectly lost: 0 bytes in 0 blocks
+==4962== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4959== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
++~
+==4983==    definitely lost: 32 bytes in 2 blocks
+==4973==    definitely lost: 0 bytes in 0 blocks
+==4983==    indirectly lost: 4,096 bytes in 2 blocks
+==4973==    indirectly lost: 0 bytes in 0 blocks
+==4983== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4973== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+~+/
+==4998==    definitely lost: 32 bytes in 2 blocks
+==4994==    definitely lost: 0 bytes in 0 blocks
+==4998==    indirectly lost: 4,096 bytes in 2 blocks
+==4994==    indirectly lost: 0 bytes in 0 blocks
+==4998== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==4994== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+~+/test
+==5013==    definitely lost: 32 bytes in 2 blocks
+==5009==    definitely lost: 0 bytes in 0 blocks
+==5013==    indirectly lost: 4,096 bytes in 2 blocks
+==5009==    indirectly lost: 0 bytes in 0 blocks
+==5013== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5009== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+~/~+/test
+==5035==    definitely lost: 128 bytes in 3 blocks
+==5028==    definitely lost: 0 bytes in 0 blocks
+==5035==    indirectly lost: 5,435 bytes in 22 blocks
+==5028==    indirectly lost: 0 bytes in 0 blocks
+==5035== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==5028== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~/~+/test
+==5050==    definitely lost: 128 bytes in 3 blocks
+==5046==    definitely lost: 0 bytes in 0 blocks
+==5050==    indirectly lost: 5,435 bytes in 22 blocks
+==5046==    indirectly lost: 0 bytes in 0 blocks
+==5050== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==5046== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~bsiche/~+/test
+==5071==    definitely lost: 128 bytes in 3 blocks
+==5061==    definitely lost: 0 bytes in 0 blocks
+==5071==    indirectly lost: 5,435 bytes in 22 blocks
+==5061==    indirectly lost: 0 bytes in 0 blocks
+==5071== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==5061== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~bsiche/~+
+==5086==    definitely lost: 128 bytes in 3 blocks
+==5082==    definitely lost: 0 bytes in 0 blocks
+==5086==    indirectly lost: 5,435 bytes in 22 blocks
+==5082==    indirectly lost: 0 bytes in 0 blocks
+==5086== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==5082== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~-
+==5107==    definitely lost: 32 bytes in 2 blocks
+==5097==    definitely lost: 0 bytes in 0 blocks
+==5107==    indirectly lost: 4,096 bytes in 2 blocks
+==5097==    indirectly lost: 0 bytes in 0 blocks
+==5107== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5097== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
++-
+==5122==    definitely lost: 32 bytes in 2 blocks
+==5118==    definitely lost: 0 bytes in 0 blocks
+==5122==    indirectly lost: 4,096 bytes in 2 blocks
+==5118==    indirectly lost: 0 bytes in 0 blocks
+==5122== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5118== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+~-/
+==5137==    definitely lost: 32 bytes in 2 blocks
+==5133==    definitely lost: 0 bytes in 0 blocks
+==5137==    indirectly lost: 4,096 bytes in 2 blocks
+==5133==    indirectly lost: 0 bytes in 0 blocks
+==5137== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5133== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+~-/test
+==5158==    definitely lost: 32 bytes in 2 blocks
+==5153==    definitely lost: 0 bytes in 0 blocks
+==5158==    indirectly lost: 4,096 bytes in 2 blocks
+==5153==    indirectly lost: 0 bytes in 0 blocks
+==5158== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5153== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+~/~-/test
+==5173==    definitely lost: 128 bytes in 3 blocks
+==5169==    definitely lost: 0 bytes in 0 blocks
+==5173==    indirectly lost: 5,435 bytes in 22 blocks
+==5169==    indirectly lost: 0 bytes in 0 blocks
+==5173== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==5169== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~/~-/test
+==5194==    definitely lost: 128 bytes in 3 blocks
+==5184==    definitely lost: 0 bytes in 0 blocks
+==5194==    indirectly lost: 5,435 bytes in 22 blocks
+==5184==    indirectly lost: 0 bytes in 0 blocks
+==5194== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==5184== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~bsiche/~-/test
+==5209==    definitely lost: 128 bytes in 3 blocks
+==5205==    definitely lost: 0 bytes in 0 blocks
+==5209==    indirectly lost: 5,435 bytes in 22 blocks
+==5205==    indirectly lost: 0 bytes in 0 blocks
+==5209== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==5205== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+~bsiche/~-
+==5231==    definitely lost: 128 bytes in 3 blocks
+==5220==    definitely lost: 0 bytes in 0 blocks
+==5231==    indirectly lost: 5,435 bytes in 22 blocks
+==5220==    indirectly lost: 0 bytes in 0 blocks
+==5231== ERROR SUMMARY: 6 errors from 5 contexts (suppressed: 14 from 14)
+==5220== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 13 from 13)
+$
+==5247==    definitely lost: 32 bytes in 2 blocks
+==5243==    definitely lost: 0 bytes in 0 blocks
+==5247==    indirectly lost: 4,096 bytes in 2 blocks
+==5243==    indirectly lost: 0 bytes in 0 blocks
+==5247== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5243== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+HOME$
+==5262==    definitely lost: 32 bytes in 2 blocks
+==5258==    definitely lost: 0 bytes in 0 blocks
+==5262==    indirectly lost: 4,096 bytes in 2 blocks
+==5258==    indirectly lost: 0 bytes in 0 blocks
+==5262== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5258== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+TEST$
+==5283==    definitely lost: 32 bytes in 2 blocks
+==5273==    definitely lost: 0 bytes in 0 blocks
+==5283==    indirectly lost: 4,096 bytes in 2 blocks
+==5273==    indirectly lost: 0 bytes in 0 blocks
+==5283== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5273== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$
+==5298==    definitely lost: 32 bytes in 2 blocks
+==5294==    definitely lost: 0 bytes in 0 blocks
+==5298==    indirectly lost: 4,096 bytes in 2 blocks
+==5294==    indirectly lost: 0 bytes in 0 blocks
+==5298== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5294== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${$}
+==5321==    definitely lost: 32 bytes in 2 blocks
+==5309==    definitely lost: 0 bytes in 0 blocks
+==5321==    indirectly lost: 4,096 bytes in 2 blocks
+==5309==    indirectly lost: 0 bytes in 0 blocks
+==5321== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5309== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$hola
+==5338==    definitely lost: 32 bytes in 2 blocks
+==5332==    definitely lost: 0 bytes in 0 blocks
+==5338==    indirectly lost: 4,096 bytes in 2 blocks
+==5332==    indirectly lost: 0 bytes in 0 blocks
+==5338== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5332== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$HOME
+==5355==    definitely lost: 32 bytes in 2 blocks
+==5349==    definitely lost: 0 bytes in 0 blocks
+==5355==    indirectly lost: 4,096 bytes in 2 blocks
+==5349==    indirectly lost: 0 bytes in 0 blocks
+==5355== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5349== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$$HOME
+==5378==    definitely lost: 32 bytes in 2 blocks
+==5366==    definitely lost: 0 bytes in 0 blocks
+==5378==    indirectly lost: 4,096 bytes in 2 blocks
+==5366==    indirectly lost: 0 bytes in 0 blocks
+==5378== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5366== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test$$
+==5395==    definitely lost: 32 bytes in 2 blocks
+==5389==    definitely lost: 0 bytes in 0 blocks
+==5395==    indirectly lost: 4,096 bytes in 2 blocks
+==5389==    indirectly lost: 0 bytes in 0 blocks
+==5395== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5389== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test$$HOME
+==5416==    definitely lost: 32 bytes in 2 blocks
+==5406==    definitely lost: 0 bytes in 0 blocks
+==5416==    indirectly lost: 4,096 bytes in 2 blocks
+==5406==    indirectly lost: 0 bytes in 0 blocks
+==5416== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5406== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test$$$HOME
+==5434==    definitely lost: 32 bytes in 2 blocks
+==5427==    definitely lost: 0 bytes in 0 blocks
+==5434==    indirectly lost: 4,096 bytes in 2 blocks
+==5427==    indirectly lost: 0 bytes in 0 blocks
+==5434== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5427== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$?
+==5449==    definitely lost: 32 bytes in 2 blocks
+==5445==    definitely lost: 0 bytes in 0 blocks
+==5449==    indirectly lost: 4,096 bytes in 2 blocks
+==5445==    indirectly lost: 0 bytes in 0 blocks
+==5449== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5445== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${?}
+==5470==    definitely lost: 32 bytes in 2 blocks
+==5460==    definitely lost: 0 bytes in 0 blocks
+==5470==    indirectly lost: 4,096 bytes in 2 blocks
+==5460==    indirectly lost: 0 bytes in 0 blocks
+==5470== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5460== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$?hola
+==5485==    definitely lost: 32 bytes in 2 blocks
+==5481==    definitely lost: 0 bytes in 0 blocks
+==5485==    indirectly lost: 4,096 bytes in 2 blocks
+==5481==    indirectly lost: 0 bytes in 0 blocks
+==5485== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5481== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$?HOME
+==5506==    definitely lost: 32 bytes in 2 blocks
+==5496==    definitely lost: 0 bytes in 0 blocks
+==5506==    indirectly lost: 4,096 bytes in 2 blocks
+==5496==    indirectly lost: 0 bytes in 0 blocks
+==5506== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5496== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$?$HOME
+==5521==    definitely lost: 32 bytes in 2 blocks
+==5517==    definitely lost: 0 bytes in 0 blocks
+==5521==    indirectly lost: 4,096 bytes in 2 blocks
+==5517==    indirectly lost: 0 bytes in 0 blocks
+==5521== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5517== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test$?
+==5552==    definitely lost: 32 bytes in 2 blocks
+==5532==    definitely lost: 0 bytes in 0 blocks
+==5552==    indirectly lost: 4,096 bytes in 2 blocks
+==5532==    indirectly lost: 0 bytes in 0 blocks
+==5552== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5532== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test$?HOME
+==5585==    definitely lost: 32 bytes in 2 blocks
+==5563==    definitely lost: 0 bytes in 0 blocks
+==5585==    indirectly lost: 4,096 bytes in 2 blocks
+==5563==    indirectly lost: 0 bytes in 0 blocks
+==5585== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5563== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test$?$HOME
+==5600==    definitely lost: 32 bytes in 2 blocks
+==5596==    definitely lost: 0 bytes in 0 blocks
+==5600==    indirectly lost: 4,096 bytes in 2 blocks
+==5596==    indirectly lost: 0 bytes in 0 blocks
+==5600== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5596== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test$?$$
+==5620==    definitely lost: 32 bytes in 2 blocks
+==5611==    definitely lost: 0 bytes in 0 blocks
+==5620==    indirectly lost: 4,096 bytes in 2 blocks
+==5611==    indirectly lost: 0 bytes in 0 blocks
+==5620== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5611== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$HOME
+==5637==    definitely lost: 32 bytes in 2 blocks
+==5631==    definitely lost: 0 bytes in 0 blocks
+==5637==    indirectly lost: 4,096 bytes in 2 blocks
+==5631==    indirectly lost: 0 bytes in 0 blocks
+==5637== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5631== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$TEST
+==5648==    definitely lost: 0 bytes in 0 blocks
+==5648==    indirectly lost: 0 bytes in 0 blocks
+==5648== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$HOMEhola
+==5662==    definitely lost: 0 bytes in 0 blocks
+==5662==    indirectly lost: 0 bytes in 0 blocks
+==5662== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$TESThola
+==5683==    definitely lost: 0 bytes in 0 blocks
+==5683==    indirectly lost: 0 bytes in 0 blocks
+==5683== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$HOME$
+==5702==    definitely lost: 32 bytes in 2 blocks
+==5697==    definitely lost: 0 bytes in 0 blocks
+==5702==    indirectly lost: 4,096 bytes in 2 blocks
+==5697==    indirectly lost: 0 bytes in 0 blocks
+==5702== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5697== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$HOME$PWD
+==5724==    definitely lost: 32 bytes in 2 blocks
+==5713==    definitely lost: 0 bytes in 0 blocks
+==5724==    indirectly lost: 4,096 bytes in 2 blocks
+==5713==    indirectly lost: 0 bytes in 0 blocks
+==5724== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5713== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$HOME$PWD$$
+==5740==    definitely lost: 32 bytes in 2 blocks
+==5735==    definitely lost: 0 bytes in 0 blocks
+==5740==    indirectly lost: 4,096 bytes in 2 blocks
+==5735==    indirectly lost: 0 bytes in 0 blocks
+==5740== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5735== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$HOME$PWD$?
+==5763==    definitely lost: 32 bytes in 2 blocks
+==5751==    definitely lost: 0 bytes in 0 blocks
+==5763==    indirectly lost: 4,096 bytes in 2 blocks
+==5751==    indirectly lost: 0 bytes in 0 blocks
+==5763== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5751== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test$HOME
+==5778==    definitely lost: 32 bytes in 2 blocks
+==5774==    definitely lost: 0 bytes in 0 blocks
+==5778==    indirectly lost: 4,096 bytes in 2 blocks
+==5774==    indirectly lost: 0 bytes in 0 blocks
+==5778== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5774== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test$HOME$PWD
+==5793==    definitely lost: 32 bytes in 2 blocks
+==5789==    definitely lost: 0 bytes in 0 blocks
+==5793==    indirectly lost: 4,096 bytes in 2 blocks
+==5789==    indirectly lost: 0 bytes in 0 blocks
+==5793== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5789== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test$HOME$PWD$$
+==5814==    definitely lost: 32 bytes in 2 blocks
+==5804==    definitely lost: 0 bytes in 0 blocks
+==5814==    indirectly lost: 4,096 bytes in 2 blocks
+==5804==    indirectly lost: 0 bytes in 0 blocks
+==5814== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5804== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test$HOME$PWD$?
+==5831==    definitely lost: 32 bytes in 2 blocks
+==5825==    definitely lost: 0 bytes in 0 blocks
+==5831==    indirectly lost: 4,096 bytes in 2 blocks
+==5825==    indirectly lost: 0 bytes in 0 blocks
+==5831== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5825== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$HOME/test
+==5852==    definitely lost: 32 bytes in 2 blocks
+==5842==    definitely lost: 0 bytes in 0 blocks
+==5852==    indirectly lost: 4,096 bytes in 2 blocks
+==5842==    indirectly lost: 0 bytes in 0 blocks
+==5852== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5842== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+/TEST1/$HOME/bsiche
+==5867==    definitely lost: 32 bytes in 2 blocks
+==5863==    definitely lost: 0 bytes in 0 blocks
+==5867==    indirectly lost: 4,096 bytes in 2 blocks
+==5863==    indirectly lost: 0 bytes in 0 blocks
+==5867== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5863== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${}
+==5878==    definitely lost: 0 bytes in 0 blocks
+==5878==    indirectly lost: 0 bytes in 0 blocks
+==5878== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test${}
+==5892==    definitely lost: 0 bytes in 0 blocks
+==5892==    indirectly lost: 0 bytes in 0 blocks
+==5892== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$HOME${}
+==5913==    definitely lost: 0 bytes in 0 blocks
+==5913==    indirectly lost: 0 bytes in 0 blocks
+==5913== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${}$HOME
+==5926==    definitely lost: 0 bytes in 0 blocks
+==5926==    indirectly lost: 0 bytes in 0 blocks
+==5926== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$${}
+==5940==    definitely lost: 0 bytes in 0 blocks
+==5940==    indirectly lost: 0 bytes in 0 blocks
+==5940== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$${}
+==5959==    definitely lost: 0 bytes in 0 blocks
+==5959==    indirectly lost: 0 bytes in 0 blocks
+==5959== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$${$}
+==5978==    definitely lost: 32 bytes in 2 blocks
+==5974==    definitely lost: 0 bytes in 0 blocks
+==5978==    indirectly lost: 4,096 bytes in 2 blocks
+==5974==    indirectly lost: 0 bytes in 0 blocks
+==5978== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5974== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$${$$}
+==6001==    definitely lost: 32 bytes in 2 blocks
+==5989==    definitely lost: 0 bytes in 0 blocks
+==6001==    indirectly lost: 4,096 bytes in 2 blocks
+==5989==    indirectly lost: 0 bytes in 0 blocks
+==6001== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==5989== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$${$$$}
+==6018==    definitely lost: 32 bytes in 2 blocks
+==6012==    definitely lost: 0 bytes in 0 blocks
+==6018==    indirectly lost: 4,096 bytes in 2 blocks
+==6012==    indirectly lost: 0 bytes in 0 blocks
+==6018== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6012== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$${$$$}
+==6041==    definitely lost: 32 bytes in 2 blocks
+==6031==    definitely lost: 0 bytes in 0 blocks
+==6041==    indirectly lost: 4,096 bytes in 2 blocks
+==6031==    indirectly lost: 0 bytes in 0 blocks
+==6041== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6031== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$${$$$}$
+==6059==    definitely lost: 32 bytes in 2 blocks
+==6054==    definitely lost: 0 bytes in 0 blocks
+==6059==    indirectly lost: 4,096 bytes in 2 blocks
+==6054==    indirectly lost: 0 bytes in 0 blocks
+==6059== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6054== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$${$$$}$$
+==6076==    definitely lost: 32 bytes in 2 blocks
+==6070==    definitely lost: 0 bytes in 0 blocks
+==6076==    indirectly lost: 4,096 bytes in 2 blocks
+==6070==    indirectly lost: 0 bytes in 0 blocks
+==6076== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6070== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$${$$$}$$$
+==6099==    definitely lost: 32 bytes in 2 blocks
+==6087==    definitely lost: 0 bytes in 0 blocks
+==6099==    indirectly lost: 4,096 bytes in 2 blocks
+==6087==    indirectly lost: 0 bytes in 0 blocks
+==6099== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6087== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME}
+==6116==    definitely lost: 32 bytes in 2 blocks
+==6110==    definitely lost: 0 bytes in 0 blocks
+==6116==    indirectly lost: 4,096 bytes in 2 blocks
+==6110==    indirectly lost: 0 bytes in 0 blocks
+==6116== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6110== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$${HOME}
+==6137==    definitely lost: 32 bytes in 2 blocks
+==6127==    definitely lost: 0 bytes in 0 blocks
+==6137==    indirectly lost: 4,096 bytes in 2 blocks
+==6127==    indirectly lost: 0 bytes in 0 blocks
+==6137== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6127== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$${HOME}
+==6154==    definitely lost: 32 bytes in 2 blocks
+==6148==    definitely lost: 0 bytes in 0 blocks
+==6154==    indirectly lost: 4,096 bytes in 2 blocks
+==6148==    indirectly lost: 0 bytes in 0 blocks
+==6154== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6148== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME}$PWD
+==6171==    definitely lost: 32 bytes in 2 blocks
+==6167==    definitely lost: 0 bytes in 0 blocks
+==6171==    indirectly lost: 4,096 bytes in 2 blocks
+==6167==    indirectly lost: 0 bytes in 0 blocks
+==6171== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6167== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME}${PWD}
+==6192==    definitely lost: 32 bytes in 2 blocks
+==6182==    definitely lost: 0 bytes in 0 blocks
+==6192==    indirectly lost: 4,096 bytes in 2 blocks
+==6182==    indirectly lost: 0 bytes in 0 blocks
+==6192== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6182== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME}test
+==6207==    definitely lost: 32 bytes in 2 blocks
+==6203==    definitely lost: 0 bytes in 0 blocks
+==6207==    indirectly lost: 4,096 bytes in 2 blocks
+==6203==    indirectly lost: 0 bytes in 0 blocks
+==6207== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6203== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+test${HOME}
+==6228==    definitely lost: 32 bytes in 2 blocks
+==6218==    definitely lost: 0 bytes in 0 blocks
+==6228==    indirectly lost: 4,096 bytes in 2 blocks
+==6218==    indirectly lost: 0 bytes in 0 blocks
+==6228== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6218== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${TEST}$PWD
+==6243==    definitely lost: 32 bytes in 2 blocks
+==6239==    definitely lost: 0 bytes in 0 blocks
+==6243==    indirectly lost: 4,096 bytes in 2 blocks
+==6239==    indirectly lost: 0 bytes in 0 blocks
+==6243== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6239== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${TEST}${PWD}
+==6258==    definitely lost: 32 bytes in 2 blocks
+==6254==    definitely lost: 0 bytes in 0 blocks
+==6258==    indirectly lost: 4,096 bytes in 2 blocks
+==6254==    indirectly lost: 0 bytes in 0 blocks
+==6258== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6254== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME}/test
+==6279==    definitely lost: 32 bytes in 2 blocks
+==6269==    definitely lost: 0 bytes in 0 blocks
+==6279==    indirectly lost: 4,096 bytes in 2 blocks
+==6269==    indirectly lost: 0 bytes in 0 blocks
+==6279== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6269== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME/test}
+==6294==    definitely lost: 32 bytes in 2 blocks
+==6290==    definitely lost: 0 bytes in 0 blocks
+==6294==    indirectly lost: 4,096 bytes in 2 blocks
+==6290==    indirectly lost: 0 bytes in 0 blocks
+==6294== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6290== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+/TEST1/${HOME}/bsiche/
+==6315==    definitely lost: 32 bytes in 2 blocks
+==6305==    definitely lost: 0 bytes in 0 blocks
+==6315==    indirectly lost: 4,096 bytes in 2 blocks
+==6305==    indirectly lost: 0 bytes in 0 blocks
+==6315== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6305== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${/}
+==6326==    definitely lost: 0 bytes in 0 blocks
+==6326==    indirectly lost: 0 bytes in 0 blocks
+==6326== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${/}test
+==6342==    definitely lost: 32 bytes in 2 blocks
+==6338==    definitely lost: 0 bytes in 0 blocks
+==6342==    indirectly lost: 4,096 bytes in 2 blocks
+==6338==    indirectly lost: 0 bytes in 0 blocks
+==6342== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6338== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$${/}
+==6363==    definitely lost: 32 bytes in 2 blocks
+==6353==    definitely lost: 0 bytes in 0 blocks
+==6363==    indirectly lost: 4,096 bytes in 2 blocks
+==6353==    indirectly lost: 0 bytes in 0 blocks
+==6363== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6353== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$${/}
+==6380==    definitely lost: 32 bytes in 2 blocks
+==6374==    definitely lost: 0 bytes in 0 blocks
+==6380==    indirectly lost: 4,096 bytes in 2 blocks
+==6374==    indirectly lost: 0 bytes in 0 blocks
+==6380== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6374== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${/}$PWD
+==6397==    definitely lost: 32 bytes in 2 blocks
+==6391==    definitely lost: 0 bytes in 0 blocks
+==6397==    indirectly lost: 4,096 bytes in 2 blocks
+==6391==    indirectly lost: 0 bytes in 0 blocks
+==6397== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6391== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${/}TEST
+==6418==    definitely lost: 32 bytes in 2 blocks
+==6414==    definitely lost: 0 bytes in 0 blocks
+==6418==    indirectly lost: 4,096 bytes in 2 blocks
+==6414==    indirectly lost: 0 bytes in 0 blocks
+==6418== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6414== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${a/}
+==6429==    definitely lost: 0 bytes in 0 blocks
+==6429==    indirectly lost: 0 bytes in 0 blocks
+==6429== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$${a/}
+==6453==    definitely lost: 32 bytes in 2 blocks
+==6443==    definitely lost: 0 bytes in 0 blocks
+==6453==    indirectly lost: 4,096 bytes in 2 blocks
+==6443==    indirectly lost: 0 bytes in 0 blocks
+==6453== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6443== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$${a/}
+==6470==    definitely lost: 32 bytes in 2 blocks
+==6466==    definitely lost: 0 bytes in 0 blocks
+==6470==    indirectly lost: 4,096 bytes in 2 blocks
+==6466==    indirectly lost: 0 bytes in 0 blocks
+==6470== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6466== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${a/}TEST
+==6491==    definitely lost: 32 bytes in 2 blocks
+==6481==    definitely lost: 0 bytes in 0 blocks
+==6491==    indirectly lost: 4,096 bytes in 2 blocks
+==6481==    indirectly lost: 0 bytes in 0 blocks
+==6491== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6481== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${a/}$PWD
+==6508==    definitely lost: 32 bytes in 2 blocks
+==6504==    definitely lost: 0 bytes in 0 blocks
+==6508==    indirectly lost: 4,096 bytes in 2 blocks
+==6504==    indirectly lost: 0 bytes in 0 blocks
+==6508== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6504== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${a/}$
+==6525==    definitely lost: 32 bytes in 2 blocks
+==6519==    definitely lost: 0 bytes in 0 blocks
+==6525==    indirectly lost: 4,096 bytes in 2 blocks
+==6519==    indirectly lost: 0 bytes in 0 blocks
+==6525== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6519== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${a/}$$
+==6546==    definitely lost: 32 bytes in 2 blocks
+==6536==    definitely lost: 0 bytes in 0 blocks
+==6546==    indirectly lost: 4,096 bytes in 2 blocks
+==6536==    indirectly lost: 0 bytes in 0 blocks
+==6546== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6536== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${a/}$$$
+==6561==    definitely lost: 32 bytes in 2 blocks
+==6557==    definitely lost: 0 bytes in 0 blocks
+==6561==    indirectly lost: 4,096 bytes in 2 blocks
+==6557==    indirectly lost: 0 bytes in 0 blocks
+==6561== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6557== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${a/ }
+==6582==    definitely lost: 32 bytes in 2 blocks
+==6572==    definitely lost: 0 bytes in 0 blocks
+==6582==    indirectly lost: 4,096 bytes in 2 blocks
+==6572==    indirectly lost: 0 bytes in 0 blocks
+==6582== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6572== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$${a/ }
+==6597==    definitely lost: 32 bytes in 2 blocks
+==6593==    definitely lost: 0 bytes in 0 blocks
+==6597==    indirectly lost: 4,096 bytes in 2 blocks
+==6593==    indirectly lost: 0 bytes in 0 blocks
+==6597== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6593== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+$$${a/ }
+==6614==    definitely lost: 32 bytes in 2 blocks
+==6610==    definitely lost: 0 bytes in 0 blocks
+==6614==    indirectly lost: 4,096 bytes in 2 blocks
+==6610==    indirectly lost: 0 bytes in 0 blocks
+==6614== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6610== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${a/ }TEST
+==6627==    definitely lost: 0 bytes in 0 blocks
+==6627==    indirectly lost: 0 bytes in 0 blocks
+==6627== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${a/ }$PWD
+==6653==    definitely lost: 32 bytes in 2 blocks
+==6648==    definitely lost: 0 bytes in 0 blocks
+==6653==    indirectly lost: 4,096 bytes in 2 blocks
+==6648==    indirectly lost: 0 bytes in 0 blocks
+==6653== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6648== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${a/ }$
+==6672==    definitely lost: 32 bytes in 2 blocks
+==6664==    definitely lost: 0 bytes in 0 blocks
+==6672==    indirectly lost: 4,096 bytes in 2 blocks
+==6664==    indirectly lost: 0 bytes in 0 blocks
+==6672== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6664== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${a/ }$$
+==6690==    definitely lost: 32 bytes in 2 blocks
+==6685==    definitely lost: 0 bytes in 0 blocks
+==6690==    indirectly lost: 4,096 bytes in 2 blocks
+==6685==    indirectly lost: 0 bytes in 0 blocks
+==6690== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6685== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${a/ }$$$
+==6707==    definitely lost: 32 bytes in 2 blocks
+==6703==    definitely lost: 0 bytes in 0 blocks
+==6707==    indirectly lost: 4,096 bytes in 2 blocks
+==6703==    indirectly lost: 0 bytes in 0 blocks
+==6707== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6703== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%se}
+==6746==    definitely lost: 32 bytes in 2 blocks
+==6719==    definitely lost: 0 bytes in 0 blocks
+==6746==    indirectly lost: 4,096 bytes in 2 blocks
+==6719==    indirectly lost: 0 bytes in 0 blocks
+==6746== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6719== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%*se}
+==6774==    definitely lost: 32 bytes in 2 blocks
+==6758==    definitely lost: 0 bytes in 0 blocks
+==6774==    indirectly lost: 4,096 bytes in 2 blocks
+==6758==    indirectly lost: 0 bytes in 0 blocks
+==6774== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6758== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%se*}
+==6795==    definitely lost: 32 bytes in 2 blocks
+==6785==    definitely lost: 0 bytes in 0 blocks
+==6795==    indirectly lost: 4,096 bytes in 2 blocks
+==6785==    indirectly lost: 0 bytes in 0 blocks
+==6795== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6785== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%/}
+==6811==    definitely lost: 32 bytes in 2 blocks
+==6806==    definitely lost: 0 bytes in 0 blocks
+==6811==    indirectly lost: 4,096 bytes in 2 blocks
+==6806==    indirectly lost: 0 bytes in 0 blocks
+==6811== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6806== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%*/}
+==6827==    definitely lost: 32 bytes in 2 blocks
+==6822==    definitely lost: 0 bytes in 0 blocks
+==6827==    indirectly lost: 4,096 bytes in 2 blocks
+==6822==    indirectly lost: 0 bytes in 0 blocks
+==6827== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6822== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%/*}
+==6849==    definitely lost: 32 bytes in 2 blocks
+==6838==    definitely lost: 0 bytes in 0 blocks
+==6849==    indirectly lost: 4,096 bytes in 2 blocks
+==6838==    indirectly lost: 0 bytes in 0 blocks
+==6849== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6838== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%lo}
+==6865==    definitely lost: 32 bytes in 2 blocks
+==6860==    definitely lost: 0 bytes in 0 blocks
+==6865==    indirectly lost: 4,096 bytes in 2 blocks
+==6860==    indirectly lost: 0 bytes in 0 blocks
+==6865== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6860== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${PEPE%lo}
+==6885==    definitely lost: 32 bytes in 2 blocks
+==6876==    definitely lost: 0 bytes in 0 blocks
+==6885==    indirectly lost: 4,096 bytes in 2 blocks
+==6876==    indirectly lost: 0 bytes in 0 blocks
+==6885== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6876== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%%test}
+==6902==    definitely lost: 32 bytes in 2 blocks
+==6897==    definitely lost: 0 bytes in 0 blocks
+==6902==    indirectly lost: 4,096 bytes in 2 blocks
+==6897==    indirectly lost: 0 bytes in 0 blocks
+==6902== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6897== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%%/U}
+==6917==    definitely lost: 32 bytes in 2 blocks
+==6913==    definitely lost: 0 bytes in 0 blocks
+==6917==    indirectly lost: 4,096 bytes in 2 blocks
+==6913==    indirectly lost: 0 bytes in 0 blocks
+==6917== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6913== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%%}
+==6939==    definitely lost: 32 bytes in 2 blocks
+==6928==    definitely lost: 0 bytes in 0 blocks
+==6939==    indirectly lost: 4,096 bytes in 2 blocks
+==6928==    indirectly lost: 0 bytes in 0 blocks
+==6939== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6928== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%%/U*}
+==6954==    definitely lost: 32 bytes in 2 blocks
+==6950==    definitely lost: 0 bytes in 0 blocks
+==6954==    indirectly lost: 4,096 bytes in 2 blocks
+==6950==    indirectly lost: 0 bytes in 0 blocks
+==6954== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6950== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%%*/U}
+==7166==    definitely lost: 32 bytes in 2 blocks
+==6972==    definitely lost: 0 bytes in 0 blocks
+==7166==    indirectly lost: 4,096 bytes in 2 blocks
+==6972==    indirectly lost: 0 bytes in 0 blocks
+==7166== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==6972== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%%*/U*}
+==7182==    definitely lost: 32 bytes in 2 blocks
+==7177==    definitely lost: 0 bytes in 0 blocks
+==7182==    indirectly lost: 4,096 bytes in 2 blocks
+==7177==    indirectly lost: 0 bytes in 0 blocks
+==7182== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7177== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%%/}
+==7199==    definitely lost: 32 bytes in 2 blocks
+==7195==    definitely lost: 0 bytes in 0 blocks
+==7199==    indirectly lost: 4,096 bytes in 2 blocks
+==7195==    indirectly lost: 0 bytes in 0 blocks
+==7199== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7195== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%%/*}
+==7220==    definitely lost: 32 bytes in 2 blocks
+==7213==    definitely lost: 0 bytes in 0 blocks
+==7220==    indirectly lost: 4,096 bytes in 2 blocks
+==7213==    indirectly lost: 0 bytes in 0 blocks
+==7220== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7213== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%%*/}
+==7242==    definitely lost: 32 bytes in 2 blocks
+==7231==    definitely lost: 0 bytes in 0 blocks
+==7242==    indirectly lost: 4,096 bytes in 2 blocks
+==7231==    indirectly lost: 0 bytes in 0 blocks
+==7242== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7231== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%%*/*}
+==7457==    definitely lost: 32 bytes in 2 blocks
+==7253==    definitely lost: 0 bytes in 0 blocks
+==7457==    indirectly lost: 4,096 bytes in 2 blocks
+==7253==    indirectly lost: 0 bytes in 0 blocks
+==7457== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7253== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${%%test}
+==7469==    definitely lost: 0 bytes in 0 blocks
+==7469==    indirectly lost: 0 bytes in 0 blocks
+==7469== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${%%$HOME}
+==7483==    definitely lost: 0 bytes in 0 blocks
+==7483==    indirectly lost: 0 bytes in 0 blocks
+==7483== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME%%$PWD}
+==7509==    definitely lost: 32 bytes in 2 blocks
+==7499==    definitely lost: 0 bytes in 0 blocks
+==7509==    indirectly lost: 4,096 bytes in 2 blocks
+==7499==    indirectly lost: 0 bytes in 0 blocks
+==7509== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7499== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME#/U}
+==7524==    definitely lost: 32 bytes in 2 blocks
+==7520==    definitely lost: 0 bytes in 0 blocks
+==7524==    indirectly lost: 4,096 bytes in 2 blocks
+==7520==    indirectly lost: 0 bytes in 0 blocks
+==7524== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7520== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME#*/U}
+==7546==    definitely lost: 32 bytes in 2 blocks
+==7535==    definitely lost: 0 bytes in 0 blocks
+==7546==    indirectly lost: 4,096 bytes in 2 blocks
+==7535==    indirectly lost: 0 bytes in 0 blocks
+==7546== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7535== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME#/U*}
+==7562==    definitely lost: 32 bytes in 2 blocks
+==7557==    definitely lost: 0 bytes in 0 blocks
+==7562==    indirectly lost: 4,096 bytes in 2 blocks
+==7557==    indirectly lost: 0 bytes in 0 blocks
+==7562== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7557== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME#/}
+==7577==    definitely lost: 32 bytes in 2 blocks
+==7573==    definitely lost: 0 bytes in 0 blocks
+==7577==    indirectly lost: 4,096 bytes in 2 blocks
+==7573==    indirectly lost: 0 bytes in 0 blocks
+==7577== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7573== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME#*/}
+==7599==    definitely lost: 32 bytes in 2 blocks
+==7588==    definitely lost: 0 bytes in 0 blocks
+==7599==    indirectly lost: 4,096 bytes in 2 blocks
+==7588==    indirectly lost: 0 bytes in 0 blocks
+==7599== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7588== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME#/*}
+==7614==    definitely lost: 32 bytes in 2 blocks
+==7610==    definitely lost: 0 bytes in 0 blocks
+==7614==    indirectly lost: 4,096 bytes in 2 blocks
+==7610==    indirectly lost: 0 bytes in 0 blocks
+==7614== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7610== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME#lo}
+==7635==    definitely lost: 32 bytes in 2 blocks
+==7625==    definitely lost: 0 bytes in 0 blocks
+==7635==    indirectly lost: 4,096 bytes in 2 blocks
+==7625==    indirectly lost: 0 bytes in 0 blocks
+==7635== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7625== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${PEPE#lo}
+==7651==    definitely lost: 32 bytes in 2 blocks
+==7646==    definitely lost: 0 bytes in 0 blocks
+==7651==    indirectly lost: 4,096 bytes in 2 blocks
+==7646==    indirectly lost: 0 bytes in 0 blocks
+==7651== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7646== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME##}
+==7666==    definitely lost: 32 bytes in 2 blocks
+==7662==    definitely lost: 0 bytes in 0 blocks
+==7666==    indirectly lost: 4,096 bytes in 2 blocks
+==7662==    indirectly lost: 0 bytes in 0 blocks
+==7666== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7662== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME##test}
+==7688==    definitely lost: 32 bytes in 2 blocks
+==7677==    definitely lost: 0 bytes in 0 blocks
+==7688==    indirectly lost: 4,096 bytes in 2 blocks
+==7677==    indirectly lost: 0 bytes in 0 blocks
+==7688== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7677== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME##/U}
+==7706==    definitely lost: 32 bytes in 2 blocks
+==7702==    definitely lost: 0 bytes in 0 blocks
+==7706==    indirectly lost: 4,096 bytes in 2 blocks
+==7702==    indirectly lost: 0 bytes in 0 blocks
+==7706== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7702== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME##/U*}
+==7727==    definitely lost: 32 bytes in 2 blocks
+==7717==    definitely lost: 0 bytes in 0 blocks
+==7727==    indirectly lost: 4,096 bytes in 2 blocks
+==7717==    indirectly lost: 0 bytes in 0 blocks
+==7727== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7717== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME##*/U}
+==7743==    definitely lost: 32 bytes in 2 blocks
+==7738==    definitely lost: 0 bytes in 0 blocks
+==7743==    indirectly lost: 4,096 bytes in 2 blocks
+==7738==    indirectly lost: 0 bytes in 0 blocks
+==7743== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7738== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME##*/U*}
+==7758==    definitely lost: 32 bytes in 2 blocks
+==7754==    definitely lost: 0 bytes in 0 blocks
+==7758==    indirectly lost: 4,096 bytes in 2 blocks
+==7754==    indirectly lost: 0 bytes in 0 blocks
+==7758== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7754== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME##/}
+==7780==    definitely lost: 32 bytes in 2 blocks
+==7769==    definitely lost: 0 bytes in 0 blocks
+==7780==    indirectly lost: 4,096 bytes in 2 blocks
+==7769==    indirectly lost: 0 bytes in 0 blocks
+==7780== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7769== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME##/*}
+==7794==    definitely lost: 32 bytes in 2 blocks
+==7791==    definitely lost: 0 bytes in 0 blocks
+==7794==    indirectly lost: 4,096 bytes in 2 blocks
+==7791==    indirectly lost: 0 bytes in 0 blocks
+==7794== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7791== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME##*/}
+==7816==    definitely lost: 32 bytes in 2 blocks
+==7806==    definitely lost: 0 bytes in 0 blocks
+==7816==    indirectly lost: 4,096 bytes in 2 blocks
+==7806==    indirectly lost: 0 bytes in 0 blocks
+==7816== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7806== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME##*/*}
+==7831==    definitely lost: 32 bytes in 2 blocks
+==7827==    definitely lost: 0 bytes in 0 blocks
+==7831==    indirectly lost: 4,096 bytes in 2 blocks
+==7827==    indirectly lost: 0 bytes in 0 blocks
+==7831== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7827== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${##test}
+==7847==    definitely lost: 32 bytes in 2 blocks
+==7844==    definitely lost: 0 bytes in 0 blocks
+==7847==    indirectly lost: 4,096 bytes in 2 blocks
+==7844==    indirectly lost: 0 bytes in 0 blocks
+==7847== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7844== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${##$HOME}
+==7868==    definitely lost: 32 bytes in 2 blocks
+==7858==    definitely lost: 0 bytes in 0 blocks
+==7868==    indirectly lost: 4,096 bytes in 2 blocks
+==7858==    indirectly lost: 0 bytes in 0 blocks
+==7868== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7858== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME##$PWD}
+==7883==    definitely lost: 32 bytes in 2 blocks
+==7879==    definitely lost: 0 bytes in 0 blocks
+==7883==    indirectly lost: 4,096 bytes in 2 blocks
+==7879==    indirectly lost: 0 bytes in 0 blocks
+==7883== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7879== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${#HOME}
+==7904==    definitely lost: 32 bytes in 2 blocks
+==7894==    definitely lost: 0 bytes in 0 blocks
+==7904==    indirectly lost: 4,096 bytes in 2 blocks
+==7894==    indirectly lost: 0 bytes in 0 blocks
+==7904== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7894== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${#*HOME}
+==7916==    definitely lost: 0 bytes in 0 blocks
+==7916==    indirectly lost: 0 bytes in 0 blocks
+==7916== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${#HOME*}
+==7929==    definitely lost: 0 bytes in 0 blocks
+==7929==    indirectly lost: 0 bytes in 0 blocks
+==7929== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${#HOME*}
+==7943==    definitely lost: 0 bytes in 0 blocks
+==7943==    indirectly lost: 0 bytes in 0 blocks
+==7943== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${#lolo}
+==7969==    definitely lost: 32 bytes in 2 blocks
+==7964==    definitely lost: 0 bytes in 0 blocks
+==7969==    indirectly lost: 4,096 bytes in 2 blocks
+==7964==    indirectly lost: 0 bytes in 0 blocks
+==7969== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==7964== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${#*lolo}
+==7980==    definitely lost: 0 bytes in 0 blocks
+==7980==    indirectly lost: 0 bytes in 0 blocks
+==7980== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${#lolo*}
+==7994==    definitely lost: 0 bytes in 0 blocks
+==7994==    indirectly lost: 0 bytes in 0 blocks
+==7994== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${#}
+==8243==    definitely lost: 32 bytes in 2 blocks
+==8068==    definitely lost: 0 bytes in 0 blocks
+==8243==    indirectly lost: 4,096 bytes in 2 blocks
+==8068==    indirectly lost: 0 bytes in 0 blocks
+==8243== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==8068== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${#*}
+==8264==    definitely lost: 32 bytes in 2 blocks
+==8255==    definitely lost: 0 bytes in 0 blocks
+==8264==    indirectly lost: 4,096 bytes in 2 blocks
+==8255==    indirectly lost: 0 bytes in 0 blocks
+==8264== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==8255== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME:+}
+==8280==    definitely lost: 32 bytes in 2 blocks
+==8276==    definitely lost: 0 bytes in 0 blocks
+==8280==    indirectly lost: 4,096 bytes in 2 blocks
+==8276==    indirectly lost: 0 bytes in 0 blocks
+==8280== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==8276== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME:+test}
+==8291==    definitely lost: 0 bytes in 0 blocks
+==8291==    indirectly lost: 0 bytes in 0 blocks
+==8291== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${KK:+test}
+==8418==    definitely lost: 32 bytes in 2 blocks
+==8305==    definitely lost: 0 bytes in 0 blocks
+==8418==    indirectly lost: 4,096 bytes in 2 blocks
+==8305==    indirectly lost: 0 bytes in 0 blocks
+==8418== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==8305== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${:+test}
+==8492==    definitely lost: 0 bytes in 0 blocks
+==8492==    indirectly lost: 0 bytes in 0 blocks
+==8492== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${:+HOME}
+==8567==    definitely lost: 0 bytes in 0 blocks
+==8567==    indirectly lost: 0 bytes in 0 blocks
+==8567== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME:+$PWD}
+==8594==    definitely lost: 32 bytes in 2 blocks
+==8582==    definitely lost: 0 bytes in 0 blocks
+==8594==    indirectly lost: 4,096 bytes in 2 blocks
+==8582==    indirectly lost: 0 bytes in 0 blocks
+==8594== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==8582== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME:?}
+==8615==    definitely lost: 32 bytes in 2 blocks
+==8607==    definitely lost: 0 bytes in 0 blocks
+==8615==    indirectly lost: 4,096 bytes in 2 blocks
+==8607==    indirectly lost: 0 bytes in 0 blocks
+==8615== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==8607== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME:?test}
+==8634==    definitely lost: 32 bytes in 2 blocks
+==8626==    definitely lost: 0 bytes in 0 blocks
+==8634==    indirectly lost: 4,096 bytes in 2 blocks
+==8626==    indirectly lost: 0 bytes in 0 blocks
+==8634== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==8626== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${KK:?test}
+==8647==    definitely lost: 0 bytes in 0 blocks
+==8647==    indirectly lost: 0 bytes in 0 blocks
+==8647== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${:?test}
+==8672==    definitely lost: 0 bytes in 0 blocks
+==8672==    indirectly lost: 0 bytes in 0 blocks
+==8672== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${:?HOME}
+==8686==    definitely lost: 0 bytes in 0 blocks
+==8686==    indirectly lost: 0 bytes in 0 blocks
+==8686== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME:?$PWD}
+==8741==    definitely lost: 32 bytes in 2 blocks
+==8722==    definitely lost: 0 bytes in 0 blocks
+==8741==    indirectly lost: 4,096 bytes in 2 blocks
+==8722==    indirectly lost: 0 bytes in 0 blocks
+==8741== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==8722== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${KK:=test}
+==8752==    definitely lost: 0 bytes in 0 blocks
+==8752==    indirectly lost: 0 bytes in 0 blocks
+==8752== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${:=test}
+==8766==    definitely lost: 0 bytes in 0 blocks
+==8766==    indirectly lost: 0 bytes in 0 blocks
+==8766== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${:=test}
+==8786==    definitely lost: 0 bytes in 0 blocks
+==8786==    indirectly lost: 0 bytes in 0 blocks
+==8786== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${:=HOME}
+==8800==    definitely lost: 0 bytes in 0 blocks
+==8800==    indirectly lost: 0 bytes in 0 blocks
+==8800== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME:=$PWD}
+==8825==    definitely lost: 32 bytes in 2 blocks
+==8815==    definitely lost: 0 bytes in 0 blocks
+==8825==    indirectly lost: 4,096 bytes in 2 blocks
+==8815==    indirectly lost: 0 bytes in 0 blocks
+==8825== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==8815== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME:-}
+==8841==    definitely lost: 32 bytes in 2 blocks
+==8837==    definitely lost: 0 bytes in 0 blocks
+==8841==    indirectly lost: 4,096 bytes in 2 blocks
+==8837==    indirectly lost: 0 bytes in 0 blocks
+==8841== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==8837== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME:-test}
+==8856==    definitely lost: 32 bytes in 2 blocks
+==8852==    definitely lost: 0 bytes in 0 blocks
+==8856==    indirectly lost: 4,096 bytes in 2 blocks
+==8852==    indirectly lost: 0 bytes in 0 blocks
+==8856== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==8852== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${KK:-test}
+==8867==    definitely lost: 0 bytes in 0 blocks
+==8867==    indirectly lost: 0 bytes in 0 blocks
+==8867== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${:-test}
+==8887==    definitely lost: 0 bytes in 0 blocks
+==8887==    indirectly lost: 0 bytes in 0 blocks
+==8887== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${:-$HOME}
+==8900==    definitely lost: 0 bytes in 0 blocks
+==8900==    indirectly lost: 0 bytes in 0 blocks
+==8900== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${HOME:-$PWD}
+==8926==    definitely lost: 32 bytes in 2 blocks
+==8920==    definitely lost: 0 bytes in 0 blocks
+==8926==    indirectly lost: 4,096 bytes in 2 blocks
+==8920==    indirectly lost: 0 bytes in 0 blocks
+==8926== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 13 from 13)
+==8920== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+${kk;=xd}
+==8937==    definitely lost: 0 bytes in 0 blocks
+==8937==    indirectly lost: 0 bytes in 0 blocks
+==8937== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+echo holaquetal'$HOME'pedo
+==8951==    definitely lost: 0 bytes in 0 blocks
+==8951==    indirectly lost: 0 bytes in 0 blocks
+==8951== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+echo holaquetal$HOME
+==8971==    definitely lost: 0 bytes in 0 blocks
+==8971==    indirectly lost: 0 bytes in 0 blocks
+==8971== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)

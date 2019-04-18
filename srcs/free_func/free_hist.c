@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_hist.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 04:38:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/21 18:32:41 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void		free_hist(void)
 	{
 		if (g_tracking.mysh->hist->line)
 		{
-			free(g_tracking.mysh->hist->line);
+			ft_free(g_tracking.mysh->hist->line);
 			g_tracking.mysh->hist->line = NULL;
 		}
 		next = g_tracking.mysh->hist->next;
 		if (!g_tracking.mysh->hist || !g_tracking.mysh->hist->line)
-			free(g_tracking.mysh->hist);
+			ft_free(g_tracking.mysh->hist);
 		g_tracking.mysh->hist = next;
 	}
 	g_tracking.mysh->hist = NULL;

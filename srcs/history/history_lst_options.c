@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst_options.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdufer <hdufer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/25 17:43:27 by hdufer           ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	hist_file_to_lst(void)
 	line = NULL;
 	path = create_path_hist();
 	fd = open(path, O_CREAT | O_RDWR, 00777);
-	free(path);
+	ft_free(path);
 	if (fd < 0)
 		ft_putendl_fd("Error while opening/creating .42hist", 2);
 	if (g_tracking.mysh->hist == NULL)
@@ -44,10 +44,10 @@ void	hist_file_to_lst(void)
 		if (ft_strcmp(line, "\n") != 0)
 			hist_lst_add_next(g_tracking.mysh->hist, line);
 		if (line)
-			free(line);
+			ft_free(line);
 		line = NULL;
 	}
-	free(line);
+	ft_free(line);
 	line = NULL;
 	close(fd);
 }
@@ -62,44 +62,4 @@ void	hist_print_test(t_hist *hist, int i)
 		ft_putchar(' ');
 		ft_putendl(hist->line);
 	}
-}
-
-void	hist_print_space(t_hist *hist_count, t_hist *hist)
-{
-	int i[4];
-
-	while (hist)
-	{
-		i[1] = 0;
-		i[2] = 0;
-		i[3] = hist->index;
-		i[0] = hist_count->index;
-		while ((i[0] /= 10))
-			i[1]++;
-		while ((i[3] /= 10))
-			i[2]++;
-		i[1] -= i[2];
-		hist_print_test(hist, i[1]);
-		if (hist->next)
-			hist = hist->next;
-		else
-			break ;
-		if (hist_count->previous)
-			hist_count = hist_count->previous;
-		else
-			break ;
-	}
-}
-
-void	hist_print(t_hist *hist)
-{
-	t_hist *hist_count;
-
-	hist = hist_remap_index(hist);
-	hist_count = hist;
-	while (hist_count && hist_count->next)
-		hist_count = hist_count->next;
-	while (hist && hist->previous)
-		hist = hist->previous;
-	hist_print_space(hist_count, hist);
 }

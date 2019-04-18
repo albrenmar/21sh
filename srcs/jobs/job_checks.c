@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   job_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/27 07:55:13 by abguimba         ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void				interactive_check_set_shell_group(void)
 	if (setpgid(g_tracking.spid, g_tracking.spid) < 0)
 	{
 		ft_putendl_fd("Couldn't put the shell in its own process group", 2);
-		ft_exit(1, EXIT_FAILURE);
+		ft_exit2(EXIT_FAILURE);
 	}
 	tcsetpgrp(g_tracking.sterminal, g_tracking.spid);
 }

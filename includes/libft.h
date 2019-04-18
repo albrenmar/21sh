@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 01:51:43 by bsiche            #+#    #+#             */
-/*   Updated: 2019/01/21 18:30:54 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/04/18 02:15:06 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define GARBAGE	0
+# define PROGRAM	"42sh"
 
 void				*ft_memset(void *b, int c, size_t len);
 
@@ -102,6 +105,8 @@ char				*ft_strsub(char const *s, size_t t, size_t l, size_t f);
 
 char				*ft_strjoinfree(char *s1, char *s2, size_t freelv);
 
+char				*ft_strjoin(char const *s1, char const *s2);
+
 char				*ft_strrev(char const *s1, int freeit);
 
 char				*ft_strtrim(char const *s);
@@ -185,6 +190,19 @@ typedef struct		s_lstcontainer
 	t_list			*lastelement;
 }					t_lstcontainer;
 
+typedef struct		s_lone_ptr
+{
+	void				*ptr;
+	struct s_lone_ptr	*next;
+	struct s_lone_ptr	*prev;
+}					t_lone_ptr;
+
+typedef struct		s_ptr_list
+{
+	struct s_lone_ptr	*first;
+	struct s_lone_ptr	*last;
+}					t_ptr_list;
+
 void				lstcontainer_add(t_lstcontainer *cont, void *c);
 
 void				lstcontainer_addall(t_lstcontainer *d, t_lstcontainer *c);
@@ -203,4 +221,19 @@ t_lstcontainer		*ft_strsplitlst(char *str, char c);
 
 void				ft_freesplitlist(t_lstcontainer *list);
 
+void				*ft_malloc(size_t size);
+
+int					ft_free(void *ptr);
+
+int					ft_free(void *ptr);
+
+int					garbage_init(void);
+
+int					mmalloc_init(void);
+
+void				free_all_list(void);
+
+char				**ft_split_whitespaces(char *str);
+
+char				*ft_strdup_nocar(const char *s);
 #endif

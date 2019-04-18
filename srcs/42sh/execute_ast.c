@@ -3,30 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   execute_ast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/05 00:59:46 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/27 03:05:28 by abguimba         ###   ########.fr       */
+/*   Created: 2019/02/05 00:59:46 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
+#include "sh42.h"
 #include <stdlib.h>
-
-void	set_fd_and_descr(void)
-{
-	g_tracking.redir = 0;
-	g_tracking.mysh->set_fd = ft_memalloc(sizeof(t_set_fd));
-	g_tracking.mysh->set_fd->STDIN = 0;
-	g_tracking.mysh->set_fd->STDOUT = 1;
-	g_tracking.mysh->set_fd->STDERR = 2;
-}
 
 void	exec_left_branch(t_tree *tree, t_jobs *job)
 {
 	if (ft_strlen(tree->cmd) == 1 && tree->cmd[0] == '&')
 		g_tracking.foreground = 1;
-	exec_command(tree->left->list_cmd, g_tracking.foreground, job);
+	exec_command(tree->left->list_cmd, g_tracking.foreground, job, 0);
 	g_tracking.foreground = 0;
 }
 
@@ -35,40 +26,37 @@ void	exec_right_branch(t_tree *tree, t_jobs *job)
 	if (tree->prev && ft_strlen(tree->prev->cmd) == 1
 			&& tree->prev->cmd[0] == '&')
 		g_tracking.foreground = 1;
-	exec_command(tree->right->list_cmd, g_tracking.foreground, job);
+	exec_command(tree->right->list_cmd, g_tracking.foreground, job, 0);
 	g_tracking.foreground = 0;
 }
 
-void	free_branch(t_last *list)
+void	free_ast(t_tree *tree, t_last *next_free)
 {
-	t_last *temp_list;
+	t_tree	*left_tree;
+	t_tree	*right_tree;
 
-	while (list)
+	left_tree = NULL;
+	right_tree = NULL;
+	if (tree->left)
+		left_tree = tree->left;
+	if (tree->right)
+		right_tree = tree->right;
+	if (tree->cmd)
+		ft_strdel(&tree->cmd);
+	while (tree->list_cmd)
 	{
-		temp_list = list->next;
-		free(list->name);
-		list = list->next;
-		free(temp_list);
+		next_free = tree->list_cmd->next;
+		if (tree->list_cmd->name)
+			ft_strdel(&tree->list_cmd->name);
+		ft_memdel((void **)&tree->list_cmd);
+		tree->list_cmd = next_free;
 	}
+	ft_memdel((void **)&tree);
+	if (left_tree)
+		free_ast(left_tree, NULL);
+	if (right_tree)
+		free_ast(right_tree, NULL);
 }
-
-// void	free_ast(t_tree *tree)
-// {
-// 	if (tree->type == SEP)
-// 	{
-// 		if (tree->left && tree->left->type != SEP)
-// 			free_branch(tree->left->list_cmd);
-// 		else if (tree->left && tree->left->type == SEP)
-// 			free_ast(tree->left);
-// 		free(tree->cmd);
-// 		if (tree->right && tree->right->type != SEP)
-// 			free_branch(tree->right->list_cmd);
-// 		else if (tree->right)
-// 			free_ast(tree->right);
-// 	}
-// 	free_ast(tree);
-// 	return ;
-// }
 
 void	execute_ast(t_tree *tree, t_jobs *job)
 {
@@ -82,14 +70,19 @@ void	execute_ast(t_tree *tree, t_jobs *job)
 		if (ft_strlen(tree->cmd) > 1)
 		{
 			if (tree->cmd[0] == '&' && g_tracking.lastreturn == 1)
+			{
+				g_tracking.cmdindex++;
 				return ;
+			}
 			if (tree->cmd[0] == '|' && g_tracking.lastreturn == 0)
+			{
+				g_tracking.cmdindex++;
 				return ;
+			}
 		}
 		if (tree->right && tree->right->type != SEP)
 			exec_right_branch(tree, job);
 		else if (tree->right)
 			execute_ast(tree->right, job);
 	}
-	// free_ast(tree);
 }

@@ -3,30 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 03:38:03 by abguimba         ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
 #include "sh42.h"
 
-void	clean_tab_exec(char **tab_exec)
+void	free_tabs_and_exit(char **envhold, char **tab_exec_hold)
 {
-	int			i;
-
-	i = 0;
-	while (tab_exec[i] != '\0')
-	{
-		if (ft_strlen(tab_exec[i]) == 0)
-		{
-			ft_strdel(&tab_exec[i]);
-			tab_exec[i] = NULL;
-		}
-		i++;
-	}
+	free_tab(envhold);
+	free_tab(tab_exec_hold);
+	ft_exit3(EXIT_FAILURE, 2);
 }
 
 int		spaces_line_check(char *line)
@@ -50,9 +40,10 @@ char	**tab_dup(char **tob)
 	char		**new;
 
 	i = 0;
+	new = NULL;
 	while (tob[i])
 		i++;
-	if (!(new = malloc(sizeof(char*) * (i + 1))))
+	if (!(new = ft_malloc(sizeof(char*) * (i + 1))))
 		return (NULL);
 	i = 0;
 	while (tob[i])

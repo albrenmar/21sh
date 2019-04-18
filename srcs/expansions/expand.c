@@ -6,11 +6,12 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/25 07:14:10 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
+#include "sh42.h"
 
 t_expand	*new_expand(int len)
 {
@@ -53,29 +54,6 @@ void		create_list_expand(t_expand *new_letter, char *line)
 	new_letter = frst_letter;
 }
 
-int			need_expand(char *to_transf)
-{
-	if (to_transf[0] == '~' && !to_transf[1])
-		return (1);
-	else if (to_transf[0] && to_transf[1] == '/')
-		return (1);
-	else if (to_transf[0] == '~' && (to_transf[1] == '+'
-			|| to_transf[1] == '-') && (!to_transf[2]
-			|| to_transf[2] == '/'))
-		return (1);
-	else if (is_path_tilde(to_transf))
-		return (1);
-	else if (to_transf[0] == '~' && have_homedir(to_transf))
-		return (1);
-	else if (have_parm(to_transf))
-		return (1);
-	else if (is_to_add_or_mod_parm(to_transf))
-		return (1);
-	else if (to_transf[0] == '$' && to_transf[1])
-		return (1);
-	return (0);
-}
-
 void		scan_arg_transformer(t_unquoter **check, char **value)
 {
 	t_scan_arg	scarg;
@@ -98,6 +76,16 @@ void		scan_arg_transformer(t_unquoter **check, char **value)
 	}
 }
 
+void		mark_to_remove(t_unquoter *to_unquot, char **value)
+{
+	if (ft_strequ(to_unquot->str_unquoted, "${}"))
+		print_exp_error(NULL);
+	else
+		print_exp_str_error(to_unquot->str_unquoted);
+	ft_strdel(value);
+	*value = ft_strdup(" ");
+}
+
 char		expand_transformer(char **value)
 {
 	char		*str_orig;
@@ -114,11 +102,9 @@ char		expand_transformer(char **value)
 	else if ((to_unquot && ft_strequ(to_unquot->str_unquoted, "${}"))
 			|| ft_strequ(str_orig, "${}")
 			|| ft_strstr(to_unquot->str_unquoted, "${}"))
+		mark_to_remove(to_unquot, value);
+	if (g_tracking.mysh->err_expend)
 	{
-		if (ft_strequ(to_unquot->str_unquoted, "${}"))
-			print_exp_error(NULL);
-		else
-			print_exp_str_error(to_unquot->str_unquoted);
 		ft_strdel(value);
 		*value = ft_strdup(" ");
 	}

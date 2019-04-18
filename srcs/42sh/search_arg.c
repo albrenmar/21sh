@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   search_arg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 18:06:56 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/24 04:26:30 by alsomvil         ###   ########.fr       */
+/*   Created: 2019/02/27 18:06:56 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
+#include "sh42.h"
 
 char	*search_symboll(char *str)
 {
@@ -96,9 +96,8 @@ char	*search_quote(char *str, int i, int *nb)
 	return (NULL);
 }
 
-char	*search_normally_arg(char *str, int *nb)
+char	*search_normally_arg(char *str, int *nb, int i)
 {
-	int		i;
 	char	*temp;
 
 	i = 0;
@@ -122,5 +121,6 @@ char	*search_normally_arg(char *str, int *nb)
 	temp = ft_strndup(str, i);
 	if (ft_strlen(temp) > 0)
 		return (temp);
+	ft_strdel(&temp);
 	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   job_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 09:12:34 by abguimba         ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,19 +78,4 @@ void		show_job_info(t_jobs *job, const char *status, int mode)
 	}
 	ft_putchar(' ');
 	ft_putendl(job->name);
-}
-
-void		wait_for_job(t_jobs *job)
-{
-	int		status;
-	pid_t	pid;
-
-	pid = waitpid(WAIT_ANY, &status, WUNTRACED);
-	while (!update_process_status(pid, status) && !job_is_stopped(job) &&
-	!job_is_done(job))
-		pid = waitpid(WAIT_ANY, &status, WUNTRACED);
-	if (WIFSIGNALED(status) || WIFSTOPPED(status))
-		g_tracking.lastreturn = 1;
-	else
-		g_tracking.lastreturn = WEXITSTATUS(status);
 }

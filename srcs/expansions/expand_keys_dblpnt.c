@@ -6,11 +6,12 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/28 04:48:20 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
+#include "environ.h"
 #include "sh42.h"
 
 void	exp_key_plus(char **str, t_expand *expand)
@@ -63,6 +64,12 @@ void	exp_key_inter(char **str, t_expand *expand)
 	end_analyzer(to_analy);
 }
 
+void	replace_to_null_error(char **str, t_analyzer to_analy)
+{
+	print_exp_error_dpoints(to_analy.varname, to_analy.wildcard, '=');
+	*str = ft_strdup(" ");
+}
+
 void	exp_key_equal(char **str, t_expand *expand)
 {
 	t_analyzer	to_analy;
@@ -74,14 +81,14 @@ void	exp_key_equal(char **str, t_expand *expand)
 	if (to_analy.varvalue && to_analy.varvalue[0])
 		*str = ft_strdup(to_analy.varvalue);
 	else if (env_or_set == 1)
+	{
 		replace_env_str(to_analy.varname, to_analy.wildcard);
+		update_envp();
+	}
 	else if (env_or_set == 2 || (!env_or_set && to_analy.vnme_len))
 		replace_env_set_str(to_analy.varname, to_analy.wildcard);
 	else
-	{
-		print_exp_error_dpoints(to_analy.varname, to_analy.wildcard, '=');
-		*str = ft_strdup(" ");
-	}
+		replace_to_null_error(str, to_analy);
 	if (!*str)
 	{
 		if (to_analy.wildcard)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copyenv.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 18:55:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		replace_env_str(char *s1, char *s2)
 		buf = tmp->content;
 		if (ft_strcmp(s1, buf->key) == 0)
 		{
-			free(buf->value);
+			ft_free(buf->value);
 			buf->value = ft_strdup(s2);
 			return (0);
 		}
@@ -74,7 +74,7 @@ void	ft_add_env_string(char *s1, char *s2)
 
 	if (g_tracking.mysh->env == NULL)
 		g_tracking.mysh->env = lstcontainer_new();
-	buf = malloc(sizeof(*buf));
+	buf = ft_malloc(sizeof(*buf));
 	buf->value = NULL;
 	buf->key = NULL;
 	buf->key = ft_strdup(s1);
@@ -95,6 +95,8 @@ char	*remove_env_string(char *str)
 		buf = tmp->content;
 		if (ft_strcmp(str, buf->key) == 0)
 		{
+			ft_strdel(&buf->key);
+			ft_strdel(&buf->value);
 			g_tracking.mysh->env->remove(g_tracking.mysh->env, tmp, 1);
 			return (NULL);
 		}

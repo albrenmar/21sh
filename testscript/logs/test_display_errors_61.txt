@@ -1,0 +1,1 @@
+42sh: /Users/mjose/.brew/bin/: is a directory

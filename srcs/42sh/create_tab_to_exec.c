@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/20 10:39:18 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/18 19:19:19 by alsomvil         ###   ########.fr       */
+/*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
+#include "sh42.h"
 
 char	**create_tab_to_exec(t_last *list)
 {
@@ -28,13 +28,13 @@ char	**create_tab_to_exec(t_last *list)
 		list = list->next;
 	}
 	tab_exec = ft_memalloc(sizeof(char *) * (i + 1));
-	tab_exec[0] = begin->name;
+	tab_exec[0] = ft_strdup(begin->name);
 	begin = begin->next;
 	i = 1;
 	while (begin && begin->type != CMD)
 	{
 		if (begin->type == OPT || begin->type == ARG)
-			tab_exec[i++] = begin->name;
+			tab_exec[i++] = ft_strdup(begin->name);
 		begin = begin->next;
 	}
 	tab_exec[i] = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   job_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/27 07:50:23 by abguimba         ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char			*parse_job_number(char *str)
 		return (NULL);
 	if (!str[1] || (str[i] > 57 || str[i] < 48))
 		return (NULL);
-	if (!(new = malloc(sizeof(char) * (ft_strlen(str)))))
+	if (!(new = ft_malloc(sizeof(char) * (ft_strlen(str)))))
 		return (NULL);
 	while (str[i])
 	{
@@ -60,10 +60,10 @@ void			free_job(t_jobs *job)
 		{
 			tmp = cmd;
 			cmd = cmd->next;
-			free(tmp);
+			ft_free(tmp);
 		}
 		ft_strdel(&job->name);
-		free(job);
+		ft_free(job);
 	}
 }
 
@@ -74,7 +74,7 @@ t_comm			*new_process(t_jobs *job, pid_t cpid)
 	tmp = job->t_command;
 	if (job->t_command == NULL)
 	{
-		if (!(job->t_command = malloc(sizeof(t_comm))))
+		if (!(job->t_command = ft_malloc(sizeof(t_comm))))
 			return (NULL);
 		tmp = job->t_command;
 	}
@@ -82,7 +82,7 @@ t_comm			*new_process(t_jobs *job, pid_t cpid)
 	{
 		while (tmp->next)
 			tmp = tmp->next;
-		if (!(tmp->next = malloc(sizeof(t_comm))))
+		if (!(tmp->next = ft_malloc(sizeof(t_comm))))
 			return (NULL);
 		tmp = tmp->next;
 	}
@@ -118,7 +118,7 @@ t_jobs			*new_job(t_last *part, int background)
 	tmp = g_tracking.jobs;
 	if (g_tracking.jobs == NULL)
 	{
-		if (!(g_tracking.jobs = malloc(sizeof(t_jobs))))
+		if (!(g_tracking.jobs = ft_malloc(sizeof(t_jobs))))
 			return (NULL);
 		tmp = g_tracking.jobs;
 		tmp->prev = NULL;

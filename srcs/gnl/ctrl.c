@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ctrl.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 00:53:23 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/24 00:12:48 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	ctrl_d(void)
 {
-	if (g_tracking.quotes == 1)
+	if (g_tracking.quotes != 0)
 	{
-		ft_putchar('\n');
-		ft_putendl_fd("Unexpected EOF while looking for matching \"\'", 2);
+		if (g_tracking.quotes == 1 || g_tracking.quotes == 2)
+		{
+			ft_putendl_fd("Unexpected EOF while looking for matching \"\'", 2);
+			ft_putchar('\n');
+		}
 		g_tracking.quotes = 10;
 		return ;
 	}
@@ -25,7 +28,7 @@ void	ctrl_d(void)
 	{
 		ft_putchar('\n');
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
-		ft_exit(1, EXIT_SUCCESS);
+		ft_exit2(EXIT_SUCCESS);
 	}
 	else
 		rem_from_str_del();
@@ -33,11 +36,22 @@ void	ctrl_d(void)
 
 void	ctrl_c(void)
 {
+	ft_free(g_tracking.cpaste->line);
+	if (g_tracking.quotes == 3)
+	{
+		ft_putchar('\n');
+		g_tracking.quotes = 11;
+		return ;
+	}
+	if (g_tracking.quotes != 0)
+	{
+		ft_putchar('\n');
+		g_tracking.quotes = 10;
+		return ;
+	}
 	clear_screen3();
 	print_prompt();
-	free(g_tracking.str);
-	free(g_tracking.cpaste->line);
-	free(g_tracking.cpaste);
+	ft_free(g_tracking.str);
 	g_tracking.str = NULL;
 	cursor_reset();
 }
@@ -57,5 +71,7 @@ int		ctrl_key(char c)
 		ctrl_c();
 		return (13);
 	}
+	if ((c > 0 && c < 32) && c != 27)
+		return (12);
 	return (0);
 }

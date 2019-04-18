@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   auto_complete_loop.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 02:36:41 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		get_new(t_list *buf)
 		tmp = buf->content;
 		if (g_tracking.aut->to_add)
 		{
-			free(g_tracking.aut->to_add);
+			ft_free(g_tracking.aut->to_add);
 			g_tracking.aut->to_add = NULL;
 		}
 		g_tracking.aut->to_add = ft_strdup(tmp->name);
@@ -73,7 +73,7 @@ void	actual_loop(t_lstcontainer *list)
 	g_tracking.aut->page_lst = build_page_lst(list);
 	buf = g_tracking.aut->page_lst->firstelement;
 	if (!buf)
-		ft_exit(1, EXIT_SUCCESS);
+		ft_exit2(EXIT_SUCCESS);
 	get_new(buf);
 	i = g_tracking.aut->line_up;
 	while ((i = read_loop()) != 0 && buf != NULL)
@@ -114,6 +114,8 @@ void	completion_loop(t_lstcontainer *list)
 	char	*err;
 
 	err = NULL;
+	if (!list)
+		return ;
 	if (g_tracking.aut->err == 0)
 	{
 		tputs(tgetstr("vi", NULL), 1, yan_putchar);
