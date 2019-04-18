@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   completion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 09:13:59 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Created: 2019/03/01 09:13:59 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
+#include "sh42.h"
 
 int		valid_bracket(char *line, int quote, int double_quote, int *accol)
 {
@@ -27,7 +27,7 @@ int		valid_bracket(char *line, int quote, int double_quote, int *accol)
 	return (0);
 }
 
-int		ft_valid_bracket(char *line, char c, int flag)
+int		ft_valid_bracket(char *line)
 {
 	int	i;
 	int	accol;
@@ -40,7 +40,7 @@ int		ft_valid_bracket(char *line, char c, int flag)
 	double_quote = 0;
 	while (line[i])
 		i++;
-	while (i > 0)
+	while (i >= 0)
 	{
 		if (line[i] == '"')
 			double_quote++;
@@ -67,14 +67,15 @@ char	*check_bracket(char *line, int i)
 	g_tracking.quotes = 3;
 	get_key();
 	if (g_tracking.bracket == 10)
-		exit(0);
+		ft_exit2(EXIT_SUCCESS);
 	join = g_tracking.cmd;
-	ft_valid_bracket(join, '{', 0);
+	ft_valid_bracket(join);
 	if (!ret)
 		ret = ft_strdup(join);
 	else
 		ret = ft_strjoin(ret, join);
 	ft_putchar('\n');
 	g_tracking.quotes = 0;
+	ft_strdel(&g_tracking.cmd);
 	return (ret);
 }

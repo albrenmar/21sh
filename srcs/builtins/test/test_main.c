@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 03:02:54 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ int		test_parse(int argc, char **argv)
 	return (-1);
 }
 
+int		return_error(char **argv)
+{
+	free_tab(argv);
+	return (1);
+}
+
 int		main_test(int flag)
 {
 	int		i;
@@ -59,7 +65,7 @@ int		main_test(int flag)
 	argv = copy_tab_minus_one(argc, argv);
 	argc--;
 	if (argc < 1)
-		return (1);
+		return (return_error(argv));
 	if (ft_strcmp(argv[0], "!") == 0)
 	{
 		not = copy_tab_minus_one(argc, argv);
@@ -71,5 +77,6 @@ int		main_test(int flag)
 	i = test_parse(argc, argv);
 	i = reverse(i, flag);
 	free_tab(argv);
+	free_tab(not);
 	return (i);
 }

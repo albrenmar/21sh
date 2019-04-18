@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst_options.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/03/20 03:24:38 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*create_path_hist(void)
 
 	path = ft_strdup("/Users/");
 	user = getlogin();
-	path = ft_strjoinfree(path, user, 1);// MJOSE LINUX
+	path = ft_strjoinfree(path, user, 1);
 	path = ft_strjoinfree(path, "/.42hist", 1);
 	return (path);
 }
@@ -33,8 +33,8 @@ void	hist_file_to_lst(void)
 
 	line = NULL;
 	path = create_path_hist();
-	fd = open(path, O_CREAT | O_APPEND | O_RDWR, 00777);
-	free(path);
+	fd = open(path, O_CREAT | O_RDWR, 00777);
+	ft_free(path);
 	if (fd < 0)
 		ft_putendl_fd("Error while opening/creating .42hist", 2);
 	if (g_tracking.mysh->hist == NULL)
@@ -44,10 +44,22 @@ void	hist_file_to_lst(void)
 		if (ft_strcmp(line, "\n") != 0)
 			hist_lst_add_next(g_tracking.mysh->hist, line);
 		if (line)
-			free(line);
+			ft_free(line);
 		line = NULL;
 	}
-	free(line);
+	ft_free(line);
 	line = NULL;
 	close(fd);
+}
+
+void	hist_print_test(t_hist *hist, int i)
+{
+	if (hist->line)
+	{
+		while (i-- > 0)
+			ft_putchar(' ');
+		ft_putnbr(hist->index);
+		ft_putchar(' ');
+		ft_putendl(hist->line);
+	}
 }

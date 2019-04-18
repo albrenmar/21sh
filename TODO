@@ -1,41 +1,59 @@
 Partie Brendan
-Rajouter "Dans des heredocs, valide" pour les heredoc, et quitter proprement le shell sans leaks degueulasses
--Type et Test, a adapter avec le tableau d'arg et non char **argv
+- Leaks 
+  ==26521==    at 0x1000EAA46: malloc (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+  ==26521==    by 0x10002BFAC: ft_malloc (garbage_malloc.c:56)
+  ==26521==    by 0x100029FB4: ft_strnew (ft_strnew.c:23)
+  ==26521==    by 0x10002A553: ft_strsub (ft_strsub.c:21)
+  ==26521==    by 0x100012390: ft_actual_cpy (copy.c:103)
+  ==26521==    by 0x100012425: begin_cpy (copy.c:119)
+- Echo + backslash n et gerer history
 
 Partie Abraham
--Wall -Wextra -Werror de mi parte (sauf srcs/builtins/builtins.c) (cp -rf include/* + libft.a && gcc -c -Wall -Wextra -Werror x.c)
--fix redirection output (>) ou (>>) des builtins quand il y a pas de fork
-- '>' == '>>'
--Ctrl-C et Ctrl-D quittent heredoc
--norme ma partie (sauf srcs/builtins/builtins.c)
-leaks de ma partie (sauf srcs/builtins/builtins.c)
--"echo -a -b" boucle infini sur "while (list_cmd)" dans fonction exec_command
--top | top ou cat | cat | cat bug le terminal
--verificar segv autocompletion solo en lo mio
-
+-42sh: perfect expansions:
+  expansions-> "false" when false expansion or end execution of line
+-arreglar tmpenv y probar leaks 
+-make good tmpenv (with quotes)
+-make good alias (with quotes)
+-for rendu 42sh -> norme, auteur, headers, printfs, forbidden functions, unused functions, testfiles
 
 Partie Marc
-- Gestion d'errors pour les expansions.
-- Quiter le process en execution pour no importe quel commande avec ${VARNAME:?VARVALUE} en tant que VARNAME 
-    no existe pas, ou elle a pas valeur. (A voir avec Abraham/et/ou/Alexandre.)
-(X) - Ajuter les expansions dans l'autocomplete, entant que la line finis avec '/' (A voir avec Brendan). NORMALMENT EST GERE.
 - Gerer l'expand recursive (${VARNAME:-${VARNAME:+VARVALUE}aaaaa}bbbb Par exemple).
-- Gerer l'expand avec espaces a l'interior. (En attendant que Alex me passe la bonne string).
-- Controler SEGFAULT si EXEC_TAB null. // A parler avec Alsomvil
+- Gerer script (avec log) pour lancer commandes avec valgrind.
+-verifier set, unset, setenv, unsetenv, export, env fonctionnent
+-mettre local variable assignments in execution, and change "a=b" -> true et null expansion ->false
 
 Partie Alex
-- Gestion des messages d'erreurs
-- Ecrire la fonction qui auitte quote et dquote proprement en cas dr ctrl D ou ctrl C(remplace le gros exit si g_tracking.quotes == 10)
-- close apres creation fichier
 
-Partie Hassan
-- Builtin fc
-- Implementation des differents builtins
-- Env avec les builtins
+Partie Hassan`
+- history -d negative
+- history -d begin end
+- fc
 
 MISC
--Ajouter builtins manquants (POSIX?)
--ajouter env a execve
--Faire que le parser reconaisse le signe = pour les cmd style "env HOME=TMP cd ~"
--Gestion de l'env
--creer une fonction d'exit qui free proprement tout ce bordel
+- all leaks, norme, gcc -wall -wextra -werror
+- Ajouter builtins manquants (POSIX?)
+- Gestion de l'env
+- proteger si ficher ~/.hist extisteais pas.
+-segfault when ctrl-C on completing "quotes>"
+-historique mal place, doit prendre en compte aussi par exemple une ligne comme "HOME=toto" qui ne s'execute pas mais qui doit quand meme s'enregistrer
+-verifier liens symboliques marchent bien sur proompt et pwd
+-full clean global
+-verifier exit works perfectly
+-tester 42sh avec correction du 42sh
+-bultin unset, export (and test them when good local variables are set)
+-verifier unsetenv and setenv
+-${kk;=xd} -> segfault expansions
+-demander de completer avec "ls ;", "ls ||" et "ls &" comme avec "ls &&"
+-voir ou placer execution de commandes de fc
+-segfault "!!!" dans visual studio code
+-ft_cd doit renvoyer 1 quand erreur
+- quiter function print_last alex avant rendre.
+
+  liste comandes difficiles:
+-"HAHAHAHEHHE=toto HAHA=XD env | grep HAHA ; a=b c=t caca=xd ; HIHIHI=ta HIHIHIHIHIH=ti env | grep HIHIHI ; set | tail -3"
+-"mkdir test ; cd test ; ls -a ; ls | cat | wc -c > fifi ; cat fifi"
+-"HOME=XD env | grep HOME= ; a=b ; env -i || ls && HOME=XDA env | grep HOME= || c=d ; HOME=XDO cd"
+-"ls | ./42sh" 
+-"env -i PATH=/tmp ./42sh"
+-"HOME=XD cd ; a=b || ls && HOME=XDA cd || c=d"
+- 

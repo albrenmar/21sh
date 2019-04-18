@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 20:58:35 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 01:31:42 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/08 15:26:02 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	ft_putstr_nocar(char const *s)
 	int		i;
 	int		a;
 
+	if (!s || ft_strlen(s) < 1)
+		return ;
 	new = ft_strnew(ft_strlen(s));
 	i = 0;
 	a = 0;
@@ -42,5 +44,5 @@ void	ft_putstr_nocar(char const *s)
 		i++;
 	}
 	ft_putstr_fd(new, 0);
-	free(new);
+	ft_free(new);
 }

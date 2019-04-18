@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_hist.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 04:38:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,23 @@
 
 void		free_hist(void)
 {
-	t_hist	*hist;
 	t_hist	*next;
 
 	if (!g_tracking.mysh->hist)
 		return ;
-	hist = g_tracking.mysh->hist;
-	while (hist->previous)
-		hist = hist->previous;
-	while (hist)
+	while (g_tracking.mysh->hist->previous)
+		g_tracking.mysh->hist = g_tracking.mysh->hist->previous;
+	while (g_tracking.mysh->hist)
 	{
-		if (hist->line)
+		if (g_tracking.mysh->hist->line)
 		{
-			free(hist->line);
-			hist->line = NULL;
+			ft_free(g_tracking.mysh->hist->line);
+			g_tracking.mysh->hist->line = NULL;
 		}
-		next = hist->next;
-		free(hist);
-		hist = next;
+		next = g_tracking.mysh->hist->next;
+		if (!g_tracking.mysh->hist || !g_tracking.mysh->hist->line)
+			ft_free(g_tracking.mysh->hist);
+		g_tracking.mysh->hist = next;
 	}
 	g_tracking.mysh->hist = NULL;
 }

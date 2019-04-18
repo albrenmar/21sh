@@ -1,30 +1,36 @@
 #!/bin/bash
 cp ../42sh .
 clear
-select CHECK in "COMPIL 42SH" "REMOVE 42SH" "NORM EXPANSIONS" ALL SIMPLE ADVANCED EXIT
+select CHECK in "COMPIL 42sh" "REMOVE 42sh" "NORM EXPANSIONS" ALL SIMPLE ADVANCED LEAKS EXIT
     do
         clear
-        if [ "$CHECK" == "COMPIL 42SH" ]
+        if [ "$CHECK" == "COMPIL 42sh" ]
             then
                 cd ..
                 make
                 cd testscript
                 cp ../42sh .
         fi
-        if [ "$CHECK" == "REMOVE 42SH" ]
+        if [ "$CHECK" == "REMOVE 42sh" ]
             then
                 cd ..
                 make fclean
+                rm -r 42sh.dSYM
                 cd testscript
                 rm 42sh
+                rm -r 42sh.dSYM
         fi
         if [ "$CHECK" == "NORM EXPANSIONS" ]
             then
-                norminette ../srcs/expansions | grep Error
+                norminette ../srcs/expansions
         fi
         if  [ "$CHECK" == 'SIMPLE' ]
             then
                 source menu_exp_simple.sh
+        fi
+        if  [ "$CHECK" == 'LEAKS' ]
+            then
+                sh leaks_tester.sh
         fi
         if [ "$CHECK" == 'ALL' ]
             then

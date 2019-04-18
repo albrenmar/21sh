@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 03:22:46 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_hist	*get_hist_nbr(int i)
 	return (history);
 }
 
-int		replace_str(int i, char *comp)
+int		replace_str(int i)
 {
 	t_hist	*history;
 
@@ -57,7 +57,7 @@ int		replace_str(int i, char *comp)
 		{
 			if (ft_strlen(history->line) > 0)
 			{
-				rem_str(comp);
+				ctrl_c();
 				add_to_str(ft_strdup(history->line));
 			}
 			return (0);
@@ -84,8 +84,8 @@ int		history_up(void)
 		return (0);
 	comp = ft_strdup(g_tracking.str);
 	i = ft_strlen(comp);
-	replace_str(history->index, comp);
-	free(comp);
+	replace_str(history->index);
+	ft_free(comp);
 	return (0);
 }
 
@@ -104,15 +104,15 @@ int		history_down(void)
 	if (g_tracking.histindex == g_tracking.histmax + 1)
 	{
 		comp = ft_strdup(g_tracking.str);
-		rem_str(comp);
-		free(comp);
+		ctrl_c();
+		ft_free(comp);
 	}
 	history = get_hist_nbr(g_tracking.histindex);
 	if (!history)
 		return (0);
 	comp = ft_strdup(g_tracking.str);
 	i = ft_strlen(comp);
-	replace_str(history->index, comp);
-	free(comp);
+	replace_str(history->index);
+	ft_free(comp);
 	return (0);
 }
