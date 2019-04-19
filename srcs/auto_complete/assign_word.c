@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assign_word.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 06:38:10 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/19 07:56:17 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ int			edge_case(void)
 		{
 			if (is_space_ac(tmp, (k - 2) == 1))
 			{
-				exit(0);
 				g_tracking.aut->word = ft_strdup("/");
 				return (1);
 			}

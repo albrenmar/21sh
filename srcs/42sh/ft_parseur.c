@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/19 07:41:06 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/20 00:56:13 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ t_last	*ft_parseur(int i, char *str)
 	lxpanded = ft_strnew(1);
 	if (!(line = quote_check(str)))
 		return (NULL);
-	line = alias_and_env(line);
+	//line = alias_and_env(line);
 	while (i < (int)ft_strlen(line) && line[i] && line[i] == ' ')
 		i++;
 	while (line[i] && (temp = recup_cmd(&line[i], &i, 0))!= NULL)
