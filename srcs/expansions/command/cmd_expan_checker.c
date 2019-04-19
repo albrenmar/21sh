@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 03:32:13 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/19 05:48:38 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,13 @@ t_last	*check_exp_error(t_last *cmd)
 	begin = cmd;
 	while (cmd)
 	{
-		expand_transformer(&cmd->name);
+		expand_transformer(&cmd->name, 1);
 		cmd = cmd->next;
 	}
 	cmd = begin;
 	if (!cmd)
 		return (NULL);
-	re_format_line(&cmd);
+//	re_format_line(&cmd);
 	if (cmd)
 		begin = cmd;
 	else
