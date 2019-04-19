@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 03:46:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/19 07:18:52 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	reassign_str_altern(char **str, t_analyzer *to_analy)
 	else
 	{
 		ft_strdel(str);
-		*str = ft_strdup(" ");
+//		*str = ft_strdup(" ");
+		*str = ft_strdup("");
 	}
 }

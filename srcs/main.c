@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/19 03:11:27 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	main_loop(char *line, char **argv)
 		if (write(0, argv[0], 0) != -1)
 			hist_lst_add_next(g_tracking.mysh->hist, line);
 		convert_list(cmd);
-		if (!(cmd = check_exp_error(first_cmd)))
-			first_cmd = cmd;
+//		if (!(cmd = check_exp_error(first_cmd)))
+//			first_cmd = cmd;
 		if (!(ret = error_lexer(cmd)))
 		{
 			if (cmd)

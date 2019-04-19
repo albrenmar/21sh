@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/16 02:06:38 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/19 03:55:05 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct	s_dataq
 	char		next_quote;
 }				t_dataq;
 
-char			expand_transformer(char **value);
+char			expand_transformer(char **value, int unq);
 t_expand		*new_expand(int len);
 void			create_list_expand(t_expand *new_letter, char *line);
 int				have_homedir(char *to_transf);
