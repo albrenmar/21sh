@@ -3,139 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   create_fich.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/20 13:24:49 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/25 03:57:44 by alsomvil         ###   ########.fr       */
+/*   Created: 2019/02/20 13:24:49 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:15:06 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
+#include "sh42.h"
 
-void		next_set_fd(int fd_in, int fd)
+void		restore_fd(void)
 {
-	if (fd_in == 0)
-		g_tracking.mysh->set_fd->STDIN = fd;
-	else if (fd_in == 1)
-		g_tracking.mysh->set_fd->STDOUT = fd;
-	else if (fd_in == 2)
-		g_tracking.mysh->set_fd->STDERR = fd;
-	else if (fd_in == 3)
-		g_tracking.mysh->set_fd->three = fd;
-	else if (fd_in == 4)
-		g_tracking.mysh->set_fd->four = fd;
-	else if (fd_in == 5)
-		g_tracking.mysh->set_fd->five = fd;
-	else if (fd_in == 6)
-		g_tracking.mysh->set_fd->six = fd;
-	else if (fd_in == 7)
-		g_tracking.mysh->set_fd->seven = fd;
-	else if (fd_in == 8)
-		g_tracking.mysh->set_fd->eight = fd;
-	else if (fd_in == 9)
-		g_tracking.mysh->set_fd->nine = fd;
+	dup2(10, 0);
+	close(10);
+	dup2(11, 1);
+	close(11);
+	dup2(12, 2);
+	close(12);
 }
 
-int			len_input_fd(char *str)
+void		save_fd(void)
 {
-	int		i;
-	char	*str2;
-
-	i = 0;
-	str2 = NULL;
-	while (str[i] && str[i] > 47 && str[i] < 58)
-		i++;
-	if (i > 0)
-	{
-		str2 = ft_strndup(str, i);
-		i = ft_atoi(str2);
-		free(str2);
-	}
-	else
-		i = 1;
-	return (i);
+	dup2(0, 10);
+	dup2(1, 11);
+	dup2(2, 12);
 }
 
-int			set_reddir_to_fd(t_last *list, int i)
+int			ft_error_descr(int descr)
 {
-	FILE	*fd_open;
+	ft_putstr_fd("42sh: ", 2);
+	ft_putstr_fd(ft_itoa(descr), 2);
+	ft_putendl_fd(": bad file descriptor", 2);
+	return (-1);
+}
+
+int			create_fich(char **tab_reddir, int i)
+{
 	int		fd_in;
 	int		fd_out;
 
-	fd_open = NULL;
-	fd_in = 0;
-	fd_out = 0;
-	fd_in = len_input_fd(list->name);
-	if (list->next)
-		fd_out = len_input_fd(list->next->name);
-	if (fd_in > 9 || fd_out > 9)
+	fd_in = search_in(tab_reddir[i], 1);
+	if (!its_double_reddir(tab_reddir[i]))
 	{
-		ft_putendl_fd("42sh: Bad file descriptor", 2);
-		return (-1);
-	}
-	if (list->next && list->next->name[0] > 47 && list->next->name[0] < 58)
-	{
-		fd_open = fdopen(list->next->name[0] - '0', "r+");
-		if (!fd_open)
+		if (ft_strlen(tab_reddir[i + 1]) == 1 && tab_reddir[i + 1][0] >= '0'
+				&& tab_reddir[i + 1][0] <= '9')
 		{
-			ft_putendl_fd("42sh: Bad file descriptor", 2);
-			return (-1);
+			fd_out = tab_reddir[i + 1][0] - '0';
+			if (write(fd_out, "0", 0) == -1)
+				return (ft_error_descr(fd_out));
 		}
-	}
-	else if (list->next && (ft_strlen(list->next->name) == 1)
-			&& !ft_strcmp(list->next->name, "-"))
-		fd_out = open("/dev/null", O_WRONLY);
-	else
-	{
-		ft_putendl_fd("42sh: Bad file descriptor", 2);
-		return (-1);
-	}
-	next_set_fd(fd_in, fd_out);
-	return (0);
-}
-
-void		set_reddir_fd(t_last *list)
-{
-	t_last	*temp;
-	int		fd_in;
-	int		fd_out;
-
-	fd_in = 0;
-	fd_out = 0;
-	temp = NULL;
-	temp = list;
-	fd_in = len_input_fd(temp->name);
-	while (temp->type != FICH)
-		temp = temp->next;
-	fd_out = open(temp->name, O_CREAT | O_TRUNC | O_RDWR, 0644);
-	if (fd_in < 10)
-		next_set_fd(fd_in, fd_out);
-}
-
-int			create_fich(t_last *list)
-{
-	t_last	*temp;
-
-	temp = list;
-	if (its_reddir_to_fd(list))
-	{
-		if (set_reddir_to_fd(list, 0) == -1)
-			return (-1);
-	}
-	else if (its_reddir(list))
-	{
-		while (list->type != FICH)
-			list = list->next;
-		if (g_tracking.mysh->set_fd->STDOUT != 1)
-			close(g_tracking.mysh->set_fd->STDOUT);
-		if (ft_strlen(temp->name) == 1)
-			g_tracking.mysh->set_fd->STDOUT = open(list->name, O_CREAT
-				| O_TRUNC | O_RDWR, 0644);
+		else if (!ft_strcmp(tab_reddir[i + 1], "-"))
+			fd_out = open("/dev/null", O_RDONLY);
 		else
-			g_tracking.mysh->set_fd->STDOUT = open(list->name, O_CREAT
-				| O_APPEND | O_RDWR, 0644);
+			fd_out = open(tab_reddir[i + 1], O_CREAT | O_TRUNC | O_RDWR, 0644);
 	}
-	else if (its_fd_reddir(list))
-		set_reddir_fd(list);
+	else
+		fd_out = open(tab_reddir[i + 1], O_CREAT | O_APPEND | O_RDWR, 0644);
+	dup2(fd_out, fd_in);
 	return (0);
 }

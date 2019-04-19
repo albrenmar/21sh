@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   auto_complete_bin.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 03:01:52 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 03:25:00 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-int		check_double(char *test)
+int					check_double(char *test)
 {
 	t_list			*buf;
 	t_ls			*tmp;
@@ -28,7 +28,7 @@ int		check_double(char *test)
 			if (tmp)
 			{
 				if (ft_strcmp(tmp->name, test) == 0)
-				return (1);
+					return (1);
 			}
 			buf = buf->next;
 		}
@@ -64,11 +64,11 @@ t_lstcontainer		*bin_ls(char *str)
 	t_lstcontainer	*liste;
 	char			**taab;
 
-	taab = malloc(sizeof(char *) * 4);
+	taab = ft_malloc(sizeof(char *) * 4);
 	taab[0] = "ls";
 	taab[1] = str;
 	liste = modified_ls(2, taab);
-	free(taab);
+	ft_free(taab);
 	return (liste);
 }
 

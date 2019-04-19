@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_search.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/23 22:04:28 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Created: 2019/04/19 02:53:39 by bsiche            #+#    #+#             */
+/*   Updated: 2019/04/19 03:22:08 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,16 @@ int			ft_return_key(void)
 	{
 		ft_bzero(g_tracking.str, g_tracking.buffsize);
 		g_tracking.pos->abs = 0;
+		ft_strdel(&g_tracking.search);
 		add_to_str(ft_strdup(g_tracking.found));
 	}
 	else
 	{
+		ft_strdel(&g_tracking.search);
 		print_line();
 		back_to_pos();
 	}
+	g_tracking.histindex = get_last() + 1;
 	g_tracking.found = NULL;
 	g_tracking.search = NULL;
 	return (1);
@@ -105,10 +108,9 @@ int			begin_search(void)
 			ft_putstr("No such string in history");
 		else
 			ft_putstr(g_tracking.found);
-		get_hist_ptr(g_tracking.search);
 		back_up();
 	}
-	free(g_tracking.search);
+	ft_strdel(&g_tracking.search);
 	g_tracking.search = NULL;
 	return (0);
 }

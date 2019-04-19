@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/27 16:30:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/27 07:50:42 by abguimba         ###   ########.fr       */
+/*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
+/*   Updated: 2019/04/19 03:08:18 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define SH42_H
 # include "libft.h"
 # include "ft_ls.h"
-# include "minishell.h"
+# include "token.h"
 # include "expansions.h"
+# include "temporal_env.h"
 # include "builtins.h"
 # include <sys/ioctl.h>
 # include <termios.h>
@@ -59,114 +60,118 @@
 
 typedef struct	s_cursor
 {
-	int		prompt;
-	int		abs;
-	int		x;
-	int		y;
-	int		relabs;
-	int		relx;
-	int		rely;
-	int		legacy;
+	int					prompt;
+	int					abs;
+	int					x;
+	int					y;
+	int					relabs;
+	int					relx;
+	int					rely;
+	int					legacy;
 }				t_cursor;
 
 typedef struct	s_term_data
 {
-	int		sizex;
-	int		sizey;
+	int					sizex;
+	int					sizey;
 }				t_term_data;
 
 typedef struct	s_auto
 {
-	char			*word;
-	char			*path;
-	char			*menuline;
-	t_lstcontainer	*bin_lst;
-	t_lstcontainer	*var_lst;
-	t_lstcontainer	*comp_list;
-	t_lstcontainer	*to_free;
-	t_lstcontainer	*page_lst;
-	int				active_page;
-	int				per_page;
-	int				page_nbr;
-	int				type;
-	char			*to_add;
-	int				col_nbr;
-	int				lin_nbr;
-	int				size;
-	int				line_up;
-	int				last_page;
-	int				pad_lpage;
-	int				hidden;
-	int				err;
-	int				to_add_y;
+	char				*word;
+	char				*path;
+	char				*menuline;
+	t_lstcontainer		*bin_lst;
+	t_lstcontainer		*var_lst;
+	t_lstcontainer		*comp_list;
+	t_lstcontainer		*to_free;
+	t_lstcontainer		*page_lst;
+	int					active_page;
+	int					per_page;
+	int					page_nbr;
+	int					type;
+	char				*to_add;
+	int					col_nbr;
+	int					lin_nbr;
+	int					size;
+	int					line_up;
+	int					last_page;
+	int					pad_lpage;
+	int					hidden;
+	int					err;
+	int					to_add_y;
+	int					to_rem;
 }				t_auto;
 
 typedef struct	s_cpaste
 {
-	int		b1;
-	int		b2;
-	char	*line;
+	int					b1;
+	int					b2;
+	char				*line;
 }				t_cpaste;
 
 typedef struct	s_keyval
 {
-	char	*key;
-	char	*value;
+	char				*key;
+	char				*value;
 }				t_keyval;
 
-typedef struct			s_hist
+typedef struct	s_hist
 {
-	struct s_hist	*next;
-	struct s_hist	*previous;
-	int				index;
-	char			*line;
-}						t_hist;
+	struct s_hist		*next;
+	struct s_hist		*previous;
+	int					index;
+	char				*line;
+}				t_hist;
 
 typedef struct	s_tree
 {
-	int			type;
-	char		*cmd;
-	t_last		*list_cmd;
-	struct s_tree	*right;
-	struct s_tree	*left;
-	struct s_tree	*prev;
+	int					type;
+	char				*cmd;
+	t_last				*list_cmd;
+	struct s_tree		*right;
+	struct s_tree		*left;
+	struct s_tree		*prev;
 }				t_tree;
 
-typedef struct	s_set_fd
+typedef struct	s_resetenv
 {
-	int		STDIN;
-	int		STDOUT;
-	int		STDERR;
-	int		three;
-	int		four;
-	int		five;
-	int		six;
-	int		seven;
-	int		eight;
-	int		nine;
-}				t_set_fd;
+	int					resetenv;
+	int					cmdindex;
+	struct s_resetenv	*next;
+}				t_resetenv;
+
+typedef struct	s_tmpenv
+{
+	char				*key;
+	char				*value;
+	int					cmdindex;
+	struct s_tmpenv		*next;
+}				t_tmpenv;
 
 typedef struct	s_shell
 {
 	t_lstcontainer	*alias_lst;
 	t_lstcontainer	*env;
+	t_lstcontainer	*envsave;
+	t_lstcontainer	*set_env;
 	t_hist			*hist;
-	t_set_fd		*set_fd;
-	t_env_set		*setenv_lst;
+	t_resetenv		*resetenv;
+	t_tmpenv		*tmpenv;
 	char			**tab_env;
+	char			**tab_reddir;
 	int				expand_error;
 	int				err_expend;
 	int				errchk;
 }				t_shell;
 
-typedef struct		s_hash
+typedef struct	s_hash
 {
-    char			*binary;
-	char			*path;
-	int				totalhits;
-    struct s_hash	*nextbinary;
-}
-					t_hash;
+	char				*binary;
+	char				*path;
+	int					totalhits;
+	struct s_hash		*nextbinary;
+}				t_hash;
 
 typedef struct	s_tracking
 {
@@ -178,6 +183,8 @@ typedef struct	s_tracking
 	struct s_shell		*mysh;
 	struct s_jobs		*jobs;
 	struct s_hash		*hashtable[27];
+	struct s_ptr_list	*garbage;
+	struct s_ptr_list	*mmalloc;
 	char				**g_tab_exec;
 	int					builtin;
 	t_cursor			*pos;
@@ -200,84 +207,79 @@ typedef struct	s_tracking
 	int					histmax;
 	int					interactive;
 	int					lastreturn;
+	int					expandreturn;
 	int					sterminal;
 	pid_t				spid;
-	int					bg;
-	int					fg;
 	int					shebang;
-	int					unlink;
 	int					herenbr;
-	int					redir;
+	int					cmdindex;
 	int					foreground;
 	int					hist_first;
 }				t_tracking;
 
 typedef struct	s_comm
 {
-	int				status;
-	struct s_comm	*next;
-	pid_t			cpid;
-	int				done;
-	int				stopped;
+	int					status;
+	struct s_comm		*next;
+	pid_t				cpid;
+	int					done;
+	int					stopped;
 }				t_comm;
 
 typedef struct	s_jobs
 {
-	int				currentback;
-	int				current;
-	int				startback;
-	struct s_jobs	*next;
-	struct s_jobs	*prev;
-	char			*name;
-	char			wd[4096 + 1];
-	int				stdin;
-	int				stdout;
-	int				stderr;
-	int				place;
-	int				background;
-	pid_t			jpid;
-	int				notified;
-	int				backstart;
-	struct termios	jterm;
-	struct s_comm	*t_command;
+	int					currentback;
+	int					current;
+	int					startback;
+	struct s_jobs		*next;
+	struct s_jobs		*prev;
+	char				*name;
+	char				wd[4096 + 1];
+	int					stdin;
+	int					stdout;
+	int					stderr;
+	int					place;
+	int					background;
+	pid_t				jpid;
+	int					notified;
+	int					backstart;
+	struct termios		jterm;
+	struct s_comm		*t_command;
 }				t_jobs;
 
 t_tracking		g_tracking;
 
 void			init_shell(char **environ, char **argv);
 char			*ft_usrmode(mode_t mode);
-void			ft_printlist();
 char			*ft_true_pwd(void);
 int				get_key(void);
+int				check(char *str);
+int				single_key(char c);
+int				return_loop(int i, char *str);
+int				readloop(int i, int fd);
+void			basic_mode(void);
 void			ft_return(void);
 int				ft_exec_key(char *str);
 int				is_cmd(char *str);
 int				yan_putchar(int c);
 void			get_term(void);
-void			ft_siginit(void);
-void			set_back_term(void);
-void			ft_colorstat(void);
 int				clear_screen3(void);
-int				clear_screen2(void);
 void			update_pos(void);
 void			add_to_str(char *str);
 void			rem_from_str(void);
 void			rem_from_str_del(void);
 void			get_size(void);
-int				utf_byte(char c);
 int				utf_strlen(char *str);
 int				get_nb_char(unsigned char c);
 int				utf_goto(char *str, int j);
 void			go_home(void);
 void			go_end(void);
-void		    print_line(void);
-void			correct_pos(void);
+void			print_line(void);
 void			back_to_pos(void);
-void			move_to_end();
+void			move_to_end(void);
 void			move_left(void);
 void			move_right(void);
 void			back_home(void);
-void			go_to_pos(void);
 void			cursorinit(void);
 void			cursor_reset(void);
 void			move_up(void);
@@ -285,7 +287,8 @@ int				check_up(void);
 void			move_down(void);
 int				check_down(void);
 void			next_word(void);
-void			prev_word();
+void			prev_word(void);
+void			print_and_go(int i);
 int				rev_utf_goto(char *str, int j);
 void			begin_cpy(void);
 void			begin_paste(void);
@@ -294,16 +297,14 @@ t_lstcontainer	*modified_ls(int argc, char **argv);
 int				auto_complete(void);
 void			check_hidden(void);
 int				check_type(void);
-void			get_line_col(void);
 void			get_max_size(void);
 void			ft_strpadding(void);
 t_lstcontainer	*build_ls(void);
-int				ft_easyprint(t_list *liste);
-void			print_list(void);
 void			build_comp(t_lstcontainer *list);
 void			completion_loop(t_lstcontainer *list);
 void			complete_usr_word(void);
 void			complete_usr_var(void);
+int				is_space_ac(char *tmp, int i);
 void			rem_str(char *str);
 void			assign_type(void);
 void			clean_up_autoc(void);
@@ -312,28 +313,32 @@ void			back_up_add(void);
 void			go_back_down(void);
 char			*send_color(int i);
 void			color(t_list *liste);
+int				is_spaces(char *str, int i, int mode);
 int				print_menu(void);
 int				end_autocomplete(int i);
+int				end_word(int mode);
 void			build_bin_lst(void);
 t_list			*move_arround(t_list *buf, int i);
 void			set_up_page(void);
-t_lstcontainer *build_page_lst(t_lstcontainer *list);
-void			build_var_lst();
-void			print_list2(t_lstcontainer *list);
+t_lstcontainer	*build_page_lst(t_lstcontainer *list);
+void			build_var_lst(void);
 void			change_page(int i, t_lstcontainer *list);
 void			join_page_nbr(void);
 void			line_per_page(void);
 void			escape_path(void);
-t_lstcontainer	*change_dir(void);
+char			*swap_alias(char *str, int j, int isave, t_keyval *tmp);
+char			*check_if_first_word_alias(char *str, int i, int isave);
+int				next_separator(char *str, int i);
+char			*aliased_line(char **taab, int i, int j);
+char			*alias_swapper(char *line, int i, int count);
+void			alias_swapper_helper(int i, int j, char *line, char **taab);
 int				init_alias(void);
 int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
-void			apply_alias(t_last *list);
 char			*return_alias(char *name);
 void			print_alias_lst(void);
 int				unalias(char *alias);
 int				unalias_blt(void);
-int				ft_build_test(char *string);
 int				two_arg(char **argv, int i);
 char			**copy_tab_minus_one(int argc, char **argv);
 int				count_arg(char **taab);
@@ -345,112 +350,90 @@ int				replace_env_str(char *s1, char *s2);
 void			ft_add_env_string(char *s1, char *s2);
 char			*remove_env_string(char *str);
 char			*ft_true_pwd(void);
-void			add_missing_string();
+void			add_missing_string(void);
 void			ctrl_d(void);
 void			ctrl_c(void);
 void			clean_up_leaks(void);
 t_ls			*ls_alloc(char *str);
 int				ctrl_key(char c);
-void			jobs_builtin_output(t_jobs *tmp, int mode, int number, int options);
+void			is_still_atty(void);
+void			jobs_builtin_output(t_jobs *tmp, int mode, int number,
+					int options);
 int				bg_builtin_output(t_jobs *tmp, char *hold);
 int				fg_builtin_output(t_jobs *tmp, char *hold);
 int				type_main(void);
 char			*exist_fonction(char *cmd);
+char			*quote_check(char *str);
+char			*ft_modif_line(char *line);
+int				check_basic_quotes(char *line);
 
-int				ft_isspace(int c);
-int				ft_isdigit_str(char* str);
 int				is_escape(char *str, int i);
-char			*ft_strrdup(char *line, int n);
-t_hist			*builtin_s_args(char **tabb, t_hist *hist);
 void			hist_file_to_lst(void);
+void			hist_lst_add_next(t_hist *hist, char *line);
+void			hist_save_file(t_hist *hist);
+t_hist			*hist_lst_create(char *line);
 char			*create_path_hist(void);
-int				print_hist();
-int				get_last();
+void			free_hist(void);
+int				get_last(void);
 int				go_to(int i);
 int				history_up(void);
 int				history_down(void);
-t_hist			*hist_lst_create(char *line);
-void			hist_lst_add_next(t_hist *hist, char *line);
-void			hist_print(t_hist *hist);
-t_hist			*hist_free(void);
-void			hist_save_file(t_hist *s_hist);
-t_hist			*hist_remap_index(t_hist *hist);
-t_hist			*hist_delete_index(t_hist *hist, int index);
-int     		begin_search(void);
-char         	*get_hist_ptr(char *needle);
-t_hist			*get_hist_nbr(int i);
-int				history(void);
-void			free_hist(void);
-void			history_builtin_s(void);
-void			history_builtin(void);
-// void			history_setup(void);
-void			history_builtin_delete_index(int j);
-t_hist			*hist_delete_last(t_hist *hist);
-void			history_builtin_p(void);
-void			history_builtin_digit(void);
-void			hist_save_file_w(char *path);
-char			*shebang_num_neg(char *line, char *last_line);
-char			*shebang_num_pos(char *line, char *last_line);
-char			*shebang_word(char *line, char *last_line);
-char		 	*shebang_parse_switch(char *line);
-int				delete_index(int index);
-int				delete_index_special(void);
-int				search_index_to_delete(int index);
-int				search_index_to_delete_neg(int index);
-int				delete_index_dispatch(int index);
-int				delete_index_neg(void);
-int				delete_index_special_neg(void);
-
 t_last			*create_new_list(void);
-t_last			*ft_parseur(char *line);
+t_last			*ft_parseur(int i, char *line);
 void			ft_lexeur(t_last *list_cmd);
-void			tri_lexer(t_last *list_cmd);
 void			ft_ast(t_last *list_command);
 void			execute_ast(t_tree *tree, t_jobs *job);
-int				exec_command(t_last *list, int foreground, t_jobs *job);
+int				exec_command(t_last *list, int foreg, t_jobs *job, int readp);
 void			convert_list(t_last *list);
 int				its_reddir(t_last *list);
 int				its_fd_reddir(t_last *list);
-int				its_reddir_to_fd(t_last *list);
 int				its_pipe(t_last *list);
 int				its_separator(t_last *list);
 char			*its_quote(int i, char *str, int *nb, char c);
 char			**create_tab_to_exec(t_last *list);
-int				execute_pipe(t_last **list, t_jobs *job, int readpipe);
-void			execute_two(char **tab_cmd);
-void			execute_pipe_two(char **tab_exec, t_jobs *job, int readpipe);
-char			**test_exist_fonction(char **tab_cmd, int mode);
+int				execute_pipe(t_last **list, t_jobs *job, int readpipe,
+					char ***tab_reddir);
+void			execute_two(char **tab_cmd, char **tab_exec_hold);
+void			execute_pipe_two(char **tab_exec, t_jobs *job, int readpipe,
+					char ***tab_reddir);
+void			close_fd(void);
+char			**test_exist_fonct(char **t_c, int mode, char *p, char **pl);
 int				error_lexer(t_last *list_cmd);
-int				create_fich(t_last *list);
-void			print_last(t_last *list);
+int				create_fich(char **tab_reddir, int i);
 int				its_eper(t_last *list);
 char			**tab_dup(char **tob);
 char			*search_fd_reddir(char *str);
 char			*search_reddir(char *str);
-char			*search_normally_arg(char *str, int *nb);
+char			*search_normally_arg(char *str, int *nb, int i);
 char			*search_symboll(char *str);
 int				its_not_symbol(char c);
-char			*check_quote(char *line, int i, char c);
+char			*check_quote(char c);
 char			*check_bracket(char *line, int i);
 int				ft_valid_quote(char *line, char c, int flag);
 int				ft_valid_bracket(char *line);
-int				its_heredoc(t_last *list);
-int				its_indir(t_last *list);
-int				out_redir(t_last *list);
-void			set_fd_and_descr(void);
+int				its_heredoc(char *str);
+int				its_indir(char *str);
+int				out_redir(char **tab_reddir, int i);
 void			exec_in_pipe(t_last *list_cmd, t_jobs *job, int descrf[2]);
 int				exec_create_file(t_last **list_cmd);
 void			set_jobs(t_jobs *job, pid_t pid0);
-void			close_and_dup(int mode);
+void			jobs_builtin_mode_helper(t_jobs *tmp, int options);
 void			set_new_process(t_jobs *job, pid_t pid0);
-void			swap_descrf(void);
-void			set_fd_before_exec(void);
+void			free_ast(t_tree *tree, t_last *next_free);
+t_last			*ret_error(char *line);
+int				search_in(char *str, int mode);
+int				its_double_reddir(char *str);
+int				make_reddir(char **tab_reddir, int i);
+void			restore_fd(void);
+void			save_fd(void);
+void			save_reddir(t_last **list, char ***tab_reddir);
+void			execute_reddir(char ***tab_reddir);
+int				clean_reddir(char ***tab_reddir);
 
 void			get_coolprompt(void);
 void			print_prompt(void);
 void			transform_cwd(int i);
 int				spaces_line_check(char *line);
-void			clean_tab_exec(char **tab_exec);
 
 void			interactive_check_set_shell_group(void);
 void			set_shell_signal_handlers(void);
@@ -463,19 +446,18 @@ int				hash_maker(const char c);
 t_hash			*new_binary_hash(char *binary, char *path, int hits);
 int				errors_hash(char *binary, int error);
 int				ft_hash(void);
-void			ft_hash_output(void);
 int				empty_hash_table(void);
-int				hash_update_commands(int j);
-char			**tab_format_hash(char *binary);
 char			**hashed_command(char **tab_exec, int index);
 int				ft_hash_arg(int j);
 void			ft_hash_output_helper(t_hash *tmp, int spaces);
 void			hash_update_helper(t_hash *tmp, int index, int j, char **c);
+int				hash_update_commands(int j);
 
 int				argc_error(void);
 int				exec_errors(char **tab_exec, int mode);
-int				exec_errors_dir(void);
+void			free_mysh(void);
 
+void			free_tabs_and_exit(char **envhold, char **tab_exec_hold);
 t_jobs			*new_job_helper(t_jobs *tmp);
 char			*job_name_maker_helper(int spaces, int len, t_last *head);
 t_jobs			*new_job(t_last *part, int background);
@@ -488,9 +470,6 @@ char			*parse_job_number(char *str);
 int				job_exists(int place);
 int				parse_job_sign(char *str);
 int				errors_jobs(char option, int nb, int error);
-int				cmd_checker(t_last *part, int mode, t_jobs *job);
-void			free_last(t_last **cmd);
-char			*check_separator(t_last *part);
 int				suspended_jobs_count(void);
 void			free_all_jobs(void);
 void			update_status(void);
@@ -500,18 +479,32 @@ void			free_job(t_jobs *job);
 void			jobs_notifications(void);
 void			jobs_update_current(void);
 int				update_st_help(t_jobs *job, pid_t pid, t_comm *cmd, int status);
-void			free_j_help(int mode, t_jobs *job, t_jobs *hold, t_jobs *hold2);
 int				job_control_errors(pid_t pid, int mode, int returnvalue);
-t_jobs			*jobs_update_help(t_jobs *tmp, t_jobs *hold);
-void			setup_curr_back(t_jobs *tmp, int curr, int back);
-void			jobs_updater(t_jobs *tmp, t_jobs *hold);
-void			jobs_update_currentback(int mode);
 void			show_job_info_helper(t_jobs *job, int mode);
 void			jobs_notifications_output(t_jobs *job);
 void			jobs_notif_helper(t_jobs *job, t_jobs *last, t_jobs *next);
-
+void			reset_all(void);
 int				main_test(int flag);
 char			**init_envp(t_lstcontainer *env);
 int				exist_builtin(char *cmd);
+t_last			*check_exp_error(t_last *cmd);
+void			free_keyval(t_lstcontainer *list);
+void			next_cmd_update(void);
 
+void			put_unexpected_token(char *sym);
+char			*exec_create_heredoc(char *eof);
+char			*end_line(char *line);
+int				check_eol(char *line);
+void			close_fd_copy(void);
+char			*alias_and_env(char *line);
+void			init_str(void);
+void			ft_lstdelcmd(t_last *el);
+void			test_loop(char **argv, char *line);
+void			main_loop(char *line, char **argv);
+void			assign_word(void);
+int				exec_sh(void);
+int				exit_reddir(void);
+char			*get_hist_ptr(char *needle);
+int				begin_search(void);
+t_hist			*get_hist_nbr(int i);
 #endif

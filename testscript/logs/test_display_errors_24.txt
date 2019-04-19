@@ -1,0 +1,1 @@
+42sh: /Users/mjose/Projects/42sh/testscript: is a directory

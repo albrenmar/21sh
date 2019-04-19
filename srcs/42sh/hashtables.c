@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   hashtables.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 04:32:43 by abguimba         ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
 #include "sh42.h"
 
 char		**hashed_command(char **tab_exec, int i)
@@ -18,12 +17,10 @@ char		**hashed_command(char **tab_exec, int i)
 	char	**newtab;
 	t_hash	*tmp;
 
-	if (!(strchr(g_tracking.g_tab_exec[0], '/')))
-		return (NULL);
 	while (tab_exec[0][i] && (tab_exec[0][i] <= 65 || tab_exec[0][i] > 122))
 		i++;
 	i = hash_maker(tab_exec[0][i]);
-	if (i < 0 || i > 25)
+	if (i < 0 || i > 25 || !(ft_strchr(g_tracking.g_tab_exec[0], '/')))
 		return (NULL);
 	newtab = tab_dup(tab_exec);
 	ft_strdel(&newtab[0]);
@@ -39,6 +36,7 @@ char		**hashed_command(char **tab_exec, int i)
 		tmp = tmp->nextbinary;
 	}
 	free_tab(tab_exec);
+	free_tab(newtab);
 	return (NULL);
 }
 
@@ -46,7 +44,7 @@ t_hash		*new_binary_hash(char *binary, char *path, int hits)
 {
 	t_hash	*new;
 
-	if (!(new = malloc(sizeof(t_hash))))
+	if (!(new = ft_malloc(sizeof(t_hash))))
 		return (NULL);
 	new->binary = ft_strdup(binary);
 	new->path = ft_strdup(path);
@@ -92,13 +90,13 @@ void		hash_binary(void)
 	int		i;
 
 	binaryhold = NULL;
-	if (strchr(g_tracking.g_tab_exec[0], '/'))
+	if (ft_strchr(g_tracking.g_tab_exec[0], '/'))
 		return ;
 	binaryhold = ft_strdup(g_tracking.g_tab_exec[0]);
 	i = 0;
 	while (binaryhold[i] && (binaryhold[i] <= 65 || binaryhold[i] > 122))
 		i++;
-	if (!(test_exist_fonction(g_tracking.g_tab_exec, 1)))
+	if (!(test_exist_fonct(g_tracking.g_tab_exec, 1, NULL, NULL)))
 		return (ft_strdel(&binaryhold));
 	hashedvalue = hash_maker(binaryhold[i]);
 	if (hashedvalue >= 0 && hashedvalue <= 25)

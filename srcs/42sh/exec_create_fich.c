@@ -3,32 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   exec_create_fich.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/18 16:42:28 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/27 04:42:57 by alsomvil         ###   ########.fr       */
+/*   Created: 2019/03/18 16:42:28 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
+#include "sh42.h"
 
-void	proto_heredoc(t_last *list, int fd)
+int		ctrl_c_heredoc(char *file)
+{
+	ft_strdel(&file);
+	return (1);
+}
+
+int		return_success(void)
+{
+	if (g_tracking.cmd)
+		ft_free(g_tracking.cmd);
+	ft_free(g_tracking.str);
+	return (0);
+}
+
+int		proto_heredoc(char *eof, int fd, char *file)
 {
 	char	*str;
 
 	str = NULL;
-	while (ft_strcmp(str, list->next->name) != 0)
+	if (g_tracking.interactive == 0)
+		return (0);
+	while (ft_strcmp(str, eof) != 0 && g_tracking.quotes != 10)
 	{
+		ft_strdel(&str);
+		str = NULL;
 		g_tracking.quotes = 3;
 		get_key();
-		if (g_tracking.quotes == 10)
-			ft_exit(1, EXIT_SUCCESS);
+		if (g_tracking.quotes == 11)
+			return (ctrl_c_heredoc(file));
 		str = ft_strdup(g_tracking.cmd);
-		if (ft_strcmp(str, list->next->name) != 0)
+		ft_strdel(&g_tracking.cmd);
+		if (ft_strcmp(str, eof) != 0)
 			ft_putendl_fd(str, fd);
 		ft_putchar_fd('\n', 2);
 	}
-	ft_exit(1, EXIT_SUCCESS);
+	if (str)
+		ft_free(str);
+	return (return_success());
 }
 
 char	*filename(void)
@@ -44,7 +65,7 @@ char	*filename(void)
 	new = ft_strjoinfree(new, nbr, 3);
 	while (access(new, F_OK) != -1)
 	{
-		free(new);
+		ft_free(new);
 		new = ft_strdup("/tmp/heredoc");
 		g_tracking.herenbr++;
 		nbr = ft_itoa(g_tracking.herenbr);
@@ -55,57 +76,24 @@ char	*filename(void)
 	return (new);
 }
 
-int		exec_create_heredoc(t_last **list_cmd)
+char	*exec_create_heredoc(char *eof)
 {
 	char	*file;
 	int		fd;
-	pid_t	father;
 
 	file = filename();
+	if (!eof)
+		return (NULL);
 	if ((fd = open(file, O_CREAT | O_RDWR)) == -1)
 	{
 		ft_putendl_fd("Couldn't create fich in /temp", 2);
-		return (-1);
+		return (NULL);
 	}
-	father = fork();
-	if (father == 0)
-		proto_heredoc(*list_cmd, fd);
-	else
-		wait(&father);
-	close(fd);
-	fd = open(file, O_RDONLY);
-	g_tracking.mysh->set_fd->STDIN = fd;
-	if (g_tracking.unlink == 1)
+	if ((proto_heredoc(eof, fd, file)) == 1)
 	{
-		unlink(file);
-		g_tracking.herenbr--;
-	}
-	return (0);
-}
-
-int		exec_create_file(t_last **list_cmd)
-{
-	if (its_indir(*list_cmd) && !its_heredoc(*list_cmd))
-	{
-		if ((g_tracking.mysh->set_fd->STDIN = out_redir(*list_cmd)) == -1)
-		{
-			g_tracking.mysh->set_fd->STDIN = 0;
-			*list_cmd = (*list_cmd)->next;
-			return (-1);
-		}
-		*list_cmd = (*list_cmd)->next;
-	}
-	else if (its_heredoc(*list_cmd))
-	{
-		if (exec_create_heredoc(list_cmd) == -1)
-			return (-1);
-		*list_cmd = (*list_cmd)->next;
+		ft_strdel(&g_tracking.str);
+		return (NULL);
 	}
 	else
-	{
-		if (create_fich(*list_cmd) == -1)
-			return (-1);
-		*list_cmd = (*list_cmd)->next;
-	}
-	return (0);
+		return (file);
 }

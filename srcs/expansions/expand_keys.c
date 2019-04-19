@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/27 09:37:45 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,30 +66,31 @@ void		exp_key_start_hash(char **str, t_expand *expand)
 		to_error = ft_strjoinfree("#", to_analy.varname, 0);
 		print_exp_error(to_error);
 		ft_strdel(&to_error);
+		ft_strdel(str);
+		*str = ft_strdup(" ");
 	}
 	end_analyzer(to_analy);
 }
 
-char		check_sign(t_expand *expand)
+t_expand	*expand_keys_extension(t_expand *expand, char **str, char sign)
 {
-	t_expand	*to_run;
-	char		sign;
-
-	to_run = expand;
-	sign = '\0';
-	while (to_run)
+	if (sign == '#')
+		exp_key_unique_hash(str, expand);
+	else if (sign == '3')
+		exp_key_double_hash(str, expand);
+	else if (sign == '%')
+		exp_key_unique_percent(str, expand);
+	else if (sign == '5')
+		exp_key_double_percent(str, expand);
+	else if (sign == '*' || sign == '/')
+		exp_key_altern(str, expand);
+	else if (sign == 'E')
 	{
-		if (!sign)
-		{
-			sign = is_slash_sign(to_run);
-			if (!sign)
-				sign = is_two_points_sign(to_run);
-			if (!sign)
-				sign = is_diferent_sign(to_run);
-		}
-		to_run = to_run->next;
+		print_exp_error(*str + 1);
+		ft_strdel(str);
+		*str = ft_strdup(" ");
 	}
-	return (sign);
+	return (expand);
 }
 
 t_expand	*expand_keys(t_expand *expand, char **str)
@@ -107,18 +108,7 @@ t_expand	*expand_keys(t_expand *expand, char **str)
 		exp_key_plus(str, expand);
 	else if (sign == '@')
 		exp_key_start_hash(str, expand);
-	else if (sign == '#')
-		exp_key_unique_hash(str, expand);
-	else if (sign == '3')
-		exp_key_double_hash(str, expand);
-	else if (sign == '%')
-		exp_key_unique_percent(str, expand);
-	else if (sign == '5')
-		exp_key_double_percent(str, expand);
-	else if (sign == '*' || sign == '/')
-		exp_key_altern(str, expand);
-//	update_list_expand(&expand, str);
-/*	if (!expand->ltr)
-		return (NULL);
-	*/return (expand);
+	else
+		expand = expand_keys_extension(expand, str, sign);
+	return (expand);
 }

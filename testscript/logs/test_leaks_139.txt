@@ -1,0 +1,53 @@
+==7469== Memcheck, a memory error detector
+==7469== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==7469== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==7469== Command: ./42sh
+==7469== 
+==7469== Syscall param msg->desc.port.name points to uninitialised byte(s)
+==7469==    at 0x10042134A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)
+==7469==    by 0x100420796: mach_msg (in /usr/lib/system/libsystem_kernel.dylib)
+==7469==    by 0x10041A485: task_set_special_port (in /usr/lib/system/libsystem_kernel.dylib)
+==7469==    by 0x1005B610E: _os_trace_create_debug_control_port (in /usr/lib/system/libsystem_trace.dylib)
+==7469==    by 0x1005B6458: _libtrace_init (in /usr/lib/system/libsystem_trace.dylib)
+==7469==    by 0x10011F9DF: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==7469==    by 0x10004DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==7469==    by 0x10004DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==7469==    by 0x1000494A9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==7469==    by 0x100049440: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==7469==    by 0x100048523: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==7469==    by 0x1000485B8: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==7469==  Address 0x1048c0d2c is on thread 1's stack
+==7469==  in frame #2, created by task_set_special_port (???:)
+==7469== 
+42sh: ${%%test}: bad substitution
+==7469== 
+==7469== HEAP SUMMARY:
+==7469==     in use at exit: 25,338 bytes in 176 blocks
+==7469==   total heap usage: 1,529 allocs, 1,353 frees, 79,311 bytes allocated
+==7469== 
+==7469== 72 bytes in 3 blocks are possibly lost in loss record 32 of 56
+==7469==    at 0x1000CF0B2: calloc (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==7469==    by 0x10062A832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==7469==    by 0x10063DD6A: map_images (in /usr/lib/libobjc.A.dylib)
+==7469==    by 0x10003D03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==7469==    by 0x10003D255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==7469==    by 0x10027800A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==7469==    by 0x10062A072: _objc_init (in /usr/lib/libobjc.A.dylib)
+==7469==    by 0x10020B68D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==7469==    by 0x10020B63A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==7469==    by 0x10011F9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==7469==    by 0x10004DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==7469==    by 0x10004DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==7469== 
+==7469== LEAK SUMMARY:
+==7469==    definitely lost: 0 bytes in 0 blocks
+==7469==    indirectly lost: 0 bytes in 0 blocks
+==7469==      possibly lost: 72 bytes in 3 blocks
+==7469==    still reachable: 7,388 bytes in 20 blocks
+==7469==         suppressed: 17,878 bytes in 153 blocks
+==7469== Reachable blocks (those to which a pointer was found) are not shown.
+==7469== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==7469== 
+==7469== For counts of detected and suppressed errors, rerun with: -v
+==7469== Use --track-origins=yes to see where uninitialised values come from
+==7469== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)

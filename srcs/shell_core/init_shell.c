@@ -3,37 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/28 04:48:05 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-void	ft_printlist(void)
+void	reset_all(void)
 {
-	t_list			*tmp;
-	t_keyval		*buf;
-
-	tmp = g_tracking.mysh->env->firstelement;
-	buf = NULL;
-	while (tmp)
-	{
-		buf = tmp->content;
-		ft_putstr(buf->key);
-		ft_putchar('=');
-		ft_putendl(buf->value);
-		tmp = tmp->next;
-	}
+	reset_tmpenv();
+	reset_resetenv();
+	cursor_reset();
 }
 
 void	init_global(void)
 {
+	g_tracking.mysh->resetenv = NULL;
+	g_tracking.mysh->envsave = NULL;
+	g_tracking.mysh->tmpenv = NULL;
+	g_tracking.mysh->expand_error = 0;
+	g_tracking.mysh->err_expend = 0;
+	g_tracking.cmdindex = -1;
 	g_tracking.builtin = 0;
 	g_tracking.jobs = NULL;
 	g_tracking.lastreturn = 0;
+	g_tracking.expandreturn = 0;
 	g_tracking.mysh->hist = NULL;
 	g_tracking.mysh->alias_lst = NULL;
 	g_tracking.g_tab_exec = NULL;
@@ -49,10 +46,10 @@ void	init_shell(char **environ, char **argv)
 	int			i;
 
 	i = 0;
-	if (!(mysh = malloc(sizeof(t_shell))))
+	if (!(mysh = ft_malloc(sizeof(t_shell))))
 	{
 		ft_putendl("Failed to allocate memory");
-		ft_exit(1, EXIT_FAILURE);
+		ft_exit2(EXIT_FAILURE);
 	}
 	while (i++ < 27)
 		g_tracking.hashtable[i] = NULL;
@@ -66,7 +63,7 @@ void	init_shell(char **environ, char **argv)
 	if (write(0, argv[0], 0) != -1)
 		hist_file_to_lst();
 	g_tracking.mysh->tab_env = init_envp(g_tracking.mysh->env);
-	g_tracking.mysh->setenv_lst = NULL;
+	g_tracking.mysh->set_env = NULL;
 	g_tracking.mysh->expand_error = 0;
 	g_tracking.quotes = 0;
 }

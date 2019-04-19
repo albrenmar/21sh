@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   set_exec_pipe.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/18 18:22:41 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/24 04:42:16 by alsomvil         ###   ########.fr       */
+/*   Created: 2019/03/18 18:22:41 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
-
-void		set_fd_before_exec(void)
-{
-	if (g_tracking.mysh->set_fd->STDIN != 0)
-	{
-		dup2(g_tracking.mysh->set_fd->STDIN, 0);
-		close(g_tracking.mysh->set_fd->STDIN);
-	}
-	if (g_tracking.mysh->set_fd->STDOUT != 1)
-	{
-		dup2(g_tracking.mysh->set_fd->STDOUT, 1);
-		close(g_tracking.mysh->set_fd->STDOUT);
-	}
-	if (g_tracking.mysh->set_fd->STDERR != 2)
-	{
-		dup2(g_tracking.mysh->set_fd->STDERR, 2);
-		close(g_tracking.mysh->set_fd->STDERR);
-	}
-}
+#include "sh42.h"
 
 void		set_new_process(t_jobs *job, pid_t pid0)
 {

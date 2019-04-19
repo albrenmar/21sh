@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   makelist.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 17:42:49 by bsiche            #+#    #+#             */
-/*   Updated: 2018/12/19 01:01:09 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ DIR				*chkdir(char *str, int *check)
 		if (errno == ENOTDIR || errno == ELOOP)
 			*check = 1;
 		else
-			free(dir);
+			ft_free(dir);
 		return (NULL);
 	}
 	else
@@ -97,6 +97,6 @@ t_lstcontainer	*makelist(t_lstcontainer *mainliste, DIR *dir,
 		info->issimple = 0;
 		addstruct(mainliste, option, info, a);
 	}
-	free(file);
+	ft_free(file);
 	return (mainliste);
 }

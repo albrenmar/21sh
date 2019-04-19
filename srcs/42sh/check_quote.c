@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_quote.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/16 16:47:21 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 02:36:41 by abguimba         ###   ########.fr       */
+/*   Created: 2019/03/16 16:47:21 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:12:05 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
+# include "sh42.h"
 
 int		ft_valid_quote(char *line, char c, int flag)
 {
@@ -19,6 +19,8 @@ int		ft_valid_quote(char *line, char c, int flag)
 
 	i = 0;
 	temp = (c == '"' ? '\'' : '"');
+	if (!line)
+		return (2);
 	while (line[i])
 	{
 		if (line[i] == temp && flag == 0)
@@ -38,30 +40,38 @@ int		ft_valid_quote(char *line, char c, int flag)
 	return (flag == 0 ? 0 : 1);
 }
 
-char	*check_quote(char *line, int i, char c)
+char	*del_tools(char **ret)
+{
+	ft_strdel(&g_tracking.cmd);
+	ft_strdel(ret);
+	ft_strdel(&g_tracking.str);
+	return (NULL);
+}
+
+char	*check_quote(char c)
 {
 	char	*ret;
 	int		test;
 
 	ret = NULL;
 	test = 1;
-	while (line[i])
-		i++;
 	while (test == 1)
 	{
+		ret = ft_strjoinchar(ret, '\n', 1);
 		if (c == '"')
 			g_tracking.quotes = 1;
 		if (c == '\'')
 			g_tracking.quotes = 2;
 		get_key();
 		if (g_tracking.quotes == 10)
-			ft_exit(1, EXIT_SUCCESS);
+			return (del_tools(&ret));
 		test = ft_valid_quote(g_tracking.cmd, c, test);
 		if (!ret)
 			ret = ft_strdup(g_tracking.cmd);
 		else
-			ret = ft_strjoin(ret, g_tracking.cmd);
+			ret = ft_strjoinfree(ret, g_tracking.cmd, 1);
 		ft_putchar('\n');
+		ft_strdel(&g_tracking.cmd);
 	}
 	g_tracking.quotes = 0;
 	return (ret);
