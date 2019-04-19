@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/19 05:49:44 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ int		transform_simple(char **str)
 	else if (run_str[0] == '$' && run_str[1])
 	{
 		ft_strdel(str);
-		*str = ft_strdup(" ");
-		g_tracking.mysh->err_expend = 1;
+		*str = ft_strdup("");
+//		g_tracking.mysh->err_expend = 1;
 		return (1);
 	}
 	return (0);
