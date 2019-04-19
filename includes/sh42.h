@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:15:06 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/19 03:08:18 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -504,5 +504,7 @@ void			main_loop(char *line, char **argv);
 void			assign_word(void);
 int				exec_sh(void);
 int				exit_reddir(void);
-
+char			*get_hist_ptr(char *needle);
+int				begin_search(void);
+t_hist			*get_hist_nbr(int i);
 #endif
