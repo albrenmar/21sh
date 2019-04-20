@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alias_and_env_tools.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 02:06:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/19 02:45:14 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int				check_for_quotes_tmpenv(char *str, int i, int singq, int doubq)
 			singq--;
 		else if (str[i] == '\"')
 			doubq--;
-		if (singq == 0 && doubq == 0)
+		if (singq < 1 && doubq < 1)
 			return (i);
 		i++;
 	}
