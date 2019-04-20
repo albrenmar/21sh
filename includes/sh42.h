@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
 /*   Updated: 2019/04/20 04:50:36 by bsiche           ###   ########.fr       */
@@ -154,6 +154,7 @@ typedef struct	s_shell
 	char			**tab_reddir;
 	int				expand_error;
 	int				err_expend;
+	int				in_ast;
 	int				errchk;
 }				t_shell;
 

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/19 23:31:15 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/20 04:22:01 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	init_global(void)
 	g_tracking.mysh->tmpenv = NULL;
 	g_tracking.mysh->expand_error = 0;
 	g_tracking.mysh->err_expend = 0;
+	g_tracking.mysh->in_ast = 0;
 	g_tracking.cmdindex = -1;
 	g_tracking.builtin = 0;
 	g_tracking.jobs = NULL;
