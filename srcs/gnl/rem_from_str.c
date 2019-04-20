@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   rem_from_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 04:08:00 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/20 00:52:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
+
+void		tmp_char_hist(void)
+{
+	if (g_tracking.tmp_hist)
+		ft_strdel(&g_tracking.tmp_hist);
+	g_tracking.tmp_hist = ft_strdup(g_tracking.str);
+}
 
 void		rem_from_str(void)
 {
@@ -35,6 +42,7 @@ void		rem_from_str(void)
 		print_line();
 		g_tracking.pos->abs -= 1;
 		back_to_pos();
+		tmp_char_hist();
 	}
 }
 
@@ -60,6 +68,7 @@ void		rem_from_str_del(void)
 		ft_free(end);
 		print_line();
 		back_to_pos();
+		tmp_char_hist();
 	}
 }
 
