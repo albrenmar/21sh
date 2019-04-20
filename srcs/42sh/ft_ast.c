@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 02:25:05 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/20 04:23:23 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void		ft_ast(t_last *list_command)
 
 	next_free = NULL;
 	separator = NULL;
+	g_tracking.mysh->in_ast = 1;
 	tree = new_branch();
 	job = NULL;
 	create_ast(tree, list_command, separator);
@@ -104,5 +105,6 @@ void		ft_ast(t_last *list_command)
 	free_ast(tree, next_free);
 	g_tracking.cmdindex = -1;
 	tree = NULL;
+	g_tracking.mysh->in_ast = 0;
 	return ;
 }

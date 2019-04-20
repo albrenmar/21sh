@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/20 07:34:11 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,29 @@
 void		execute_two(char **tab_exec, char **tab_exec_hold)
 {
 	char	**envhold;
+	int		i;
+	int		ctrl;
+	char	**run_tab;
 
-	if (is_builtin())
+	i = 0;
+	ctrl = 0;
+	run_tab = tab_exec_hold;
+	while (run_tab[i])
+	{
+		if (is_bad_expansion(run_tab[i]))
+			ctrl = 1;
+		i++;
+	}
+	if (is_builtin() || ctrl)
 		ft_exit3(builtin_exec(NULL), 2);
-	if ((tab_exec = hashed_command(tab_exec, 0)))
+	if ((tab_exec = hashed_command(tab_exec, 0)) && !ctrl)
 	{
 		check_if_resetenv();
 		envhold = init_envp(g_tracking.mysh->env);
 		execve(tab_exec[0], tab_exec, init_envp(g_tracking.mysh->env));
 		free_tabs_and_exit(envhold, tab_exec_hold);
 	}
-	else if ((test_exist_fonct(tab_exec_hold, 2, NULL, NULL)))
+	else if ((test_exist_fonct(tab_exec_hold, 2, NULL, NULL)) && !ctrl)
 	{
 		check_if_resetenv();
 		envhold = init_envp(g_tracking.mysh->env);
