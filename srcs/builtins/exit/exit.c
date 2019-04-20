@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/19 23:37:20 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void		clean_up_leaks(void)
 {
 	if (g_tracking.aut)
 		clean_up_autoc();
-	if (g_tracking.mysh->hist)
-		ctrl_c();
+//	if (g_tracking.mysh->hist)
+//		ctrl_c();
 	ft_free(g_tracking.str);
 	g_tracking.str = NULL;
 	ft_free(g_tracking.terminfo);
