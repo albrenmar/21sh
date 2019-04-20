@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst_options.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/20 01:32:21 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,23 @@ char	*create_path_hist(void)
 	return (path);
 }
 
+void	print_history(void)
+{
+	t_list	*tmp;
+	char	*buf;
+
+	tmp = ft_lstgetfirst(g_tracking.mysh->hist->firstelement);
+	if (!tmp)
+		return ;
+	while (tmp)
+	{
+		buf = tmp->content;
+		ft_putendl(buf);
+		tmp = tmp->next;
+	}
+	return ;
+}
+
 void	hist_file_to_lst(void)
 {
 	int		fd;
@@ -38,11 +55,11 @@ void	hist_file_to_lst(void)
 	if (fd < 0)
 		ft_putendl_fd("Error while opening/creating .42hist", 2);
 	if (g_tracking.mysh->hist == NULL)
-		g_tracking.mysh->hist = hist_lst_create(NULL);
+		g_tracking.mysh->hist = lstcontainer_new();
 	while ((t = get_next_line(fd, &line)) == 1 && line != NULL)
 	{
 		if (ft_strcmp(line, "\n") != 0)
-			hist_lst_add_next(g_tracking.mysh->hist, line);
+			lstcontainer_add(g_tracking.mysh->hist, ft_strdup(line));
 		if (line)
 			ft_free(line);
 		line = NULL;
@@ -50,16 +67,4 @@ void	hist_file_to_lst(void)
 	ft_free(line);
 	line = NULL;
 	close(fd);
-}
-
-void	hist_print_test(t_hist *hist, int i)
-{
-	if (hist->line)
-	{
-		while (i-- > 0)
-			ft_putchar(' ');
-		ft_putnbr(hist->index);
-		ft_putchar(' ');
-		ft_putendl(hist->line);
-	}
 }

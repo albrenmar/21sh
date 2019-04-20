@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/20 04:20:43 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/20 04:50:36 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,14 +116,6 @@ typedef struct	s_keyval
 	char				*value;
 }				t_keyval;
 
-typedef struct	s_hist
-{
-	struct s_hist		*next;
-	struct s_hist		*previous;
-	int					index;
-	char				*line;
-}				t_hist;
-
 typedef struct	s_tree
 {
 	int					type;
@@ -155,7 +147,7 @@ typedef struct	s_shell
 	t_lstcontainer	*env;
 	t_lstcontainer	*envsave;
 	t_lstcontainer	*set_env;
-	t_hist			*hist;
+	t_lstcontainer	*hist;
 	t_resetenv		*resetenv;
 	t_tmpenv		*tmpenv;
 	char			**tab_env;
@@ -187,6 +179,7 @@ typedef struct	s_tracking
 	struct s_ptr_list	*garbage;
 	struct s_ptr_list	*mmalloc;
 	char				**g_tab_exec;
+	char				*tmp_hist;
 	int					builtin;
 	t_cursor			*pos;
 	t_last				*temp_command;
@@ -250,7 +243,7 @@ typedef struct	s_jobs
 
 t_tracking		g_tracking;
 
-void			init_shell(char **environ, char **argv);
+void			init_shell(char **environ);
 char			*ft_usrmode(mode_t mode);
 char			*ft_true_pwd(void);
 int				get_key(void);
@@ -370,9 +363,10 @@ int				check_basic_quotes(char *line);
 
 int				is_escape(char *str, int i);
 void			hist_file_to_lst(void);
-void			hist_lst_add_next(t_hist *hist, char *line);
-void			hist_save_file(t_hist *hist);
-t_hist			*hist_lst_create(char *line);
+//void			hist_lst_add_next(t_hist *hist, char *line);
+void			hist_save_file(void);
+//t_hist			*hist_lst_create(char *line);
+void			print_history(void);
 char			*create_path_hist(void);
 void			free_hist(void);
 int				get_last(void);
@@ -501,11 +495,18 @@ char			*alias_and_env(char *line);
 void			init_str(void);
 void			ft_lstdelcmd(t_last *el);
 void			test_loop(char **argv, char *line);
-void			main_loop(char *line, char **argv);
+void			main_loop(char *line);
 void			assign_word(void);
 int				exec_sh(void);
 int				exit_reddir(void);
 char			*get_hist_ptr(char *needle);
 int				begin_search(void);
-t_hist			*get_hist_nbr(int i);
+//t_hist			*get_hist_nbr(int i);
+void			tmp_char_hist(void);
+char			*parse_bang(char *line);
+char			*get_word(char *word);
+char			*get_index(char *word);
+char			*replace_word(char *line, int i);
+char    		*replace_double(char *line, int i);
+char			*return_error_bang(void);
 #endif

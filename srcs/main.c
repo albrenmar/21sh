@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/19 03:11:27 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/20 04:58:48 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	set_up(char **argv, char **env)
 	if (GARBAGE == 1)
 		garbage_init();
 	cursorinit();
-	init_shell(env, argv);
+	init_shell(env);
 	get_term();
 	interactive_check_set_shell_group();
 	set_shell_signal_handlers();
@@ -57,7 +57,7 @@ void	cmd_exists(t_last *cmd, t_last *first_cmd)
 	cmd = NULL;
 }
 
-void	main_loop(char *line, char **argv)
+void	main_loop(char *line)
 {
 	t_last	*cmd;
 	t_last	*first_cmd;
@@ -68,8 +68,8 @@ void	main_loop(char *line, char **argv)
 	&& (cmd = ft_parseur(0, line)))
 	{
 		first_cmd = cmd;
-		if (write(0, argv[0], 0) != -1)
-			hist_lst_add_next(g_tracking.mysh->hist, line);
+		if (write(0, "c", 0) != -1)
+			lstcontainer_add(g_tracking.mysh->hist, ft_strdup(line));
 		convert_list(cmd);
 //		if (!(cmd = check_exp_error(first_cmd)))
 //			first_cmd = cmd;
@@ -96,12 +96,13 @@ int		main(int argc, char **argv, char **env)
 	{
 		line = ft_strdup(g_tracking.cmd);
 		ft_free(g_tracking.cmd);
+		line = parse_bang(line);
 		g_tracking.cmd = NULL;
 		if (g_tracking.interactive == 1 && g_tracking.linemode == 0)
 			ft_putchar_fd('\n', 0);
 		while (check_eol(line) != 0)
 			line = end_line(line);
-		main_loop(line, argv);
+		main_loop(line);
 		jobs_notifications();
 		jobs_update_current();
 		ft_free(line);

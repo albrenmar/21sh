@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_option.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 01:25:24 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/19 23:22:08 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void				test_loop(char **argv, char *line)
 		while (check_eol(line) != 0)
 			line = end_line(line);
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
-		main_loop(line, argv);
+		main_loop(line);
 		tmp = clean_jobs_next_tmp(line, tmp);
 	}
 	ft_lstdel(test_lst->firstelement, 1);

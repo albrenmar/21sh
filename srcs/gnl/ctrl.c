@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ctrl.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 00:53:23 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/20 01:00:50 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	ctrl_c(void)
 		g_tracking.quotes = 10;
 		return ;
 	}
+	if (g_tracking.tmp_hist)
+		ft_strdel(&g_tracking.tmp_hist);
 	clear_screen3();
 	print_prompt();
 	ft_free(g_tracking.str);
