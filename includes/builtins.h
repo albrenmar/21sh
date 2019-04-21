@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:11:24 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/21 03:13:17 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,6 @@ char			*add_slash(char *pathname);
 char			*sanitize_path_cd(char *path);
 char			*cd_path(char *path);
 void			ft_changedir(char *path, char option, char *err);
+int				history_builtin(void);
+
 #endif

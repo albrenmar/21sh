@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/20 01:30:21 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/21 04:19:19 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_list	*get_hist_nbr(size_t i)
 {
 	t_list	*history;
 
+	if (!g_tracking.mysh || !g_tracking.mysh->hist)
+		return (NULL);
 	history = ft_lstgetfirst(g_tracking.mysh->hist->firstelement);
 	if (!history)
 		return (0);
