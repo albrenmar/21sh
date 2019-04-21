@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/21 21:07:30 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/21 22:06:01 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char	**create_tab_to_exec(t_last *list)
 	int			i_arg;
 
 	begin = list;
+	g_tracking.mysh->in_ast = 0;
 	i = 1;
 	i_arg = 0;
 	g_tracking.mysh->err_expend = 0;
@@ -69,5 +70,6 @@ char	**create_tab_to_exec(t_last *list)
 		begin = begin->next;
 	}
 	tab_exec[i] = NULL;
+	g_tracking.mysh->in_ast = 1;
 	return (tab_exec);
 }
