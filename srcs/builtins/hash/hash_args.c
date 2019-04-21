@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   hash_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/15 12:52:33 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/23 03:01:28 by abguimba         ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
 #include "sh42.h"
 
 void		hash_update_helper(t_hash *tmp, int index, int j, char **c)
@@ -68,7 +67,7 @@ int			ft_hash_arg(int j)
 {
 	while (g_tracking.g_tab_exec[j] && g_tracking.g_tab_exec[j][0] == '-')
 	{
-		if (strchr(g_tracking.g_tab_exec[j], 'r'))
+		if (ft_strchr(g_tracking.g_tab_exec[j], 'r'))
 		{
 			empty_hash_table();
 			if (!(g_tracking.g_tab_exec[j + 1]))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_arg_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/22 23:32:35 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int				ft_menuline(void)
 {
 	if (g_tracking.aut->menuline)
 	{
-		free(g_tracking.aut->menuline);
+		ft_free(g_tracking.aut->menuline);
 		g_tracking.aut->menuline = NULL;
 	}
 	g_tracking.aut->menuline = ft_createline();

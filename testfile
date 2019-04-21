@@ -1,0 +1,115 @@
+echo $HOME
+ls
+~
+~/
+~/test
+~/test/Desktop
+~/42shrc
+~/42shrc
+~test
+test~
+~bsiche
+test/~bsiche
+~+
+~+/
+/~+/
+~+/test
++~
++~/
++~/test
+~-
+echo "a" "" "" "b" | cat -e
+echo -a abc | cat -e
+echo -x abc | cat -e
+echo -- -abc abc | cat -e
+echo '\a\b\c\f\n\r\t\v\\'
+echo "\a\b\c\f\n\r\t\v\\"
+echo \a\b\c\f\n\r\t\v\\
+echo \0777 \0123 \0 '\01' "\02"
+echo abc -- def
+echo -- ghi
+echo zzz ---
+echo -- -n abc
+echo abc | cat | cat | cat -e | cat -e
+echo 'abc' >/tmp/pipe_redir
+ls | cat -e < /tmp/pipe_redir | cat -e
+echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+cat /tmp/pipe_redir_fd
+rm -f /tmp/pipe_redir
+rm -f /tmp/pipe_redir_fd
+env | grep USER | wc | cat -e
+echo 'echo a | ;' > /tmp/pipe_err_parsing
+/tmp/bin/42sh < /tmp/pipe_err_parsing
+echo '| echo b ;' > /tmp/pipe_err_parsing
+/tmp/bin/42sh < /tmp/pipe_err_parsing
+echo '|' > /tmp/pipe_err_parsing
+/tmp/bin/42sh < /tmp/pipe_err_parsing
+echo '|;' > /tmp/pipe_err_parsing
+/tmp/bin/42sh < /tmp/pipe_err_parsing
+echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+/tmp/bin/42sh < /tmp/pipe_err_parsing
+rm -f /tmp/pipe_err_parsing
+test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+test
+test -b
+test -b sdfsd
+test -b Makefile
+test -b /dev/disk0
+test -c /dev/disk0
+test -c /dev/zero
+test -c /dev/zersdfds
+test -c
+test -d Makefile
+test -d
+test -d dfdsf
+test -d includes
+test -e dsfdsf
+test -e Makefile
+test -f fdsf
+test -f
+test -f Makefile
+test -g fsdfsd
+test -g Makefile
+test -g toto
+test -g
+test -L dsfdsf
+test -L
+test -L link
+test -p
+test -p fifo
+test -r norights
+test -r toto
+test -S socket
+test -S dsfdsf
+test -S Makefile
+test -s empty
+test -s Makefile
+test -u suid
+test -u sdfsd
+test -u Makefile
+test -w toto
+test -w dsfdsf
+test -w norights
+test -x exec
+test -x Makefile
+test -z 
+test -z ""
+test -z "dfdsfsd"
+test "ab" = "ab"
+test "ab" = "abc"
+test "ab" != "abd"
+test "ab" != "ab"
+test 12 -eq 1233
+test 12 -eq 12
+test 12345123015623416854 -eq 412
+test 1 -eq 2468532546324532132542
+test 1 -ne 12
+test 1 -eq sdfsd
+test 32 -ne 12435
+test 534543543 -ge 2452156546854685768
+test 12 -ge bfdg
+test 123 -ge ""
+test 324 -it <sdfsd
+test 12 -it 1
+test 43455345435435 -le 32
+echo "test fini"

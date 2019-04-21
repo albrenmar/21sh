@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   rem_from_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 04:08:00 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/20 06:11:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/20 00:52:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
+
+void		tmp_char_hist(void)
+{
+	if (g_tracking.tmp_hist)
+		ft_strdel(&g_tracking.tmp_hist);
+	g_tracking.tmp_hist = ft_strdup(g_tracking.str);
+}
 
 void		rem_from_str(void)
 {
@@ -28,13 +35,14 @@ void		rem_from_str(void)
 		start = ft_strsub(g_tracking.str, 0, a, 0);
 		end = ft_strsub(g_tracking.str, b, ft_strlen(g_tracking.str), 0);
 		end = ft_strjoinfree(start, end, 3);
-		free(g_tracking.str);
-		g_tracking.str = malloc(sizeof(char) * g_tracking.buffsize);
+		ft_free(g_tracking.str);
+		g_tracking.str = ft_malloc(sizeof(char) * g_tracking.buffsize);
 		g_tracking.str = ft_strcpy(g_tracking.str, end);
-		free(end);
+		ft_free(end);
 		print_line();
 		g_tracking.pos->abs -= 1;
 		back_to_pos();
+		tmp_char_hist();
 	}
 }
 
@@ -54,12 +62,13 @@ void		rem_from_str_del(void)
 		start = ft_strsub(g_tracking.str, 0, a, 0);
 		end = ft_strsub(g_tracking.str, b, ft_strlen(g_tracking.str), 0);
 		end = ft_strjoinfree(start, end, 3);
-		free(g_tracking.str);
-		g_tracking.str = malloc(sizeof(char) * g_tracking.buffsize);
+		ft_free(g_tracking.str);
+		g_tracking.str = ft_malloc(sizeof(char) * g_tracking.buffsize);
 		g_tracking.str = ft_strcpy(g_tracking.str, end);
-		free(end);
+		ft_free(end);
 		print_line();
 		back_to_pos();
+		tmp_char_hist();
 	}
 }
 
@@ -67,10 +76,13 @@ void		rem_str(char *str)
 {
 	int		i;
 
-	i = utf_strlen(str);
-	while (i > 0)
+	i = ft_strlen(str);
+	if (i > 0)
 	{
-		rem_from_str();
-		i--;
+		while (i > 0)
+		{
+			rem_from_str();
+			i--;
+		}
 	}
 }

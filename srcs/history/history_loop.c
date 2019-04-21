@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/23 23:58:07 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/21 04:19:19 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,28 @@
 
 int		get_last(void)
 {
-	t_hist	*history;
+	t_list	*history;
+	t_lstcontainer *list;
 
-	history = g_tracking.mysh->hist;
+	list = g_tracking.mysh->hist;
+	if (!list)
+		return (0);
+	history = ft_lstgetlast(list->firstelement);
 	if (!history)
 		return (0);
-	while (history->next)
-		history = history->next;
 	return (history->index);
 }
 
-t_hist	*get_hist_nbr(int i)
-{
-	t_hist	*history;
 
-	history = g_tracking.mysh->hist;
+t_list	*get_hist_nbr(size_t i)
+{
+	t_list	*history;
+
+	if (!g_tracking.mysh || !g_tracking.mysh->hist)
+		return (NULL);
+	history = ft_lstgetfirst(g_tracking.mysh->hist->firstelement);
 	if (!history)
 		return (0);
-	while (history->previous)
-		history = history->previous;
 	if (!history)
 		return (0);
 	while (history)
@@ -44,21 +47,25 @@ t_hist	*get_hist_nbr(int i)
 	return (history);
 }
 
-int		replace_str(int i, char *comp)
+int		replace_str(size_t i)
 {
-	t_hist	*history;
+	t_list	*history;
 
-	history = g_tracking.mysh->hist;
+	history = ft_lstgetfirst(g_tracking.mysh->hist->firstelement);
 	if (!history)
 		return (0);
 	while (history)
 	{
 		if (history->index == i)
 		{
-			if (ft_strlen(history->line) > 0)
+			if (ft_strlen(history->content) > 0)
 			{
-				ctrl_c();
-				add_to_str(ft_strdup(history->line));
+				clear_screen3();
+				print_prompt();
+				ft_free(g_tracking.str);
+				g_tracking.str = NULL;
+				cursor_reset();
+				add_to_str(ft_strdup(history->content));
 			}
 			return (0);
 		}
@@ -69,50 +76,38 @@ int		replace_str(int i, char *comp)
 
 int		history_up(void)
 {
-	char	*comp;
-	t_hist	*history;
-	int		i;
+	t_list	*history;
 
 	if (g_tracking.quotes != 0)
 		return (0);
-	g_tracking.pos->abs = utf_strlen(g_tracking.str);
-	back_to_pos();
-	if (g_tracking.histindex > 1)
+	if (g_tracking.histindex > 0)
 		g_tracking.histindex--;
 	history = get_hist_nbr(g_tracking.histindex);
 	if (!history)
 		return (0);
-	comp = ft_strdup(g_tracking.str);
-	i = ft_strlen(comp);
-	replace_str(history->index, comp);
-	free(comp);
+	replace_str(history->index);
 	return (0);
 }
 
 int		history_down(void)
 {
-	char	*comp;
-	t_hist	*history;
-	int		i;
+	t_list	*history;
 
 	if (g_tracking.quotes != 0)
 		return (0);
-	if (g_tracking.histindex == 1)
-		g_tracking.histindex++;
-	if (g_tracking.histindex <= g_tracking.histmax)
-		g_tracking.histindex++;
-	if (g_tracking.histindex == g_tracking.histmax + 1)
+	if (g_tracking.histindex >= get_last())
 	{
-		comp = ft_strdup(g_tracking.str);
-		ctrl_c();
-		free(comp);
+		clear_screen3();
+		print_prompt();
+		ft_free(g_tracking.str);
+		g_tracking.str = NULL;
+		cursor_reset();
+		add_to_str(ft_strdup(g_tracking.tmp_hist));
 	}
+	g_tracking.histindex++;
 	history = get_hist_nbr(g_tracking.histindex);
 	if (!history)
 		return (0);
-	comp = ft_strdup(g_tracking.str);
-	i = ft_strlen(comp);
-	replace_str(history->index, comp);
-	free(comp);
+	replace_str(history->index);
 	return (0);
 }

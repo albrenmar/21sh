@@ -1,0 +1,1 @@
+42sh: command 6127{HOME} not found

@@ -6,32 +6,36 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 06:17:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/03/22 23:04:38 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/21 22:48:18 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 #include "sh42.h"
 
-void	rmv_tab_exec(char **tab_exec, int to)
+void	print_exp_error_dpoints(char *varname, char *value, int sign, char **str)
 {
-	int		i;
-
-	i = 0;
-	while (tab_exec[i] && i < to + 1)
-		ft_strdel(&tab_exec[i++]);
-}
-
-void	print_exp_error_dpoints(char *varname, char *value, int sign)
-{
-	ft_putstr_fd(SHELL_NAME, 2);
-	ft_putstr_fd(": ${", 2);
-	ft_putstr_fd(varname, 2);
-	ft_putchar_fd(':', 2);
-	ft_putchar_fd(sign, 2);
-	ft_putstr_fd(value, 2);
-	ft_putendl_fd("}: bad substitution", 2);
-	g_tracking.mysh->err_expend = 1;
+	if (g_tracking.mysh->in_ast && !g_tracking.mysh->err_expend_printed)
+	{
+		ft_putstr_fd(SHELL_NAME, 2);
+		ft_putstr_fd(": ${", 2);
+		ft_putstr_fd(varname, 2);
+		ft_putchar_fd(':', 2);
+		ft_putchar_fd(sign, 2);
+		ft_putstr_fd(value, 2);
+		ft_putendl_fd("}: bad substitution", 2);
+		g_tracking.mysh->err_expend = 0;
+		g_tracking.mysh->err_expend_printed = 1;
+	}
+	else
+	{
+		*str = ft_strjoinfree("${", varname, 0);
+		*str = ft_strjoinchar(*str, ':', 1);
+		*str = ft_strjoinchar(*str, sign, 1);
+		*str = ft_strjoinfree(*str, value, 1);
+		*str = ft_strjoinfree(*str, "}", 1);
+		g_tracking.mysh->err_expend = 1;
+	}
 }
 
 void	print_exp_error_eq(char *varname, char *value)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_two_arg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 05:31:34 by bsiche            #+#    #+#             */
-/*   Updated: 2019/03/17 03:47:40 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		check_size(char *filename)
 	t_list			*buf;
 	int				i;
 
-	taab = malloc(sizeof(char *) * 4);
+	taab = ft_malloc(sizeof(char *) * 4);
 	taab[0] = "ls";
 	taab[1] = filename;
 	liste = type_ls(2, taab);
@@ -28,11 +28,11 @@ int		check_size(char *filename)
 		buf = ft_lstgetfirst(liste->firstelement);
 	if (!buf)
 	{
-		free(taab);
+		ft_free(taab);
 		return (1);
 	}
 	i = ((t_ls*)buf->content)->size;
-	free(taab);
+	ft_free(taab);
 	free_all(liste, NULL);
 	if (i > 0)
 		return (0);
@@ -48,7 +48,7 @@ char	*get_perm(char *filename)
 	char			*test;
 	t_list			*buf;
 
-	taab = malloc(sizeof(char *) * 4);
+	taab = ft_malloc(sizeof(char *) * 4);
 	taab[0] = "ls";
 	taab[1] = filename;
 	buf = NULL;
@@ -57,12 +57,12 @@ char	*get_perm(char *filename)
 		buf = ft_lstgetfirst(liste->firstelement);
 	if (!buf)
 	{
-		free(taab);
+		ft_free(taab);
 		return (NULL);
 	}
 	new_ls = buf->content;
 	test = ft_strdup(new_ls->strpermission);
-	free(taab);
+	ft_free(taab);
 	free_all(liste, NULL);
 	return (test);
 }
@@ -144,6 +144,6 @@ int		two_arg(char **argv, int i)
 		i = rest_of_perm(argv, permission);
 	if (argv[0][1] == 's')
 		i = check_size(argv[1]);
-	free(permission);
+	ft_free(permission);
 	return (i);
 }

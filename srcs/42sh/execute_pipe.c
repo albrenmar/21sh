@@ -3,127 +3,92 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/10 15:02:07 by alsomvil          #+#    #+#             */
-/*   Updated: 2019/03/25 03:54:13 by alsomvil         ###   ########.fr       */
+/*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/sh42.h"
-
-void		execute_two(char **tab_exec)
-{
-	char	**tab_exec_hold;
-
-	tab_exec_hold = tab_dup(tab_exec);
-	if (is_builtin())
-		ft_exit(0, builtin_exec(NULL));
-	if ((tab_exec = hashed_command(tab_exec, 0)))
-	{
-		execve(tab_exec[0], tab_exec, init_envp(g_tracking.mysh->env));
-		free_tab(tab_exec_hold);
-		ft_exit(0, EXIT_FAILURE);
-	}
-	else if ((test_exist_fonction(tab_exec_hold, 2)))
-	{
-		execve(tab_exec_hold[0], tab_exec_hold,
-				init_envp(g_tracking.mysh->env));
-		exec_errors(tab_exec, 0);
-		free_tab(tab_exec_hold);
-		ft_exit(0, EXIT_FAILURE);
-	}
-	exec_errors(NULL, 1);
-	free_tab(tab_exec_hold);
-	ft_exit(0, EXIT_FAILURE);
-}
+#include "sh42.h"
 
 void		close_fd(void)
 {
-	if (g_tracking.mysh->set_fd->STDIN != 0
-			&& g_tracking.mysh->set_fd->STDIN > 2)
-		close(g_tracking.mysh->set_fd->STDIN);
-	if (g_tracking.mysh->set_fd->STDOUT != 1
-			&& g_tracking.mysh->set_fd->STDOUT > 2)
-		close(g_tracking.mysh->set_fd->STDOUT);
-	if (g_tracking.mysh->set_fd->STDERR != 2
-			&& g_tracking.mysh->set_fd->STDERR > 2)
-		close(g_tracking.mysh->set_fd->STDERR);
+	int		i;
+
+	i = 0;
+	while (i < 10)
+		close(i++);
 }
 
-void		execute_pipe_two(char **tab_exec, t_jobs *job, int readpipe)
+void		child_side(int rpipe, int *descrf, char **taab, t_jobs *job)
+{
+	close_fd_copy();
+	dup2(rpipe, 0);
+	if (rpipe > 2)
+		close(rpipe);
+	close(descrf[0]);
+	dup2(descrf[1], 1);
+	close(descrf[1]);
+	if (g_tracking.mysh->tab_reddir)
+		make_reddir(g_tracking.mysh->tab_reddir, 0);
+	set_jobs(job, 0);
+	execute_two(taab, tab_dup(taab));
+}
+
+int			exec_first_pipe(int rpipe, int *descrf, char **taab, t_jobs *job)
 {
 	pid_t	pid0;
 
-	free_tab(g_tracking.g_tab_exec);
-	g_tracking.g_tab_exec = tab_dup(tab_exec);
-	if (!is_builtin_alone())
-	{
-		if (!is_builtin())
-			hash_binary();
-		pid0 = fork();
-		if (pid0 == 0)
-		{
-			set_jobs(job, pid0);
-			dup2(readpipe, 0);
-			if (readpipe > 2)
-				close(readpipe);
-			set_fd_before_exec();
-			execute_two(tab_exec);
-		}
-		else
-		{
-			if (readpipe > 2)
-				close(readpipe);
-			set_new_process(job, pid0);
-			close_fd();
-		}
-	}
+	pid0 = fork();
+	if (pid0 == 0)
+		child_side(rpipe, descrf, taab, job);
 	else
 	{
-		free_tab(tab_exec);
-		g_tracking.builtin = 1;
+		close(descrf[1]);
+		if (rpipe > 2)
+			close(rpipe);
+		set_new_process(job, pid0);
+		free_tab(taab);
+		return (descrf[0]);
 	}
+	return (0);
 }
 
-int			execute_pipe(t_last **list_cmd, t_jobs *job, int readpipe)
+int			return_end_pipe(char **tab_exec)
 {
-	pid_t	pid0;
+	if (tab_exec)
+		free_tab(tab_exec);
+	g_tracking.builtin = 1;
+	return (0);
+}
+
+int			execute_pipe(t_last **list_cmd, t_jobs *job, int readpipe,
+		char ***tab_reddir)
+{
 	char	**tab_exec;
 	int		descrf[2];
+	int		a;
 
 	*list_cmd = (*list_cmd)->next;
+	g_tracking.mysh->tab_reddir = NULL;
+	g_tracking.mysh->tab_reddir = *tab_reddir;
 	pipe(descrf);
 	tab_exec = create_tab_to_exec(g_tracking.temp_command);
 	free_tab(g_tracking.g_tab_exec);
+	g_tracking.g_tab_exec = NULL;
 	g_tracking.g_tab_exec = tab_dup(tab_exec);
 	if (!is_builtin_alone())
 	{
+		check_if_tmpenv();
 		if (!is_builtin())
 			hash_binary();
-		pid0 = fork();
-		if (pid0 == 0)
-		{
-			dup2(readpipe, 0);
-			if (readpipe > 2)
-				close(readpipe);
-			close(descrf[0]);
-			dup2(descrf[1], 1);
-			close(descrf[1]);
-			set_jobs(job, pid0);
-			set_fd_before_exec();
-			execute_two(tab_exec);
-		}
-		else
-		{
-			close(descrf[1]);
-			if (readpipe > 2)
-				close(readpipe);
-			set_new_process(job, pid0);
-			return (descrf[0]);
-		}
+		a = exec_first_pipe(readpipe, descrf, tab_exec, job);
+		free_tab(*tab_reddir);
+		*tab_reddir = NULL;
+		g_tracking.mysh->tab_reddir = NULL;
+		if (a != 0)
+			return (a);
 	}
-	free_tab(tab_exec);
-	g_tracking.builtin = 1;
-	return (0);
+	return (return_end_pipe(tab_exec));
 }
