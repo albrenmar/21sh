@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/21 05:15:11 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/21 04:21:08 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -509,4 +509,5 @@ char			*get_index(char *word);
 char			*replace_word(char *line, int i);
 char    		*replace_double(char *line, int i);
 char			*return_error_bang(void);
+
 #endif

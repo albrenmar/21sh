@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assign_word.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 06:38:10 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/19 07:56:17 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/21 04:54:44 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int			back_up_str(char *tmp, int i)
 			i--;
 		break ;
 	}
-	i++;
+	if (i != 0)
+		i++;
 	return (i);
 }
 

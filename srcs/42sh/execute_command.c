@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:40:13 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/20 03:32:25 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/21 04:03:09 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	next_cmd_update(void)
 {
-	if (g_tracking.mysh->envsave != NULL)
-		free_keyval(g_tracking.mysh->envsave);
-	g_tracking.mysh->envsave = NULL;
+	if (g_tracking.mysh)
+		if (g_tracking.mysh->envsave != NULL)
+		{
+			free_keyval(g_tracking.mysh->envsave);
+			g_tracking.mysh->envsave = NULL;
+		}
 }
 
 int		wait_job(int foreground, t_last *list_cmd, t_jobs *job,

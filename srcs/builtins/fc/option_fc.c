@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_hist.c                                        :+:      :+:    :+:   */
+/*   option_fc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/17 04:38:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/21 04:21:02 by bsiche           ###   ########.fr       */
+/*   Created: 2019/04/21 04:23:16 by bsiche            #+#    #+#             */
+/*   Updated: 2019/04/21 04:46:20 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-void		free_hist(void)
+char	*fc_option(char **av)
 {
-	t_list	*hist;
+	int		i;
 
-	if (!g_tracking.mysh->hist)
-		return ;
-	hist = ft_lstgetfirst(g_tracking.mysh->hist->firstelement);
-	if (!hist)
-		return ;
-	ft_lstdel(hist, 1);
-	ft_free(g_tracking.mysh->hist);
-	g_tracking.mysh->hist = NULL;
-	return ;
+	i = 0;
 }
