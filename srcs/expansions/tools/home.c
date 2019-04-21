@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 01:20:02 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/21 20:37:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/21 23:47:10 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ char	*get_user_home(char *user)
 	char			*home_dir;
 
 	user_inf = getpwnam(user);
-	home_dir = ft_strdup(user_inf->pw_dir);
-	return (home_dir);
+	if (user_inf)
+	{
+		home_dir = ft_strdup(user_inf->pw_dir);
+		return (home_dir);
+	}
+	return (NULL);
 }
 
 char	*get_home_value(void)
