@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/21 03:52:31 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/21 23:09:26 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,19 @@
 
 int			is_builtin(void)
 {
-	if (ft_builtin_search("jobs") || ft_builtin_search("fg")
+/*	char	**run_tab;
+	int		i;
+
+	i = 0;
+	run_tab = g_tracking.g_tab_exec;
+	while (run_tab[i])
+	{
+		if (is_bad_expansion(run_tab[i]))
+			return (0);
+//			ctrl = 1;
+		i++;
+	}
+*/	if (ft_builtin_search("jobs") || ft_builtin_search("fg")
 		|| ft_builtin_search("bg") || ft_builtin_search("exit")
 		|| ft_builtin_search("set") || ft_builtin_search("echo")
 		|| ft_builtin_search("hash") || ft_builtin_search("test")
@@ -55,9 +67,19 @@ int			ft_builtin_search(char *builtin)
 {
 	char	*tmp;
 	int		i;
+//	char	**run_tab;
 
 	tmp = g_tracking.g_tab_exec[0];
-	i = 0;
+/*	i = 0;
+	run_tab = g_tracking.g_tab_exec;
+	while (run_tab[i])
+	{
+		if (g_tracking.mysh->err_expend_printed || is_bad_expansion(run_tab[i]))
+			return (0);
+//			ctrl = 1;
+		i++;
+	}
+*/	i = 0;
 	while (tmp[i] && (tmp[i] == '\'' || tmp[i] == '\"'))
 		i++;
 	while (*builtin && *builtin == tmp[i])
@@ -96,6 +118,21 @@ int			builtin_exec_cont(void)
 
 int			builtin_exec(void)
 {
+	char	**run_tab;
+	int		i;
+
+	i = 0;
+	run_tab = g_tracking.g_tab_exec;
+	while (run_tab[i])
+	{
+		if (g_tracking.mysh->err_expend_printed || is_bad_expansion(run_tab[i]))
+		{
+			g_tracking.mysh->err_expend_printed = 0;
+			return (0);
+		}
+//			ctrl = 1;
+		i++;
+	}
 	check_if_resetenv();
 	if (ft_builtin_search("jobs"))
 		return (jobs_builtin());
