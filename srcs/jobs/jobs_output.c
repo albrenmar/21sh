@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   jobs_output.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/21 05:19:29 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-void		jobs_notif_helper(t_jobs *job, t_jobs *last, t_jobs *next)
+void		jobs_notif_h(t_jobs *job, t_jobs *last, t_jobs *next, int stat)
 {
 	t_comm	*cmd;
 
@@ -23,13 +23,14 @@ void		jobs_notif_helper(t_jobs *job, t_jobs *last, t_jobs *next)
 		{
 			if (!WIFSIGNALED(cmd->status))
 			{
-				show_job_info(job, "Done           ", 4);
+				stat = WEXITSTATUS(cmd->status);
+				show_job_info(job, "Done", 4, stat);
 				break ;
 			}
 			cmd = cmd->next;
 			if (!cmd)
 			{
-				show_job_info(job, "Killed ", 3);
+				show_job_info(job, "Killed ", 3, 0);
 			}
 		}
 	}

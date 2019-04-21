@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/19 23:37:20 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/21 07:09:15 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ int			ft_exit2(int exitcode)
 	count = 0;
 	save = exitcode;
 	if (hold)
-		while (hold[count++])
-			;
-	if (count > 3)
+		while (hold[count])
+			count++;
+	if (count > 2)
 		return (exit_errors(0));
-	else if (count == 3)
+	else if (count == 2)
 	{
 		exitcode = ft_atoi(hold[1]);
 		if ((exitcode < 0 || exitcode == save) && ft_strcmp(hold[1], "0"))

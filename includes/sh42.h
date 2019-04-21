@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/20 04:50:36 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/21 04:21:08 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -469,7 +469,7 @@ int				suspended_jobs_count(void);
 void			free_all_jobs(void);
 void			update_status(void);
 int				update_process_status(pid_t pid, int status);
-void			show_job_info(t_jobs *job, const char *status, int mode);
+void			show_job_info(t_jobs *job, const char *status, int mode, int s);
 void			free_job(t_jobs *job);
 void			jobs_notifications(void);
 void			jobs_update_current(void);
@@ -477,7 +477,7 @@ int				update_st_help(t_jobs *job, pid_t pid, t_comm *cmd, int status);
 int				job_control_errors(pid_t pid, int mode, int returnvalue);
 void			show_job_info_helper(t_jobs *job, int mode);
 void			jobs_notifications_output(t_jobs *job);
-void			jobs_notif_helper(t_jobs *job, t_jobs *last, t_jobs *next);
+void			jobs_notif_h(t_jobs *job, t_jobs *last, t_jobs *next, int stat);
 void			reset_all(void);
 int				main_test(int flag);
 char			**init_envp(t_lstcontainer *env);
@@ -509,4 +509,5 @@ char			*get_index(char *word);
 char			*replace_word(char *line, int i);
 char    		*replace_double(char *line, int i);
 char			*return_error_bang(void);
+
 #endif

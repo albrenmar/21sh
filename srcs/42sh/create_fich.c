@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:15:06 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/21 06:46:03 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int			create_fich(char **tab_reddir, int i)
 				&& tab_reddir[i + 1][0] <= '9')
 		{
 			fd_out = tab_reddir[i + 1][0] - '0';
-			if (write(fd_out, "0", 0) == -1)
-				return (ft_error_descr(fd_out));
+			/*if (write(fd_out, "0", 0) == -1)
+				return (ft_error_descr(fd_out));*/
 		}
 		else if (!ft_strcmp(tab_reddir[i + 1], "-"))
 			fd_out = open("/dev/null", O_RDONLY);
