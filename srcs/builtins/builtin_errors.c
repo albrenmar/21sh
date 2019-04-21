@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_errors.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/21 04:21:46 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			errors_hash(char *binary, int error)
 		ft_putendl_fd(" invalid option", 2);
 		ft_putendl_fd(SHELL_NAME": hash: usage: hash [-r] [arg]", 2);
 	}
-	return (-1);
+	return (1);
 }
 
 int			errors_fg(int nb, int error, char *hold)
