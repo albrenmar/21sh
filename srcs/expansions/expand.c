@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/20 02:36:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 00:34:49 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,12 @@ void		scan_arg_transformer(t_unquoter **check, char **value)
 void		mark_to_remove(t_unquoter *to_unquot, char **value)
 {
 	if (ft_strequ(to_unquot->str_unquoted, "${}"))
-		print_exp_error(NULL);
+		print_exp_error(NULL, value);
 	else
-		print_exp_str_error(to_unquot->str_unquoted);
-	ft_strdel(value);
+		print_exp_str_error(to_unquot->str_unquoted, value);
+//	ft_strdel(value);
 //	*value = ft_strdup(" ");
-	*value = ft_strdup("");
+//	*value = ft_strdup("");
 }
 
 char		expand_transformer(char **value, int unq)
