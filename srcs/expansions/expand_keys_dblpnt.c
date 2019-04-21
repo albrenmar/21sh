@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/20 02:31:45 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 00:07:10 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ void	exp_key_inter(char **str, t_expand *expand)
 	}
 	else if (to_analy.varname && to_analy.varname[0])
 	{
-		print_exp_error_eq(to_analy.varname, to_analy.wildcard);
-		ft_strdel(str);
+		print_exp_error_eq(to_analy.varname, to_analy.wildcard, str);
+//		ft_strdel(str);
 //		*str = ft_strdup(" ");
-		*str = ft_strdup("");
+//		*str = ft_strdup("");
 	}
 	else
 	{
 		print_exp_error_dpoints(to_analy.varname, to_analy.wildcard, '?', str);
-		ft_strdel(str);
+//		ft_strdel(str);
 //		*str = ft_strdup("");
 //		*str = ft_strdup(" ");
 	}
@@ -72,7 +72,7 @@ void	exp_key_inter(char **str, t_expand *expand)
 void	replace_to_null_error(char **str, t_analyzer to_analy)
 {
 	print_exp_error_dpoints(to_analy.varname, to_analy.wildcard, '=', str);
-	*str = ft_strdup("");
+//	*str = ft_strdup("");
 //	*str = ft_strdup(" ");
 }
 

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/19 07:19:56 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 00:21:05 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void		exp_key_start_hash(char **str, t_expand *expand)
 	else
 	{
 		to_error = ft_strjoinfree("#", to_analy.varname, 0);
-		print_exp_error(to_error);
+		print_exp_error(to_error, str);
 		ft_strdel(&to_error);
-		ft_strdel(str);
+//		ft_strdel(str);
 //		*str = ft_strdup(" ");
-		*str = ft_strdup("");
+//		*str = ft_strdup("");
 	}
 	end_analyzer(to_analy);
 }
@@ -87,10 +87,10 @@ t_expand	*expand_keys_extension(t_expand *expand, char **str, char sign)
 		exp_key_altern(str, expand);
 	else if (sign == 'E')
 	{
-		print_exp_error(*str + 1);
-		ft_strdel(str);
+		print_exp_error(*str + 1, str);
+//		ft_strdel(str);
 //		*str = ft_strdup(" ");
-		*str = ft_strdup("");
+//		*str = ft_strdup("");
 	}
 	return (expand);
 }

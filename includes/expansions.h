@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/20 04:31:12 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 00:32:55 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,9 @@ void			scan_argument(char *arg, t_scan *info_arg);
 char			*ft_exp_complete(char *arg);
 t_unquoter		*unquote_value(char **value);
 int				ft_iswhitespace(int c);
-void			print_exp_error(char *to_error);
-void			print_exp_error_eq(char *varname, char *value);
-void			print_exp_str_error(char *strerror);
+void			print_exp_error(char *to_error, char **str);
+void			print_exp_error_eq(char *varname, char *value, char **str);
+void			print_exp_str_error(char *strerror, char **str);
 int				scan_tilde(char *arg, char **new_arg);
 int				scan_dollar(char *arg, char **new_arg);
 int				scan_dollar_key(char *arg, char **new_arg);
