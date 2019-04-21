@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/20 04:54:34 by bsiche           ###   ########.fr        #
+#    Updated: 2019/04/21 06:59:53 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,7 @@ SRC = main.c \
 	  builtins/test/test_two_arg.c \
 	  builtins/test/test_three_arg.c \
 	  builtins/builtin_errors.c \
+	  builtins/history.c \
 	  jobs/signal_handlers.c \
 	  jobs/job_utils.c \
 	  jobs/job_functions.c \

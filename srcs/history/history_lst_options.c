@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/04/20 01:32:21 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/21 04:19:50 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	print_history(void)
 	while (tmp)
 	{
 		buf = tmp->content;
+		ft_putnbr(tmp->index + 1);
+		ft_putstr(": ");
 		ft_putendl(buf);
 		tmp = tmp->next;
 	}

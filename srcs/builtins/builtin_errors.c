@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_errors.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/21 05:07:29 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			errors_hash(char *binary, int error)
 		ft_putendl_fd(" invalid option", 2);
 		ft_putendl_fd(SHELL_NAME": hash: usage: hash [-r] [arg]", 2);
 	}
-	return (-1);
+	return (1);
 }
 
 int			errors_fg(int nb, int error, char *hold)
@@ -50,6 +50,8 @@ int			errors_fg(int nb, int error, char *hold)
 	}
 	else if (error == 4)
 		ft_putendl_fd(SHELL_NAME": fg: no jobs!", 2);
+	else if (error == 5)
+		ft_putendl_fd(SHELL_NAME": fg: no job control!", 2);
 	ft_strdel(&hold);
 	return (1);
 }
@@ -62,13 +64,12 @@ int			errors_bg(int nb, int error, char *hold)
 		ft_putnbr_fd(nb, 2);
 		ft_putendl_fd(" is already in the background!", 2);
 	}
-	if (error == 1)
+	else if (error == 1)
 		ft_putendl_fd(SHELL_NAME": bg: only one job supported", 2);
-	if (error == 2)
+	else if (error == 2)
 	{
 		ft_putstr_fd(SHELL_NAME ": bg: ", 2);
 		ft_putendl_fd("wrong job_id usage", 2);
-		return (1);
 	}
 	else if (error == 3)
 	{
@@ -78,6 +79,8 @@ int			errors_bg(int nb, int error, char *hold)
 	}
 	else if (error == 4)
 		ft_putendl_fd(SHELL_NAME": bg: no jobs!", 2);
+	else if (error == 5)
+		ft_putendl_fd(SHELL_NAME": bg: no job control!", 2);
 	ft_strdel(&hold);
 	return (1);
 }

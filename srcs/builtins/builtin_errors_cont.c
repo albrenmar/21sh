@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_errors_cont.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/21 04:30:16 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		export_errors(int mode, char *str)
 		ft_putstr_fd(str, 2);
 		ft_putendl_fd(SHELL_NAME" not found in local variables", 2);
 	}
-	return (-1);
+	return (1);
 }
 
 int		unsetenv_errors(int mode)
@@ -40,7 +40,7 @@ int		unsetenv_errors(int mode)
 		ft_putstr_fd(SHELL_NAME": unsetenv: ", 2);
 		ft_putendl_fd("bad formatting", 2);
 	}
-	return (-1);
+	return (1);
 }
 
 int		setenv_errors(int mode)
@@ -55,5 +55,5 @@ int		setenv_errors(int mode)
 		ft_putstr_fd(SHELL_NAME": setenv: ", 2);
 		ft_putendl_fd("bad formatting", 2);
 	}
-	return (-1);
+	return (1);
 }

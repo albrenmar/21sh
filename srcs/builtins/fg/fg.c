@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fg.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/21 04:52:29 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ int			fg_builtin(void)
 	nb = 0;
 	tmp = g_tracking.jobs;
 	hold = NULL;
+	while (tmp->next)
+		tmp = tmp->next;
+	if (tmp->startback == 1)
+		return(errors_bg(0, 5, hold));
+	tmp = g_tracking.jobs;
 	if (tmp->next)
 		return (fg_builtin_parser(tmp, nb, hold));
 	errors_fg(0, 4, hold);
