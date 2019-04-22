@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 03:32:13 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/20 04:39:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 03:35:36 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,9 @@ t_last		*check_for_local_vars(t_last *list_cmd)
 
 	begin = NULL;
 	begin = list_cmd;
-//	g_tracking.mysh->err_expend = 0;
 	while (list_cmd)
 		list_cmd = chg_env_and_set_vars(list_cmd);
 	list_cmd = begin;
 	re_format_line(&list_cmd);
-//	g_tracking.mysh->err_expend = 0;
 	return (list_cmd);
 }

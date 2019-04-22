@@ -6,14 +6,15 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 06:17:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 00:36:47 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 03:40:32 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
 #include "sh42.h"
 
-void	print_exp_error_dpoints(char *varname, char *value, int sign, char **str)
+void	print_exp_error_dpoints(char *varname, char *value, int sign,
+			char **str)
 {
 	if (g_tracking.mysh->in_ast && !g_tracking.mysh->err_expend_printed)
 	{
@@ -29,6 +30,7 @@ void	print_exp_error_dpoints(char *varname, char *value, int sign, char **str)
 	}
 	else
 	{
+		ft_strdel(str);
 		*str = ft_strjoinfree("${", varname, 0);
 		*str = ft_strjoinchar(*str, ':', 1);
 		*str = ft_strjoinchar(*str, sign, 1);
@@ -52,6 +54,7 @@ void	print_exp_error_eq(char *varname, char *value, char **str)
 	}
 	else
 	{
+		ft_strdel(str);
 		*str = ft_strjoinfree("${", varname, 0);
 		*str = ft_strjoinfree(*str, ":=", 1);
 		*str = ft_strjoinfree(*str, value, 1);
@@ -74,6 +77,7 @@ void	print_exp_error(char *to_error, char **str)
 	}
 	else
 	{
+		ft_strdel(str);
 		*str = ft_strjoinfree("${", to_error, 0);
 		*str = ft_strjoinfree(*str, "}", 1);
 		g_tracking.mysh->err_expend = 1;
@@ -92,6 +96,7 @@ void	print_exp_str_error(char *strerror, char **str)
 	}
 	else
 	{
+		ft_strdel(str);
 		*str = ft_strjoinfree("${", strerror, 0);
 		*str = ft_strjoinfree(*str, "}", 1);
 		g_tracking.mysh->err_expend = 1;

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 03:32:13 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:07:47 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 03:35:56 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ t_last	*check_exp_error(t_last *cmd)
 	cmd = begin;
 	if (!cmd)
 		return (NULL);
-//	re_format_line(&cmd);
 	if (cmd)
 		begin = cmd;
 	else
