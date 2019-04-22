@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 03:18:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/22 03:46:41 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/22 05:03:59 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int		alias_add_error(char *alias)
 
 int		search_eq(char *alias)
 {
-	int	i;
-	int	flag;
+	int		i;
+	int		flag;
 
 	i = 0;
 	flag = 0;

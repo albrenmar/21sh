@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/22 03:22:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/22 05:05:58 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -332,7 +332,7 @@ int				init_alias(void);
 int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
 char			*return_alias(char *name);
-void			print_alias_lst(void);
+int				print_alias_lst(void);
 int				unalias(char *alias);
 int				unalias_blt(void);
 int				two_arg(char **argv, int i);
