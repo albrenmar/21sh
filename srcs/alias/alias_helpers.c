@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/22 03:32:36 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/22 03:47:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,12 @@ void	alias_loop_zero(void)
 void	print_keyval(t_keyval *tmp)
 {
 	if (tmp->key)
-		ft_putstr(tmp->key);
-	ft_putchar('=');
-	if (tmp->value)
 	{
+		ft_putstr(tmp->key);
+		ft_putchar('=');
 		ft_putchar('\'');
-		ft_putstr(tmp->value);
+		if (tmp->value)
+			ft_putstr(tmp->value);
 		ft_putchar('\'');
 		ft_putchar('\n');
 	}

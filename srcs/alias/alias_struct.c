@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/22 03:42:57 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/22 03:45:59 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_lstcontainer		*alias_error(char *alias)
 	if (!alias)
 		return (NULL);
 	split = ft_strsplitlst(alias, '=');
-	if (lstcontainer_size(split) != 2)
+	if (lstcontainer_size(split) > 2)
 	{
 		alias_add_error(alias);
 		return (NULL);
