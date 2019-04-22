@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/20 07:34:11 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 03:08:46 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,9 @@
 void		execute_two(char **tab_exec, char **tab_exec_hold)
 {
 	char	**envhold;
-	int		i;
 	int		ctrl;
-	char	**run_tab;
 
-	i = 0;
-	ctrl = 0;
-	run_tab = tab_exec_hold;
-	while (run_tab[i])
-	{
-		if (is_bad_expansion(run_tab[i]))
-			ctrl = 1;
-		i++;
-	}
+	ctrl = check_expand_tab(tab_exec_hold);
 	if (is_builtin() || ctrl)
 		ft_exit3(builtin_exec(NULL), 2);
 	if ((tab_exec = hashed_command(tab_exec, 0)) && !ctrl)
@@ -46,8 +36,7 @@ void		execute_two(char **tab_exec, char **tab_exec_hold)
 		free_tabs_and_exit(envhold, tab_exec_hold);
 	}
 	exec_errors(NULL, 1);
-	free_tab(tab_exec_hold);
-	free_tab(g_tracking.g_tab_exec);
+	free_two_tabs(tab_exec_hold, g_tracking.g_tab_exec);
 	g_tracking.g_tab_exec = NULL;
 	ft_exit3(EXIT_FAILURE, 2);
 }
