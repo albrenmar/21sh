@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bg.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/21 05:19:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/22 03:15:36 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int			bg_builtin(void)
 	while (tmp->next)
 		tmp = tmp->next;
 	if (tmp->startback == 1)
-		return(errors_bg(0, 5, hold));
+		return (errors_bg(0, 5, hold));
 	tmp = g_tracking.jobs;
 	if (tmp->next)
 		return (bg_builtin_parser(tmp, nb, hold));

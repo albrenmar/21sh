@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 02:58:07 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 03:21:27 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,5 +174,6 @@ int				is_invalid_char(t_expand *to_run);
 t_last			*run_to_next_cmd(t_last *cmd, t_last *next);
 int				is_bad_expansion(char *to_eval);
 int				check_expand_tab(char **tab_to_eval);
+int				check_expand_tab_builtin();
 
 #endif

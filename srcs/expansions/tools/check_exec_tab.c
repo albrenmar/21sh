@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 02:51:24 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 02:57:07 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 03:23:00 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,24 @@ int		check_expand_tab(char **tab_to_eval)
 	while (run_tab[i])
 		if (is_bad_expansion(run_tab[i++]))
 			return (1);
+	return (0);
+}
+
+int		check_expand_tab_builtin(void)
+{
+	char	**run_tab;
+	int		i;
+
+	i = 0;
+	run_tab = g_tracking.g_tab_exec;
+	while (run_tab[i])
+	{
+		if (g_tracking.mysh->err_expend_printed || is_bad_expansion(run_tab[i]))
+		{
+			g_tracking.mysh->err_expend_printed = 0;
+			return (1);
+		}
+		i++;
+	}
 	return (0);
 }
