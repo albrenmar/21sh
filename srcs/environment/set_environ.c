@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_environ.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 16:38:46 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 03:21:18 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,6 @@ void		ft_add_setenv_string(char *s1, char *s2)
 	buf->key = NULL;
 	buf->key = ft_strdup(s1);
 	buf->value = ft_strdup(s2);
+	buf->loop = 0;
 	g_tracking.mysh->set_env->add(g_tracking.mysh->set_env, buf);
 }
