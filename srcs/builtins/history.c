@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 02:58:02 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/21 04:20:00 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/22 03:30:02 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		history_offset(char **av)
 		if (!av[2] || ft_isinteg(av[2]) != 0 || !g_tracking.mysh->hist)
 			return (offset_error());
 		i = ft_atoi(av[2]);
-		tmp = ft_lstget(i , g_tracking.mysh->hist->firstelement);
+		tmp = ft_lstget(i, g_tracking.mysh->hist->firstelement);
 		while (tmp)
 		{
 			next = tmp->next;

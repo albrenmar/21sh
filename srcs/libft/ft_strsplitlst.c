@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplitlst.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 23:37:38 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/02 06:55:26 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/22 03:03:47 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ void			free_tab(char **tab)
 	}
 	ft_free(tab);
 	tab = NULL;
+}
+
+void			free_two_tabs(char **tab1, char **tab2)
+{
+	free_tab(tab1);
+	free_tab(tab2);
 }
 
 void			ft_freelstsplit(t_lstcontainer *list)
