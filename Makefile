@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/21 06:59:53 by abguimba         ###   ########.fr        #
+#    Updated: 2019/04/22 02:51:08 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -189,6 +189,7 @@ SRC = main.c \
 	  expansions/autocomplete/auto_com_expan.c \
 	  expansions/command/cmd_expan_checker.c \
 	  expansions/command/cmd_tools.c \
+	  expansions/command/cmd_helpers.c \
 	  expansions/tools/parm.c \
 	  expansions/tools/tools_altern.c \
 	  expansions/tools/tools_quote.c \
@@ -207,10 +208,10 @@ SRC = main.c \
 	  expansions/tools/scan.c \
 	  expansions/tools/scan_tilde.c \
  	  expansions/tools/scarg.c \
-	  expansions/command/cmd_helpers.c \
   	  expansions/tools/quote.c \
 	  expansions/tools/varname.c \
 	  expansions/tools/clean_unquoter.c \
+	  expansions/tools/check_exec_tab.c \
 	  temporal_env/temp_env.c \
 	  temporal_env/restore_env.c \
 	  temporal_env/tmp_env_helpers.c \

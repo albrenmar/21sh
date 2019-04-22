@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 00:32:55 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 02:58:07 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,8 @@ void			init_analyzer(t_analyzer *to_analy, char **str,
 					t_expand *expand);
 void			clean_nlzr_wildcard(t_analyzer *to_analy, int reverse);
 void			str_uniq_percent_chgr(t_analyzer *to_analy, char **str);
-void			print_exp_error_dpoints(char *varname, char *value, int sign, char **str);
+void			print_exp_error_dpoints(char *varname, char *value, int sign,
+					char **str);
 void			asign_vrvlufnd(t_analyzer *nly, char **rvrvlu,
 					char **rwlcd, char **str);
 void			asgnvrvluastrk(t_analyzer *nly, char **rvrvlu,
@@ -172,5 +173,6 @@ t_last			*check_for_local_vars(t_last *list_cmd);
 int				is_invalid_char(t_expand *to_run);
 t_last			*run_to_next_cmd(t_last *cmd, t_last *next);
 int				is_bad_expansion(char *to_eval);
+int				check_expand_tab(char **tab_to_eval);
 
 #endif

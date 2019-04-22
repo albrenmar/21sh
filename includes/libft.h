@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 01:51:43 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:15:06 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 03:06:27 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,4 +236,6 @@ void				free_all_list(void);
 char				**ft_split_whitespaces(char *str);
 
 char				*ft_strdup_nocar(const char *s);
+
+void				free_two_tabs(char **tab1, char **tab2);
 #endif
