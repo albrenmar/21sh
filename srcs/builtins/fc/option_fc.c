@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 04:23:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/23 10:58:55 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/23 14:05:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int		fc_error(int i)
 		ft_putendl_fd("Invalid option", 2);
 	if (i == 3)
 		ft_putendl_fd("Incompatible option", 2);
+	if (i == 4)
+		ft_putendl_fd("Argument out of history range", 2);
 	return (1);
 }
 
@@ -37,6 +39,8 @@ t_fcparse	*init_opt(void)
 	opt->r = 0;
 	opt->n = 0;
 	opt->l = 0;
+	opt->low = 0;
+	opt->max = 0;
 	opt->str = NULL;
 	opt->editor = NULL;
 	opt->first = NULL;

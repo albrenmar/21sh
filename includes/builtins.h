@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/23 10:46:54 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/23 14:02:03 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct	s_fcparse
 	int					s;
 	int					i;
 	int					err;
+	int					low;
+	int					max;
 	char				*str;
 	char				*editor;
 	char				*first;
@@ -80,4 +82,5 @@ int				fc_builtin(void);
 t_fcparse		*fc_option(char **av);
 t_fcparse		*fc_offset(char **av, t_fcparse *opt);
 int				fc_error(int i);
+void			char_to_index(t_fcparse *opt);
 #endif
