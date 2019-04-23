@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:38:45 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/23 10:46:54 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,21 @@
 
 # include "libft.h"
 # include "sh42.h"
+
+typedef struct	s_fcparse
+{
+	int					e;
+	int					l;
+	int					r;
+	int					n;
+	int					s;
+	int					i;
+	int					err;
+	char				*str;
+	char				*editor;
+	char				*first;
+	char				*last;
+}				t_fcparse;
 
 void			free_and_null(void *ptr);
 int				ft_exit3(int exitcode, int mode);
@@ -61,4 +76,8 @@ void			alias_loop_zero(void);
 int				alias_print_error(char *alias);
 int				alias_add_error(char *alias);
 int				search_eq(char *alias);
+int				fc_builtin(void);
+t_fcparse		*fc_option(char **av);
+t_fcparse		*fc_offset(char **av, t_fcparse *opt);
+int				fc_error(int i);
 #endif
