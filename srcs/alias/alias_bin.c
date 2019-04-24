@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/22 03:40:19 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/22 05:08:16 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char		*alias_swapper(char *line, int i, int count)
 	return (line);
 }
 
-void		print_alias_lst(void)
+int			print_alias_lst(void)
 {
 	t_keyval		*tmp;
 	t_list			*buf;
@@ -102,6 +102,7 @@ void		print_alias_lst(void)
 			print_keyval(tmp);
 		buf = buf->next;
 	}
+	return (0);
 }
 
 char		*return_alias(char *name)
