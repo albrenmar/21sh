@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
 #    Updated: 2019/04/23 14:01:52 by bsiche           ###   ########.fr        #
@@ -244,7 +244,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -Wall -Wextra -Werror -g -fsanitize=address
+FLAG := -Wall -Wextra -Werror -g #-fsanitize=address
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')

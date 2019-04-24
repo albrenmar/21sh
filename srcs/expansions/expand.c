@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:46:59 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 05:25:58 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char		expand_transformer(char **value, int unq)
 	to_unquot = unquote_value(value);
 	first = to_unquot;
 	str_orig = ft_strdup(*value);
-	if (to_unquot && (!ft_strstr(to_unquot->str_unquoted, "${}")
+	if (to_unquot && unq != 2 && (!ft_strstr(to_unquot->str_unquoted, "${}")
 			|| !ft_strstr(to_unquot->str_unquoted, "${}")))
 		scan_arg_transformer(&to_unquot, value);
 	else if ((to_unquot && ft_strequ(to_unquot->str_unquoted, "${}"))

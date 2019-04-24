@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 02:28:31 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:33:43 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 05:11:34 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		is_to_chg_env(char **str)
 	{
 		init_var(&varname, &varvalue, run_str);
 		env_or_set = have_envname(varname);
-		expand_transformer(&varvalue, 1);
+		expand_transformer(&varvalue, 2);
 		if (replace_frm_env_and_cmd_rmv(env_or_set, varname, varvalue, str))
 		{
 			end_var(&varname, &varvalue);
