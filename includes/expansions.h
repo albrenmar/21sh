@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:46:16 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 05:01:56 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int				ft_iswhitespace(int c);
 void			print_exp_error(char *to_error, char **str);
 void			print_exp_error_eq(char *varname, char *value, char **str);
 void			print_exp_str_error(char *strerror, char **str);
+void			print_exp_error_inter(char *varname, char *value, char **str);
 int				scan_tilde(char *arg, char **new_arg);
 int				scan_dollar(char *arg, char **new_arg);
 int				scan_dollar_key(char *arg, char **new_arg);

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 06:17:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:40:32 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 04:50:51 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,29 @@ void	print_exp_error_eq(char *varname, char *value, char **str)
 		ft_strdel(str);
 		*str = ft_strjoinfree("${", varname, 0);
 		*str = ft_strjoinfree(*str, ":=", 1);
+		*str = ft_strjoinfree(*str, value, 1);
+		*str = ft_strjoinfree(*str, "}", 1);
+		g_tracking.mysh->err_expend = 1;
+	}
+}
+
+void	print_exp_error_inter(char *varname, char *value, char **str)
+{
+	if (g_tracking.mysh->in_ast && !g_tracking.mysh->err_expend_printed)
+	{
+		ft_putstr_fd(SHELL_NAME, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putstr_fd(varname, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putendl_fd(value, 2);
+		g_tracking.mysh->err_expend = 0;
+		g_tracking.mysh->err_expend_printed = 1;
+	}
+	else
+	{
+		ft_strdel(str);
+		*str = ft_strjoinfree("${", varname, 0);
+		*str = ft_strjoinfree(*str, ":?", 1);
 		*str = ft_strjoinfree(*str, value, 1);
 		*str = ft_strjoinfree(*str, "}", 1);
 		g_tracking.mysh->err_expend = 1;
