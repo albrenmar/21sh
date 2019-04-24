@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   var_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 02:54:46 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void				build_var_lst(void)
 	t_keyval		*tmp;
 	t_ls			*new;
 
+	if (!g_tracking.mysh->env)
+		return ;
 	buf = g_tracking.mysh->env->firstelement;
 	if (!buf)
 		return ;

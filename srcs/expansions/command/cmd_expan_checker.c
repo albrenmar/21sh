@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 03:32:13 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/20 07:33:51 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 03:35:56 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,24 +103,9 @@ t_last	*check_exp_error(t_last *cmd)
 	cmd = begin;
 	if (!cmd)
 		return (NULL);
-//	re_format_line(&cmd);
 	if (cmd)
 		begin = cmd;
 	else
 		begin = NULL;
 	return (begin);
-}
-
-int		is_bad_expansion(char *to_eval)
-{
-	char	*tmp;
-	if (g_tracking.mysh->err_expend)
-	{
-		tmp = ft_strdup(to_eval);
-		expand_transformer(&tmp, 0);
-		if (!g_tracking.mysh->err_expend)
-			return (1);
-		ft_strdel(&tmp);
-	}
-	return (0);
 }

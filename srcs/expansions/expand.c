@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/20 02:36:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 05:25:58 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,9 @@ void		scan_arg_transformer(t_unquoter **check, char **value)
 void		mark_to_remove(t_unquoter *to_unquot, char **value)
 {
 	if (ft_strequ(to_unquot->str_unquoted, "${}"))
-		print_exp_error(NULL);
+		print_exp_error(NULL, value);
 	else
-		print_exp_str_error(to_unquot->str_unquoted);
-	ft_strdel(value);
-//	*value = ft_strdup(" ");
-	*value = ft_strdup("");
+		print_exp_str_error(to_unquot->str_unquoted, value);
 }
 
 char		expand_transformer(char **value, int unq)
@@ -97,38 +94,16 @@ char		expand_transformer(char **value, int unq)
 	to_unquot = unquote_value(value);
 	first = to_unquot;
 	str_orig = ft_strdup(*value);
-	if (to_unquot && (!ft_strstr(to_unquot->str_unquoted, "${}")
+	if (to_unquot && unq != 2 && (!ft_strstr(to_unquot->str_unquoted, "${}")
 			|| !ft_strstr(to_unquot->str_unquoted, "${}")))
 		scan_arg_transformer(&to_unquot, value);
 	else if ((to_unquot && ft_strequ(to_unquot->str_unquoted, "${}"))
 			|| ft_strequ(str_orig, "${}")
 			|| ft_strstr(to_unquot->str_unquoted, "${}"))
 		mark_to_remove(to_unquot, value);
-//	if (g_tracking.mysh->err_expend)
-//	{
-//		ft_strdel(value);
-//		*value = ft_strdup(" ");
-//		*value = ft_strdup("");
-//	}
 	ft_strdel(&str_orig);
 	if (!unq)
-	{
-		to_unquot = first;
-		ft_strdel(value);
-		*value = ft_strnew(1);
-		while (to_unquot)
-		{
-			if (to_unquot->type)
-			{
-				*value = ft_strjoinchar(*value, to_unquot->type, 1);
-				*value = ft_strjoinfree(*value, to_unquot->str_unquoted, 1);
-				*value = ft_strjoinchar(*value, to_unquot->type, 1);
-			}
-			else
-				*value = ft_strjoinfree(*value, to_unquot->str_unquoted, 1);
-			to_unquot = to_unquot->next;
-		}
-	}
+		quotenize(first, value);
 	clean_unquoter(first);
 	return (0);
 }

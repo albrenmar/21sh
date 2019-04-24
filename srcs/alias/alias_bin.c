@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alias_bin.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 05:08:16 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char		*alias_swapper(char *line, int i, int count)
 	return (line);
 }
 
-void		print_alias_lst(void)
+int			print_alias_lst(void)
 {
 	t_keyval		*tmp;
 	t_list			*buf;
@@ -99,15 +99,10 @@ void		print_alias_lst(void)
 	{
 		tmp = buf->content;
 		if (tmp)
-		{
-			if (tmp->key)
-				ft_putstr(tmp->key);
-			ft_putchar('=');
-			if (tmp->value)
-				ft_putendl(tmp->value);
-		}
+			print_keyval(tmp);
 		buf = buf->next;
 	}
+	return (0);
 }
 
 char		*return_alias(char *name)

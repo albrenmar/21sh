@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/20 04:31:12 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 05:01:56 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,10 @@ void			scan_argument(char *arg, t_scan *info_arg);
 char			*ft_exp_complete(char *arg);
 t_unquoter		*unquote_value(char **value);
 int				ft_iswhitespace(int c);
-void			print_exp_error(char *to_error);
-void			print_exp_error_eq(char *varname, char *value);
-void			print_exp_str_error(char *strerror);
+void			print_exp_error(char *to_error, char **str);
+void			print_exp_error_eq(char *varname, char *value, char **str);
+void			print_exp_str_error(char *strerror, char **str);
+void			print_exp_error_inter(char *varname, char *value, char **str);
 int				scan_tilde(char *arg, char **new_arg);
 int				scan_dollar(char *arg, char **new_arg);
 int				scan_dollar_key(char *arg, char **new_arg);
@@ -137,7 +138,8 @@ void			init_analyzer(t_analyzer *to_analy, char **str,
 					t_expand *expand);
 void			clean_nlzr_wildcard(t_analyzer *to_analy, int reverse);
 void			str_uniq_percent_chgr(t_analyzer *to_analy, char **str);
-void			print_exp_error_dpoints(char *varname, char *value, int sign, char **str);
+void			print_exp_error_dpoints(char *varname, char *value, int sign,
+					char **str);
 void			asign_vrvlufnd(t_analyzer *nly, char **rvrvlu,
 					char **rwlcd, char **str);
 void			asgnvrvluastrk(t_analyzer *nly, char **rvrvlu,
@@ -172,5 +174,8 @@ t_last			*check_for_local_vars(t_last *list_cmd);
 int				is_invalid_char(t_expand *to_run);
 t_last			*run_to_next_cmd(t_last *cmd, t_last *next);
 int				is_bad_expansion(char *to_eval);
+int				check_expand_tab(char **tab_to_eval);
+int				check_expand_tab_builtin();
+void			quotenize(t_unquoter *first, char **value);
 
 #endif

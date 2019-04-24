@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/21 06:59:53 by abguimba         ###   ########.fr        #
+#    Updated: 2019/04/23 14:01:52 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,9 @@ SRC = main.c \
 	  42sh/exec_sh.c \
 	  42sh/exit_reddir.c \
 	  builtins/env/env.c \
+	  builtins/fc/main_fc.c \
+	  builtins/fc/list_fc.c \
+	  builtins/fc/option_fc.c \
 	  builtins/export/export.c \
 	  builtins/export/export_error.c \
 	  builtins/export/export_tools.c \
@@ -169,6 +172,7 @@ SRC = main.c \
 	  alias/alias_struct.c \
 	  alias/unalias.c \
 	  alias/alias_helpers.c \
+	  alias/builtin_alias.c \
 	  shell_core/copyenv.c \
 	  shell_core/env_to_lst.c \
 	  shell_core/init_shell.c \
@@ -189,6 +193,7 @@ SRC = main.c \
 	  expansions/autocomplete/auto_com_expan.c \
 	  expansions/command/cmd_expan_checker.c \
 	  expansions/command/cmd_tools.c \
+	  expansions/command/cmd_helpers.c \
 	  expansions/tools/parm.c \
 	  expansions/tools/tools_altern.c \
 	  expansions/tools/tools_quote.c \
@@ -207,10 +212,10 @@ SRC = main.c \
 	  expansions/tools/scan.c \
 	  expansions/tools/scan_tilde.c \
  	  expansions/tools/scarg.c \
-	  expansions/command/cmd_helpers.c \
   	  expansions/tools/quote.c \
 	  expansions/tools/varname.c \
 	  expansions/tools/clean_unquoter.c \
+	  expansions/tools/check_exec_tab.c \
 	  temporal_env/temp_env.c \
 	  temporal_env/restore_env.c \
 	  temporal_env/tmp_env_helpers.c \
@@ -239,7 +244,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -Wall -Wextra -Werror -g -fsanitize=address
+FLAG := -Wall -Wextra -Werror -g #-fsanitize=address
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')

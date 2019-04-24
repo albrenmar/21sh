@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/21 22:45:24 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 05:05:58 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct	s_keyval
 {
 	char				*key;
 	char				*value;
+	int					loop;
 }				t_keyval;
 
 typedef struct	s_tree
@@ -331,7 +332,7 @@ int				init_alias(void);
 int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
 char			*return_alias(char *name);
-void			print_alias_lst(void);
+int				print_alias_lst(void);
 int				unalias(char *alias);
 int				unalias_blt(void);
 int				two_arg(char **argv, int i);
@@ -510,5 +511,6 @@ char			*get_index(char *word);
 char			*replace_word(char *line, int i);
 char    		*replace_double(char *line, int i);
 char			*return_error_bang(void);
+void			print_keyval(t_keyval *tmp);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:46:36 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/19 06:04:46 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 03:52:12 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,9 @@ void	exp_key_altern(char **str, t_expand *expand)
 			|| ft_strequ(to_analy.varname, "")))
 	{
 		if (!to_analy.varvalue && to_analy.wildcard)
-			print_exp_error(*str + 1);
+			print_exp_error(*str + 1, str);
 		else
-			print_exp_str_error(*str);
-		ft_strdel(str);
-//		*str = ft_strdup(" ");
-		*str = ft_strdup("");
+			print_exp_str_error(*str, str);
 		end_analyzer(to_analy);
 		return ;
 	}
@@ -74,11 +71,8 @@ void	exp_key_double_percent(char **str, t_expand *expand)
 	init_analyzer(&to_analy, str, expand);
 	if (!to_analy.varname[0])
 	{
-		print_exp_error(*str + 1);
+		print_exp_error(*str + 1, str);
 		end_analyzer(to_analy);
-		ft_strdel(str);
-//		*str = ft_strdup(" ");
-		*str = ft_strdup("");
 		return ;
 	}
 	if (to_analy.start_astrsk)

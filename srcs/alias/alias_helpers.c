@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alias_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 05:04:22 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,37 @@ char			*check_if_first_word_alias(char *str, int i, int isave)
 			i++;
 	}
 	return (str);
+}
+
+void			alias_loop_zero(void)
+{
+	t_list		*alias;
+	t_keyval	*tmp;
+
+	if (!g_tracking.mysh->alias_lst)
+		return ;
+	alias = ft_lstgetfirst(g_tracking.mysh->alias_lst->firstelement);
+	if (!alias)
+		return ;
+	while (alias)
+	{
+		tmp = alias->content;
+		if (tmp)
+			tmp->loop = 0;
+		alias = alias->next;
+	}
+}
+
+void			print_keyval(t_keyval *tmp)
+{
+	if (tmp->key)
+	{
+		ft_putstr(tmp->key);
+		ft_putchar('=');
+		ft_putchar('\'');
+		if (tmp->value)
+			ft_putstr(tmp->value);
+		ft_putchar('\'');
+		ft_putchar('\n');
+	}
 }

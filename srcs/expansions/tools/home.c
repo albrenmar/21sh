@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 01:20:02 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/21 23:47:10 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 03:54:28 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ char	*get_home_value(void)
 	char	*home;
 
 	home = NULL;
-	if ((home = get_env_string("HOME"))/* && ft_strequ(home, "")*/)
+	if ((home = get_env_string("HOME")))
 		return (ft_strdup(home));
-	else if ((home = get_parm_string("HOME"))/* && ft_strequ(home, "")*/)
+	else if ((home = get_parm_string("HOME")))
 		return (ft_strdup(home));
 	else
 		return (get_user_home(getlogin()));

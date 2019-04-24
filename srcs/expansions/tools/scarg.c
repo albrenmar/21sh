@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 01:03:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/20 04:40:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 03:57:07 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void		prepare_to_next_scan(t_scan_arg *scarg)
 
 	if (!scarg->new_arg)
 		scarg->new_arg = ft_strnew(1);
-//	if (g_tracking.mysh->err_expend && scarg->new_arg[0])
-//		g_tracking.mysh->err_expend = 0;
 	len = ft_strlen(scarg->scan->sstring);
 	if (len == 1 && !g_tracking.mysh->err_expend
 			&& *scarg->scan->sstring == ' ')

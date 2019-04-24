@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:00:43 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/20 07:29:45 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 01:15:40 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ int					test_exist_fonction_two(char ***tab_cmd, char **pathlist)
 	int				i;
 	char			*next_str;
 	char			*addslash;
-	char			**run_exec_tab;
 
 	i = 0;
 	next_str = NULL;
-	run_exec_tab = *tab_cmd;
 	if (!pathlist)
 		return (0);
 	while (pathlist[i])
@@ -69,11 +67,7 @@ char				**exist_help(char **t, char *p, char **pl, struct stat s)
 char				**test_exist_fonct(char **t_c, int mode, char *p, char **pl)
 {
 	struct stat		path_stat;
-	char			**run_tab;
-	int				i;
-	
-	i = 0;
-	run_tab = t_c;
+
 	stat(t_c[0], &path_stat);
 	if ((ft_strlen(t_c[0]) == 0) || (t_c[0][0] == '.' && t_c[0][1] == '\0')
 	|| (t_c[0][0] == '.' && t_c[0][1] == '.' && t_c[0][2] == '\0'))
