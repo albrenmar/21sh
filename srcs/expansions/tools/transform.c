@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:57:28 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/24 21:22:33 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,21 +91,29 @@ void	transform(t_expand *expand, char **str)
 {
 	t_expand	*first_letter;
 	char		*tmp;
+	int			is_expanded;
 
 	first_letter = expand;
 	tmp = *str;
+	is_expanded = 0;
 	transform_if_tilde(&first_letter, str);
-	while (expand->ltr && expand->ltr != '~')
+	while (expand->ltr && expand->ltr != '~' && !is_expanded)
 	{
 		if (expand->ltr == '$' && expand->next && expand->next->ltr != '?')
 		{
 			first_letter = expand_keys(expand, str);
 			expand = first_letter;
+			is_expanded = 1;
 		}
 		if (expand->next && !g_tracking.mysh->err_expend)
 			expand = expand->next;
 		else
 			break ;
+	}
+	if (is_expanded)
+	{
+		delete_list_expand(&first_letter);
+		return ;
 	}
 	if (!g_tracking.mysh->err_expend && *str && transform_simple(str))
 		delete_list_expand(&first_letter);
