@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fc_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 11:40:35 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/24 12:29:40 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/25 23:59:11 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	rev_print(t_fcparse *opt)
 
 void	print_fc(t_fcparse *opt)
 {
-	t_list      *tmp;
+	t_list		*tmp;
 
 	if (!opt)
 		return ;

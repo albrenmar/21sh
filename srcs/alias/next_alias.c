@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   next_alias.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/25 18:35:16 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/25 23:52:34 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-char			*new_swap_alias(char *str, int j, int isave, t_keyval *tmp)
+char		*new_swap_alias(char *str, int j, int isave, t_keyval *tmp)
 {
 	char		*new;
 	int			len;
@@ -121,7 +121,7 @@ char		*check_if_next_alias(char *str, int nb, int nbsave, char lastl)
 		{
 			nb = get_last_char_alias(str, memory, nbsave + 1, 0);
 			ft_strdel(&memory);
-			return (check_if_next_alias(str, nbsave + 1, nbsave + 1,  str[nb]));
+			return (check_if_next_alias(str, nbsave + 1, nbsave + 1, str[nb]));
 		}
 	}
 	return (memory);
