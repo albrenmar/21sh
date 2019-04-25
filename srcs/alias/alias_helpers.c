@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alias_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/22 03:47:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/25 16:48:39 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char			*check_if_first_word_alias(char *str, int i, int isave)
 	return (str);
 }
 
-void	alias_loop_zero(void)
+void			alias_loop_zero(void)
 {
 	t_list		*alias;
 	t_keyval	*tmp;
@@ -87,7 +87,7 @@ void	alias_loop_zero(void)
 	}
 }
 
-void	print_keyval(t_keyval *tmp)
+void			print_keyval(t_keyval *tmp)
 {
 	if (tmp->key)
 	{

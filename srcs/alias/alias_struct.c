@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/22 03:45:59 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/22 05:09:02 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int					check_forbidden_char(char *str)
 	return (flag);
 }
 
-int		print_alias(char *name)
+int					print_alias(char *name)
 {
 	t_keyval		*tmp;
 	t_list			*buf;
@@ -119,12 +119,9 @@ int					add_alias(void)
 
 	av = g_tracking.g_tab_exec;
 	if (!av[1])
-	{
-		print_alias_lst();
-		return (0);
-	}
-	i = 1;
-	while(av[i])
+		return (print_alias_lst());
+	i = 0;
+	while (av[i++])
 	{
 		alias = ft_strdup(av[i]);
 		alias_lst = g_tracking.mysh->alias_lst;
@@ -137,7 +134,6 @@ int					add_alias(void)
 				lstcontainer_add(alias_lst, alias_to_add);
 		}
 		ft_strdel(&alias);
-		i++;
 	}
 	return (0);
 }

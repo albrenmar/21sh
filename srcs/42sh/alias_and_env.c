@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alias_and_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 02:06:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:03:06 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,7 @@ int				check_if_valid_quotes(char *str, int i, int j, int countequal)
 
 char			*alias_and_env(char *line)
 {
-	if (check_if_valid_quotes(line, 0, 0, 0))
-	{
-		line = alias_swapper(line, 0, 1);
-		line = check_tmp_env(line, 0, 0);
-		return (line);
-	}
-	ft_strdel(&line);
-	ft_putstr_fd(SHELL_NAME, 2);
-	ft_putendl_fd(": not supported quoting on alias or tmp env assignment", 2);
-	return (ft_strdup("false"));
+	line = alias_swapper(line, 0, 1);
+	// line = check_tmp_env(line, 0, 0);
+	return (line);
 }

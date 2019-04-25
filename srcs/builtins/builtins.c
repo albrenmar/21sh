@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:26:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/23 10:14:33 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int			is_builtin(void)
 		|| ft_builtin_search("type") || ft_builtin_search("unset")
 		|| ft_builtin_search("export") || ft_builtin_search("env")
 		|| ft_builtin_search("true") || ft_builtin_search("false")
-		|| ft_builtin_search("unsetenv") || ft_builtin_search("history"))
+		|| ft_builtin_search("unsetenv") || ft_builtin_search("history")
+		|| ft_builtin_search("fc"))
 		return (1);
 	return (0);
 }
@@ -88,6 +89,8 @@ int			builtin_exec_cont(void)
 		return (ft_export());
 	else if (ft_builtin_search("history"))
 		return (history_builtin());
+	else if (ft_builtin_search("fc"))
+		return (fc_builtin());
 	else if (ft_builtin_search("env"))
 		return (ft_env(0, 0));
 	else

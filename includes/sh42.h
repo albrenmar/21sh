@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/22 03:22:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/25 17:27:53 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -323,6 +323,9 @@ void			join_page_nbr(void);
 void			line_per_page(void);
 void			escape_path(void);
 char			*swap_alias(char *str, int j, int isave, t_keyval *tmp);
+void			swap_alias_helper(char *n, int l, int i, char *str);
+int				get_last_char_alias(char *str, char *memory, int nbsave, int j);
+char			*check_if_next_alias(char *str, int nb, int nbsave, char lastl);
 char			*check_if_first_word_alias(char *str, int i, int isave);
 int				next_separator(char *str, int i);
 char			*aliased_line(char **taab, int i, int j);
@@ -332,7 +335,7 @@ int				init_alias(void);
 int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
 char			*return_alias(char *name);
-void			print_alias_lst(void);
+int				print_alias_lst(void);
 int				unalias(char *alias);
 int				unalias_blt(void);
 int				two_arg(char **argv, int i);
