@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bang_replace.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 04:46:38 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/20 04:56:58 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/26 01:20:10 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,13 @@ char	*get_keyword(char *line, int i)
 	if (ft_isalpha(line[i]) == 1)
 	{
 		while (is_space_ac(line, i) != 1)
-		{
-			word[a] = line[i];
-			a++;
-			i++;
-		}
+			word[a++] = line[i++];
 	}
 	else
 	{
-		while(is_space_ac(line, i) != 1 && (line[i] == '-' || ft_isdigit(line[i]) == 1))
-		{
-			word[a] = line[i];
-			a++;
-			i++;
-		}
+		while (is_space_ac(line, i) != 1 && (line[i] == '-'
+			|| ft_isdigit(line[i]) == 1))
+			word[a++] = line[i++];
 	}
 	return (word);
 }
@@ -72,7 +65,7 @@ char	*replace_word(char *line, int i)
 	return (begin);
 }
 
-char    *replace_double(char *line, int i)
+char	*replace_double(char *line, int i)
 {
 	int		j;
 	char	*end;
