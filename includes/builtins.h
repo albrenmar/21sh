@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/21 03:13:17 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/24 19:57:33 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,24 @@
 
 # include "libft.h"
 # include "sh42.h"
+
+typedef struct	s_fcparse
+{
+	int					e;
+	int					l;
+	int					r;
+	int					n;
+	int					s;
+	int					i;
+	int					err;
+	int					low;
+	int					max;
+	char				*str;
+	char				*editor;
+	char				*first;
+	char				*last;
+	char				*save_hist;
+}				t_fcparse;
 
 void			free_and_null(void *ptr);
 int				ft_exit3(int exitcode, int mode);
@@ -57,5 +75,18 @@ char			*sanitize_path_cd(char *path);
 char			*cd_path(char *path);
 void			ft_changedir(char *path, char option, char *err);
 int				history_builtin(void);
-
+void			alias_loop_zero(void);
+int				alias_print_error(char *alias);
+int				alias_add_error(char *alias);
+int				search_eq(char *alias);
+int				fc_builtin(void);
+t_fcparse		*fc_option(char **av);
+t_fcparse		*fc_offset(char **av, t_fcparse *opt);
+int				fc_error(int i, char *str);
+void			char_to_index(t_fcparse *opt);
+void			print_fc(t_fcparse *opt);
+int 			create_fc_file(t_fcparse *opt);
+void			get_neg_offset(t_fcparse *opt);
+void			fc_loop(char *path);
+t_list			*clean_jobs_next_tmp(char *line, t_list *tmp);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copyenv.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 18:55:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 02:52:18 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	ft_add_env_string(char *s1, char *s2)
 	buf->key = NULL;
 	buf->key = ft_strdup(s1);
 	buf->value = ft_strdup(s2);
+	buf->loop = 0;
 	g_tracking.mysh->env->add(g_tracking.mysh->env, buf);
 }
 

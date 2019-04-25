@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/22 02:51:08 by mjose            ###   ########.fr        #
+#    Updated: 2019/04/25 21:38:28 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,12 @@ SRC = main.c \
 	  42sh/exec_sh.c \
 	  42sh/exit_reddir.c \
 	  builtins/env/env.c \
+	  builtins/fc/main_fc.c \
+	  builtins/fc/lst_to_file.c \
+	  builtins/fc/list_fc.c \
+	  builtins/fc/fc_print.c \
+	  builtins/fc/option_fc.c \
+	   builtins/fc/fc_exec.c \
 	  builtins/export/export.c \
 	  builtins/export/export_error.c \
 	  builtins/export/export_tools.c \
@@ -164,11 +170,14 @@ SRC = main.c \
 	  ft_ls/termsize.c \
 	  ft_ls/timesort.c \
 	  alias/alias_tools.c \
+	  alias/next_alias_tools.c \
+	  alias/next_alias.c \
 	  alias/alias_bin.c \
 	  alias/alias_file.c \
 	  alias/alias_struct.c \
 	  alias/unalias.c \
 	  alias/alias_helpers.c \
+	  alias/builtin_alias.c \
 	  shell_core/copyenv.c \
 	  shell_core/env_to_lst.c \
 	  shell_core/init_shell.c \
@@ -240,7 +249,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -Wall -Wextra -Werror -g -fsanitize=address
+FLAG := -Wall -Wextra -Werror -g #-fsanitize=address
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')

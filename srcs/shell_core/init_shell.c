@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/21 22:46:48 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/24 15:13:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	init_global(void)
 	g_tracking.cwd = NULL;
 	g_tracking.user = NULL;
 	g_tracking.cwd = NULL;
+	g_tracking.herenbr = 0;
 }
 
 void	init_shell(char **environ)
