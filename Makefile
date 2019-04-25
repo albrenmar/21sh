@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/23 14:01:52 by bsiche           ###   ########.fr        #
+#    Updated: 2019/04/24 19:56:21 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,8 +60,11 @@ SRC = main.c \
 	  42sh/exit_reddir.c \
 	  builtins/env/env.c \
 	  builtins/fc/main_fc.c \
+	  builtins/fc/lst_to_file.c \
 	  builtins/fc/list_fc.c \
+	  builtins/fc/fc_print.c \
 	  builtins/fc/option_fc.c \
+	   builtins/fc/fc_exec.c \
 	  builtins/export/export.c \
 	  builtins/export/export_error.c \
 	  builtins/export/export_tools.c \

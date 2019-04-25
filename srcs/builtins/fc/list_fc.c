@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 13:23:11 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/23 14:11:56 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/24 12:23:59 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int		fc_get_index(char *str)
 	int			i;
 
 	if (!g_tracking.mysh->hist)
-		return (fc_error(4));
+		return (fc_error(4, str));
 	if (!str)
 		return (-42);
 	history = ft_lstgetlast(g_tracking.mysh->hist->firstelement);
 	if (!history)
-		return (fc_error(4));
+		return (fc_error(4, str));
 	i = ft_strlen(str);
 	while (history)
 	{
@@ -52,7 +52,7 @@ int		fc_get_index(char *str)
 			return (history->index);
 		history = history->prev;
 	}
-	return (-42);
+	return (fc_error(4, str));
 }
 
 void	char_to_index(t_fcparse *opt)
@@ -74,7 +74,7 @@ void	char_to_index(t_fcparse *opt)
 		opt->low = opt->max;
 		opt->max = tmp;
 		tmp = opt->r;
-		if(tmp == 1)
+		if (tmp == 1)
 			opt->r = 0;
 		if (tmp == 0)
 			opt->r = 1;
