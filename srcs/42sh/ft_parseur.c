@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parseur.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:10:59 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:04:14 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ t_last	*ft_parseur(int i, char *str)
 	list_cmd = NULL;
 	if (!(line = quote_check(str)))
 		return (NULL);
+	line = alias_swapper(line, 0, 1);
 	while (i < (int)ft_strlen(line) && line[i] && line[i] == ' ')
 		i++;
 	if ((temp = recup_cmd(&line[i], &i, 0)) != NULL)
