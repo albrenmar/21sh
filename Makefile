@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: abe <abe@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/23 14:01:52 by bsiche           ###   ########.fr        #
+#    Updated: 2019/04/25 17:28:55 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -167,6 +167,8 @@ SRC = main.c \
 	  ft_ls/termsize.c \
 	  ft_ls/timesort.c \
 	  alias/alias_tools.c \
+	  alias/next_alias_tools.c \
+	  alias/next_alias.c \
 	  alias/alias_bin.c \
 	  alias/alias_file.c \
 	  alias/alias_struct.c \
@@ -244,7 +246,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -Wall -Wextra -Werror -g #-fsanitize=address
+FLAG := -Wall -Wextra -Werror -g -fsanitize=address
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')
