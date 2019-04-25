@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/24 17:45:52 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/25 21:54:40 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,25 @@ char	**expand_first_arg(char **tab_exec, int i, int *j, char **tab_farg)
 	i_arg = 0;
 	tab_farg = ft_split_whitespaces(tab_exec[0]);
 	if (tab_farg)
-		while (tab_farg[i_arg])
-			i_arg++;
-	if (i_arg > 1)
 	{
-		free_tab(tab_exec);
-		tab_exec = ft_memalloc(sizeof(char *) * (i + i_arg + 1));
-		i_arg = 0;
 		while (tab_farg[i_arg])
-		{
-			tab_exec[i_arg] = ft_strdup(tab_farg[i_arg]);
 			i_arg++;
+		if (i_arg > 1)
+		{
+			free_tab(tab_exec);
+			tab_exec = ft_memalloc(sizeof(char *) * (i + i_arg + 1));
+			i_arg = 0;
+			while (tab_farg[i_arg])
+			{
+				tab_exec[i_arg] = ft_strdup(tab_farg[i_arg]);
+				i_arg++;
+			}
+			*j = i_arg;
 		}
-		*j = i_arg;
-		free_tab(tab_farg);
+		else
+			*j = 1;
 	}
-	else
-		*j = 1;
+	free_tab(tab_farg);
 	return (tab_exec);
 }
 

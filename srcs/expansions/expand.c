@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/24 20:57:39 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/25 22:47:50 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char		expand_transformer(char **value, int unq)
 	{
 		clean_unquoter(first);
 		to_unquot = new_unquoted_value();
-		to_unquot->str_unquoted = tmp;
+		to_unquot->str_unquoted = ft_strdup(tmp);
 	}
 	first = to_unquot;
 	str_orig = ft_strdup(*value);
@@ -120,5 +120,7 @@ char		expand_transformer(char **value, int unq)
 	if (!unq)
 		quotenize(first, value);
 	clean_unquoter(first);
+	if (tmp)
+		ft_strdel(&tmp);
 	return (0);
 }
