@@ -60,8 +60,11 @@ SRC = main.c \
 	  42sh/exit_reddir.c \
 	  builtins/env/env.c \
 	  builtins/fc/main_fc.c \
+	  builtins/fc/lst_to_file.c \
 	  builtins/fc/list_fc.c \
+	  builtins/fc/fc_print.c \
 	  builtins/fc/option_fc.c \
+	   builtins/fc/fc_exec.c \
 	  builtins/export/export.c \
 	  builtins/export/export_error.c \
 	  builtins/export/export_tools.c \

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/23 14:02:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/24 19:57:33 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_fcparse
 	char				*editor;
 	char				*first;
 	char				*last;
+	char				*save_hist;
 }				t_fcparse;
 
 void			free_and_null(void *ptr);
@@ -81,6 +82,11 @@ int				search_eq(char *alias);
 int				fc_builtin(void);
 t_fcparse		*fc_option(char **av);
 t_fcparse		*fc_offset(char **av, t_fcparse *opt);
-int				fc_error(int i);
+int				fc_error(int i, char *str);
 void			char_to_index(t_fcparse *opt);
+void			print_fc(t_fcparse *opt);
+int 			create_fc_file(t_fcparse *opt);
+void			get_neg_offset(t_fcparse *opt);
+void			fc_loop(char *path);
+t_list			*clean_jobs_next_tmp(char *line, t_list *tmp);
 #endif
