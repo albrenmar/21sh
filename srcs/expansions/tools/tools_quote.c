@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 03:09:44 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/12 09:27:17 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/24 20:32:23 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_unquoter	*new_unquoted_value(void)
 	value = (t_unquoter *)ft_malloc(sizeof(t_unquoter));
 	value->str_unquoted = NULL;
 	value->type = '\0';
+	value->intra_key = 0;
 	value->next = (t_unquoter *)ft_malloc(sizeof(t_unquoter));
 	value->next->str_unquoted = NULL;
 	value->next->type = '\0';

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alias_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/25 18:19:54 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ int				next_separator(char *str, int i)
 	return (i);
 }
 
-void			swap_alias_helper(char *new, int l, int i, char *str)
+void			swap_alias_helper(char *n, int l, int i, char *str)
 {
 	while (str[l] != '\0')
 	{
-		new[i] = str[l];
+		n[i] = str[l];
 		i++;
 		l++;
 	}
-	new[i] = '\0';
+	n[i] = '\0';
 }
 
 char			*swap_alias(char *str, int j, int isave, t_keyval *tmp)
@@ -88,8 +88,8 @@ char			*swap_alias(char *str, int j, int isave, t_keyval *tmp)
 		i++;
 		l++;
 	}
-	l = i - l + j;
-	swap_alias_helper(new, l, i, str);
+	swap_alias_helper(new, i - l + j, i, str);
 	ft_strdel(&str);
+	new = check_if_next_alias(new, 1, 1, tmp->value[ft_strlen(tmp->value) - 1]);
 	return (new);
 }
