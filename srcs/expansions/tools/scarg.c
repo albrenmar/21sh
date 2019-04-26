@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 01:03:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/26 04:55:36 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/26 05:37:12 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@ void		expan_arg(t_scan_arg *scarg)
 		create_list_expand(scarg->expand, scarg->scan->sstring);
 //		if (!scarg->new_arg)
 //			scarg->new_arg = ft_strnew(1);
-		if (!scarg->new_arg)
+		if (!scarg->new_arg && scarg->scan->sstring[0] != '\\')
 			transform(scarg->expand, &scarg->scan->sstring);
-		else if (scarg->new_arg[ft_strlen(scarg->new_arg) - 1] != '\\')
+		else if (scarg->new_arg
+				&& scarg->new_arg[ft_strlen(scarg->new_arg) - 1] != '\\')
 			transform(scarg->expand, &scarg->scan->sstring);
-		else
+		else if (scarg->new_arg)
 			scarg->new_arg[ft_strlen(scarg->new_arg) - 1] = '\0';
 		expand_lstdel(expan_head);
 	}
