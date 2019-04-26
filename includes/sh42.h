@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/25 17:27:53 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/26 05:58:09 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,8 @@ typedef struct	s_tracking
 	int					cmdindex;
 	int					foreground;
 	int					hist_first;
+	int					alias_len;
+	int					next_alias;
 }				t_tracking;
 
 typedef struct	s_comm
@@ -325,13 +327,19 @@ void			escape_path(void);
 char			*swap_alias(char *str, int j, int isave, t_keyval *tmp);
 void			swap_alias_helper(char *n, int l, int i, char *str);
 int				get_last_char_alias(char *str, char *memory, int nbsave, int j);
-char			*check_if_next_alias(char *str, int nb, int nbsave, char lastl);
+char			*check_if_next_alias(char *str);
+char			*next_alias_recursive(char *str);
 char			*check_if_first_word_alias(char *str, int i, int isave);
 int				next_separator(char *str, int i);
-char			*aliased_line(char **taab, int i, int j);
+char			*swap_alias(char *str, int j, int isave, t_keyval *tmp);
+char			*aliased_line(char **taab, int i, int loop);
 char			*alias_swapper(char *line, int i, int count);
+char			**line_to_taab(char *str, int i, int j);
+void			set_alias_globals(char *value, int i, int j);
 void			alias_swapper_helper(int i, int j, char *line, char **taab);
+char			*taab_to_line(char **taab);
 int				init_alias(void);
+char			*recursive_alias(char *str);
 int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
 char			*return_alias(char *name);

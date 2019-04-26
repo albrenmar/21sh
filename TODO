@@ -9,12 +9,10 @@ Partie Brendan
 - Echo + backslash n et gerer history
 
 Partie Abraham
--42sh: perfect expansions:
-  expansions-> "false" when false expansion or end execution of line
--arreglar tmpenv y probar leaks 
--make good tmpenv (with quotes)
--make good alias (with quotes)
--for rendu 42sh -> norme, auteur, headers, printfs, forbidden functions, unused functions, testfiles
+-new tmpenv and env -i in execution
+-fix alias sub='(echo abc|)'
+-fix substitution "alias c="
+-fix boucle infinie 
 
 Partie Marc
 - Gerer l'expand recursive (${VARNAME:-${VARNAME:+VARVALUE}aaaaa}bbbb Par exemple).

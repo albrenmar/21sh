@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alias_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/25 16:48:39 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/26 02:05:14 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ char			*check_if_first_word_helper(char *str, int isa, int save, int j)
 		|| (str[isa] && (is_spaces(str, isa, 2)))))
 			return (swap_alias(str, j, save, tmp));
 		hold = hold->next;
+		isa = save;
 	}
-	return (str);
+	return (NULL);
 }
 
 char			*check_if_first_word_alias(char *str, int i, int isave)
@@ -65,7 +66,7 @@ char			*check_if_first_word_alias(char *str, int i, int isave)
 		if (str[i])
 			i++;
 	}
-	return (str);
+	return (NULL);
 }
 
 void			alias_loop_zero(void)

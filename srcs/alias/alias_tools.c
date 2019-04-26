@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alias_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/25 18:19:54 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/26 07:04:17 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,18 @@ int				next_separator(char *str, int i)
 	return (i);
 }
 
+char			*recursive_alias(char *str)
+{
+	char		*memory;
+
+	while (str != NULL)
+	{
+		memory = str;
+		str = check_if_first_word_alias(str, 0, 0);
+	}
+	return (memory);
+}
+
 void			swap_alias_helper(char *n, int l, int i, char *str)
 {
 	while (str[l] != '\0')
@@ -63,6 +75,24 @@ void			swap_alias_helper(char *n, int l, int i, char *str)
 		l++;
 	}
 	n[i] = '\0';
+}
+
+void			set_alias_globals(char *value, int i, int j)
+{
+	if (!value)
+	{
+		g_tracking.alias_len = 0;
+		g_tracking.next_alias = 0;
+		return ;
+	}
+	else
+	{
+		g_tracking.alias_len = j;
+		if (i > 0 && value[i - 1] == ' ')
+			g_tracking.next_alias = 1;
+		else
+			g_tracking.next_alias = 0;
+	}
 }
 
 char			*swap_alias(char *str, int j, int isave, t_keyval *tmp)
@@ -82,14 +112,14 @@ char			*swap_alias(char *str, int j, int isave, t_keyval *tmp)
 		new[i] = str[i];
 		i++;
 	}
-	while (tmp->value[l] != '\0')
+	while (tmp->value && tmp->value[l] != '\0')
 	{
 		new[i] = tmp->value[l];
 		i++;
 		l++;
 	}
+	set_alias_globals(tmp->value, l, i);
 	swap_alias_helper(new, i - l + j, i, str);
 	ft_strdel(&str);
-	new = check_if_next_alias(new, 1, 1, tmp->value[ft_strlen(tmp->value) - 1]);
 	return (new);
 }
