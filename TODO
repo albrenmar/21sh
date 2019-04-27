@@ -13,6 +13,7 @@ Partie Abraham
 -fix alias sub='(echo abc|)'
 -fix substitution "alias c="
 -fix boucle infinie 
+-segfault " a && a " ast
 
 Partie Marc
 - Gerer l'expand recursive (${VARNAME:-${VARNAME:+VARVALUE}aaaaa}bbbb Par exemple).
