@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/26 00:33:53 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/26 21:05:56 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_scan
 {
 	char				*sstring;
 	int					error;
+	int					intrak;
 	struct s_scan		*next;
 }				t_scan;
 

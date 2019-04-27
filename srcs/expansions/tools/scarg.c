@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 01:03:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:57:07 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/26 05:37:12 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void		prepare_to_next_scan(t_scan_arg *scarg)
 {
 	int		len;
 
-	if (!scarg->new_arg)
-		scarg->new_arg = ft_strnew(1);
 	len = ft_strlen(scarg->scan->sstring);
 	if (len == 1 && !g_tracking.mysh->err_expend
 			&& *scarg->scan->sstring == ' ')
@@ -54,7 +52,15 @@ void		expan_arg(t_scan_arg *scarg)
 		scarg->expand = new_expand(ft_strlen(scarg->scan->sstring));
 		expan_head = scarg->expand;
 		create_list_expand(scarg->expand, scarg->scan->sstring);
-		transform(scarg->expand, &scarg->scan->sstring);
+//		if (!scarg->new_arg)
+//			scarg->new_arg = ft_strnew(1);
+		if (!scarg->new_arg && scarg->scan->sstring[0] != '\\')
+			transform(scarg->expand, &scarg->scan->sstring);
+		else if (scarg->new_arg
+				&& scarg->new_arg[ft_strlen(scarg->new_arg) - 1] != '\\')
+			transform(scarg->expand, &scarg->scan->sstring);
+		else if (scarg->new_arg)
+			scarg->new_arg[ft_strlen(scarg->new_arg) - 1] = '\0';
 		expand_lstdel(expan_head);
 	}
 	else if (scarg->scan->sstring[0] == '~')

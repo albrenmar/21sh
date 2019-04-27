@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 04:23:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/25 23:56:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/27 22:41:09 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_fcparse	*init_opt(void)
 	opt->editor = NULL;
 	opt->first = NULL;
 	opt->last = NULL;
+	opt->save_hist = NULL;
 	return (opt);
 }
 

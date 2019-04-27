@@ -6,74 +6,11 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 04:44:37 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/24 13:45:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/27 22:24:41 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
-
-int		editor_mode(t_fcparse *opt)
-{
-	ft_putendl("edit mode");
-	opt->i = 0;
-	if (opt->low && opt->max == -42)
-	{
-		opt->low = -1;
-		opt->max = -1;
-	}
-	if (opt->max == -42)
-		opt->max = opt->low;
-	if (opt->low == -42)
-		opt->low = opt->max;
-	ft_putstr("first nbr :");
-	ft_putnbr(opt->low);
-	ft_putchar('\n');
-	ft_putstr("last nbr :");
-	ft_putnbr(opt->max);
-	ft_putchar('\n');
-	ft_putstr("rev flag :");
-	ft_putnbr(opt->r);
-	ft_putchar('\n');
-	create_fc_file(opt);
-	return (0);
-}
-
-int		no_edit_mode(t_fcparse *opt)
-{
-	ft_putendl("no edit mode");
-	opt->i = 0;
-	return (0);
-}
-
-int		list_mode(t_fcparse *opt)
-{
-	if (opt->low && opt->max == -42)
-	{
-		opt->low = -15;
-		opt->max = -1;
-	}
-	if (opt->max == -42)
-		opt->max = -1;
-	print_fc(opt);
-	return (0);
-}
-
-int		fc_mode(t_fcparse *opt)
-{
-	if ((opt->e == 1 && opt->s == 1) || (opt->e == 1 && opt->l == 1))
-		return (fc_error(3, NULL));
-	if ((opt->l == 1 && opt->s == 1) || (opt->l == 1 && opt->e == 1))
-		return (fc_error(3, NULL));
-	if ((opt->s == 1 && opt->n == 1) || (opt->e == 1 && opt->n == 1))
-		return (fc_error(3, NULL));
-	if (opt->e == 1)
-		return (editor_mode(opt));
-	if (opt->s == 1)
-		return (no_edit_mode(opt));
-	if (opt->l == 1)
-		return (list_mode(opt));
-	return (editor_mode(opt));
-}
 
 void	hist_set_unset(int i, t_fcparse *opt)
 {
@@ -96,9 +33,24 @@ void	hist_set_unset(int i, t_fcparse *opt)
 		else
 		{
 			if (write(0, "c", 0) != -1)
-				lstcontainer_add(g_tracking.mysh->hist, ft_strdup(opt->save_hist));
+			{
+				if (ft_strcmp(opt->save_hist, "\n") != 0 && ft_strlen(opt->save_hist) > 0 && opt->save_hist[0] > 32)
+					lstcontainer_add(g_tracking.mysh->hist, ft_strdup(opt->save_hist));
+			}
 		}
 	}
+}
+
+void	free_opt(t_fcparse *opt)
+{
+	if (!opt)
+		return ;
+	ft_strdel(&opt->editor);
+	ft_strdel(&opt->first);
+	ft_strdel(&opt->last);
+	ft_strdel(&opt->save_hist);
+	ft_strdel(&opt->str);
+	ft_free(opt);
 }
 
 int		fc_builtin(void)
@@ -122,5 +74,6 @@ int		fc_builtin(void)
 	char_to_index(opt);
 	fc_mode(opt);
 	hist_set_unset(1, opt);
+	free_opt(opt);
 	return (0);
 }
