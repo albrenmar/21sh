@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   option_fc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 04:23:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/23 14:05:49 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/27 22:41:09 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-int		fc_error(int i)
+int			fc_error(int i, char *str)
 {
 	if (i == 1)
 		ft_putendl_fd("Too many arguments", 2);
@@ -21,7 +21,11 @@ int		fc_error(int i)
 	if (i == 3)
 		ft_putendl_fd("Incompatible option", 2);
 	if (i == 4)
-		ft_putendl_fd("Argument out of history range", 2);
+	{
+		ft_putstr_fd("Argument out of history range :", 2);
+		ft_putendl_fd(str, 2);
+		return (-42);
+	}
 	return (1);
 }
 
@@ -45,6 +49,7 @@ t_fcparse	*init_opt(void)
 	opt->editor = NULL;
 	opt->first = NULL;
 	opt->last = NULL;
+	opt->save_hist = NULL;
 	return (opt);
 }
 
@@ -98,6 +103,8 @@ t_fcparse	*fc_option(char **av)
 		}
 		i++;
 	}
+	if (ft_strcmp(av[i], "--") == 0)
+		i++;
 	opt->i = i;
 	i = 0;
 	if (opt->str)
@@ -105,7 +112,7 @@ t_fcparse	*fc_option(char **av)
 	return (opt);
 }
 
-t_fcparse		*fc_offset(char **av, t_fcparse *opt)
+t_fcparse	*fc_offset(char **av, t_fcparse *opt)
 {
 	int		i;
 
@@ -124,7 +131,7 @@ t_fcparse		*fc_offset(char **av, t_fcparse *opt)
 	}
 	if (av[i])
 	{
-		fc_error(1);
+		fc_error(1, NULL);
 		return (NULL);
 	}
 	return (opt);

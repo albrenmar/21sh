@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 05:02:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/15 23:16:16 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/27 23:32:23 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int		is_new_value(char *run_str)
 		if (run_str[i] == '=' && i > 0
 				&& run_str[i - 1] != ':' && run_str[i - 1] != ' ')
 			return (1);
+		else if (run_str[i] == '$')
+			return (0);
 		i++;
 	}
 	return (0);

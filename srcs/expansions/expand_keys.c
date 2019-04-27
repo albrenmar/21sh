@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:50:59 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/28 01:02:36 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ t_expand	*expand_keys_extension(t_expand *expand, char **str, char sign)
 	else if (sign == '*' || sign == '/')
 		exp_key_altern(str, expand);
 	else if (sign == 'E')
-		print_exp_error(*str + 1, str);
+		print_exp_token_error(str, expand);
+//		print_exp_error(*str + 1, str);
 	return (expand);
 }
 

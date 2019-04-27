@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/25 22:47:50 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/26 03:55:12 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ void		scan_arg_transformer(t_unquoter **check, char **value)
 	*value = ft_strnew(1);
 	while (scarg.checker->str_unquoted)
 	{
-		*value = ft_strjoinfree(*value, scarg.checker->str_unquoted, 1);
+		if (scarg.checker->str_unquoted[0] == '\\')
+			*value = ft_strjoinfree(*value, scarg.checker->str_unquoted + 1, 1);
+		else
+			*value = ft_strjoinfree(*value, scarg.checker->str_unquoted, 1);
 		scarg.checker = scarg.checker->next;
 	}
 }
@@ -91,24 +94,12 @@ char		expand_transformer(char **value, int unq)
 	t_unquoter	*first;
 	char		*tmp;
 
-	to_unquot = NULL;
+	tmp = NULL;
 	to_unquot = unquote_value(value);
-	tmp = ft_strnew(1);
-	first = to_unquot;
-	while (to_unquot)
-	{
-		tmp = ft_strjoinfree(tmp, to_unquot->str_unquoted, 1);
-		to_unquot = to_unquot->next;
-	}
-	to_unquot = first;
-	if (tmp[0] == '$' && tmp[1] == '{' && tmp[ft_strlen(tmp)- 1] == '}')
-	{
-		clean_unquoter(first);
-		to_unquot = new_unquoted_value();
-		to_unquot->str_unquoted = ft_strdup(tmp);
-	}
 	first = to_unquot;
 	str_orig = ft_strdup(*value);
+	first = re_create_intra_keys(to_unquot, &tmp);
+	to_unquot = first;
 	if (to_unquot && unq != 2 && (!ft_strstr(to_unquot->str_unquoted, "${}")
 			|| !ft_strstr(to_unquot->str_unquoted, "${}")))
 		scan_arg_transformer(&to_unquot, value);

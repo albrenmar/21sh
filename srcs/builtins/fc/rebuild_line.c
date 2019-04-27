@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   rebuild_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/02 17:04:35 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/24 12:20:24 by bsiche           ###   ########.fr       */
+/*   Created: 2019/04/27 19:56:33 by bsiche            #+#    #+#             */
+/*   Updated: 2019/04/27 20:01:59 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "sh42.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+char	*rebuild_line(t_lstcontainer *list)
 {
-	int	i;
+	char	*new;
+	t_list	*tmp;
 
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
-		ft_putchar_fd(s[i++], fd);
+	if (!list)
+		return (NULL);
+	tmp = ft_lstgetfirst(list->firstelement);
+	new = NULL;
+	while (tmp)
+	{
+		new = ft_strjoinfree(new, tmp->content, 1);
+		tmp = tmp->next;
+	}
+	ft_freesplitlist(list);
+	return (new);
 }
