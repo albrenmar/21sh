@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 19:53:02 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 22:48:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/27 23:05:13 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_lstcontainer		*init_fc(char *path)
 	{
 		ft_putendl_fd("Failed to load fc file", 2);
 		ft_putstr(path);
+		ft_strdel(&path);
 		return (NULL);
 	}
 	fc_lst = lstcontainer_new();
@@ -53,7 +54,6 @@ void				fc_loop(char *path)
 			ft_putchar_fd('\n', 0);
 		while (check_eol(line) != 0)
 			line = end_line(line);
-		tcsetattr(0, TCSANOW, &g_tracking.default_term);
 		ft_putendl(line);
 		main_loop(line);
 		tmp = clean_jobs_next_tmp(line, tmp);

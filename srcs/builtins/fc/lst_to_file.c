@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:28:02 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 22:46:42 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/27 23:04:04 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,26 +69,6 @@ char	*fc_filename(void)
 	return (new);
 }
 
-void	print_filename(char *file)
-{
-	char	*str;
-	int		i;
-	int		fd;
-
-	i = 1;
-	ft_putendl("DEBUT PRINT FCFILE");
-	if ((fd = open(file, O_RDWR)) == -1)
-		ft_putendl_fd("Couldn't create file in /tmp", 2);
-	while (get_next_line(fd, &str) > 0)
-	{
-		ft_putnbr(i);
-		ft_putstr(" : ");
-		ft_putendl(str);
-		i++;
-	}
-	ft_putendl("FIN PRINT FCFILE");
-}
-
 int		create_fc_file(t_fcparse *opt)
 {
 	char	*file;
@@ -108,6 +88,7 @@ int		create_fc_file(t_fcparse *opt)
 		return (-1);
 	close(fd);
 	fc_edit(opt, file);
+	unlink(file);
 	ft_strdel(&file);
 	return (0);
 }
