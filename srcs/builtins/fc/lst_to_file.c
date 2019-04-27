@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:28:02 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/25 23:03:51 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/27 22:46:42 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		fc_to_file(t_fcparse *opt, int fd)
 		return (1);
 	if (opt->r == 0)
 	{
-		tmp = ft_lstget(opt->low - 1, g_tracking.mysh->hist->firstelement);
+		tmp = ft_lstget(opt->low, g_tracking.mysh->hist->firstelement);
 		while (tmp && (int)tmp->index < (opt->max + 1))
 		{
 			ft_putendl_fd(tmp->content, fd);
@@ -58,7 +58,7 @@ char	*fc_filename(void)
 	new = ft_strjoinfree(new, nbr, 3);
 	while (access(new, F_OK) != -1)
 	{
-		ft_free(new);
+		ft_strdel(&new);
 		new = ft_strdup("/tmp/fc");
 		g_tracking.herenbr++;
 		nbr = ft_itoa(g_tracking.herenbr);
@@ -107,9 +107,7 @@ int		create_fc_file(t_fcparse *opt)
 	if ((fc_to_file(opt, fd)) == 1)
 		return (-1);
 	close(fd);
-	print_filename(file);
-	close(fd);
-	fc_loop(file);
-	ft_free(file);
+	fc_edit(opt, file);
+	ft_strdel(&file);
 	return (0);
 }

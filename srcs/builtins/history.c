@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 02:58:02 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/22 03:30:02 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/27 20:38:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		history_offset(char **av)
 		while (tmp)
 		{
 			next = tmp->next;
-			ft_lstdelone(tmp, 1);
+			lstcontainer_remove(g_tracking.mysh->hist, tmp, 1);
 			tmp = next;
 		}
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 19:53:02 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/25 23:04:07 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/27 22:48:50 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ t_lstcontainer		*init_fc(char *path)
 	fc = NULL;
 	if (fd == -1)
 	{
-		ft_putstr_fd("Failed to load fc file", 2);
+		ft_putendl_fd("Failed to load fc file", 2);
+		ft_putstr(path);
 		return (NULL);
 	}
 	fc_lst = lstcontainer_new();
 	while (get_next_line(fd, &fc) != 0)
 		lstcontainer_add(fc_lst, fc);
-	close(fd);
 	return (fc_lst);
 }
 
@@ -54,9 +54,33 @@ void				fc_loop(char *path)
 		while (check_eol(line) != 0)
 			line = end_line(line);
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
+		ft_putendl(line);
 		main_loop(line);
 		tmp = clean_jobs_next_tmp(line, tmp);
 	}
 	ft_lstdel(fc_lst->firstelement, 1);
 	ft_free(fc_lst);
+	ft_strdel(&path);
+}
+
+void				fc_edit(t_fcparse *opt, char *path)
+{
+	char			*edit;
+
+	if (opt->editor == NULL)
+	{
+		if (!g_tracking.mysh || !g_tracking.mysh->set_env)
+			edit = ft_strdup("ed");
+		else
+			edit = ft_strdup(get_set_env_string("FCEDIT"));
+		if (!edit)
+			edit = ft_strdup("ed");
+	}
+	else
+		edit = ft_strdup(opt->editor);
+	edit = ft_strjoinfree(edit, " ", 1);
+	edit = ft_strjoinfree(edit, path, 1);
+	main_loop(edit);
+	fc_loop(ft_strdup(path));
+	ft_strdel(&edit);
 }
