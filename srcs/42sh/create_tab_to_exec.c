@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/25 23:44:46 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/27 23:41:45 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	**prepare_tab_to_expand(char **tab_exec, int *j, t_last *begin)
 	tab_exec = ft_memalloc(sizeof(char *) * (i + 1));
 	tab_exec[0] = ft_strdup(begin->name);
 	expand_transformer(&tab_exec[0], 1);
-	expand_first_arg(tab_exec, i, j, tab_farg);
+	tab_exec = expand_first_arg(tab_exec, i, j, tab_farg);
 	return (tab_exec);
 }
 
