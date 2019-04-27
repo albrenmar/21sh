@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/26 05:58:09 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/25 23:48:18 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -376,9 +376,7 @@ int				check_basic_quotes(char *line);
 
 int				is_escape(char *str, int i);
 void			hist_file_to_lst(void);
-//void			hist_lst_add_next(t_hist *hist, char *line);
 void			hist_save_file(void);
-//t_hist			*hist_lst_create(char *line);
 void			print_history(void);
 char			*create_path_hist(void);
 void			free_hist(void);
@@ -514,13 +512,12 @@ int				exec_sh(void);
 int				exit_reddir(void);
 char			*get_hist_ptr(char *needle);
 int				begin_search(void);
-//t_hist			*get_hist_nbr(int i);
 void			tmp_char_hist(void);
 char			*parse_bang(char *line);
 char			*get_word(char *word);
 char			*get_index(char *word);
 char			*replace_word(char *line, int i);
-char    		*replace_double(char *line, int i);
+char			*replace_double(char *line, int i);
 char			*return_error_bang(void);
 void			print_keyval(t_keyval *tmp);
 

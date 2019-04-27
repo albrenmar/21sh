@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   next_alias.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/26 06:58:47 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/25 23:52:34 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-char			*new_swap_alias(char *str, int j, int isave, t_keyval *tmp)
+char		*new_swap_alias(char *str, int j, int isave, t_keyval *tmp)
 {
 	char		*new;
 	int			len;

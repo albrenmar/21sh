@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/21 04:19:19 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/26 01:22:03 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		get_last(void)
 {
-	t_list	*history;
-	t_lstcontainer *list;
+	t_list			*history;
+	t_lstcontainer	*list;
 
 	list = g_tracking.mysh->hist;
 	if (!list)
@@ -25,7 +25,6 @@ int		get_last(void)
 		return (0);
 	return (history->index);
 }
-
 
 t_list	*get_hist_nbr(size_t i)
 {

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   option_fc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 04:23:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/24 15:35:00 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/27 22:41:09 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-int		fc_error(int i, char *str)
+int			fc_error(int i, char *str)
 {
 	if (i == 1)
 		ft_putendl_fd("Too many arguments", 2);
@@ -49,6 +49,7 @@ t_fcparse	*init_opt(void)
 	opt->editor = NULL;
 	opt->first = NULL;
 	opt->last = NULL;
+	opt->save_hist = NULL;
 	return (opt);
 }
 
@@ -111,7 +112,7 @@ t_fcparse	*fc_option(char **av)
 	return (opt);
 }
 
-t_fcparse		*fc_offset(char **av, t_fcparse *opt)
+t_fcparse	*fc_offset(char **av, t_fcparse *opt)
 {
 	int		i;
 

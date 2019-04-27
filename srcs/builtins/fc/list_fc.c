@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_fc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 13:23:11 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/24 12:23:59 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/27 22:02:22 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		fc_get_index(char *str)
 
 	if (!g_tracking.mysh->hist)
 		return (fc_error(4, str));
-	if (!str)
+	if (!str || eq_sign(str) > 0)
 		return (-42);
 	history = ft_lstgetlast(g_tracking.mysh->hist->firstelement);
 	if (!history)
@@ -63,12 +63,22 @@ void	char_to_index(t_fcparse *opt)
 	if (digit_or_str(opt->first) == 0)
 		opt->low = ft_atoi(opt->first);
 	else
-		opt->low = fc_get_index(opt->first);
+	{
+		if (eq_sign(opt->first) == 1)
+		{
+			if (opt->s != 1)
+				fc_error(5, NULL);
+			else
+				opt->low = -4;
+		}
+		else
+			opt->low = fc_get_index(opt->first);
+	}
 	if (digit_or_str(opt->last) == 0)
 		opt->max = ft_atoi(opt->last);
 	else
 		opt->max = fc_get_index(opt->last);
-	if (opt->low > opt->max)
+	if (opt->low > opt->max && opt->s != 1)
 	{
 		tmp = opt->low;
 		opt->low = opt->max;
