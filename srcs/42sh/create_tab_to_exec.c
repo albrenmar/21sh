@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tab_to_exec.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/25 23:44:46 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/28 00:11:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,8 @@ char	**create_tab_to_exec(t_last *list)
 			i++;
 		begin = begin->next;
 	}
-	tab_exec[i] = NULL;
+	if (tab_exec)
+		tab_exec[i] = NULL;
 	g_tracking.mysh->in_ast = 1;
 	return (tab_exec);
 }
