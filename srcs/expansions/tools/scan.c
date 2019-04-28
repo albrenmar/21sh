@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 05:42:59 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/26 21:44:42 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	scan_argument(char *arg, t_scan *info_arg)
 	while (arg[0])
 	{
 		i = scan_it(arg, &new_arg);
-		info_arg->sstring = ft_strdup(new_arg);
+		if (arg[1] && arg[1] == '{')
+			info_arg->sstring = ft_strdup(arg);
+		else
+			info_arg->sstring = ft_strdup(new_arg);
 		ft_strdel(&new_arg);
 		if (arg[i])
 			arg = arg + i;
@@ -41,6 +44,8 @@ void	scan_argument(char *arg, t_scan *info_arg)
 			break ;
 		new_arg = ft_strnew(ft_strlen(arg));
 		info_arg->next = new_scan();
+		if (info_arg->sstring[ft_strlen(info_arg->sstring)] == '\\')
+			info_arg->next->intrak = 1;
 		if (arg[0])
 			info_arg = info_arg->next;
 	}
@@ -55,6 +60,7 @@ t_scan	*new_scan(void)
 
 	scan = (t_scan *)ft_malloc(sizeof(t_scan));
 	scan->sstring = NULL;
+	scan->intrak = 0;
 	scan->error = -1;
 	scan->next = NULL;
 	return (scan);

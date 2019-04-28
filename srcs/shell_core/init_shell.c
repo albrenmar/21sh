@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/21 22:46:48 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/28 07:26:48 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ void	init_global(void)
 	g_tracking.cwd = NULL;
 	g_tracking.user = NULL;
 	g_tracking.cwd = NULL;
+	g_tracking.herenbr = 0;
+	if (!(g_tracking.aliasloop = ft_malloc(sizeof(t_alias))))
+		ft_exit2(EXIT_FAILURE);
+	g_tracking.aliasloop->alias = NULL;
+	g_tracking.aliasloop->next = NULL;
 }
 
 void	init_shell(char **environ)
@@ -68,4 +73,5 @@ void	init_shell(char **environ)
 	g_tracking.mysh->set_env = NULL;
 	g_tracking.mysh->expand_error = 0;
 	g_tracking.quotes = 0;
+	replace_env_set_str("FCEDIT", "nano");
 }

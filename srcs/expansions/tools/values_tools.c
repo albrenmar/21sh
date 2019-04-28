@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 06:23:41 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/24 21:07:37 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/28 23:01:42 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ char	*value(char *val, t_expand *start)
 	int		i;
 
 	i = 0;
-	while (start && start->ltr)
+	while (start && start->ltr && start->ltr != '}')
 	{
 		val[i++] = start->ltr;
 		start = start->next;
 	}
 	if (!i)
 		return (NULL);
-//	transform_simple(&val);
 	return (val);
 }
 
@@ -34,6 +33,8 @@ char	*varname(char *var, t_expand *to_run)
 
 	i = 0;
 	if (to_run->ltr == '#' && to_run->ltr != '%')
+		to_run = to_run->next;
+	if (to_run->ltr == '{')
 		to_run = to_run->next;
 	while (to_run && to_run->ltr != ':' && to_run->ltr != '}'
 			&& to_run->ltr != '#' && to_run->ltr != '%' && to_run->ltr != '/')

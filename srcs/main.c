@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/22 04:00:38 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/27 22:19:00 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,10 @@ void	main_loop(char *line)
 	{
 		first_cmd = cmd;
 		if (write(0, "c", 0) != -1)
-			lstcontainer_add(g_tracking.mysh->hist, ft_strdup(line));
+		{
+			if (ft_strcmp(line, "\n") != 0 && ft_strlen(line) > 0 && line[0] > 32)
+				lstcontainer_add(g_tracking.mysh->hist, ft_strdup(line));
+		}
 		convert_list(cmd);
 		if (!(ret = error_lexer(cmd)))
 		{

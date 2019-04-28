@@ -3,14 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   next_alias_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/25 18:25:45 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/28 08:48:46 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
+
+char		*taab_to_line(char **taab, char *hold)
+{
+	int		i;
+	char	*new;
+
+	new = NULL;
+	i = 0;
+	while (taab[i])
+	{
+		if (new != NULL)
+			new = ft_strjoinfree(new, taab[i], 1);
+		else
+			new = ft_strdup(taab[i]);
+		i++;
+	}
+	free_tab(taab);
+	ft_strdel(&hold);
+	return (new);
+}
+
+char		**line_to_taab(char *line, int i, int j)
+{
+	int		count;
+	char	**taab;
+
+	i = 0;
+	count = 0;
+	while (line[i])
+	{
+		i = next_separator(line, i);
+		count++;
+		if (line[i])
+		{
+			i++;
+			if (line[i] == '\0')
+				count++;
+		}
+	}
+	if (!(taab = ft_malloc(sizeof(char*) * (count + 1))))
+		return (NULL);
+	i = 0;
+	j = 0;
+	alias_swapper_helper(i, j, line, taab);
+	ft_strdel(&line);
+	return (taab);
+}
 
 int			get_last_char_helper(char *str, char *memory, int i, int j)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tab_to_exec.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/24 17:45:52 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/27 23:41:45 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,25 @@ char	**expand_first_arg(char **tab_exec, int i, int *j, char **tab_farg)
 	i_arg = 0;
 	tab_farg = ft_split_whitespaces(tab_exec[0]);
 	if (tab_farg)
-		while (tab_farg[i_arg])
-			i_arg++;
-	if (i_arg > 1)
 	{
-		free_tab(tab_exec);
-		tab_exec = ft_memalloc(sizeof(char *) * (i + i_arg + 1));
-		i_arg = 0;
 		while (tab_farg[i_arg])
-		{
-			tab_exec[i_arg] = ft_strdup(tab_farg[i_arg]);
 			i_arg++;
+		if (i_arg > 1)
+		{
+			free_tab(tab_exec);
+			tab_exec = ft_memalloc(sizeof(char *) * (i + i_arg + 1));
+			i_arg = 0;
+			while (tab_farg[i_arg])
+			{
+				tab_exec[i_arg] = ft_strdup(tab_farg[i_arg]);
+				i_arg++;
+			}
+			*j = i_arg;
 		}
-		*j = i_arg;
-		free_tab(tab_farg);
+		else
+			*j = 1;
 	}
-	else
-		*j = 1;
+	free_tab(tab_farg);
 	return (tab_exec);
 }
 
@@ -52,9 +54,8 @@ char	**prepare_tab_to_expand(char **tab_exec, int *j, t_last *begin)
 	i = *j;
 	tab_exec = ft_memalloc(sizeof(char *) * (i + 1));
 	tab_exec[0] = ft_strdup(begin->name);
-//	expand_transformer(&tab_exec[0], 2);
 	expand_transformer(&tab_exec[0], 1);
-	expand_first_arg(tab_exec, i, j, tab_farg);
+	tab_exec = expand_first_arg(tab_exec, i, j, tab_farg);
 	return (tab_exec);
 }
 
@@ -66,7 +67,6 @@ char	*assign_str(t_last *begin)
 	if (begin->type == OPT || begin->type == ARG)
 	{
 		str = ft_strdup(begin->name);
-//		expand_transformer(&str, 2);
 		expand_transformer(&str, 1);
 	}
 	return (str);
@@ -96,7 +96,8 @@ char	**create_tab_to_exec(t_last *list)
 			i++;
 		begin = begin->next;
 	}
-	tab_exec[i] = NULL;
+	if (tab_exec)
+		tab_exec[i] = NULL;
 	g_tracking.mysh->in_ast = 1;
 	return (tab_exec);
 }

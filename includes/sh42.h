@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/25 17:27:53 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/28 08:49:20 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,14 @@ typedef struct	s_hash
 	struct s_hash		*nextbinary;
 }				t_hash;
 
+typedef struct	s_alias
+{
+	int					alias_len;
+	int					next_alias;
+	char				*alias;
+	struct s_alias		*next;
+}				t_alias;
+
 typedef struct	s_tracking
 {
 	struct termios		default_term;
@@ -180,6 +188,7 @@ typedef struct	s_tracking
 	struct s_hash		*hashtable[27];
 	struct s_ptr_list	*garbage;
 	struct s_ptr_list	*mmalloc;
+	struct s_alias		*aliasloop;
 	char				**g_tab_exec;
 	char				*tmp_hist;
 	int					builtin;
@@ -322,18 +331,30 @@ void			change_page(int i, t_lstcontainer *list);
 void			join_page_nbr(void);
 void			line_per_page(void);
 void			escape_path(void);
+int				alias_or_orig(char *orig, char *value, int i, char *content);
+void			add_used_alias(char *alias);
+int				clean_used_alias(int returncode);
+int				check_if_used_alias(char *str, int i, int j);
+int				inf_loop(char *origkey, char *aliasval, int i, t_list *hold);
 char			*swap_alias(char *str, int j, int isave, t_keyval *tmp);
 void			swap_alias_helper(char *n, int l, int i, char *str);
 int				get_last_char_alias(char *str, char *memory, int nbsave, int j);
-char			*check_if_next_alias(char *str, int nb, int nbsave, char lastl);
+char			*check_if_next_alias(char *str);
+char			*next_alias_recursive(char *str);
 char			*check_if_first_word_alias(char *str, int i, int isave);
 int				next_separator(char *str, int i);
-char			*aliased_line(char **taab, int i, int j);
+char			*swap_alias(char *str, int j, int isave, t_keyval *tmp);
+char			*aliased_line(char **taab, int i, int loop, char *hold);
 char			*alias_swapper(char *line, int i, int count);
+char			**line_to_taab(char *str, int i, int j);
+void			set_alias_globals(char *value, int i, int j);
 void			alias_swapper_helper(int i, int j, char *line, char **taab);
+char			*taab_to_line(char **taab, char *hold);
 int				init_alias(void);
+char			*recursive_alias(char *str);
 int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
+int				check_alias_exists(t_keyval *tmp);
 char			*return_alias(char *name);
 int				print_alias_lst(void);
 int				unalias(char *alias);
@@ -368,9 +389,7 @@ int				check_basic_quotes(char *line);
 
 int				is_escape(char *str, int i);
 void			hist_file_to_lst(void);
-//void			hist_lst_add_next(t_hist *hist, char *line);
 void			hist_save_file(void);
-//t_hist			*hist_lst_create(char *line);
 void			print_history(void);
 char			*create_path_hist(void);
 void			free_hist(void);
@@ -506,13 +525,12 @@ int				exec_sh(void);
 int				exit_reddir(void);
 char			*get_hist_ptr(char *needle);
 int				begin_search(void);
-//t_hist			*get_hist_nbr(int i);
 void			tmp_char_hist(void);
 char			*parse_bang(char *line);
 char			*get_word(char *word);
 char			*get_index(char *word);
 char			*replace_word(char *line, int i);
-char    		*replace_double(char *line, int i);
+char			*replace_double(char *line, int i);
 char			*return_error_bang(void);
 void			print_keyval(t_keyval *tmp);
 

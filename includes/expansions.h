@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/24 19:40:18 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/28 22:33:00 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_scan
 {
 	char				*sstring;
 	int					error;
+	int					intrak;
 	struct s_scan		*next;
 }				t_scan;
 
@@ -130,6 +131,8 @@ void			print_exp_error(char *to_error, char **str);
 void			print_exp_error_eq(char *varname, char *value, char **str);
 void			print_exp_str_error(char *strerror, char **str);
 void			print_exp_error_inter(char *varname, char *value, char **str);
+void			print_exp_token_error(char **str, t_expand *expand);
+void			print_exp_scan_error(char *strerror);
 int				scan_tilde(char *arg, char **new_arg);
 int				scan_dollar(char *arg, char **new_arg);
 int				scan_dollar_key(char *arg, char **new_arg);
@@ -178,5 +181,6 @@ int				is_bad_expansion(char *to_eval);
 int				check_expand_tab(char **tab_to_eval);
 int				check_expand_tab_builtin();
 void			quotenize(t_unquoter *first, char **value);
+t_unquoter		*re_create_intra_keys(t_unquoter *to_unquot, char **tmp);
 
 #endif
