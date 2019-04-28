@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 04:53:50 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/28 22:19:46 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/28 23:01:28 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int			check_basic_quotes(char *line)
 		flag++;
 	if (ft_valid_quote(line, '\"', 0) != 0)
 		flag++;
-//	if (ft_basic_bracket(line, '{', 0) != 0)
+	if (ft_valid_bracket(line) != 0)
+		flag++;
 	return (flag);
 }
 
