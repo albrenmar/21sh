@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/26 00:26:08 by mjose            ###   ########.fr        #
+#    Updated: 2019/04/28 01:50:58 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,11 +60,14 @@ SRC = main.c \
 	  42sh/exit_reddir.c \
 	  builtins/env/env.c \
 	  builtins/fc/main_fc.c \
+	  builtins/fc/fc_mode.c \
 	  builtins/fc/lst_to_file.c \
 	  builtins/fc/list_fc.c \
 	  builtins/fc/fc_print.c \
 	  builtins/fc/option_fc.c \
-	   builtins/fc/fc_exec.c \
+	  builtins/fc/fc_exec.c \
+	  builtins/fc/fc_oldnew.c \
+	  builtins/fc/rebuild_line.c \
 	  builtins/export/export.c \
 	  builtins/export/export_error.c \
 	  builtins/export/export_tools.c \
@@ -250,7 +253,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -Wall -Wextra -Werror -g #-fsanitize=address
+FLAG := -Wall -Wextra -Werror -g -fsanitize=address
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')

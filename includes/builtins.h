@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/25 23:42:57 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/27 22:13:47 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,9 @@ int				create_fc_file(t_fcparse *opt);
 void			get_neg_offset(t_fcparse *opt);
 void			fc_loop(char *path);
 t_list			*clean_jobs_next_tmp(char *line, t_list *tmp);
+void			fc_edit(t_fcparse *opt, char *path);
+int				eq_sign(char *str);
+int				create_fc_oldnew(t_fcparse *opt);
+char			*rebuild_line(t_lstcontainer *list);
+int				fc_mode(t_fcparse *opt);
 #endif

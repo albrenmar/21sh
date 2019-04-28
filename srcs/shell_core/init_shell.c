@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/24 15:13:30 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/25 23:50:04 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ void	init_shell(char **environ)
 	g_tracking.mysh->set_env = NULL;
 	g_tracking.mysh->expand_error = 0;
 	g_tracking.quotes = 0;
+	replace_env_set_str("FCEDIT", "nano");
 }

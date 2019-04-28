@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   garbage_malloc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 08:58:23 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/27 22:27:56 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ void		*ft_malloc(size_t size)
 		ft_putendl_fd(PROGRAM, 2);
 		exit(1);
 	}
+	ft_bzero(ptr, size);
 	return (ptr);
 }

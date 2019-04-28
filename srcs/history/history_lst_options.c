@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/04/21 04:19:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/27 20:41:48 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	hist_file_to_lst(void)
 		g_tracking.mysh->hist = lstcontainer_new();
 	while ((t = get_next_line(fd, &line)) == 1 && line != NULL)
 	{
-		if (ft_strcmp(line, "\n") != 0)
+		if (ft_strcmp(line, "\n") != 0 && ft_strlen(line) > 0 && line[0] > 32)
 			lstcontainer_add(g_tracking.mysh->hist, ft_strdup(line));
 		if (line)
 			ft_free(line);
