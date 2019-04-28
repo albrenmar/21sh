@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/23 10:14:33 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/28 06:29:47 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ int			is_builtin(void)
 		|| ft_builtin_search("bg") || ft_builtin_search("exit")
 		|| ft_builtin_search("set") || ft_builtin_search("echo")
 		|| ft_builtin_search("hash") || ft_builtin_search("test")
-		|| ft_builtin_search("cd") || ft_builtin_search("setenv")
-		|| ft_builtin_search("alias") || ft_builtin_search("unalias")
-		|| ft_builtin_search("type") || ft_builtin_search("unset")
-		|| ft_builtin_search("export") || ft_builtin_search("env")
+		|| ft_builtin_search("cd") || ft_builtin_search("alias")
+		|| ft_builtin_search("unalias") || ft_builtin_search("type")
+		|| ft_builtin_search("unset") || ft_builtin_search("export")
 		|| ft_builtin_search("true") || ft_builtin_search("false")
-		|| ft_builtin_search("unsetenv") || ft_builtin_search("history")
-		|| ft_builtin_search("fc"))
+		|| ft_builtin_search("history") || ft_builtin_search("fc"))
 		return (1);
 	return (0);
 }
@@ -91,8 +89,6 @@ int			builtin_exec_cont(void)
 		return (history_builtin());
 	else if (ft_builtin_search("fc"))
 		return (fc_builtin());
-	else if (ft_builtin_search("env"))
-		return (ft_env(0, 0));
 	else
 		return (builtin_exec_cont_2());
 }
