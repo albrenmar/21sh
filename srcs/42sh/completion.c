@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   completion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:13:59 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/28 02:26:40 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ int		ft_valid_bracket(char *line)
 		i++;
 	while (i >= 0)
 	{
-		if (line[i] == '"')
+		if ((line[i] == '"' && is_escape(line, i) != 1))
 			double_quote++;
-		else if (line[i] == '\'')
+		else if ((line[i] == '\'' && is_escape(line, i) != 1))
 			quote++;
-		else if (line[i] == '}' && quote % 2 == 0 && double_quote % 2 == 0)
+		else if ((line[i] == '}' && is_escape(line, i) != 1) && quote % 2 == 0 && double_quote % 2 == 0)
 			accol++;
 		else if (valid_bracket(&line[i], quote, double_quote, &accol) == 1)
 			return (1);

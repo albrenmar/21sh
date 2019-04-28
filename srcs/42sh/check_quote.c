@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_quote.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 16:47:21 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 01:16:18 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/28 02:23:45 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int		ft_valid_quote(char *line, char c, int flag)
 			if (!line[i])
 				return (0);
 		}
-		else if (line[i] == c && !flag)
+		else if ((line[i] == c && is_escape(line, i) != 1) && !flag)
 			flag++;
-		else if (line[i] == c && flag)
+		else if ((line[i] == c && is_escape(line, i) != 1) && flag)
 			flag--;
 		i++;
 	}
