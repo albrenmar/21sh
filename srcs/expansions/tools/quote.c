@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 01:52:42 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/25 23:02:34 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/28 01:57:39 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void		quotenize(t_unquoter *first, char **value)
 			*value = ft_strjoinchar(*value, to_quot->type, 1);
 		}
 		else
-			*value = ft_strjoinfree(*value, to_quot->str_unquoted, 3);
+			*value = ft_strjoinfree(*value, to_quot->str_unquoted, 1);
 		to_quot = to_quot->next;
 	}
 }
