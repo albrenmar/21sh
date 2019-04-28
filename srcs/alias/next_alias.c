@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   next_alias.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/25 23:52:34 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/28 08:39:07 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ char		*verify_if_alias(char *str, int i, t_keyval *tmp, int j)
 		i++;
 		j++;
 	}
-	str = new_swap_alias(str, j, isave, tmp);
-	return (str);
+	if (!inf_loop(tmp->key, tmp->value, 0, NULL))
+		return (new_swap_alias(str, j, isave, tmp));
+	return (NULL);
 }
 
 char		*check_if_next_alias_helper(char *str, int i)
@@ -106,10 +107,10 @@ char		*check_if_next_alias(char *str)
 	char	*memory;
 
 	memory = str;
-	i = g_tracking.alias_len;
-	if (g_tracking.next_alias && check_if_next_word(str, i))
+	i = g_tracking.aliasloop->alias_len;
+	if (g_tracking.aliasloop->next_alias && check_if_next_word(str, i))
 	{
-		g_tracking.next_alias = 0;
+		g_tracking.aliasloop->next_alias = 0;
 		while (str != NULL)
 		{
 			memory = str;
@@ -117,7 +118,7 @@ char		*check_if_next_alias(char *str)
 			if (str != NULL)
 				ft_strdel(&memory);
 		}
-		if (g_tracking.next_alias != 0)
+		if (g_tracking.aliasloop->next_alias != 0)
 		{
 			return (check_if_next_alias(memory));
 		}

@@ -6,13 +6,13 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/26 05:46:41 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/28 08:48:46 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-char		*taab_to_line(char **taab)
+char		*taab_to_line(char **taab, char *hold)
 {
 	int		i;
 	char	*new;
@@ -27,6 +27,8 @@ char		*taab_to_line(char **taab)
 			new = ft_strdup(taab[i]);
 		i++;
 	}
+	free_tab(taab);
+	ft_strdel(&hold);
 	return (new);
 }
 

@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/26 02:05:14 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/28 08:41:55 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,26 @@
 char			*check_if_first_word_helper(char *str, int isa, int save, int j)
 {
 	t_list		*hold;
-	t_keyval	*tmp;
+	t_keyval	*t;
 
 	hold = NULL;
 	if (g_tracking.mysh->alias_lst)
 		hold = ft_lstgetfirst(g_tracking.mysh->alias_lst->firstelement);
 	while (hold)
 	{
-		tmp = hold->content;
+		t = hold->content;
 		j = 0;
 		save = isa;
-		while (tmp->key[j] && str[isa] && str[isa] != '\t'
+		while (t->key[j] && str[isa] && str[isa] != '\t'
 			&& str[isa] != ' ' && str[isa] != '\r' && str[isa] != '\v'
-			&& str[isa] != '\n' && str[isa] == tmp->key[j])
+			&& str[isa] != '\n' && str[isa] == t->key[j])
 		{
 			j++;
 			isa++;
 		}
-		if (!(tmp->key[j]) && (!(str[isa])
-		|| (str[isa] && (is_spaces(str, isa, 2)))))
-			return (swap_alias(str, j, save, tmp));
+		if (!(t->key[j]) && (!(str[isa]) || (str[isa]
+		&& (is_spaces(str, isa, 2)))) && !inf_loop(t->key, t->value, 0, NULL))
+			return (swap_alias(str, j, save, t));
 		hold = hold->next;
 		isa = save;
 	}

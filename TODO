@@ -10,9 +10,10 @@ Partie Brendan
 
 Partie Abraham
 -new tmpenv and env -i in execution
+-segfault "hello="
+- "a=hello b=world; b=42 echo ${a}_${b} && echo ${b}"
+-alias a=\caca doit etre set sans '\'
 -fix alias sub='(echo abc|)'
--fix substitution "alias c="
--fix boucle infinie 
 -segfault " a && a " ast
 
 Partie Marc

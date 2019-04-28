@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/26 07:04:17 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/28 08:36:01 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,24 +75,6 @@ void			swap_alias_helper(char *n, int l, int i, char *str)
 		l++;
 	}
 	n[i] = '\0';
-}
-
-void			set_alias_globals(char *value, int i, int j)
-{
-	if (!value)
-	{
-		g_tracking.alias_len = 0;
-		g_tracking.next_alias = 0;
-		return ;
-	}
-	else
-	{
-		g_tracking.alias_len = j;
-		if (i > 0 && value[i - 1] == ' ')
-			g_tracking.next_alias = 1;
-		else
-			g_tracking.next_alias = 0;
-	}
 }
 
 char			*swap_alias(char *str, int j, int isave, t_keyval *tmp)

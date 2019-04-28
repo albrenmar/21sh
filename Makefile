@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/27 22:24:19 by bsiche           ###   ########.fr        #
+#    Updated: 2019/04/28 08:49:33 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -177,6 +177,8 @@ SRC = main.c \
 	  alias/next_alias.c \
 	  alias/alias_bin.c \
 	  alias/alias_file.c \
+	  alias/alias_utils.c \
+	  alias/alias_outils.c \
 	  alias/alias_struct.c \
 	  alias/unalias.c \
 	  alias/alias_helpers.c \

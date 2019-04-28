@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   alias_bin.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 22:31:01 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/28 08:50:48 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-char		*aliased_line(char **taab, int i, int loop)
+char		*aliased_line(char **taab, int i, int loop, char *hold)
 {
-	char	*hold;
 	char	*memory;
 
-	hold = NULL;
 	while (loop == 0)
 	{
 		loop = 0;
@@ -26,15 +24,13 @@ char		*aliased_line(char **taab, int i, int loop)
 		{
 			hold = ft_strdup(taab[i]);
 			taab[i] = recursive_alias(taab[i]);
-			if (g_tracking.alias_len != 0)
+			if (g_tracking.aliasloop->alias_len != 0)
 				taab[i] = check_if_next_alias(taab[i]);
-			g_tracking.alias_len = 0;
+			g_tracking.aliasloop->alias_len = 0;
 			if (ft_strcmp(taab[i], hold))
 			{
-				memory = taab_to_line(taab);
-				free_tab(taab);
+				memory = taab_to_line(taab, hold);
 				taab = line_to_taab(memory, 0, 0);
-				ft_strdel(&hold);
 				continue ;
 			}
 			i++;
@@ -42,10 +38,7 @@ char		*aliased_line(char **taab, int i, int loop)
 		}
 		loop++;
 	}
-	ft_strdel(&hold);
-	hold = taab_to_line(taab);
-	free_tab(taab);
-	return (hold);
+	return (taab_to_line(taab, hold));
 }
 
 void		alias_swapper_helper(int i, int j, char *line, char **taab)
@@ -77,7 +70,7 @@ char		*alias_swapper(char *line, int i, int count)
 	char	**taab;
 
 	taab = line_to_taab(line, i, count);
-	line = aliased_line(taab, 0, 0);
+	line = aliased_line(taab, 0, 0, NULL);
 	return (line);
 }
 
