@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   next_alias.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/25 23:52:34 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/28 08:39:07 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ char		*new_swap_alias(char *str, int j, int isave, t_keyval *tmp)
 		new[i] = str[i];
 		i++;
 	}
-	while (tmp->value[l] != '\0')
+	while (tmp->value && tmp->value[l] != '\0')
 	{
 		new[i] = tmp->value[l];
 		i++;
 		l++;
 	}
+	set_alias_globals(tmp->value, l, i);
 	swap_alias_helper(new, i - l + j, i, str);
 	return (new);
 }
@@ -55,8 +56,9 @@ char		*verify_if_alias(char *str, int i, t_keyval *tmp, int j)
 		i++;
 		j++;
 	}
-	str = new_swap_alias(str, j, isave, tmp);
-	return (str);
+	if (!inf_loop(tmp->key, tmp->value, 0, NULL))
+		return (new_swap_alias(str, j, isave, tmp));
+	return (NULL);
 }
 
 char		*check_if_next_alias_helper(char *str, int i)
@@ -99,29 +101,26 @@ int			check_if_next_word(char *str, int i)
 	return (count);
 }
 
-char		*check_if_next_alias(char *str, int nb, int nbsave, char lastl)
+char		*check_if_next_alias(char *str)
 {
 	int		i;
 	char	*memory;
 
-	i = 0;
-	while (nb > 0)
-	{
-		while (is_spaces(str, i, 1))
-			i++;
-		while (str[i] && !is_spaces(str, i, 2))
-			i++;
-		nb--;
-	}
 	memory = str;
-	if (lastl == ' ' && check_if_next_word(str, i))
+	i = g_tracking.aliasloop->alias_len;
+	if (g_tracking.aliasloop->next_alias && check_if_next_word(str, i))
 	{
-		str = check_if_next_alias_helper(str, i);
-		if (str != NULL)
+		g_tracking.aliasloop->next_alias = 0;
+		while (str != NULL)
 		{
-			nb = get_last_char_alias(str, memory, nbsave + 1, 0);
-			ft_strdel(&memory);
-			return (check_if_next_alias(str, nbsave + 1, nbsave + 1, str[nb]));
+			memory = str;
+			str = check_if_next_alias_helper(str, i);
+			if (str != NULL)
+				ft_strdel(&memory);
+		}
+		if (g_tracking.aliasloop->next_alias != 0)
+		{
+			return (check_if_next_alias(memory));
 		}
 	}
 	return (memory);

@@ -177,6 +177,8 @@ SRC = main.c \
 	  alias/next_alias.c \
 	  alias/alias_bin.c \
 	  alias/alias_file.c \
+	  alias/alias_utils.c \
+	  alias/alias_outils.c \
 	  alias/alias_struct.c \
 	  alias/unalias.c \
 	  alias/alias_helpers.c \

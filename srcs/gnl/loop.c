@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 06:00:48 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/20 00:55:37 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/28 00:18:26 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		return_loop(int i, char *str)
 		add_to_str(str);
 		tmp_char_hist();
 	}
-	is_still_atty();
+	// is_still_atty();
 	return (0);
 }
 
@@ -40,6 +40,7 @@ int		readloop(int i, int fd)
 		ft_free(str);
 		return (1);
 	}
+	is_still_atty();
 	if (c < 32 && i != 12)
 	{
 		while (42)

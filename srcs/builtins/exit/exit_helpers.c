@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_helpers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/28 07:18:19 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void		free_remains(void)
 {
+	ft_free(g_tracking.aliasloop);
 	ft_free(g_tracking.pos);
 	ft_free(g_tracking.cpaste->line);
 	ft_free(g_tracking.cpaste);
