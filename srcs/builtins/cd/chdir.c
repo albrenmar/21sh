@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chdir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 14:00:02 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 23:08:12 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/29 01:07:54 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int		getright(char *path, char *err)
 	return (0);
 }
 
-void	ft_changedir(char *path, char option, char *err)
+int		ft_changedir(char *path, char option, char *err, int i)
 {
 	char	*truepwd;
 	char	*oldpwd;
 
-	if (getright(path, err) == 0)
+	if ((i = getright(path, err)) == 0)
 	{
 		restore_env();
 		truepwd = ft_true_pwd();
@@ -52,4 +52,5 @@ void	ft_changedir(char *path, char option, char *err)
 		if (option == '-')
 			ft_putendl(get_env_string("PWD"));
 	}
+	return (i);
 }
