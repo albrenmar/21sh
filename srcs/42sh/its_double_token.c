@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   its_double_token.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 18:17:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/27 23:55:18 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ char	*its_quote(int i, char *str, int *nb, char c)
 	i++;
 	while (str[i] && str[i] != c)
 		i++;
-	i++;
+	if (str[i])
+		i++;
 	if (str[i] && (str[i] == '"' || str[i] == '\''))
 		return (its_quote(i, str, nb, str[i]));
 	while (str[i] && str[i] != ' ' && str[i] != '|' && str[i] != '&'
