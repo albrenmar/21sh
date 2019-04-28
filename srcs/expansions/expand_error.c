@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 06:17:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/28 02:07:53 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/28 22:32:45 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,3 +157,20 @@ void	print_exp_str_error(char *strerror, char **str)
 		g_tracking.mysh->err_expend = 1;
 	}
 }
+
+void	print_exp_scan_error(char *strerror)
+{
+	if (g_tracking.mysh->in_ast && !g_tracking.mysh->err_expend_printed)
+	{
+		ft_putstr_fd(SHELL_NAME, 2);
+		ft_putstr_fd(": ", 2);
+		if (strerror)
+			ft_putstr_fd(strerror, 2);
+		ft_putendl_fd(": bad substitution", 2);
+		g_tracking.mysh->err_expend = 0;
+		g_tracking.mysh->err_expend_printed = 1;
+	}
+	else
+		g_tracking.mysh->err_expend = 1;
+}
+
