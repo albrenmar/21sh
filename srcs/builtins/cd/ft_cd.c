@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 09:21:48 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 23:06:54 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/29 01:08:27 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*get_path(char option, char **av)
 		return (ft_strdup(av[2]));
 }
 
-int		ft_cd(void)
+int		ft_cd(int i)
 {
 	char		**av;
 	char		option;
@@ -85,8 +85,8 @@ int		ft_cd(void)
 	if (path[0] != '.' && path[0] != '/')
 		path = cd_path(path);
 	path = sanitize_path_cd(path);
-	ft_changedir(path, option, err);
+	i = ft_changedir(path, option, err, 0);
 	ft_free(err);
 	ft_free(path);
-	return (0);
+	return (i);
 }

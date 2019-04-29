@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/28 06:29:47 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/29 01:09:04 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int			builtin_exec_cont(void)
 	if (ft_builtin_search("test"))
 		return (main_test(1));
 	else if (ft_builtin_search("cd"))
-		return (ft_cd());
+		return (ft_cd(0));
 	else if (ft_builtin_search("alias"))
 		return (add_alias());
 	else if (ft_builtin_search("unalias"))
