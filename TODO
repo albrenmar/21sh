@@ -9,6 +9,8 @@ MISC
 -fix alias sub='(echo abc|)'
 -segfault "hello="
 -segfault " a && a " ast
+-Il faut ajouter le check du '\' avant chaque '=', ''', '"', '!', '~', '$', '%',
+ et le retirer quand plus besoin (seulement apres les expansions et avant l'execution)
 
   liste comandes difficiles:
 -"HAHAHAHEHHE=toto HAHA=XD env | grep HAHA ; a=b c=t caca=xd ; HIHIHI=ta HIHIHIHIHIH=ti env | grep HIHIHI ; set | tail -3"
@@ -19,13 +21,7 @@ MISC
 -"HOME=XD cd ; a=b || ls && HOME=XDA cd || c=d"
 -"a=hello b=world; b=42 echo ${a}_${b} && echo ${b}
 
-
-
-                                                                    ########ERREURS########
-
-$> rm -rf tempdir; test ! -d tempdir && echo "tempdir removed"
-tempdir removed
-====>SEGFAULT!!!!!
+                                      ########ERREURS########
 
 $> ONESHOT= env | grep ONESHOT
 ONESHOT=
@@ -90,35 +86,11 @@ abc \$
 
 ######ALIAS######
 
-$> alias hello='echo "hello, world"'
-$> hello | cat -e
-hello, world$
-====> LEAKS
-$> alias hello
-{{ Print the alias definition for 'hello'. Something like: hello='echo "hello, world!"' }}
-$> alias hello=
-$> hello
-====> INVALID FREE
-$> alias hello
-{{ Print the alias definition for 'hello'. Something like: hello= }}
 $> alias sub='(echo abc|'
 ====> LEAKS
 $> sub cat -e)
 abc$
 ====> LEAKS + 42sh: command sub not found
-
-
-$> alias e='g'
-$> alias f='e'
-$> alias g='echo "infinite loop"; e'
-$> g
-{{ Error message mentionning that the 'g' command is not found }}
-====> LEAKS
-$> alias hello='echo "hello, world!"'
-$> unalias hello
-$> hello
-{{ Error message indicating that the 'hello' command is not found }}
-====> LEAKS
 
 
 #######TEST 21SH#######
@@ -130,19 +102,6 @@ heredoc> hi
 heredoc> EOF
 hi
 ====> NE FONCTIONNE PAS (‘\’)
-
-
-$> exit abc
-{{ Message d'erreur indiquant qu'une valeur numérique est attendue }}
-$> echo ${?}
-{{ Code de retour différent de 0 }}
-====> LEAKS
-
-
-$> cd -L /tmp; cd -P ..
-$> pwd
-/private
-====> Mauvais repertoire (‘/‘)
 
 
 $> a=hello b=world; b=42 echo ${a}_${b} && echo ${b}
@@ -164,46 +123,3 @@ $> env | grep -E '(a|b)='
 ====> LEAKS
 $> env | grep -E '(a|b)='
 $> set | grep -E '(a|b)='
-
-
-$> env | grep ONESHOT
-
-
-$> ls -lR /usr >fifo 2>&1 &
-====> Resultat different
-$> jobs
-{{ Message indiquant que la commande "ls" est en cours d'exécution }}
-$>
-$> emacs -nw &
-$> emacs -nw &
-$> emacs -nw &
-$> emacs -nw &
-$> emacs -nw &
-$> jobs
-{{ Message indiquant que 5 instances d'emacs sont stoppés en arrière-plan }}
-$>
-$> fg %{{ un des emacs job numbe
-$> jobs
-{{ La commande "ls" lancé plus haut doit être la seule restante }}
-====> tout les process emacs restent lancés
-
-
-$> cat -e {{ Sortie de la commande "ls". N'attendez pas la fin, coupez l'affichage avec CTRL-C }}
-$> jobs
-$>
-====> La commande ls ne ce relance pas
-$> ls -Rl / 2>&1
-{{ Affichage de la commande "ls". N'attendez pas la fin, appuyez sur CTRL-Z }}
-{{ Message indiquant que la commande est suspendue }}
-$> jobs
-{{ Message indiquant que la commande est suspendue }}
-$>
-$> ps a | grep "ls -Rl /" | grep -v 'grep' | cut -d ' ' -f 2
-{{ PID de la commande "ls" du test précédent }}
-$> kill {{ PID de la commande "ls" du test précédent }}
-$> jobs
-{{ Message indiquant que la commande s'est terminé }}
-$>
-$> jobs
-$> ps a | grep "ls -Rl /" | grep -v 'grep'
-$>
