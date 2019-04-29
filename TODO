@@ -4,7 +4,6 @@ MISC
 - all leaks, norme, gcc -wall -wextra -werror
 - proteger si ficher ~/.hist extisteais pas.
 -verifier liens symboliques marchent bien sur proompt et pwd
--pouvoir exit completion de -> "ls &&" avec Ctrl-C et Ctrl-D
 -new tmpenv
 -segfault "hello="
 -alias a=\caca doit etre set sans '\'
