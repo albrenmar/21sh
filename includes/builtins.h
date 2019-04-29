@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/27 22:13:47 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/29 01:08:50 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int				ft_setenv(void);
 int				jobs_builtin(void);
 int				errors_fg(int nb, int error, char *hold);
 int				errors_bg(int nb, int error, char *hold);
-int				ft_cd(void);
+int				ft_cd(int i);
 int				getright(char *str, char *err);
 int				bg_builtin(void);
 int				fg_builtin(void);
@@ -73,7 +73,7 @@ char			*add_pwd(char *path);
 char			*add_slash(char *pathname);
 char			*sanitize_path_cd(char *path);
 char			*cd_path(char *path);
-void			ft_changedir(char *path, char option, char *err);
+int				ft_changedir(char *path, char option, char *err, int i);
 int				history_builtin(void);
 void			alias_loop_zero(void);
 int				alias_print_error(char *alias);
