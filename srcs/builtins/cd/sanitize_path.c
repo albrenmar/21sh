@@ -3,20 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   sanitize_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 10:27:48 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/29 05:16:58 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-char		*add_pwd(char *path)
+char		*add_pwd(char *path, char option)
 {
 	char		*pwd;
 
-	pwd = ft_strdup(get_env_string("PWD"));
+	if (option == 'P')
+		pwd = ft_true_pwd();
+	else
+		pwd = ft_strdup(get_env_string("PWD"));
 	if (!pwd)
 		pwd = ft_true_pwd();
 	pwd = add_slash(pwd);
@@ -77,7 +80,7 @@ char		*path_from_list(t_list *tmp)
 	return (newpath);
 }
 
-char		*sanitize_path_cd(char *path)
+char		*sanitize_path_cd(char *path, char option)
 {
 	t_lstcontainer	*list;
 	t_list			*tmp;
@@ -86,7 +89,7 @@ char		*sanitize_path_cd(char *path)
 	if (!path)
 		return (NULL);
 	if (path[0] != '/')
-		path = add_pwd(path);
+		path = add_pwd(path, option);
 	list = ft_strsplitlst(path, '/');
 	if (list)
 	{
