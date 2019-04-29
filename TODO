@@ -10,7 +10,6 @@ MISC
 -new tmpenv
 -alias a=\caca doit etre set sans '\'
 -fix alias sub='(echo abc|)'
--fix " a && a " bad substitution ?
 
   liste comandes difficiles:
 -"HAHAHAHEHHE=toto HAHA=XD env | grep HAHA ; a=b c=t caca=xd ; HIHIHI=ta HIHIHIHIHIH=ti env | grep HIHIHI ; set | tail -3"
