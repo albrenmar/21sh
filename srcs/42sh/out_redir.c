@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 18:52:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:15:06 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/29 03:24:15 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		out_redir(char **tab_reddir, int i)
 		if (write(fd_out, "0", 0) == -1)
 		{
 			ft_putstr_fd("42sh: ", 2);
-			ft_putstr_fd(ft_itoa(fd_out), 2);
+			ft_putnbr_fd(fd_out, 2);
 			ft_putstr_fd(": bad file descriptor", 2);
 			return (-1);
 		}
