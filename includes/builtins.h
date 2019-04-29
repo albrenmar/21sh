@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
 /*   Updated: 2019/04/29 07:01:42 by abguimba         ###   ########.fr       */
@@ -69,9 +69,9 @@ int				ft_env(int i, int count);
 char			*clean_env_i(char *str, int jsave);
 int				builtin_exec_cont_2(void);
 int				test_exist_dir(char *path);
-char			*add_pwd(char *path);
+char			*add_pwd(char *path, char option);
 char			*add_slash(char *pathname);
-char			*sanitize_path_cd(char *path);
+char			*sanitize_path_cd(char *path, char option);
 char			*cd_path(char *path);
 int				ft_changedir(char *path, char option, char *err, int i);
 int				history_builtin(void);

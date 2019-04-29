@@ -103,6 +103,7 @@ int		main(int argc, char **argv, char **env)
 			ft_putchar_fd('\n', 0);
 		while (check_eol(line) != 0)
 			line = end_line(line);
+		g_tracking.quotes = 0;
 		main_loop(line);
 		jobs_notifications();
 		jobs_update_current();
