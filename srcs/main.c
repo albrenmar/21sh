@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/29 03:00:14 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/30 00:13:17 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	main_loop(char *line)
 		if (write(0, "c", 0) != -1)
 		{
 			if (ft_strcmp(line, "\n") != 0 && ft_strlen(line) > 0 && line[0] > 32)
-				lstcontainer_add(g_tracking.mysh->hist, ft_strdup(line));
+				lstcontainer_add(g_tracking.mysh->hist, ft_strdup((convert_back(line))));
 		}
 		convert_list(cmd);
 		if (!(ret = error_lexer(cmd)))
