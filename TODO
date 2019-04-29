@@ -17,10 +17,11 @@ MISC
 -"ls | ./42sh" 
 -"env -i PATH=/tmp ./42sh"
 -"HOME=XD cd ; a=b || ls && HOME=XDA cd || c=d"
--"a=hello b=world; b=42 echo ${a}_${b} && echo ${b}REURS########
+-"a=hello b=world; b=42 echo ${a}_${b} && echo ${b}
 
-========================>ICI
 
+
+                                                                    ########ERREURS########
 
 $> rm -rf tempdir; test ! -d tempdir && echo "tempdir removed"
 tempdir removed
@@ -29,40 +30,6 @@ tempdir removed
 $> ONESHOT= env | grep ONESHOT
 ONESHOT=
 ====> SEGFAULT
-
-==============>LEAKS<===============
-
-&> (echo 123; echo 456|cat -e;)
-
-&> (echo aaa; exit 42; echo bbb;)|cat -e; echo ccc
-
-$> (ls /) | (cat -e) | (cat -e)
-
-&> (ls /| cat -e) | (cat -e | cat -e) | (cat -e | cat -e)
-
-$> (echo foo; echo bar >out; ls DO_NOT_EXIST) >out 2>err
-
-$> (export ABC=def; env|grep ABC); env|grep ABC|cat -e
-
-$> { export ABC=def; env|grep ABC; }; env|grep ABC|cat -e
-
-$> { echo baz; echo buz >out2; } >out
-
-$> c=8; echo $((123<=123 && 42%42 || c++ + 34))
-
-$> alias hello='echo "hello, world"'
-$> hello | cat -e
-
-########EXPANSION#########
-
-
-$> unset foo 2>&-; echo ${foo:?bar}
-{{ Print an error message indicating 'foo' and 'bar' }}
-====>Affiche “${foo:=bar}”
-
-$> unset foo 2>&-; echo ${foo:+bar} ${foo}
-====>Affiche un ‘\n’
-
 
 ########TEST AST#########
 
@@ -126,12 +93,12 @@ abc \$
 $> alias hello='echo "hello, world"'
 $> hello | cat -e
 hello, world$
-====> LEAKS + 42sh: command hello not found
+====> LEAKS
 $> alias hello
 {{ Print the alias definition for 'hello'. Something like: hello='echo "hello, world!"' }}
 $> alias hello=
 $> hello
-====> LEAKS + 42sh: command hello not found
+====> INVALID FREE
 $> alias hello
 {{ Print the alias definition for 'hello'. Something like: hello= }}
 $> alias sub='(echo abc|'
@@ -139,122 +106,69 @@ $> alias sub='(echo abc|'
 $> sub cat -e)
 abc$
 ====> LEAKS + 42sh: command sub not found
-$> alias rd='ls DOESTNOEXIST 2>>err'
-$> rd; rd; rd
-====>LEAKS + 42sh: command rd not found
-$> cat err
-ls: DOESTNOEXIST: No such file or directory
-ls: DOESTNOEXIST: No such file or directory
-ls: DOESTNOEXIST: No such file or directory
-====> cat: err: No such file or directory
-$> alias aa='echo hello' bb='echo world'
-$> aa; bb
-hello
-world
-$> alias mk='mkdir -v' abc='def'
-$> mk abc
-mkdir: created directory 'abc'
-$> alias mk='mkdir -v ' abc='def'
-$> mk abc
-mkdir: created directory 'def'
-$> alias
-{{ Print all aliases definition }}
-$> alias a=alias
-$> a aa='echo "alias builtin redefined"'
-$> aa
-alias builtin redefined
-$> alias b=c
-$> alias c=d
-$> alias d='echo It should works'
-$> b
-It should works
+
+
 $> alias e='g'
 $> alias f='e'
 $> alias g='echo "infinite loop"; e'
 $> g
 {{ Error message mentionning that the 'g' command is not found }}
+====> LEAKS
 $> alias hello='echo "hello, world!"'
 $> unalias hello
 $> hello
 {{ Error message indicating that the 'hello' command is not found }}
-$> alias hello='echo "hello, world!"'
-$> unalias -a
-$> alias
-$>
+====> LEAKS
+
 
 #######TEST 21SH#######
 
-$> doesnotexist
-{{ Message d'erreur indiquant que la commande n'existe pas/est introuvable }}
-====> LEAKS
-$> /sbin/yubikey_shell
-{{ Message d'erreur indiquant que la commande ne peut être exécuté pour cause de permission insuffisante }}
-====> LEAKS
-$> cat <&4
-{{ Message d'erreur indiquant que le descripteur de fichier est invalide }}
-====> LEAKS
-$>
-$> exit 1 | exit 2 | exit 3; echo "stayin' alive"
-stayin' alive
-====> LEAKS
-$> echo out >&- | echo out2
-{{ Message d'erreur facultatif indiquant qu'il est impossible d'écrire sur stdout }}
-out2
-====> LEAKS
+
 $> cat << EO\
 > F
 heredoc> hi
 heredoc> EOF
 hi
 ====> NE FONCTIONNE PAS (‘\’)
-$> (cat < heredoc> abd
-heredoc> abc
-heredoc> abb
-heredoc> EOF
-abb$
-abc$
-abd$
-====> LEAKS
-$> echo abc; exit; echo def
-abc
-zsh%> echo $?
-0
-====> LEAKS
-$> exit 999999999999999999999999999999999999999999
-====> LEAKS
+
+
 $> exit abc
 {{ Message d'erreur indiquant qu'une valeur numérique est attendue }}
 $> echo ${?}
 {{ Code de retour différent de 0 }}
 ====> LEAKS
-$> owd
-====>LEAKS
+
+
 $> cd -L /tmp; cd -P ..
 $> pwd
 /private
 ====> Mauvais repertoire (‘/‘)
+
+
 $> a=hello b=world; b=42 echo ${a}_${b} && echo ${b}
 hello_world
 world
 ====> 42
+
+
 $> directory=/ ls_opt=-atr
 $> ls ${ls_opt} ${directory}
 {{ Sortie de la commande "ls -atr" sur la racine du système }}
 ====> ls: fts_open: No such file or directory
-$> echo ${empty}|cat -e
-$
-====> LEAKS
+
+
 $> set | grep -E '(a|b)='
 a=hello
 b=world
-====> LEAKS
 $> env | grep -E '(a|b)='
 ====> LEAKS
-$> env | grep ONESHOT
-
 $> env | grep -E '(a|b)='
 $> set | grep -E '(a|b)='
-====> LEAKS
+
+
+$> env | grep ONESHOT
+
+
 $> ls -lR /usr >fifo 2>&1 &
 ====> Resultat different
 $> jobs
@@ -268,10 +182,12 @@ $> emacs -nw &
 $> jobs
 {{ Message indiquant que 5 instances d'emacs sont stoppés en arrière-plan }}
 $>
-$> fg %{{ un des emacs job number }}
+$> fg %{{ un des emacs job numbe
 $> jobs
 {{ La commande "ls" lancé plus haut doit être la seule restante }}
 ====> tout les process emacs restent lancés
+
+
 $> cat -e {{ Sortie de la commande "ls". N'attendez pas la fin, coupez l'affichage avec CTRL-C }}
 $> jobs
 $>
@@ -290,7 +206,4 @@ $> jobs
 $>
 $> jobs
 $> ps a | grep "ls -Rl /" | grep -v 'grep'
-$>
-$> python -c 'import os, signal;os.kill(os.getpid(), signal.SIGSEGV)'
-{{ Message indiquant le signal reçu }}
 $>
