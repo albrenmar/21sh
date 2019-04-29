@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_line_done.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 22:47:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/29 02:59:27 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ int		check_eol(char *line)
 	char	**taab;
 
 	i = 0;
+	if (g_tracking.quotes > 5 || g_tracking.interactive == 0 || !line)
+		return (0);
 	g_tracking.quotes = 0;
-	if (g_tracking.interactive == 0)
-		return (0);
-	if (!line)
-		return (0);
 	taab = ft_split_whitespaces(line);
 	if (taab)
 	{
@@ -46,6 +44,8 @@ char	*end_line(char *line)
 {
 	g_tracking.quotes = 3;
 	get_key();
+	if (g_tracking.quotes > 3)
+		return (line);
 	line = ft_strjoinfree(line, g_tracking.cmd, 1);
 	ft_free(g_tracking.cmd);
 	g_tracking.cmd = NULL;

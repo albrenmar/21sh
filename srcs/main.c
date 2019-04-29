@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 22:19:00 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/29 03:00:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ int		main(int argc, char **argv, char **env)
 			ft_putchar_fd('\n', 0);
 		while (check_eol(line) != 0)
 			line = end_line(line);
+		g_tracking.quotes = 0;
 		main_loop(line);
 		jobs_notifications();
 		jobs_update_current();
