@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/27 23:41:45 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/30 00:23:10 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,20 @@ char	*assign_str(t_last *begin)
 	return (str);
 }
 
+char	**convert_backtab(char **taab)
+{
+	int		i;
+
+	i = 0;
+	while (taab[i])
+	{
+		taab[i] = convert_back(taab[i]);
+		taab[i] = remove_back(taab[i]);
+		i++;
+	}
+	return (taab);
+}
+
 char	**create_tab_to_exec(t_last *list)
 {
 	t_last		*begin;
@@ -99,5 +113,6 @@ char	**create_tab_to_exec(t_last *list)
 	if (tab_exec)
 		tab_exec[i] = NULL;
 	g_tracking.mysh->in_ast = 1;
+	tab_exec = convert_backtab(tab_exec);
 	return (tab_exec);
 }

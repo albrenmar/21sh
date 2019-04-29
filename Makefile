@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/29 04:00:40 by mjose            ###   ########.fr        #
+#    Updated: 2019/04/29 23:21:29 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,6 +115,7 @@ SRC = main.c \
 	  gnl/add_to_str.c \
 	  gnl/rem_from_str.c \
 	  gnl/term_setup.c \
+	  gnl/backslash.c \
 	  gnl/init_term.c \
 	  gnl/cursor_pos.c \
 	  gnl/cursor_check.c \
