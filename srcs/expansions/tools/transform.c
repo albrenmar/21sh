@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/26 04:33:08 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/26 00:49:36 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,9 @@ int		transform_simple(char **str)
 {
 	char	*run_str;
 	char	*new_str;
-	char	*last;
 
 	run_str = *str;
 	new_str = NULL;
-	last = NULL;
-	if (run_str[ft_strlen(run_str) - 1] == '\\')
-	{
-		last = ft_strdup(run_str + (ft_strlen(run_str) - 1));
-		run_str[ft_strlen(*str) - 1] = '\0';
-	}
 	if (run_str[0] == '$')
 		new_str = ft_strdup(get_env_string(run_str + 1));
 	if (run_str[0] == '$' && !new_str)
@@ -82,8 +75,6 @@ int		transform_simple(char **str)
 	{
 		ft_strdel(str);
 		*str = new_str;
-		if (last)
-			*str = ft_strjoinfree(*str, last, 3);
 	}
 	else if (*str && is_sysvar(str))
 		return (0);
