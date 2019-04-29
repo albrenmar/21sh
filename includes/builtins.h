@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 01:08:50 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/29 07:01:42 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int				exit_errors(int error);
 int				show_setenv(void);
 void			replace_env_set_str(char *varname, char *varvalue);
 int				check_and_exec_echo(void);
-int				is_builtin_alone(void);
+int				is_builtin_alone(int singleq, int doubleq);
 int				ft_builtin_search(char *builtin);
 int				is_builtin(void);
 int				ft_exit2(int exitcode);

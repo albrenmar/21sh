@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/28 08:49:20 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/29 09:23:05 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "ft_ls.h"
 # include "token.h"
 # include "expansions.h"
-# include "temporal_env.h"
+# include "tmp_local_env.h"
 # include "builtins.h"
 # include <sys/ioctl.h>
 # include <termios.h>
@@ -127,20 +127,12 @@ typedef struct	s_tree
 	struct s_tree		*prev;
 }				t_tree;
 
-typedef struct	s_resetenv
-{
-	int					resetenv;
-	int					cmdindex;
-	struct s_resetenv	*next;
-}				t_resetenv;
-
-typedef struct	s_tmpenv
+typedef struct	s_env
 {
 	char				*key;
 	char				*value;
-	int					cmdindex;
-	struct s_tmpenv		*next;
-}				t_tmpenv;
+	struct s_env		*next;
+}				t_env;
 
 typedef struct	s_shell
 {
@@ -149,8 +141,8 @@ typedef struct	s_shell
 	t_lstcontainer	*envsave;
 	t_lstcontainer	*set_env;
 	t_lstcontainer	*hist;
-	t_resetenv		*resetenv;
-	t_tmpenv		*tmpenv;
+	t_env			*tmpenvsave;
+	t_env			*setsave;
 	char			**tab_env;
 	char			**tab_reddir;
 	int				expand_error;
@@ -217,7 +209,6 @@ typedef struct	s_tracking
 	pid_t				spid;
 	int					shebang;
 	int					herenbr;
-	int					cmdindex;
 	int					foreground;
 	int					hist_first;
 }				t_tracking;

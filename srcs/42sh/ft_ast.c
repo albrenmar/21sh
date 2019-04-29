@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ast.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 02:25:05 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/21 22:09:20 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/29 03:24:05 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void		ft_ast(t_last *list_command)
 	else
 		exec_command(tree->list_cmd, 0, job, 0);
 	free_ast(tree, next_free);
-	g_tracking.cmdindex = -1;
 	tree = NULL;
 	g_tracking.mysh->in_ast = 0;
 	return ;

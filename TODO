@@ -4,12 +4,14 @@ MISC
 - all leaks, norme, gcc -wall -wextra -werror
 - proteger si ficher ~/.hist extisteais pas.
 -verifier liens symboliques marchent bien sur proompt et pwd
--pouvoir exit completion de -> "ls &&" avec Ctrl-C et Ctrl-D
+-pouvoir exit completion de -> "ls &&" et "ls ||" et "ls |" avec Ctrl-C et Ctrl-D
+-completion "ls |"
+-local variable asignation doit etre fait pour chaque commande, pas chaque job
 -new tmpenv
 -segfault "hello="
 -alias a=\caca doit etre set sans '\'
 -fix alias sub='(echo abc|)'
--segfault " a && a " ast
+-fix " a && a " bad substitution ?
 
   liste comandes difficiles:
 -"HAHAHAHEHHE=toto HAHA=XD env | grep HAHA ; a=b c=t caca=xd ; HIHIHI=ta HIHIHIHIHIH=ti env | grep HIHIHI ; set | tail -3"

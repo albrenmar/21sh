@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/28 08:50:48 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/29 05:58:04 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char		*aliased_line(char **taab, int i, int loop, char *hold)
 			if (ft_strcmp(taab[i], hold))
 			{
 				memory = taab_to_line(taab, hold);
+				hold = NULL;
 				taab = line_to_taab(memory, 0, 0);
 				continue ;
 			}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tab_to_exec.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/27 23:41:45 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/29 09:31:47 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ char	**create_tab_to_exec(t_last *list)
 			i++;
 		list = list->next;
 	}
+	// begin = tmp_local_vars(i, begin);
 	tab_exec = prepare_tab_to_expand(tab_exec, &i, begin);
 	begin = begin->next;
 	while (begin && begin->type != CMD)

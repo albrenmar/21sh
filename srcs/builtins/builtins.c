@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 01:09:04 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/29 07:06:14 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int			is_builtin(void)
 	return (0);
 }
 
-int			is_builtin_alone(void)
+int			is_builtin_alone(int singleq, int doubleq)
 {
 	t_jobs	*tmp;
 	int		i;
 
+	// look_for_tmpenv();
 	i = 0;
-	g_tracking.cmdindex++;
 	tmp = g_tracking.jobs;
 	if (!(is_builtin()))
 		return (0);
@@ -43,7 +43,11 @@ int			is_builtin_alone(void)
 		return (0);
 	while (tmp->name[i] != '\0')
 	{
-		if (tmp->name[i] == '|')
+		if (tmp->name[i] == '\'')
+			singleq == 0 ? singleq++ : singleq--;
+		else if (tmp->name[i] == '\"')
+			doubleq == 0 ? doubleq++ : doubleq--;
+		if (tmp->name[i] == '|' && singleq == 0 && doubleq == 0)
 			return (0);
 		i++;
 	}
@@ -95,7 +99,7 @@ int			builtin_exec_cont(void)
 
 int			builtin_exec(void)
 {
-	check_if_resetenv();
+	// apply_tmpenv();
 	if (check_expand_tab_builtin())
 		return (1);
 	if (ft_builtin_search("jobs"))

@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_modif_list.c                                    :+:      :+:    :+:   */
+/*   check_env_i_helpers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/31 01:46:30 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 09:00:10 by abguimba         ###   ########.fr       */
+/*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/29 03:26:51 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-t_last	*create_new_list(void)
+int			only_spaces_and_sep(char *str)
 {
-	t_last	*list;
+	int		i;
 
-	list = ft_malloc(sizeof(t_last));
-	list->name = NULL;
-	list->next = NULL;
-	list->prev = NULL;
-	list->type = -1;
-	return (list);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && str[i] != '\v'
+		&& str[i] != '&' && str[i] != '|' && str[i] != ';' && str[i] != '\r')
+			return (0);
+		i++;
+	}
+	return (1);
 }

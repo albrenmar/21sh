@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   temporal_env.h                                     :+:      :+:    :+:   */
+/*   tmp_local_env.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:30:13 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/15 00:05:17 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/29 09:32:38 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TEMPORAL_ENV_H
 
 # include "libft.h"
+# include "sh42.h"
 
 int					free_taab_and_return(char **taab, int returncode);
 int					next_separator_quotes_check(char *str, int i, int save);
@@ -30,7 +31,7 @@ char				*check_first_char_sep(char *line);
 char				*tmp_env_namemaker(char *str, int start);
 char				*clean_line_tmpenv(char *str, int jsave, int save);
 void				reset_tmpenv(void);
-void				check_if_tmpenv(void);
+void				apply_tmpenv(void);
 void				check_if_resetenv(void);
 int					is_env_alone_check_helper(char *str, int jsave, int isave);
 int					skip_tmp_env(char *str, int jsave, int isave);
@@ -48,5 +49,7 @@ char				*swap_tmpenv_for_true(char *str, int i);
 int					only_spaces_and_sep(char *str);
 char				*get_set_env_string(char *str);
 void				free_env(void);
+void				look_for_tmpenv(void);
+t_last				*tmp_local_vars(t_last *begin, t_last *beginsave);
 
 #endif
