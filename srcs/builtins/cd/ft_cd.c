@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 09:21:48 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/29 01:08:27 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/29 05:29:40 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		ft_cd(int i)
 	err = ft_strdup(path);
 	if (path[0] != '.' && path[0] != '/')
 		path = cd_path(path);
-	path = sanitize_path_cd(path);
+	path = sanitize_path_cd(path, option);
 	i = ft_changedir(path, option, err, 0);
 	ft_free(err);
 	ft_free(path);

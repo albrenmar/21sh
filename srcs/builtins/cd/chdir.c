@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chdir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 14:00:02 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/29 01:07:54 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/29 05:30:16 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,14 @@ int		ft_changedir(char *path, char option, char *err, int i)
 		replace_env_str("TRUEOLDPWD", truepwd);
 		oldpwd = ft_strdup(get_env_string("PWD"));
 		chdir(path);
+		ft_strdel(&truepwd);
+		truepwd = ft_true_pwd();
 		if (option != 'P')
 			replace_env_str("PWD", path);
 		else
 			replace_env_str("PWD", truepwd);
 		replace_env_str("OLDPWD", oldpwd);
+		replace_env_str("TRUEPWD", truepwd);
 		ft_strdel(&truepwd);
 		ft_strdel(&oldpwd);
 		update_envp();
