@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tab_to_exec.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 00:23:10 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/30 03:02:16 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ char	**expand_first_arg(char **tab_exec, int i, int *j, char **tab_farg)
 	int		i_arg;
 
 	i_arg = 0;
-	tab_farg = ft_split_whitespaces(tab_exec[0]);
+	if (tab_exec[0])
+		tab_farg = ft_split_whitespaces(tab_exec[0]);
 	if (tab_farg)
 	{
 		while (tab_farg[i_arg])
@@ -37,6 +38,8 @@ char	**expand_first_arg(char **tab_exec, int i, int *j, char **tab_farg)
 		else
 			*j = 1;
 	}
+	else
+		*j = 1;
 	free_tab(tab_farg);
 	return (tab_exec);
 }
@@ -104,6 +107,11 @@ char	**create_tab_to_exec(t_last *list)
 	}
 	tab_exec = prepare_tab_to_expand(tab_exec, &i, begin);
 	begin = begin->next;
+	if (!tab_exec[0] && begin)
+	{
+		tab_exec[0] = ft_strdup(begin->name);
+		begin = begin->next;
+	}
 	while (begin && begin->type != CMD)
 	{
 		if ((tab_exec[i] = assign_str(begin)))
