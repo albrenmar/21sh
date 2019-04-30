@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:08:46 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/30 02:46:22 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job, int readpipe,
 	free_tab(g_tracking.g_tab_exec);
 	g_tracking.g_tab_exec = NULL;
 	g_tracking.g_tab_exec = tab_dup(tab_exec);
-	if (!is_builtin_alone())
+	if (!is_builtin_alone() && tab_exec[0])
 	{
 		check_if_tmpenv();
 		pipe_2_exec(tab_exec, job, readpipe);
