@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_ast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/29 03:24:39 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,9 @@ void	execute_ast(t_tree *tree, t_jobs *job)
 		if (ft_strlen(tree->cmd) > 1)
 		{
 			if (tree->cmd[0] == '&' && g_tracking.lastreturn == 1)
-			{
-				g_tracking.cmdindex++;
 				return ;
-			}
 			if (tree->cmd[0] == '|' && g_tracking.lastreturn == 0)
-			{
-				g_tracking.cmdindex++;
 				return ;
-			}
 		}
 		if (tree->right && tree->right->type != SEP)
 			exec_right_branch(tree, job);

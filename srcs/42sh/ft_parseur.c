@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parseur.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by mjose             #+#    #+#             */
 /*   Updated: 2019/04/30 00:15:45 by bsiche           ###   ########.fr       */

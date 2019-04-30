@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set.c                                              :+:      :+:    :+:   */
+/*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/18 03:26:41 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 00:19:10 by abguimba         ###   ########.fr       */
+/*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/30 23:51:38 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-int		show_setenv(void)
+char	**convert_backtab(char **taab)
 {
-	t_list			*tmp;
-	t_keyval		*buf;
+	int		i;
 
-	ft_env();
-	if (!g_tracking.mysh->set_env)
-		return (0);
-	tmp = g_tracking.mysh->set_env->firstelement;
-	buf = NULL;
-	while (tmp)
+	i = 0;
+	while (taab[i])
 	{
-		buf = tmp->content;
-		ft_putstr(buf->key);
-		ft_putchar('=');
-		ft_putendl(buf->value);
-		tmp = tmp->next;
+		taab[i] = convert_back(taab[i]);
+		taab[i] = remove_back(taab[i]);
+		i++;
 	}
-	return (0);
+	return (taab);
 }

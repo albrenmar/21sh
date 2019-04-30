@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/30 00:15:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 00:36:10 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "ft_ls.h"
 # include "token.h"
 # include "expansions.h"
-# include "temporal_env.h"
+# include "tmp_local_env.h"
 # include "builtins.h"
 # include <sys/ioctl.h>
 # include <termios.h>
@@ -127,30 +127,21 @@ typedef struct	s_tree
 	struct s_tree		*prev;
 }				t_tree;
 
-typedef struct	s_resetenv
-{
-	int					resetenv;
-	int					cmdindex;
-	struct s_resetenv	*next;
-}				t_resetenv;
-
-typedef struct	s_tmpenv
+typedef struct	s_env
 {
 	char				*key;
 	char				*value;
-	int					cmdindex;
-	struct s_tmpenv		*next;
-}				t_tmpenv;
+	struct s_env		*next;
+}				t_env;
 
 typedef struct	s_shell
 {
 	t_lstcontainer	*alias_lst;
 	t_lstcontainer	*env;
-	t_lstcontainer	*envsave;
 	t_lstcontainer	*set_env;
 	t_lstcontainer	*hist;
-	t_resetenv		*resetenv;
-	t_tmpenv		*tmpenv;
+	t_env			*tmpenvsave;
+	t_env			*setsave;
 	char			**tab_env;
 	char			**tab_reddir;
 	int				expand_error;
@@ -213,11 +204,11 @@ typedef struct	s_tracking
 	int					interactive;
 	int					lastreturn;
 	int					expandreturn;
+	int					reddirreturn;
 	int					sterminal;
 	pid_t				spid;
 	int					shebang;
 	int					herenbr;
-	int					cmdindex;
 	int					foreground;
 	int					hist_first;
 }				t_tracking;
@@ -322,6 +313,8 @@ int				is_spaces(char *str, int i, int mode);
 int				print_menu(void);
 int				end_autocomplete(int i);
 int				end_word(int mode);
+void			cmd_lstdel(t_last *cmd);
+t_last			*new_list(void);
 void			build_bin_lst(void);
 t_list			*move_arround(t_list *buf, int i);
 void			set_up_page(void);
@@ -351,6 +344,7 @@ void			set_alias_globals(char *value, int i, int j);
 void			alias_swapper_helper(int i, int j, char *line, char **taab);
 char			*taab_to_line(char **taab, char *hold);
 int				init_alias(void);
+void			init_new_tmp_env(t_env *tmp, char *str);
 char			*recursive_alias(char *str);
 int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
@@ -386,7 +380,7 @@ char			*exist_fonction(char *cmd);
 char			*quote_check(char *str);
 char			*ft_modif_line(char *line);
 int				check_basic_quotes(char *line);
-
+char			**convert_backtab(char **taab);
 int				is_escape(char *str, int i);
 void			hist_file_to_lst(void);
 void			hist_save_file(void);
@@ -398,6 +392,7 @@ int				go_to(int i);
 int				history_up(void);
 int				history_down(void);
 t_last			*create_new_list(void);
+void			convert_list(t_last *list);
 t_last			*ft_parseur(int i, char *line);
 void			ft_lexeur(t_last *list_cmd);
 void			ft_ast(t_last *list_command);

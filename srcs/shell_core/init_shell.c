@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/28 07:26:48 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 21:02:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,15 @@
 
 void	reset_all(void)
 {
-	reset_tmpenv();
-	reset_resetenv();
 	cursor_reset();
 }
 
 void	init_global(void)
 {
-	g_tracking.mysh->resetenv = NULL;
-	g_tracking.mysh->envsave = NULL;
-	g_tracking.mysh->tmpenv = NULL;
 	g_tracking.mysh->expand_error = 0;
 	g_tracking.mysh->err_expend = 0;
 	g_tracking.mysh->in_ast = 0;
 	g_tracking.mysh->err_expend_printed = 0;
-	g_tracking.cmdindex = -1;
 	g_tracking.builtin = 0;
 	g_tracking.jobs = NULL;
 	g_tracking.lastreturn = 0;
@@ -45,6 +39,8 @@ void	init_global(void)
 		ft_exit2(EXIT_FAILURE);
 	g_tracking.aliasloop->alias = NULL;
 	g_tracking.aliasloop->next = NULL;
+	g_tracking.mysh->tmpenvsave = NULL;
+	g_tracking.mysh->setsave = NULL;
 }
 
 void	init_shell(char **environ)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/26 01:22:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 00:57:27 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int		history_up(void)
 
 	if (g_tracking.quotes != 0)
 		return (0);
+	if (g_tracking.histindex > (int)g_tracking.mysh->hist->lastelement->index)
+		g_tracking.histindex = g_tracking.mysh->hist->lastelement->index;
 	if (g_tracking.histindex > 0)
 		g_tracking.histindex--;
 	history = get_hist_nbr(g_tracking.histindex);
