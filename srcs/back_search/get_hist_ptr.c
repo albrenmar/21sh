@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_hist_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 02:58:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/22 03:14:07 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 01:48:01 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,24 @@ int				ft_strstr_ptr(const char *haystack, const char *needle)
 
 char			*get_hist_ptr(char *needle)
 {
-	t_hist		*tmp;
+	t_list		*tmp;
 	int			i;
 
 	tmp = NULL;
 	i = 0;
-	tmp = get_hist_nbr(g_tracking.histindex - 1);
+	if (!g_tracking.mysh || !g_tracking.mysh->hist || !g_tracking.mysh->hist->firstelement)
+		return (NULL);
+	tmp = g_tracking.mysh->hist->firstelement;
+	tmp = ft_lstget(g_tracking.histindex - 1, tmp);
 	if (!tmp)
 		return (NULL);
 	while (tmp)
 	{
-		if ((i = ft_strstr_ptr(tmp->line, needle) != -1))
+		if ((i = ft_strstr_ptr(tmp->content, needle) != -1))
 		{
-			return (tmp->line);
+			return (tmp->content);
 		}
-		tmp = tmp->previous;
+		tmp = tmp->prev;
 		if (g_tracking.histindex > 1)
 			g_tracking.histindex--;
 	}
