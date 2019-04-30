@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 03:02:54 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/29 03:23:19 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/30 22:47:05 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		test_parse(int argc, char **argv)
 	if (argc == 3)
 		return (three_arg(argv));
 	ft_putendl_fd("Too many arguments", 2);
-	return (-1);
+	return (1);
 }
 
 int		return_error(char **argv)
