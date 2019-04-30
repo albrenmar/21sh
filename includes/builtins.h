@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 07:01:42 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 00:18:58 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void			assign_to_env_replace_value(char *varname, char *varvalue,
 					char *arg);
 void			assign_to_env_if_not_exist(char *varname, char *varvalue,
 					char *arg);
-int				ft_env(int i, int count);
+int				ft_env(void);
 char			*clean_env_i(char *str, int jsave);
 int				builtin_exec_cont_2(void);
 int				test_exist_dir(char *path);
