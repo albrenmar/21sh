@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_create_fich.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/25 23:47:21 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/30 04:49:13 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ctrl_c_heredoc(char *file)
 	return (1);
 }
 
-int		return_success(void)
+int		return_heredoc(void)
 {
 	if (g_tracking.cmd)
 		ft_free(g_tracking.cmd);
@@ -42,7 +42,11 @@ int		proto_heredoc(char *eof, int fd, char *file)
 		if (g_tracking.quotes == 11)
 			return (ctrl_c_heredoc(file));
 		str = ft_strdup(g_tracking.cmd);
+		str = convert_backslash();
 		ft_strdel(&g_tracking.cmd);
+		expand_transformer(&str);
+		if (!str)
+			break ;
 		if (ft_strcmp(str, eof) != 0)
 			ft_putendl_fd(str, fd);
 		ft_putchar_fd('\n', 2);
@@ -86,7 +90,7 @@ char	*exec_create_heredoc(char *eof)
 		return (NULL);
 	if ((fd = open(file, O_CREAT | O_RDWR)) == -1)
 	{
-		ft_putendl_fd("Couldn't create fich in /temp", 2);
+		ft_putendl_fd("Couldn't create heredoc in /temp", 2);
 		return (NULL);
 	}
 	if ((proto_heredoc(eof, fd, file)) == 1)

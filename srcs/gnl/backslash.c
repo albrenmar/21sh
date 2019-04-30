@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 23:13:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/30 00:23:29 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/30 00:50:57 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ char	*remove_back(char *line)
 				if (line[i + 1])
 					i++;
 				else
-					break;
+					break ;
 			}
 			temp[a] = line[i];
 			i++;
