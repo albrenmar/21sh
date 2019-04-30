@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/28 08:44:21 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/29 07:28:17 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int		inf_loop(char *origkey, char *aliasval, int i, t_list *hold)
 					return (inf_loop(tmp->key, tmp->value, 0, NULL));
 				i = next_separateur_loop(aliasval, i);
 			}
-			i++;
+			i = (aliasval[i]) ? i + 1 : i;
 		}
 		hold = hold->next;
 	}

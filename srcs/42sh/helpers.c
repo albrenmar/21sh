@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/02 16:38:03 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/30 22:15:32 by abguimba         ###   ########.fr       */
+/*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/30 21:12:06 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "sh42.h"
 
-void	ft_putendl(char const *s)
+char	**convert_backtab(char **taab)
 {
-	if (s)
+	int		i;
+
+	i = 0;
+	while (taab[i])
 	{
-		ft_putstr(s);
+		taab[i] = convert_back(taab[i]);
+		taab[i] = remove_back(taab[i]);
+		i++;
 	}
-	ft_putchar('\n');
+	return (taab);
 }
