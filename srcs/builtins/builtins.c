@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 07:06:14 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 20:46:25 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			is_builtin_alone(int singleq, int doubleq)
 	t_jobs	*tmp;
 	int		i;
 
-	// look_for_tmpenv();
+	apply_env();
 	i = 0;
 	tmp = g_tracking.jobs;
 	if (!(is_builtin()))

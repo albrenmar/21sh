@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tmp_local_env_helpers.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:23:43 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 18:22:52 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/30 21:44:48 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_last			*remove_tmp_env_list(t_last *begin)
 	begin = begin->next;
 	while (begin)
 	{
-		ft_putendl("XD");
 		hold = new;
 		new->next = create_new_list();
 		new = new->next;

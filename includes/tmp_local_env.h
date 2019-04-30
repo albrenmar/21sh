@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tmp_local_env.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:30:13 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 16:53:01 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/30 21:17:51 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ int					replace_env_str_def(char *s1, char *s2);
 void				add_missing_string_def();
 char				*check_tmp_env(char *line, int i, int count);
 char				*swap_env_cmd_change(char *str, int hold, int i);
-void				init_tmp_env(char *str, int jsave, int save, int cmdindex);
+void				init_tmp_env(char *key, char *value);
 char				*add_tmp_var(char *str, int save, int i);
 int					next_separator_env(char *str, int i, int save);
 char				*check_first_char_sep(char *line);
 char				*tmp_env_namemaker(char *str, int start);
 char				*clean_line_tmpenv(char *str, int jsave, int save);
 void				reset_tmpenv(void);
-void				apply_tmpenv(void);
+void				apply_env(void);
 void				check_if_resetenv(void);
 int					is_env_alone_check_helper(char *str, int jsave, int isave);
 int					skip_tmp_env(char *str, int jsave, int isave);

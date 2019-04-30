@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/30 00:15:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/30 21:10:42 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,6 @@ typedef struct	s_shell
 {
 	t_lstcontainer	*alias_lst;
 	t_lstcontainer	*env;
-	t_lstcontainer	*envsave;
 	t_lstcontainer	*set_env;
 	t_lstcontainer	*hist;
 	t_env			*tmpenvsave;
@@ -380,7 +379,7 @@ char			*exist_fonction(char *cmd);
 char			*quote_check(char *str);
 char			*ft_modif_line(char *line);
 int				check_basic_quotes(char *line);
-
+char			**convert_backtab(char **taab);
 int				is_escape(char *str, int i);
 void			hist_file_to_lst(void);
 void			hist_save_file(void);

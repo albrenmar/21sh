@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/29 22:48:55 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/30 21:02:03 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	reset_all(void)
 
 void	init_global(void)
 {
-	g_tracking.mysh->envsave = NULL;
 	g_tracking.mysh->expand_error = 0;
 	g_tracking.mysh->err_expend = 0;
 	g_tracking.mysh->in_ast = 0;

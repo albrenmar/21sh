@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tab_to_exec.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 18:19:55 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/30 21:11:34 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,21 +74,6 @@ char	*assign_str(t_last *begin)
 	}
 	return (str);
 }
-
-char	**convert_backtab(char **taab)
-{
-	int		i;
-
-	i = 0;
-	while (taab[i])
-	{
-		taab[i] = convert_back(taab[i]);
-		taab[i] = remove_back(taab[i]);
-		i++;
-	}
-	return (taab);
-}
-
 
 char	**create_tab_to_exec_h(t_last *begin, t_last *beginsave, int i)
 {
