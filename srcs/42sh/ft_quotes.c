@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 05:54:46 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/19 23:22:48 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/29 23:53:52 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char		*quote_check(char *str)
 	int		i;
 
 	i = 0;
+	if (!str)
+		return (NULL);
 	while (str[i] == ' ')
 		i++;
 	line = ft_strdup(&str[i]);
