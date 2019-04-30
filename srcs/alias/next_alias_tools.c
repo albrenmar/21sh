@@ -6,11 +6,18 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/28 08:48:46 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 22:26:34 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
+
+int			free_hold_and_i(int i, char *hold)
+{
+	i++;
+	ft_strdel(&hold);
+	return (i);
+}
 
 char		*taab_to_line(char **taab, char *hold)
 {

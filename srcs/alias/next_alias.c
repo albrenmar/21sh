@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/28 08:39:07 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 22:32:09 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,6 @@ char		*check_if_next_alias(char *str)
 			return (check_if_next_alias(memory));
 		}
 	}
+	g_tracking.aliasloop->alias_len = 0;
 	return (memory);
 }

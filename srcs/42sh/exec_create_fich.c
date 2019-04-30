@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_create_fich.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 05:48:12 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/30 06:35:33 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,12 @@ int		proto_heredoc(char *eof, int fd, char *file)
 		str = ft_strdup(g_tracking.cmd);
 		str = convert_backslash(str);
 		ft_strdel(&g_tracking.cmd);
+//		if (!check_basic_quotes(str))
+//		if (!ft_valid_bracket(str))
+//			expand_transformer(&str, 1);
+		heredoc_expander(&str);
 		if (!str)
-			break ;
+			str = ft_strnew(1);
 		if (ft_strcmp(str, eof) != 0)
 			ft_putendl_fd(str, fd);
 		ft_putchar_fd('\n', 2);

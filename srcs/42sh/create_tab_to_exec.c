@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tab_to_exec.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 03:02:16 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/30 21:11:34 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,36 +75,13 @@ char	*assign_str(t_last *begin)
 	return (str);
 }
 
-char	**convert_backtab(char **taab)
+char	**create_tab_to_exec_h(t_last *begin, t_last *beginsave, int i)
 {
-	int		i;
-
-	i = 0;
-	while (taab[i])
-	{
-		taab[i] = convert_back(taab[i]);
-		taab[i] = remove_back(taab[i]);
-		i++;
-	}
-	return (taab);
-}
-
-char	**create_tab_to_exec(t_last *list)
-{
-	t_last		*begin;
 	char		**tab_exec;
-	int			i;
 
-	begin = list;
+	if (beginsave != NULL)
+		begin = beginsave;
 	tab_exec = NULL;
-	i = 1;
-	list = list->next;
-	while (list && list->type != CMD)
-	{
-		if (list->type == OPT || list->type == ARG)
-			i++;
-		list = list->next;
-	}
 	tab_exec = prepare_tab_to_expand(tab_exec, &i, begin);
 	begin = begin->next;
 	if (!tab_exec[0] && begin)
@@ -121,6 +98,28 @@ char	**create_tab_to_exec(t_last *list)
 	if (tab_exec)
 		tab_exec[i] = NULL;
 	g_tracking.mysh->in_ast = 1;
+	if (beginsave != NULL)
+		cmd_lstdel(beginsave);
 	tab_exec = convert_backtab(tab_exec);
 	return (tab_exec);
+}
+
+char	**create_tab_to_exec(t_last *list)
+{
+	t_last		*begin;
+	t_last		*beginsave;
+	int			i;
+
+	begin = list;
+	beginsave = NULL;
+	i = 1;
+	list = list->next;
+	while (list && list->type != CMD)
+	{
+		if (list->type == OPT || list->type == ARG)
+			i++;
+		list = list->next;
+	}
+	beginsave = tmp_local_vars(begin, begin);
+	return (create_tab_to_exec_h(begin, beginsave, i));
 }
