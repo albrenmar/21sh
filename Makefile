@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
+#    By: abe <abe@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/29 05:32:23 by abguimba         ###   ########.fr        #
+#    Updated: 2019/04/30 18:23:07 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -229,10 +229,10 @@ SRC = main.c \
 	  expansions/tools/intra_keys.c \
 	  tmp_local_env/temp_env.c \
 	  tmp_local_env/restore_env.c \
-	  tmp_local_env/tmp_env_helpers.c \
+	  tmp_local_env/tmp_local_env_helpers.c \
 	  tmp_local_env/tmp_env_tools.c \
-	  tmp_local_env/tmp_env_utils.c \
-	  tmp_local_env/check_env_i_helpers.c \
+	  tmp_local_env/local_env_tools.c \
+	  tmp_local_env/tmp_local_env.c \
 	  environment/environ.c \
 	  environment/set_environ.c \
 	  environment/env_tools.c \

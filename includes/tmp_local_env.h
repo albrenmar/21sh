@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tmp_local_env.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:30:13 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 09:32:38 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 16:53:01 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,23 @@ char				*check_if_env_option_i(char **taab, int i, int j, int cmdi);
 char				*get_last_env_i(char **taab, int i, int j, int cmdi);
 char				*swap_env_var(char *str, int jsave, int cmdindex);
 t_lstcontainer		*copyenv(void);
+t_last				*remove_tmp_env_list(t_last *begin);
 void				reset_resetenv(void);
 char				*clean_env_i(char *str, int js);
 char				*swap_tmpenv_for_true(char *str, int i);
 int					only_spaces_and_sep(char *str);
+void				clean_tmp_local_env(void);
 char				*get_set_env_string(char *str);
 void				free_env(void);
 void				look_for_tmpenv(void);
 t_last				*tmp_local_vars(t_last *begin, t_last *beginsave);
+void				save_local_vars(t_last *begin);
+int					its_real_separator(t_last *list);
+char				*init_local_env_key(char *str, int i, int j);
+t_last				*remove_local_env_list(t_last *begin);
+int					check_if_env(char *str, int i);
+char				*init_local_env_value(char *str, int i, int j);
+int					size_of_key_or_val(char *str, int mode, int count, int i);
+void				save_tmp_vars(t_last *begin);
 
 #endif

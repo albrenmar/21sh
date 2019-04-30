@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/29 09:34:36 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/29 22:48:55 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	init_global(void)
 		ft_exit2(EXIT_FAILURE);
 	g_tracking.aliasloop->alias = NULL;
 	g_tracking.aliasloop->next = NULL;
+	g_tracking.mysh->tmpenvsave = NULL;
+	g_tracking.mysh->setsave = NULL;
 }
 
 void	init_shell(char **environ)

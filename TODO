@@ -6,19 +6,18 @@ MISC
 -verifier liens symboliques marchent bien sur proompt et pwd
 -pouvoir exit completion de -> "ls &&" et "ls ||" et "ls |" avec Ctrl-C et Ctrl-D
 -completion "ls |"
--local variable asignation doit etre fait pour chaque commande, pas chaque job
--new tmpenv
 -alias a=\caca doit etre set sans '\'
--fix alias sub='(echo abc|)'
 
   liste comandes difficiles:
 -"HAHAHAHEHHE=toto HAHA=XD env | grep HAHA ; a=b c=t caca=xd ; HIHIHI=ta HIHIHIHIHIH=ti env | grep HIHIHI ; set | tail -3"
 -"mkdir test ; cd test ; ls -a ; ls | cat | wc -c > fifi ; cat fifi"
 -"HOME=XD env | grep HOME= ; a=b ; env -i || ls && HOME=XDA env | grep HOME= || c=d ; HOME=XDO cd"
--"ls | ./42sh" 
+-"ls | ./42sh"
 -"env -i PATH=/tmp ./42sh"
 -"HOME=XD cd ; a=b || ls && HOME=XDA cd || c=d"
--"a=hello b=world; b=42 echo ${a}_${b} && echo ${b}REURS########
+-"a=hello b=world; b=42 echo ${a}_${b} && echo ${b}
+
+REURS########
 
 ========================>ICI
 

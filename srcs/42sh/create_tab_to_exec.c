@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tab_to_exec.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 09:31:47 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 18:19:55 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,23 +72,13 @@ char	*assign_str(t_last *begin)
 	return (str);
 }
 
-char	**create_tab_to_exec(t_last *list)
+char	**create_tab_to_exec_h(t_last *begin, t_last *beginsave, int i)
 {
-	t_last		*begin;
 	char		**tab_exec;
-	int			i;
 
-	begin = list;
+	if (beginsave != NULL)
+		begin = beginsave;
 	tab_exec = NULL;
-	i = 1;
-	list = list->next;
-	while (list && list->type != CMD)
-	{
-		if (list->type == OPT || list->type == ARG)
-			i++;
-		list = list->next;
-	}
-	// begin = tmp_local_vars(i, begin);
 	tab_exec = prepare_tab_to_expand(tab_exec, &i, begin);
 	begin = begin->next;
 	while (begin && begin->type != CMD)
@@ -100,5 +90,27 @@ char	**create_tab_to_exec(t_last *list)
 	if (tab_exec)
 		tab_exec[i] = NULL;
 	g_tracking.mysh->in_ast = 1;
+	if (beginsave != NULL)
+		cmd_lstdel(beginsave);
 	return (tab_exec);
+}
+
+char	**create_tab_to_exec(t_last *list)
+{
+	t_last		*begin;
+	t_last		*beginsave;
+	int			i;
+
+	begin = list;
+	beginsave = NULL;
+	i = 1;
+	list = list->next;
+	while (list && list->type != CMD)
+	{
+		if (list->type == OPT || list->type == ARG)
+			i++;
+		list = list->next;
+	}
+	beginsave = tmp_local_vars(begin, begin);
+	return (create_tab_to_exec_h(begin, beginsave, i));
 }

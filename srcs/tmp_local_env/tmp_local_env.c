@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tmp_env_utils.c                                    :+:      :+:    :+:   */
+/*   tmp_local_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:23:43 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 09:32:31 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 18:26:24 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
+t_last		*find_local_vars(t_last *begin)
+{
+	t_last	*new;
+
+	save_local_vars(begin);
+	new = remove_local_env_list(begin);
+	convert_list(new);
+	return (new);
+}
+
 t_last		*find_tmpenv_vars(t_last *begin)
 {
-	return (begin);
+	t_last	*new;
+
+	save_tmp_vars(begin);
+	new = remove_tmp_env_list(begin);
+	convert_list(new);
+	return (new);
 }
 
 int			check_if_env(char *str, int i)
@@ -25,9 +40,8 @@ int			check_if_env(char *str, int i)
 			return (0);
 		i++;
 	}
-	if (str[i] == '=' && i > 0 && str[i + 1] && !is_spaces(str, i - 1, 1)
-			&& !is_spaces(str, i + 1, 1))
-		return (2);
+	if (str[i] == '=' && i > 0 && !is_spaces(str, i - 1, 1))
+		return (1);
 	return (0);
 }
 
@@ -35,50 +49,25 @@ t_last		*tmp_local_vars(t_last *begin, t_last *beginsave)
 {
 	int		mode;
 
+	clean_tmp_local_env();
 	g_tracking.mysh->tmpenvsave = NULL;
 	g_tracking.mysh->setsave = NULL;
 	if ((mode = check_if_env(begin->name, 0)))
 	{
 		begin = begin->next;
-		while (begin)
+		while (begin && !its_real_separator(begin))
 		{
 			if (!check_if_env(begin->name, 0))
 			{
-				mode = 1;
+				mode = 2;
 				break ;
 			}
 			begin = begin->next;
 		}
 		if (mode == 1)
+			return (find_local_vars(beginsave));
+		else
 			return (find_tmpenv_vars(beginsave));
-		// else
-		// 	return (find_set_vars(beginsave));
 	}
-	return (beginsave);
+	return (NULL);
 }
-
-// void		apply_tmpenv(void)
-// {
-// 	t_tmpenv	*tmp;
-
-// 	tmp = g_tracking.mysh->tmpenv;
-// 	if (tmp)
-// 	{
-// 		while (tmp && tmp->cmdindex != g_tracking.cmdindex)
-// 			tmp = tmp->next;
-// 		if (tmp && tmp->cmdindex == g_tracking.cmdindex)
-// 		{
-// 			while (tmp && tmp->cmdindex == g_tracking.cmdindex)
-// 			{
-// 				set_tmp_env(tmp->key, tmp->value);
-// 				tmp = tmp->next;
-// 			}
-// 		}
-// 	}
-// }
-
-// void		free_env(void)
-// {
-// 	free_keyval(g_tracking.mysh->env);
-// 	g_tracking.mysh->env = NULL;
-// }

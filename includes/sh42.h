@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/29 09:23:05 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 16:53:11 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -313,6 +313,8 @@ int				is_spaces(char *str, int i, int mode);
 int				print_menu(void);
 int				end_autocomplete(int i);
 int				end_word(int mode);
+void			cmd_lstdel(t_last *cmd);
+t_last			*new_list(void);
 void			build_bin_lst(void);
 t_list			*move_arround(t_list *buf, int i);
 void			set_up_page(void);
@@ -342,6 +344,7 @@ void			set_alias_globals(char *value, int i, int j);
 void			alias_swapper_helper(int i, int j, char *line, char **taab);
 char			*taab_to_line(char **taab, char *hold);
 int				init_alias(void);
+void			init_new_tmp_env(t_env *tmp, char *str);
 char			*recursive_alias(char *str);
 int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
@@ -389,6 +392,7 @@ int				go_to(int i);
 int				history_up(void);
 int				history_down(void);
 t_last			*create_new_list(void);
+void			convert_list(t_last *list);
 t_last			*ft_parseur(int i, char *line);
 void			ft_lexeur(t_last *list_cmd);
 void			ft_ast(t_last *list_command);
