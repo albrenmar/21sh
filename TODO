@@ -9,6 +9,7 @@ MISC
 -fix alias sub='(echo abc|)'
 -segfault "hello="
 -segfault " a && a " ast
+-Autocomplete : Var + set
 
   liste comandes difficiles:
 -"HAHAHAHEHHE=toto HAHA=XD env | grep HAHA ; a=b c=t caca=xd ; HIHIHI=ta HIHIHIHIHIH=ti env | grep HIHIHI ; set | tail -3"
