@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:40:13 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 01:00:01 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 15:47:12 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
-
-void	next_cmd_update(void)
-{
-	if (g_tracking.mysh)
-		if (g_tracking.mysh->envsave != NULL)
-		{
-			free_keyval(g_tracking.mysh->envsave);
-			g_tracking.mysh->envsave = NULL;
-		}
-}
 
 int		wait_job(int foreground, t_last *list_cmd, t_jobs *job,
 		char ***tab_reddir)
@@ -48,7 +38,7 @@ int		wait_job(int foreground, t_last *list_cmd, t_jobs *job,
 		g_tracking.lastreturn = builtin_exec(list_cmd);
 		g_tracking.expandreturn = g_tracking.lastreturn;
 	}
-	next_cmd_update();
+	jobs_notifications();
 	return (clean_reddir(tab_reddir));
 }
 
@@ -101,7 +91,6 @@ int		exec_command(t_last *list_cmd, int foreg, t_jobs *job, int readp)
 	char	**tab_exec;
 	char	**tab_reddir;
 
-	list_cmd = check_for_local_vars(list_cmd);
 	tab_exec = NULL;
 	tab_reddir = NULL;
 	g_tracking.temp_command = NULL;

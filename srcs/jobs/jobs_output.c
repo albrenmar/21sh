@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/21 05:19:29 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/29 05:28:48 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,20 @@ void		jobs_notif_h(t_jobs *job, t_jobs *last, t_jobs *next, int stat)
 {
 	t_comm	*cmd;
 
-	if (job->background == 1)
+	cmd = job->t_command;
+	while (cmd)
 	{
-		cmd = job->t_command;
-		while (cmd)
+		if (!WIFSIGNALED(cmd->status))
 		{
-			if (!WIFSIGNALED(cmd->status))
-			{
-				stat = WEXITSTATUS(cmd->status);
+			stat = WEXITSTATUS(cmd->status);
+			if (job->background == 1)
 				show_job_info(job, "Done", 4, stat);
-				break ;
-			}
-			cmd = cmd->next;
-			if (!cmd)
-			{
-				show_job_info(job, "Killed ", 3, 0);
-			}
+			break ;
+		}
+		cmd = cmd->next;
+		if (!cmd)
+		{
+			show_job_info(job, "Killed ", 3, 0);
 		}
 	}
 	if (last)

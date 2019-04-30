@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/30 06:36:31 by mjose            ###   ########.fr        #
+#    Updated: 2019/04/30 21:57:55 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ NAME :=	42sh
 
 SRC = main.c \
 	  test_option.c \
+	  42sh/helpers.c \
 	  42sh/reddir_tools.c \
 	  42sh/tools.c \
 	  42sh/errors.c \
@@ -227,16 +228,14 @@ SRC = main.c \
 	  expansions/tools/varname.c \
 	  expansions/tools/clean_unquoter.c \
 	  expansions/tools/check_exec_tab.c \
+	  tmp_local_env/temp_env.c \
+	  tmp_local_env/restore_env.c \
+	  tmp_local_env/tmp_local_env_helpers.c \
+	  tmp_local_env/tmp_env_tools.c \
+	  tmp_local_env/local_env_tools.c \
+	  tmp_local_env/tmp_local_env.c \
+	  tmp_local_env/apply_env.c \
 	  expansions/heredoc/heredoc_expander.c \
-	  temporal_env/temp_env.c \
-	  temporal_env/restore_env.c \
-	  temporal_env/tmp_env_helpers.c \
-	  temporal_env/tmp_env_functions.c \
-	  temporal_env/check_tmp_env.c \
-	  temporal_env/check_env_i.c \
-	  temporal_env/tmp_env_tools.c \
-	  temporal_env/tmp_env_utils.c \
-	  temporal_env/check_env_i_helpers.c \
 	  environment/environ.c \
 	  environment/set_environ.c \
 	  environment/env_tools.c \

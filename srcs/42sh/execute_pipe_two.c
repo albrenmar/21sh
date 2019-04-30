@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe_two.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 02:46:22 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/30 20:54:35 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void		execute_two(char **tab_exec, char **tab_exec_hold)
 		ft_exit3(builtin_exec(NULL), 2);
 	if ((tab_exec = hashed_command(tab_exec, 0)) && !ctrl)
 	{
-		check_if_resetenv();
+		apply_env();
 		envhold = init_envp(g_tracking.mysh->env);
 		execve(tab_exec[0], tab_exec, init_envp(g_tracking.mysh->env));
 		free_tabs_and_exit(envhold, tab_exec_hold);
 	}
 	else if ((test_exist_fonct(tab_exec_hold, 2, NULL, NULL)) && !ctrl)
 	{
-		check_if_resetenv();
+		apply_env();
 		envhold = init_envp(g_tracking.mysh->env);
 		execve(tab_exec_hold[0], tab_exec_hold, envhold);
 		exec_errors(tab_exec, 1);
@@ -105,9 +105,8 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job, int readpipe,
 	free_tab(g_tracking.g_tab_exec);
 	g_tracking.g_tab_exec = NULL;
 	g_tracking.g_tab_exec = tab_dup(tab_exec);
-	if (!is_builtin_alone() && tab_exec[0])
+	if (!is_builtin_alone(0, 0) && tab_exec[0])
 	{
-		check_if_tmpenv();
 		pipe_2_exec(tab_exec, job, readpipe);
 		free_tab(*tab_reddir);
 		*tab_reddir = NULL;

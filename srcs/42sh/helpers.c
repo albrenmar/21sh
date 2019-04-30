@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_modif_list.c                                    :+:      :+:    :+:   */
+/*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/31 01:46:30 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 15:21:19 by abe              ###   ########.fr       */
+/*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
+/*   Updated: 2019/04/30 21:12:06 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-t_last	*create_new_list(void)
+char	**convert_backtab(char **taab)
 {
-	t_last	*list;
+	int		i;
 
-	list = ft_malloc(sizeof(t_last));
-	list->name = NULL;
-	list->next = NULL;
-	list->prev = NULL;
-	list->type = -1;
-	return (list);
+	i = 0;
+	while (taab[i])
+	{
+		taab[i] = convert_back(taab[i]);
+		taab[i] = remove_back(taab[i]);
+		i++;
+	}
+	return (taab);
 }
