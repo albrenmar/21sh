@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/30 21:10:42 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 00:36:10 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,7 @@ typedef struct	s_tracking
 	int					interactive;
 	int					lastreturn;
 	int					expandreturn;
+	int					reddirreturn;
 	int					sterminal;
 	pid_t				spid;
 	int					shebang;

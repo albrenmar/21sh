@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   out_redir.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 18:52:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 03:24:15 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/05/01 00:33:12 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int		file_exist(char **tab_redir, int fd_in, int fd_out, int i)
 	{
 		ft_putstr_fd("42sh: no such file or directory: ", 2);
 		ft_putendl_fd(tab_redir[i], 2);
+		g_tracking.lastreturn = 1;
+		g_tracking.expandreturn = 1;
 		return (-1);
 	}
 	else
