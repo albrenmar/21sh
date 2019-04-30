@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 04:49:13 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/30 05:48:12 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ctrl_c_heredoc(char *file)
 	return (1);
 }
 
-int		return_heredoc(void)
+int		return_success(void)
 {
 	if (g_tracking.cmd)
 		ft_free(g_tracking.cmd);
@@ -42,9 +42,8 @@ int		proto_heredoc(char *eof, int fd, char *file)
 		if (g_tracking.quotes == 11)
 			return (ctrl_c_heredoc(file));
 		str = ft_strdup(g_tracking.cmd);
-		str = convert_backslash();
+		str = convert_backslash(str);
 		ft_strdel(&g_tracking.cmd);
-		expand_transformer(&str);
 		if (!str)
 			break ;
 		if (ft_strcmp(str, eof) != 0)
