@@ -6,7 +6,7 @@
 #    By: abe <abe@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/30 18:23:07 by abe              ###   ########.fr        #
+#    Updated: 2019/04/30 06:36:31 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,6 +115,7 @@ SRC = main.c \
 	  gnl/add_to_str.c \
 	  gnl/rem_from_str.c \
 	  gnl/term_setup.c \
+	  gnl/backslash.c \
 	  gnl/init_term.c \
 	  gnl/cursor_pos.c \
 	  gnl/cursor_check.c \
@@ -226,13 +227,14 @@ SRC = main.c \
 	  expansions/tools/varname.c \
 	  expansions/tools/clean_unquoter.c \
 	  expansions/tools/check_exec_tab.c \
-	  expansions/tools/intra_keys.c \
+	  expansions/tools/check_exec_tab.c \
 	  tmp_local_env/temp_env.c \
 	  tmp_local_env/restore_env.c \
 	  tmp_local_env/tmp_local_env_helpers.c \
 	  tmp_local_env/tmp_env_tools.c \
 	  tmp_local_env/local_env_tools.c \
 	  tmp_local_env/tmp_local_env.c \
+	  expansions/heredoc/heredoc_expander.c \
 	  environment/environ.c \
 	  environment/set_environ.c \
 	  environment/env_tools.c \

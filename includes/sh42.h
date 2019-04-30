@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/30 16:53:11 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/30 00:15:34 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -528,5 +528,7 @@ char			*replace_word(char *line, int i);
 char			*replace_double(char *line, int i);
 char			*return_error_bang(void);
 void			print_keyval(t_keyval *tmp);
-
+char			*convert_backslash(char *line);
+char			*convert_back(char *line);
+char			*remove_back(char *line);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 01:03:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 04:28:46 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/22 03:57:07 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,7 @@ void		fill_scarg(t_scan_arg *scarg)
 	scan_argument(scarg->checker->str_unquoted, scarg->scan);
 	scarg->new_arg = NULL;
 	while (scarg->scan && scarg->scan->sstring)
-	{
-		if (scarg->scan->sstring[ft_strlen(scarg->scan->sstring) - 1] != '\\')
-			expan_arg(scarg);
-		else
-			scarg->scan = scarg->scan->next->next;
-	}
+		expan_arg(scarg);
 	while (scarg->first_scan->sstring)
 	{
 		ft_strdel(&scarg->first_scan->sstring);

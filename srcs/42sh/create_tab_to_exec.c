@@ -17,7 +17,8 @@ char	**expand_first_arg(char **tab_exec, int i, int *j, char **tab_farg)
 	int		i_arg;
 
 	i_arg = 0;
-	tab_farg = ft_split_whitespaces(tab_exec[0]);
+	if (tab_exec[0])
+		tab_farg = ft_split_whitespaces(tab_exec[0]);
 	if (tab_farg)
 	{
 		while (tab_farg[i_arg])
@@ -37,6 +38,8 @@ char	**expand_first_arg(char **tab_exec, int i, int *j, char **tab_farg)
 		else
 			*j = 1;
 	}
+	else
+		*j = 1;
 	free_tab(tab_farg);
 	return (tab_exec);
 }
@@ -72,6 +75,21 @@ char	*assign_str(t_last *begin)
 	return (str);
 }
 
+char	**convert_backtab(char **taab)
+{
+	int		i;
+
+	i = 0;
+	while (taab[i])
+	{
+		taab[i] = convert_back(taab[i]);
+		taab[i] = remove_back(taab[i]);
+		i++;
+	}
+	return (taab);
+}
+
+
 char	**create_tab_to_exec_h(t_last *begin, t_last *beginsave, int i)
 {
 	char		**tab_exec;
@@ -81,6 +99,11 @@ char	**create_tab_to_exec_h(t_last *begin, t_last *beginsave, int i)
 	tab_exec = NULL;
 	tab_exec = prepare_tab_to_expand(tab_exec, &i, begin);
 	begin = begin->next;
+	if (!tab_exec[0] && begin)
+	{
+		tab_exec[0] = ft_strdup(begin->name);
+		begin = begin->next;
+	}
 	while (begin && begin->type != CMD)
 	{
 		if ((tab_exec[i] = assign_str(begin)))
@@ -92,6 +115,7 @@ char	**create_tab_to_exec_h(t_last *begin, t_last *beginsave, int i)
 	g_tracking.mysh->in_ast = 1;
 	if (beginsave != NULL)
 		cmd_lstdel(beginsave);
+	tab_exec = convert_backtab(tab_exec);
 	return (tab_exec);
 }
 

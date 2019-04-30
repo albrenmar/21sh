@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 14:17:11 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/30 00:15:45 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,9 @@ t_last	*ft_parseur(int i, char *str)
 	t_last	*templist;
 
 	list_cmd = NULL;
+	str = convert_backslash(str);
+	if (!str)
+		return (NULL);
 	if (!(line = quote_check(str)))
 		return (NULL);
 	line = alias_swapper(line, 0, 1);

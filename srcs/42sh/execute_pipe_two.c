@@ -105,7 +105,7 @@ void		execute_pipe_two(char **tab_exec, t_jobs *job, int readpipe,
 	free_tab(g_tracking.g_tab_exec);
 	g_tracking.g_tab_exec = NULL;
 	g_tracking.g_tab_exec = tab_dup(tab_exec);
-	if (!is_builtin_alone(0, 0))
+	if (!is_builtin_alone(0, 0) && tab_exec[0])
 	{
 		pipe_2_exec(tab_exec, job, readpipe);
 		free_tab(*tab_reddir);
