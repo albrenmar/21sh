@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:23:43 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 21:44:48 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 22:17:11 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_last			*remove_local_env_list(t_last *begin)
 	return (head);
 }
 
-int		its_real_separator(t_last *list)
+int				its_real_separator(t_last *list)
 {
 	if (ft_strlen(list->name) == 2)
 	{
@@ -78,7 +78,7 @@ int		its_real_separator(t_last *list)
 	return (0);
 }
 
-void		clean_tmp_local_env(void)
+void			clean_tmp_local_env(void)
 {
 	t_env	*tmp;
 	t_env	*hold;

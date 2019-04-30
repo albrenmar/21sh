@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:30:13 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 21:17:51 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 22:22:27 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int					next_separator_env(char *str, int i, int save);
 char				*check_first_char_sep(char *line);
 char				*tmp_env_namemaker(char *str, int start);
 char				*clean_line_tmpenv(char *str, int jsave, int save);
+int					free_hold_and_i(int i, char *hold);
 void				reset_tmpenv(void);
 void				apply_env(void);
 void				check_if_resetenv(void);

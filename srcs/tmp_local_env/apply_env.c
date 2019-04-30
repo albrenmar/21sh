@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:23:43 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 21:53:37 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 22:16:55 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,15 @@
 
 void		init_set_env(char *key, char *value)
 {
-	replace_env_set_str(key, value);
+	if (get_env_string(key))
+	{
+		replace_env_str(key, value);
+		update_envp();
+	}
+	else
+	{
+		replace_env_set_str(key, value);
+	}
 }
 
 void		init_tmp_env(char *key, char *value)

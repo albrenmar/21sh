@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/29 05:58:04 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 22:32:27 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char		*aliased_line(char **taab, int i, int loop, char *hold)
 			taab[i] = recursive_alias(taab[i]);
 			if (g_tracking.aliasloop->alias_len != 0)
 				taab[i] = check_if_next_alias(taab[i]);
-			g_tracking.aliasloop->alias_len = 0;
 			if (ft_strcmp(taab[i], hold))
 			{
 				memory = taab_to_line(taab, hold);
