@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 01:09:04 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/04/30 02:41:28 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int			ft_builtin_search(char *builtin)
 	int		i;
 
 	tmp = g_tracking.g_tab_exec[0];
+	if (!tmp)
+		return (0);
 	i = 0;
 	while (tmp[i] && (tmp[i] == '\'' || tmp[i] == '\"'))
 		i++;
