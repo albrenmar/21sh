@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 06:17:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 05:56:15 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 07:42:00 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	print_exp_token_error(void)
 	if (g_tracking.mysh->in_ast && !g_tracking.mysh->err_expend_printed)
 	{
 		ft_putstr_fd(SHELL_NAME, 2);
-		ft_putstr_fd(": syntax error: operand expected.", 2);
+		ft_putendl_fd(": syntax error: operand expected.", 2);
 		g_tracking.mysh->err_expend = 0;
 		g_tracking.mysh->err_expend_printed = 1;
 	}
