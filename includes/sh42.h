@@ -3,6 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
@@ -205,7 +206,6 @@ typedef struct	s_tracking
 	int					interactive;
 	int					lastreturn;
 	int					expandreturn;
-	int					reddirreturn;
 	int					sterminal;
 	pid_t				spid;
 	int					shebang;
@@ -237,6 +237,7 @@ typedef struct	s_jobs
 	int					stdout;
 	int					stderr;
 	int					place;
+	int					foreground;
 	int					background;
 	pid_t				jpid;
 	int					notified;
