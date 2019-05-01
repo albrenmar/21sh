@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 01:53:12 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 03:04:15 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,7 @@ char		expand_transformer(char **value, int unq)
 	if (*value[0] == '\0' && !g_tracking.mysh->err_expend)
 		ft_strdel(value);
 	clean_unquoter(first);
+	if (tmp)
+		ft_strdel(&tmp);
 	return (0);
 }

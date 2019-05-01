@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 02:02:18 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 03:13:03 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,10 @@ void	transform(t_expand *expand, char **str)
 	if (is_expanded)
 	{
 		delete_list_expand(&first_letter);
+		ft_strdel(&tmp);
 		return ;
 	}
 	if (!g_tracking.mysh->err_expend && *str && transform_simple(str))
 		delete_list_expand(&first_letter);
+		ft_strdel(&tmp);
 }
