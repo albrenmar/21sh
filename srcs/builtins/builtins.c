@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 20:46:25 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 03:11:10 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int			is_builtin_alone(int singleq, int doubleq)
 	t_jobs	*tmp;
 	int		i;
 
-	apply_env();
 	i = 0;
 	tmp = g_tracking.jobs;
 	if (!(is_builtin()))
@@ -101,7 +100,7 @@ int			builtin_exec_cont(void)
 
 int			builtin_exec(void)
 {
-	// apply_tmpenv();
+	apply_env();
 	if (check_expand_tab_builtin())
 		return (1);
 	if (ft_builtin_search("jobs"))

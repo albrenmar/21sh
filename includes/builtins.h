@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 00:18:58 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 02:35:06 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,5 @@ int				eq_sign(char *str);
 int				create_fc_oldnew(t_fcparse *opt);
 char			*rebuild_line(t_lstcontainer *list);
 int				fc_mode(t_fcparse *opt);
+char			*unquote(char *eof);
 #endif
