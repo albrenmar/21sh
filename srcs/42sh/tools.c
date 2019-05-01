@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 05:12:08 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,27 @@ char	**tab_dup(char **tob)
 	}
 	new[i] = NULL;
 	return (new);
+}
+
+char	*unquote(char *eof)
+{
+	int		i;
+	int		a;
+	char	*new;
+
+	if (!eof || ft_strlen(eof) < 2)
+		return (eof);
+	new = NULL;
+	i = ft_strlen(eof) - 1;
+	a = 0;
+	if (eof[a] == '\'' && eof[i] == '\'')
+		g_tracking.herexpnd = 1;
+	if (eof[a] == '"' && eof[i] == '"')
+		g_tracking.herexpnd = 1;
+	if (g_tracking.herexpnd == 1)
+	{
+		new = ft_strsub(eof, 1, i - 1, 0);
+		return (new);
+	}
+	return (ft_strdup(eof));
 }

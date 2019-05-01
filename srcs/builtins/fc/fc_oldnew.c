@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 01:28:13 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 22:32:04 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 06:54:24 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*quote_remove(char *tmp)
 	i = 0;
 	a = 0;
 	if (!tmp)
-		return(NULL);
+		return (NULL);
 	new = ft_strnew(ft_strlen(tmp) + 1);
 	while (tmp[i])
 	{
@@ -77,7 +77,6 @@ void	get_keyval(t_fcparse *opt)
 char	*ft_swap_fc(char *tmp, t_fcparse *opt)
 {
 	t_lstcontainer	*list;
-	t_list			*buf;
 
 	if (!tmp || !opt)
 		return (NULL);
@@ -90,18 +89,7 @@ char	*ft_swap_fc(char *tmp, t_fcparse *opt)
 	list = ft_split_with_char(tmp);
 	ft_strdel(&tmp);
 	if (list)
-	{
-		buf = ft_lstgetfirst(list->firstelement);
-		while (buf)
-		{
-			if (ft_strcmp(buf->content, opt->first) == 0)
-			{
-				ft_free(buf->content);
-				buf->content = ft_strdup(opt->last);
-			}
-			buf = buf->next;
-		}
-	}
+		swap_list(list, opt);
 	tmp = rebuild_line(list);
 	return (tmp);
 }
@@ -112,9 +100,8 @@ int		create_fc_oldnew(t_fcparse *opt)
 	t_list	*tmp;
 	char	*cmd;
 
-	if (!opt || !g_tracking.mysh || !g_tracking.mysh->hist)
-		return (-1);
-	if (!g_tracking.mysh->hist->firstelement)
+	if (!opt || !g_tracking.mysh || !g_tracking.mysh->hist
+		|| !g_tracking.mysh->hist->firstelement)
 		return (-1);
 	flag = 0;
 	if (opt->low == -4)

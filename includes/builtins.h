@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 00:18:58 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 06:57:54 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct	s_fcparse
 	char				*editor;
 	char				*first;
 	char				*last;
-	char				*save_hist;
+	char				*shist;
 }				t_fcparse;
 
 void			free_and_null(void *ptr);
@@ -80,7 +80,7 @@ int				alias_print_error(char *alias);
 int				alias_add_error(char *alias);
 int				search_eq(char *alias);
 int				fc_builtin(void);
-t_fcparse		*fc_option(char **av);
+t_fcparse		*fc_option(char **av, int i);
 t_fcparse		*fc_offset(char **av, t_fcparse *opt);
 int				fc_error(int i, char *str);
 void			char_to_index(t_fcparse *opt);
@@ -94,4 +94,6 @@ int				eq_sign(char *str);
 int				create_fc_oldnew(t_fcparse *opt);
 char			*rebuild_line(t_lstcontainer *list);
 int				fc_mode(t_fcparse *opt);
+char			*unquote(char *eof);
+void			swap_list(t_lstcontainer *list, t_fcparse *opt);
 #endif

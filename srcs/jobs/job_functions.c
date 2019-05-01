@@ -6,13 +6,53 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 05:52:52 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 05:45:40 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-void		mark_job_as_running(t_jobs *job)
+#define EXPAND g_tracking.expandreturn
+
+void		set_expand_return_helper(void)
+{
+	if (EXPAND == 131 || EXPAND == 143 || EXPAND == 137 || EXPAND == 129
+			|| EXPAND == 134 || EXPAND == 142 || EXPAND == 139 || EXPAND == 132
+			|| EXPAND == 133 || EXPAND == 135 || EXPAND == 138)
+	{
+		ft_putnbr(EXPAND - 128);
+		ft_putchar('\n');
+	}
+}
+
+void		set_expand_return(void)
+{
+	if (EXPAND == 131)
+		ft_putstr("Quit: ");
+	else if (EXPAND == 143)
+		ft_putstr("Terminated: ");
+	else if (EXPAND == 137)
+		ft_putstr("Killed: ");
+	else if (EXPAND == 129)
+		ft_putstr("Hang up: ");
+	else if (EXPAND == 134)
+		ft_putstr("Abort trap: ");
+	else if (EXPAND == 142)
+		ft_putstr("Alarm clock: ");
+	else if (EXPAND == 132)
+		ft_putstr("Illegal instruction: ");
+	else if (EXPAND == 139)
+		ft_putstr("Segmentation fault: ");
+	else if (EXPAND == 133)
+		ft_putstr("Trace/BPT trap: ");
+	else if (EXPAND == 135)
+		ft_putstr("EMT trap: ");
+	else if (EXPAND == 138)
+		ft_putstr("Bus error: ");
+	set_expand_return_helper();
+}
+
+void		continue_job(t_jobs *job, int foreground)
 {
 	t_comm	*cmd;
 
@@ -23,11 +63,6 @@ void		mark_job_as_running(t_jobs *job)
 		cmd = cmd->next;
 	}
 	job->notified = 0;
-}
-
-void		continue_job(t_jobs *job, int foreground)
-{
-	mark_job_as_running(job);
 	if (foreground)
 		put_job_in_foreground(job, 1);
 	else

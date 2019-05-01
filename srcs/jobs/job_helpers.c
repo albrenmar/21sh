@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 02:30:42 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 04:30:36 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,19 @@ char		*job_name_maker_helper(int spaces, int len, t_last *head)
 	return (new);
 }
 
-void		wait_for_job_helper(int status)
+void		wait_for_job_helper(int status, t_jobs *job)
 {
 	if (WIFSIGNALED(status))
 	{
-		g_tracking.expandreturn = WTERMSIG(status);
-		if (g_tracking.expandreturn == 3)
-		{
-			ft_putstr("Interrupted: ");
-			ft_putnbr(g_tracking.expandreturn);
-			ft_putchar('\n');
-		}
+		g_tracking.expandreturn = 128 + WTERMSIG(status);
+		set_expand_return();
 	}
 	else
-		g_tracking.expandreturn = WSTOPSIG(status);
-	g_tracking.lastreturn = 1;
+	{
+		g_tracking.expandreturn = 128 + WSTOPSIG(status);
+		job->foreground = 0;
+	}
+	g_tracking.lastreturn = g_tracking.expandreturn + 128;
 }
 
 void		wait_for_job(t_jobs *job)
@@ -103,7 +101,7 @@ void		wait_for_job(t_jobs *job)
 			&& !job_is_done(job))
 		pid = waitpid(WAIT_ANY, &status, WUNTRACED);
 	if (WIFSIGNALED(status) || WIFSTOPPED(status))
-		wait_for_job_helper(status);
+		wait_for_job_helper(status, job);
 	else if (WIFEXITED(status))
 	{
 		g_tracking.lastreturn = WEXITSTATUS(status);

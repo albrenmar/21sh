@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fc_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 11:40:35 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 19:11:29 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 06:36:45 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	get_neg_offset(t_fcparse *opt)
 	t_list		*tmp;
 	int			i;
 
-	tmp = ft_lstgetlast(g_tracking.mysh->hist->lastelement);
-	i = 0;
+	tmp = ft_lstgetlast(g_tracking.mysh->hist->firstelement);
 	if (opt->low < 0)
 	{
 		i = opt->low + 1;
@@ -29,7 +28,7 @@ void	get_neg_offset(t_fcparse *opt)
 		}
 		opt->low = tmp->index;
 	}
-	tmp = ft_lstgetlast(g_tracking.mysh->hist->lastelement);
+	tmp = ft_lstgetlast(g_tracking.mysh->hist->firstelement);
 	if (opt->max < 0)
 	{
 		i = opt->max + 1;

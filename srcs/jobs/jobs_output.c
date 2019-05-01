@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 05:28:48 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 04:00:33 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ void		jobs_notif_h(t_jobs *job, t_jobs *last, t_jobs *next, int stat)
 			break ;
 		}
 		cmd = cmd->next;
-		if (!cmd)
-		{
+		if (job->foreground == 0 && !cmd)
 			show_job_info(job, "Killed ", 3, 0);
-		}
 	}
 	if (last)
 		last->next = next;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parseur.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 00:15:45 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 05:11:32 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,11 @@ void	add_cmd_to_list(int i, char *line, char *temp, t_last **list_cmd)
 	ft_strdel(&temp);
 }
 
-t_last	*ft_parseur(int i, char *str)
+t_last	*ft_parseur(int i, char *str, t_last *list_cmd, t_last *templ)
 {
 	char	*temp;
 	char	*line;
-	t_last	*list_cmd;
-	t_last	*templist;
 
-	list_cmd = NULL;
 	str = convert_backslash(str);
 	if (!str)
 		return (NULL);
@@ -121,11 +118,11 @@ t_last	*ft_parseur(int i, char *str)
 	{
 		i += ft_strlen(temp);
 		list_cmd = create_new_list();
-		templist = list_cmd;
+		templ = list_cmd;
 		list_cmd->name = ft_strdup(temp);
 		ft_strdel(&temp);
 		add_cmd_to_list(i, line, temp, &list_cmd);
-		list_cmd = templist;
+		list_cmd = templ;
 		ft_strdel(&line);
 	}
 	else

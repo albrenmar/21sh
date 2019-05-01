@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:40:13 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 15:47:12 by abe              ###   ########.fr       */
+/*   Updated: 2019/05/01 03:50:20 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int		exec_command(t_last *list_cmd, int foreg, t_jobs *job, int readp)
 	if (!list_cmd)
 		return (0);
 	job = new_job(list_cmd, foreg);
+	job->foreground = 1;
 	while (list_cmd)
 	{
 		if ((readp = init_exec(&list_cmd, job, readp, &tab_reddir)) == -1)
