@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:00:43 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 00:49:55 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 05:05:47 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char				**exist_help(char **t, char *p, char **pl, struct stat s)
 	return (NULL);
 }
 
-char				*get_path_value()
+char				*get_path_value(void)
 {
 	char			*p;
 

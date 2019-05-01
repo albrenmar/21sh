@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:13:59 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/28 22:25:44 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 06:31:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ char	*check_bracket(char *line, int i)
 	if (g_tracking.bracket == 10)
 		ft_exit2(EXIT_SUCCESS);
 	join = g_tracking.cmd;
-	//ft_valid_bracket(join);
 	if (!ret)
 		ret = ft_strdup(join);
 	else

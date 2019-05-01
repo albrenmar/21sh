@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_fich.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/21 06:46:03 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/05/01 06:33:40 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ void		save_fd(void)
 	dup2(0, 10);
 	dup2(1, 11);
 	dup2(2, 12);
+	if (g_tracking.fc == 0)
+	{
+		dup2(10, g_tracking.mysh->dup1);
+		dup2(11, g_tracking.mysh->dup2);
+		dup2(12, g_tracking.mysh->dup3);
+	}
 }
 
 int			ft_error_descr(int descr)
@@ -47,11 +53,7 @@ int			create_fich(char **tab_reddir, int i)
 	{
 		if (ft_strlen(tab_reddir[i + 1]) == 1 && tab_reddir[i + 1][0] >= '0'
 				&& tab_reddir[i + 1][0] <= '9')
-		{
 			fd_out = tab_reddir[i + 1][0] - '0';
-			/*if (write(fd_out, "0", 0) == -1)
-				return (ft_error_descr(fd_out));*/
-		}
 		else if (!ft_strcmp(tab_reddir[i + 1], "-"))
 			fd_out = open("/dev/null", O_RDONLY);
 		else

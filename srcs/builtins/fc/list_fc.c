@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_fc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 13:23:11 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 22:02:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 06:52:50 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,22 @@ int		fc_get_index(char *str)
 	return (fc_error(4, str));
 }
 
+void	rev_list(t_fcparse *opt)
+{
+	int		tmp;
+
+	if (!opt)
+		return ;
+	tmp = opt->low;
+	opt->low = opt->max;
+	opt->max = tmp;
+	tmp = opt->r;
+	if (tmp == 1)
+		opt->r = 0;
+	if (tmp == 0)
+		opt->r = 1;
+}
+
 void	char_to_index(t_fcparse *opt)
 {
 	int		tmp;
@@ -79,14 +95,5 @@ void	char_to_index(t_fcparse *opt)
 	else
 		opt->max = fc_get_index(opt->last);
 	if (opt->low > opt->max && opt->s != 1)
-	{
-		tmp = opt->low;
-		opt->low = opt->max;
-		opt->max = tmp;
-		tmp = opt->r;
-		if (tmp == 1)
-			opt->r = 0;
-		if (tmp == 0)
-			opt->r = 1;
-	}
+		rev_list(opt);
 }

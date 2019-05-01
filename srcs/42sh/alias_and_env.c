@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alias_and_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 02:06:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/24 13:03:06 by abe              ###   ########.fr       */
+/*   Updated: 2019/05/01 05:04:58 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,4 @@ int				check_if_valid_quotes(char *str, int i, int j, int countequal)
 		i++;
 	}
 	return (free_taab_and_return(taab, 1));
-}
-
-char			*alias_and_env(char *line)
-{
-	line = alias_swapper(line, 0, 1);
-	// line = check_tmp_env(line, 0, 0);
-	return (line);
 }

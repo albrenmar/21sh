@@ -6,12 +6,12 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:30:13 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 22:22:27 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 05:04:20 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEMPORAL_ENV_H
-# define TEMPORAL_ENV_H
+#ifndef TMP_LOCAL_ENV_H
+# define TMP_LOCAL_ENV_H
 
 # include "libft.h"
 # include "sh42.h"
