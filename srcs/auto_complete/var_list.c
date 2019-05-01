@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/30 23:07:07 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 02:14:19 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,37 @@ t_ls				*ls_alloc(char *str)
 	return (info);
 }
 
+void				add_set_env(void)
+{
+	t_list			*buf;
+	t_keyval		*tmp;
+	t_ls			*new;
+
+	if (!g_tracking.mysh || !g_tracking.mysh->set_env)
+		return ;
+	if (!g_tracking.mysh->set_env->firstelement)
+		return ;
+	buf = g_tracking.mysh->set_env->firstelement;
+	if (!buf || !g_tracking.aut->var_lst)
+		return ;
+	while (buf)
+	{
+		tmp = buf->content;
+		new = ls_alloc(tmp->key);
+		lstcontainer_add(g_tracking.aut->var_lst, new);
+		buf = buf->next;
+	}
+}
+
 void				build_var_lst(void)
 {
 	t_list			*buf;
 	t_keyval		*tmp;
 	t_ls			*new;
 
-	if (!g_tracking.mysh->env)
+	if (!g_tracking.mysh || !g_tracking.mysh->env)
+		return ;
+	if (!g_tracking.mysh->env->firstelement)
 		return ;
 	buf = g_tracking.mysh->env->firstelement;
 	if (!buf)
@@ -75,4 +99,5 @@ void				build_var_lst(void)
 		lstcontainer_add(g_tracking.aut->var_lst, new);
 		buf = buf->next;
 	}
+	add_set_env();
 }
