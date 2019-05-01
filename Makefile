@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/05/01 04:41:42 by bsiche           ###   ########.fr        #
+#    Updated: 2019/05/01 05:40:12 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,6 +119,7 @@ SRC = main.c \
 	  gnl/rem_from_str.c \
 	  gnl/term_setup.c \
 	  gnl/backslash.c \
+	  gnl/backslash_helper.c \
 	  gnl/init_term.c \
 	  gnl/cursor_pos.c \
 	  gnl/cursor_check.c \
@@ -260,7 +261,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -Wall -Wextra -Werror -g #-fsanitize=address
+FLAG := -Wall -Wextra -Werror -g -fsanitize=address
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')

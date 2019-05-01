@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 06:00:48 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/28 00:18:26 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 05:16:37 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,12 @@ int		return_loop(int i, char *str)
 		add_to_str(str);
 		tmp_char_hist();
 	}
-	// is_still_atty();
 	return (0);
 }
 
-int		readloop(int i, int fd)
+int		readloop(int i, int fd, char *str)
 {
 	char	c;
-	char	*str;
 
 	str = ft_strnew(0);
 	if ((read(fd, &c, 1)) == 0)

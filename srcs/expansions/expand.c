@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 04:06:38 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 04:28:39 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ char		expand_transformer(char **value, int unq)
 	{
 		clean_unquoter(first);
 		to_unquot = new_unquoted_value();
-		to_unquot->str_unquoted = tmp;
+		to_unquot->str_unquoted = ft_strdup(tmp);
 	}
 	first = to_unquot;
 	str_orig = ft_strdup(*value);

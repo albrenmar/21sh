@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/01 04:38:44 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 05:39:17 by bsiche           ###   ########.fr       */
+/*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
+/*   Updated: 2019/05/01 04:03:03 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH42_H
 # define SH42_H
+
 # include "libft.h"
 # include "ft_ls.h"
 # include "token.h"
@@ -258,7 +260,7 @@ int				get_key(void);
 int				check(char *str);
 int				single_key(char c);
 int				return_loop(int i, char *str);
-int				readloop(int i, int fd);
+int				readloop(int i, int fd, char *str);
 void			basic_mode(void);
 void			ft_return(void);
 int				ft_exec_key(char *str);
@@ -399,7 +401,7 @@ int				history_up(void);
 int				history_down(void);
 t_last			*create_new_list(void);
 void			convert_list(t_last *list);
-t_last			*ft_parseur(int i, char *line);
+t_last			*ft_parseur(int i, char *str, t_last *list_cmd, t_last *templ);
 void			ft_lexeur(t_last *list_cmd);
 void			ft_ast(t_last *list_command);
 void			execute_ast(t_tree *tree, t_jobs *job);
@@ -510,7 +512,7 @@ int				exist_builtin(char *cmd);
 t_last			*check_exp_error(t_last *cmd);
 void			free_keyval(t_lstcontainer *list);
 void			next_cmd_update(void);
-
+void			set_expand_return(void);
 void			put_unexpected_token(char *sym);
 char			*exec_create_heredoc(char *eof);
 char			*end_line(char *line);
@@ -535,6 +537,8 @@ char			*replace_double(char *line, int i);
 char			*return_error_bang(void);
 void			print_keyval(t_keyval *tmp);
 char			*convert_backslash(char *line);
+char			get_char_helper(char c);
+char			reset_char_helper(char c);
 char			*convert_back(char *line);
-char			*remove_back(char *line);
+char			*remove_back(char *line, int i);
 #endif

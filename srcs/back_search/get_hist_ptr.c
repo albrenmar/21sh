@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_hist_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 02:58:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 01:48:01 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 05:12:38 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ char			*get_hist_ptr(char *needle)
 
 	tmp = NULL;
 	i = 0;
-	if (!g_tracking.mysh || !g_tracking.mysh->hist || !g_tracking.mysh->hist->firstelement)
+	if (!g_tracking.mysh || !g_tracking.mysh->hist
+	|| !g_tracking.mysh->hist->firstelement)
 		return (NULL);
 	tmp = g_tracking.mysh->hist->firstelement;
 	tmp = ft_lstget(g_tracking.histindex - 1, tmp);
