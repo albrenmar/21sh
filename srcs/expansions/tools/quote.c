@@ -6,19 +6,11 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 01:52:42 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 05:42:01 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 07:06:53 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
-
-int			ft_iswhitespace(int c)
-{
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
-					|| c == '\r')
-		return (1);
-	return (0);
-}
 
 t_unquoter	*remove_quote_data(t_unquoter *to_unquot, char next_quote)
 {
