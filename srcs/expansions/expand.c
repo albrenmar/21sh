@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 05:42:32 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 07:47:21 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		scan_arg_transformer(t_unquoter **check, char **value)
 			fill_scarg(&scarg);
 		if (rest_of && !ft_strchr(scarg.checker->str_unquoted, 92))
 			scarg.checker->str_unquoted = ft_strjoinfree(
-				scarg.checker->str_unquoted, rest_of, 3);
+				scarg.checker->str_unquoted, rest_of, 1);
 		scarg.checker = scarg.checker->next;
 		ft_strdel(&rest_of);
 	}
@@ -100,6 +100,7 @@ char		expand_transformer(char **value, int unq)
 	to_unquot = unquote_value(value);
 	first = to_unquot;
 	first = unquoter_prepare(to_unquot);
+	to_unquot = first;
 	str_orig = ft_strdup(*value);
 	if (to_unquot && unq != 2 && (!ft_strstr(to_unquot->str_unquoted, "${}")
 			|| !ft_strstr(to_unquot->str_unquoted, "${}")))
