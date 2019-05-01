@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 04:44:37 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 00:59:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 05:50:54 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		fc_builtin(void)
 	t_fcparse	*opt;
 
 	av = g_tracking.g_tab_exec;
+	g_tracking.fc++;
 	opt = (fc_option(av));
 	i = 0;
 	count = 0;

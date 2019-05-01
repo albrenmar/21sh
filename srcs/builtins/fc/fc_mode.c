@@ -6,11 +6,21 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 22:12:59 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 22:17:11 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 05:50:38 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
+
+void		restore_fd_fc(void)
+{
+	dup2(g_tracking.mysh->dup1, 0);
+	close(g_tracking.mysh->dup1);
+	dup2(g_tracking.mysh->dup2, 1);
+	close(g_tracking.mysh->dup2);
+	dup2(g_tracking.mysh->dup3, 2);
+	close(g_tracking.mysh->dup3);
+}
 
 int		editor_mode(t_fcparse *opt)
 {
@@ -36,7 +46,13 @@ int		no_edit_mode(t_fcparse *opt)
 		opt->low = -1;
 		opt->max = -1;
 	}
+	if (opt->low == -1 && opt->max == -42)
+	{
+		opt->low = -1;
+		opt->max = -1;
+	}
 	create_fc_oldnew(opt);
+	restore_fd_fc();
 	return (0);
 }
 

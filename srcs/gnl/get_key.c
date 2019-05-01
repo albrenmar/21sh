@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 05:16:49 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 01:48:44 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		check(char *str)
 
 int		get_key(void)
 {
+	g_tracking.fc = 0;
 	if (g_tracking.interactive == 1)
 		tcsetattr(0, TCSANOW, &g_tracking.myterm);
 	get_coolprompt();

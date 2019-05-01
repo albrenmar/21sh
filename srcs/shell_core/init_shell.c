@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 04:35:51 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 05:48:06 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,10 @@ void	init_shell(char **environ)
 		hist_file_to_lst();
 	g_tracking.mysh->tab_env = init_envp(g_tracking.mysh->env);
 	g_tracking.mysh->set_env = NULL;
-//	g_tracking.mysh->expand_error = 0;
+	g_tracking.mysh->expand_error = 0;
+	g_tracking.mysh->dup1 = 14;
+	g_tracking.mysh->dup2 = 15;
+	g_tracking.mysh->dup3 = 16;
 	g_tracking.quotes = 0;
 	replace_env_set_str("FCEDIT", "nano");
 }

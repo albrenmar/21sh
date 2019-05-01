@@ -243,6 +243,8 @@ SRC = main.c \
 	  environment/set_environ.c \
 	  environment/env_tools.c \
 
+HEADERS := builtins.h environ.h expansions.h ft_ls.h libft.h sh42.h tmp_local_env.h token.h
+
 OBJ := $(SRC:.c=.o)
 
 PWD := $(shell pwd)
@@ -250,6 +252,7 @@ PWD := $(shell pwd)
 SRCDIR := srcs
 OBJDIR := obj
 
+HEADERSP := $(addprefix includes/, $(HEADERS))
 SRCP :=		$(addprefix $(SRCDIR)/, $(SRC))
 OBJP :=		$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 ONLYDIR :=	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
@@ -269,7 +272,7 @@ $(NAME) : $(OBJP)
 			@gcc $(FLAG) $(OBJP) -o $(NAME) -ltermcap $(INC) $(LIB)
 			@echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Finished compilation. Output file : $(COL_VIOLET)$(PWD)/$(NAME)$(COL_BLUE) ᕦ(ò_óˇ)ᕤ$(COL_END)"
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEADERSP)
 			@mkdir -p $(ONLYDIR)
 			@gcc -c $(FLAG) $(INC) $< -o $@
 			@echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"
