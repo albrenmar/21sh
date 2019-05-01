@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 01:35:54 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 03:25:35 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,6 @@ typedef struct	s_tracking
 	int					interactive;
 	int					lastreturn;
 	int					expandreturn;
-	int					reddirreturn;
 	int					sterminal;
 	pid_t				spid;
 	int					shebang;
@@ -236,6 +235,7 @@ typedef struct	s_jobs
 	int					stdout;
 	int					stderr;
 	int					place;
+	int					foreground;
 	int					background;
 	pid_t				jpid;
 	int					notified;
