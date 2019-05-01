@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   backslash.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 23:13:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 00:10:49 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 05:46:06 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,7 @@ char	get_char(char c)
 		return (18);
 	if (c == '?')
 		return (19);
-	if (c == '{')
-		return (20);
-	if (c == '}')
-		return (21);
-	if (c == '=')
-		return (22);
-	if (c == '~')
-		return (23);
-	return (c);
+	return (get_char_helper(c));
 }
 
 char	reset_char(char c)
@@ -75,15 +67,7 @@ char	reset_char(char c)
 		return ('*');
 	if (c == 19)
 		return ('?');
-	if (c == 20)
-		return ('{');
-	if (c == 21)
-		return ('}');
-	if (c == 22)
-		return ('=');
-	if (c == 23)
-		return ('~');
-	return (c);
+	return (reset_char_helper(c));
 }
 
 char	*convert_backslash(char *line)
@@ -92,7 +76,7 @@ char	*convert_backslash(char *line)
 	int		i;
 
 	if (!line)
-		return(NULL);
+		return (NULL);
 	temp = line;
 	i = 0;
 	while (temp[i])
@@ -110,7 +94,7 @@ char	*convert_back(char *line)
 	int		i;
 
 	if (!line)
-		return(NULL);
+		return (NULL);
 	temp = line;
 	i = 0;
 	while (temp[i])
@@ -122,15 +106,13 @@ char	*convert_back(char *line)
 	return (temp);
 }
 
-char	*remove_back(char *line)
+char	*remove_back(char *line, int i)
 {
 	char	*temp;
-	int		i;
 	int		a;
 
 	if (!line)
-		return(NULL);
-	i = 0;
+		return (NULL);
 	a = 0;
 	temp = ft_strnew(ft_strlen(line));
 	{
@@ -151,4 +133,3 @@ char	*remove_back(char *line)
 	ft_strdel(&line);
 	return (temp);
 }
-

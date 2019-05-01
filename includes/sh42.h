@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2019/05/01 04:31:02 by abguimba         ###   ########.fr       */
+/*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
+/*   Updated: 2019/05/01 05:52:38 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef SH42_H
 # define SH42_H
+
 # include "libft.h"
 # include "ft_ls.h"
 # include "token.h"
@@ -255,7 +255,7 @@ int				get_key(void);
 int				check(char *str);
 int				single_key(char c);
 int				return_loop(int i, char *str);
-int				readloop(int i, int fd);
+int				readloop(int i, int fd, char *str);
 void			basic_mode(void);
 void			ft_return(void);
 int				ft_exec_key(char *str);
@@ -396,7 +396,7 @@ int				history_up(void);
 int				history_down(void);
 t_last			*create_new_list(void);
 void			convert_list(t_last *list);
-t_last			*ft_parseur(int i, char *line);
+t_last			*ft_parseur(int i, char *str, t_last *list_cmd, t_last *templ);
 void			ft_lexeur(t_last *list_cmd);
 void			ft_ast(t_last *list_command);
 void			execute_ast(t_tree *tree, t_jobs *job);
@@ -532,6 +532,8 @@ char			*replace_double(char *line, int i);
 char			*return_error_bang(void);
 void			print_keyval(t_keyval *tmp);
 char			*convert_backslash(char *line);
+char			get_char_helper(char c);
+char			reset_char_helper(char c);
 char			*convert_back(char *line);
-char			*remove_back(char *line);
+char			*remove_back(char *line, int i);
 #endif
