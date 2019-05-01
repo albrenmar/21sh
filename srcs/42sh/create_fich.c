@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_fich.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 05:51:55 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 06:01:59 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		save_fd(void)
 	{
 		dup2(10, g_tracking.mysh->dup1);
 		dup2(11, g_tracking.mysh->dup2);
-		dup2(12,g_tracking.mysh->dup3);
+		dup2(12, g_tracking.mysh->dup3);
 	}
 }
 
