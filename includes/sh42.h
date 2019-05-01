@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 02:26:12 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 04:03:03 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ typedef struct	s_shell
 	t_env			*setsave;
 	char			**tab_env;
 	char			**tab_reddir;
-	int				expand_error;
+//	int				expand_error;
 	int				err_expend;
 	int				err_expend_printed;
 	int				in_ast;
