@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 01:51:43 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/26 00:38:36 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 07:06:01 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,4 +240,7 @@ char				*ft_strdup_nocar(const char *s);
 void				free_two_tabs(char **tab1, char **tab2);
 
 t_lstcontainer		*ft_split_with_char(char *str);
+
+int					ft_iswhitespace(int c);
+
 #endif

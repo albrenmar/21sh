@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 06:41:37 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 01:46:06 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 06:58:46 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	exp_key_plus(char **str, t_expand *expand)
 	if (!to_analy.vnme_len)
 	{
 		if (!g_tracking.mysh->in_here)
-			print_exp_error_dpoints(to_analy.varname, to_analy.wildcard, '+', str);
+			print_exp_error_dpoints(to_analy.varname,
+			to_analy.wildcard, '+', str);
 		end_analyzer(to_analy);
 		return ;
 	}
@@ -49,7 +50,8 @@ void	exp_key_inter(char **str, t_expand *expand)
 		ft_strdel(str);
 		*str = ft_strdup(to_analy.varvalue);
 	}
-	else if (to_analy.varname && to_analy.varname[0] && !g_tracking.mysh->in_here)
+	else if (to_analy.varname && to_analy.varname[0]
+			&& !g_tracking.mysh->in_here)
 		print_exp_error_inter(to_analy.varname, to_analy.wildcard, str);
 	else if (!g_tracking.mysh->in_here)
 		print_exp_error_dpoints(to_analy.varname, to_analy.wildcard, '?', str);

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 03:13:03 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 07:20:23 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,20 @@ int		transform_simple(char **str)
 	return (0);
 }
 
+void	expand_cleaner(int is_expanded, t_expand *first_letter, char **str,
+	char *tmp)
+{
+	if (is_expanded)
+	{
+		delete_list_expand(&first_letter);
+		ft_strdel(&tmp);
+		return ;
+	}
+	if (!g_tracking.mysh->err_expend && *str && transform_simple(str))
+		delete_list_expand(&first_letter);
+	ft_strdel(&tmp);
+}
+
 void	transform(t_expand *expand, char **str)
 {
 	t_expand	*first_letter;
@@ -111,13 +125,5 @@ void	transform(t_expand *expand, char **str)
 		else
 			break ;
 	}
-	if (is_expanded)
-	{
-		delete_list_expand(&first_letter);
-		ft_strdel(&tmp);
-		return ;
-	}
-	if (!g_tracking.mysh->err_expend && *str && transform_simple(str))
-		delete_list_expand(&first_letter);
-		ft_strdel(&tmp);
+	expand_cleaner(is_expanded, first_letter, str, tmp);
 }

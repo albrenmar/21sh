@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 04:06:40 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 05:48:16 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void			print_exp_error(char *to_error, char **str);
 void			print_exp_error_eq(char *varname, char *value, char **str);
 void			print_exp_str_error(char *strerror, char **str);
 void			print_exp_error_inter(char *varname, char *value, char **str);
-void			print_exp_token_error();
+void			print_exp_token_error(void);
 void			print_exp_scan_error(char *strerror);
 void			print_exp_invalid(char *error);
 int				scan_tilde(char *arg, char **new_arg);
@@ -184,5 +184,6 @@ int				check_expand_tab_builtin();
 void			quotenize(t_unquoter *first, char **value);
 t_unquoter		*re_create_intra_keys(t_unquoter *to_unquot, char **tmp);
 int				heredoc_expander(char **str);
+t_unquoter		*unquoter_prepare(t_unquoter *to_unquot);
 
 #endif
