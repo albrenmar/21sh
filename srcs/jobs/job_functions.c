@@ -6,36 +6,53 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 04:30:45 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 04:57:01 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-void		set_expand_return(void)
+#define expand g_tracking.expandreturn
+
+void		set_expand_return_helper(void)
 {
-	if (g_tracking.expandreturn == 131)
-		ft_putstr("Quit: ");
-	else if (g_tracking.expandreturn == 143)
-		ft_putstr("Terminated: ");
-	else if (g_tracking.expandreturn == 137)
-		ft_putstr("Killed: ");
-	else if (g_tracking.expandreturn == 129)
-		ft_putstr("Hang up: ");
-	else if (g_tracking.expandreturn == 134)
-		ft_putstr("Abort trap: ");
-	else if (g_tracking.expandreturn == 142)
-		ft_putstr("Alarm clock: ");
-	if (g_tracking.expandreturn == 131 || g_tracking.expandreturn == 143
-			|| g_tracking.expandreturn == 137 || g_tracking.expandreturn == 129
-			|| g_tracking.expandreturn == 134 || g_tracking.expandreturn == 142)
+	if (expand == 131 || expand == 143 || expand == 137 || expand == 129
+			|| expand == 134 || expand == 142 || expand == 139 || expand == 132
+			|| expand == 133 || expand == 135 || expand == 138)
 	{
-		ft_putnbr(g_tracking.expandreturn - 128);
+		ft_putnbr(expand - 128);
 		ft_putchar('\n');
 	}
 }
 
-void		mark_job_as_running(t_jobs *job)
+void		set_expand_return(void)
+{
+	if (expand == 131)
+		ft_putstr("Quit: ");
+	else if (expand == 143)
+		ft_putstr("Terminated: ");
+	else if (expand == 137)
+		ft_putstr("Killed: ");
+	else if (expand == 129)
+		ft_putstr("Hang up: ");
+	else if (expand == 134)
+		ft_putstr("Abort trap: ");
+	else if (expand == 142)
+		ft_putstr("Alarm clock: ");
+	else if (expand == 132)
+		ft_putstr("Illegal instruction: ");
+	else if (expand == 139)
+		ft_putstr("Segmentation fault: ");
+	else if (expand == 133)
+		ft_putstr("Trace/BPT trap: ");
+	else if (expand == 135)
+		ft_putstr("EMT trap: ");
+	else if (expand == 138)
+		ft_putstr("Bus error: ");
+	set_expand_return_helper();
+}
+
+void		continue_job(t_jobs *job, int foreground)
 {
 	t_comm	*cmd;
 
@@ -46,11 +63,6 @@ void		mark_job_as_running(t_jobs *job)
 		cmd = cmd->next;
 	}
 	job->notified = 0;
-}
-
-void		continue_job(t_jobs *job, int foreground)
-{
-	mark_job_as_running(job);
 	if (foreground)
 		put_job_in_foreground(job, 1);
 	else
