@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/23 10:14:33 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 03:11:10 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,21 @@ int			is_builtin(void)
 		|| ft_builtin_search("bg") || ft_builtin_search("exit")
 		|| ft_builtin_search("set") || ft_builtin_search("echo")
 		|| ft_builtin_search("hash") || ft_builtin_search("test")
-		|| ft_builtin_search("cd") || ft_builtin_search("setenv")
-		|| ft_builtin_search("alias") || ft_builtin_search("unalias")
-		|| ft_builtin_search("type") || ft_builtin_search("unset")
-		|| ft_builtin_search("export") || ft_builtin_search("env")
+		|| ft_builtin_search("cd") || ft_builtin_search("alias")
+		|| ft_builtin_search("unalias") || ft_builtin_search("type")
+		|| ft_builtin_search("unset") || ft_builtin_search("export")
 		|| ft_builtin_search("true") || ft_builtin_search("false")
-		|| ft_builtin_search("unsetenv") || ft_builtin_search("history")
-		|| ft_builtin_search("fc"))
+		|| ft_builtin_search("history") || ft_builtin_search("fc"))
 		return (1);
 	return (0);
 }
 
-int			is_builtin_alone(void)
+int			is_builtin_alone(int singleq, int doubleq)
 {
 	t_jobs	*tmp;
 	int		i;
 
 	i = 0;
-	g_tracking.cmdindex++;
 	tmp = g_tracking.jobs;
 	if (!(is_builtin()))
 		return (0);
@@ -45,7 +42,11 @@ int			is_builtin_alone(void)
 		return (0);
 	while (tmp->name[i] != '\0')
 	{
-		if (tmp->name[i] == '|')
+		if (tmp->name[i] == '\'')
+			singleq == 0 ? singleq++ : singleq--;
+		else if (tmp->name[i] == '\"')
+			doubleq == 0 ? doubleq++ : doubleq--;
+		if (tmp->name[i] == '|' && singleq == 0 && doubleq == 0)
 			return (0);
 		i++;
 	}
@@ -58,6 +59,8 @@ int			ft_builtin_search(char *builtin)
 	int		i;
 
 	tmp = g_tracking.g_tab_exec[0];
+	if (!tmp)
+		return (0);
 	i = 0;
 	while (tmp[i] && (tmp[i] == '\'' || tmp[i] == '\"'))
 		i++;
@@ -76,7 +79,7 @@ int			builtin_exec_cont(void)
 	if (ft_builtin_search("test"))
 		return (main_test(1));
 	else if (ft_builtin_search("cd"))
-		return (ft_cd());
+		return (ft_cd(0));
 	else if (ft_builtin_search("alias"))
 		return (add_alias());
 	else if (ft_builtin_search("unalias"))
@@ -91,15 +94,13 @@ int			builtin_exec_cont(void)
 		return (history_builtin());
 	else if (ft_builtin_search("fc"))
 		return (fc_builtin());
-	else if (ft_builtin_search("env"))
-		return (ft_env(0, 0));
 	else
 		return (builtin_exec_cont_2());
 }
 
 int			builtin_exec(void)
 {
-	check_if_resetenv();
+	apply_env();
 	if (check_expand_tab_builtin())
 		return (1);
 	if (ft_builtin_search("jobs"))

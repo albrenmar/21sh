@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/04/21 04:20:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/28 23:20:45 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void		hist_to_file(int fd)
 {
 	t_list	*hist;
 
+	if (!g_tracking.mysh || !g_tracking.mysh->hist)
+		return ;
 	hist = ft_lstgetfirst(g_tracking.mysh->hist->firstelement);
 	if (!hist)
 		return ;

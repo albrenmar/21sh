@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/25 23:48:18 by mjose            ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2019/05/01 04:31:02 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef SH42_H
 # define SH42_H
@@ -16,7 +17,7 @@
 # include "ft_ls.h"
 # include "token.h"
 # include "expansions.h"
-# include "temporal_env.h"
+# include "tmp_local_env.h"
 # include "builtins.h"
 # include <sys/ioctl.h>
 # include <termios.h>
@@ -127,36 +128,28 @@ typedef struct	s_tree
 	struct s_tree		*prev;
 }				t_tree;
 
-typedef struct	s_resetenv
-{
-	int					resetenv;
-	int					cmdindex;
-	struct s_resetenv	*next;
-}				t_resetenv;
-
-typedef struct	s_tmpenv
+typedef struct	s_env
 {
 	char				*key;
 	char				*value;
-	int					cmdindex;
-	struct s_tmpenv		*next;
-}				t_tmpenv;
+	struct s_env		*next;
+}				t_env;
 
 typedef struct	s_shell
 {
 	t_lstcontainer	*alias_lst;
 	t_lstcontainer	*env;
-	t_lstcontainer	*envsave;
 	t_lstcontainer	*set_env;
 	t_lstcontainer	*hist;
-	t_resetenv		*resetenv;
-	t_tmpenv		*tmpenv;
+	t_env			*tmpenvsave;
+	t_env			*setsave;
 	char			**tab_env;
 	char			**tab_reddir;
-	int				expand_error;
+//	int				expand_error;
 	int				err_expend;
 	int				err_expend_printed;
 	int				in_ast;
+	int				in_here;
 	int				errchk;
 }				t_shell;
 
@@ -167,6 +160,14 @@ typedef struct	s_hash
 	int					totalhits;
 	struct s_hash		*nextbinary;
 }				t_hash;
+
+typedef struct	s_alias
+{
+	int					alias_len;
+	int					next_alias;
+	char				*alias;
+	struct s_alias		*next;
+}				t_alias;
 
 typedef struct	s_tracking
 {
@@ -180,6 +181,7 @@ typedef struct	s_tracking
 	struct s_hash		*hashtable[27];
 	struct s_ptr_list	*garbage;
 	struct s_ptr_list	*mmalloc;
+	struct s_alias		*aliasloop;
 	char				**g_tab_exec;
 	char				*tmp_hist;
 	int					builtin;
@@ -208,7 +210,7 @@ typedef struct	s_tracking
 	pid_t				spid;
 	int					shebang;
 	int					herenbr;
-	int					cmdindex;
+	int					herexpnd;
 	int					foreground;
 	int					hist_first;
 }				t_tracking;
@@ -235,6 +237,7 @@ typedef struct	s_jobs
 	int					stdout;
 	int					stderr;
 	int					place;
+	int					foreground;
 	int					background;
 	pid_t				jpid;
 	int					notified;
@@ -313,6 +316,8 @@ int				is_spaces(char *str, int i, int mode);
 int				print_menu(void);
 int				end_autocomplete(int i);
 int				end_word(int mode);
+void			cmd_lstdel(t_last *cmd);
+t_last			*new_list(void);
 void			build_bin_lst(void);
 t_list			*move_arround(t_list *buf, int i);
 void			set_up_page(void);
@@ -322,18 +327,31 @@ void			change_page(int i, t_lstcontainer *list);
 void			join_page_nbr(void);
 void			line_per_page(void);
 void			escape_path(void);
+int				alias_or_orig(char *orig, char *value, int i, char *content);
+void			add_used_alias(char *alias);
+int				clean_used_alias(int returncode);
+int				check_if_used_alias(char *str, int i, int j);
+int				inf_loop(char *origkey, char *aliasval, int i, t_list *hold);
 char			*swap_alias(char *str, int j, int isave, t_keyval *tmp);
 void			swap_alias_helper(char *n, int l, int i, char *str);
 int				get_last_char_alias(char *str, char *memory, int nbsave, int j);
-char			*check_if_next_alias(char *str, int nb, int nbsave, char lastl);
+char			*check_if_next_alias(char *str);
+char			*next_alias_recursive(char *str);
 char			*check_if_first_word_alias(char *str, int i, int isave);
 int				next_separator(char *str, int i);
-char			*aliased_line(char **taab, int i, int j);
+char			*swap_alias(char *str, int j, int isave, t_keyval *tmp);
+char			*aliased_line(char **taab, int i, int loop, char *hold);
 char			*alias_swapper(char *line, int i, int count);
+char			**line_to_taab(char *str, int i, int j);
+void			set_alias_globals(char *value, int i, int j);
 void			alias_swapper_helper(int i, int j, char *line, char **taab);
+char			*taab_to_line(char **taab, char *hold);
 int				init_alias(void);
+void			init_new_tmp_env(t_env *tmp, char *str);
+char			*recursive_alias(char *str);
 int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
+int				check_alias_exists(t_keyval *tmp);
 char			*return_alias(char *name);
 int				print_alias_lst(void);
 int				unalias(char *alias);
@@ -365,7 +383,7 @@ char			*exist_fonction(char *cmd);
 char			*quote_check(char *str);
 char			*ft_modif_line(char *line);
 int				check_basic_quotes(char *line);
-
+char			**convert_backtab(char **taab);
 int				is_escape(char *str, int i);
 void			hist_file_to_lst(void);
 void			hist_save_file(void);
@@ -377,6 +395,7 @@ int				go_to(int i);
 int				history_up(void);
 int				history_down(void);
 t_last			*create_new_list(void);
+void			convert_list(t_last *list);
 t_last			*ft_parseur(int i, char *line);
 void			ft_lexeur(t_last *list_cmd);
 void			ft_ast(t_last *list_command);
@@ -488,7 +507,7 @@ int				exist_builtin(char *cmd);
 t_last			*check_exp_error(t_last *cmd);
 void			free_keyval(t_lstcontainer *list);
 void			next_cmd_update(void);
-
+void			set_expand_return(void);
 void			put_unexpected_token(char *sym);
 char			*exec_create_heredoc(char *eof);
 char			*end_line(char *line);
@@ -512,5 +531,7 @@ char			*replace_word(char *line, int i);
 char			*replace_double(char *line, int i);
 char			*return_error_bang(void);
 void			print_keyval(t_keyval *tmp);
-
+char			*convert_backslash(char *line);
+char			*convert_back(char *line);
+char			*remove_back(char *line);
 #endif

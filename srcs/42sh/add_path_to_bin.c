@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_path_to_bin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:00:43 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 01:15:40 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 00:49:55 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,23 @@ char				**exist_help(char **t, char *p, char **pl, struct stat s)
 	return (NULL);
 }
 
+char				*get_path_value()
+{
+	char			*p;
+
+	p = get_env_string("PATH");
+	if (p == NULL)
+	{
+		p = get_set_env_string("PATH");
+		if (p == NULL)
+			return (NULL);
+		else
+			return (ft_strdup(get_set_env_string("PATH")));
+	}
+	else
+		return (ft_strdup(get_env_string("PATH")));
+}
+
 char				**test_exist_fonct(char **t_c, int mode, char *p, char **pl)
 {
 	struct stat		path_stat;
@@ -77,7 +94,7 @@ char				**test_exist_fonct(char **t_c, int mode, char *p, char **pl)
 			return (NULL);
 	if (mode == 1)
 	{
-		p = ft_strdup(get_env_string("PATH"));
+		p = get_path_value();
 		pl = ft_strsplit(p, ':');
 		if (test_exist_fonction_two(&t_c, pl) == 1)
 		{

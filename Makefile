@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/26 00:26:08 by mjose            ###   ########.fr        #
+#    Updated: 2019/05/01 04:51:44 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ NAME :=	42sh
 
 SRC = main.c \
 	  test_option.c \
+	  42sh/helpers.c \
 	  42sh/reddir_tools.c \
 	  42sh/tools.c \
 	  42sh/errors.c \
@@ -58,13 +59,18 @@ SRC = main.c \
 	  42sh/unexpected_token.c \
 	  42sh/exec_sh.c \
 	  42sh/exit_reddir.c \
+	  back_search/get_hist_ptr.c \
+	  back_search/init_search.c \
 	  builtins/env/env.c \
 	  builtins/fc/main_fc.c \
+	  builtins/fc/fc_mode.c \
 	  builtins/fc/lst_to_file.c \
 	  builtins/fc/list_fc.c \
 	  builtins/fc/fc_print.c \
 	  builtins/fc/option_fc.c \
-	   builtins/fc/fc_exec.c \
+	  builtins/fc/fc_exec.c \
+	  builtins/fc/fc_oldnew.c \
+	  builtins/fc/rebuild_line.c \
 	  builtins/export/export.c \
 	  builtins/export/export_error.c \
 	  builtins/export/export_tools.c \
@@ -112,6 +118,7 @@ SRC = main.c \
 	  gnl/add_to_str.c \
 	  gnl/rem_from_str.c \
 	  gnl/term_setup.c \
+	  gnl/backslash.c \
 	  gnl/init_term.c \
 	  gnl/cursor_pos.c \
 	  gnl/cursor_check.c \
@@ -174,6 +181,8 @@ SRC = main.c \
 	  alias/next_alias.c \
 	  alias/alias_bin.c \
 	  alias/alias_file.c \
+	  alias/alias_utils.c \
+	  alias/alias_outils.c \
 	  alias/alias_struct.c \
 	  alias/unalias.c \
 	  alias/alias_helpers.c \
@@ -221,16 +230,14 @@ SRC = main.c \
 	  expansions/tools/varname.c \
 	  expansions/tools/clean_unquoter.c \
 	  expansions/tools/check_exec_tab.c \
-	  expansions/tools/intra_keys.c \
-	  temporal_env/temp_env.c \
-	  temporal_env/restore_env.c \
-	  temporal_env/tmp_env_helpers.c \
-	  temporal_env/tmp_env_functions.c \
-	  temporal_env/check_tmp_env.c \
-	  temporal_env/check_env_i.c \
-	  temporal_env/tmp_env_tools.c \
-	  temporal_env/tmp_env_utils.c \
-	  temporal_env/check_env_i_helpers.c \
+	  tmp_local_env/temp_env.c \
+	  tmp_local_env/restore_env.c \
+	  tmp_local_env/tmp_local_env_helpers.c \
+	  tmp_local_env/tmp_env_tools.c \
+	  tmp_local_env/local_env_tools.c \
+	  tmp_local_env/tmp_local_env.c \
+	  tmp_local_env/apply_env.c \
+	  expansions/heredoc/heredoc_expander.c \
 	  environment/environ.c \
 	  environment/set_environ.c \
 	  environment/env_tools.c \
@@ -250,7 +257,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -Wall -Wextra -Werror -g #-fsanitize=address
+FLAG := -Wall -Wextra -Werror -g -fsanitize=address
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')

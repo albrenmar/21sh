@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   temp_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:23:43 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/19 07:20:43 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/29 05:13:20 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "temporal_env.h"
 #include "sh42.h"
 
 int		is_for_tmpenv(char *arg)

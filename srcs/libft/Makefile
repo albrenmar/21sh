@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/02 18:27:43 by bsiche            #+#    #+#              #
-#    Updated: 2019/04/19 02:59:20 by mjose            ###   ########.fr        #
+#    Updated: 2019/04/29 03:17:42 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,6 +93,7 @@ SRC =		ft_atoi.c \
 	garbage_free.c \
 	garbage_init.c \
 	garbage_malloc.c \
+	split_keep_char.c
 
 CLEAR_LINE	= \033[2K
 BEGIN_LINE	= \033[A
@@ -116,7 +117,7 @@ OBJDIR := 	obj
 OBJP :=		$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 ONLYDIR :=	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 
-FLAG := -Wall -Wextra -Werror -g
+FLAG := -Wall -Wextra -Werror -g -fsanitize=address
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell ls $(PWD)/obj/ 2> /dev/null | wc -l | sed -e 's/ //g')

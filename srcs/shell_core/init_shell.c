@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/24 15:13:30 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 04:35:51 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,16 @@
 
 void	reset_all(void)
 {
-	reset_tmpenv();
-	reset_resetenv();
 	cursor_reset();
 }
 
 void	init_global(void)
 {
-	g_tracking.mysh->resetenv = NULL;
-	g_tracking.mysh->envsave = NULL;
-	g_tracking.mysh->tmpenv = NULL;
-	g_tracking.mysh->expand_error = 0;
+//	g_tracking.mysh->expand_error = 0;
 	g_tracking.mysh->err_expend = 0;
 	g_tracking.mysh->in_ast = 0;
+	g_tracking.mysh->in_here = 0;
 	g_tracking.mysh->err_expend_printed = 0;
-	g_tracking.cmdindex = -1;
 	g_tracking.builtin = 0;
 	g_tracking.jobs = NULL;
 	g_tracking.lastreturn = 0;
@@ -41,6 +36,13 @@ void	init_global(void)
 	g_tracking.user = NULL;
 	g_tracking.cwd = NULL;
 	g_tracking.herenbr = 0;
+	g_tracking.herexpnd = 0;
+	if (!(g_tracking.aliasloop = ft_malloc(sizeof(t_alias))))
+		ft_exit2(EXIT_FAILURE);
+	g_tracking.aliasloop->alias = NULL;
+	g_tracking.aliasloop->next = NULL;
+	g_tracking.mysh->tmpenvsave = NULL;
+	g_tracking.mysh->setsave = NULL;
 }
 
 void	init_shell(char **environ)
@@ -67,6 +69,7 @@ void	init_shell(char **environ)
 		hist_file_to_lst();
 	g_tracking.mysh->tab_env = init_envp(g_tracking.mysh->env);
 	g_tracking.mysh->set_env = NULL;
-	g_tracking.mysh->expand_error = 0;
+//	g_tracking.mysh->expand_error = 0;
 	g_tracking.quotes = 0;
+	replace_env_set_str("FCEDIT", "nano");
 }

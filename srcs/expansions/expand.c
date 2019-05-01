@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/26 01:11:40 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 04:28:39 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,25 @@ void		create_list_expand(t_expand *new_letter, char *line)
 void		scan_arg_transformer(t_unquoter **check, char **value)
 {
 	t_scan_arg	scarg;
+	char		*rest_of;
+//	char		*orig;
 
 	scarg.checker = *check;
 	scarg.new_arg = NULL;
 	while (scarg.checker && scarg.checker->str_unquoted)
 	{
+		rest_of = ft_strdup(ft_strchr(scarg.checker->str_unquoted, 92));
+//		orig = ft_strdup(scarg.checker->str_unquoted);
 		if (scarg.checker->type != '\'')
 			fill_scarg(&scarg);
+		if (rest_of && !ft_strchr(scarg.checker->str_unquoted, 92))
+//			|| ft_strchr(scarg.checker->str_unquoted, 9)
+//			|| ft_strchr(scarg.checker->str_unquoted, 12)))
+			scarg.checker->str_unquoted = ft_strjoinfree(scarg.checker->str_unquoted, rest_of, 3);
+//		else
+//			ft_strdel(&orig);
 		scarg.checker = scarg.checker->next;
+		ft_strdel(&rest_of);
 	}
 	scarg.checker = *check;
 	ft_strdel(value);
@@ -80,8 +91,9 @@ void		mark_to_remove(t_unquoter *to_unquot, char **value)
 {
 	if (ft_strequ(to_unquot->str_unquoted, "${}"))
 		print_exp_error(NULL, value);
-	else
-		print_exp_str_error(to_unquot->str_unquoted, value);
+	else if (!g_tracking.mysh->in_here)
+		print_exp_invalid(to_unquot->str_unquoted);
+//		print_exp_str_error(to_unquot->str_unquoted, value);
 }
 
 char		expand_transformer(char **value, int unq)
@@ -91,12 +103,24 @@ char		expand_transformer(char **value, int unq)
 	t_unquoter	*first;
 	char		*tmp;
 
-	tmp = NULL;
+	to_unquot = NULL;
 	to_unquot = unquote_value(value);
+	tmp = ft_strnew(1);
+	first = to_unquot;
+	while (to_unquot)
+	{
+		tmp = ft_strjoinfree(tmp, to_unquot->str_unquoted, 1);
+		to_unquot = to_unquot->next;
+	}
+	to_unquot = first;
+	if (tmp[0] == '$' && tmp[1] == '{' && tmp[ft_strlen(tmp)- 1] == '}')
+	{
+		clean_unquoter(first);
+		to_unquot = new_unquoted_value();
+		to_unquot->str_unquoted = ft_strdup(tmp);
+	}
 	first = to_unquot;
 	str_orig = ft_strdup(*value);
-	first = re_create_intra_keys(to_unquot, &tmp);
-	to_unquot = first;
 	if (to_unquot && unq != 2 && (!ft_strstr(to_unquot->str_unquoted, "${}")
 			|| !ft_strstr(to_unquot->str_unquoted, "${}")))
 		scan_arg_transformer(&to_unquot, value);
@@ -107,6 +131,8 @@ char		expand_transformer(char **value, int unq)
 	ft_strdel(&str_orig);
 	if (!unq)
 		quotenize(first, value);
+	if (*value[0] == '\0' && !g_tracking.mysh->err_expend)
+		ft_strdel(value);
 	clean_unquoter(first);
 	if (tmp)
 		ft_strdel(&tmp);
