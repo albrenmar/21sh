@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 01:36:34 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 02:42:53 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	init_global(void)
 	g_tracking.user = NULL;
 	g_tracking.cwd = NULL;
 	g_tracking.herenbr = 0;
+	g_tracking.herexpnd = 0;
 	if (!(g_tracking.aliasloop = ft_malloc(sizeof(t_alias))))
 		ft_exit2(EXIT_FAILURE);
 	g_tracking.aliasloop->alias = NULL;
