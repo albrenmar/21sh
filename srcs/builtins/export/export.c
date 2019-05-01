@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 21:01:58 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 07:20:04 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int			ft_export(void)
 	int		i;
 
 	tab_arg = g_tracking.g_tab_exec;
+	free_keyval(g_tracking.mysh->env);
+	g_tracking.mysh->env = ft_env_to_lst(g_tracking.mysh->tab_env);
 	i = 1;
 	if (!tab_arg[i] || (ft_strequ(tab_arg[i], "-p") && !tab_arg[i + 1]))
 	{
