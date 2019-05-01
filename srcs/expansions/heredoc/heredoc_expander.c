@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 05:55:45 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 23:09:16 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 02:00:57 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		heredoc_expander(char **str)
 	int		count_q;
 	int		i;
 
+	g_tracking.mysh->in_here = 1;
 	run_str = ft_strdup(*str);
 	tmp = *str;
 	if ((i = check_basic_quotes(*str)) > 0 && i == 3)
@@ -51,9 +52,10 @@ int		heredoc_expander(char **str)
 	}
 	run_str = convert_backslash(run_str);
 	expand_transformer(&run_str, 1);
+	g_tracking.mysh->in_here = 0;
 	run_str = convert_back(run_str);
 	run_str = remove_back(run_str);
-	if (g_tracking.mysh->err_expend)
+	if (g_tracking.mysh->err_expend || !run_str)
 		return (1);
 	ft_strdel(str);
 	*str = run_str;

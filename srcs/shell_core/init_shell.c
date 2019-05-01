@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/30 21:02:03 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 01:36:34 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_global(void)
 	g_tracking.mysh->expand_error = 0;
 	g_tracking.mysh->err_expend = 0;
 	g_tracking.mysh->in_ast = 0;
+	g_tracking.mysh->in_here = 0;
 	g_tracking.mysh->err_expend_printed = 0;
 	g_tracking.builtin = 0;
 	g_tracking.jobs = NULL;
