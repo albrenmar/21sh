@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/30 22:50:59 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 05:21:51 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ void	main_loop(char *line)
 
 	ret = 0;
 	if ((ft_strlen(line) > 0) && spaces_line_check(line)
-	&& (cmd = ft_parseur(0, line)))
+	&& (cmd = ft_parseur(0, line, NULL, NULL)))
 	{
 		first_cmd = cmd;
 		if (write(0, "c", 0) != -1)
-		{
-			if (ft_strcmp(line, "\n") != 0 && ft_strlen(line) > 0 && line[0] > 32)
-				lstcontainer_add(g_tracking.mysh->hist, ft_strdup((convert_back(line))));
-		}
+			if (ft_strcmp(line, "\n") != 0 && ft_strlen(line) > 0
+			&& line[0] > 32)
+				lstcontainer_add(g_tracking.mysh->hist,
+				ft_strdup((convert_back(line))));
 		convert_list(cmd);
 		if (!(ret = error_lexer(cmd)))
 		{

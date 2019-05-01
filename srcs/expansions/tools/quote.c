@@ -6,19 +6,11 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 01:52:42 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:56:38 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 07:06:53 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
-
-int			ft_iswhitespace(int c)
-{
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
-					|| c == '\r')
-		return (1);
-	return (0);
-}
 
 t_unquoter	*remove_quote_data(t_unquoter *to_unquot, char next_quote)
 {
@@ -75,6 +67,30 @@ t_unquoter	*unquote_value(char **value)
 		}
 	}
 	re_quote(to_unquot, scan);
+	return (first);
+}
+
+t_unquoter	*unquoter_prepare(t_unquoter *to_unquot)
+{
+	char		*tmp;
+	t_unquoter	*first;
+
+	first = to_unquot;
+	tmp = NULL;
+	while (to_unquot)
+	{
+		tmp = ft_strjoinfree(tmp, to_unquot->str_unquoted, 1);
+		to_unquot = to_unquot->next;
+	}
+	to_unquot = first;
+	if (tmp[0] == '$' && tmp[1] == '{' && tmp[ft_strlen(tmp) - 1] == '}')
+	{
+		clean_unquoter(first);
+		to_unquot = new_unquoted_value();
+		to_unquot->str_unquoted = ft_strdup(tmp);
+		ft_strdel(&tmp);
+	}
+	first = to_unquot;
 	return (first);
 }
 

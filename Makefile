@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/05/01 02:51:19 by mjose            ###   ########.fr        #
+#    Updated: 2019/05/01 06:56:44 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,6 +119,7 @@ SRC = main.c \
 	  gnl/rem_from_str.c \
 	  gnl/term_setup.c \
 	  gnl/backslash.c \
+	  gnl/backslash_helper.c \
 	  gnl/init_term.c \
 	  gnl/cursor_pos.c \
 	  gnl/cursor_check.c \
@@ -204,6 +205,7 @@ SRC = main.c \
 	  expansions/expand_keys_dblpnt.c \
 	  expansions/expand_keys_adv.c \
 	  expansions/expand_error.c \
+	  expansions/expand_error_signs.c \
 	  expansions/autocomplete/auto_com_expan.c \
 	  expansions/command/cmd_expan_checker.c \
 	  expansions/command/cmd_tools.c \
@@ -242,6 +244,8 @@ SRC = main.c \
 	  environment/set_environ.c \
 	  environment/env_tools.c \
 
+HEADERS := builtins.h environ.h expansions.h ft_ls.h libft.h sh42.h tmp_local_env.h token.h
+
 OBJ := $(SRC:.c=.o)
 
 PWD := $(shell pwd)
@@ -249,6 +253,7 @@ PWD := $(shell pwd)
 SRCDIR := srcs
 OBJDIR := obj
 
+HEADERSP := $(addprefix includes/, $(HEADERS))
 SRCP :=		$(addprefix $(SRCDIR)/, $(SRC))
 OBJP :=		$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 ONLYDIR :=	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
@@ -257,7 +262,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -Wall -Wextra -Werror -g #-fsanitize=address
+FLAG := -Wall -Wextra -Werror -g -fsanitize=address
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')
@@ -268,7 +273,7 @@ $(NAME) : $(OBJP)
 			@gcc $(FLAG) $(OBJP) -o $(NAME) -ltermcap $(INC) $(LIB)
 			@echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Finished compilation. Output file : $(COL_VIOLET)$(PWD)/$(NAME)$(COL_BLUE) ᕦ(ò_óˇ)ᕤ$(COL_END)"
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEADERSP)
 			@mkdir -p $(ONLYDIR)
 			@gcc -c $(FLAG) $(INC) $< -o $@
 			@echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"

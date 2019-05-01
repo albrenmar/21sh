@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 04:06:23 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 05:10:53 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ t_expand	*expand_keys_extension(t_expand *expand, char **str, char sign)
 		exp_key_altern(str, expand);
 	else if (sign == 'E' && !g_tracking.mysh->in_here)
 		print_exp_token_error();
-//		print_exp_error(*str + 1, str);
 	return (expand);
 }
 

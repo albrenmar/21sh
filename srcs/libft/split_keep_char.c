@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   split_keep_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 03:22:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/27 19:29:10 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 05:18:40 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isspace(char c)
+int				ft_isspace(char c)
 {
-	if (c == '\t' || c == ' ' || (c== '\n' && c != '\0'))
+	if (c == '\t' || c == ' ' || (c == '\n' && c != '\0'))
 		return (1);
 	return (0);
 }

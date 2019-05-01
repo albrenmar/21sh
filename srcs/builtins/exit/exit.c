@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/21 07:09:15 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 06:34:29 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void		clean_up_leaks(void)
 {
 	if (g_tracking.aut)
 		clean_up_autoc();
-//	if (g_tracking.mysh->hist)
-//		ctrl_c();
 	ft_free(g_tracking.str);
 	g_tracking.str = NULL;
 	ft_free(g_tracking.terminfo);
