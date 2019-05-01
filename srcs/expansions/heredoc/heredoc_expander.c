@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 05:55:45 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 02:00:57 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 02:22:13 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,18 @@ int		heredoc_expander(char **str)
 		return (1);
 	}
 	run_str = convert_backslash(run_str);
-	expand_transformer(&run_str, 1);
+	if (*str[0])
+		expand_transformer(&run_str, 1);
 	g_tracking.mysh->in_here = 0;
 	run_str = convert_back(run_str);
 	run_str = remove_back(run_str);
-	if (g_tracking.mysh->err_expend || !run_str)
-		return (1);
-	ft_strdel(str);
-	*str = run_str;
+	if (str[0])
+		if (g_tracking.mysh->err_expend || !run_str)
+			return (1);
+	if (str[0])
+	{
+		ft_strdel(str);
+		*str = run_str;
+	}
 	return (0);
 }
