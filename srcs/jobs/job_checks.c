@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   job_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 03:49:16 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void				put_job_in_foreground(t_jobs *job, int cont)
 {
+	job->foreground = 1;
 	tcsetpgrp(g_tracking.sterminal, job->jpid);
 	if (cont)
 	{
@@ -29,6 +30,7 @@ void				put_job_in_foreground(t_jobs *job, int cont)
 
 void				put_job_in_background(t_jobs *job, int cont)
 {
+	job->foreground = 0;
 	if (cont)
 		kill(-job->jpid, SIGCONT);
 }

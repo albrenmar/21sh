@@ -3,10 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 01:35:54 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 04:03:03 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +145,7 @@ typedef struct	s_shell
 	t_env			*setsave;
 	char			**tab_env;
 	char			**tab_reddir;
-	int				expand_error;
+//	int				expand_error;
 	int				err_expend;
 	int				err_expend_printed;
 	int				in_ast;
@@ -205,11 +206,11 @@ typedef struct	s_tracking
 	int					interactive;
 	int					lastreturn;
 	int					expandreturn;
-	int					reddirreturn;
 	int					sterminal;
 	pid_t				spid;
 	int					shebang;
 	int					herenbr;
+	int					herexpnd;
 	int					foreground;
 	int					hist_first;
 }				t_tracking;
@@ -236,6 +237,7 @@ typedef struct	s_jobs
 	int					stdout;
 	int					stderr;
 	int					place;
+	int					foreground;
 	int					background;
 	pid_t				jpid;
 	int					notified;
