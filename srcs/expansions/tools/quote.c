@@ -6,11 +6,12 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 01:52:42 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 07:06:53 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 23:39:48 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
+#include "sh42.h"
 
 t_unquoter	*remove_quote_data(t_unquoter *to_unquot, char next_quote)
 {
@@ -70,14 +71,22 @@ t_unquoter	*unquote_value(char **value)
 	return (first);
 }
 
+char		*back_slash_error(char *str)
+{
+	str = convert_back(str);
+	print_exp_invalid(str);
+	str = convert_backslash(str);
+	return (str);
+}
+
 t_unquoter	*unquoter_prepare(t_unquoter *to_unquot)
 {
 	char		*tmp;
 	t_unquoter	*first;
 
 	first = to_unquot;
-	tmp = NULL;
-	while (to_unquot)
+	tmp = ft_strnew(1);
+	while (to_unquot && to_unquot->str_unquoted)
 	{
 		tmp = ft_strjoinfree(tmp, to_unquot->str_unquoted, 1);
 		to_unquot = to_unquot->next;
@@ -87,9 +96,12 @@ t_unquoter	*unquoter_prepare(t_unquoter *to_unquot)
 	{
 		clean_unquoter(first);
 		to_unquot = new_unquoted_value();
+		if (ft_strchr(tmp, '\\'))
+			tmp = back_slash_error(tmp);
 		to_unquot->str_unquoted = ft_strdup(tmp);
 		ft_strdel(&tmp);
 	}
+	ft_strdel(&tmp);
 	first = to_unquot;
 	return (first);
 }
