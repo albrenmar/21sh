@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 09:25:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/20 05:00:32 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 07:00:28 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void		free_mysh(void)
 {
 	hist_save_file();
-//	free_hist();
 	if (g_tracking.mysh->alias_lst)
 	{
 		free_keyval(g_tracking.mysh->alias_lst);

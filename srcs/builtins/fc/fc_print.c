@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 11:40:35 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 05:51:55 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 06:36:45 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	get_neg_offset(t_fcparse *opt)
 	int			i;
 
 	tmp = ft_lstgetlast(g_tracking.mysh->hist->firstelement);
-	i = 0;
 	if (opt->low < 0)
 	{
 		i = opt->low + 1;

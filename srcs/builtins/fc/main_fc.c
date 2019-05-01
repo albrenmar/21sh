@@ -6,11 +6,25 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 04:44:37 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 05:50:54 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 06:58:28 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
+
+void	save_to_hist(t_fcparse *opt)
+{
+	int		i;
+
+	if (!opt)
+		return ;
+	if (write(0, "c", 0) != -1)
+	{
+		i = ft_strlen(opt->shist);
+		if (ft_strcmp(opt->shist, "\n") != 0 && i > 0 && opt->shist[0] > 32)
+			lstcontainer_add(g_tracking.mysh->hist, ft_strdup(opt->shist));
+	}
+}
 
 void	hist_set_unset(int i, t_fcparse *opt)
 {
@@ -22,7 +36,7 @@ void	hist_set_unset(int i, t_fcparse *opt)
 	{
 		tmp = ft_lstgetlast(g_tracking.mysh->hist->lastelement);
 		g_tracking.mysh->hist->lastelement = tmp->prev;
-		opt->save_hist = ft_strdup(tmp->content);
+		opt->shist = ft_strdup(tmp->content);
 		lstcontainer_remove(g_tracking.mysh->hist, tmp, 1);
 		tmp = NULL;
 	}
@@ -31,13 +45,7 @@ void	hist_set_unset(int i, t_fcparse *opt)
 		if (!opt || opt->e == 1 || opt->s == 1)
 			return ;
 		else
-		{
-			if (write(0, "c", 0) != -1)
-			{
-				if (ft_strcmp(opt->save_hist, "\n") != 0 && ft_strlen(opt->save_hist) > 0 && opt->save_hist[0] > 32)
-					lstcontainer_add(g_tracking.mysh->hist, ft_strdup(opt->save_hist));
-			}
-		}
+			save_to_hist(opt);
 	}
 }
 
@@ -48,7 +56,7 @@ void	free_opt(t_fcparse *opt)
 	ft_strdel(&opt->editor);
 	ft_strdel(&opt->first);
 	ft_strdel(&opt->last);
-	ft_strdel(&opt->save_hist);
+	ft_strdel(&opt->shist);
 	ft_strdel(&opt->str);
 	ft_free(opt);
 }
@@ -62,7 +70,7 @@ int		fc_builtin(void)
 
 	av = g_tracking.g_tab_exec;
 	g_tracking.fc++;
-	opt = (fc_option(av));
+	opt = (fc_option(av, 1));
 	i = 0;
 	count = 0;
 	hist_set_unset(0, opt);

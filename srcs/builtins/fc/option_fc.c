@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   option_fc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 04:23:16 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 22:41:09 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 06:57:38 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_fcparse	*init_opt(void)
 	opt->editor = NULL;
 	opt->first = NULL;
 	opt->last = NULL;
-	opt->save_hist = NULL;
+	opt->shist = NULL;
 	return (opt);
 }
 
@@ -81,9 +81,8 @@ t_fcparse	*fill_opt(t_fcparse *opt)
 	return (opt);
 }
 
-t_fcparse	*fc_option(char **av)
+t_fcparse	*fc_option(char **av, int i)
 {
-	int			i;
 	t_fcparse	*opt;
 	char		*tmp;
 
@@ -106,7 +105,6 @@ t_fcparse	*fc_option(char **av)
 	if (ft_strcmp(av[i], "--") == 0)
 		i++;
 	opt->i = i;
-	i = 0;
 	if (opt->str)
 		opt = fill_opt(opt);
 	return (opt);
