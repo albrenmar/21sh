@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 00:04:00 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 01:53:12 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void		mark_to_remove(t_unquoter *to_unquot, char **value)
 {
 	if (ft_strequ(to_unquot->str_unquoted, "${}"))
 		print_exp_error(NULL, value);
-	else
+	else if (!g_tracking.mysh->in_here)
 		print_exp_invalid(to_unquot->str_unquoted);
 //		print_exp_str_error(to_unquot->str_unquoted, value);
 }
