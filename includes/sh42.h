@@ -4,10 +4,9 @@
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 04:03:03 by bsiche           ###   ########.fr       */
+/*   Created: 2019/05/01 06:02:09 by abguimba          #+#    #+#             */
+/*   Updated: 2019/05/01 06:02:59 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +134,7 @@ typedef struct	s_env
 	char				*value;
 	struct s_env		*next;
 }				t_env;
- 
+
 typedef struct	s_shell
 {
 	t_lstcontainer	*alias_lst;
@@ -146,7 +145,7 @@ typedef struct	s_shell
 	t_env			*setsave;
 	char			**tab_env;
 	char			**tab_reddir;
-	int				expand_error;
+	// int				expand_error;
 	int				err_expend;
 	int				err_expend_printed;
 	int				in_ast;
