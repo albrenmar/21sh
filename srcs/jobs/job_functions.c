@@ -6,48 +6,48 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 04:57:01 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 05:45:40 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-#define expand g_tracking.expandreturn
+#define EXPAND g_tracking.expandreturn
 
 void		set_expand_return_helper(void)
 {
-	if (expand == 131 || expand == 143 || expand == 137 || expand == 129
-			|| expand == 134 || expand == 142 || expand == 139 || expand == 132
-			|| expand == 133 || expand == 135 || expand == 138)
+	if (EXPAND == 131 || EXPAND == 143 || EXPAND == 137 || EXPAND == 129
+			|| EXPAND == 134 || EXPAND == 142 || EXPAND == 139 || EXPAND == 132
+			|| EXPAND == 133 || EXPAND == 135 || EXPAND == 138)
 	{
-		ft_putnbr(expand - 128);
+		ft_putnbr(EXPAND - 128);
 		ft_putchar('\n');
 	}
 }
 
 void		set_expand_return(void)
 {
-	if (expand == 131)
+	if (EXPAND == 131)
 		ft_putstr("Quit: ");
-	else if (expand == 143)
+	else if (EXPAND == 143)
 		ft_putstr("Terminated: ");
-	else if (expand == 137)
+	else if (EXPAND == 137)
 		ft_putstr("Killed: ");
-	else if (expand == 129)
+	else if (EXPAND == 129)
 		ft_putstr("Hang up: ");
-	else if (expand == 134)
+	else if (EXPAND == 134)
 		ft_putstr("Abort trap: ");
-	else if (expand == 142)
+	else if (EXPAND == 142)
 		ft_putstr("Alarm clock: ");
-	else if (expand == 132)
+	else if (EXPAND == 132)
 		ft_putstr("Illegal instruction: ");
-	else if (expand == 139)
+	else if (EXPAND == 139)
 		ft_putstr("Segmentation fault: ");
-	else if (expand == 133)
+	else if (EXPAND == 133)
 		ft_putstr("Trace/BPT trap: ");
-	else if (expand == 135)
+	else if (EXPAND == 135)
 		ft_putstr("EMT trap: ");
-	else if (expand == 138)
+	else if (EXPAND == 138)
 		ft_putstr("Bus error: ");
 	set_expand_return_helper();
 }

@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 03:33:43 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 05:13:15 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		free_remains(void)
 	ft_free(g_tracking.pos);
 	ft_free(g_tracking.cpaste->line);
 	ft_free(g_tracking.cpaste);
-	// reset_tmpenv();
+	clean_tmp_local_env();
 	ft_free(g_tracking.mysh);
 }
 

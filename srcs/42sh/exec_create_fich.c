@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_create_fich.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 03:56:34 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 05:09:07 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ char	*exec_create_heredoc(char *eof)
 	if (!eof)
 		return (NULL);
 	key = unquote(eof);
-	if ((fd = open(file, O_CREAT|O_RDWR, 0644)) == -1)
+	if ((fd = open(file, O_CREAT | O_RDWR, 0644)) == -1)
 	{
 		ft_putendl_fd("Couldn't create heredoc in /temp", 2);
 		return (NULL);
