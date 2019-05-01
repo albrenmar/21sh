@@ -6,11 +6,20 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 03:09:44 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/24 20:32:23 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 00:15:58 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansions.h"
+#include "sh42.h"
+
+char		*back_slash_error(char *str)
+{
+	str = convert_back(str);
+	print_exp_invalid(str);
+	str = convert_backslash(str);
+	return (str);
+}
 
 t_unquoter	*new_unquoted_value(void)
 {
