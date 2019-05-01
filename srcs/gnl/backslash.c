@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 23:13:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/30 00:50:57 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 00:10:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ char	get_char(char c)
 		return (21);
 	if (c == '=')
 		return (22);
+	if (c == '~')
+		return (23);
 	return (c);
 }
 
@@ -79,6 +81,8 @@ char	reset_char(char c)
 		return ('}');
 	if (c == 22)
 		return ('=');
+	if (c == 23)
+		return ('~');
 	return (c);
 }
 

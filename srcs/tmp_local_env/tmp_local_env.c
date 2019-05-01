@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tmp_local_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:23:43 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 18:26:24 by abe              ###   ########.fr       */
+/*   Updated: 2019/05/01 00:56:39 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			check_if_env(char *str, int i)
 {
 	while (str[i] && str[i] != '=')
 	{
-		if (str[i] == '\'' || str[i] == '\"')
+		if (str[i] == '\'' || str[i] == '\"' || str[i] == '$')
 			return (0);
 		i++;
 	}

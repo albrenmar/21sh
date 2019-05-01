@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/04/30 22:52:30 by abguimba         ###   ########.fr        #
+#    Updated: 2019/05/01 01:40:01 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,8 @@ SRC = main.c \
 	  42sh/unexpected_token.c \
 	  42sh/exec_sh.c \
 	  42sh/exit_reddir.c \
+	  back_search/get_hist_ptr.c \
+	  back_search/init_search.c \
 	  builtins/env/env.c \
 	  builtins/fc/main_fc.c \
 	  builtins/fc/fc_mode.c \

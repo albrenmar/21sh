@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 04:34:16 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 00:04:00 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,9 @@ void		scan_arg_transformer(t_unquoter **check, char **value)
 //		orig = ft_strdup(scarg.checker->str_unquoted);
 		if (scarg.checker->type != '\'')
 			fill_scarg(&scarg);
-		if (rest_of && !(ft_strchr(scarg.checker->str_unquoted, 8)
-			|| ft_strchr(scarg.checker->str_unquoted, 9)))
+		if (rest_of && !ft_strchr(scarg.checker->str_unquoted, 92))
+//			|| ft_strchr(scarg.checker->str_unquoted, 9)
+//			|| ft_strchr(scarg.checker->str_unquoted, 12)))
 			scarg.checker->str_unquoted = ft_strjoinfree(scarg.checker->str_unquoted, rest_of, 3);
 //		else
 //			ft_strdel(&orig);
