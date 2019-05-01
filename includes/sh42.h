@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 06:02:09 by abguimba          #+#    #+#             */
-/*   Updated: 2019/05/01 07:16:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 07:27:58 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,6 @@ typedef struct	s_shell
 	t_env			*setsave;
 	char			**tab_env;
 	char			**tab_reddir;
-	// int				expand_error;
 	int				err_expend;
 	int				err_expend_printed;
 	int				in_ast;
@@ -540,6 +539,7 @@ char			get_char_helper(char c);
 char			reset_char_helper(char c);
 char			*convert_back(char *line);
 char			*remove_back(char *line, int i);
-int				tab_exec_arg(char **tab_exec, char **tab_farg, int i_arg, int i);
+int				tab_exec_arg(char **tab_exec, char **tab_farg, int i_arg,
+					int i);
 
 #endif
