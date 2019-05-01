@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 03:15:44 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 03:42:18 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,23 +77,3 @@ char	*unquote(char *eof)
 	}
 	return (ft_strdup(eof));
 }
-/*
-int		return_success(int i, char *file, char *key, int fd)
-
-//	ft_strdel(&key);
-	close(fd);
-	ft_strcmp(key, file); 
-	if (i == 1)
-	{
-//		ft_strdel(&file);
-		return (1);
-	}
-	if (i == 0)
-	{
-		if (g_tracking.cmd)
-//			ft_free(g_tracking.cmd);
-//		ft_free(g_tracking.str);
-		return (0);
-	}
-	return (0);
-*/
