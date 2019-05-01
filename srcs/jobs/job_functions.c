@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 05:45:40 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/02 00:49:12 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		set_expand_return_helper(void)
 {
 	if (EXPAND == 131 || EXPAND == 143 || EXPAND == 137 || EXPAND == 129
 			|| EXPAND == 134 || EXPAND == 142 || EXPAND == 139 || EXPAND == 132
-			|| EXPAND == 133 || EXPAND == 135 || EXPAND == 138)
+			|| EXPAND == 133 || EXPAND == 135 || EXPAND == 138 || EXPAND == 141)
 	{
 		ft_putnbr(EXPAND - 128);
 		ft_putchar('\n');
@@ -49,6 +49,8 @@ void		set_expand_return(void)
 		ft_putstr("EMT trap: ");
 	else if (EXPAND == 138)
 		ft_putstr("Bus error: ");
+	else if (EXPAND == 141)
+		ft_putstr("Broken pipe: ");
 	set_expand_return_helper();
 }
 
