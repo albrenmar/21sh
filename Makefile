@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/05/01 04:51:44 by abguimba         ###   ########.fr        #
+#    Updated: 2019/05/01 05:54:46 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -204,6 +204,7 @@ SRC = main.c \
 	  expansions/expand_keys_dblpnt.c \
 	  expansions/expand_keys_adv.c \
 	  expansions/expand_error.c \
+	  expansions/expand_error_signs.c \
 	  expansions/autocomplete/auto_com_expan.c \
 	  expansions/command/cmd_expan_checker.c \
 	  expansions/command/cmd_tools.c \
