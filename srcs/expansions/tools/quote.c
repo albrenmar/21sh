@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 01:52:42 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 23:39:48 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 00:13:46 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,6 @@ t_unquoter	*unquote_value(char **value)
 	}
 	re_quote(to_unquot, scan);
 	return (first);
-}
-
-char		*back_slash_error(char *str)
-{
-	str = convert_back(str);
-	print_exp_invalid(str);
-	str = convert_backslash(str);
-	return (str);
 }
 
 t_unquoter	*unquoter_prepare(t_unquoter *to_unquot)

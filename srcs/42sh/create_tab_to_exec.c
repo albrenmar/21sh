@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 07:54:47 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 00:00:02 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**expand_first_arg(char **tab_exec, int i, int *j, char **tab_farg)
 			i_arg++;
 		if (i_arg > 1)
 		{
-			i_arg = tab_exec_arg(tab_exec, tab_farg, i_arg, i);
+			i_arg = tab_exec_arg(&tab_exec, &tab_farg, i_arg, i);
 			*j = i_arg;
 		}
 		else
