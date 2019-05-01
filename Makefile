@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/05/01 23:01:00 by mjose            ###   ########.fr        #
+#    Updated: 2019/05/02 00:53:29 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -232,6 +232,7 @@ SRC = main.c \
 	  expansions/tools/varname.c \
 	  expansions/tools/clean_unquoter.c \
 	  expansions/tools/check_exec_tab.c \
+	  expansions/tools/sysvar.c \
 	  tmp_local_env/temp_env.c \
 	  tmp_local_env/restore_env.c \
 	  tmp_local_env/tmp_local_env_helpers.c \
