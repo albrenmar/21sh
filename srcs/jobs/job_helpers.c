@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   job_helpers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 02:30:42 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,7 @@ void		wait_for_job(t_jobs *job)
 			&& !job_is_done(job))
 		pid = waitpid(WAIT_ANY, &status, WUNTRACED);
 	if (WIFSIGNALED(status) || WIFSTOPPED(status))
-	{
 		wait_for_job_helper(status);
-	}
 	else if (WIFEXITED(status))
 	{
 		g_tracking.lastreturn = WEXITSTATUS(status);
