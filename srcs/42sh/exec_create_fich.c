@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 03:41:06 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 03:56:34 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ int		return_success(int i, char *file, char *key, int fd)
 		if (g_tracking.cmd)
 			ft_free(g_tracking.cmd);
 		ft_free(g_tracking.str);
+		if (g_tracking.herexpnd == 2)
+		{
+			ft_strdel(&file);
+			ft_putendl_fd("42sh : Bad substitution", 2);
+			return (1);
+		}
 		return (0);
 	}
 	return (0);
@@ -39,8 +45,12 @@ char	*get_str(void)
 	str = ft_strdup(g_tracking.cmd);
 	str = convert_backslash(str);
 	ft_strdel(&g_tracking.cmd);
-	if (g_tracking.herexpnd == 0)
+	if (g_tracking.herexpnd != 1)
+	{
 		heredoc_expander(&str);
+		if (check_basic_quotes(str) != 0)
+			g_tracking.herexpnd = 2;
+	}
 	if (!str)
 		str = ft_strnew(1);
 	return (str);
