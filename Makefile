@@ -205,6 +205,7 @@ SRC = main.c \
 	  expansions/expand_keys_dblpnt.c \
 	  expansions/expand_keys_adv.c \
 	  expansions/expand_error.c \
+	  expansions/expand_error_signs.c \
 	  expansions/autocomplete/auto_com_expan.c \
 	  expansions/command/cmd_expan_checker.c \
 	  expansions/command/cmd_tools.c \
