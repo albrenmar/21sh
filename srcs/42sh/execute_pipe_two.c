@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 00:27:31 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 02:20:40 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void		execute_two(char **tab_exec, char **tab_exec_hold)
 		exec_errors(tab_exec, 1);
 		free_tabs_and_exit(envhold, tab_exec_hold);
 	}
-	exec_errors(NULL, 1);
+	ctrl = exec_errors(NULL, 1);
 	free_two_tabs(tab_exec_hold, g_tracking.g_tab_exec);
 	g_tracking.g_tab_exec = NULL;
-	ft_exit3(EXIT_FAILURE, 2);
+	ft_exit3(ctrl, 2);
 }
 
 int			make_reddir(char **tab_reddir, int i)
