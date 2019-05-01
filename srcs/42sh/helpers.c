@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 07:16:59 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 00:06:02 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,21 @@ char	**convert_backtab(char **taab)
 	return (taab);
 }
 
-int		tab_exec_arg(char **tab_exec, char **tab_farg, int i_arg, int i)
+int		tab_exec_arg(char ***tab_exec, char ***tab_farg, int i_arg, int i)
 {
-	free_tab(tab_exec);
-	tab_exec = ft_memalloc(sizeof(char *) * (i + i_arg + 1));
+	char	**run_texec;
+	char	**run_tfarg;
+
+	run_texec = *tab_exec;
+	run_tfarg = *tab_farg;
+	free_tab(run_texec);
+	run_texec = ft_memalloc(sizeof(char *) * (i + i_arg + 1));
 	i_arg = 0;
-	while (tab_farg[i_arg])
+	while (run_tfarg[i_arg])
 	{
-		tab_exec[i_arg] = ft_strdup(tab_farg[i_arg]);
+		run_texec[i_arg] = ft_strdup(run_tfarg[i_arg]);
 		i_arg++;
 	}
+	*tab_exec = run_texec;
 	return (i_arg);
 }
