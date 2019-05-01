@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 22:19:00 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/04/30 22:50:59 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	main_loop(char *line)
 		if (write(0, "c", 0) != -1)
 		{
 			if (ft_strcmp(line, "\n") != 0 && ft_strlen(line) > 0 && line[0] > 32)
-				lstcontainer_add(g_tracking.mysh->hist, ft_strdup(line));
+				lstcontainer_add(g_tracking.mysh->hist, ft_strdup((convert_back(line))));
 		}
 		convert_list(cmd);
 		if (!(ret = error_lexer(cmd)))
@@ -103,6 +103,7 @@ int		main(int argc, char **argv, char **env)
 			ft_putchar_fd('\n', 0);
 		while (check_eol(line) != 0)
 			line = end_line(line);
+		g_tracking.quotes = 0;
 		main_loop(line);
 		jobs_notifications();
 		jobs_update_current();

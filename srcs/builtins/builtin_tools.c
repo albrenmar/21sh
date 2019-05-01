@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_tools.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/28 06:29:40 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@ int			builtin_exec_cont_2(void)
 		return (0);
 	else if (ft_builtin_search("false"))
 		return (1);
-	else if (ft_builtin_search("setenv"))
-		return (ft_setenv());
-	else if (ft_builtin_search("unsetenv"))
-		return (ft_unsetenv());
 	return (0);
 }
 

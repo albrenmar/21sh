@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/19 23:48:52 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 01:48:44 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		single_key(char c)
 	}
 	if (c == K_CTRLR)
 	{
-		print_history();
+		begin_search();
 		return (12);
 	}
 	if (c == 10 || c == 13)

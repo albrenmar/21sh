@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/26 04:33:08 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/01 03:13:03 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,9 @@ int		transform_simple(char **str)
 {
 	char	*run_str;
 	char	*new_str;
-	char	*last;
 
 	run_str = *str;
 	new_str = NULL;
-	last = NULL;
-	if (run_str[ft_strlen(run_str) - 1] == '\\')
-	{
-		last = ft_strdup(run_str + (ft_strlen(run_str) - 1));
-		run_str[ft_strlen(*str) - 1] = '\0';
-	}
 	if (run_str[0] == '$')
 		new_str = ft_strdup(get_env_string(run_str + 1));
 	if (run_str[0] == '$' && !new_str)
@@ -82,8 +75,6 @@ int		transform_simple(char **str)
 	{
 		ft_strdel(str);
 		*str = new_str;
-		if (last)
-			*str = ft_strjoinfree(*str, last, 3);
 	}
 	else if (*str && is_sysvar(str))
 		return (0);
@@ -94,19 +85,6 @@ int		transform_simple(char **str)
 		return (1);
 	}
 	return (0);
-}
-
-void	check_if_expanded(char **tmp, int is_expanded, char **str,
-	t_expand *first_letter)
-{
-	ft_strdel(tmp);
-	if (is_expanded)
-	{
-		delete_list_expand(&first_letter);
-		return ;
-	}
-	if (!g_tracking.mysh->err_expend && *str && transform_simple(str))
-		delete_list_expand(&first_letter);
 }
 
 void	transform(t_expand *expand, char **str)
@@ -133,5 +111,13 @@ void	transform(t_expand *expand, char **str)
 		else
 			break ;
 	}
-	check_if_expanded(&tmp, is_expanded, str, first_letter);
+	if (is_expanded)
+	{
+		delete_list_expand(&first_letter);
+		ft_strdel(&tmp);
+		return ;
+	}
+	if (!g_tracking.mysh->err_expend && *str && transform_simple(str))
+		delete_list_expand(&first_letter);
+		ft_strdel(&tmp);
 }

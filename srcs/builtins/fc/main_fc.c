@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 04:44:37 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 22:24:41 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 00:59:03 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	hist_set_unset(int i, t_fcparse *opt)
 		tmp = ft_lstgetlast(g_tracking.mysh->hist->lastelement);
 		g_tracking.mysh->hist->lastelement = tmp->prev;
 		opt->save_hist = ft_strdup(tmp->content);
-		ft_lstdelone(tmp, 1);
+		lstcontainer_remove(g_tracking.mysh->hist, tmp, 1);
 		tmp = NULL;
 	}
 	if (i == 1)

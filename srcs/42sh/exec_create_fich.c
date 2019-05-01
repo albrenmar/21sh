@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/25 23:47:21 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/30 06:35:33 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,14 @@ int		proto_heredoc(char *eof, int fd, char *file)
 		if (g_tracking.quotes == 11)
 			return (ctrl_c_heredoc(file));
 		str = ft_strdup(g_tracking.cmd);
+		str = convert_backslash(str);
 		ft_strdel(&g_tracking.cmd);
+//		if (!check_basic_quotes(str))
+//		if (!ft_valid_bracket(str))
+//			expand_transformer(&str, 1);
+		heredoc_expander(&str);
+		if (!str)
+			str = ft_strnew(1);
 		if (ft_strcmp(str, eof) != 0)
 			ft_putendl_fd(str, fd);
 		ft_putchar_fd('\n', 2);
@@ -86,7 +93,7 @@ char	*exec_create_heredoc(char *eof)
 		return (NULL);
 	if ((fd = open(file, O_CREAT | O_RDWR)) == -1)
 	{
-		ft_putendl_fd("Couldn't create fich in /temp", 2);
+		ft_putendl_fd("Couldn't create heredoc in /temp", 2);
 		return (NULL);
 	}
 	if ((proto_heredoc(eof, fd, file)) == 1)

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 00:53:23 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/20 01:00:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 00:55:06 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ void	ctrl_c(void)
 	}
 	if (g_tracking.tmp_hist)
 		ft_strdel(&g_tracking.tmp_hist);
-	clear_screen3();
-	print_prompt();
 	ft_free(g_tracking.str);
 	g_tracking.str = NULL;
 	cursor_reset();

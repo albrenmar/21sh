@@ -3,35 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   alias_bin.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/24 19:54:41 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/30 22:32:27 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-char		*aliased_line(char **taab, int i, int j)
+char		*aliased_line(char **taab, int i, int loop, char *hold)
 {
-	char	*new;
+	char	*memory;
 
-	new = NULL;
-	while (taab[i])
+	while (loop == 0)
 	{
-		taab[i] = check_if_first_word_alias(taab[i], j, 0);
-		i++;
+		loop = 0;
+		i = 0;
+		while (taab[i])
+		{
+			hold = ft_strdup(taab[i]);
+			taab[i] = recursive_alias(taab[i]);
+			if (g_tracking.aliasloop->alias_len != 0)
+				taab[i] = check_if_next_alias(taab[i]);
+			if (ft_strcmp(taab[i], hold))
+			{
+				memory = taab_to_line(taab, hold);
+				hold = NULL;
+				taab = line_to_taab(memory, 0, 0);
+				continue ;
+			}
+			i++;
+			ft_strdel(&hold);
+		}
+		loop++;
 	}
-	i = 0;
-	while (taab[i])
-	{
-		if (new != NULL)
-			new = ft_strjoinfree(new, taab[i], 1);
-		else
-			new = ft_strdup(taab[i]);
-		i++;
-	}
-	return (new);
+	return (taab_to_line(taab, hold));
 }
 
 void		alias_swapper_helper(int i, int j, char *line, char **taab)
@@ -61,29 +68,9 @@ void		alias_swapper_helper(int i, int j, char *line, char **taab)
 char		*alias_swapper(char *line, int i, int count)
 {
 	char	**taab;
-	int		j;
 
-	i = 0;
-	count = 0;
-	while (line[i])
-	{
-		i = next_separator(line, i);
-		count++;
-		if (line[i])
-		{
-			i++;
-			if (line[i] == '\0')
-				count++;
-		}
-	}
-	if (!(taab = ft_malloc(sizeof(char*) * (count + 1))))
-		return (NULL);
-	i = 0;
-	j = 0;
-	alias_swapper_helper(i, j, line, taab);
-	ft_strdel(&line);
-	line = aliased_line(taab, 0, 0);
-	free_tab(taab);
+	taab = line_to_taab(line, i, count);
+	line = aliased_line(taab, 0, 0, NULL);
 	return (line);
 }
 

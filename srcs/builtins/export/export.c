@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/30 21:01:58 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ void		print_export_env(void)
 	t_list			*tmp;
 	t_keyval		*buf;
 
-	if (g_tracking.mysh->envsave == NULL)
-		tmp = g_tracking.mysh->env->firstelement;
-	else
-		tmp = g_tracking.mysh->envsave->firstelement;
+	tmp = g_tracking.mysh->env->firstelement;
 	buf = NULL;
 	while (tmp)
 	{

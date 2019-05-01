@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   basic_mode.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 04:53:50 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/04/30 05:47:36 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int			check_basic_quotes(char *line)
 	if (ft_valid_quote(line, '\'', 0) != 0)
 		flag++;
 	if (ft_valid_quote(line, '\"', 0) != 0)
+		flag++;
+	if (ft_valid_bracket(line) != 0)
 		flag++;
 	return (flag);
 }

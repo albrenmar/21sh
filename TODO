@@ -1,59 +1,49 @@
-Partie Brendan
-- Leaks 
-  ==26521==    at 0x1000EAA46: malloc (in /Users/mjose/.brew/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-  ==26521==    by 0x10002BFAC: ft_malloc (garbage_malloc.c:56)
-  ==26521==    by 0x100029FB4: ft_strnew (ft_strnew.c:23)
-  ==26521==    by 0x10002A553: ft_strsub (ft_strsub.c:21)
-  ==26521==    by 0x100012390: ft_actual_cpy (copy.c:103)
-  ==26521==    by 0x100012425: begin_cpy (copy.c:119)
-- Echo + backslash n et gerer history
-
-Partie Abraham
--42sh: perfect expansions:
-  expansions-> "false" when false expansion or end execution of line
--arreglar tmpenv y probar leaks 
--make good tmpenv (with quotes)
--make good alias (with quotes)
--for rendu 42sh -> norme, auteur, headers, printfs, forbidden functions, unused functions, testfiles
-
-Partie Marc
-- Gerer l'expand recursive (${VARNAME:-${VARNAME:+VARVALUE}aaaaa}bbbb Par exemple).
-- Gerer script (avec log) pour lancer commandes avec valgrind.
--verifier set, unset, setenv, unsetenv, export, env fonctionnent
--mettre local variable assignments in execution, and change "a=b" -> true et null expansion ->false
-
-Partie Alex
-
-Partie Hassan`
-- history -d negative
-- history -d begin end
-- fc
-
 MISC
-- all leaks, norme, gcc -wall -wextra -werror
-- Ajouter builtins manquants (POSIX?)
-- Gestion de l'env
-- proteger si ficher ~/.hist extisteais pas.
--segfault when ctrl-C on completing "quotes>"
--historique mal place, doit prendre en compte aussi par exemple une ligne comme "HOME=toto" qui ne s'execute pas mais qui doit quand meme s'enregistrer
--verifier liens symboliques marchent bien sur proompt et pwd
--full clean global
--verifier exit works perfectly
+-verifier operateurs fin de ligne
 -tester 42sh avec correction du 42sh
--bultin unset, export (and test them when good local variables are set)
--verifier unsetenv and setenv
--${kk;=xd} -> segfault expansions
--demander de completer avec "ls ;", "ls ||" et "ls &" comme avec "ls &&"
--voir ou placer execution de commandes de fc
--segfault "!!!" dans visual studio code
--ft_cd doit renvoyer 1 quand erreur
-- quiter function print_last alex avant rendre.
+- all leaks, norme, gcc -wall -wextra -werror
+- proteger si ficher ~/.hist extisteais pas.
+-verifier liens symboliques marchent bien sur proompt et pwd
+-pouvoir exit completion de -> "ls &&" et "ls ||" et "ls |" avec Ctrl-C et Ctrl-D
+-completion "ls |"
+-alias a=\caca doit etre set sans '\'
 
   liste comandes difficiles:
--"HAHAHAHEHHE=toto HAHA=XD env | grep HAHA ; a=b c=t caca=xd ; HIHIHI=ta HIHIHIHIHIH=ti env | grep HIHIHI ; set | tail -3"
 -"mkdir test ; cd test ; ls -a ; ls | cat | wc -c > fifi ; cat fifi"
--"HOME=XD env | grep HOME= ; a=b ; env -i || ls && HOME=XDA env | grep HOME= || c=d ; HOME=XDO cd"
--"ls | ./42sh" 
+-"ls | ./42sh"
 -"env -i PATH=/tmp ./42sh"
--"HOME=XD cd ; a=b || ls && HOME=XDA cd || c=d"
-- 
+
+
+########QUOTING#########
+
+
+$> echo 'foo\
+> bar' | cat -e
+foo\$
+bar$
+$>
+====>foo\bar$
+$> echo "foo\
+> bar" | cat -e
+foobar$
+$>
+====>foo\bar'$
+====>baz$
+$> l\
+> s \
+> -lat
+{{ Output of "ls -lat" command }}
+====>42sh: command l\ not found
+$> echo abc \| cat -e
+abc | cat -e
+$> echo abc \\| cat -e
+abc \$
+
+#######TEST 21SH#######
+
+$> cat << EO\
+> F
+heredoc> hi
+heredoc> EOF
+hi
+====> NE FONCTIONNE PAS (‘\’)

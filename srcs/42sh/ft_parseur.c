@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 14:39:15 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/24 13:04:14 by abe              ###   ########.fr       */
+/*   Updated: 2019/04/30 00:15:45 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,21 @@ char	*return_modif_line(char c, char *line)
 	if (c == '"')
 	{
 		temp = check_quote('"');
+		line = ft_strjoinchar(line, '\n', 1);
 		line = ft_strjoinfree(line, temp, 3);
 		return (line);
 	}
 	else if (c == '\'')
 	{
 		temp = check_quote('\'');
+		line = ft_strjoinchar(line, '\n', 1);
 		line = ft_strjoinfree(line, temp, 3);
 		return (line);
 	}
 	else
 	{
 		temp = check_bracket(line, 0);
+		line = ft_strjoinchar(line, '\n', 1);
 		line = ft_strjoinfree(line, temp, 3);
 		return (line);
 	}
@@ -106,6 +109,9 @@ t_last	*ft_parseur(int i, char *str)
 	t_last	*templist;
 
 	list_cmd = NULL;
+	str = convert_backslash(str);
+	if (!str)
+		return (NULL);
 	if (!(line = quote_check(str)))
 		return (NULL);
 	line = alias_swapper(line, 0, 1);
