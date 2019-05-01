@@ -4,12 +4,12 @@
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 23:37:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 04:03:03 by bsiche           ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2019/05/01 04:31:02 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef SH42_H
 # define SH42_H
@@ -507,7 +507,7 @@ int				exist_builtin(char *cmd);
 t_last			*check_exp_error(t_last *cmd);
 void			free_keyval(t_lstcontainer *list);
 void			next_cmd_update(void);
-
+void			set_expand_return(void);
 void			put_unexpected_token(char *sym);
 char			*exec_create_heredoc(char *eof);
 char			*end_line(char *line);

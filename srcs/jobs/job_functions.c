@@ -6,11 +6,34 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/29 05:52:52 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 04:30:45 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
+
+void		set_expand_return(void)
+{
+	if (g_tracking.expandreturn == 131)
+		ft_putstr("Quit: ");
+	else if (g_tracking.expandreturn == 143)
+		ft_putstr("Terminated: ");
+	else if (g_tracking.expandreturn == 137)
+		ft_putstr("Killed: ");
+	else if (g_tracking.expandreturn == 129)
+		ft_putstr("Hang up: ");
+	else if (g_tracking.expandreturn == 134)
+		ft_putstr("Abort trap: ");
+	else if (g_tracking.expandreturn == 142)
+		ft_putstr("Alarm clock: ");
+	if (g_tracking.expandreturn == 131 || g_tracking.expandreturn == 143
+			|| g_tracking.expandreturn == 137 || g_tracking.expandreturn == 129
+			|| g_tracking.expandreturn == 134 || g_tracking.expandreturn == 142)
+	{
+		ft_putnbr(g_tracking.expandreturn - 128);
+		ft_putchar('\n');
+	}
+}
 
 void		mark_job_as_running(t_jobs *job)
 {

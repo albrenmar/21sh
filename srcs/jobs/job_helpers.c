@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 03:50:49 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 04:30:36 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,7 @@ void		wait_for_job_helper(int status, t_jobs *job)
 	if (WIFSIGNALED(status))
 	{
 		g_tracking.expandreturn = 128 + WTERMSIG(status);
-		if (g_tracking.expandreturn == 131)
-		{
-			ft_putstr("Interrupted: ");
-			ft_putnbr(g_tracking.expandreturn - 128);
-			ft_putchar('\n');
-		}
+		set_expand_return();
 	}
 	else
 	{
