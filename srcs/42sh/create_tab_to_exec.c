@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 06:58:32 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/01 07:16:42 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,7 @@ char	**expand_first_arg(char **tab_exec, int i, int *j, char **tab_farg)
 			i_arg++;
 		if (i_arg > 1)
 		{
-			free_tab(tab_exec);
-			tab_exec = ft_memalloc(sizeof(char *) * (i + i_arg + 1));
-			i_arg = 0;
-			while (tab_farg[i_arg])
-			{
-				tab_exec[i_arg] = ft_strdup(tab_farg[i_arg]);
-				i_arg++;
-			}
+			i_arg = tab_exec_arg(tab_exec, tab_farg, i_arg, i);
 			*j = i_arg;
 		}
 		else

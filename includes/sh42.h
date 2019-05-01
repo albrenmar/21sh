@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 06:02:09 by abguimba          #+#    #+#             */
-/*   Updated: 2019/05/01 06:02:59 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 07:16:50 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -540,4 +540,6 @@ char			get_char_helper(char c);
 char			reset_char_helper(char c);
 char			*convert_back(char *line);
 char			*remove_back(char *line, int i);
+int				tab_exec_arg(char **tab_exec, char **tab_farg, int i_arg, int i);
+
 #endif
