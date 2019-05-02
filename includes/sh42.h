@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 06:02:09 by abguimba          #+#    #+#             */
-/*   Updated: 2019/05/02 04:22:28 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/02 05:31:44 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -352,6 +352,7 @@ void			alias_swapper_helper(int i, int j, char *line, char **taab);
 char			*taab_to_line(char **taab, char *hold);
 int				init_alias(int fd, t_lstcontainer *alias_lst);
 void			init_new_tmp_env(t_env *tmp, char *str);
+int				verify_path_is_valid(char *path);
 char			*recursive_alias(char *str);
 int				add_alias(void);
 t_keyval		*parse_alias(char *alias);

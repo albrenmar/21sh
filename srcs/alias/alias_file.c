@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 04:55:54 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/02 05:42:05 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,9 @@ int		init_alias(int fd, t_lstcontainer *alias_lst)
 {
 	char			*alias;
 	char			*path;
-	struct stat		path_stat;
 
 	path = create_path();
-	if (stat(path, &path_stat) == 0)
-		if ((S_ISREG(path_stat.st_mode) != 0))
-			fd = open(path, O_RDWR | O_CREAT, 0777);
+	fd = verify_path_is_valid(path);
 	ft_free(path);
 	if (fd == -1)
 	{
