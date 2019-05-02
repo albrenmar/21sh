@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 09:36:15 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 04:28:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 09:32:50 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ char		*conc_test(t_list *tmp, char *path)
 		test = ft_true_pwd();
 	test = add_slash(test);
 	test = ft_strjoinfree(test, path, 3);
-	ft_free(path);
 	return (test);
 }
 
