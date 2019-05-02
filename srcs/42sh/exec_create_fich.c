@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_create_fich.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 05:09:07 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/02 03:41:14 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*get_str(void)
 	str = ft_strdup(g_tracking.cmd);
 	str = convert_backslash(str);
 	ft_strdel(&g_tracking.cmd);
-	if (g_tracking.herexpnd != 1)
+	if (g_tracking.herexpnd != 1 && str)
 	{
 		heredoc_expander(&str);
 		if (check_basic_quotes(str) != 0)
