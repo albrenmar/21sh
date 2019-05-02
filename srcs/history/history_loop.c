@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 01:48:59 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 07:30:28 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ int		history_up(void)
 {
 	t_list	*history;
 
-	if (g_tracking.quotes != 0)
+	if (g_tracking.quotes != 0 || !g_tracking.mysh->hist)
+		return (0);
+	if (!g_tracking.mysh->hist->lastelement)
 		return (0);
 	if (g_tracking.histindex > (int)g_tracking.mysh->hist->lastelement->index)
 		g_tracking.histindex = g_tracking.mysh->hist->lastelement->index + 1;
