@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 06:02:09 by abguimba          #+#    #+#             */
-/*   Updated: 2019/05/02 02:55:41 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 05:31:44 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -350,8 +350,9 @@ char			**line_to_taab(char *str, int i, int j);
 void			set_alias_globals(char *value, int i, int j);
 void			alias_swapper_helper(int i, int j, char *line, char **taab);
 char			*taab_to_line(char **taab, char *hold);
-int				init_alias(void);
+int				init_alias(int fd, t_lstcontainer *alias_lst);
 void			init_new_tmp_env(t_env *tmp, char *str);
+int				verify_path_is_valid(char *path);
 char			*recursive_alias(char *str);
 int				add_alias(void);
 t_keyval		*parse_alias(char *alias);
@@ -389,7 +390,7 @@ char			*ft_modif_line(char *line);
 int				check_basic_quotes(char *line);
 char			**convert_backtab(char **taab);
 int				is_escape(char *str, int i);
-void			hist_file_to_lst(void);
+void			hist_file_to_lst(char *path, char *line, int fd);
 void			hist_save_file(void);
 void			print_history(void);
 char			*create_path_hist(void);

@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 02:50:02 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/21 23:50:34 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 05:15:10 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,12 @@ void	expand_tilde_user(char **str)
 	if (home)
 	{
 		ft_strdel(str);
-		ft_strdel(&user);
 		if (!tmp_path)
 			*str = home;
 		else
 			*str = ft_strjoinfree(home, tmp_path, 3);
 	}
+	ft_strdel(&user);
 }
 
 void	expand_tilde_path(char **str)
