@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/05/02 05:30:47 by alsomvil         ###   ########.fr        #
+#    Updated: 2019/05/02 05:42:16 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ SRC = main.c \
 	  back_search/get_hist_ptr.c \
 	  back_search/init_search.c \
 	  builtins/kirby/kirby_main.c \
+	  builtins/kirby/get_file.c \
 	  builtins/kirby/duel_loop.c \
 	  builtins/kirby/kirby_print.c \
 	  builtins/kirby/kirby_read_loop.c \

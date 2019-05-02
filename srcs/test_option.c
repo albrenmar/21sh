@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_option.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 01:25:24 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/19 23:22:08 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 04:19:47 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,14 @@ t_lstcontainer		*init_test(char *path)
 	int				fd;
 	t_lstcontainer	*test_lst;
 	char			*test;
+	struct stat		path_stat;
 
 	test_lst = NULL;
-	fd = open(path, O_RDWR, 0777);
+	fd = -1;
+	stat(path, &path_stat);
+	if (stat(path, &path_stat))
+		if ((S_ISREG(path_stat.st_mode) == 0))
+			fd = open(path, O_RDWR, 0777);
 	test = NULL;
 	if (fd == -1)
 	{

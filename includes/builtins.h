@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 04:30:03 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 05:54:25 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,7 @@ int				rand_loop(int time);
 void			print_stylish(int i);
 int				duel(int i);
 int				too_soon(char buf);
+char			*get_file(int i);
+char			*get_box_file(int i);
+int				special_main(void);
 #endif

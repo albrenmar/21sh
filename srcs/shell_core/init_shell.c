@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 02:54:48 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 04:21:27 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ void	init_shell(char **environ)
 	g_tracking.cwd = NULL;
 	g_tracking.mysh = mysh;
 	init_global();
-	init_alias();
+	init_alias(-1, NULL);
 	g_tracking.mysh->env = ft_env_to_lst(environ);
 	g_tracking.mysh->hist = NULL;
 	add_missing_string();
 	if (write(0, "c", 0) != -1)
-		hist_file_to_lst();
+		hist_file_to_lst(NULL, NULL, -1);
 	g_tracking.mysh->tab_env = init_envp(g_tracking.mysh->env);
 	g_tracking.mysh->set_env = NULL;
 	g_tracking.mysh->dup1 = 14;

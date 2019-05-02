@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 01:37:12 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 04:21:58 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 06:44:30 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,22 @@ void	print_stylish(int i)
 	char	*str;
 	int		fd;
 
-	if (i == 1)
-		file = "/tmp/kirby/stylish1.txt";
-	if (i == 2)
-		file = "/tmp/kirby/stylish2.txt";
+	file = get_file(i + 4);
 	str = NULL;
-	if ((fd = open(file, O_RDWR, 0644)) == -1)
+	if (!file)
 		return ;
+	if ((fd = open(file, O_RDWR, 0644)) == -1)
+	{
+		ft_strdel(&file);
+		return ;
+	}
 	while (get_next_line(fd, &str) > 0)
 	{
 		ft_putendl(str);
+		ft_strdel(&str);
 	}
+	ft_strdel(&file);
+	ft_strdel(&str);
 	close(fd);
 }
 

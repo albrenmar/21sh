@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 04:06:37 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 04:26:02 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 06:44:10 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,23 @@ int		print_file(int i)
 	char	*str;
 	int		fd;
 
-	if (i == 1)
-		file = "/tmp/kirby/sprite1v2.txt";
-	if (i == 2)
-		file = "/tmp/kirby/sprite2v2.txt";
-	if (i == 3)
-		file = "/tmp/kirby/sprite3v2.txt";
-	if (i == 4)
-		file = "/tmp/kirby/clash.txt";
+	file = get_file(i);
 	str = NULL;
-	if ((fd = open(file, O_RDWR, 0644)) == -1)
+	if (!file)
 		return (-5);
+	if ((fd = open(file, O_RDWR, 0644)) == -1)
+	{
+		ft_putendl_fd("Could not access gamefile", 2);
+		ft_strdel(&file);
+		return (-5);
+	}
 	while (get_next_line(fd, &str) > 0)
 	{
 		ft_putendl(str);
+		ft_strdel(&str);
 	}
+	ft_strdel(&file);
+	ft_strdel(&str);
 	close(fd);
 	return (0);
 }
@@ -60,25 +62,24 @@ int		print_box(int i)
 	char	*str;
 	int		fd;
 
-	if (i == 0)
-		file = "/tmp/kirby/Ready.txt";
-	if (i == 1)
-		file = "/tmp/kirby/P1wins.txt";
-	if (i == 2)
-		file = "/tmp/kirby/P2wins.txt";
-	if (i == 3)
-		file = "/tmp/kirby/GO.txt";
-	if (i == 4)
-		file = "/tmp/kirby/DUEL.txt";
-	if (i == 5)
-		file = "/tmp/kirby/DUEL2.txt";
+	file = get_box_file(i);
 	str = NULL;
+	if (!file)
+		return (-5);
 	if (i == 3)
 		clear_box();
 	if ((fd = open(file, O_RDWR, 0644)) == -1)
+	{
+		ft_putendl_fd("Could not access gamefile", 2);
+		ft_strdel(&file);
 		return (-5);
+	}
 	while (get_next_line(fd, &str) > 0)
+	{
 		ft_putendl(str);
+		ft_strdel(&str);
+	}
+	ft_strdel(&file);
 	close(fd);
 	return (0);
 }
