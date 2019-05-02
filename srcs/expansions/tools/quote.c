@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 01:52:42 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 00:13:46 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 09:49:54 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void		quotenize(t_unquoter *first, char **value)
 
 	to_quot = first;
 	ft_strdel(value);
-	*value = ft_strnew(1);
+	*value = NULL;
 	while (to_quot)
 	{
 		if (to_quot->type)
