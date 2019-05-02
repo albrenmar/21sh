@@ -6,12 +6,6 @@ MISC
 -verifier liens symboliques marchent bien sur proompt et pwd
 -pouvoir exit completion de -> "ls &&" et "ls ||" et "ls |" avec Ctrl-C et Ctrl-D
 -completion "ls |"
--alias a=\caca doit etre set sans '\'
-
-  liste comandes difficiles:
--"mkdir test ; cd test ; ls -a ; ls | cat | wc -c > fifi ; cat fifi"
--"ls | ./42sh"
--"env -i PATH=/tmp ./42sh"
 
 
 ########QUOTING#########

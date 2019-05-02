@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alias_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 04:55:54 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ char	*create_path(void)
 	return (path);
 }
 
-int		init_alias(void)
+int		init_alias(int fd, t_lstcontainer *alias_lst)
 {
-	int				fd;
-	t_lstcontainer	*alias_lst;
 	char			*alias;
 	char			*path;
+	struct stat		path_stat;
 
-	alias_lst = NULL;
 	path = create_path();
-	fd = open(path, O_RDWR | O_CREAT, 0777);
+	if (stat(path, &path_stat) == 0)
+		if ((S_ISREG(path_stat.st_mode) != 0))
+			fd = open(path, O_RDWR | O_CREAT, 0777);
 	ft_free(path);
 	if (fd == -1)
 	{

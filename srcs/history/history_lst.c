@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/04/28 23:20:45 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 04:54:53 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,15 @@ void		hist_to_file(int fd)
 
 void		hist_save_file(void)
 {
-	int		fd;
-	char	*path;
+	int				fd;
+	char			*path;
+	struct stat		path_stat;
 
 	path = create_path_hist();
-	fd = open(path, O_CREAT | O_TRUNC | O_RDWR, 00777);
+	fd = -1;
+	if (stat(path, &path_stat) == 0)
+		if ((S_ISREG(path_stat.st_mode) != 0))
+			fd = open(path, O_CREAT | O_TRUNC | O_RDWR, 00777);
 	if (fd < 0)
 		return (ft_putendl_fd("Error while opening/creating .42hist", 2));
 	hist_to_file(fd);

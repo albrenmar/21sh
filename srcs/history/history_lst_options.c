@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst_options.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/04/27 20:41:48 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 04:55:19 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,18 @@ void	print_history(void)
 	return ;
 }
 
-void	hist_file_to_lst(void)
+void	hist_file_to_lst(char *path, char *line, int fd)
 {
-	int		fd;
-	char	*line;
-	char	*path;
-	int		t;
+	int				t;
+	struct stat		path_stat;
 
-	line = NULL;
 	path = create_path_hist();
-	fd = open(path, O_CREAT | O_RDWR, 00777);
-	ft_free(path);
+	if (stat(path, &path_stat) == 0)
+		if ((S_ISREG(path_stat.st_mode) != 0))
+			fd = open(path, O_CREAT | O_RDWR, 00777);
 	if (fd < 0)
 		ft_putendl_fd("Error while opening/creating .42hist", 2);
+	ft_free(path);
 	if (g_tracking.mysh->hist == NULL)
 		g_tracking.mysh->hist = lstcontainer_new();
 	while ((t = get_next_line(fd, &line)) == 1 && line != NULL)
