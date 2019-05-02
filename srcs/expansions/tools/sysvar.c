@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 00:40:01 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 02:22:50 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 03:04:58 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ int		assign_to_lastbackground(char **str)
 int		assign_to_lastargument(char **str)
 {
 	ft_strdel(str);
-	*str = ft_strdup(g_tracking.last_arg);
+	*str = get_env_string("_");
 	return (1);
 }
