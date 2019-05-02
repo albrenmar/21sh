@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/05/02 03:30:39 by mjose            ###   ########.fr        #
+#    Updated: 2019/05/02 04:19:16 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,10 @@ SRC = main.c \
 	  42sh/exit_reddir.c \
 	  back_search/get_hist_ptr.c \
 	  back_search/init_search.c \
+	  builtins/kirby/kirby_main.c \
+	  builtins/kirby/duel_loop.c \
+	  builtins/kirby/kirby_print.c \
+	  builtins/kirby/kirby_read_loop.c \
 	  builtins/env/env.c \
 	  builtins/fc/main_fc.c \
 	  builtins/fc/fc_mode.c \
