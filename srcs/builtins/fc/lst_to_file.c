@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:28:02 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 05:44:53 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 05:03:58 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int		create_fc_file(t_fcparse *opt)
 	file = fc_filename();
 	if (!file)
 		return (-1);
-	if ((fd = open(file, O_CREAT | O_RDWR)) == -1)
+	if ((fd = open(file, O_CREAT | O_RDWR, 0777)) == -1)
 		ft_putendl_fd("Couldn't create file in /tmp", 2);
 	if ((fc_to_file(opt, fd)) == 1)
 		return (-1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_fich.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 06:33:40 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 06:43:29 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@ void		save_fd(void)
 	dup2(0, 10);
 	dup2(1, 11);
 	dup2(2, 12);
-	if (g_tracking.fc == 0)
-	{
-		dup2(10, g_tracking.mysh->dup1);
-		dup2(11, g_tracking.mysh->dup2);
-		dup2(12, g_tracking.mysh->dup3);
-	}
 }
 
 int			ft_error_descr(int descr)
@@ -47,7 +41,9 @@ int			create_fich(char **tab_reddir, int i)
 {
 	int		fd_in;
 	int		fd_out;
+	int		p;
 
+	p = 0644;
 	fd_in = search_in(tab_reddir[i], 1);
 	if (!its_double_reddir(tab_reddir[i]))
 	{
@@ -57,10 +53,11 @@ int			create_fich(char **tab_reddir, int i)
 		else if (!ft_strcmp(tab_reddir[i + 1], "-"))
 			fd_out = open("/dev/null", O_RDONLY);
 		else
-			fd_out = open(tab_reddir[i + 1], O_CREAT | O_TRUNC | O_RDWR, 0644);
+			fd_out = open(tab_reddir[i + 1], O_CREAT | O_TRUNC | O_WRONLY, p);
 	}
 	else
-		fd_out = open(tab_reddir[i + 1], O_CREAT | O_APPEND | O_RDWR, 0644);
+		fd_out = open(tab_reddir[i + 1], O_CREAT | O_APPEND | O_WRONLY, p);
 	dup2(fd_out, fd_in);
+	close(fd_out);
 	return (0);
 }

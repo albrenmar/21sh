@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_term.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:29:52 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 05:11:01 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ void	init_builtin_list(void)
 	lstcontainer_add(g_tracking.builtin_list, ft_strdup("cd"));
 	lstcontainer_add(g_tracking.builtin_list, ft_strdup("unalias"));
 	lstcontainer_add(g_tracking.builtin_list, ft_strdup("alias"));
-	lstcontainer_add(g_tracking.builtin_list, ft_strdup("type"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("unset"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("export"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("history"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("fc"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("kirby"));
 }
 
 void	init_cpaste(void)

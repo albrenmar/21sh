@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 03:11:10 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/01 23:00:37 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int			is_builtin(void)
 		|| ft_builtin_search("unalias") || ft_builtin_search("type")
 		|| ft_builtin_search("unset") || ft_builtin_search("export")
 		|| ft_builtin_search("true") || ft_builtin_search("false")
-		|| ft_builtin_search("history") || ft_builtin_search("fc"))
+		|| ft_builtin_search("history") || ft_builtin_search("fc")
+		|| ft_builtin_search("kirby"))
 		return (1);
 	return (0);
 }

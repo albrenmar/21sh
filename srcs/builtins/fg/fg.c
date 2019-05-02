@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fg.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:30:30 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 06:39:53 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,14 @@ int			fg_exists(t_jobs *tmp, int mode, char *hold)
 		else if (nb != 0)
 			return (fg_builtin_output(tmp, hold));
 	}
-	nb = ft_atoi(parse_job_number(g_tracking.g_tab_exec[1]));
+	ft_strdel(&hold);
+	hold = parse_job_number(g_tracking.g_tab_exec[1]);
+	nb = ft_atoi(hold);
 	while (tmp->prev)
 		tmp = tmp->prev;
 	while (tmp->next && tmp->place != nb)
 		tmp = tmp->next;
+	ft_strdel(&hold);
 	return (fg_builtin_output(tmp, hold));
 }
 

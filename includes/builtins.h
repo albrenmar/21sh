@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 06:57:54 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 05:54:25 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_fcparse
 }				t_fcparse;
 
 void			free_and_null(void *ptr);
+int				k_main(void);
 int				ft_exit3(int exitcode, int mode);
 int				exit_errors(int error);
 int				show_setenv(void);
@@ -96,4 +97,16 @@ char			*rebuild_line(t_lstcontainer *list);
 int				fc_mode(t_fcparse *opt);
 char			*unquote(char *eof);
 void			swap_list(t_lstcontainer *list, t_fcparse *opt);
+int				set_kirby_screen(void);
+int				read_samurai(void);
+int				print_win(int i);
+int				print_box(int i);
+int				print_file(int i);
+int				rand_loop(int time);
+void			print_stylish(int i);
+int				duel(int i);
+int				too_soon(char buf);
+char			*get_file(int i);
+char			*get_box_file(int i);
+int				special_main(void);
 #endif

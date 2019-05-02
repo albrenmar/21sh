@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 14:00:02 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/29 05:32:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 04:36:43 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int		getright(char *path, char *err)
 {
-	if (test_exist_dir(path) != 0)
+	struct stat path_stat;
+
+	if (lstat(path, &path_stat) == -1)
 	{
 		ft_putstr(err);
 		ft_putendl(": directory does not exist");
@@ -24,6 +26,12 @@ int		getright(char *path, char *err)
 	{
 		ft_putstr("Permission denied: ");
 		ft_putendl(err);
+		return (1);
+	}
+	if (!S_ISDIR(path_stat.st_mode))
+	{
+		ft_putstr(err);
+		ft_putendl(": Not a directory");
 		return (1);
 	}
 	return (0);
