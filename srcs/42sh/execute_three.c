@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_sh.c                                          :+:      :+:    :+:   */
+/*   execute_three.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 05:43:44 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 01:30:55 by abguimba         ###   ########.fr       */
+/*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
+/*   Updated: 2019/05/02 03:06:21 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-int		exec_sh(void)
+void		execute_three(char **tab_exec, char **tab_exec_hold, char *p)
 {
 	char	**envhold;
-	char	**tab_exec_hold;
 
 	apply_env();
 	envhold = init_envp(g_tracking.mysh->env);
-	tab_exec_hold = (char **)ft_malloc(sizeof(char *) * 3);
-	tab_exec_hold[0] = ft_strdup("sh");
-	tab_exec_hold[1] = ft_strdup(g_tracking.g_tab_exec[0]);
-	tab_exec_hold[2] = NULL;
-	execve("/bin/sh", tab_exec_hold, envhold);
+	execve(p, tab_exec, init_envp(g_tracking.mysh->env));
+	ft_strdel(&p);
 	free_tabs_and_exit(envhold, tab_exec_hold);
-	return (-1);
 }

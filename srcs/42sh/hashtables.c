@@ -3,23 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   hashtables.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 03:03:56 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-char		**hashed_command(char **tab_exec, int i)
+char		*hashed_command_helper(char **newtab, char **tab_exec, t_hash *tmp)
+{
+	char	*new;
+
+	(void)tab_exec;
+	newtab[0] = ft_strdup(tmp->path);
+	free_tab(newtab);
+	new = ft_strdup(tmp->path);
+	return (new);
+}
+
+char		*hashed_command(char **tab_exec, int i)
 {
 	char	**newtab;
 	t_hash	*tmp;
 
 	while (tab_exec[0][i] && (tab_exec[0][i] <= 65 || tab_exec[0][i] > 122))
 		i++;
-	i = hash_maker(tab_exec[0][i]);
+	i = ft_tolower(tab_exec[0][i]) - 'a';
 	if (i < 0 || i > 25 || !(ft_strchr(g_tracking.g_tab_exec[0], '/')))
 		return (NULL);
 	newtab = tab_dup(tab_exec);
@@ -28,11 +39,7 @@ char		**hashed_command(char **tab_exec, int i)
 	while (tmp)
 	{
 		if (!(ft_strcmp(tmp->binary, tab_exec[0])))
-		{
-			newtab[0] = ft_strdup(tmp->path);
-			free_tab(tab_exec);
-			return (newtab);
-		}
+			return (hashed_command_helper(newtab, tab_exec, tmp));
 		tmp = tmp->nextbinary;
 	}
 	free_tab(tab_exec);
@@ -78,11 +85,6 @@ void		insert_to_hashtable(int key, char *binary, char *path)
 		g_tracking.hashtable[key] = new_binary_hash(binary, path, 1);
 }
 
-int			hash_maker(const char c)
-{
-	return (ft_tolower(c) - 'a');
-}
-
 void		hash_binary(void)
 {
 	int		hashedvalue;
@@ -98,7 +100,7 @@ void		hash_binary(void)
 		i++;
 	if (!(test_exist_fonct(g_tracking.g_tab_exec, 1, NULL, NULL)))
 		return (ft_strdel(&binaryhold));
-	hashedvalue = hash_maker(binaryhold[i]);
+	hashedvalue = ft_tolower(binaryhold[i]) - 'a';
 	if (hashedvalue >= 0 && hashedvalue <= 25)
 		insert_to_hashtable(hashedvalue, binaryhold, g_tracking.g_tab_exec[0]);
 	ft_strdel(&binaryhold);

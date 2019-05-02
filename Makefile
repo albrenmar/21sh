@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/05/02 00:53:29 by mjose            ###   ########.fr        #
+#    Updated: 2019/05/02 03:06:07 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = main.c \
 	  test_option.c \
 	  42sh/helpers.c \
 	  42sh/reddir_tools.c \
+		42sh/execute_three.c \
 	  42sh/tools.c \
 	  42sh/errors.c \
 	  42sh/ft_parseur.c \
