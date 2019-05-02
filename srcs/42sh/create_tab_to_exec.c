@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 00:00:02 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 01:35:13 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,9 @@ char	**create_tab_to_exec_h(t_last *begin, t_last *beginsave, int i)
 	g_tracking.mysh->in_ast = 1;
 	if (beginsave != NULL)
 		cmd_lstdel(beginsave);
-	tab_exec = convert_backtab(tab_exec);
+//	tab_exec = convert_backtab(tab_exec);
+//	recup_last_arg(tab_exec);
+	tab_exec = end_exec_tab(tab_exec);
 	return (tab_exec);
 }
 

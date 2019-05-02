@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:05:10 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 00:50:55 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 02:26:20 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,5 +190,6 @@ int				assign_to_curpid(char **str);
 int				assign_to_lastreturn(char **str);
 int				assign_to_shell_name(char **str);
 int				assign_to_lastbackground(char **str);
+int				assign_to_lastargument(char **str);
 
 #endif

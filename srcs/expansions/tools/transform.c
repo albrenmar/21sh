@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 00:52:27 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 02:25:45 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int		is_sysvar(char **str)
 		return (assign_to_shell_name(str));
 	else if (run_str[0] == '$' && run_str[1] == '!')
 		return (assign_to_lastbackground(str));
+	else if (run_str[0] == '$' && run_str[1] == '_')
+		return (assign_to_lastargument(str));
 	return (0);
 }
 

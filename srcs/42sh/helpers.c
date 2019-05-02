@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 00:06:02 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 02:53:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,27 @@ int		tab_exec_arg(char ***tab_exec, char ***tab_farg, int i_arg, int i)
 	}
 	*tab_exec = run_texec;
 	return (i_arg);
+}
+
+void	recup_last_arg(char **tab_exec)
+{
+	int		i;
+
+	i = 0;
+	if (!tab_exec || !tab_exec[i] || !tab_exec[i][0]
+			|| g_tracking.mysh->err_expend)
+		return ;
+	while (tab_exec[i])
+	{
+		ft_strdel(&g_tracking.last_arg);
+		replace_env_str("_", tab_exec[i++]);
+		update_envp();
+	}
+}
+
+char	**end_exec_tab(char **tab_exec)
+{
+	tab_exec = convert_backtab(tab_exec);
+	recup_last_arg(tab_exec);
+	return (tab_exec);
 }

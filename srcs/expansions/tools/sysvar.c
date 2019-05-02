@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 00:40:01 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 00:54:19 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 02:22:50 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,12 @@ int		assign_to_lastbackground(char **str)
 {
 	ft_strdel(str);
 	*str = ft_itoa(g_tracking.lastbackground);
+	return (1);
+}
+
+int		assign_to_lastargument(char **str)
+{
+	ft_strdel(str);
+	*str = ft_strdup(g_tracking.last_arg);
 	return (1);
 }
