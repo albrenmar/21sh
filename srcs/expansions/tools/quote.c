@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quote.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 01:52:42 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 09:49:54 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 09:59:08 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,9 @@ void		quotenize(t_unquoter *first, char **value)
 			*value = ft_strjoinchar(*value, to_quot->type, 1);
 		}
 		else
+		{
 			*value = ft_strjoinfree(*value, to_quot->str_unquoted, 1);
+		}
 		to_quot = to_quot->next;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_exec_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 02:51:24 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:23:00 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 10:00:56 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int		is_bad_expansion(char *to_eval)
 		tmp = ft_strdup(to_eval);
 		expand_transformer(&tmp, 0);
 		if (!g_tracking.mysh->err_expend)
+		{
+			ft_strdel(&tmp);
 			return (1);
+		}
 		ft_strdel(&tmp);
 	}
 	return (0);
