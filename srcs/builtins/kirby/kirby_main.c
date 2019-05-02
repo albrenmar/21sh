@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 22:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 06:56:38 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/02 23:48:34 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,5 @@ int		special_main(void)
 	i = k_main();
 	while (i == 0)
 		i = k_main();
-	return (i);
+	return (0);
 }
