@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_two_arg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 05:31:34 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 09:04:41 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ char	*get_perm(char *filename)
 	char			*test;
 	t_list			*buf;
 
+	if (!filename || filename[0] == '-')
+		return (NULL);
 	taab = ft_malloc(sizeof(char *) * 4);
 	taab[0] = "ls";
 	taab[1] = filename;
