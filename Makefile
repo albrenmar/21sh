@@ -6,7 +6,7 @@
 #    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/05/02 04:47:11 by bsiche           ###   ########.fr        #
+#    Updated: 2019/05/02 05:41:39 by bsiche           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ SRC = main.c \
 	  back_search/get_hist_ptr.c \
 	  back_search/init_search.c \
 	  builtins/kirby/kirby_main.c \
+	  builtins/kirby/get_file.c \
 	  builtins/kirby/duel_loop.c \
 	  builtins/kirby/kirby_print.c \
 	  builtins/kirby/kirby_read_loop.c \
@@ -268,7 +269,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -Wall -Wextra -Werror -g -fsanitize=address
+FLAG := -Wall -Wextra -Werror -g #-fsanitize=address
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')

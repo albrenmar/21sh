@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 22:58:38 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 05:55:02 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			builtin_exec_cont_2(void)
 	else if (ft_builtin_search("false"))
 		return (1);
 	else if (ft_builtin_search("kirby"))
-		return (k_main());
+		return (special_main());
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bang_replace.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 04:46:38 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/26 01:20:10 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 05:25:51 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,21 @@ char	*get_keyword(char *line, int i)
 	return (word);
 }
 
+char	*return_fail(char *begin, char *end, char *line)
+{
+	ft_strdel(&begin);
+	ft_strdel(&end);
+	ft_strdel(&line);
+	return (NULL);
+}
+
 char	*replace_word(char *line, int i)
 {
 	int		j;
 	char	*end;
 	char	*begin;
 	char	*word;
+	char	*tmp;
 
 	if (!line)
 		return (NULL);
@@ -56,9 +65,11 @@ char	*replace_word(char *line, int i)
 	i++;
 	j = ft_strlen(line) - i;
 	end = ft_strsub(line, i, j, 0);
+	tmp = word;
 	word = ft_strdup(get_word(word));
+	ft_strdel(&tmp);
 	if (!word)
-		return (NULL);
+		return (return_fail(begin, end, line));
 	ft_strdel(&line);
 	begin = ft_strjoinfree(begin, word, 3);
 	begin = ft_strjoinfree(begin, end, 3);

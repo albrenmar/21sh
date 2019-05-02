@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 22:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 04:57:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 06:39:29 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,30 @@ int		print_usage(void)
 	c = 65;
 	ft_putendl("Player one press: s");
 	ft_putendl("Player one press: l");
-	ft_putendl("press enter to start a new game");
-	while (c != 10 && c != 27)
+	ft_putendl("press enter or spacebar to start a new game");
+	while (c != 10 && c != 27 && c != 32)
 		read(0, &c, 1);
 	if (c == 10)
 		return (0);
 	if (c == 27)
 		return (1);
 	return (1);
+}
+
+int		exit_kirby(void)
+{
+	char	c;
+	int		flag;
+
+	c = 65;
+	ft_putendl("Are you sure you want to quit ?");
+	while (c != 89 && c != 121 && c != 110 && c != 78)
+		read(0, &c, 1);
+	if (c == 89 || c == 121)
+		flag = 1;
+	else
+		flag = 0;
+	return (flag);
 }
 
 int		game_loop(void)
@@ -58,7 +74,8 @@ int		game_loop(void)
 		return (1);
 	if (set_kirby_screen() != 0)
 		return (-1);
-	print_file(1);
+	if ((print_file(1) == -5))
+		return (-1);
 	print_box(0);
 	i = rand_loop(1);
 	if (i == -3)
@@ -75,11 +92,6 @@ int		k_main(void)
 	flag = 0;
 	if (g_tracking.interactive != 1)
 		return (0);
-	if (test_exist_dir("/tmp/kirby") == -1)
-	{
-		ft_putendl("could not open source dir");
-		return (2);
-	}
 	tcsetattr(0, TCSANOW, &g_tracking.myterm);
 	tputs(tgetstr("vi", NULL), 1, yan_putchar);
 	tputs(tgetstr("ti", NULL), 1, yan_putchar);
@@ -93,5 +105,24 @@ int		k_main(void)
 		ft_putendl_fd("Temsize too small", 2);
 	if (flag < 0)
 		return (2);
-	return (0);
+	return (exit_kirby());
+}
+
+int		special_main(void)
+{
+	int		i;
+	char	*test;
+
+	test = get_file(1);
+	if (test == NULL)
+	{
+		ft_strdel(&test);
+		ft_putendl_fd("Could not access gamefile", 2);
+		return (2);
+	}
+	ft_strdel(&test);
+	i = k_main();
+	while (i == 0)
+		i = k_main();
+	return (i);
 }
