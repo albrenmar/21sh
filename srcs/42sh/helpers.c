@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 02:53:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 03:01:19 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	recup_last_arg(char **tab_exec)
 		return ;
 	while (tab_exec[i])
 	{
-		ft_strdel(&g_tracking.last_arg);
 		replace_env_str("_", tab_exec[i++]);
 		update_envp();
 	}
