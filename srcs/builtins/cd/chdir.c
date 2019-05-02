@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chdir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 14:00:02 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 04:36:43 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 07:30:23 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int		getright(char *path, char *err)
 		ft_putendl(err);
 		return (1);
 	}
-	if (!S_ISDIR(path_stat.st_mode))
+	if (!S_ISDIR(path_stat.st_mode) && !S_ISLNK(path_stat.st_mode))
 	{
 		ft_putstr(err);
-		ft_putendl(": Not a directory");
+		ft_putendl(": Not a directory/symbolic link");
 		return (1);
 	}
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hash_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 08:15:12 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int			hash_update_commands(int j)
 	commandhold = NULL;
 	while (g_tracking.g_tab_exec[j])
 	{
+		free_tab(commandhold);
 		commandhold = tab_format_hash(g_tracking.g_tab_exec[j]);
 		if (!(test_exist_fonct(commandhold, 1, NULL, NULL)))
 		{

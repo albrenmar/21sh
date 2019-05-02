@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ctrl.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 00:53:23 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 00:55:06 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 08:12:46 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ctrl_d(void)
 	{
 		ft_putchar('\n');
 		tcsetattr(0, TCSANOW, &g_tracking.default_term);
+		// ft_free(g_tracking.mysh->hist);
 		ft_exit2(EXIT_SUCCESS);
 	}
 	else
