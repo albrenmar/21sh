@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 22:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 04:27:26 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 04:57:22 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,16 @@ int		print_usage(void)
 	char	c;
 
 	c = 65;
-	while (c != 10 || c != 27)
+	ft_putendl("Player one press: s");
+	ft_putendl("Player one press: l");
+	ft_putendl("press enter to start a new game");
+	while (c != 10 && c != 27)
 		read(0, &c, 1);
 	if (c == 10)
 		return (0);
 	if (c == 27)
 		return (1);
+	return (1);
 }
 
 int		game_loop(void)
@@ -52,6 +56,8 @@ int		game_loop(void)
 		return (-1);
 	if (print_usage() == 1)
 		return (1);
+	if (set_kirby_screen() != 0)
+		return (-1);
 	print_file(1);
 	print_box(0);
 	i = rand_loop(1);
@@ -69,14 +75,14 @@ int		k_main(void)
 	flag = 0;
 	if (g_tracking.interactive != 1)
 		return (0);
-	tcsetattr(0, TCSANOW, &g_tracking.myterm);
-	tputs(tgetstr("vi", NULL), 1, yan_putchar);
-	tputs(tgetstr("ti", NULL), 1, yan_putchar);
 	if (test_exist_dir("/tmp/kirby") == -1)
 	{
 		ft_putendl("could not open source dir");
 		return (2);
 	}
+	tcsetattr(0, TCSANOW, &g_tracking.myterm);
+	tputs(tgetstr("vi", NULL), 1, yan_putchar);
+	tputs(tgetstr("ti", NULL), 1, yan_putchar);
 	while (game_loop() == 0)
 	{
 	}
