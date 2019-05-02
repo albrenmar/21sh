@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 00:47:03 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 05:10:53 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 10:21:18 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void		exp_key_start_hash(char **str, t_expand *expand)
 	{
 		to_error = ft_strjoinfree("#", to_analy.varname, 0);
 		print_exp_error(to_error, str);
-		ft_strdel(&to_error);
 	}
 	end_analyzer(to_analy);
 }
