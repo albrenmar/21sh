@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 22:47:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/29 02:59:27 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 03:31:50 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ int		check_eol(char *line)
 			}
 	}
 	free_tab(taab);
+	i = ft_strlen(line) - 1;
+	if (i > 0)
+		if (line[i] == '\\' && is_escape(line, i) != 1)
+			return (1);
 	return (0);
 }
 

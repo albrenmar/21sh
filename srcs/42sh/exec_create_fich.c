@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_create_fich.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 03:41:14 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 04:22:10 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		proto_heredoc(char *eof, int fd, char *file)
 	str = NULL;
 	if (g_tracking.interactive == 0)
 		return (0);
+	eof = remove_back(eof, 0);
 	while (ft_strcmp(str, eof) != 0 && g_tracking.quotes != 10)
 	{
 		ft_strdel(&str);

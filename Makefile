@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
+#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
 #    Updated: 2019/05/02 05:09:16 by mjose            ###   ########.fr        #
@@ -62,6 +62,10 @@ SRC = main.c \
 	  42sh/exit_reddir.c \
 	  back_search/get_hist_ptr.c \
 	  back_search/init_search.c \
+	  builtins/kirby/kirby_main.c \
+	  builtins/kirby/duel_loop.c \
+	  builtins/kirby/kirby_print.c \
+	  builtins/kirby/kirby_read_loop.c \
 	  builtins/env/env.c \
 	  builtins/fc/main_fc.c \
 	  builtins/fc/fc_mode.c \
@@ -274,6 +278,7 @@ all : libft_comp $(NAME)
 $(NAME) : $(OBJP)
 			@gcc $(FLAG) $(OBJP) -o $(NAME) -ltermcap $(INC) $(LIB)
 			@echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Finished compilation. Output file : $(COL_VIOLET)$(PWD)/$(NAME)$(COL_BLUE) ᕦ(ò_óˇ)ᕤ$(COL_END)"
+			@cp -r kirby /tmp/
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEADERSP)
 			@mkdir -p $(ONLYDIR)
@@ -292,6 +297,7 @@ fclean :	clean
 			@rm -rf $(NAME)
 			@make fclean -C srcs/libft
 			@echo "$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Removed $(COL_VIOLET)$(NAME)$(COL_END)"
+			@rm -rf /tmp/kirby
 
 re :		fclean all
 
