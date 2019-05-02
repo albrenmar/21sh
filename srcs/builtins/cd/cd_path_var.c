@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 09:36:15 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 09:32:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 01:02:41 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ char		*conc_test(t_list *tmp, char *path)
 		test = ft_strjoinfree(test, path, 1);
 		if (test_exist_dir(test) == 0)
 		{
-			ft_free(path);
+			ft_strdel(&path);
 			return (test);
 		}
 		tmp = tmp->next;
 	}
+	ft_strdel(&test);
 	test = ft_strdup(get_env_string("PWD"));
 	if (!test)
 		test = ft_true_pwd();
