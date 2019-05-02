@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 07:20:23 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 02:25:45 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,15 @@ int		is_sysvar(char **str)
 	if (!run_str || run_str[0] == 0)
 		return (0);
 	if (run_str[0] == '$' && run_str[1] == '$')
-	{
-		ft_strdel(str);
-		*str = ft_itoa(getpid());
-		return (1);
-	}
+		return (assign_to_curpid(str));
 	else if (run_str[0] == '$' && run_str[1] == '?')
-	{
-		ft_strdel(str);
-		*str = ft_itoa(g_tracking.expandreturn);
-		return (1);
-	}
+		return (assign_to_lastreturn(str));
+	else if (run_str[0] == '$' && run_str[1] == '0')
+		return (assign_to_shell_name(str));
+	else if (run_str[0] == '$' && run_str[1] == '!')
+		return (assign_to_lastbackground(str));
+	else if (run_str[0] == '$' && run_str[1] == '_')
+		return (assign_to_lastargument(str));
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 #    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/05/01 23:01:00 by mjose            ###   ########.fr        #
+#    Updated: 2019/05/02 03:06:07 by abguimba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = main.c \
 	  test_option.c \
 	  42sh/helpers.c \
 	  42sh/reddir_tools.c \
+		42sh/execute_three.c \
 	  42sh/tools.c \
 	  42sh/errors.c \
 	  42sh/ft_parseur.c \
@@ -232,6 +233,7 @@ SRC = main.c \
 	  expansions/tools/varname.c \
 	  expansions/tools/clean_unquoter.c \
 	  expansions/tools/check_exec_tab.c \
+	  expansions/tools/sysvar.c \
 	  tmp_local_env/temp_env.c \
 	  tmp_local_env/restore_env.c \
 	  tmp_local_env/tmp_local_env_helpers.c \
@@ -262,7 +264,7 @@ LIB := -L srcs/libft/ -lft
 
 INC := -I includes
 
-FLAG := -Wall -Wextra -Werror -g #-fsanitize=address
+FLAG := -Wall -Wextra -Werror -g -fsanitize=address
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
 CURRENT_FILES = $(shell find $(PWD)/obj/ -type f 2> /dev/null | wc -l | sed -e 's/ //g')

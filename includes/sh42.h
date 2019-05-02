@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 06:02:09 by abguimba          #+#    #+#             */
-/*   Updated: 2019/05/01 22:16:30 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/02 02:55:41 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -415,6 +415,7 @@ char			**create_tab_to_exec(t_last *list);
 int				execute_pipe(t_last **list, t_jobs *job, int readpipe,
 					char ***tab_reddir);
 void			execute_two(char **tab_cmd, char **tab_exec_hold);
+void			execute_three(char **tab_exec, char **tab_exec_hold, char *p);
 void			execute_pipe_two(char **tab_exec, t_jobs *job, int readpipe,
 					char ***tab_reddir);
 void			close_fd(void);
@@ -468,7 +469,7 @@ t_hash			*new_binary_hash(char *binary, char *path, int hits);
 int				errors_hash(char *binary, int error);
 int				ft_hash(void);
 int				empty_hash_table(void);
-char			**hashed_command(char **tab_exec, int index);
+char			*hashed_command(char **tab_exec, int index);
 int				ft_hash_arg(int j);
 void			ft_hash_output_helper(t_hash *tmp, int spaces);
 void			hash_update_helper(t_hash *tmp, int index, int j, char **c);
@@ -540,7 +541,8 @@ char			get_char_helper(char c);
 char			reset_char_helper(char c);
 char			*convert_back(char *line);
 char			*remove_back(char *line, int i);
-int				tab_exec_arg(char **tab_exec, char **tab_farg, int i_arg,
+int				tab_exec_arg(char ***tab_exec, char ***tab_farg, int i_arg,
 					int i);
+char			**end_exec_tab(char **tab_exec);
 
 #endif
