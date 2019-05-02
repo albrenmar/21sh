@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_fich.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 05:20:18 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/05/02 06:43:29 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ int			create_fich(char **tab_reddir, int i)
 {
 	int		fd_in;
 	int		fd_out;
+	int		p;
 
+	p = 0644;
 	fd_in = search_in(tab_reddir[i], 1);
 	if (!its_double_reddir(tab_reddir[i]))
 	{
@@ -51,10 +53,10 @@ int			create_fich(char **tab_reddir, int i)
 		else if (!ft_strcmp(tab_reddir[i + 1], "-"))
 			fd_out = open("/dev/null", O_RDONLY);
 		else
-			fd_out = open(tab_reddir[i + 1], O_CREAT | O_TRUNC | O_WRONLY, 0644);
+			fd_out = open(tab_reddir[i + 1], O_CREAT | O_TRUNC | O_WRONLY, p);
 	}
 	else
-		fd_out = open(tab_reddir[i + 1], O_CREAT | O_APPEND | O_WRONLY, 0644);
+		fd_out = open(tab_reddir[i + 1], O_CREAT | O_APPEND | O_WRONLY, p);
 	dup2(fd_out, fd_in);
 	close(fd_out);
 	return (0);
