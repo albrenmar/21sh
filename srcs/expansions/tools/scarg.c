@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 01:03:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/22 03:57:07 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 07:20:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void		expand_lstdel(t_expand *expan_head)
 		ft_memdel((void *)&element);
 		element = next;
 	}
+	ft_memdel((void *)&element);
+	ft_memdel((void *)&next);
 }
 
 void		prepare_to_next_scan(t_scan_arg *scarg)
@@ -56,6 +58,7 @@ void		expan_arg(t_scan_arg *scarg)
 		create_list_expand(scarg->expand, scarg->scan->sstring);
 		transform(scarg->expand, &scarg->scan->sstring);
 		expand_lstdel(expan_head);
+		expan_head = NULL;
 	}
 	else if (scarg->scan->sstring[0] == '~')
 	{

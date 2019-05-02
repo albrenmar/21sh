@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 06:17:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 07:42:00 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 06:39:24 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	print_exp_error(char *to_error, char **str)
 		ft_putstr_fd(": ${", 2);
 		if (to_error)
 			ft_putstr_fd(to_error, 2);
+		ft_strdel(&to_error);
 		ft_putendl_fd("}: bad substitution", 2);
 		g_tracking.mysh->err_expend = 0;
 		g_tracking.mysh->err_expend_printed = 1;
@@ -28,7 +29,7 @@ void	print_exp_error(char *to_error, char **str)
 	else
 	{
 		ft_strdel(str);
-		*str = ft_strjoinfree("${", to_error, 0);
+		*str = ft_strjoinfree("${", to_error, 2);
 		*str = ft_strjoinfree(*str, "}", 1);
 		g_tracking.mysh->err_expend = 1;
 	}
