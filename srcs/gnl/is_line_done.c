@@ -6,12 +6,33 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 22:47:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 09:19:20 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 10:24:15 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 #include "libft.h"
+
+int		secondary_check(char *line)
+{
+	int		i;
+
+	i = ft_strlen(line) - 1;
+	if (i < 0)
+		return (0);
+	if (i == 0)
+	{
+		if (line[i] == '\\' && !line[i + 1])
+			return (1);
+	}
+	if (line[i] == '\\' && (is_escape(line, i) != 1))
+		return (1);
+	if (line[i] == '|' && !line[i + 1])
+		return (1);
+	if (line[i] == '|' && is_escape(line, i) != 1)
+		return (1);
+	return (0);
+}
 
 int		check_eol(char *line)
 {
@@ -37,11 +58,7 @@ int		check_eol(char *line)
 			}
 	}
 	free_tab(taab);
-	i = ft_strlen(line) - 1;
-	if (i > 0)
-		if (line[i] == '\\' && is_escape(line, i) != 1)
-			return (1);
-	return (0);
+	return (secondary_check(line));
 }
 
 char	*end_line(char *line)
