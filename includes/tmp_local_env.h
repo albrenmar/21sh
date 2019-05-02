@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:30:13 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 05:04:20 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/02 01:40:07 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char				*clean_line_tmpenv(char *str, int jsave, int save);
 int					free_hold_and_i(int i, char *hold);
 void				reset_tmpenv(void);
 void				apply_env(void);
+void				apply_env_and_del_path(void);
 void				check_if_resetenv(void);
 int					is_env_alone_check_helper(char *str, int jsave, int isave);
 int					skip_tmp_env(char *str, int jsave, int isave);

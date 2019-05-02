@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hash_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 02:57:54 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		hash_update_helper(t_hash *tmp, int index, int j, char **c)
 	char	**hold;
 
 	hold = g_tracking.g_tab_exec;
-	index = hash_maker(hold[j][0]);
+	index = ft_tolower(hold[j][0]) - 'a';
 	tmp = g_tracking.hashtable[index];
 	while (tmp)
 	{
