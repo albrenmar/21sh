@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 04:20:59 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/05/02 05:20:18 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@ void		save_fd(void)
 	dup2(0, 10);
 	dup2(1, 11);
 	dup2(2, 12);
-	if (g_tracking.fc == 0)
-	{
-		dup2(10, g_tracking.mysh->dup1);
-		dup2(11, g_tracking.mysh->dup2);
-		dup2(12, g_tracking.mysh->dup3);
-	}
 }
 
 int			ft_error_descr(int descr)
@@ -57,10 +51,10 @@ int			create_fich(char **tab_reddir, int i)
 		else if (!ft_strcmp(tab_reddir[i + 1], "-"))
 			fd_out = open("/dev/null", O_RDONLY);
 		else
-			fd_out = open(tab_reddir[i + 1], O_CREAT | O_TRUNC | O_RDWR, 0644);
+			fd_out = open(tab_reddir[i + 1], O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	}
 	else
-		fd_out = open(tab_reddir[i + 1], O_CREAT | O_APPEND | O_RDWR, 0644);
+		fd_out = open(tab_reddir[i + 1], O_CREAT | O_APPEND | O_WRONLY, 0644);
 	dup2(fd_out, fd_in);
 	close(fd_out);
 	return (0);
