@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 04:44:37 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 06:58:28 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 05:00:09 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ int		fc_builtin(void)
 	int			count;
 	t_fcparse	*opt;
 
+	if (g_tracking.fc == 0)
+	{
+		dup2(10, g_tracking.mysh->dup1);
+		dup2(11, g_tracking.mysh->dup2);
+		dup2(12, g_tracking.mysh->dup3);
+	}
 	av = g_tracking.g_tab_exec;
 	g_tracking.fc++;
 	opt = (fc_option(av, 1));
@@ -84,5 +90,15 @@ int		fc_builtin(void)
 	fc_mode(opt);
 	hist_set_unset(1, opt);
 	free_opt(opt);
+	g_tracking.fc--;
+	if (g_tracking.fc == 0)
+	{
+		dup2(g_tracking.mysh->dup1, 10);
+		close(g_tracking.mysh->dup1);
+		dup2(g_tracking.mysh->dup2, 11);
+		close(g_tracking.mysh->dup2);
+		dup2(g_tracking.mysh->dup3, 12);
+		close(g_tracking.mysh->dup3);
+	}
 	return (0);
 }
