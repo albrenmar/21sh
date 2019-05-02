@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_term.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:29:52 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 05:11:01 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 00:46:55 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ void	init_builtin_list(void)
 	lstcontainer_add(g_tracking.builtin_list, ft_strdup("history"));
 	lstcontainer_add(g_tracking.builtin_list, ft_strdup("fc"));
 	lstcontainer_add(g_tracking.builtin_list, ft_strdup("kirby"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("type"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("true"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("false"));
 }
 
 void	init_cpaste(void)
