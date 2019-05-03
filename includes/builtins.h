@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 05:54:25 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 03:00:28 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,6 @@ int				too_soon(char buf);
 char			*get_file(int i);
 char			*get_box_file(int i);
 int				special_main(void);
+int				check_two_arg(char **argv);
+int				check_three_arg(char **argv);
 #endif

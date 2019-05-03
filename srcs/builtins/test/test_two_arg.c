@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 05:31:34 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 09:09:07 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 03:31:46 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int		two_arg(char **argv, int i)
 	permission = NULL;
 	if (argv[0][0] != '-')
 		return (1);
-	if (argv[0][1] == 'z')
+	if (ft_strcmp(argv[0], "-z") == 0)
 	{
 		if (ft_strlen(argv[1]) == 0)
 			return (0);
