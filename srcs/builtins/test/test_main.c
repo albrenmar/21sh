@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 03:02:54 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 23:53:26 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 23:58:34 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ int		main_test(int flag, int i, int argc, char **n)
 
 	argc = count_arg(g_tracking.g_tab_exec);
 	argv = g_tracking.g_tab_exec;
-	if (!argv || !argv[1])
-		return (0);
-	if (argv[1][0] == '\0')
+	if (argv[1][0] == '\0' || !argv || !argv[1])
 		return (1);
+	if (!argv[2])
+		return (0);
 	argv = copy_tab_minus_one(argc, argv);
 	argc--;
 	if (argc < 1)
