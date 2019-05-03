@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 01:55:04 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 09:59:52 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 04:10:31 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ char		expand_transformer(char **value, int unq)
 	ft_strdel(&str_orig);
 	if (!unq)
 		quotenize(first, value);
-	if (*value[0] == '\0' && !g_tracking.mysh->err_expend)
+	if (*value[0] == '\0' && !g_tracking.mysh->err_expend && unq != 3)
 		ft_strdel(value);
 	clean_unquoter(first);
 	return (0);

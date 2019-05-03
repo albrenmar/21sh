@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:39:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 06:33:45 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/03 04:11:47 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*assign_str(t_last *begin)
 	if (begin->type == OPT || begin->type == ARG)
 	{
 		str = ft_strdup(begin->name);
-		expand_transformer(&str, 1);
+		expand_transformer(&str, 3);
 	}
 	return (str);
 }
