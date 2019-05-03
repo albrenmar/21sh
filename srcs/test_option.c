@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_option.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 01:25:24 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 04:19:47 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 08:31:45 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ t_lstcontainer		*init_test(char *path)
 	test_lst = NULL;
 	fd = -1;
 	stat(path, &path_stat);
-	if (stat(path, &path_stat))
-		if ((S_ISREG(path_stat.st_mode) == 0))
+	if (stat(path, &path_stat) == 0)
+		if ((S_ISREG(path_stat.st_mode) != 0))
 			fd = open(path, O_RDWR, 0777);
 	test = NULL;
 	if (fd == -1)
