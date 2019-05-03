@@ -191,7 +191,12 @@ ${}${}${}${}${}${}
 
 `test -d ${HOME} && echo ok || echo wrong`
 Zone de message
-
-
-Envoyer un message à Marc
+$$$$$$$$
+$0$0$0$0$0$0$0$0$0
+$_$_$_$_$_$_
+~-+-+-+-+-+-
+$_$_$_$_$_$_
+$?$_$!$!$!
+${$:-$}$
+$?$_$!$!$!
 echo "test fini"
