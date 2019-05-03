@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 05:12:08 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 07:30:17 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,10 @@ char	*unquote(char *eof)
 	int		a;
 	char	*new;
 
-	if (!eof || ft_strlen(eof) < 2)
+	if (!eof)
 		return (eof);
+	if (ft_strlen(eof) < 2)
+		return (ft_strdup(eof));
 	new = NULL;
 	i = ft_strlen(eof) - 1;
 	a = 0;
