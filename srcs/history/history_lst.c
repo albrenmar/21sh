@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/05/02 10:33:25 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 09:40:34 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 void		hist_to_file(int fd)
 {
 	t_list	*hist;
+	int		i;
 
 	if (!g_tracking.mysh || !g_tracking.mysh->hist)
 		return ;
@@ -24,9 +25,12 @@ void		hist_to_file(int fd)
 		return ;
 	while (hist)
 	{
-		if (hist->content != NULL && ft_strlen(hist->content) > 0
-		&& ft_strcmp(hist->content, "\n") != 0)
-			ft_putendl_fd(hist->content, fd);
+		if (hist->content != NULL)
+		{
+			i = ft_strlen(hist->content);
+			if (i > 0 && i < 1024 && ft_strcmp(hist->content, "\n") != 0)
+				ft_putendl_fd(hist->content, fd);
+		}
 		hist = hist->next;
 	}
 }
