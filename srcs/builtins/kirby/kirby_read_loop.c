@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 00:44:06 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 04:43:10 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 05:45:57 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int		rand_loop(int time)
 	{
 		FD_ZERO(&setfd);
 		FD_SET(0, &setfd);
-		tv.tv_sec = time;
-		tv.tv_usec = 0;
+		tv.tv_sec = 0;
+		tv.tv_usec = time;
 		retval = select(0 + 1, &setfd, NULL, NULL, &tv);
 		if (retval == 0)
 		{
@@ -47,7 +47,7 @@ int		generate_rand(void)
 	while (random < 10000)
 	{
 		srand(time(NULL));
-		random = rand() % 13;
+		random = rand() % 8000000;
 	}
 	return (random);
 }
@@ -83,7 +83,7 @@ int		game_loop(void)
 	if ((print_file(1) == -5))
 		return (-1);
 	print_box(0);
-	i = rand_loop(1);
+	i = rand_loop(8000000);
 	if (i == -3)
 		return (0);
 	if (i == -1)
