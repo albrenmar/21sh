@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/03 05:00:32 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 08:18:05 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int				read_samurai(void);
 int				print_win(int i);
 int				print_box(int i);
 int				print_file(int i);
-int				rand_loop(int time);
+int				rand_loop(int a, int b);
 void			print_stylish(int i);
 int				duel(int i);
 int				too_soon(char buf);

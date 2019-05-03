@@ -6,14 +6,14 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 00:44:06 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 07:59:36 by alsomvil         ###   ########.fr       */
-/*   Updated: 2019/05/03 08:06:35 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 08:17:53 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "sh42.h"
 
-int		rand_loop(int time)
+int		rand_loop(int a, int b)
 {
 	fd_set			setfd;
 	struct timeval	tv;
@@ -24,8 +24,8 @@ int		rand_loop(int time)
 	{
 		FD_ZERO(&setfd);
 		FD_SET(0, &setfd);
-		tv.tv_sec = 0;
-		tv.tv_usec = time;
+		tv.tv_sec = a;
+		tv.tv_usec = b;
 		retval = select(0 + 1, &setfd, NULL, NULL, &tv);
 		if (retval == 0)
 		{
@@ -43,14 +43,25 @@ int		rand_loop(int time)
 int		generate_rand(void)
 {
 	int		random;
+	int		a;
+	int		b;
 
 	random = 0;
-	while (random < 10000)
+	a = 0;
+	b = 0;
+	srand(time(NULL));
+	random = rand() % 3;
+	if (random < 1)
 	{
-		srand(time(NULL));
-		random = rand() % 8000000;
+		a = 0;
+		b = 500000;
 	}
-	return (random);
+	else
+	{
+		a = random;
+		b = 0;
+	}
+	return (rand_loop(a, b));
 }
 
 int		read_samurai(void)
@@ -84,7 +95,7 @@ int		game_loop(void)
 	if ((print_file(1) == -5))
 		return (-1);
 	print_box(0);
-	i = rand_loop(800000);
+	i = generate_rand();
 	if (i == -3)
 		return (0);
 	if (i == -1)
