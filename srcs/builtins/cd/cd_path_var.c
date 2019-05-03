@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 09:36:15 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 00:55:41 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/05/03 02:34:46 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ char		*cd_path(char *path)
 		return (path);
 	tmp = list->firstelement;
 	path = conc_test(tmp, path);
-	printf("%s\n", path);
 	ft_freesplitlist(list);
 	return (path);
 }
