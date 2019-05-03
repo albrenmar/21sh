@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/03 07:30:17 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 08:08:11 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,14 @@ char	*unquote(char *eof)
 		return (new);
 	}
 	return (ft_strdup(eof));
+}
+
+char		*assign_reddir(char *orig)
+{
+	char	*new;
+
+	new = ft_strdup(orig);
+	new = convert_back(new);
+	new = remove_back(new, 0);
+	return (new);
 }

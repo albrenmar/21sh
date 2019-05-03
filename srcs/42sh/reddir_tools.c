@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 02:22:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 05:45:00 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 08:07:33 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,16 @@ char	**create_tab_reddir(t_last **list)
 	i = 0;
 	tab_reddir = ft_memalloc(sizeof(char *) * 3);
 	tab_reddir[i] = ft_strdup((*list)->name);
+	tab_reddir[i] = convert_back(tab_reddir[i]);
+	tab_reddir[i] = remove_back(tab_reddir[i], 0);
 	i++;
-	tab_reddir[i] = ft_strdup((*list)->next->name);
-	i++;
+	if ((*list)->next && (*list)->next->name)
+	{
+		tab_reddir[i] = ft_strdup((*list)->next->name);
+		tab_reddir[i] = convert_back(tab_reddir[i]);
+		tab_reddir[i] = remove_back(tab_reddir[i], 0);
+		i++;
+	}
 	tab_reddir[i] = NULL;
 	return (tab_reddir);
 }
@@ -50,15 +57,17 @@ char	**add_to_tab_reddir(t_last **list, char ***tab_reddir)
 	i = 0;
 	while ((*tab_reddir)[i])
 	{
-		new_tab[i] = ft_strdup((*tab_reddir)[i]);
+		new_tab[i] = assign_reddir((*tab_reddir)[i]);
 		i++;
 	}
-	new_tab[i] = ft_strdup((*list)->name);
+	new_tab[i] = assign_reddir((*list)->name);
 	i++;
-	new_tab[i] = ft_strdup((*list)->next->name);
-	i++;
+	if ((*list)->next && (*list)->next->name)
+	{
+		new_tab[i] = assign_reddir((*list)->next->name);
+		i++;
+	}
 	new_tab[i] = NULL;
-	i = 0;
 	free_tab(*tab_reddir);
 	tab_reddir = NULL;
 	return (new_tab);

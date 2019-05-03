@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 06:02:09 by abguimba          #+#    #+#             */
-/*   Updated: 2019/05/03 07:27:18 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 08:07:41 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -545,5 +545,5 @@ char			*remove_back(char *line, int i);
 int				tab_exec_arg(char ***tab_exec, char ***tab_farg, int i_arg,
 					int i);
 char			**end_exec_tab(char **tab_exec);
-
+char			*assign_reddir(char *orig);
 #endif
