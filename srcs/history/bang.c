@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bang.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 01:45:20 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/26 01:17:05 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/03 09:13:39 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*bang_apply(char *line)
 		{
 			if (line[i + 1])
 			{
-				if (ft_isalpha(line[i + 1]) == 1)
+				if (ft_isspecial(line[i + 1]) == 1)
 					return (replace_word(line, i));
 				if (ft_isdigit(line[i + 1]) || line[i + 1] == '-')
 					return (replace_word(line, i));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 01:51:43 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 07:06:01 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/03 09:09:59 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int					ft_atoi(const char *str);
 int					ft_isdigit(int c);
 
 int					ft_isascii(int c);
+
+int					ft_isspecial(int c);
 
 int					ft_isprint(int c);
 

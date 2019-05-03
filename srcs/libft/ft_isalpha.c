@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 18:00:48 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/20 04:06:23 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 09:10:10 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 int	ft_isalpha(int c)
 {
 	if ((c > 64 && c < 91) || (c > 96 && c < 123))
+		return (1);
+	else
+		return (0);
+}
+
+int	ft_isspecial(int c)
+{
+	if ((c > 63 && c < 91) || (c > 96 && c < 123))
+		return (1);
+	if ((c >= 40 && c <= 47))
 		return (1);
 	else
 		return (0);
