@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   out_redir.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 18:52:18 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 02:11:39 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/02 23:34:49 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		search_in(char *str, int mode)
 	{
 		ft_putstr_fd("42sh: ", 2);
 		ft_putstr_fd(str, 2);
-		ft_putstr_fd(": bad file descriptor", 2);
+		ft_putendl_fd(": bad file descriptor", 2);
 	}
 	return (fd);
 }
@@ -65,7 +65,7 @@ int		out_redir(char **tab_reddir, int i)
 		{
 			ft_putstr_fd("42sh: ", 2);
 			ft_putnbr_fd(fd_out, 2);
-			ft_putstr_fd(": bad file descriptor", 2);
+			ft_putendl_fd(": bad file descriptor", 2);
 			return (-1);
 		}
 	}

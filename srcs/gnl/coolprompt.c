@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coolprompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 23:51:02 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,10 @@ void			print_prompt(void)
 	ft_putstr_fd(g_tracking.cwd, 2);
 	ft_putstr_fd(ANSI_COLOR_DEFAULT, 2);
 	ft_putchar_fd(' ', 2);
-	ft_putstr_fd(ANSI_COLOR_GREEN, 2);
+	if (g_tracking.lastreturn != 0)
+		ft_putstr_fd(ANSI_COLOR_RED, 2);
+	else
+		ft_putstr_fd(ANSI_COLOR_GREEN, 2);
 	ft_putstr_fd(g_tracking.prompt, 2);
 	ft_putstr_fd(ANSI_COLOR_DEFAULT, 2);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bang_replace.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 04:46:38 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 05:25:51 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/02 10:45:46 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ char	*replace_double(char *line, int i)
 	char	*end;
 	char	*begin;
 	char	*word;
+	char	*tmp;
 
 	if (!line)
 		return (NULL);
@@ -90,9 +91,11 @@ char	*replace_double(char *line, int i)
 	i = i + ft_strlen(word);
 	j = ft_strlen(line) - i;
 	end = ft_strsub(line, i, j, 0);
+	tmp = word;
 	word = ft_strdup(get_word(word));
+	ft_strdel(&tmp);
 	if (!word)
-		return (NULL);
+		return (return_fail(begin, end, line));
 	ft_strdel(&line);
 	begin = ft_strjoinfree(begin, word, 3);
 	begin = ft_strjoinfree(begin, end, 3);

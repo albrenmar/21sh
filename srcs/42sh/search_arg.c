@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:06:56 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/03 00:33:10 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*search_fd_reddir(char *str)
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
 		i++;
-		if (str[i] && (str[i] == '>' || str[i] == '<'))
+		if (i == 1 && str[i] && (str[i] == '>' || str[i] == '<'))
 		{
 			i++;
 			if (str[i] && str[i] == str[i - 1])

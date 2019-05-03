@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:00:21 by hdufer            #+#    #+#             */
-/*   Updated: 2019/05/02 05:40:14 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/02 10:33:25 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ void		hist_save_file(void)
 	path = create_path_hist();
 	fd = verify_path_is_valid(path);
 	if (fd < 0)
+	{
+		ft_strdel(&path);
 		return (ft_putendl_fd("Error while opening/creating .42hist", 2));
+	}
 	hist_to_file(fd);
 	ft_strdel(&path);
 	close(fd);

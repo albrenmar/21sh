@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_mysh.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 09:25:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 02:54:38 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/02 09:12:37 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void		free_mysh(void)
 {
 	hist_save_file();
+	free_hist();
 	if (g_tracking.mysh->alias_lst)
 	{
 		free_keyval(g_tracking.mysh->alias_lst);

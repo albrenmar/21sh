@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jobs_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/03 01:31:36 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int			jobs_builtin_options(t_jobs *tmp, int options, int i, char **t)
 			else
 				errors_jobs('a', 0, 2);
 			i++;
+			ft_strdel(&hold);
 		}
 	}
 	else
