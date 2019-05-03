@@ -1,0 +1,5409 @@
+1: kiry
+2: kirby
+3: exit
+4: make
+5: exit
+6: kirby
+7: kirby
+8: exit
+9: kirby
+10: kirby
+11: kirby
+12: kirby
+13: exit
+14: kirby
+15: clear
+16: exit
+17: kirby
+18: exit
+19: kirby
+20: exit
+21: kirby
+22: kirby
+23: kirby
+24: kirby
+25: exit
+26: kirby
+27: exit
+28: kirby
+29: exit
+30: kirby
+31: kirby
+32: kirby
+33: kirby
+34: kirby
+35: exit
+36: kirby
+37: exit
+38: kirby
+39: exit
+40: kirby
+41: exit
+42: kirby
+43: exit
+44: kirby
+45: kirby
+46: exit
+47: kirby
+48: exit
+49: kirby
+50: exit
+51: kirby
+52: exit
+53: kirby
+54: exit
+55: kirby
+56: exit
+57: kirby
+58: exit
+59: kirby
+60: exit
+61: kirby
+62: exit
+63: kirby
+64: exit
+65: kirby
+66: exit
+67: kirby
+68: kirby
+69: exit
+70: kirby
+71: exit
+72: kirby
+73: exit
+74: kirby
+75: kirby
+76: exit
+77: kirby
+78: exit
+79: kirby
+80: exit
+81: kirby
+82: exit
+83: kirby
+84: exit
+85: kirby
+86: exit
+87: kirby
+88: exit
+89: kirby
+90: exit
+91: kirby
+92: exit
+93: kirby
+94: exit
+95: kirby
+96: exit
+97: kirby
+98: exit
+99: kirby
+100: exit
+101: kirby
+102: exit
+103: kirby
+104: q
+105: exit
+106: kirby
+107: exit
+108: kirby
+109: kirby
+110: exit
+111: kirby
+112: exit
+113: kirby
+114: exit
+115: kirby
+116: exit
+117: kirby
+118: exit
+119: exit
+120: kirby
+121: exit
+122: kirby
+123: exit
+124: kirby
+125: echo "██████╗ ██╗      █████╗ ██╗   ██╗███████╗██████╗      ██████╗ ███╗   ██╗███████╗    ██╗    ██╗██╗███╗   ██╗███████╗
+126: exit
+127: kirby
+128: exit
+129: kirby
+130: exit
+131: kirby
+132: exit
+133: exit
+134: kirby
+135: exit
+136: kirby
+137: exit
+138: kirby
+139: exit
+140: kirby
+141: exit
+142: kirby
+143: exit
+144: kirby
+145: exit
+146: kirby
+147: exit
+148: kirby
+149: exit
+150: exit
+151: kirby
+152: exit
+153: kirby
+154: exit
+155: kirby
+156: exit
+157: exit
+158: kirby
+159: exit
+160: kirby
+161: kirby
+162: exit
+163: kirby
+164: exit
+165: kirby
+166: exit
+167: kirby
+168: exit
+169: kirby
+170: exit
+171: kirby
+172: [A
+173: kirby
+174: exit
+175: kirby
+176: exit
+177: cat<<EO\
+178: exit
+179: cat<<EO\
+180: exit
+181: cat<<EO\
+182: exit
+183: cat <<EO\
+184: exit
+185: blablabla \sdf
+186: exit
+187: blablabla\
+188: blablabla \test
+189: exit
+190: blablabla\
+191: blablabla\\
+192: exit
+193: blablabla\sdf
+194: cat <<EO\lol
+195: exit
+196: cat<<EO\lol
+197: exit
+198: cat<<EO\sdf
+199: exit
+200: na;asd
+201: cat<<EOF
+202: exit
+203: cat <<EO\dsf
+204: exit
+205: cat<<EO\sdf
+206: exit
+207: s
+208: s\sd
+209: exit
+210: kirby
+211: kirby
+212: kirby
+213: kirby
+214: kirby
+215: ls
+216: kirby
+217: exit
+218: kirby
+219: exit
+220: kirby
+221: exit
+222: kirby
+223: exit
+224: kirby
+225: kirby
+226: kirby
+227: kirby
+228: s;s
+229: ls
+230: exit
+231: exit
+232: kirby
+233: kirby
+234: exit
+235: kirby
+236: kirby
+237: exit
+238: kirby
+239: exit
+240: kirby
+241: exit
+242: kirby
+243: exit
+244: kirby
+245: kirby
+246: exit
+247: kirby
+248: kirby
+249: exit
+250: kirby
+251: make
+252: kirby
+253: exit
+254: kirby
+255: exit
+256: kirby
+257: exit
+258: kirby
+259: exit
+260: cd norights/
+261: cd norights
+262: exit
+263: cd norights/
+264: cd norights
+265: cd nsdf
+266: exit
+267: cd dsf
+268: cd Makefile
+269: cd norights
+270: exit
+271: nano /tmp/fc1
+272: vim /tmp/fc1
+273: exit
+274: ls /tmp/fc1
+275: vim /tmp/fc1
+276: vim /tmp/fc1
+277: exit
+278: kirby
+279: kirby
+280: kirby
+281: exit
+282: kirby
+283: xit
+284: exit
+285: kirby/
+286: kirby
+287: clear
+288: kirby/
+289: kirby
+290: kirby
+291: exit
+292: kirby
+293: exit
+294: kirby/
+295: kirby
+296: exit
+297: exit
+298: exit
+299: type kirby
+300: cd ..
+301: exit
+302: exit
+303: exit
+304: exit
+305: exit
+306: exit
+307: exit
+308: exit
+309: exit
+310: exit
+311: exit
+312: exit
+313: exit
+314: ls |
+315: ls \sda
+316: ls &&
+317: exit
+318: kirby
+319: `
+320: kirby
+321: kirby
+322: exit
+323: kirby
+324: exit
+325: kirby
+326: kirby
+327: exit
+328: set kirby=.
+329: set
+330: pwd
+331: set kirby=/Users/bsiche/master42
+332: set kirby=/Users/bsiche/master42
+333: set
+334: set kirby=/Users/bsiche/master42
+335: set
+336: set
+337: set
+338: set kirby=/Users/bsiche/master42
+339: kirby=/Users/bsiche/master42
+340: set
+341: kirby
+342: Kirby=/Users/bsiche/master42
+343: kirby
+344: exit
+345: Kirby=/Users/bsiche/master42
+346: kirby=/Users/bsiche/master42
+347: kirby
+348: exit
+349: kirby
+350: exit
+351: kirby
+352: exit
+353: kirby
+354: exit
+355: kirby
+356: exit
+357: kirby
+358: exit
+359: kirby
+360: exit
+361: kirby
+362: kirby
+363: pwd
+364: kirby=/Users/bsiche/master42
+365: set
+366: kirby
+367: exit
+368: kirby
+369: kirby=/Users/bsiche/master42
+370: kirby
+371: exit
+372: kirby
+373: kirby=/Users/bsiche/master42
+374: kirby
+375: exit
+376: kirby
+377: kirby
+378: kirby=/Users/bsiche/master42
+379: kirby
+380: exit
+381: kirby
+382: kirby=/Users/bsiche/master42
+383: kirby
+384: exit
+385: kirby=/Users/bsiche/master42
+386: kirby
+387: kirby
+388: exit
+389: kirby
+390: kirby=/Users/bsiche/master42
+391: irby
+392: kirby
+393: exit
+394: kirby
+395: kirby=/Users/bsiche/master42
+396: kirby
+397: exit
+398: cd / && cd ~trololo; pwd
+399: exit
+400: cd / && cd ~trololo; pwd
+401: exit
+402: cd / && cd ~trololo; pwd
+403: exit
+404: exit
+405: echo "lol"
+406: exit
+407: echo "lol" | echo "lol"
+408: exit
+409: echo ${%%$HOME}
+410: echo ${%%$HOME}
+411: echo ${%%$HOME}
+412: echo ${%%$HOME}
+413: echo ${%%$HOME}
+414: exit
+415: echo ${%%$HOME}
+416: echo ${%%$HOME}
+417: exit
+418: echo ${%%$HOME}
+419: exit
+420: echo ${%%$HOME}
+421: echo ${%%$HOME}
+422: echo ${%%$HOME}
+423: echo ${%%$HOME}
+424: exit
+425: echo ${%%$HOME}
+426: echo ${%%$HOME}
+427: echo ${%%$HOME}
+428: echo ${%%$HOME}
+429: echo ${%%$HOME}
+430: echo ${%%$HOME}
+431: echo ${%%$HOME}
+432: echo ${%%$HOME}
+433: echo ${%%$HOME}
+434: echo ${%%$HOME}
+435: exit
+436: echo ${%%$HOME}
+437: echo ${%%$HOME}
+438: echo ${%%$HOME}
+439: echo ${%%$HOME}
+440: exit
+441: echo ${%%$HOME}
+442: exit
+443: echo ${%%$HOME}
+444: echo ${%%$HOME}
+445: echo ${%%$HOME}
+446: echo ${%%$HOME}
+447: exit
+448: echo ${%%$HOME}
+449: exit
+450: echo ${%%$HOME}
+451: echo ${%%$HOME}
+452: echo ${%%$HOME}
+453: exit
+454: echo ${%%$HOME}
+455: echo ${%%$HOME}
+456: echo ${%%$HOME}
+457: exit
+458: echo ${%%$HOME}
+459: exit
+460: echo ${%%$HOME}
+461: exit
+462: echo ${%%$HOME}
+463: exit
+464: echo ${%%$HOME}
+465: echo ${%%$HOME}
+466: echo ${%%$HOME}
+467: echo ${%%$HOME}
+468: exit
+469: echo ${%%$HOME}
+470: echo ${%%$HOME}
+471: exit
+472: test -- -e
+473: exit
+474: test -- -e
+475: test -e --
+476: exit
+477: test -- -n "lol"
+478: test -n "lol"
+479: echo $?
+480: echo $?
+481: echo $?
+482: test -n "lol"
+483: echo $?
+484: echo $?
+485: test ! -n "lol"
+486: echo $?
+487: test -n "lol"
+488: echo $?
+489: test \! -n "lol"
+490: echo $?
+491: test -n "lol"
+492: echo $?
+493: test \! -n "lol"
+494: echo $?
+495: test  -n "lol"
+496: echo $?
+497: test ! -n "lol"
+498: echo $?
+499: test ! 24 -eq 12
+500: echo $?
+501: test 24 -eq 12
+502: echo $?
+503: $?
+504: echo $?
+505: $?
+506: test 24 -eq 12
+507: $?
+508: test ! 24 -eq 12
+509: $?
+510: exit
+511: exit
+512: exit
+513: ls &&
+514: exit
+515: ls &&
+516: exit
+517: ls &&
+518: exit
+519: ls &&
+520: exit
+521: ls &&d
+522: exut
+523: exit
+524: ls &&
+525: exit
+526: ls &&
+527: exit
+528: ls &&
+529: ls &&
+530: exit
+531: ls &&
+532: exit
+533: ls &&
+534: exit
+535: ls &&test
+536: test
+537: ls && echo "lol"
+538: exit
+539: exit
+540: exit
+541: /
+542: ld
+543: ls
+544: ld
+545: /
+546: ls 'end'
+547: ls obj
+548: ls 'obj'
+549: ls >'> obj'
+550: ls
+551: cat obj/
+552: ls >>end
+553: ls
+554: cat end
+555: rm '> obj' 
+556: ls
+557: rm '> obj'
+558: rm \'> obj]'
+559: rm \'> obj\'
+560: ls
+561: ls
+562: rm end
+563: exit
+564: CDPATH=/tmp/
+565: cd lol
+566: CDPATH=/tmp/;
+567: cd lol
+568: mkdir /tmp/lol
+569: cd lol
+570: exit
+571: CDPATH=.
+572: cd lol
+573: mkdir lol
+574: cd lol
+575: exit
+576: test -- -P
+577: exit
+578: cd \/tmp
+579: exit
+580: exit
+581: cd \tmp
+582: cd \/tmp
+583: exit
+584: CDPATH=.
+585: cd lol
+586: exit
+587: test -- -P
+588: exit
+589: exit
+590: test
+591: test
+592: test -z
+593: exit
+594: test -z
+595: test -z
+596: test
+597: test -z ""
+598: test -z "   "
+599: exit
+600: test -z
+601: test -z "  "
+602: exit
+603: test -z
+604: exit
+605: exit
+606: e
+607: exit
+608: exit
+609: exit
+610: exit
+611: exit
+612: exit
+613: exitexitexitexitexitexitexitexitexit!
+614: exit
+615: exitexitexitexitexitexitexitexit!
+616: exit
+617: exitexitexitexitexitexitexitexitexitexitexit!
+618: exit
+619: kirby
+620: pwd
+621: kirby=/Users/bsiche/master42
+622: kirby
+623: echo "lol"
+624: cd dsfsdf
+625: sdf
+626: cd sdfdsf
+627: cd norights
+628: chmod 000 obj
+629: cd obj
+630: chmod 644 obj
+631: cd bj
+632: cd obj
+633: exit
+634: exit
+635: cd obj
+636: exit
+637: exit
+638: exit
+639: exit
+640: echo ${%%$HOME}
+641: exit
+642: echo ${%%$HOME}
+643: echo ${%%$HOME}
+644: exit
+645: echo ${%%$HOME}
+646: echo ${%%$HOME}
+647: echo ${%%$HOME}
+648: echo ${%%$HOME}
+649: exit
+650: echo ${%%$HOME}
+651: exit
+652: echo ${%%$HOME}
+653: echo ${%%$HOME}
+654: exit
+655: echo ${%%$HOME}
+656: exit
+657: echo ${%%$HOME}
+658: echo ${%%$HOME}
+659: exit
+660: \\\\
+661: \\\\\\\\
+662: \\\\\\\\\
+663: \\\\\\\\\\\\\\\\\\
+664: exit
+665: ls \\
+666: ls \\
+667: exit
+668: |
+669: ls |
+670: exit
+671: \\
+672: \
+673: la \
+674: exit
+675: |
+676: \
+677: ls \asd
+678: \\\\\\\\\\\\\sad
+679: \\\\
+680: \\\
+681: exit
+682: \
+683: \\
+684: |
+685: ||
+686: exit
+687: \
+688: exit
+689: \
+690: exit
+691: \sdf
+692: \\sdf
+693: exit
+694: \sdf
+695: \\sdf
+696: exit
+697: \\
+698: exit
+699: \\\exit
+700: ls \\f
+701: ls \sdf
+702: exit
+703: \\sad
+704: \sad
+705: \asd
+706: \\eads\exit
+707: exit
+708: //
+709: exit
+710: \\
+711: exit
+712: \\
+713: exit
+714: \\exit
+715: exit
+716: \\
+717: exit
+718: \\
+719: exit
+720: \\
+721: exit
+722: \\
+723: make
+724: exit
+725: \\
+726: exit
+727: \\
+728: \\
+729: \
+730: \\
+731: exit
+732: \\
+733: exit
+734: \\
+735: \\
+736: exit
+737: \\
+738: \\
+739: exit
+740: \dsdfs
+741: \\
+742: |
+743: ||
+744: ls |
+745: sfds
+746: ls ||sdf
+747: exit
+748: ls |sdfds
+749: ls | ls
+750: exit
+751: ls |
+752: \adf
+753: \\
+754: exit
+755: \\\\\\\\\\\\\\\\\\\\\
+756: \\\\\\\\\\\\\\\\\\\\
+757: \\\\\\\\\\\\\\\\\\\
+758: \\\\\\\\\\\\\
+759: \\\\\\\\\
+760: \\\
+761: exit
+762: ls \\\\\\\\\\\\\\\\\\\\
+763: ls \\\\\\\\\\\\\\\\\\\\\
+764: ls \\\\\\\\\\\\\\\\\\\\\\
+765: exit
+766: sdf
+767: sdf
+768: sdasd
+769: CDPATH=.
+770: cd s
+771: exit
+772: CDPATH=.
+773: cd s
+774: exit
+775: CDPATH = /
+776: CDPATH=/
+777: cd tmp
+778: exit
+779: LS DOESNOTEXIST
+780: fc -- -s -1 @&>/dev/null
+781: fc -- -s -1 2&>/dev/null
+782: bg
+783: fg
+784: nano /tmp/fc1
+785: fg
+786: fc -- -s -1 2>/dev/null
+787: nano /tmp/fc1
+788: nano /tmp/fc2
+789: nano /tmp/fc1
+790: fc -- -s -1 2>/dev/null
+791: fc -- -s -1 2>/dev/null
+792: LS DOESNOTEXIST
+793: ls DOESNOTEXIST
+794: ls DOESNOTEXIST
+795: ls DOESNOTEXIST
+796: ls DOESNOTEXIST
+797: cat toto
+798: exit
+799: fc -- -s -1 @&>/dev/null
+800: ls
+801: fc -- -s -1 2&>/dev/null
+802: test zzz -eq; echo $?
+803: exit
+804: exit
+805: make
+806: exit
+807: make
+808: exit
+809: exit
+810: exit
+811: exit
+812: exit
+813: exit
+814: exit
+815: exit
+816: exit
+817: kirby
+818: pwd
+819: kirby=/Users/bsiche/master422
+820: kirby
+821: exit
+822: set test=""
+823: set
+824: test=""
+825: set
+826: exit
+827: kirby
+828: kirby
+829: pwd
+830: kirby=/Users/bsiche/master422
+831: kirby
+832: exit
+833: kirby=/Users/bsiche/master422
+834: kirby
+835: exit
+836: kirby=/Users/bsiche/master422
+837: kirby
+838: exit
+839: kirby=/Users/bsiche/master422
+840: kirby
+841: exit
+842: kirby=/Users/bsiche/master422
+843: kirby
+844: exit
+845: kirby
+846: kirby=/Users/bsiche/master422
+847: kirby
+848: exit
+849: kirby=/Users/bsiche/master422
+850: kirby
+851: exit
+852: kirby=/Users/bsiche/master422
+853: kirby
+854: exit
+855: kirby=/Users/bsiche/master422
+856: kirby
+857: exit
+858: kirby=/Users/bsiche/master422
+859: kirby
+860: kirby
+861: exit
+862: *&$%^$*(&^$@&%^%$(*&%^$
+863: *&$%^$*(&^$@&%^%$(*&%^$
+864: *&$%^$*(&^$@&%^%$(*&%^$
+865: exit
+866: exit
+867: exit
+868: ${sdfdsf}
+869: exit
+870: /Network/
+871: clear
+872: mkdir toto
+873: cd toto
+874: rm -rf ../toto
+875: pwd
+876: cd ..
+877: cd toto
+878: ls
+879: mkdir toto
+880: cd toto
+881: ls .
+882: chmod 000 ../toto
+883: ls
+884: pwd
+885: mkdir
+886: mkdir ls
+887: cd ..
+888: ln -s a toto
+889: exit
+890: mkdir ls lol
+891: exit
+892: exit
+893: `~!@#$%^&*()___)(*&^%$#@!~~!@#$%^&*()_)(*&^%$#@!~!@#$%^&*()_+_)(*&^%$#@!~@#$%^&*(`
+894: ~!@#$%^&*()___)(*&^%$#@!~~!@#$%^&*()_)(*&^%$#@!~!@#$%^&*()_+_)(*&^%$#@!~@#$%^&*
+895: ~!@#$%^&*()___)(*&^%$
+896: ~!@
+897: ~!@#$%^&
+898: ~!@#$
+899: ~!@#$%^
+900: ~!@#$%
+901: ~!@#$
+902: ~!@#
+903: ~!@
+904: exit
+905: exit
+906: echo "LOL"
+907: echo "LOL"echo "LOL"echo "LOL"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+908: echo "lol"
+909: echo "lol"echo "lol"echo "lol"
+910: echo "lol"
+911: !
+912: ! ! ! !! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+913: ! ! ! ! ! ! ! ! ! !! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+914: ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !! !! !! !! !! !!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+915: echo "lol"
+916: echo "lol"echo "lol"echo "lol"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+917: exit
+918: cat<<bf
+919: exit
+920: a
+921: a
+922: c
+923: cat <<a
+924: ls
+925: exit
+926: exit
+927: exit
+928: exit
+929: echo >\>toto
+930: exit
+931: echo >\>toto
+932: ls
+933: exit
+934: echo >\>toto
+935: ls
+936: exit
+937: kirby
+938: exit
+939: pwd
+940: kirby=/Users/bsiche/masterfinal
+941: kirby
+942: exit
+943: kirby=/Users/bsiche/masterfinal
+944: kirby
+945: exit
+946: exit
+947: exit
+948: ls
+949: lsdf
+950: exit
+951: exit
+952: kirby=/Users/bsiche/masterfinal
+953: kirby
+954: exit
+955: cat <<LOL | cat<<TRUC
+956: exit
+957: exit
+958: exit
+959: exit
+960: exit
+961: exit
+962: $HOME
+963: ls
+964: ~
+965: ~/
+966: ~/test
+967: ~/test/Desktop
+968: ~/42shrc
+969: ~/42shrc
+970: ~test
+971: test~
+972: ~bsiche
+973: test/~bsiche
+974: ~+
+975: ~+/
+976: /~+/
+977: ~+/test
+978: +~
+979: +~/
+980: +~/test
+981: ~-
+982: echo "a" "" "" "b" | cat -e
+983: echo -a abc | cat -e
+984: echo -x abc | cat -e
+985: echo -- -abc abc | cat -e
+986: echo '\a\b\c\f\n\r\t\v\\'
+987: echo "\a\b\c\f\n\r\t\v\\"
+988: echo \a\b\c\f\n\r\t\v\\
+989: echo \0777 \0123 \0 '\01' "\02"
+990: echo abc -- def
+991: echo -- ghi
+992: echo zzz ---
+993: echo -- -n abc
+994: echo abc | cat | cat | cat -e | cat -e
+995: echo 'abc' >/tmp/pipe_redir
+996: ls | cat -e < /tmp/pipe_redir | cat -e
+997: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+998: cat /tmp/pipe_redir_fd
+999: rm -f /tmp/pipe_redir
+1000: rm -f /tmp/pipe_redir_fd
+1001: env | grep USER | wc | cat -e
+1002: echo 'echo a | ;' > /tmp/pipe_err_parsing
+1003: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1004: echo '| echo b ;' > /tmp/pipe_err_parsing
+1005: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1006: echo '|' > /tmp/pipe_err_parsing
+1007: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1008: echo '|;' > /tmp/pipe_err_parsing
+1009: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1010: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+1011: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1012: rm -f /tmp/pipe_err_parsing
+1013: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+1014: test
+1015: test -b
+1016: test -b sdfsd
+1017: test -b Makefile
+1018: test -b /dev/disk0
+1019: test -c /dev/disk0
+1020: test -c /dev/zero
+1021: test -c /dev/zersdfds
+1022: test -c
+1023: test -d Makefile
+1024: test -d
+1025: test -d dfdsf
+1026: test -d includes
+1027: test -e dsfdsf
+1028: test -e Makefile
+1029: test -f fdsf
+1030: test -f
+1031: test -f Makefile
+1032: test -g fsdfsd
+1033: test -g Makefile
+1034: test -g toto
+1035: test -g
+1036: test -L dsfdsf
+1037: test -L
+1038: test -L link
+1039: test -p
+1040: test -p fifo
+1041: test -r norights
+1042: test -r toto
+1043: test -S socket
+1044: test -S dsfdsf
+1045: test -S Makefile
+1046: test -s empty
+1047: test -s Makefile
+1048: test -u suid
+1049: test -u sdfsd
+1050: test -u Makefile
+1051: test -w toto
+1052: test -w dsfdsf
+1053: test -w norights
+1054: test -x exec
+1055: test -x Makefile
+1056: test -z 
+1057: test -z ""
+1058: test -z "dfdsfsd"
+1059: test "ab" = "ab"
+1060: test "ab" = "abc"
+1061: test "ab" != "abd"
+1062: test "ab" != "ab"
+1063: test 12 -eq 1233
+1064: test 12 -eq 12
+1065: test 12345123015623416854 -eq 412
+1066: test 1 -eq 2468532546324532132542
+1067: test 1 -ne 12
+1068: test 1 -eq sdfsd
+1069: test 32 -ne 12435
+1070: test 534543543 -ge 2452156546854685768
+1071: test 12 -ge bfdg
+1072: test 123 -ge ""
+1073: test 324 -it <sdfsd
+1074: test 12 -it 1
+1075: test 43455345435435 -le 32
+1076: echo "test fini"
+1077: exit
+1078: echo $HOME
+1079: ls
+1080: ~
+1081: ~/
+1082: ~/test
+1083: ~/test/Desktop
+1084: ~/42shrc
+1085: ~/42shrc
+1086: ~test
+1087: test~
+1088: ~bsiche
+1089: test/~bsiche
+1090: ~+
+1091: ~+/
+1092: /~+/
+1093: ~+/test
+1094: +~
+1095: +~/
+1096: +~/test
+1097: ~-
+1098: echo "a" "" "" "b" | cat -e
+1099: echo -a abc | cat -e
+1100: echo -x abc | cat -e
+1101: echo -- -abc abc | cat -e
+1102: echo '\a\b\c\f\n\r\t\v\\'
+1103: echo "\a\b\c\f\n\r\t\v\\"
+1104: echo \a\b\c\f\n\r\t\v\\
+1105: echo \0777 \0123 \0 '\01' "\02"
+1106: echo abc -- def
+1107: echo -- ghi
+1108: echo zzz ---
+1109: echo -- -n abc
+1110: echo abc | cat | cat | cat -e | cat -e
+1111: echo 'abc' >/tmp/pipe_redir
+1112: ls | cat -e < /tmp/pipe_redir | cat -e
+1113: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+1114: cat /tmp/pipe_redir_fd
+1115: rm -f /tmp/pipe_redir
+1116: rm -f /tmp/pipe_redir_fd
+1117: env | grep USER | wc | cat -e
+1118: echo 'echo a | ;' > /tmp/pipe_err_parsing
+1119: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1120: echo '| echo b ;' > /tmp/pipe_err_parsing
+1121: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1122: echo '|' > /tmp/pipe_err_parsing
+1123: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1124: echo '|;' > /tmp/pipe_err_parsing
+1125: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1126: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+1127: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1128: rm -f /tmp/pipe_err_parsing
+1129: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+1130: test
+1131: test -b
+1132: test -b sdfsd
+1133: test -b Makefile
+1134: test -b /dev/disk0
+1135: test -c /dev/disk0
+1136: test -c /dev/zero
+1137: test -c /dev/zersdfds
+1138: test -c
+1139: test -d Makefile
+1140: test -d
+1141: test -d dfdsf
+1142: test -d includes
+1143: test -e dsfdsf
+1144: test -e Makefile
+1145: test -f fdsf
+1146: test -f
+1147: test -f Makefile
+1148: test -g fsdfsd
+1149: test -g Makefile
+1150: test -g toto
+1151: test -g
+1152: test -L dsfdsf
+1153: test -L
+1154: test -L link
+1155: test -p
+1156: test -p fifo
+1157: test -r norights
+1158: test -r toto
+1159: test -S socket
+1160: test -S dsfdsf
+1161: test -S Makefile
+1162: test -s empty
+1163: test -s Makefile
+1164: test -u suid
+1165: test -u sdfsd
+1166: test -u Makefile
+1167: test -w toto
+1168: test -w dsfdsf
+1169: test -w norights
+1170: test -x exec
+1171: test -x Makefile
+1172: test -z 
+1173: test -z ""
+1174: test -z "dfdsfsd"
+1175: test "ab" = "ab"
+1176: test "ab" = "abc"
+1177: test "ab" != "abd"
+1178: test "ab" != "ab"
+1179: test 12 -eq 1233
+1180: test 12 -eq 12
+1181: test 12345123015623416854 -eq 412
+1182: test 1 -eq 2468532546324532132542
+1183: test 1 -ne 12
+1184: test 1 -eq sdfsd
+1185: test 32 -ne 12435
+1186: test 534543543 -ge 2452156546854685768
+1187: test 12 -ge bfdg
+1188: test 123 -ge ""
+1189: test 324 -it <sdfsd
+1190: test 12 -it 1
+1191: test 43455345435435 -le 32
+1192: echo "test fini"
+1193: cat testfile 
+1194: exit
+1195: echo $HOME
+1196: ls
+1197: ~
+1198: ~/
+1199: ~/test
+1200: ~/test/Desktop
+1201: ~/42shrc
+1202: ~/42shrc
+1203: ~test
+1204: test~
+1205: ~bsiche
+1206: test/~bsiche
+1207: ~+
+1208: ~+/
+1209: /~+/
+1210: ~+/test
+1211: +~
+1212: +~/
+1213: +~/test
+1214: ~-
+1215: echo "a" "" "" "b" | cat -e
+1216: echo -a abc | cat -e
+1217: echo -x abc | cat -e
+1218: echo -- -abc abc | cat -e
+1219: echo '\a\b\c\f\n\r\t\v\\'
+1220: echo "\a\b\c\f\n\r\t\v\\"
+1221: echo \a\b\c\f\n\r\t\v\\
+1222: echo \0777 \0123 \0 '\01' "\02"
+1223: echo abc -- def
+1224: echo -- ghi
+1225: echo zzz ---
+1226: echo -- -n abc
+1227: echo abc | cat | cat | cat -e | cat -e
+1228: echo 'abc' >/tmp/pipe_redir
+1229: ls | cat -e < /tmp/pipe_redir | cat -e
+1230: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+1231: cat /tmp/pipe_redir_fd
+1232: rm -f /tmp/pipe_redir
+1233: rm -f /tmp/pipe_redir_fd
+1234: env | grep USER | wc | cat -e
+1235: echo 'echo a | ;' > /tmp/pipe_err_parsing
+1236: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1237: echo '| echo b ;' > /tmp/pipe_err_parsing
+1238: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1239: echo '|' > /tmp/pipe_err_parsing
+1240: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1241: echo '|;' > /tmp/pipe_err_parsing
+1242: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1243: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+1244: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1245: rm -f /tmp/pipe_err_parsing
+1246: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+1247: test
+1248: test -b
+1249: test -b sdfsd
+1250: test -b Makefile
+1251: test -b /dev/disk0
+1252: test -c /dev/disk0
+1253: test -c /dev/zero
+1254: test -c /dev/zersdfds
+1255: test -c
+1256: test -d Makefile
+1257: test -d
+1258: test -d dfdsf
+1259: test -d includes
+1260: test -e dsfdsf
+1261: test -e Makefile
+1262: test -f fdsf
+1263: test -f
+1264: test -f Makefile
+1265: test -g fsdfsd
+1266: test -g Makefile
+1267: test -g toto
+1268: test -g
+1269: test -L dsfdsf
+1270: test -L
+1271: test -L link
+1272: test -p
+1273: test -p fifo
+1274: test -r norights
+1275: test -r toto
+1276: test -S socket
+1277: test -S dsfdsf
+1278: test -S Makefile
+1279: test -s empty
+1280: test -s Makefile
+1281: test -u suid
+1282: test -u sdfsd
+1283: test -u Makefile
+1284: test -w toto
+1285: test -w dsfdsf
+1286: test -w norights
+1287: test -x exec
+1288: test -x Makefile
+1289: test -z 
+1290: test -z ""
+1291: test -z "dfdsfsd"
+1292: test "ab" = "ab"
+1293: test "ab" = "abc"
+1294: test "ab" != "abd"
+1295: test "ab" != "ab"
+1296: test 12 -eq 1233
+1297: test 12 -eq 12
+1298: test 12345123015623416854 -eq 412
+1299: test 1 -eq 2468532546324532132542
+1300: test 1 -ne 12
+1301: test 1 -eq sdfsd
+1302: test 32 -ne 12435
+1303: test 534543543 -ge 2452156546854685768
+1304: test 12 -ge bfdg
+1305: test 123 -ge ""
+1306: test 324 -it <sdfsd
+1307: test 12 -it 1
+1308: test 43455345435435 -le 32
+1309: echo "test fini"
+1310: exi
+1311: exit
+1312: echo $HOME
+1313: ls
+1314: ~
+1315: ~/
+1316: ~/test
+1317: ~/test/Desktop
+1318: ~/42shrc
+1319: ~/42shrc
+1320: ~test
+1321: test~
+1322: ~bsiche
+1323: test/~bsiche
+1324: ~+
+1325: ~+/
+1326: /~+/
+1327: ~+/test
+1328: +~
+1329: +~/
+1330: +~/test
+1331: ~-
+1332: echo "a" "" "" "b" | cat -e
+1333: echo -a abc | cat -e
+1334: echo -x abc | cat -e
+1335: echo -- -abc abc | cat -e
+1336: echo '\a\b\c\f\n\r\t\v\\'
+1337: echo "\a\b\c\f\n\r\t\v\\"
+1338: echo \a\b\c\f\n\r\t\v\\
+1339: echo \0777 \0123 \0 '\01' "\02"
+1340: echo abc -- def
+1341: echo -- ghi
+1342: echo zzz ---
+1343: echo -- -n abc
+1344: echo abc | cat | cat | cat -e | cat -e
+1345: echo 'abc' >/tmp/pipe_redir
+1346: ls | cat -e < /tmp/pipe_redir | cat -e
+1347: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+1348: cat /tmp/pipe_redir_fd
+1349: rm -f /tmp/pipe_redir
+1350: rm -f /tmp/pipe_redir_fd
+1351: env | grep USER | wc | cat -e
+1352: echo 'echo a | ;' > /tmp/pipe_err_parsing
+1353: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1354: echo '| echo b ;' > /tmp/pipe_err_parsing
+1355: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1356: echo '|' > /tmp/pipe_err_parsing
+1357: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1358: echo '|;' > /tmp/pipe_err_parsing
+1359: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1360: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+1361: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1362: rm -f /tmp/pipe_err_parsing
+1363: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+1364: test
+1365: test -b
+1366: test -b sdfsd
+1367: test -b Makefile
+1368: test -b /dev/disk0
+1369: test -c /dev/disk0
+1370: test -c /dev/zero
+1371: test -c /dev/zersdfds
+1372: test -c
+1373: test -d Makefile
+1374: test -d
+1375: test -d dfdsf
+1376: test -d includes
+1377: test -e dsfdsf
+1378: test -e Makefile
+1379: test -f fdsf
+1380: test -f
+1381: test -f Makefile
+1382: test -g fsdfsd
+1383: test -g Makefile
+1384: test -g toto
+1385: test -g
+1386: test -L dsfdsf
+1387: test -L
+1388: test -L link
+1389: test -p
+1390: test -p fifo
+1391: test -r norights
+1392: test -r toto
+1393: test -S socket
+1394: test -S dsfdsf
+1395: test -S Makefile
+1396: test -s empty
+1397: test -s Makefile
+1398: test -u suid
+1399: test -u sdfsd
+1400: test -u Makefile
+1401: test -w toto
+1402: test -w dsfdsf
+1403: test -w norights
+1404: test -x exec
+1405: test -x Makefile
+1406: test -z 
+1407: test -z ""
+1408: test -z "dfdsfsd"
+1409: test "ab" = "ab"
+1410: test "ab" = "abc"
+1411: test "ab" != "abd"
+1412: test "ab" != "ab"
+1413: test 12 -eq 1233
+1414: test 12 -eq 12
+1415: test 12345123015623416854 -eq 412
+1416: test 1 -eq 2468532546324532132542
+1417: test 1 -ne 12
+1418: test 1 -eq sdfsd
+1419: test 32 -ne 12435
+1420: test 534543543 -ge 2452156546854685768
+1421: test 12 -ge bfdg
+1422: test 123 -ge ""
+1423: test 324 -it <sdfsd
+1424: test 12 -it 1
+1425: test 43455345435435 -le 32
+1426: echo "test fini"
+1427: ./42sh -t testfile
+1428: exit
+1429: osbuffertous;""
+1430: test
+1431: test -b
+1432: test -b sdfsd
+1433: test -b Makefile
+1434: test -b /dev/disk0
+1435: test -c /dev/disk0
+1436: test -c /dev/zero
+1437: test -c /dev/zersdfds
+1438: test -c
+1439: test -d Makefile
+1440: test -d
+1441: test -d dfdsf
+1442: test -d includes
+1443: test -e dsfdsf
+1444: test -e Makefile
+1445: test -f fdsf
+1446: test -f
+1447: test -f Makefile
+1448: test -g fsdfsd
+1449: test -g Makefile
+1450: test -g toto
+1451: test -g
+1452: test -L dsfdsf
+1453: test -L
+1454: test -L link
+1455: test -p
+1456: test -p fifo
+1457: test -r norights
+1458: test -r toto
+1459: test -S socket
+1460: test -S dsfdsf
+1461: test -S Makefile
+1462: test -s empty
+1463: test -s Makefile
+1464: test -u suid
+1465: test -u sdfsd
+1466: test -u Makefile
+1467: test -w toto
+1468: test -w dsfdsf
+1469: test -w norights
+1470: test -x exec
+1471: test -x Makefile
+1472: test -z 
+1473: test -z ""
+1474: test -z "dfdsfsd"
+1475: test "ab" = "ab"
+1476: test "ab" = "abc"
+1477: test "ab" != "abd"
+1478: test "ab" != "ab"
+1479: test 12 -eq 1233
+1480: test 12 -eq 12
+1481: test 12345123015623416854 -eq 412
+1482: test 1 -eq 2468532546324532132542
+1483: test 1 -ne 12
+1484: test 1 -eq sdfsd
+1485: test 32 -ne 12435
+1486: test 534543543 -ge 2452156546854685768
+1487: test 12 -ge bfdg
+1488: test 123 -ge ""
+1489: test 324 -it <sdfsd
+1490: test 12 -it 1
+1491: test 43455345435435 -le 32
+1492: echo "test fini"
+1493: exit
+1494: echo $HOME
+1495: ls
+1496: ~
+1497: ~/
+1498: ~/test
+1499: ~/test/Desktop
+1500: ~/42shrc
+1501: ~/42shrc
+1502: ~test
+1503: test~
+1504: ~bsiche
+1505: test/~bsiche
+1506: ~+
+1507: ~+/
+1508: /~+/
+1509: ~+/test
+1510: +~
+1511: +~/
+1512: +~/test
+1513: ~-
+1514: echo "a" "" "" "b" | cat -e
+1515: echo -a abc | cat -e
+1516: echo -x abc | cat -e
+1517: echo -- -abc abc | cat -e
+1518: echo '\a\b\c\f\n\r\t\v\\'
+1519: echo "\a\b\c\f\n\r\t\v\\"
+1520: echo \a\b\c\f\n\r\t\v\\
+1521: echo \0777 \0123 \0 '\01' "\02"
+1522: echo abc -- def
+1523: echo -- ghi
+1524: echo zzz ---
+1525: echo -- -n abc
+1526: echo abc | cat | cat | cat -e | cat -e
+1527: echo 'abc' >/tmp/pipe_redir
+1528: ls | cat -e < /tmp/pipe_redir | cat -e
+1529: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+1530: cat /tmp/pipe_redir_fd
+1531: rm -f /tmp/pipe_redir
+1532: rm -f /tmp/pipe_redir_fd
+1533: env | grep USER | wc | cat -e
+1534: echo 'echo a | ;' > /tmp/pipe_err_parsing
+1535: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1536: echo '| echo b ;' > /tmp/pipe_err_parsing
+1537: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1538: echo '|' > /tmp/pipe_err_parsing
+1539: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1540: echo '|;' > /tmp/pipe_err_parsing
+1541: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1542: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+1543: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1544: rm -f /tmp/pipe_err_parsing
+1545: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+1546: test
+1547: test -b
+1548: test -b sdfsd
+1549: test -b Makefile
+1550: test -b /dev/disk0
+1551: test -c /dev/disk0
+1552: test -c /dev/zero
+1553: test -c /dev/zersdfds
+1554: test -c
+1555: test -d Makefile
+1556: test -d
+1557: test -d dfdsf
+1558: test -d includes
+1559: test -e dsfdsf
+1560: test -e Makefile
+1561: test -f fdsf
+1562: test -f
+1563: test -f Makefile
+1564: test -g fsdfsd
+1565: test -g Makefile
+1566: test -g toto
+1567: test -g
+1568: test -L dsfdsf
+1569: test -L
+1570: test -L link
+1571: test -p
+1572: test -p fifo
+1573: test -r norights
+1574: test -r toto
+1575: test -S socket
+1576: test -S dsfdsf
+1577: test -S Makefile
+1578: test -s empty
+1579: test -s Makefile
+1580: test -u suid
+1581: test -u sdfsd
+1582: test -u Makefile
+1583: test -w toto
+1584: test -w dsfdsf
+1585: test -w norights
+1586: test -x exec
+1587: test -x Makefile
+1588: test -z 
+1589: test -z ""
+1590: test -z "dfdsfsd"
+1591: test "ab" = "ab"
+1592: test "ab" = "abc"
+1593: test "ab" != "abd"
+1594: test "ab" != "ab"
+1595: test 12 -eq 1233
+1596: test 12 -eq 12
+1597: test 12345123015623416854 -eq 412
+1598: test 1 -eq 2468532546324532132542
+1599: test 1 -ne 12
+1600: test 1 -eq sdfsd
+1601: test 32 -ne 12435
+1602: test 534543543 -ge 2452156546854685768
+1603: test 12 -ge bfdg
+1604: test 123 -ge ""
+1605: test 324 -it <sdfsd
+1606: test 12 -it 1
+1607: test 43455345435435 -le 32
+1608: "cat Makefile" 
+1609: "Unexisting"
+1610: "ls | grep include"
+1611: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+1612: "ls > cul | ls < EOF"
+1613: "cat toto"
+1614: "cat -e Makefile | grep 'CC'"
+1615: "ls /root || ls"
+1616: "ls;ls"
+1617: "ls ; ls"
+1618: "|"
+1619: ""
+1620: "&"
+1621: "&&"
+1622: "||"
+1623: ";"
+1624: ";;"
+1625: "who"
+1626: "cat << EOF\ncoucou\nsalut\nEOF"
+1627: "/bin/kill -11 0"
+1628: echo "test fini"
+1629: "cat << EOF\ncoucou\nsalut\nEOF"
+1630: "/bin/kill -11 0"
+1631: bash
+1632: "/bin/kill -11 0"
+1633: exit
+1634: echo $HOME
+1635: ls
+1636: ~
+1637: ~/
+1638: ~/test
+1639: ~/test/Desktop
+1640: ~/42shrc
+1641: ~/42shrc
+1642: ~test
+1643: test~
+1644: ~bsiche
+1645: test/~bsiche
+1646: ~+
+1647: ~+/
+1648: /~+/
+1649: ~+/test
+1650: +~
+1651: +~/
+1652: +~/test
+1653: ~-
+1654: echo "a" "" "" "b" | cat -e
+1655: echo -a abc | cat -e
+1656: echo -x abc | cat -e
+1657: echo -- -abc abc | cat -e
+1658: echo '\a\b\c\f\n\r\t\v\\'
+1659: echo "\a\b\c\f\n\r\t\v\\"
+1660: echo \a\b\c\f\n\r\t\v\\
+1661: echo \0777 \0123 \0 '\01' "\02"
+1662: echo abc -- def
+1663: echo -- ghi
+1664: echo zzz ---
+1665: echo -- -n abc
+1666: echo abc | cat | cat | cat -e | cat -e
+1667: echo 'abc' >/tmp/pipe_redir
+1668: ls | cat -e < /tmp/pipe_redir | cat -e
+1669: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+1670: cat /tmp/pipe_redir_fd
+1671: rm -f /tmp/pipe_redir
+1672: rm -f /tmp/pipe_redir_fd
+1673: env | grep USER | wc | cat -e
+1674: echo 'echo a | ;' > /tmp/pipe_err_parsing
+1675: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1676: echo '| echo b ;' > /tmp/pipe_err_parsing
+1677: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1678: echo '|' > /tmp/pipe_err_parsing
+1679: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1680: echo '|;' > /tmp/pipe_err_parsing
+1681: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1682: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+1683: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1684: rm -f /tmp/pipe_err_parsing
+1685: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+1686: test
+1687: test -b
+1688: test -b sdfsd
+1689: test -b Makefile
+1690: test -b /dev/disk0
+1691: test -c /dev/disk0
+1692: test -c /dev/zero
+1693: test -c /dev/zersdfds
+1694: test -c
+1695: test -d Makefile
+1696: test -d
+1697: test -d dfdsf
+1698: test -d includes
+1699: test -e dsfdsf
+1700: test -e Makefile
+1701: test -f fdsf
+1702: test -f
+1703: test -f Makefile
+1704: test -g fsdfsd
+1705: test -g Makefile
+1706: test -g toto
+1707: test -g
+1708: test -L dsfdsf
+1709: test -L
+1710: test -L link
+1711: test -p
+1712: test -p fifo
+1713: test -r norights
+1714: test -r toto
+1715: test -S socket
+1716: test -S dsfdsf
+1717: test -S Makefile
+1718: test -s empty
+1719: test -s Makefile
+1720: test -u suid
+1721: test -u sdfsd
+1722: test -u Makefile
+1723: test -w toto
+1724: test -w dsfdsf
+1725: test -w norights
+1726: test -x exec
+1727: test -x Makefile
+1728: test -z 
+1729: test -z ""
+1730: test -z "dfdsfsd"
+1731: test "ab" = "ab"
+1732: test "ab" = "abc"
+1733: test "ab" != "abd"
+1734: test "ab" != "ab"
+1735: test 12 -eq 1233
+1736: test 12 -eq 12
+1737: test 12345123015623416854 -eq 412
+1738: test 1 -eq 2468532546324532132542
+1739: test 1 -ne 12
+1740: test 1 -eq sdfsd
+1741: test 32 -ne 12435
+1742: test 534543543 -ge 2452156546854685768
+1743: test 12 -ge bfdg
+1744: test 123 -ge ""
+1745: test 324 -it <sdfsd
+1746: test 12 -it 1
+1747: test 43455345435435 -le 32
+1748: "cat Makefile" 
+1749: "Unexisting"
+1750: "ls | grep include"
+1751: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+1752: "ls > cul | ls < EOF"
+1753: "cat toto"
+1754: "cat -e Makefile | grep 'CC'"
+1755: "ls /root || ls"
+1756: "ls;ls"
+1757: "ls ; ls"
+1758: "|"
+1759: ""
+1760: "&"
+1761: "&&"
+1762: "||"
+1763: ";"
+1764: ";;"
+1765: "who"
+1766: "cat << EOF\ncoucou\nsalut\nEOF"
+1767: "/bin/kill -11 0"
+1768: echo "test fini"
+1769: exit
+1770: echo $HOME
+1771: ls
+1772: ~
+1773: ~/
+1774: ~/test
+1775: ~/test/Desktop
+1776: ~/42shrc
+1777: ~/42shrc
+1778: ~test
+1779: test~
+1780: ~bsiche
+1781: test/~bsiche
+1782: ~+
+1783: ~+/
+1784: /~+/
+1785: ~+/test
+1786: +~
+1787: +~/
+1788: +~/test
+1789: ~-
+1790: echo "a" "" "" "b" | cat -e
+1791: echo -a abc | cat -e
+1792: echo -x abc | cat -e
+1793: echo -- -abc abc | cat -e
+1794: echo '\a\b\c\f\n\r\t\v\\'
+1795: echo "\a\b\c\f\n\r\t\v\\"
+1796: echo \a\b\c\f\n\r\t\v\\
+1797: echo \0777 \0123 \0 '\01' "\02"
+1798: echo abc -- def
+1799: echo -- ghi
+1800: echo zzz ---
+1801: echo -- -n abc
+1802: echo abc | cat | cat | cat -e | cat -e
+1803: echo 'abc' >/tmp/pipe_redir
+1804: ls | cat -e < /tmp/pipe_redir | cat -e
+1805: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+1806: cat /tmp/pipe_redir_fd
+1807: rm -f /tmp/pipe_redir
+1808: rm -f /tmp/pipe_redir_fd
+1809: env | grep USER | wc | cat -e
+1810: echo 'echo a | ;' > /tmp/pipe_err_parsing
+1811: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1812: echo '| echo b ;' > /tmp/pipe_err_parsing
+1813: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1814: echo '|' > /tmp/pipe_err_parsing
+1815: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1816: echo '|;' > /tmp/pipe_err_parsing
+1817: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1818: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+1819: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1820: rm -f /tmp/pipe_err_parsing
+1821: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+1822: test
+1823: test -b
+1824: test -b sdfsd
+1825: test -b Makefile
+1826: test -b /dev/disk0
+1827: test -c /dev/disk0
+1828: test -c /dev/zero
+1829: test -c /dev/zersdfds
+1830: test -c
+1831: test -d Makefile
+1832: test -d
+1833: test -d dfdsf
+1834: test -d includes
+1835: test -e dsfdsf
+1836: test -e Makefile
+1837: test -f fdsf
+1838: test -f
+1839: test -f Makefile
+1840: test -g fsdfsd
+1841: test -g Makefile
+1842: test -g toto
+1843: test -g
+1844: test -L dsfdsf
+1845: test -L
+1846: test -L link
+1847: test -p
+1848: test -p fifo
+1849: test -r norights
+1850: test -r toto
+1851: test -S socket
+1852: test -S dsfdsf
+1853: test -S Makefile
+1854: test -s empty
+1855: test -s Makefile
+1856: test -u suid
+1857: test -u sdfsd
+1858: test -u Makefile
+1859: test -w toto
+1860: test -w dsfdsf
+1861: test -w norights
+1862: test -x exec
+1863: test -x Makefile
+1864: test -z 
+1865: test -z ""
+1866: test -z "dfdsfsd"
+1867: test "ab" = "ab"
+1868: test "ab" = "abc"
+1869: test "ab" != "abd"
+1870: test "ab" != "ab"
+1871: test 12 -eq 1233
+1872: test 12 -eq 12
+1873: test 12345123015623416854 -eq 412
+1874: test 1 -eq 2468532546324532132542
+1875: test 1 -ne 12
+1876: test 1 -eq sdfsd
+1877: test 32 -ne 12435
+1878: test 534543543 -ge 2452156546854685768
+1879: test 12 -ge bfdg
+1880: test 123 -ge ""
+1881: test 324 -it <sdfsd
+1882: test 12 -it 1
+1883: test 43455345435435 -le 32
+1884: "cat Makefile" 
+1885: "Unexisting"
+1886: "ls | grep include"
+1887: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+1888: "ls > cul | ls < EOF"
+1889: "cat toto"
+1890: "cat -e Makefile | grep 'CC'"
+1891: "ls /root || ls"
+1892: "ls;ls"
+1893: "ls ; ls"
+1894: "|"
+1895: ""
+1896: "&"
+1897: "&&"
+1898: "||"
+1899: ";"
+1900: ";;"
+1901: "who"
+1902: "cat << EOF\ncoucou\nsalut\nEOF"
+1903: "/bin/kill -11 0"
+1904: echo "test fini"
+1905: echo "test fini"
+1906: exit
+1907: echo $HOME
+1908: ls
+1909: ~
+1910: ~/
+1911: ~/test
+1912: ~/test/Desktop
+1913: ~/42shrc
+1914: ~/42shrc
+1915: ~test
+1916: test~
+1917: ~bsiche
+1918: test/~bsiche
+1919: ~+
+1920: ~+/
+1921: /~+/
+1922: ~+/test
+1923: +~
+1924: +~/
+1925: +~/test
+1926: ~-
+1927: echo "a" "" "" "b" | cat -e
+1928: echo -a abc | cat -e
+1929: echo -x abc | cat -e
+1930: echo -- -abc abc | cat -e
+1931: echo '\a\b\c\f\n\r\t\v\\'
+1932: echo "\a\b\c\f\n\r\t\v\\"
+1933: echo \a\b\c\f\n\r\t\v\\
+1934: echo \0777 \0123 \0 '\01' "\02"
+1935: echo abc -- def
+1936: echo -- ghi
+1937: echo zzz ---
+1938: echo -- -n abc
+1939: echo abc | cat | cat | cat -e | cat -e
+1940: echo 'abc' >/tmp/pipe_redir
+1941: ls | cat -e < /tmp/pipe_redir | cat -e
+1942: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+1943: cat /tmp/pipe_redir_fd
+1944: rm -f /tmp/pipe_redir
+1945: rm -f /tmp/pipe_redir_fd
+1946: env | grep USER | wc | cat -e
+1947: echo 'echo a | ;' > /tmp/pipe_err_parsing
+1948: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1949: echo '| echo b ;' > /tmp/pipe_err_parsing
+1950: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1951: echo '|' > /tmp/pipe_err_parsing
+1952: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1953: echo '|;' > /tmp/pipe_err_parsing
+1954: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1955: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+1956: /tmp/bin/42sh < /tmp/pipe_err_parsing
+1957: rm -f /tmp/pipe_err_parsing
+1958: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+1959: test
+1960: test -b
+1961: test -b sdfsd
+1962: test -b Makefile
+1963: test -b /dev/disk0
+1964: test -c /dev/disk0
+1965: test -c /dev/zero
+1966: test -c /dev/zersdfds
+1967: test -c
+1968: test -d Makefile
+1969: test -d
+1970: test -d dfdsf
+1971: test -d includes
+1972: test -e dsfdsf
+1973: test -e Makefile
+1974: test -f fdsf
+1975: test -f
+1976: test -f Makefile
+1977: test -g fsdfsd
+1978: test -g Makefile
+1979: test -g toto
+1980: test -g
+1981: test -L dsfdsf
+1982: test -L
+1983: test -L link
+1984: test -p
+1985: test -p fifo
+1986: test -r norights
+1987: test -r toto
+1988: test -S socket
+1989: test -S dsfdsf
+1990: test -S Makefile
+1991: test -s empty
+1992: test -s Makefile
+1993: test -u suid
+1994: test -u sdfsd
+1995: test -u Makefile
+1996: test -w toto
+1997: test -w dsfdsf
+1998: test -w norights
+1999: test -x exec
+2000: test -x Makefile
+2001: test -z 
+2002: test -z ""
+2003: test -z "dfdsfsd"
+2004: test "ab" = "ab"
+2005: test "ab" = "abc"
+2006: test "ab" != "abd"
+2007: test "ab" != "ab"
+2008: test 12 -eq 1233
+2009: test 12 -eq 12
+2010: test 12345123015623416854 -eq 412
+2011: test 1 -eq 2468532546324532132542
+2012: test 1 -ne 12
+2013: test 1 -eq sdfsd
+2014: test 32 -ne 12435
+2015: test 534543543 -ge 2452156546854685768
+2016: test 12 -ge bfdg
+2017: test 123 -ge ""
+2018: test 324 -it <sdfsd
+2019: test 12 -it 1
+2020: test 43455345435435 -le 32
+2021: "cat Makefile" 
+2022: "Unexisting"
+2023: "ls | grep include"
+2024: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+2025: "ls > cul | ls < EOF"
+2026: "cat toto"
+2027: "cat -e Makefile | grep 'CC'"
+2028: "ls /root || ls"
+2029: "ls;ls"
+2030: "ls ; ls"
+2031: "|"
+2032: ""
+2033: "&"
+2034: "&&"
+2035: "||"
+2036: ";"
+2037: ";;"
+2038: "who"
+2039: "cat << EOF\ncoucou\nsalut\nEOF"
+2040: "/bin/kill -11 0"
+2041: ```^~`76`76`876`654`4879--0]-`-09`796879`685`54`587696579`069`670`78]`-09`09-8`08-7`86`564`5634`3246`236`76`55`78668`5678`456`74`
+2042: ()#*#@*&)@#$&)*@#$&^)@#$&)&)@#$&*)(@$#*__*@#_@#=/=*=/**/=
+2043: ""
+2044: ''
+2045: "" ""
+2046: echo kk ""
+2047: ls kk ""
+2048: .
+2049: ..
+2050: /*
+2051: /=
+2052: =&
+2053: __-
+2054: -
+2055: \`
+2056: /`
+2057: ~/
+2058: ~/~/~/~/~/~
+2059: ~-
+2060: <>
+2061: `>'
+2062: `>>'
+2063: ><><><><><><><><><
+2064: `<'
+2065: {}{}
+2066: ${}${}${}${}${}${}
+2067: "${}"
+2068: '${}'
+2069: '${|}'```
+2070: `test -d ${HOME} && echo ok || echo wrong`
+2071: Zone de message
+2072: Envoyer un message à Marc
+2073: echo "test fini"
+2074: echo "test fini"
+2075: exit
+2076: echo $HOME
+2077: ls
+2078: ~
+2079: ~/
+2080: ~/test
+2081: ~/test/Desktop
+2082: ~/42shrc
+2083: ~/42shrc
+2084: ~test
+2085: test~
+2086: ~bsiche
+2087: test/~bsiche
+2088: ~+
+2089: ~+/
+2090: /~+/
+2091: ~+/test
+2092: +~
+2093: +~/
+2094: +~/test
+2095: ~-
+2096: echo "a" "" "" "b" | cat -e
+2097: echo -a abc | cat -e
+2098: echo -x abc | cat -e
+2099: echo -- -abc abc | cat -e
+2100: echo '\a\b\c\f\n\r\t\v\\'
+2101: echo "\a\b\c\f\n\r\t\v\\"
+2102: echo \a\b\c\f\n\r\t\v\\
+2103: echo \0777 \0123 \0 '\01' "\02"
+2104: echo abc -- def
+2105: echo -- ghi
+2106: echo zzz ---
+2107: echo -- -n abc
+2108: echo abc | cat | cat | cat -e | cat -e
+2109: echo 'abc' >/tmp/pipe_redir
+2110: ls | cat -e < /tmp/pipe_redir | cat -e
+2111: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+2112: cat /tmp/pipe_redir_fd
+2113: rm -f /tmp/pipe_redir
+2114: rm -f /tmp/pipe_redir_fd
+2115: env | grep USER | wc | cat -e
+2116: echo 'echo a | ;' > /tmp/pipe_err_parsing
+2117: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2118: echo '| echo b ;' > /tmp/pipe_err_parsing
+2119: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2120: echo '|' > /tmp/pipe_err_parsing
+2121: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2122: echo '|;' > /tmp/pipe_err_parsing
+2123: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2124: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+2125: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2126: rm -f /tmp/pipe_err_parsing
+2127: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+2128: test
+2129: test -b
+2130: test -b sdfsd
+2131: test -b Makefile
+2132: test -b /dev/disk0
+2133: test -c /dev/disk0
+2134: test -c /dev/zero
+2135: test -c /dev/zersdfds
+2136: test -c
+2137: test -d Makefile
+2138: test -d
+2139: test -d dfdsf
+2140: test -d includes
+2141: test -e dsfdsf
+2142: test -e Makefile
+2143: test -f fdsf
+2144: test -f
+2145: test -f Makefile
+2146: test -g fsdfsd
+2147: test -g Makefile
+2148: test -g toto
+2149: test -g
+2150: test -L dsfdsf
+2151: test -L
+2152: test -L link
+2153: test -p
+2154: test -p fifo
+2155: test -r norights
+2156: test -r toto
+2157: test -S socket
+2158: test -S dsfdsf
+2159: test -S Makefile
+2160: test -s empty
+2161: test -s Makefile
+2162: test -u suid
+2163: test -u sdfsd
+2164: test -u Makefile
+2165: test -w toto
+2166: test -w dsfdsf
+2167: test -w norights
+2168: test -x exec
+2169: test -x Makefile
+2170: test -z 
+2171: test -z ""
+2172: test -z "dfdsfsd"
+2173: test "ab" = "ab"
+2174: test "ab" = "abc"
+2175: test "ab" != "abd"
+2176: test "ab" != "ab"
+2177: test 12 -eq 1233
+2178: test 12 -eq 12
+2179: test 12345123015623416854 -eq 412
+2180: test 1 -eq 2468532546324532132542
+2181: test 1 -ne 12
+2182: test 1 -eq sdfsd
+2183: test 32 -ne 12435
+2184: test 534543543 -ge 2452156546854685768
+2185: test 12 -ge bfdg
+2186: test 123 -ge ""
+2187: test 324 -it <sdfsd
+2188: test 12 -it 1
+2189: test 43455345435435 -le 32
+2190: "cat Makefile" 
+2191: "Unexisting"
+2192: "ls | grep include"
+2193: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+2194: "ls > cul | ls < EOF"
+2195: "cat toto"
+2196: "cat -e Makefile | grep 'CC'"
+2197: "ls /root || ls"
+2198: "ls;ls"
+2199: "ls ; ls"
+2200: "|"
+2201: ""
+2202: "&"
+2203: "&&"
+2204: "||"
+2205: ";"
+2206: ";;"
+2207: "who"
+2208: "cat << EOF\ncoucou\nsalut\nEOF"
+2209: "/bin/kill -11 0"
+2210: ```^~`76`76`876`654`4879--0]-`-09`796879`685`54`587696579`069`670`78]`-09`09-8`08-7`86`564`5634`3246`236`76`55`78668`5678`456`74`
+2211: ()#*#@*&)@#$&)*@#$&^)@#$&)&)@#$&*)(@$#*__*@#_@#=/=*=/**/=
+2212: ""
+2213: ''
+2214: "" ""
+2215: echo kk ""
+2216: ls kk ""
+2217: .
+2218: ..
+2219: /*
+2220: /=
+2221: =&
+2222: __-
+2223: -
+2224: \`
+2225: /`
+2226: ~/
+2227: ~/~/~/~/~/~
+2228: ~-
+2229: <>
+2230: `>'
+2231: `>>'
+2232: ><><><><><><><><><
+2233: `<'
+2234: {}{}
+2235: ${}${}${}${}${}${}
+2236: "${}"
+2237: '${}'
+2238: '${|}'```
+2239: `test -d ${HOME} && echo ok || echo wrong`
+2240: Zone de message
+2241: Envoyer un message à Marc
+2242: echo "test fini"
+2243: echo "cat <<EOF\n" | ./42sh
+2244: exit
+2245: `test -d ${HOME} && echo ok || echo wrong`
+2246: `test -d ${HOME} && echo ok || echo wrong`[D[D[Dtest -d ${HOME} && echo ok || echo wrong
+2247: test -d ${HOME} && echo ok || echo wrong
+2248: test -d ${HOME} && echo ok || echo wrong
+2249: test -d ${HOME} && echo ok || echo wrong
+2250: test -d ${HOME} && echo ok || echo wrong
+2251: sdf
+2252: dsf
+2253: test -d ${HOME} && echo ok || echo wrong
+2254: test -d ${HOME} && echo ok || echo wrong
+2255: test -d ${HOME} && echo ok || echo wrong
+2256: test -d ${HOME} && echo ok || echo wrong
+2257: test -d ${HOME} && echo ok || echo wrong
+2258: test -d ${HOME} && echo ok || echo wrongtest -d ${HOME} && echo ok || echo wrongtest -d ${HOME} && echo ok || echo wrong
+2259: test -d ${HOME} && echo ok || echo wrong
+2260: exi
+2261: exit
+2262: test -d ${HOME} && echo ok || echo wrong
+2263: test -d ${HOME} && echo ok || echo wrong
+2264: test -d ${HOME} && echo ok || echo wrong
+2265: test -d ${HOME} && echo ok || echo wrong
+2266: test -d ${HOME} && echo ok || echo wrong
+2267: test -d ${HOME} && echo ok || echo wrong
+2268: exit
+2269: ls
+2270: test -d ${HOME} && echo ok || echo wrong
+2271: unset HOME
+2272: test -d ${HOME} && echo ok || echo wrong
+2273: test -d ${HOME} && echo ok || echo wrong
+2274: test -d ${HOME} && echo ok || echo wrong
+2275: test -d ${HOME} && echo ok || echo wrong
+2276: test -d ${HOME} && echo ok || echo wrong
+2277: test -d ${HOME} && echo ok || echo wrong
+2278: test -d ${HOME} && echo ok || echo wrong
+2279: test -d ${HOME} && echo ok || echo wrong
+2280: test -d ${HOME} && echo ok || echo wrong
+2281: test -d ${HOME} && echo ok || echo wrong
+2282: test -d ${HOME} && echo ok || echo wrong
+2283: test -d ${HOME} && echo ok || echo wrongtest -d ${HOME} && echo ok || echo wrong
+2284: test -d ${HOME} && echo ok || echo wrong
+2285: exit
+2286: unset HOME
+2287: test -d ${HOME} && echo ok || echo wrong
+2288: test -d ${HOME} && echo ok || echo wrong
+2289: test -d ${HOME} && echo ok || echo wrong
+2290: test -d ${HOME} && echo ok || echo wrong
+2291: test -d ${HOME} && echo ok || echo wrong
+2292: test -d ${HOME} && echo ok || echo wrong
+2293: test -d ${HOME} && echo ok || echo wrong
+2294: test -d ${HOME} && echo ok || echo wrong
+2295: test -d ${HOME} && echo ok || echo wrong
+2296: test -d ${HOME} && echo ok || echo wrong
+2297: exit
+2298: /Network/
+2299: ls
+2300: ls /Library/Audio/MIDI\ Drivers/
+2301: ls /Library/
+2302: ls /Library
+2303: ls /Library/Application\ Support/
+2304: exit
+2305: echo "Enlarged you\\'re penis for '$'100\\\\month with \"$SOMEBRAND's\" new product \\!"
+2306: exit
+2307: \\\\
+2308: echo \\\\
+2309: echo "Enlarged you\\'re penis for '$'100\\\\month with \"$SOMEBRAND's\" new product \\!"
+2310: exit
+2311: exit
+2312: echo "Enlarged you\\'re penis for '$'100\\\\month with \"$SOMEBRAND's\" new product \\!"
+2313: exit
+2314: cd ..
+2315: !@
+2316: rm -f /tmp/pipe_err_parsing
+2317: ![
+2318: exit
+2319: !?
+2320: echo "lol"
+2321: !?
+2322: exit
+2323: !?
+2324: exit
+2325: echo "lol"
+2326: !?
+2327: echo "lol"
+2328: exit
+2329: unset HOME && cd / && cd ~; pwd
+2330: exit
+2331: unset HOME && cd / && cd ~; pwd
+2332: exit
+2333: echo $HOME
+2334: ls
+2335: ~
+2336: ~/
+2337: ~/test
+2338: ~/test/Desktop
+2339: ~/42shrc
+2340: ~/42shrc
+2341: ~test
+2342: test~
+2343: ~bsiche
+2344: test/~bsiche
+2345: ~+
+2346: ~+/
+2347: /~+/
+2348: ~+/test
+2349: +~
+2350: +~/
+2351: +~/test
+2352: ~-
+2353: echo "a" "" "" "b" | cat -e
+2354: echo -a abc | cat -e
+2355: echo -x abc | cat -e
+2356: echo -- -abc abc | cat -e
+2357: echo '\a\b\c\f\n\r\t\v\\'
+2358: echo "\a\b\c\f\n\r\t\v\\"
+2359: echo \a\b\c\f\n\r\t\v\\
+2360: echo \0777 \0123 \0 '\01' "\02"
+2361: echo abc -- def
+2362: echo -- ghi
+2363: echo zzz ---
+2364: echo -- -n abc
+2365: echo abc | cat | cat | cat -e | cat -e
+2366: echo 'abc' >/tmp/pipe_redir
+2367: ls | cat -e < /tmp/pipe_redir | cat -e
+2368: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+2369: cat /tmp/pipe_redir_fd
+2370: rm -f /tmp/pipe_redir
+2371: rm -f /tmp/pipe_redir_fd
+2372: env | grep USER | wc | cat -e
+2373: echo 'echo a | ;' > /tmp/pipe_err_parsing
+2374: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2375: echo '| echo b ;' > /tmp/pipe_err_parsing
+2376: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2377: echo '|' > /tmp/pipe_err_parsing
+2378: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2379: echo '|;' > /tmp/pipe_err_parsing
+2380: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2381: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+2382: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2383: rm -f /tmp/pipe_err_parsing
+2384: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+2385: test
+2386: test -b
+2387: test -b sdfsd
+2388: test -b Makefile
+2389: test -b /dev/disk0
+2390: test -c /dev/disk0
+2391: test -c /dev/zero
+2392: test -c /dev/zersdfds
+2393: test -c
+2394: test -d Makefile
+2395: test -d
+2396: test -d dfdsf
+2397: test -d includes
+2398: test -e dsfdsf
+2399: test -e Makefile
+2400: test -f fdsf
+2401: test -f
+2402: test -f Makefile
+2403: test -g fsdfsd
+2404: test -g Makefile
+2405: test -g toto
+2406: test -g
+2407: test -L dsfdsf
+2408: test -L
+2409: test -L link
+2410: test -p
+2411: test -p fifo
+2412: test -r norights
+2413: test -r toto
+2414: test -S socket
+2415: test -S dsfdsf
+2416: test -S Makefile
+2417: test -s empty
+2418: test -s Makefile
+2419: test -u suid
+2420: test -u sdfsd
+2421: test -u Makefile
+2422: test -w toto
+2423: test -w dsfdsf
+2424: test -w norights
+2425: test -x exec
+2426: test -x Makefile
+2427: test -z 
+2428: test -z ""
+2429: test -z "dfdsfsd"
+2430: test "ab" = "ab"
+2431: test "ab" = "abc"
+2432: test "ab" != "abd"
+2433: test "ab" != "ab"
+2434: test 12 -eq 1233
+2435: test 12 -eq 12
+2436: test 12345123015623416854 -eq 412
+2437: test 1 -eq 2468532546324532132542
+2438: test 1 -ne 12
+2439: test 1 -eq sdfsd
+2440: test 32 -ne 12435
+2441: test 534543543 -ge 2452156546854685768
+2442: test 12 -ge bfdg
+2443: test 123 -ge ""
+2444: test 324 -it <sdfsd
+2445: test 12 -it 1
+2446: test 43455345435435 -le 32
+2447: "cat Makefile" 
+2448: "Unexisting"
+2449: "ls | grep include"
+2450: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+2451: "ls > cul | ls < EOF"
+2452: "cat toto"
+2453: "cat -e Makefile | grep 'CC'"
+2454: "ls /root || ls"
+2455: "ls;ls"
+2456: "ls ; ls"
+2457: "|"
+2458: ""
+2459: "&"
+2460: "&&"
+2461: "||"
+2462: ";"
+2463: ";;"
+2464: "who"
+2465: "cat << EOF\ncoucou\nsalut\nEOF"
+2466: "/bin/kill -11 0"
+2467: ```^~`76`76`876`654`4879--0]-`-09`796879`685`54`587696579`069`670`78]`-09`09-8`08-7`86`564`5634`3246`236`76`55`78668`5678`456`74`
+2468: ()#*#@*&)@#$&)*@#$&^)@#$&)&)@#$&*)(@$#*__*@#_@#=/=*=/**/=
+2469: ""
+2470: ''
+2471: "" ""
+2472: echo kk ""
+2473: ls kk ""
+2474: .
+2475: ..
+2476: /*
+2477: /=
+2478: =&
+2479: __-
+2480: -
+2481: \`
+2482: /`
+2483: ~/
+2484: ~/~/~/~/~/~
+2485: ~-
+2486: <>
+2487: `>'
+2488: `>>'
+2489: ><><><><><><><><><
+2490: `<'
+2491: {}{}
+2492: ${}${}${}${}${}${}
+2493: "${}"
+2494: '${}'
+2495: '${|}'```
+2496: `test -d ${HOME} && echo ok || echo wrong`
+2497: Zone de message
+2498: $$$$$$$$
+2499: $0$0$0$0$0$0$0$0$0
+2500: $_$_$_$_$_$_
+2501: ~-+-+-+-+-+-
+2502: $_$_$_$_$_$_
+2503: Envoyer un message à Marc
+2504: echo "test fini"
+2505: exit
+2506: echo "( ͡° ͜ʖ ͡°)"
+2507: exit
+2508: echo ( ͡° ͜ʖ ͡°)
+2509: exit
+2510: exit
+2511: ( ͡° ͜ʖ ͡°)
+2512: exit
+2513: wxit
+2514: exit
+2515: echo 'foo\
+2516: bar ' | cat -e
+2517: exit
+2518: echo 'foo\\
+2519: bar' | cat -e
+2520: exit
+2521: echo $HOME
+2522: ls
+2523: ~
+2524: ~/
+2525: ~/test
+2526: ~/test/Desktop
+2527: ~/42shrc
+2528: ~/42shrc
+2529: ~test
+2530: test~
+2531: ~bsiche
+2532: test/~bsiche
+2533: ~+
+2534: ~+/
+2535: /~+/
+2536: ~+/test
+2537: +~
+2538: +~/
+2539: +~/test
+2540: ~-
+2541: echo "a" "" "" "b" | cat -e
+2542: echo -a abc | cat -e
+2543: echo -x abc | cat -e
+2544: echo -- -abc abc | cat -e
+2545: echo '\a\b\c\f\n\r\t\v\\'
+2546: echo "\a\b\c\f\n\r\t\v\\"
+2547: echo \a\b\c\f\n\r\t\v\\
+2548: echo \0777 \0123 \0 '\01' "\02"
+2549: echo abc -- def
+2550: echo -- ghi
+2551: echo zzz ---
+2552: echo -- -n abc
+2553: echo abc | cat | cat | cat -e | cat -e
+2554: echo 'abc' >/tmp/pipe_redir
+2555: ls | cat -e < /tmp/pipe_redir | cat -e
+2556: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+2557: cat /tmp/pipe_redir_fd
+2558: rm -f /tmp/pipe_redir
+2559: rm -f /tmp/pipe_redir_fd
+2560: env | grep USER | wc | cat -e
+2561: echo 'echo a | ;' > /tmp/pipe_err_parsing
+2562: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2563: echo '| echo b ;' > /tmp/pipe_err_parsing
+2564: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2565: echo '|' > /tmp/pipe_err_parsing
+2566: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2567: echo '|;' > /tmp/pipe_err_parsing
+2568: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2569: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+2570: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2571: rm -f /tmp/pipe_err_parsing
+2572: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+2573: test
+2574: test -b
+2575: test -b sdfsd
+2576: test -b Makefile
+2577: test -b /dev/disk0
+2578: test -c /dev/disk0
+2579: test -c /dev/zero
+2580: test -c /dev/zersdfds
+2581: test -c
+2582: test -d Makefile
+2583: test -d
+2584: test -d dfdsf
+2585: test -d includes
+2586: test -e dsfdsf
+2587: test -e Makefile
+2588: test -f fdsf
+2589: test -f
+2590: test -f Makefile
+2591: test -g fsdfsd
+2592: test -g Makefile
+2593: test -g toto
+2594: test -g
+2595: test -L dsfdsf
+2596: test -L
+2597: test -L link
+2598: test -p
+2599: test -p fifo
+2600: test -r norights
+2601: test -r toto
+2602: test -S socket
+2603: test -S dsfdsf
+2604: test -S Makefile
+2605: test -s empty
+2606: test -s Makefile
+2607: test -u suid
+2608: test -u sdfsd
+2609: test -u Makefile
+2610: test -w toto
+2611: test -w dsfdsf
+2612: test -w norights
+2613: test -x exec
+2614: test -x Makefile
+2615: test -z 
+2616: test -z ""
+2617: test -z "dfdsfsd"
+2618: test "ab" = "ab"
+2619: test "ab" = "abc"
+2620: test "ab" != "abd"
+2621: test "ab" != "ab"
+2622: test 12 -eq 1233
+2623: test 12 -eq 12
+2624: test 12345123015623416854 -eq 412
+2625: test 1 -eq 2468532546324532132542
+2626: test 1 -ne 12
+2627: test 1 -eq sdfsd
+2628: test 32 -ne 12435
+2629: test 534543543 -ge 2452156546854685768
+2630: test 12 -ge bfdg
+2631: test 123 -ge ""
+2632: test 324 -it <sdfsd
+2633: test 12 -it 1
+2634: test 43455345435435 -le 32
+2635: "cat Makefile" 
+2636: "Unexisting"
+2637: "ls | grep include"
+2638: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+2639: "ls > cul | ls < EOF"
+2640: "cat toto"
+2641: "cat -e Makefile | grep 'CC'"
+2642: "ls /root || ls"
+2643: "ls;ls"
+2644: "ls ; ls"
+2645: "|"
+2646: ""
+2647: "&"
+2648: "&&"
+2649: "||"
+2650: ";"
+2651: ";;"
+2652: "who"
+2653: "cat << EOF\ncoucou\nsalut\nEOF"
+2654: "/bin/kill -11 0"
+2655: ```^~`76`76`876`654`4879--0]-`-09`796879`685`54`587696579`069`670`78]`-09`09-8`08-7`86`564`5634`3246`236`76`55`78668`5678`456`74`
+2656: ()#*#@*&)@#$&)*@#$&^)@#$&)&)@#$&*)(@$#*__*@#_@#=/=*=/**/=
+2657: ""
+2658: ''
+2659: "" ""
+2660: echo kk ""
+2661: ls kk ""
+2662: .
+2663: ..
+2664: /*
+2665: /=
+2666: =&
+2667: __-
+2668: -
+2669: \`
+2670: /`
+2671: ~/
+2672: ~/~/~/~/~/~
+2673: ~-
+2674: <>
+2675: `>'
+2676: `>>'
+2677: ><><><><><><><><><
+2678: `<'
+2679: {}{}
+2680: ${}${}${}${}${}${}
+2681: "${}"
+2682: '${}'
+2683: '${|}'```
+2684: `test -d ${HOME} && echo ok || echo wrong`
+2685: Zone de message
+2686: $$$$$$$$
+2687: $0$0$0$0$0$0$0$0$0
+2688: $_$_$_$_$_$_
+2689: ~-+-+-+-+-+-
+2690: $_$_$_$_$_$_
+2691: $?$_$!$!$!
+2692: "$$$$$$$$"
+2693: "'$0$0$0$0$0$0$0$0$0"
+2694: "$_$_$_$_$_$_"
+2695: "$?$_$!$!$!"
+2696: ${$:-$}$
+2697: "${$:-$}$"
+2698: echo "test fini"
+2699: exit
+2700: exit
+2701: echo 'echo a | ;' > /tmp/pipe_err_parsing
+2702: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2703: echo '| echo b ;' > /tmp/pipe_err_parsing
+2704: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2705: echo '|' > /tmp/pipe_err_parsing
+2706: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2707: echo '|;' > /tmp/pipe_err_parsing
+2708: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2709: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+2710: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2711: rm -f /tmp/pipe_err_parsing
+2712: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+2713: test
+2714: test -b
+2715: test -b sdfsd
+2716: test -b Makefile
+2717: test -b /dev/disk0
+2718: test -c /dev/disk0
+2719: test -c /dev/zero
+2720: test -c /dev/zersdfds
+2721: test -c
+2722: test -d Makefile
+2723: test -d
+2724: test -d dfdsf
+2725: test -d includes
+2726: test -e dsfdsf
+2727: test -e Makefile
+2728: test -f fdsf
+2729: test -f
+2730: test -f Makefile
+2731: test -g fsdfsd
+2732: test -g Makefile
+2733: test -g toto
+2734: test -g
+2735: test -L dsfdsf
+2736: test -L
+2737: test -L link
+2738: test -p
+2739: test -p fifo
+2740: test -r norights
+2741: test -r toto
+2742: test -S socket
+2743: test -S dsfdsf
+2744: test -S Makefile
+2745: test -s empty
+2746: test -s Makefile
+2747: test -u suid
+2748: test -u sdfsd
+2749: test -u Makefile
+2750: test -w toto
+2751: test -w dsfdsf
+2752: test -w norights
+2753: test -x exec
+2754: test -x Makefile
+2755: test -z 
+2756: test -z ""
+2757: test -z "dfdsfsd"
+2758: test "ab" = "ab"
+2759: test "ab" = "abc"
+2760: test "ab" != "abd"
+2761: test "ab" != "ab"
+2762: test 12 -eq 1233
+2763: test 12 -eq 12
+2764: test 12345123015623416854 -eq 412
+2765: test 1 -eq 2468532546324532132542
+2766: test 1 -ne 12
+2767: test 1 -eq sdfsd
+2768: test 32 -ne 12435
+2769: test 534543543 -ge 2452156546854685768
+2770: test 12 -ge bfdg
+2771: test 123 -ge ""
+2772: test 324 -it <sdfsd
+2773: test 12 -it 1
+2774: test 43455345435435 -le 32
+2775: echo "test fini"
+2776: exi
+2777: exit
+2778: echo $HOME
+2779: ls
+2780: ~
+2781: ~/
+2782: ~/test
+2783: ~/test/Desktop
+2784: ~/42shrc
+2785: ~/42shrc
+2786: ~test
+2787: test~
+2788: ~bsiche
+2789: test/~bsiche
+2790: ~+
+2791: ~+/
+2792: /~+/
+2793: ~+/test
+2794: +~
+2795: +~/
+2796: +~/test
+2797: ~-
+2798: echo "a" "" "" "b" | cat -e
+2799: echo -a abc | cat -e
+2800: echo -x abc | cat -e
+2801: echo -- -abc abc | cat -e
+2802: echo '\a\b\c\f\n\r\t\v\\'
+2803: echo "\a\b\c\f\n\r\t\v\\"
+2804: echo \a\b\c\f\n\r\t\v\\
+2805: echo \0777 \0123 \0 '\01' "\02"
+2806: echo abc -- def
+2807: echo -- ghi
+2808: echo zzz ---
+2809: echo -- -n abc
+2810: echo abc | cat | cat | cat -e | cat -e
+2811: echo 'abc' >/tmp/pipe_redir
+2812: ls | cat -e < /tmp/pipe_redir | cat -e
+2813: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+2814: cat /tmp/pipe_redir_fd
+2815: rm -f /tmp/pipe_redir
+2816: rm -f /tmp/pipe_redir_fd
+2817: env | grep USER | wc | cat -e
+2818: echo 'echo a | ;' > /tmp/pipe_err_parsing
+2819: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2820: echo '| echo b ;' > /tmp/pipe_err_parsing
+2821: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2822: echo '|' > /tmp/pipe_err_parsing
+2823: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2824: echo '|;' > /tmp/pipe_err_parsing
+2825: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2826: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+2827: /tmp/bin/42sh < /tmp/pipe_err_parsing
+2828: rm -f /tmp/pipe_err_parsing
+2829: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+2830: test
+2831: test -b
+2832: test -b sdfsd
+2833: test -b Makefile
+2834: test -b /dev/disk0
+2835: test -c /dev/disk0
+2836: test -c /dev/zero
+2837: test -c /dev/zersdfds
+2838: test -c
+2839: test -d Makefile
+2840: test -d
+2841: test -d dfdsf
+2842: test -d includes
+2843: test -e dsfdsf
+2844: test -e Makefile
+2845: test -f fdsf
+2846: test -f
+2847: test -f Makefile
+2848: test -g fsdfsd
+2849: test -g Makefile
+2850: test -g toto
+2851: test -g
+2852: test -L dsfdsf
+2853: test -L
+2854: test -L link
+2855: test -p
+2856: test -p fifo
+2857: test -r norights
+2858: test -r toto
+2859: test -S socket
+2860: test -S dsfdsf
+2861: test -S Makefile
+2862: test -s empty
+2863: test -s Makefile
+2864: test -u suid
+2865: test -u sdfsd
+2866: test -u Makefile
+2867: test -w toto
+2868: test -w dsfdsf
+2869: test -w norights
+2870: test -x exec
+2871: test -x Makefile
+2872: test -z 
+2873: test -z ""
+2874: test -z "dfdsfsd"
+2875: test "ab" = "ab"
+2876: test "ab" = "abc"
+2877: test "ab" != "abd"
+2878: test "ab" != "ab"
+2879: test 12 -eq 1233
+2880: test 12 -eq 12
+2881: test 12345123015623416854 -eq 412
+2882: test 1 -eq 2468532546324532132542
+2883: test 1 -ne 12
+2884: test 1 -eq sdfsd
+2885: test 32 -ne 12435
+2886: test 534543543 -ge 2452156546854685768
+2887: test 12 -ge bfdg
+2888: test 123 -ge ""
+2889: test 324 -it <sdfsd
+2890: test 12 -it 1
+2891: test 43455345435435 -le 32
+2892: echo "test fini"
+2893: ./42sh -t testfile
+2894: exit
+2895: osbuffertous;""
+2896: test
+2897: test -b
+2898: test -b sdfsd
+2899: test -b Makefile
+2900: test -b /dev/disk0
+2901: test -c /dev/disk0
+2902: test -c /dev/zero
+2903: test -c /dev/zersdfds
+2904: test -c
+2905: test -d Makefile
+2906: test -d
+2907: test -d dfdsf
+2908: test -d includes
+2909: test -e dsfdsf
+2910: test -e Makefile
+2911: test -f fdsf
+2912: test -f
+2913: test -f Makefile
+2914: test -g fsdfsd
+2915: test -g Makefile
+2916: test -g toto
+2917: test -g
+2918: test -L dsfdsf
+2919: test -L
+2920: test -L link
+2921: test -p
+2922: test -p fifo
+2923: test -r norights
+2924: test -r toto
+2925: test -S socket
+2926: test -S dsfdsf
+2927: test -S Makefile
+2928: test -s empty
+2929: test -s Makefile
+2930: test -u suid
+2931: test -u sdfsd
+2932: test -u Makefile
+2933: test -w toto
+2934: test -w dsfdsf
+2935: test -w norights
+2936: test -x exec
+2937: test -x Makefile
+2938: test -z 
+2939: test -z ""
+2940: test -z "dfdsfsd"
+2941: test "ab" = "ab"
+2942: test "ab" = "abc"
+2943: test "ab" != "abd"
+2944: test "ab" != "ab"
+2945: test 12 -eq 1233
+2946: test 12 -eq 12
+2947: test 12345123015623416854 -eq 412
+2948: test 1 -eq 2468532546324532132542
+2949: test 1 -ne 12
+2950: test 1 -eq sdfsd
+2951: test 32 -ne 12435
+2952: test 534543543 -ge 2452156546854685768
+2953: test 12 -ge bfdg
+2954: test 123 -ge ""
+2955: test 324 -it <sdfsd
+2956: test 12 -it 1
+2957: test 43455345435435 -le 32
+2958: echo "test fini"
+2959: exit
+2960: echo $HOME
+2961: ls
+2962: ~
+2963: ~/
+2964: ~/test
+2965: ~/test/Desktop
+2966: ~/42shrc
+2967: ~/42shrc
+2968: ~test
+2969: test~
+2970: ~bsiche
+2971: test/~bsiche
+2972: ~+
+2973: ~+/
+2974: /~+/
+2975: ~+/test
+2976: +~
+2977: +~/
+2978: +~/test
+2979: ~-
+2980: echo "a" "" "" "b" | cat -e
+2981: echo -a abc | cat -e
+2982: echo -x abc | cat -e
+2983: echo -- -abc abc | cat -e
+2984: echo '\a\b\c\f\n\r\t\v\\'
+2985: echo "\a\b\c\f\n\r\t\v\\"
+2986: echo \a\b\c\f\n\r\t\v\\
+2987: echo \0777 \0123 \0 '\01' "\02"
+2988: echo abc -- def
+2989: echo -- ghi
+2990: echo zzz ---
+2991: echo -- -n abc
+2992: echo abc | cat | cat | cat -e | cat -e
+2993: echo 'abc' >/tmp/pipe_redir
+2994: ls | cat -e < /tmp/pipe_redir | cat -e
+2995: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+2996: cat /tmp/pipe_redir_fd
+2997: rm -f /tmp/pipe_redir
+2998: rm -f /tmp/pipe_redir_fd
+2999: env | grep USER | wc | cat -e
+3000: echo 'echo a | ;' > /tmp/pipe_err_parsing
+3001: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3002: echo '| echo b ;' > /tmp/pipe_err_parsing
+3003: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3004: echo '|' > /tmp/pipe_err_parsing
+3005: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3006: echo '|;' > /tmp/pipe_err_parsing
+3007: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3008: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+3009: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3010: rm -f /tmp/pipe_err_parsing
+3011: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+3012: test
+3013: test -b
+3014: test -b sdfsd
+3015: test -b Makefile
+3016: test -b /dev/disk0
+3017: test -c /dev/disk0
+3018: test -c /dev/zero
+3019: test -c /dev/zersdfds
+3020: test -c
+3021: test -d Makefile
+3022: test -d
+3023: test -d dfdsf
+3024: test -d includes
+3025: test -e dsfdsf
+3026: test -e Makefile
+3027: test -f fdsf
+3028: test -f
+3029: test -f Makefile
+3030: test -g fsdfsd
+3031: test -g Makefile
+3032: test -g toto
+3033: test -g
+3034: test -L dsfdsf
+3035: test -L
+3036: test -L link
+3037: test -p
+3038: test -p fifo
+3039: test -r norights
+3040: test -r toto
+3041: test -S socket
+3042: test -S dsfdsf
+3043: test -S Makefile
+3044: test -s empty
+3045: test -s Makefile
+3046: test -u suid
+3047: test -u sdfsd
+3048: test -u Makefile
+3049: test -w toto
+3050: test -w dsfdsf
+3051: test -w norights
+3052: test -x exec
+3053: test -x Makefile
+3054: test -z 
+3055: test -z ""
+3056: test -z "dfdsfsd"
+3057: test "ab" = "ab"
+3058: test "ab" = "abc"
+3059: test "ab" != "abd"
+3060: test "ab" != "ab"
+3061: test 12 -eq 1233
+3062: test 12 -eq 12
+3063: test 12345123015623416854 -eq 412
+3064: test 1 -eq 2468532546324532132542
+3065: test 1 -ne 12
+3066: test 1 -eq sdfsd
+3067: test 32 -ne 12435
+3068: test 534543543 -ge 2452156546854685768
+3069: test 12 -ge bfdg
+3070: test 123 -ge ""
+3071: test 324 -it <sdfsd
+3072: test 12 -it 1
+3073: test 43455345435435 -le 32
+3074: "cat Makefile" 
+3075: "Unexisting"
+3076: "ls | grep include"
+3077: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+3078: "ls > cul | ls < EOF"
+3079: "cat toto"
+3080: "cat -e Makefile | grep 'CC'"
+3081: "ls /root || ls"
+3082: "ls;ls"
+3083: "ls ; ls"
+3084: "|"
+3085: ""
+3086: "&"
+3087: "&&"
+3088: "||"
+3089: ";"
+3090: ";;"
+3091: "who"
+3092: "cat << EOF\ncoucou\nsalut\nEOF"
+3093: "/bin/kill -11 0"
+3094: echo "test fini"
+3095: "cat << EOF\ncoucou\nsalut\nEOF"
+3096: "/bin/kill -11 0"
+3097: bash
+3098: "/bin/kill -11 0"
+3099: exit
+3100: echo $HOME
+3101: ls
+3102: ~
+3103: ~/
+3104: ~/test
+3105: ~/test/Desktop
+3106: ~/42shrc
+3107: ~/42shrc
+3108: ~test
+3109: test~
+3110: ~bsiche
+3111: test/~bsiche
+3112: ~+
+3113: ~+/
+3114: /~+/
+3115: ~+/test
+3116: +~
+3117: +~/
+3118: +~/test
+3119: ~-
+3120: echo "a" "" "" "b" | cat -e
+3121: echo -a abc | cat -e
+3122: echo -x abc | cat -e
+3123: echo -- -abc abc | cat -e
+3124: echo '\a\b\c\f\n\r\t\v\\'
+3125: echo "\a\b\c\f\n\r\t\v\\"
+3126: echo \a\b\c\f\n\r\t\v\\
+3127: echo \0777 \0123 \0 '\01' "\02"
+3128: echo abc -- def
+3129: echo -- ghi
+3130: echo zzz ---
+3131: echo -- -n abc
+3132: echo abc | cat | cat | cat -e | cat -e
+3133: echo 'abc' >/tmp/pipe_redir
+3134: ls | cat -e < /tmp/pipe_redir | cat -e
+3135: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+3136: cat /tmp/pipe_redir_fd
+3137: rm -f /tmp/pipe_redir
+3138: rm -f /tmp/pipe_redir_fd
+3139: env | grep USER | wc | cat -e
+3140: echo 'echo a | ;' > /tmp/pipe_err_parsing
+3141: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3142: echo '| echo b ;' > /tmp/pipe_err_parsing
+3143: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3144: echo '|' > /tmp/pipe_err_parsing
+3145: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3146: echo '|;' > /tmp/pipe_err_parsing
+3147: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3148: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+3149: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3150: rm -f /tmp/pipe_err_parsing
+3151: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+3152: test
+3153: test -b
+3154: test -b sdfsd
+3155: test -b Makefile
+3156: test -b /dev/disk0
+3157: test -c /dev/disk0
+3158: test -c /dev/zero
+3159: test -c /dev/zersdfds
+3160: test -c
+3161: test -d Makefile
+3162: test -d
+3163: test -d dfdsf
+3164: test -d includes
+3165: test -e dsfdsf
+3166: test -e Makefile
+3167: test -f fdsf
+3168: test -f
+3169: test -f Makefile
+3170: test -g fsdfsd
+3171: test -g Makefile
+3172: test -g toto
+3173: test -g
+3174: test -L dsfdsf
+3175: test -L
+3176: test -L link
+3177: test -p
+3178: test -p fifo
+3179: test -r norights
+3180: test -r toto
+3181: test -S socket
+3182: test -S dsfdsf
+3183: test -S Makefile
+3184: test -s empty
+3185: test -s Makefile
+3186: test -u suid
+3187: test -u sdfsd
+3188: test -u Makefile
+3189: test -w toto
+3190: test -w dsfdsf
+3191: test -w norights
+3192: test -x exec
+3193: test -x Makefile
+3194: test -z 
+3195: test -z ""
+3196: test -z "dfdsfsd"
+3197: test "ab" = "ab"
+3198: test "ab" = "abc"
+3199: test "ab" != "abd"
+3200: test "ab" != "ab"
+3201: test 12 -eq 1233
+3202: test 12 -eq 12
+3203: test 12345123015623416854 -eq 412
+3204: test 1 -eq 2468532546324532132542
+3205: test 1 -ne 12
+3206: test 1 -eq sdfsd
+3207: test 32 -ne 12435
+3208: test 534543543 -ge 2452156546854685768
+3209: test 12 -ge bfdg
+3210: test 123 -ge ""
+3211: test 324 -it <sdfsd
+3212: test 12 -it 1
+3213: test 43455345435435 -le 32
+3214: "cat Makefile" 
+3215: "Unexisting"
+3216: "ls | grep include"
+3217: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+3218: "ls > cul | ls < EOF"
+3219: "cat toto"
+3220: "cat -e Makefile | grep 'CC'"
+3221: "ls /root || ls"
+3222: "ls;ls"
+3223: "ls ; ls"
+3224: "|"
+3225: ""
+3226: "&"
+3227: "&&"
+3228: "||"
+3229: ";"
+3230: ";;"
+3231: "who"
+3232: "cat << EOF\ncoucou\nsalut\nEOF"
+3233: "/bin/kill -11 0"
+3234: echo "test fini"
+3235: exit
+3236: echo $HOME
+3237: ls
+3238: ~
+3239: ~/
+3240: ~/test
+3241: ~/test/Desktop
+3242: ~/42shrc
+3243: ~/42shrc
+3244: ~test
+3245: test~
+3246: ~bsiche
+3247: test/~bsiche
+3248: ~+
+3249: ~+/
+3250: /~+/
+3251: ~+/test
+3252: +~
+3253: +~/
+3254: +~/test
+3255: ~-
+3256: echo "a" "" "" "b" | cat -e
+3257: echo -a abc | cat -e
+3258: echo -x abc | cat -e
+3259: echo -- -abc abc | cat -e
+3260: echo '\a\b\c\f\n\r\t\v\\'
+3261: echo "\a\b\c\f\n\r\t\v\\"
+3262: echo \a\b\c\f\n\r\t\v\\
+3263: echo \0777 \0123 \0 '\01' "\02"
+3264: echo abc -- def
+3265: echo -- ghi
+3266: echo zzz ---
+3267: echo -- -n abc
+3268: echo abc | cat | cat | cat -e | cat -e
+3269: echo 'abc' >/tmp/pipe_redir
+3270: ls | cat -e < /tmp/pipe_redir | cat -e
+3271: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+3272: cat /tmp/pipe_redir_fd
+3273: rm -f /tmp/pipe_redir
+3274: rm -f /tmp/pipe_redir_fd
+3275: env | grep USER | wc | cat -e
+3276: echo 'echo a | ;' > /tmp/pipe_err_parsing
+3277: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3278: echo '| echo b ;' > /tmp/pipe_err_parsing
+3279: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3280: echo '|' > /tmp/pipe_err_parsing
+3281: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3282: echo '|;' > /tmp/pipe_err_parsing
+3283: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3284: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+3285: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3286: rm -f /tmp/pipe_err_parsing
+3287: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+3288: test
+3289: test -b
+3290: test -b sdfsd
+3291: test -b Makefile
+3292: test -b /dev/disk0
+3293: test -c /dev/disk0
+3294: test -c /dev/zero
+3295: test -c /dev/zersdfds
+3296: test -c
+3297: test -d Makefile
+3298: test -d
+3299: test -d dfdsf
+3300: test -d includes
+3301: test -e dsfdsf
+3302: test -e Makefile
+3303: test -f fdsf
+3304: test -f
+3305: test -f Makefile
+3306: test -g fsdfsd
+3307: test -g Makefile
+3308: test -g toto
+3309: test -g
+3310: test -L dsfdsf
+3311: test -L
+3312: test -L link
+3313: test -p
+3314: test -p fifo
+3315: test -r norights
+3316: test -r toto
+3317: test -S socket
+3318: test -S dsfdsf
+3319: test -S Makefile
+3320: test -s empty
+3321: test -s Makefile
+3322: test -u suid
+3323: test -u sdfsd
+3324: test -u Makefile
+3325: test -w toto
+3326: test -w dsfdsf
+3327: test -w norights
+3328: test -x exec
+3329: test -x Makefile
+3330: test -z 
+3331: test -z ""
+3332: test -z "dfdsfsd"
+3333: test "ab" = "ab"
+3334: test "ab" = "abc"
+3335: test "ab" != "abd"
+3336: test "ab" != "ab"
+3337: test 12 -eq 1233
+3338: test 12 -eq 12
+3339: test 12345123015623416854 -eq 412
+3340: test 1 -eq 2468532546324532132542
+3341: test 1 -ne 12
+3342: test 1 -eq sdfsd
+3343: test 32 -ne 12435
+3344: test 534543543 -ge 2452156546854685768
+3345: test 12 -ge bfdg
+3346: test 123 -ge ""
+3347: test 324 -it <sdfsd
+3348: test 12 -it 1
+3349: test 43455345435435 -le 32
+3350: "cat Makefile" 
+3351: "Unexisting"
+3352: "ls | grep include"
+3353: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+3354: "ls > cul | ls < EOF"
+3355: "cat toto"
+3356: "cat -e Makefile | grep 'CC'"
+3357: "ls /root || ls"
+3358: "ls;ls"
+3359: "ls ; ls"
+3360: "|"
+3361: ""
+3362: "&"
+3363: "&&"
+3364: "||"
+3365: ";"
+3366: ";;"
+3367: "who"
+3368: "cat << EOF\ncoucou\nsalut\nEOF"
+3369: "/bin/kill -11 0"
+3370: echo "test fini"
+3371: echo "test fini"
+3372: exit
+3373: echo $HOME
+3374: ls
+3375: ~
+3376: ~/
+3377: ~/test
+3378: ~/test/Desktop
+3379: ~/42shrc
+3380: ~/42shrc
+3381: ~test
+3382: test~
+3383: ~bsiche
+3384: test/~bsiche
+3385: ~+
+3386: ~+/
+3387: /~+/
+3388: ~+/test
+3389: +~
+3390: +~/
+3391: +~/test
+3392: ~-
+3393: echo "a" "" "" "b" | cat -e
+3394: echo -a abc | cat -e
+3395: echo -x abc | cat -e
+3396: echo -- -abc abc | cat -e
+3397: echo '\a\b\c\f\n\r\t\v\\'
+3398: echo "\a\b\c\f\n\r\t\v\\"
+3399: echo \a\b\c\f\n\r\t\v\\
+3400: echo \0777 \0123 \0 '\01' "\02"
+3401: echo abc -- def
+3402: echo -- ghi
+3403: echo zzz ---
+3404: echo -- -n abc
+3405: echo abc | cat | cat | cat -e | cat -e
+3406: echo 'abc' >/tmp/pipe_redir
+3407: ls | cat -e < /tmp/pipe_redir | cat -e
+3408: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+3409: cat /tmp/pipe_redir_fd
+3410: rm -f /tmp/pipe_redir
+3411: rm -f /tmp/pipe_redir_fd
+3412: env | grep USER | wc | cat -e
+3413: echo 'echo a | ;' > /tmp/pipe_err_parsing
+3414: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3415: echo '| echo b ;' > /tmp/pipe_err_parsing
+3416: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3417: echo '|' > /tmp/pipe_err_parsing
+3418: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3419: echo '|;' > /tmp/pipe_err_parsing
+3420: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3421: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+3422: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3423: rm -f /tmp/pipe_err_parsing
+3424: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+3425: test
+3426: test -b
+3427: test -b sdfsd
+3428: test -b Makefile
+3429: test -b /dev/disk0
+3430: test -c /dev/disk0
+3431: test -c /dev/zero
+3432: test -c /dev/zersdfds
+3433: test -c
+3434: test -d Makefile
+3435: test -d
+3436: test -d dfdsf
+3437: test -d includes
+3438: test -e dsfdsf
+3439: test -e Makefile
+3440: test -f fdsf
+3441: test -f
+3442: test -f Makefile
+3443: test -g fsdfsd
+3444: test -g Makefile
+3445: test -g toto
+3446: test -g
+3447: test -L dsfdsf
+3448: test -L
+3449: test -L link
+3450: test -p
+3451: test -p fifo
+3452: test -r norights
+3453: test -r toto
+3454: test -S socket
+3455: test -S dsfdsf
+3456: test -S Makefile
+3457: test -s empty
+3458: test -s Makefile
+3459: test -u suid
+3460: test -u sdfsd
+3461: test -u Makefile
+3462: test -w toto
+3463: test -w dsfdsf
+3464: test -w norights
+3465: test -x exec
+3466: test -x Makefile
+3467: test -z 
+3468: test -z ""
+3469: test -z "dfdsfsd"
+3470: test "ab" = "ab"
+3471: test "ab" = "abc"
+3472: test "ab" != "abd"
+3473: test "ab" != "ab"
+3474: test 12 -eq 1233
+3475: test 12 -eq 12
+3476: test 12345123015623416854 -eq 412
+3477: test 1 -eq 2468532546324532132542
+3478: test 1 -ne 12
+3479: test 1 -eq sdfsd
+3480: test 32 -ne 12435
+3481: test 534543543 -ge 2452156546854685768
+3482: test 12 -ge bfdg
+3483: test 123 -ge ""
+3484: test 324 -it <sdfsd
+3485: test 12 -it 1
+3486: test 43455345435435 -le 32
+3487: "cat Makefile" 
+3488: "Unexisting"
+3489: "ls | grep include"
+3490: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+3491: "ls > cul | ls < EOF"
+3492: "cat toto"
+3493: "cat -e Makefile | grep 'CC'"
+3494: "ls /root || ls"
+3495: "ls;ls"
+3496: "ls ; ls"
+3497: "|"
+3498: ""
+3499: "&"
+3500: "&&"
+3501: "||"
+3502: ";"
+3503: ";;"
+3504: "who"
+3505: "cat << EOF\ncoucou\nsalut\nEOF"
+3506: "/bin/kill -11 0"
+3507: ```^~`76`76`876`654`4879--0]-`-09`796879`685`54`587696579`069`670`78]`-09`09-8`08-7`86`564`5634`3246`236`76`55`78668`5678`456`74`
+3508: ()#*#@*&)@#$&)*@#$&^)@#$&)&)@#$&*)(@$#*__*@#_@#=/=*=/**/=
+3509: ""
+3510: ''
+3511: "" ""
+3512: echo kk ""
+3513: ls kk ""
+3514: .
+3515: ..
+3516: /*
+3517: /=
+3518: =&
+3519: __-
+3520: -
+3521: \`
+3522: /`
+3523: ~/
+3524: ~/~/~/~/~/~
+3525: ~-
+3526: <>
+3527: `>'
+3528: `>>'
+3529: ><><><><><><><><><
+3530: `<'
+3531: {}{}
+3532: ${}${}${}${}${}${}
+3533: "${}"
+3534: '${}'
+3535: '${|}'```
+3536: `test -d ${HOME} && echo ok || echo wrong`
+3537: Zone de message
+3538: Envoyer un message à Marc
+3539: echo "test fini"
+3540: echo "test fini"
+3541: exit
+3542: echo $HOME
+3543: ls
+3544: ~
+3545: ~/
+3546: ~/test
+3547: ~/test/Desktop
+3548: ~/42shrc
+3549: ~/42shrc
+3550: ~test
+3551: test~
+3552: ~bsiche
+3553: test/~bsiche
+3554: ~+
+3555: ~+/
+3556: /~+/
+3557: ~+/test
+3558: +~
+3559: +~/
+3560: +~/test
+3561: ~-
+3562: echo "a" "" "" "b" | cat -e
+3563: echo -a abc | cat -e
+3564: echo -x abc | cat -e
+3565: echo -- -abc abc | cat -e
+3566: echo '\a\b\c\f\n\r\t\v\\'
+3567: echo "\a\b\c\f\n\r\t\v\\"
+3568: echo \a\b\c\f\n\r\t\v\\
+3569: echo \0777 \0123 \0 '\01' "\02"
+3570: echo abc -- def
+3571: echo -- ghi
+3572: echo zzz ---
+3573: echo -- -n abc
+3574: echo abc | cat | cat | cat -e | cat -e
+3575: echo 'abc' >/tmp/pipe_redir
+3576: ls | cat -e < /tmp/pipe_redir | cat -e
+3577: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+3578: cat /tmp/pipe_redir_fd
+3579: rm -f /tmp/pipe_redir
+3580: rm -f /tmp/pipe_redir_fd
+3581: env | grep USER | wc | cat -e
+3582: echo 'echo a | ;' > /tmp/pipe_err_parsing
+3583: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3584: echo '| echo b ;' > /tmp/pipe_err_parsing
+3585: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3586: echo '|' > /tmp/pipe_err_parsing
+3587: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3588: echo '|;' > /tmp/pipe_err_parsing
+3589: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3590: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+3591: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3592: rm -f /tmp/pipe_err_parsing
+3593: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+3594: test
+3595: test -b
+3596: test -b sdfsd
+3597: test -b Makefile
+3598: test -b /dev/disk0
+3599: test -c /dev/disk0
+3600: test -c /dev/zero
+3601: test -c /dev/zersdfds
+3602: test -c
+3603: test -d Makefile
+3604: test -d
+3605: test -d dfdsf
+3606: test -d includes
+3607: test -e dsfdsf
+3608: test -e Makefile
+3609: test -f fdsf
+3610: test -f
+3611: test -f Makefile
+3612: test -g fsdfsd
+3613: test -g Makefile
+3614: test -g toto
+3615: test -g
+3616: test -L dsfdsf
+3617: test -L
+3618: test -L link
+3619: test -p
+3620: test -p fifo
+3621: test -r norights
+3622: test -r toto
+3623: test -S socket
+3624: test -S dsfdsf
+3625: test -S Makefile
+3626: test -s empty
+3627: test -s Makefile
+3628: test -u suid
+3629: test -u sdfsd
+3630: test -u Makefile
+3631: test -w toto
+3632: test -w dsfdsf
+3633: test -w norights
+3634: test -x exec
+3635: test -x Makefile
+3636: test -z 
+3637: test -z ""
+3638: test -z "dfdsfsd"
+3639: test "ab" = "ab"
+3640: test "ab" = "abc"
+3641: test "ab" != "abd"
+3642: test "ab" != "ab"
+3643: test 12 -eq 1233
+3644: test 12 -eq 12
+3645: test 12345123015623416854 -eq 412
+3646: test 1 -eq 2468532546324532132542
+3647: test 1 -ne 12
+3648: test 1 -eq sdfsd
+3649: test 32 -ne 12435
+3650: test 534543543 -ge 2452156546854685768
+3651: test 12 -ge bfdg
+3652: test 123 -ge ""
+3653: test 324 -it <sdfsd
+3654: test 12 -it 1
+3655: test 43455345435435 -le 32
+3656: "cat Makefile" 
+3657: "Unexisting"
+3658: "ls | grep include"
+3659: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+3660: "ls > cul | ls < EOF"
+3661: "cat toto"
+3662: "cat -e Makefile | grep 'CC'"
+3663: "ls /root || ls"
+3664: "ls;ls"
+3665: "ls ; ls"
+3666: "|"
+3667: ""
+3668: "&"
+3669: "&&"
+3670: "||"
+3671: ";"
+3672: ";;"
+3673: "who"
+3674: "cat << EOF\ncoucou\nsalut\nEOF"
+3675: "/bin/kill -11 0"
+3676: ```^~`76`76`876`654`4879--0]-`-09`796879`685`54`587696579`069`670`78]`-09`09-8`08-7`86`564`5634`3246`236`76`55`78668`5678`456`74`
+3677: ()#*#@*&)@#$&)*@#$&^)@#$&)&)@#$&*)(@$#*__*@#_@#=/=*=/**/=
+3678: ""
+3679: ''
+3680: "" ""
+3681: echo kk ""
+3682: ls kk ""
+3683: .
+3684: ..
+3685: /*
+3686: /=
+3687: =&
+3688: __-
+3689: -
+3690: \`
+3691: /`
+3692: ~/
+3693: ~/~/~/~/~/~
+3694: ~-
+3695: <>
+3696: `>'
+3697: `>>'
+3698: ><><><><><><><><><
+3699: `<'
+3700: {}{}
+3701: ${}${}${}${}${}${}
+3702: "${}"
+3703: '${}'
+3704: '${|}'```
+3705: `test -d ${HOME} && echo ok || echo wrong`
+3706: Zone de message
+3707: Envoyer un message à Marc
+3708: echo "test fini"
+3709: echo "cat <<EOF\n" | ./42sh
+3710: exit
+3711: `test -d ${HOME} && echo ok || echo wrong`
+3712: `test -d ${HOME} && echo ok || echo wrong`[D[D[Dtest -d ${HOME} && echo ok || echo wrong
+3713: test -d ${HOME} && echo ok || echo wrong
+3714: test -d ${HOME} && echo ok || echo wrong
+3715: test -d ${HOME} && echo ok || echo wrong
+3716: test -d ${HOME} && echo ok || echo wrong
+3717: sdf
+3718: dsf
+3719: test -d ${HOME} && echo ok || echo wrong
+3720: test -d ${HOME} && echo ok || echo wrong
+3721: test -d ${HOME} && echo ok || echo wrong
+3722: test -d ${HOME} && echo ok || echo wrong
+3723: test -d ${HOME} && echo ok || echo wrong
+3724: test -d ${HOME} && echo ok || echo wrongtest -d ${HOME} && echo ok || echo wrongtest -d ${HOME} && echo ok || echo wrong
+3725: test -d ${HOME} && echo ok || echo wrong
+3726: exi
+3727: exit
+3728: test -d ${HOME} && echo ok || echo wrong
+3729: test -d ${HOME} && echo ok || echo wrong
+3730: test -d ${HOME} && echo ok || echo wrong
+3731: test -d ${HOME} && echo ok || echo wrong
+3732: test -d ${HOME} && echo ok || echo wrong
+3733: test -d ${HOME} && echo ok || echo wrong
+3734: exit
+3735: ls
+3736: test -d ${HOME} && echo ok || echo wrong
+3737: unset HOME
+3738: test -d ${HOME} && echo ok || echo wrong
+3739: test -d ${HOME} && echo ok || echo wrong
+3740: test -d ${HOME} && echo ok || echo wrong
+3741: test -d ${HOME} && echo ok || echo wrong
+3742: test -d ${HOME} && echo ok || echo wrong
+3743: test -d ${HOME} && echo ok || echo wrong
+3744: test -d ${HOME} && echo ok || echo wrong
+3745: test -d ${HOME} && echo ok || echo wrong
+3746: test -d ${HOME} && echo ok || echo wrong
+3747: test -d ${HOME} && echo ok || echo wrong
+3748: test -d ${HOME} && echo ok || echo wrong
+3749: test -d ${HOME} && echo ok || echo wrongtest -d ${HOME} && echo ok || echo wrong
+3750: test -d ${HOME} && echo ok || echo wrong
+3751: exit
+3752: unset HOME
+3753: test -d ${HOME} && echo ok || echo wrong
+3754: test -d ${HOME} && echo ok || echo wrong
+3755: test -d ${HOME} && echo ok || echo wrong
+3756: test -d ${HOME} && echo ok || echo wrong
+3757: test -d ${HOME} && echo ok || echo wrong
+3758: test -d ${HOME} && echo ok || echo wrong
+3759: test -d ${HOME} && echo ok || echo wrong
+3760: test -d ${HOME} && echo ok || echo wrong
+3761: test -d ${HOME} && echo ok || echo wrong
+3762: test -d ${HOME} && echo ok || echo wrong
+3763: exit
+3764: /Network/
+3765: ls
+3766: ls /Library/Audio/MIDI\ Drivers/
+3767: ls /Library/
+3768: ls /Library
+3769: ls /Library/Application\ Support/
+3770: exit
+3771: echo "Enlarged you\\'re penis for '$'100\\\\month with \"$SOMEBRAND's\" new product \\!"
+3772: exit
+3773: \\\\
+3774: echo \\\\
+3775: echo "Enlarged you\\'re penis for '$'100\\\\month with \"$SOMEBRAND's\" new product \\!"
+3776: exit
+3777: exit
+3778: echo "Enlarged you\\'re penis for '$'100\\\\month with \"$SOMEBRAND's\" new product \\!"
+3779: exit
+3780: cd ..
+3781: !@
+3782: rm -f /tmp/pipe_err_parsing
+3783: ![
+3784: exit
+3785: !?
+3786: echo "lol"
+3787: !?
+3788: exit
+3789: !?
+3790: exit
+3791: echo "lol"
+3792: !?
+3793: echo "lol"
+3794: exit
+3795: unset HOME && cd / && cd ~; pwd
+3796: exit
+3797: unset HOME && cd / && cd ~; pwd
+3798: exit
+3799: echo $HOME
+3800: ls
+3801: ~
+3802: ~/
+3803: ~/test
+3804: ~/test/Desktop
+3805: ~/42shrc
+3806: ~/42shrc
+3807: ~test
+3808: test~
+3809: ~bsiche
+3810: test/~bsiche
+3811: ~+
+3812: ~+/
+3813: /~+/
+3814: ~+/test
+3815: +~
+3816: +~/
+3817: +~/test
+3818: ~-
+3819: echo "a" "" "" "b" | cat -e
+3820: echo -a abc | cat -e
+3821: echo -x abc | cat -e
+3822: echo -- -abc abc | cat -e
+3823: echo '\a\b\c\f\n\r\t\v\\'
+3824: echo "\a\b\c\f\n\r\t\v\\"
+3825: echo \a\b\c\f\n\r\t\v\\
+3826: echo \0777 \0123 \0 '\01' "\02"
+3827: echo abc -- def
+3828: echo -- ghi
+3829: echo zzz ---
+3830: echo -- -n abc
+3831: echo abc | cat | cat | cat -e | cat -e
+3832: echo 'abc' >/tmp/pipe_redir
+3833: ls | cat -e < /tmp/pipe_redir | cat -e
+3834: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+3835: cat /tmp/pipe_redir_fd
+3836: rm -f /tmp/pipe_redir
+3837: rm -f /tmp/pipe_redir_fd
+3838: env | grep USER | wc | cat -e
+3839: echo 'echo a | ;' > /tmp/pipe_err_parsing
+3840: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3841: echo '| echo b ;' > /tmp/pipe_err_parsing
+3842: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3843: echo '|' > /tmp/pipe_err_parsing
+3844: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3845: echo '|;' > /tmp/pipe_err_parsing
+3846: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3847: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+3848: /tmp/bin/42sh < /tmp/pipe_err_parsing
+3849: rm -f /tmp/pipe_err_parsing
+3850: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+3851: test
+3852: test -b
+3853: test -b sdfsd
+3854: test -b Makefile
+3855: test -b /dev/disk0
+3856: test -c /dev/disk0
+3857: test -c /dev/zero
+3858: test -c /dev/zersdfds
+3859: test -c
+3860: test -d Makefile
+3861: test -d
+3862: test -d dfdsf
+3863: test -d includes
+3864: test -e dsfdsf
+3865: test -e Makefile
+3866: test -f fdsf
+3867: test -f
+3868: test -f Makefile
+3869: test -g fsdfsd
+3870: test -g Makefile
+3871: test -g toto
+3872: test -g
+3873: test -L dsfdsf
+3874: test -L
+3875: test -L link
+3876: test -p
+3877: test -p fifo
+3878: test -r norights
+3879: test -r toto
+3880: test -S socket
+3881: test -S dsfdsf
+3882: test -S Makefile
+3883: test -s empty
+3884: test -s Makefile
+3885: test -u suid
+3886: test -u sdfsd
+3887: test -u Makefile
+3888: test -w toto
+3889: test -w dsfdsf
+3890: test -w norights
+3891: test -x exec
+3892: test -x Makefile
+3893: test -z 
+3894: test -z ""
+3895: test -z "dfdsfsd"
+3896: test "ab" = "ab"
+3897: test "ab" = "abc"
+3898: test "ab" != "abd"
+3899: test "ab" != "ab"
+3900: test 12 -eq 1233
+3901: test 12 -eq 12
+3902: test 12345123015623416854 -eq 412
+3903: test 1 -eq 2468532546324532132542
+3904: test 1 -ne 12
+3905: test 1 -eq sdfsd
+3906: test 32 -ne 12435
+3907: test 534543543 -ge 2452156546854685768
+3908: test 12 -ge bfdg
+3909: test 123 -ge ""
+3910: test 324 -it <sdfsd
+3911: test 12 -it 1
+3912: test 43455345435435 -le 32
+3913: "cat Makefile" 
+3914: "Unexisting"
+3915: "ls | grep include"
+3916: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+3917: "ls > cul | ls < EOF"
+3918: "cat toto"
+3919: "cat -e Makefile | grep 'CC'"
+3920: "ls /root || ls"
+3921: "ls;ls"
+3922: "ls ; ls"
+3923: "|"
+3924: ""
+3925: "&"
+3926: "&&"
+3927: "||"
+3928: ";"
+3929: ";;"
+3930: "who"
+3931: "cat << EOF\ncoucou\nsalut\nEOF"
+3932: "/bin/kill -11 0"
+3933: ```^~`76`76`876`654`4879--0]-`-09`796879`685`54`587696579`069`670`78]`-09`09-8`08-7`86`564`5634`3246`236`76`55`78668`5678`456`74`
+3934: ()#*#@*&)@#$&)*@#$&^)@#$&)&)@#$&*)(@$#*__*@#_@#=/=*=/**/=
+3935: ""
+3936: ''
+3937: "" ""
+3938: echo kk ""
+3939: ls kk ""
+3940: .
+3941: ..
+3942: /*
+3943: /=
+3944: =&
+3945: __-
+3946: -
+3947: \`
+3948: /`
+3949: ~/
+3950: ~/~/~/~/~/~
+3951: ~-
+3952: <>
+3953: `>'
+3954: `>>'
+3955: ><><><><><><><><><
+3956: `<'
+3957: {}{}
+3958: ${}${}${}${}${}${}
+3959: "${}"
+3960: '${}'
+3961: '${|}'```
+3962: `test -d ${HOME} && echo ok || echo wrong`
+3963: Zone de message
+3964: $$$$$$$$
+3965: $0$0$0$0$0$0$0$0$0
+3966: $_$_$_$_$_$_
+3967: ~-+-+-+-+-+-
+3968: $_$_$_$_$_$_
+3969: Envoyer un message à Marc
+3970: echo "test fini"
+3971: exit
+3972: echo "( ͡° ͜ʖ ͡°)"
+3973: exit
+3974: echo ( ͡° ͜ʖ ͡°)
+3975: exit
+3976: exit
+3977: ( ͡° ͜ʖ ͡°)
+3978: exit
+3979: wxit
+3980: exit
+3981: echo 'foo\
+3982: bar ' | cat -e
+3983: exit
+3984: echo 'foo\\
+3985: bar' | cat -e
+3986: exit
+3987: echo $HOME
+3988: ls
+3989: ~
+3990: ~/
+3991: ~/test
+3992: ~/test/Desktop
+3993: ~/42shrc
+3994: ~/42shrc
+3995: ~test
+3996: test~
+3997: ~bsiche
+3998: test/~bsiche
+3999: ~+
+4000: ~+/
+4001: /~+/
+4002: ~+/test
+4003: +~
+4004: +~/
+4005: +~/test
+4006: ~-
+4007: echo "a" "" "" "b" | cat -e
+4008: echo -a abc | cat -e
+4009: echo -x abc | cat -e
+4010: echo -- -abc abc | cat -e
+4011: echo '\a\b\c\f\n\r\t\v\\'
+4012: echo "\a\b\c\f\n\r\t\v\\"
+4013: echo \a\b\c\f\n\r\t\v\\
+4014: echo \0777 \0123 \0 '\01' "\02"
+4015: echo abc -- def
+4016: echo -- ghi
+4017: echo zzz ---
+4018: echo -- -n abc
+4019: echo abc | cat | cat | cat -e | cat -e
+4020: echo 'abc' >/tmp/pipe_redir
+4021: ls | cat -e < /tmp/pipe_redir | cat -e
+4022: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+4023: cat /tmp/pipe_redir_fd
+4024: rm -f /tmp/pipe_redir
+4025: rm -f /tmp/pipe_redir_fd
+4026: env | grep USER | wc | cat -e
+4027: echo 'echo a | ;' > /tmp/pipe_err_parsing
+4028: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4029: echo '| echo b ;' > /tmp/pipe_err_parsing
+4030: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4031: echo '|' > /tmp/pipe_err_parsing
+4032: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4033: echo '|;' > /tmp/pipe_err_parsing
+4034: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4035: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+4036: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4037: rm -f /tmp/pipe_err_parsing
+4038: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+4039: test
+4040: test -b
+4041: test -b sdfsd
+4042: test -b Makefile
+4043: test -b /dev/disk0
+4044: test -c /dev/disk0
+4045: test -c /dev/zero
+4046: test -c /dev/zersdfds
+4047: test -c
+4048: test -d Makefile
+4049: test -d
+4050: test -d dfdsf
+4051: test -d includes
+4052: test -e dsfdsf
+4053: test -e Makefile
+4054: test -f fdsf
+4055: test -f
+4056: test -f Makefile
+4057: test -g fsdfsd
+4058: test -g Makefile
+4059: test -g toto
+4060: test -g
+4061: test -L dsfdsf
+4062: test -L
+4063: test -L link
+4064: test -p
+4065: test -p fifo
+4066: test -r norights
+4067: test -r toto
+4068: test -S socket
+4069: test -S dsfdsf
+4070: test -S Makefile
+4071: test -s empty
+4072: test -s Makefile
+4073: test -u suid
+4074: test -u sdfsd
+4075: test -u Makefile
+4076: test -w toto
+4077: test -w dsfdsf
+4078: test -w norights
+4079: test -x exec
+4080: test -x Makefile
+4081: test -z 
+4082: test -z ""
+4083: test -z "dfdsfsd"
+4084: test "ab" = "ab"
+4085: test "ab" = "abc"
+4086: test "ab" != "abd"
+4087: test "ab" != "ab"
+4088: test 12 -eq 1233
+4089: test 12 -eq 12
+4090: test 12345123015623416854 -eq 412
+4091: test 1 -eq 2468532546324532132542
+4092: test 1 -ne 12
+4093: test 1 -eq sdfsd
+4094: test 32 -ne 12435
+4095: test 534543543 -ge 2452156546854685768
+4096: test 12 -ge bfdg
+4097: test 123 -ge ""
+4098: test 324 -it <sdfsd
+4099: test 12 -it 1
+4100: test 43455345435435 -le 32
+4101: "cat Makefile" 
+4102: "Unexisting"
+4103: "ls | grep include"
+4104: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+4105: "ls > cul | ls < EOF"
+4106: "cat toto"
+4107: "cat -e Makefile | grep 'CC'"
+4108: "ls /root || ls"
+4109: "ls;ls"
+4110: "ls ; ls"
+4111: "|"
+4112: ""
+4113: "&"
+4114: "&&"
+4115: "||"
+4116: ";"
+4117: ";;"
+4118: "who"
+4119: "cat << EOF\ncoucou\nsalut\nEOF"
+4120: "/bin/kill -11 0"
+4121: ```^~`76`76`876`654`4879--0]-`-09`796879`685`54`587696579`069`670`78]`-09`09-8`08-7`86`564`5634`3246`236`76`55`78668`5678`456`74`
+4122: ()#*#@*&)@#$&)*@#$&^)@#$&)&)@#$&*)(@$#*__*@#_@#=/=*=/**/=
+4123: ""
+4124: ''
+4125: "" ""
+4126: echo kk ""
+4127: ls kk ""
+4128: .
+4129: ..
+4130: /*
+4131: /=
+4132: =&
+4133: __-
+4134: -
+4135: \`
+4136: /`
+4137: ~/
+4138: ~/~/~/~/~/~
+4139: ~-
+4140: <>
+4141: `>'
+4142: `>>'
+4143: ><><><><><><><><><
+4144: `<'
+4145: {}{}
+4146: ${}${}${}${}${}${}
+4147: "${}"
+4148: '${}'
+4149: '${|}'```
+4150: `test -d ${HOME} && echo ok || echo wrong`
+4151: Zone de message
+4152: $$$$$$$$
+4153: $0$0$0$0$0$0$0$0$0
+4154: $_$_$_$_$_$_
+4155: ~-+-+-+-+-+-
+4156: $_$_$_$_$_$_
+4157: $?$_$!$!$!
+4158: "$$$$$$$$"
+4159: "'$0$0$0$0$0$0$0$0$0"
+4160: "$_$_$_$_$_$_"
+4161: "$?$_$!$!$!"
+4162: ${$:-$}$
+4163: "${$:-$}$"
+4164: echo "test fini"
+4165: exit
+4166: exit
+4167: ini"
+4168: exit
+4169: exit
+4170: ls \d
+4171: ls \
+4172: exit
+4173: ls \
+4174: exit
+4175: ls 
+4176: ls \
+4177: exit
+4178: ls \
+4179: exit
+4180: ls \
+4181: exit
+4182: ls \
+4183: exit
+4184: ls \\
+4185: exit
+4186: ls \
+4187: exit
+4188: ls 
+4189: exit
+4190: ls 
+4191: exit
+4192: ls 
+4193: ls \\
+4194: exit
+4195: ls |
+4196: ls
+4197: exit
+4198: ls }
+4199: ls \
+4200: ls \
+4201: exit
+4202: exit
+4203: echo $HOME
+4204: ls
+4205: ~
+4206: ~/
+4207: ~/test
+4208: ~/test/Desktop
+4209: ~/42shrc
+4210: ~/42shrc
+4211: ~test
+4212: test~
+4213: ~bsiche
+4214: test/~bsiche
+4215: ~+
+4216: ~+/
+4217: /~+/
+4218: ~+/test
+4219: +~
+4220: +~/
+4221: +~/test
+4222: ~-
+4223: echo "a" "" "" "b" | cat -e
+4224: echo -a abc | cat -e
+4225: echo -x abc | cat -e
+4226: echo -- -abc abc | cat -e
+4227: echo '\a\b\c\f\n\r\t\v\\'
+4228: echo "\a\b\c\f\n\r\t\v\\"
+4229: echo \a\b\c\f\n\r\t\v\\
+4230: echo \0777 \0123 \0 '\01' "\02"
+4231: echo abc -- def
+4232: echo -- ghi
+4233: echo zzz ---
+4234: echo -- -n abc
+4235: echo abc | cat | cat | cat -e | cat -e
+4236: echo 'abc' >/tmp/pipe_redir
+4237: ls | cat -e < /tmp/pipe_redir | cat -e
+4238: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+4239: cat /tmp/pipe_redir_fd
+4240: rm -f /tmp/pipe_redir
+4241: rm -f /tmp/pipe_redir_fd
+4242: env | grep USER | wc | cat -e
+4243: echo 'echo a | ;' > /tmp/pipe_err_parsing
+4244: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4245: echo '| echo b ;' > /tmp/pipe_err_parsing
+4246: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4247: echo '|' > /tmp/pipe_err_parsing
+4248: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4249: echo '|;' > /tmp/pipe_err_parsing
+4250: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4251: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+4252: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4253: rm -f /tmp/pipe_err_parsing
+4254: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+4255: test
+4256: test -b
+4257: test -b sdfsd
+4258: test -b Makefile
+4259: test -b /dev/disk0
+4260: test -c /dev/disk0
+4261: test -c /dev/zero
+4262: test -c /dev/zersdfds
+4263: test -c
+4264: test -d Makefile
+4265: test -d
+4266: test -d dfdsf
+4267: test -d includes
+4268: test -e dsfdsf
+4269: test -e Makefile
+4270: test -f fdsf
+4271: test -f
+4272: test -f Makefile
+4273: test -g fsdfsd
+4274: test -g Makefile
+4275: test -g toto
+4276: test -g
+4277: test -L dsfdsf
+4278: test -L
+4279: test -L link
+4280: test -p
+4281: test -p fifo
+4282: test -r norights
+4283: test -r toto
+4284: test -S socket
+4285: test -S dsfdsf
+4286: test -S Makefile
+4287: test -s empty
+4288: test -s Makefile
+4289: test -u suid
+4290: test -u sdfsd
+4291: test -u Makefile
+4292: test -w toto
+4293: test -w dsfdsf
+4294: test -w norights
+4295: test -x exec
+4296: test -x Makefile
+4297: test -z 
+4298: test -z ""
+4299: test -z "dfdsfsd"
+4300: test "ab" = "ab"
+4301: test "ab" = "abc"
+4302: test "ab" != "abd"
+4303: test "ab" != "ab"
+4304: test 12 -eq 1233
+4305: test 12 -eq 12
+4306: test 12345123015623416854 -eq 412
+4307: test 1 -eq 2468532546324532132542
+4308: test 1 -ne 12
+4309: test 1 -eq sdfsd
+4310: test 32 -ne 12435
+4311: test 534543543 -ge 2452156546854685768
+4312: test 12 -ge bfdg
+4313: test 123 -ge ""
+4314: test 324 -it <sdfsd
+4315: test 12 -it 1
+4316: test 43455345435435 -le 32
+4317: "cat Makefile" 
+4318: "Unexisting"
+4319: "ls | grep include"
+4320: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+4321: "ls > cul | ls < EOF"
+4322: "cat toto"
+4323: "cat -e Makefile | grep 'CC'"
+4324: "ls /root || ls"
+4325: "ls;ls"
+4326: "ls ; ls"
+4327: "|"
+4328: ""
+4329: "&"
+4330: "&&"
+4331: "||"
+4332: ";"
+4333: ";;"
+4334: "who"
+4335: "cat << EOF\ncoucou\nsalut\nEOF"
+4336: "/bin/kill -11 0"
+4337: ```^~`76`76`876`654`4879--0]-`-09`796879`685`54`587696579`069`670`78]`-09`09-8`08-7`86`564`5634`3246`236`76`55`78668`5678`456`74`
+4338: ()#*#@*&)@#$&)*@#$&^)@#$&)&)@#$&*)(@$#*__*@#_@#=/=*=/**/=
+4339: ""
+4340: ''
+4341: "" ""
+4342: echo kk ""
+4343: ls kk ""
+4344: .
+4345: ..
+4346: /*
+4347: /=
+4348: =&
+4349: __-
+4350: -
+4351: \`
+4352: /`
+4353: ~/
+4354: ~/~/~/~/~/~
+4355: ~-
+4356: <>
+4357: `>'
+4358: `>>'
+4359: ><><><><><><><><><
+4360: `<'
+4361: {}{}
+4362: ${}${}${}${}${}${}
+4363: "${}"
+4364: '${}'
+4365: '${|}'```
+4366: `test -d ${HOME} && echo ok || echo wrong`
+4367: Zone de message
+4368: $$$$$$$$
+4369: $0$0$0$0$0$0$0$0$0
+4370: $_$_$_$_$_$_
+4371: ~-+-+-+-+-+-
+4372: $_$_$_$_$_$_
+4373: $?$_$!$!$!
+4374: "$$$$$$$$"
+4375: "'$0$0$0$0$0$0$0$0$0"
+4376: "$_$_$_$_$_$_"
+4377: "$?$_$!$!$!"
+4378: ${$:-$}$
+4379: "${$:-$}$"
+4380: "''$$$$$$$$'"
+4381: "'$0$0$0$0$0$0$0$0$0'"
+4382: "'$_$_$_$_$_$_'"
+4383: echo "test fini"
+4384: exit
+4385: exit
+4386: ls \
+4387: exit
+4388: exit
+4389: ls |
+4390: exit
+4391: ls \\\\
+4392: ls \\\\
+4393: exit
+4394: echo "\\\\\\\\\\"
+4395: exit
+4396: echo "Enlarged you\\'re penis for '$'100\\\\month with \"$SOMEBRAND's\" new product \\!"
+4397: exit
+4398: \\\\\\\\\\\\\\\\
+4399: echo "\\\"
+4400: exit
+4401: echo "\\\\\\\\\\\\\\"
+4402: ls 
+4403: ls \
+4404: ls |
+4405: ls \\
+4406: exit
+4407: test -d ""
+4408: exit
+4409: test -d ""
+4410: test -d ""
+4411: test -d ""
+4412: test -d ""
+4413: test -d ""
+4414: test -d ""
+4415: test -d ""
+4416: test -d ""
+4417: test -d ""
+4418: test -d ""
+4419: test -d ""
+4420: test -d ""
+4421: test -d ""
+4422: exitt
+4423: exit
+4424: test -d ""
+4425: test -d ""
+4426: test -d ""
+4427: test -d ""
+4428: test -d ""
+4429: test -d ""
+4430: test -d ""
+4431: test -d ""
+4432: test -d ""
+4433: test -d ""
+4434: test -d
+4435: exit
+4436: ls ${kk}
+4437: ls ""
+4438: test -d ""
+4439: test -d
+4440: test -d ${kk}
+4441: exit
+4442: test -d ::
+4443: test -d ""
+4444: test -d ""
+4445: test -d ""
+4446: test -d ""
+4447: test -d ""
+4448: test -d ""
+4449: test -d ""
+4450: test -d ""
+4451: test -d ""
+4452: test -d ""
+4453: test -d ""
+4454: test -d ""
+4455: test -d ""
+4456: test -d ""
+4457: test -d ""
+4458: test -d ""
+4459: test -d ""
+4460: test -d ""
+4461: test -d ""
+4462: test -d ""
+4463: test -d ""
+4464: test -d ""
+4465: test -d ""
+4466: test -d ""
+4467: test -d ""
+4468: test -d ""
+4469: test -d ""
+4470: test -d ""
+4471: test -d ""
+4472: test -d ""
+4473: test -d ""
+4474: test -d ""
+4475: test -d ""
+4476: test -d ""
+4477: test -d ""
+4478: test -d ""
+4479: test -d ""
+4480: test -d ""
+4481: test -d ""
+4482: test -d ""
+4483: test -d ""
+4484: test -d ""
+4485: test -d ""
+4486: test -d ""
+4487: test -d ""
+4488: test -d ""
+4489: test -d ""
+4490: test -d ""
+4491: test -d ""
+4492: test -d ""
+4493: test -d ""
+4494: test -d ""
+4495: test -d ""
+4496: test -d ""
+4497: test -d ""
+4498: test -d ""
+4499: test -d ""
+4500: test -d ""
+4501: test -d ""
+4502: test -d ""
+4503: test -d ""
+4504: cat <<a
+4505: cat <<a
+4506: a
+4507: cat<<EOF | cat<lol
+4508: exit
+4509: cat <<EOF | cat<<LOL
+4510: cat <<EOF | cat<<LOL
+4511: cat <<EOF | cat<<LOL
+4512: exit
+4513: ls 'foo\\bar' | cat -e
+4514: echo 'foo\\bar' | cat -e
+4515: echo 'foo\\bar' | cat -e
+4516: \n\n\n\n\n\n\n\n\n
+4517: \t\r\e\15\54
+4518: :q!
+4519: exit
+4520: kirby
+4521: pwd
+4522: kirby=/Users/bsiche/masterfinal
+4523: kirby
+4524: kirby
+4525: exit
+4526: test -d
+4527: test -d
+4528: test -d
+4529: test -d
+4530: test -d
+4531: test -d
+4532: test -d
+4533: test -d ""
+4534: test -d ${kk}
+4535: test -d ""
+4536: exit
+4537: test "" -s
+4538: test "" -d
+4539: exit
+4540: kirby
+4541: kirby=$PWD
+4542: kirby
+4543: kirby=$PWD
+4544: set
+4545: kirby=${PWD}
+4546: set
+4547: exit
+4548: kirby=$PWD
+4549: kirby
+4550: exit
+4551: kirby=LOL
+4552: kirby
+4553: exit
+4554: kirby=LOL
+4555: kirby
+4556: ext
+4557: exit
+4558: kirby=LOL
+4559: kirby=$PWD
+4560: kirby
+4561: $PWD
+4562: kirby=/Users/bsiche/masterfinal
+4563: kirby
+4564: cd kirby
+4565: chmod 000 stylish1.txt 
+4566: cd ..
+4567: kirby
+4568: cd kirby
+4569: cd ..
+4570: cd kirby/
+4571: ls
+4572: cd ..
+4573: cd kirby/
+4574: ls
+4575: clear
+4576: cd ..
+4577: cd obj/
+4578: cd auto_complete/
+4579: cd ..
+4580: cd ..
+4581: cd kirby/
+4582: ls -la
+4583: chmod stylish1.txt 644
+4584: chmod  644 stylish1.txt 
+4585: ls
+4586: cd ..
+4587: mkdir test
+4588: cd test
+4589: cp ../kirby/* .
+4590: cp ../kirby/* .
+4591: cd ..
+4592: ls
+4593: exit
+4594: cd test
+4595: rm P1wins.txt 
+4596: rm GO
+4597: rm GO.txt 
+4598: rm DUEL.txt 
+4599: rm DUEL2.txt 
+4600: cp ../kirby/DUEL2.txt 
+4601: cp ../kirby/DUEL2.txt .
+4602: rm DUEL2.txt 
+4603: cp ../kirby/P2wins.txt .
+4604: cd ..
+4605: cd kirby/
+4606: ls
+4607: rm DUEL2.txt 
+4608: cd ..
+4609: cd obj/
+4610: mkdir
+4611: cd ..
+4612: cd test/
+4613: exit
+4614: ls
+4615: cd testscript/
+4616: ls
+4617: ls
+4618: exit
+4619: cd testscript/
+4620: cd ..
+4621: ls
+4622: cd testscript/
+4623: cd logs/
+4624: exit
+4625: exit
+4626: exit
+4627: t
+4628: exit | exit | exit | cat
+4629: exit
+4630: exit 1 | exit 2 | exit 3;echo "staying alive"
+4631: exit
+4632: test -d ${kk}
+4633: test -d ""
+4634: test -d
+4635: exit
+4636: test -d
+4637: test -d ""
+4638: test -d ${kk}
+4639: ls
+4640: test -d ${kk}
+4641: test -d ${kk}
+4642: test -d ${kk}
+4643: test -d ${kk}
+4644: test -d ${kk}
+4645: test -d ${HOME}
+4646: test -d ${PAGER}
+4647: test -d 
+4648: test -d ""
+4649: exit
+4650: echo $HOME
+4651: ls
+4652: ~
+4653: ~/
+4654: ~/test
+4655: ~/test/Desktop
+4656: ~/42shrc
+4657: ~/42shrc
+4658: ~test
+4659: test~
+4660: ~bsiche
+4661: test/~bsiche
+4662: ~+
+4663: ~+/
+4664: /~+/
+4665: ~+/test
+4666: +~
+4667: +~/
+4668: +~/test
+4669: ~-
+4670: echo "a" "" "" "b" | cat -e
+4671: echo -a abc | cat -e
+4672: echo -x abc | cat -e
+4673: echo -- -abc abc | cat -e
+4674: echo '\a\b\c\f\n\r\t\v\\'
+4675: echo "\a\b\c\f\n\r\t\v\\"
+4676: echo \a\b\c\f\n\r\t\v\\
+4677: echo \0777 \0123 \0 '\01' "\02"
+4678: echo abc -- def
+4679: echo -- ghi
+4680: echo zzz ---
+4681: echo -- -n abc
+4682: echo abc | cat | cat | cat -e | cat -e
+4683: echo 'abc' >/tmp/pipe_redir
+4684: ls | cat -e < /tmp/pipe_redir | cat -e
+4685: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+4686: cat /tmp/pipe_redir_fd
+4687: rm -f /tmp/pipe_redir
+4688: rm -f /tmp/pipe_redir_fd
+4689: env | grep USER | wc | cat -e
+4690: echo 'echo a | ;' > /tmp/pipe_err_parsing
+4691: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4692: echo '| echo b ;' > /tmp/pipe_err_parsing
+4693: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4694: echo '|' > /tmp/pipe_err_parsing
+4695: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4696: echo '|;' > /tmp/pipe_err_parsing
+4697: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4698: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+4699: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4700: echo $HOME
+4701: ls
+4702: ~
+4703: ~/
+4704: ~/test
+4705: ~/test/Desktop
+4706: ~/42shrc
+4707: ~/42shrc
+4708: ~test
+4709: test~
+4710: ~bsiche
+4711: test/~bsiche
+4712: ~+
+4713: ~+/
+4714: /~+/
+4715: ~+/test
+4716: +~
+4717: +~/
+4718: +~/test
+4719: ~-
+4720: echo "a" "" "" "b" | cat -e
+4721: echo -a abc | cat -e
+4722: echo -x abc | cat -e
+4723: echo -- -abc abc | cat -e
+4724: echo '\a\b\c\f\n\r\t\v\\'
+4725: echo "\a\b\c\f\n\r\t\v\\"
+4726: echo \a\b\c\f\n\r\t\v\\
+4727: echo \0777 \0123 \0 '\01' "\02"
+4728: echo abc -- def
+4729: echo -- ghi
+4730: echo zzz ---
+4731: echo -- -n abc
+4732: echo abc | cat | cat | cat -e | cat -e
+4733: echo 'abc' >/tmp/pipe_redir
+4734: ls | cat -e < /tmp/pipe_redir | cat -e
+4735: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+4736: cat /tmp/pipe_redir_fd
+4737: rm -f /tmp/pipe_redir
+4738: rm -f /tmp/pipe_redir_fd
+4739: env | grep USER | wc | cat -e
+4740: echo 'echo a | ;' > /tmp/pipe_err_parsing
+4741: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4742: echo '| echo b ;' > /tmp/pipe_err_parsing
+4743: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4744: echo '|' > /tmp/pipe_err_parsing
+4745: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4746: echo '|;' > /tmp/pipe_err_parsing
+4747: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4748: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+4749: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4750: echo '| echo b ;' > /tmp/pipe_err_parsing
+4751: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4752: exit
+4753: echo $HOME
+4754: ls
+4755: ~
+4756: ~/
+4757: ~/test
+4758: ~/test/Desktop
+4759: ~/42shrc
+4760: ~/42shrc
+4761: ~test
+4762: test~
+4763: ~bsiche
+4764: test/~bsiche
+4765: ~+
+4766: ~+/
+4767: /~+/
+4768: ~+/test
+4769: +~
+4770: +~/
+4771: +~/test
+4772: ~-
+4773: echo "a" "" "" "b" | cat -e
+4774: echo -a abc | cat -e
+4775: echo -x abc | cat -e
+4776: echo -- -abc abc | cat -e
+4777: echo '\a\b\c\f\n\r\t\v\\'
+4778: echo "\a\b\c\f\n\r\t\v\\"
+4779: echo \a\b\c\f\n\r\t\v\\
+4780: echo \0777 \0123 \0 '\01' "\02"
+4781: echo abc -- def
+4782: echo -- ghi
+4783: echo zzz ---
+4784: echo -- -n abc
+4785: echo abc | cat | cat | cat -e | cat -e
+4786: echo 'abc' >/tmp/pipe_redir
+4787: ls | cat -e < /tmp/pipe_redir | cat -e
+4788: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+4789: cat /tmp/pipe_redir_fd
+4790: rm -f /tmp/pipe_redir
+4791: rm -f /tmp/pipe_redir_fd
+4792: env | grep USER | wc | cat -e
+4793: echo 'echo a | ;' > /tmp/pipe_err_parsing
+4794: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4795: echo '| echo b ;' > /tmp/pipe_err_parsing
+4796: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4797: echo '|' > /tmp/pipe_err_parsing
+4798: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4799: echo '|;' > /tmp/pipe_err_parsing
+4800: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4801: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+4802: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4803: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4804: echo '| echo b ;' > /tmp/pipe_err_parsing
+4805: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4806: exit
+4807: echo $HOME
+4808: ls
+4809: ~
+4810: ~/
+4811: ~/test
+4812: ~/test/Desktop
+4813: ~/42shrc
+4814: ~/42shrc
+4815: ~test
+4816: test~
+4817: ~bsiche
+4818: test/~bsiche
+4819: ~+
+4820: ~+/
+4821: /~+/
+4822: ~+/test
+4823: +~
+4824: +~/
+4825: +~/test
+4826: ~-
+4827: echo "a" "" "" "b" | cat -e
+4828: echo -a abc | cat -e
+4829: echo -x abc | cat -e
+4830: echo -- -abc abc | cat -e
+4831: echo '\a\b\c\f\n\r\t\v\\'
+4832: echo "\a\b\c\f\n\r\t\v\\"
+4833: echo \a\b\c\f\n\r\t\v\\
+4834: echo \0777 \0123 \0 '\01' "\02"
+4835: echo abc -- def
+4836: echo -- ghi
+4837: echo zzz ---
+4838: echo -- -n abc
+4839: echo abc | cat | cat | cat -e | cat -e
+4840: echo 'abc' >/tmp/pipe_redir
+4841: ls | cat -e < /tmp/pipe_redir | cat -e
+4842: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+4843: cat /tmp/pipe_redir_fd
+4844: rm -f /tmp/pipe_redir
+4845: rm -f /tmp/pipe_redir_fd
+4846: env | grep USER | wc | cat -e
+4847: echo 'echo a | ;' > /tmp/pipe_err_parsing
+4848: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4849: echo '| echo b ;' > /tmp/pipe_err_parsing
+4850: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4851: echo '|' > /tmp/pipe_err_parsing
+4852: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4853: echo '|;' > /tmp/pipe_err_parsing
+4854: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4855: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+4856: /tmp/bin/42sh < /tmp/pipe_err_parsing
+4857: rm -f /tmp/pipe_err_parsing
+4858: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+4859: test
+4860: test -b
+4861: test -b sdfsd
+4862: test -b Makefile
+4863: test -b /dev/disk0
+4864: test -c /dev/disk0
+4865: test -c /dev/zero
+4866: test -c /dev/zersdfds
+4867: test -c
+4868: test -d Makefile
+4869: test -d
+4870: test -d dfdsf
+4871: test -d includes
+4872: test -e dsfdsf
+4873: test -e Makefile
+4874: test -f fdsf
+4875: test -f
+4876: test -f Makefile
+4877: test -g fsdfsd
+4878: test -g Makefile
+4879: test -g toto
+4880: test -g
+4881: test -L dsfdsf
+4882: test -L
+4883: test -L link
+4884: test -p
+4885: test -p fifo
+4886: test -r norights
+4887: test -r toto
+4888: test -S socket
+4889: test -S dsfdsf
+4890: test -S Makefile
+4891: test -s empty
+4892: test -s Makefile
+4893: test -u suid
+4894: test -u sdfsd
+4895: test -u Makefile
+4896: test -w toto
+4897: test -w dsfdsf
+4898: test -w norights
+4899: test -x exec
+4900: test -x Makefile
+4901: test -z 
+4902: test -z ""
+4903: test -z "dfdsfsd"
+4904: test "ab" = "ab"
+4905: test "ab" = "abc"
+4906: test "ab" != "abd"
+4907: test "ab" != "ab"
+4908: test 12 -eq 1233
+4909: test 12 -eq 12
+4910: test 12345123015623416854 -eq 412
+4911: test 1 -eq 2468532546324532132542
+4912: test 1 -ne 12
+4913: test 1 -eq sdfsd
+4914: test 32 -ne 12435
+4915: test 534543543 -ge 2452156546854685768
+4916: test 12 -ge bfdg
+4917: test 123 -ge ""
+4918: test 324 -it <sdfsd
+4919: test 12 -it 1
+4920: test 43455345435435 -le 32
+4921: "cat Makefile" 
+4922: "Unexisting"
+4923: "ls | grep include"
+4924: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+4925: "ls > cul | ls < EOF"
+4926: "cat toto"
+4927: "cat -e Makefile | grep 'CC'"
+4928: "ls /root || ls"
+4929: "ls;ls"
+4930: "ls ; ls"
+4931: "|"
+4932: ""
+4933: "&"
+4934: "&&"
+4935: "||"
+4936: ";"
+4937: ";;"
+4938: "who"
+4939: "cat << EOF\ncoucou\nsalut\nEOF"
+4940: ```^~`76`76`876`654`4879--0]-`-09`796879`685`54`587696579`069`670`78]`-09`09-8`08-7`86`564`5634`3246`236`76`55`78668`5678`456`74`
+4941: ()#*#@*&)@#$&)*@#$&^)@#$&)&)@#$&*)(@$#*__*@#_@#=/=*=/**/=
+4942: ""
+4943: ''
+4944: "" ""
+4945: echo kk ""
+4946: ls kk ""
+4947: .
+4948: ..
+4949: /*
+4950: /=
+4951: =&
+4952: __-
+4953: -
+4954: \`
+4955: /`
+4956: ~/
+4957: ~/~/~/~/~/~
+4958: ~-
+4959: <>
+4960: `>'
+4961: `>>'
+4962: ><><><><><><><><><
+4963: `<'
+4964: {}{}
+4965: ${}${}${}${}${}${}
+4966: "${}"
+4967: '${}'
+4968: '${|}'```
+4969: `test -d ${HOME} && echo ok || echo wrong`
+4970: Zone de message
+4971: $$$$$$$$
+4972: $0$0$0$0$0$0$0$0$0
+4973: $_$_$_$_$_$_
+4974: ~-+-+-+-+-+-
+4975: $_$_$_$_$_$_
+4976: $?$_$!$!$!
+4977: "$$$$$$$$"
+4978: "'$0$0$0$0$0$0$0$0$0"
+4979: "$_$_$_$_$_$_"
+4980: "$?$_$!$!$!"
+4981: ${$:-$}$
+4982: "${$:-$}$"
+4983: "''$$$$$$$$'"
+4984: "'$0$0$0$0$0$0$0$0$0'"
+4985: "'$_$_$_$_$_$_'"
+4986: echo "test fini"
+4987: exit
+4988: echo $HOME
+4989: ls
+4990: ~
+4991: ~/
+4992: ~/test
+4993: ~/test/Desktop
+4994: ~/42shrc
+4995: ~/42shrc
+4996: ~test
+4997: test~
+4998: ~bsiche
+4999: test/~bsiche
+5000: ~+
+5001: ~+/
+5002: /~+/
+5003: ~+/test
+5004: +~
+5005: +~/
+5006: +~/test
+5007: ~-
+5008: echo "a" "" "" "b" | cat -e
+5009: echo -a abc | cat -e
+5010: echo -x abc | cat -e
+5011: echo -- -abc abc | cat -e
+5012: echo '\a\b\c\f\n\r\t\v\\'
+5013: echo "\a\b\c\f\n\r\t\v\\"
+5014: echo \a\b\c\f\n\r\t\v\\
+5015: echo \0777 \0123 \0 '\01' "\02"
+5016: echo abc -- def
+5017: echo -- ghi
+5018: echo zzz ---
+5019: echo -- -n abc
+5020: echo abc | cat | cat | cat -e | cat -e
+5021: echo 'abc' >/tmp/pipe_redir
+5022: ls | cat -e < /tmp/pipe_redir | cat -e
+5023: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+5024: cat /tmp/pipe_redir_fd
+5025: rm -f /tmp/pipe_redir
+5026: rm -f /tmp/pipe_redir_fd
+5027: env | grep USER | wc | cat -e
+5028: echo 'echo a | ;' > /tmp/pipe_err_parsing
+5029: /tmp/bin/42sh < /tmp/pipe_err_parsing
+5030: echo '| echo b ;' > /tmp/pipe_err_parsing
+5031: /tmp/bin/42sh < /tmp/pipe_err_parsing
+5032: echo '|' > /tmp/pipe_err_parsing
+5033: /tmp/bin/42sh < /tmp/pipe_err_parsing
+5034: echo '|;' > /tmp/pipe_err_parsing
+5035: /tmp/bin/42sh < /tmp/pipe_err_parsing
+5036: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+5037: /tmp/bin/42sh < /tmp/pipe_err_parsing
+5038: rm -f /tmp/pipe_err_parsing
+5039: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+5040: test
+5041: test -b
+5042: test -b sdfsd
+5043: test -b Makefile
+5044: test -b /dev/disk0
+5045: test -c /dev/disk0
+5046: test -c /dev/zero
+5047: test -c /dev/zersdfds
+5048: test -c
+5049: test -d Makefile
+5050: test -d
+5051: test -d dfdsf
+5052: test -d includes
+5053: test -e dsfdsf
+5054: test -e Makefile
+5055: test -f fdsf
+5056: test -f
+5057: test -f Makefile
+5058: test -g fsdfsd
+5059: test -g Makefile
+5060: test -g toto
+5061: test -g
+5062: test -L dsfdsf
+5063: test -L
+5064: test -L link
+5065: test -p
+5066: test -p fifo
+5067: test -r norights
+5068: test -r toto
+5069: test -S socket
+5070: test -S dsfdsf
+5071: test -S Makefile
+5072: test -s empty
+5073: test -s Makefile
+5074: test -u suid
+5075: test -u sdfsd
+5076: test -u Makefile
+5077: test -w toto
+5078: test -w dsfdsf
+5079: test -w norights
+5080: test -x exec
+5081: test -x Makefile
+5082: test -z 
+5083: test -z ""
+5084: test -z "dfdsfsd"
+5085: test "ab" = "ab"
+5086: test "ab" = "abc"
+5087: test "ab" != "abd"
+5088: test "ab" != "ab"
+5089: test 12 -eq 1233
+5090: test 12 -eq 12
+5091: test 12345123015623416854 -eq 412
+5092: test 1 -eq 2468532546324532132542
+5093: test 1 -ne 12
+5094: test 1 -eq sdfsd
+5095: test 32 -ne 12435
+5096: test 534543543 -ge 2452156546854685768
+5097: test 12 -ge bfdg
+5098: test 123 -ge ""
+5099: test 324 -it <sdfsd
+5100: test 12 -it 1
+5101: test 43455345435435 -le 32
+5102: "cat Makefile" 
+5103: "Unexisting"
+5104: "ls | grep include"
+5105: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+5106: "ls > cul | ls < EOF"
+5107: "cat toto"
+5108: "cat -e Makefile | grep 'CC'"
+5109: "ls /root || ls"
+5110: "ls;ls"
+5111: "ls ; ls"
+5112: "|"
+5113: ""
+5114: "&"
+5115: "&&"
+5116: "||"
+5117: ";"
+5118: ";;"
+5119: "who"
+5120: "cat << EOF\ncoucou\nsalut\nEOF"
+5121: ```^~`76`76`876`654`4879--0]-`-09`796879`685`54`587696579`069`670`78]`-09`09-8`08-7`86`564`5634`3246`236`76`55`78668`5678`456`74`
+5122: ()#*#@*&)@#$&)*@#$&^)@#$&)&)@#$&*)(@$#*__*@#_@#=/=*=/**/=
+5123: ""
+5124: ''
+5125: "" ""
+5126: echo kk ""
+5127: ls kk ""
+5128: .
+5129: ..
+5130: /*
+5131: /=
+5132: =&
+5133: __-
+5134: -
+5135: \`
+5136: /`
+5137: ~/
+5138: ~/~/~/~/~/~
+5139: ~-
+5140: <>
+5141: `>'
+5142: `>>'
+5143: ><><><><><><><><><
+5144: `<'
+5145: {}{}
+5146: ${}${}${}${}${}${}
+5147: "${}"
+5148: '${}'
+5149: '${|}'```
+5150: `test -d ${HOME} && echo ok || echo wrong`
+5151: Zone de message
+5152: $$$$$$$$
+5153: $0$0$0$0$0$0$0$0$0
+5154: $_$_$_$_$_$_
+5155: ~-+-+-+-+-+-
+5156: $_$_$_$_$_$_
+5157: $?$_$!$!$!
+5158: "$$$$$$$$"
+5159: "'$0$0$0$0$0$0$0$0$0"
+5160: "$_$_$_$_$_$_"
+5161: "$?$_$!$!$!"
+5162: ${$:-$}$
+5163: "${$:-$}$"
+5164: "''$$$$$$$$'"
+5165: "'$0$0$0$0$0$0$0$0$0'"
+5166: "'$_$_$_$_$_$_'"
+5167: echo "test fini"
+5168: exit
+5169: echo $HOME
+5170: ls
+5171: ~
+5172: ~/
+5173: ~/test
+5174: ~/test/Desktop
+5175: ~/42shrc
+5176: ~/42shrc
+5177: ~test
+5178: test~
+5179: ~bsiche
+5180: test/~bsiche
+5181: ~+
+5182: ~+/
+5183: /~+/
+5184: ~+/test
+5185: +~
+5186: +~/
+5187: +~/test
+5188: ~-
+5189: echo "a" "" "" "b" | cat -e
+5190: echo -a abc | cat -e
+5191: echo -x abc | cat -e
+5192: echo -- -abc abc | cat -e
+5193: echo '\a\b\c\f\n\r\t\v\\'
+5194: echo "\a\b\c\f\n\r\t\v\\"
+5195: echo \a\b\c\f\n\r\t\v\\
+5196: echo \0777 \0123 \0 '\01' "\02"
+5197: echo abc -- def
+5198: echo -- ghi
+5199: echo zzz ---
+5200: echo -- -n abc
+5201: echo abc | cat | cat | cat -e | cat -e
+5202: echo 'abc' >/tmp/pipe_redir
+5203: ls | cat -e < /tmp/pipe_redir | cat -e
+5204: echo 'def' | cat -e 3<>/tmp/pipe_redir_fd >&3 | cat -e <&3
+5205: cat /tmp/pipe_redir_fd
+5206: rm -f /tmp/pipe_redir
+5207: rm -f /tmp/pipe_redir_fd
+5208: env | grep USER | wc | cat -e
+5209: echo 'echo a | ;' > /tmp/pipe_err_parsing
+5210: /tmp/bin/42sh < /tmp/pipe_err_parsing
+5211: echo '| echo b ;' > /tmp/pipe_err_parsing
+5212: /tmp/bin/42sh < /tmp/pipe_err_parsing
+5213: echo '|' > /tmp/pipe_err_parsing
+5214: /tmp/bin/42sh < /tmp/pipe_err_parsing
+5215: echo '|;' > /tmp/pipe_err_parsing
+5216: /tmp/bin/42sh < /tmp/pipe_err_parsing
+5217: echo 'echo c\|echo d' > /tmp/pipe_err_parsing
+5218: /tmp/bin/42sh < /tmp/pipe_err_parsing
+5219: rm -f /tmp/pipe_err_parsing
+5220: test || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoustest || test && test && test || test ; ; ; ; ; ; ; ungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertoussatoussaungrosbuffertous;""
+5221: test
+5222: test -b
+5223: test -b sdfsd
+5224: test -b Makefile
+5225: test -b /dev/disk0
+5226: test -c /dev/disk0
+5227: test -c /dev/zero
+5228: test -c /dev/zersdfds
+5229: test -c
+5230: test -d Makefile
+5231: test -d
+5232: test -d dfdsf
+5233: test -d includes
+5234: test -e dsfdsf
+5235: test -e Makefile
+5236: test -f fdsf
+5237: test -f
+5238: test -f Makefile
+5239: test -g fsdfsd
+5240: test -g Makefile
+5241: test -g toto
+5242: test -g
+5243: test -L dsfdsf
+5244: test -L
+5245: test -L link
+5246: test -p
+5247: test -p fifo
+5248: test -r norights
+5249: test -r toto
+5250: test -S socket
+5251: test -S dsfdsf
+5252: test -S Makefile
+5253: test -s empty
+5254: test -s Makefile
+5255: test -u suid
+5256: test -u sdfsd
+5257: test -u Makefile
+5258: test -w toto
+5259: test -w dsfdsf
+5260: test -w norights
+5261: test -x exec
+5262: test -x Makefile
+5263: test -z 
+5264: test -z ""
+5265: test -z "dfdsfsd"
+5266: test "ab" = "ab"
+5267: test "ab" = "abc"
+5268: test "ab" != "abd"
+5269: test "ab" != "ab"
+5270: test 12 -eq 1233
+5271: test 12 -eq 12
+5272: test 12345123015623416854 -eq 412
+5273: test 1 -eq 2468532546324532132542
+5274: test 1 -ne 12
+5275: test 1 -eq sdfsd
+5276: test 32 -ne 12435
+5277: test 534543543 -ge 2452156546854685768
+5278: test 12 -ge bfdg
+5279: test 123 -ge ""
+5280: test 324 -it <sdfsd
+5281: test 12 -it 1
+5282: test 43455345435435 -le 32
+5283: "cat Makefile" 
+5284: "Unexisting"
+5285: "ls | grep include"
+5286: "ls | grep e | grep a > toto ; cat toto ; rm toto"
+5287: "ls > cul | ls < EOF"
+5288: "cat toto"
+5289: "cat -e Makefile | grep 'CC'"
+5290: "ls /root || ls"
+5291: "ls;ls"
+5292: "ls ; ls"
+5293: "|"
+5294: ""
+5295: "&"
+5296: "&&"
+5297: "||"
+5298: ";"
+5299: ";;"
+5300: "who"
+5301: "cat << EOF\ncoucou\nsalut\nEOF"
+5302: ```^~`76`76`876`654`4879--0]-`-09`796879`685`54`587696579`069`670`78]`-09`09-8`08-7`86`564`5634`3246`236`76`55`78668`5678`456`74`
+5303: ()#*#@*&)@#$&)*@#$&^)@#$&)&)@#$&*)(@$#*__*@#_@#=/=*=/**/=
+5304: ""
+5305: ''
+5306: "" ""
+5307: echo kk ""
+5308: ls kk ""
+5309: .
+5310: ..
+5311: /*
+5312: /=
+5313: =&
+5314: __-
+5315: -
+5316: \`
+5317: /`
+5318: ~/
+5319: ~/~/~/~/~/~
+5320: ~-
+5321: <>
+5322: `>'
+5323: `>>'
+5324: ><><><><><><><><><
+5325: `<'
+5326: {}{}
+5327: ${}${}${}${}${}${}
+5328: "${}"
+5329: '${}'
+5330: '${|}'```
+5331: `test -d ${HOME} && echo ok || echo wrong`
+5332: Zone de message
+5333: $$$$$$$$
+5334: $0$0$0$0$0$0$0$0$0
+5335: $_$_$_$_$_$_
+5336: ~-+-+-+-+-+-
+5337: $_$_$_$_$_$_
+5338: $?$_$!$!$!
+5339: "$$$$$$$$"
+5340: "'$0$0$0$0$0$0$0$0$0"
+5341: "$_$_$_$_$_$_"
+5342: "$?$_$!$!$!"
+5343: ${$:-$}$
+5344: "${$:-$}$"
+5345: "''$$$$$$$$'"
+5346: "'$0$0$0$0$0$0$0$0$0'"
+5347: "'$_$_$_$_$_$_'"
+5348: echo "test fini"
+5349: nano /tmp/fc1
+5350: echo "test fini"
+5351: nano /tmp/fc1
+5352: haha
+5353: exit
+5354: nano /tmp/fc1
+5355: echo "lol"
+5356: echo "lol"
+5357: echo "lol"
+5358: echo "lol"
+5359: echo "lol"
+5360: echo "lol"
+5361: echo "lol"
+5362: echo "lol"
+5363: echo "lol"
+5364: echo "lol"
+5365: echo "lol"
+5366: fc 10 20
+5367: history
+5368: exit
+5369: echo "lol"
+5370: echo "lol"
+5371: echo "lol"
+5372: echo "lol"
+5373: exit
+5374: exit
+5375: ls
+5376: ls
+5377: test 24 -eq 12
+5378: fc -l
+5379: $?$_$!$!$!
+5380: history
+5381: $_$_$_$_$_$_
+5382: $_
+5383: ls
+5384: $_
+5385: ls -l
+5386: fc -l
+5387: echo 1
+5388: echo 2
+5389: echo 3
+5390: echo 4
+5391: echo 5
+5392: ls -l
+5393: fc -l
+5394: echo 3
+5395: history
+5396: echo 3
+5397: exit
+5398: echo 1
+5399: echo 2
+5400: echo 3
+5401: history
+5402: echo 3
+5403: 5430
+5404: 5402
+5405: 5403
+5406: history
+5407: history
+5408: kiry
+5409: history > toto
