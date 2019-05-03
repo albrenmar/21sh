@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   auto_complete_page.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 20:45:18 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/03 02:25:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void				set_up_page(void)
 
 void				change_page(int i, t_lstcontainer *list)
 {
+
+	ft_lstdel(g_tracking.aut->page_lst->firstelement, 0);
 	ft_free(g_tracking.aut->page_lst);
 	g_tracking.aut->page_lst = NULL;
 	g_tracking.aut->last_page = g_tracking.aut->active_page;
