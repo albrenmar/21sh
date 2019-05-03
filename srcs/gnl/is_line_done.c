@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_line_done.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 22:47:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 10:00:06 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 10:53:51 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,14 @@ int		check_eol(char *line)
 	return (secondary_check(line));
 }
 
+void	clean_and_return(char *line)
+{
+	ft_strdel(&g_tracking.cmd);
+	g_tracking.cmd = NULL;
+	ft_putchar('\n');
+	return (line);
+}
+
 char	*end_line(char *line)
 {
 	int		flag;
@@ -86,8 +94,5 @@ char	*end_line(char *line)
 	if (ft_strlen(g_tracking.cmd) == 0)
 		line = remove_back(line, 0);
 	line = ft_strjoinfree(line, g_tracking.cmd, 1);
-	ft_strdel(&g_tracking.cmd);
-	g_tracking.cmd = NULL;
-	ft_putchar('\n');
-	return (line);
+	return (clean_and_return(line));
 }
