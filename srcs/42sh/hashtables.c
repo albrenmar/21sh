@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 03:03:56 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/04 00:18:40 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ char		*hashed_command(char **tab_exec, int i)
 	while (tab_exec[0][i] && (tab_exec[0][i] <= 65 || tab_exec[0][i] > 122))
 		i++;
 	i = ft_tolower(tab_exec[0][i]) - 'a';
-	if (i < 0 || i > 25 || !(ft_strchr(g_tracking.g_tab_exec[0], '/')))
+	if (i < 0 || i > 25 || !(ft_strchr(g_tracking.g_tab_exec[0], '/'))
+		|| (i == 0 && tab_exec[0][i] != 'a'))
 		return (NULL);
 	newtab = tab_dup(tab_exec);
 	ft_strdel(&newtab[0]);
