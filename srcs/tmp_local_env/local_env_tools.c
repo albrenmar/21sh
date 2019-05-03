@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:23:43 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/03 06:12:39 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 06:24:58 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char		*init_local_env_value(char *str, int i, int j)
 
 	len = size_of_key_or_val(str, 2, 0, 0);
 	if (len == 0)
-		return (NULL);
+		return (ft_strdup(""));
 	if (!(new = malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	while (str[i] != '=')
