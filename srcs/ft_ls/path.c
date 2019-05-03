@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 00:18:46 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/03 08:48:00 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int		ft_edgecase(char *dossier)
 
 	i = ft_strlen(dossier) - 1;
 	err = NULL;
+	if (i < 0 || !dossier)
+		return (1);
 	if (dossier[i] == '/')
 	{
 		dir = opendir(dossier);

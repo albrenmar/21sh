@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/03 08:27:54 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 08:44:27 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ char	*exec_create_heredoc(char *eof)
 	int		fd;
 
 	if (!eof || g_tracking.interactive != 1)
-		return (eof);
+		return (NULL);
 	file = filename();
 	fd = 0;
 	g_tracking.herexpnd = 0;
