@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/03 00:41:26 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/05/03 03:41:57 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ int			make_reddir(char **tab_reddir, int i)
 		else
 		{
 			if ((create_fich(tab_reddir, i) == -1))
-				if (exit_reddir() == -1)
-					return (-1);
+				return (-1);
 		}
 		i = i + 2;
 	}
@@ -78,8 +77,9 @@ void		pipe_2_exec(char **tab_exec, t_jobs *job, int readpipe)
 	if (pid0 == 0)
 	{
 		close_fd_copy();
-		if (g_tracking.mysh->tab_reddir != NULL)
-			make_reddir(g_tracking.mysh->tab_reddir, 0);
+		if (g_tracking.mysh->tab_reddir != NULL
+				&& make_reddir(g_tracking.mysh->tab_reddir, 0) == -1)
+				exit(-1);
 		set_jobs(job, pid0);
 		dup2(readpipe, 0);
 		if (readpipe > 2)

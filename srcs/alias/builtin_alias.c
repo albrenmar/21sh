@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_alias.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 03:18:25 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/22 05:03:59 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 03:06:48 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int		search_eq(char *alias)
 	flag = 0;
 	if (!alias)
 		return (-1);
+	if (alias[0] == '=')
+		return (0);
 	while (alias[i])
 	{
 		if (alias[i] == '=')

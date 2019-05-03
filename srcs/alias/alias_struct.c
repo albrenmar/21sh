@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 22:29:58 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/28 04:47:44 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 03:08:35 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ t_keyval			*parse_alias(char *alias)
 	return (al_to_add);
 }
 
-int					add_alias(void)
+int					add_alias(int count)
 {
 	t_lstcontainer	*alias_lst;
 	t_keyval		*alias_to_add;
@@ -125,9 +125,9 @@ int					add_alias(void)
 	{
 		alias = ft_strdup(av[i]);
 		alias_lst = g_tracking.mysh->alias_lst;
-		if (search_eq(alias) == 0)
+		if ((count = (search_eq(alias) == 0)))
 			print_alias(alias);
-		else
+		else if (count == 1)
 		{
 			alias_to_add = parse_alias(alias);
 			if (alias_lst && alias_to_add)
