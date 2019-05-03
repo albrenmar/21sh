@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 04:06:37 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 04:40:45 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 00:12:23 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,9 @@ int		print_file(int i)
 	file = get_file(i);
 	str = NULL;
 	if (!file || verify_path_is_valid(file) == -1)
-		return (-5);
+		return (error_file(file));
 	if ((fd = open(file, O_RDWR, 0644)) == -1)
-	{
-		ft_putendl_fd("Could not access gamefile", 2);
-		ft_strdel(&file);
-		return (-5);
-	}
+		return (error_file(file));
 	while (get_next_line(fd, &str) > 0)
 	{
 		ft_putendl(str);
@@ -65,15 +61,11 @@ int		print_box(int i)
 	file = get_box_file(i);
 	str = NULL;
 	if (!file || verify_path_is_valid(file) == -1)
-		return (-5);
+		return (error_file(file));
 	if (i == 3)
 		clear_box();
 	if ((fd = open(file, O_RDWR, 0644)) == -1)
-	{
-		ft_putendl_fd("Could not access gamefile", 2);
-		ft_strdel(&file);
-		return (-5);
-	}
+		return (error_file(file));
 	while (get_next_line(fd, &str) > 0)
 	{
 		ft_putendl(str);

@@ -508,7 +508,7 @@ void			show_job_info_helper(t_jobs *job, int mode);
 void			jobs_notifications_output(t_jobs *job);
 void			jobs_notif_h(t_jobs *job, t_jobs *last, t_jobs *next, int stat);
 void			reset_all(void);
-int				main_test(int flag, int i, int argc);
+int				main_test(int flag, int i, int argc, char **n);
 char			**init_envp(t_lstcontainer *env);
 int				exist_builtin(char *cmd);
 t_last			*check_exp_error(t_last *cmd);

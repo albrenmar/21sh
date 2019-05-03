@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   kirby_read_loop.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 00:44:06 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 10:52:09 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/04 00:13:16 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
+
+int		error_file(char *file)
+{
+	ft_putendl_fd("Could not access gamefile", 2);
+	sleep(2);
+	if (file)
+		ft_strdel(&file);
+	return (-5);
+}
 
 int		rand_loop(int a, int b)
 {
