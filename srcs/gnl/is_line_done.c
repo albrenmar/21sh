@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 22:47:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 10:24:15 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 01:52:55 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,14 @@ int		check_eol(char *line)
 
 char	*end_line(char *line)
 {
+	int		flag;
+	flag = 0;
+	if (ft_valid_quote(line, '\'', 0) != 0)
+		flag++;
+	if (flag % 2 != 0)
+		flag = 1;
+	else
+		flag = 0;
 	g_tracking.quotes = 3;
 	get_key();
 	if (g_tracking.quotes > 3)
@@ -70,6 +78,8 @@ char	*end_line(char *line)
 		ft_strdel(&g_tracking.str);
 		return (line);
 	}
+	if (flag == 1)
+		line = ft_strjoinfree(line, "\n", 1);
 	line = ft_strjoinfree(line, g_tracking.cmd, 1);
 	ft_free(g_tracking.cmd);
 	g_tracking.cmd = NULL;
