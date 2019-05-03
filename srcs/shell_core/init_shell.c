@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:10:27 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 04:21:27 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/04 00:11:42 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	init_global(void)
 	g_tracking.mysh->tmpenvsave = NULL;
 	g_tracking.mysh->setsave = NULL;
 	g_tracking.lastbackground = 0;
+	g_tracking.mysh->is_expanded = 0;
 }
 
 void	bad_alloc(void)

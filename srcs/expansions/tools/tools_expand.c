@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 01:23:51 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/04 00:41:47 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,13 @@ void	update_envp(void)
 	if (g_tracking.mysh->tab_env)
 		ft_free(g_tracking.mysh->tab_env);
 	g_tracking.mysh->tab_env = init_envp(g_tracking.mysh->env);
+}
+
+void	clean_value(char **value, int unq)
+{
+	if (*value[0] == '\0' && !g_tracking.mysh->err_expend && unq != 3)
+		ft_strdel(value);
+	else if (*value[0] == '\0' && !g_tracking.mysh->err_expend
+			&& g_tracking.mysh->is_expanded)
+		ft_strdel(value);
 }

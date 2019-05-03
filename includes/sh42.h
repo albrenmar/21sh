@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 06:02:09 by abguimba          #+#    #+#             */
-/*   Updated: 2019/05/03 08:07:41 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 00:09:01 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ typedef struct	s_shell
 	int				err_expend_printed;
 	int				in_ast;
 	int				in_here;
+	int				is_expanded;
 	int				errchk;
 	int				dup1;
 	int				dup2;

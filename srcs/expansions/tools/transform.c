@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 03:24:47 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 08:40:24 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/04 00:34:01 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int		transform_simple(char **str)
 	{
 		ft_strdel(str);
 		*str = new_str;
+		g_tracking.mysh->is_expanded = 1;
 	}
 	else if (*str && is_sysvar(str))
 		return (0);
@@ -80,6 +81,7 @@ int		transform_simple(char **str)
 	{
 		ft_strdel(str);
 		*str = ft_strdup("");
+		g_tracking.mysh->is_expanded = 1;
 		return (1);
 	}
 	return (0);
@@ -91,6 +93,7 @@ void	expand_cleaner(int is_expanded, t_expand *first_letter, char **str,
 	if (is_expanded)
 	{
 		delete_list_expand(&first_letter);
+		g_tracking.mysh->is_expanded = 1;
 		ft_strdel(&tmp);
 		return ;
 	}
