@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 22:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 04:46:40 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 05:35:58 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		print_usage(void)
 	ft_putendl("press enter or spacebar to start a new game");
 	while (c != 10 && c != 27 && c != 32)
 		read(0, &c, 1);
-	if (c == 10)
+	if (c == 10 || c == 32)
 		return (0);
 	if (c == 27)
 		return (1);
@@ -54,7 +54,7 @@ int		exit_kirby(void)
 	int		flag;
 
 	c = 65;
-	ft_putendl("Are you sure you want to quit ?");
+	ft_putendl("Are you sure you want to quit ?   Y/N");
 	while (c != 89 && c != 121 && c != 110 && c != 78)
 		read(0, &c, 1);
 	if (c == 89 || c == 121)
@@ -97,6 +97,7 @@ int		special_main(void)
 	{
 		ft_strdel(&test);
 		ft_putendl_fd("Could not access gamefile", 2);
+		ft_putendl_fd("use kirby= to set the sourcedir", 2);
 		return (2);
 	}
 	ft_strdel(&test);
