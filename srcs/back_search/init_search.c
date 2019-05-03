@@ -6,18 +6,14 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 02:53:39 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 01:42:08 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 05:15:11 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh42.h"
 
-void		back_up(void)
+void		back_up(int y, int i, int winx)
 {
-	int		y;
-	int		i;
-	int		winx;
-
 	winx = g_tracking.terminfo->sizex;
 	if (g_tracking.found)
 		i = utf_strlen(g_tracking.found);
@@ -27,6 +23,13 @@ void		back_up(void)
 	i = i + ft_strlen(g_tracking.search);
 	y = i / winx;
 	y++;
+	if (ft_strlen(g_tracking.search) < 1)
+	{
+		g_tracking.histindex = get_last() + 1;
+		tputs(tgetstr("cr", NULL), 1, yan_putchar);
+		tputs(tgetstr("cd", NULL), 1, yan_putchar);
+		ft_putstr("(back-i-search) :");
+	}
 	if (i % winx == 0)
 		y--;
 	tputs(tgetstr("cr", NULL), 1, yan_putchar);
@@ -73,11 +76,11 @@ int			read_search(void)
 	}
 	if (c == 127)
 	{
+		g_tracking.histindex = get_last() + 1;
+		ft_putnbr(g_tracking.histindex);
 		if (ft_strlen(g_tracking.search) > 0)
-		{
 			g_tracking.search = ft_strsub(g_tracking.search, 0,
 			(ft_strlen(g_tracking.search) - 1), 1);
-		}
 		return (0);
 	}
 	if (c < 32)
@@ -108,7 +111,7 @@ int			begin_search(void)
 			ft_putstr("No such string in history");
 		else
 			ft_putstr(g_tracking.found);
-		back_up();
+		back_up(0, 0, 0);
 	}
 	ft_strdel(&g_tracking.search);
 	g_tracking.search = NULL;

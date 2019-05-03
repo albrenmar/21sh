@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 16:29:52 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 00:46:55 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 04:02:09 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	init_builtin_list(void)
 	lstcontainer_add(g_tracking.builtin_list, ft_strdup("type"));
 	lstcontainer_add(g_tracking.builtin_list, ft_strdup("true"));
 	lstcontainer_add(g_tracking.builtin_list, ft_strdup("false"));
+	lstcontainer_add(g_tracking.builtin_list, ft_strdup("."));
 }
 
 void	init_cpaste(void)

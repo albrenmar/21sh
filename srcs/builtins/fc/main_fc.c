@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 04:44:37 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 04:47:25 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 05:01:41 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,15 @@ int		dup_func(int i)
 int		fc_builtin(void)
 {
 	char		**av;
-	int			i;
 	int			count;
 	t_fcparse	*opt;
 
 	if (g_tracking.fc == 0)
 		dup_func(1);
+	count = 0;
 	av = g_tracking.g_tab_exec;
 	g_tracking.fc++;
 	opt = (fc_option(av, 1));
-	i = 0;
-	count = 0;
 	hist_set_unset(0, opt);
 	while (av[count])
 		count++;

@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:23:43 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 02:31:27 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 03:42:52 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		exec_errors_dir(void)
 		ft_putstr_fd(": ", 2);
 		ft_putstr_fd(g_tracking.g_tab_exec[0], 2);
 		ft_putendl_fd(": filename argument required", 2);
-		return (1);
+		return (2);
 	}
 	if (ft_strchr(g_tracking.g_tab_exec[0], '/')
 		&& (access(g_tracking.g_tab_exec[0], F_OK) == 0)
@@ -68,7 +68,7 @@ int		exec_errors_dir(void)
 		ft_putstr_fd(": ", 2);
 		ft_putstr_fd(g_tracking.g_tab_exec[0], 2);
 		ft_putendl_fd(": is a directory", 2);
-		return (1);
+		return (126);
 	}
 	return (exec_errors_cont());
 }
@@ -91,7 +91,7 @@ int		exec_errors(char **tab_exec, int mode)
 			ft_putstr_fd(": ", 2);
 			ft_putstr_fd(g_tracking.g_tab_exec[0], 2);
 			ft_putendl_fd(": Permission denied", 2);
-			return (1);
+			return (127);
 		}
 		return (exec_errors_dir());
 	}

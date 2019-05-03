@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 00:07:42 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/03 04:06:18 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int		exist_builtin(char *cmd)
 		return (0);
 	tmp = g_tracking.builtin_list->firstelement;
 	if (!tmp || !cmd)
+		return (0);
+	if (!ft_strcmp(cmd, ".."))
 		return (0);
 	while (tmp)
 	{

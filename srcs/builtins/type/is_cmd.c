@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 00:21:24 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/22 03:30:55 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/03 04:07:09 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ char	*exist_fonction(char *cmd)
 	char		**pathlist;
 	char		*path;
 
+	if (!ft_strcmp(cmd, ".."))
+		return (0);
+	if (!ft_strcmp(cmd, "."))
+		return (0);
 	path = get_env_string("PATH");
 	pathlist = ft_strsplit(path, ':');
 	path = exist_fonction_two(cmd, pathlist);
