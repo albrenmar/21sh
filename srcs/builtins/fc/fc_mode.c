@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 22:12:59 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 06:39:09 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 01:12:44 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int		list_mode(t_fcparse *opt)
 	if (opt->max == -42)
 		opt->max = -1;
 	print_fc(opt);
+	hist_set_unset(1, opt);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 19:53:02 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/27 23:05:13 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 01:16:39 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void				fc_edit(t_fcparse *opt, char *path)
 	edit = ft_strjoinfree(edit, " ", 1);
 	edit = ft_strjoinfree(edit, path, 1);
 	main_loop(edit);
+	hist_set_unset(0, opt);
 	fc_loop(ft_strdup(path));
 	ft_strdel(&edit);
 }

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 03:02:54 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/04 01:01:28 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 01:12:00 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int		main_test(int flag, int i, int argc, char **n)
 
 	argc = count_arg(g_tracking.g_tab_exec);
 	argv = g_tracking.g_tab_exec;
-	if (!argv || !argv[1] || argv[1][0] == '\0' )
+	if (!argv || !argv[1] || argv[1][0] == '\0')
 		return (1);
 	if (!argv[2])
 		return (0);

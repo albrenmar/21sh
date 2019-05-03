@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 04:44:37 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 05:01:41 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 01:13:54 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ int		fc_builtin(void)
 		fc_error(2, NULL);
 	char_to_index(opt);
 	fc_mode(opt);
-	hist_set_unset(1, opt);
 	free_opt(opt);
 	g_tracking.fc--;
 	if (g_tracking.fc == 0)

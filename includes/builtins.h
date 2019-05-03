@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/04 00:08:06 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 01:14:19 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,6 @@ int				check_three_arg(char **argv);
 int				game_loop(void);
 int				print_usage(void);
 int				error_file(char *file);
+void			hist_set_unset(int i, t_fcparse *opt);
 
 #endif
