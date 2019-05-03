@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 12:23:43 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/03 03:28:27 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 06:11:28 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,7 @@ int			check_if_env(char *str, int i)
 {
 	while (str[i] && str[i] != '=')
 	{
-		if (str[i] == '\'' || str[i] == '\"' || str[i] == '$'
-			|| str[i] == '?' || str[i] == '!' || str[i] == '@' || str[i] == '{'
-			|| str[i] == '}' || str[i] == '[' || str[i] == ']' || str[i] == '/'
-			|| str[i] == '#' || str[i] == '%' || str[i] == '^' || str[i] == '&'
-			|| str[i] == '*' || str[i] == '(' || str[i] == '|' || str[i] == ')'
-			|| str[i] == ':' || str[i] == ';' || str[i] == '<' || str[i] == '>'
-			|| str[i] == ',' || str[i] == '.' || str[i] == '_' || str[i] == '-'
-			|| str[i] == '+')
+		if (str[i] == '\'' || str[i] == '\"' || str[i] == '$')
 			return (0);
 		i++;
 	}
