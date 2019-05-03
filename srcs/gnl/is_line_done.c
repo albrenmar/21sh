@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 22:47:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 10:53:51 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 23:47:41 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		check_eol(char *line)
 	return (secondary_check(line));
 }
 
-void	clean_and_return(char *line)
+char	*clean_and_return(char *line)
 {
 	ft_strdel(&g_tracking.cmd);
 	g_tracking.cmd = NULL;
