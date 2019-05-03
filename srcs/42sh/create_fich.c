@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:24:49 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/03 00:47:12 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/05/03 03:44:41 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ int			create_fich(char **tab_reddir, int i)
 	{
 		if (ft_strlen(tab_reddir[i + 1]) == 1 && tab_reddir[i + 1][0] >= '0'
 				&& tab_reddir[i + 1][0] <= '9')
+		{
 			fd_out = tab_reddir[i + 1][0] - '0';
+			return (dup2(fd_out, fd_in));
+		}
 		else if (!ft_strcmp(tab_reddir[i + 1], "-"))
 			fd_out = open("/dev/null", O_RDONLY);
 		else
@@ -58,7 +61,6 @@ int			create_fich(char **tab_reddir, int i)
 	else
 		fd_out = open(tab_reddir[i + 1], O_CREAT | O_APPEND | O_WRONLY, p);
 	dup2(fd_out, fd_in);
-	if (fd_out > 2)
-		close(fd_out);
+	close(fd_out);
 	return (0);
 }

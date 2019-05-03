@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/30 15:47:11 by abe              ###   ########.fr       */
+/*   Updated: 2019/05/03 03:38:38 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ void		child_side(int rpipe, int *descrf, char **taab, t_jobs *job)
 	dup2(descrf[1], 1);
 	close(descrf[1]);
 	if (g_tracking.mysh->tab_reddir)
-		make_reddir(g_tracking.mysh->tab_reddir, 0);
+	{
+		if (make_reddir(g_tracking.mysh->tab_reddir, 0) == -1)
+			exit(-1);
+	}
 	set_jobs(job, 0);
 	execute_two(taab, tab_dup(taab));
 }
