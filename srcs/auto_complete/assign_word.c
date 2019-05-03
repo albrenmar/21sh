@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 06:38:10 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 02:19:06 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 02:35:20 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,6 @@ int			edge_case(void)
 		{
 			g_tracking.aut->word = NULL;
 			return (1);
-		}
-		if (is_space_ac(tmp, (k - 1)) == 2)
-		{
-			if (is_space_ac(tmp, (k - 2) == 1))
-			{
-				g_tracking.aut->word = ft_strdup("/");
-				return (1);
-			}
 		}
 	}
 	return (0);
