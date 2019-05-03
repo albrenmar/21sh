@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 02:40:58 by mjose             #+#    #+#             */
-/*   Updated: 2019/04/11 05:19:20 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/03 05:20:52 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char		is_diferent_sign(t_expand *to_run)
 
 char		is_two_points_sign(t_expand *to_run)
 {
-	if (to_run->ltr == ':')
+	if (to_run->ltr == ':' && to_run->next)
 	{
 		if (to_run->next->ltr == '-')
 			return ('-');
