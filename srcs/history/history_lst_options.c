@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_lst_options.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:14:07 by hdufer            #+#    #+#             */
-/*   Updated: 2019/05/02 10:23:16 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 09:44:26 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,9 @@ void	hist_file_to_lst(char *path, char *line, int fd)
 		g_tracking.mysh->hist = lstcontainer_new();
 	while ((t = get_next_line(fd, &line)) == 1 && line != NULL)
 	{
-		if (ft_strcmp(line, "\n") != 0 && ft_strlen(line) > 0 && line[0] > 32)
-			lstcontainer_add(g_tracking.mysh->hist, ft_strdup(line));
+		if (ft_strcmp(line, "\n") != 0 && ft_strlen(line) > 0
+			&& ft_strlen(line) < 1024 && line[0] > 32)
+			lstcontainer_add(g_tracking.mysh->hist, ft_strdup_nocar(line));
 		if (line)
 			ft_free(line);
 		line = NULL;
