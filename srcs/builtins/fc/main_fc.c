@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 04:44:37 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 05:00:09 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/05/03 04:47:25 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,32 @@ void	free_opt(t_fcparse *opt)
 	ft_free(opt);
 }
 
+int		dup_func(int i)
+{
+	if (i == 1)
+	{
+		if (dup2(10, g_tracking.mysh->dup1) == -1)
+			return (-1);
+		if (dup2(11, g_tracking.mysh->dup2) == -1)
+			return (-1);
+		if (dup2(12, g_tracking.mysh->dup3) == -1)
+			return (-1);
+	}
+	if (i == 2)
+	{
+		if (dup2(g_tracking.mysh->dup1, 10) == -1)
+			return (-1);
+		close(g_tracking.mysh->dup1);
+		if (dup2(g_tracking.mysh->dup2, 11) == -1)
+			return (-1);
+		close(g_tracking.mysh->dup2);
+		if (dup2(g_tracking.mysh->dup3, 12) == -1)
+			return (-1);
+		close(g_tracking.mysh->dup3);
+	}
+	return (0);
+}
+
 int		fc_builtin(void)
 {
 	char		**av;
@@ -69,11 +95,7 @@ int		fc_builtin(void)
 	t_fcparse	*opt;
 
 	if (g_tracking.fc == 0)
-	{
-		dup2(10, g_tracking.mysh->dup1);
-		dup2(11, g_tracking.mysh->dup2);
-		dup2(12, g_tracking.mysh->dup3);
-	}
+		dup_func(1);
 	av = g_tracking.g_tab_exec;
 	g_tracking.fc++;
 	opt = (fc_option(av, 1));
@@ -92,13 +114,6 @@ int		fc_builtin(void)
 	free_opt(opt);
 	g_tracking.fc--;
 	if (g_tracking.fc == 0)
-	{
-		dup2(g_tracking.mysh->dup1, 10);
-		close(g_tracking.mysh->dup1);
-		dup2(g_tracking.mysh->dup2, 11);
-		close(g_tracking.mysh->dup2);
-		dup2(g_tracking.mysh->dup3, 12);
-		close(g_tracking.mysh->dup3);
-	}
+		dup_func(2);
 	return (0);
 }

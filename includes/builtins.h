@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 09:06:23 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/03 03:00:28 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 04:47:00 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,7 @@ char			*get_box_file(int i);
 int				special_main(void);
 int				check_two_arg(char **argv);
 int				check_three_arg(char **argv);
+int				game_loop(void);
+int				print_usage(void);
+
 #endif

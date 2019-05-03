@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipe_two.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:02:07 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/03 03:41:57 by alsomvil         ###   ########.fr       */
+/*   Updated: 2019/05/03 04:47:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void		pipe_2_exec(char **tab_exec, t_jobs *job, int readpipe)
 	{
 		close_fd_copy();
 		if (g_tracking.mysh->tab_reddir != NULL
-				&& make_reddir(g_tracking.mysh->tab_reddir, 0) == -1)
-				exit(-1);
+			&& make_reddir(g_tracking.mysh->tab_reddir, 0) == -1)
+			exit(-1);
 		set_jobs(job, pid0);
 		dup2(readpipe, 0);
 		if (readpipe > 2)

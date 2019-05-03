@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   duel_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 01:37:12 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 06:56:01 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 04:40:25 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_stylish(int i)
 
 	file = get_file(i + 4);
 	str = NULL;
-	if (!file)
+	if (!file || verify_path_is_valid(file) == -1)
 		return ;
 	if ((fd = open(file, O_RDWR, 0644)) == -1)
 	{

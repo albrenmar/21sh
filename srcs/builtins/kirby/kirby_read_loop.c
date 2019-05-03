@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   kirby_read_loop.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 00:44:06 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 06:55:58 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 04:43:10 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,25 @@ int		read_samurai(void)
 	if (c == 108)
 		return (duel(2));
 	return (0);
+}
+
+int		game_loop(void)
+{
+	int		i;
+
+	if (set_kirby_screen() != 0)
+		return (-1);
+	if (print_usage() == 1)
+		return (1);
+	if (set_kirby_screen() != 0)
+		return (-1);
+	if ((print_file(1) == -5))
+		return (-1);
+	print_box(0);
+	i = rand_loop(1);
+	if (i == -3)
+		return (0);
+	if (i == -1)
+		return (1);
+	return (read_samurai());
 }

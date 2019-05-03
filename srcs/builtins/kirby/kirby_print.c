@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 04:06:37 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 06:44:10 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 04:40:45 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		print_file(int i)
 
 	file = get_file(i);
 	str = NULL;
-	if (!file)
+	if (!file || verify_path_is_valid(file) == -1)
 		return (-5);
 	if ((fd = open(file, O_RDWR, 0644)) == -1)
 	{
@@ -64,7 +64,7 @@ int		print_box(int i)
 
 	file = get_box_file(i);
 	str = NULL;
-	if (!file)
+	if (!file || verify_path_is_valid(file) == -1)
 		return (-5);
 	if (i == 3)
 		clear_box();

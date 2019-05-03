@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   kirby_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 22:51:33 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 23:48:34 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 04:46:40 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,27 +62,6 @@ int		exit_kirby(void)
 	else
 		flag = 0;
 	return (flag);
-}
-
-int		game_loop(void)
-{
-	int		i;
-
-	if (set_kirby_screen() != 0)
-		return (-1);
-	if (print_usage() == 1)
-		return (1);
-	if (set_kirby_screen() != 0)
-		return (-1);
-	if ((print_file(1) == -5))
-		return (-1);
-	print_box(0);
-	i = rand_loop(1);
-	if (i == -3)
-		return (0);
-	if (i == -1)
-		return (1);
-	return (read_samurai());
 }
 
 int		k_main(void)

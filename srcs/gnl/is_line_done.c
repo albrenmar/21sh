@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 22:47:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 01:52:55 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 04:44:14 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int		check_eol(char *line)
 char	*end_line(char *line)
 {
 	int		flag;
+
 	flag = 0;
 	if (ft_valid_quote(line, '\'', 0) != 0)
 		flag++;
