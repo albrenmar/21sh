@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/01 04:00:33 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 05:52:26 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,13 @@ void		jobs_notifications_output(t_jobs *job)
 		else
 			ft_putchar(' ');
 		ft_putchar(' ');
-		while (cmd->next)
-			cmd = cmd->next;
-		ft_putnbr(cmd->cpid);
-		ft_putchar('\n');
+		if (cmd)
+		{
+			while (cmd->next)
+				cmd = cmd->next;
+			ft_putnbr(cmd->cpid);
+			ft_putchar('\n');
+		}
 	}
 }
 
