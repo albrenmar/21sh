@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/03 08:23:22 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 08:25:46 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int		return_success(int i, char *file, char *key, int fd)
 	{
 		if (g_tracking.cmd)
 			ft_strdel(&g_tracking.cmd);
-		ft_strdel(&g_tracking.str);
+		if (g_tracking.str)
+			ft_strdel(&g_tracking.str);
 		if (g_tracking.herexpnd == 2)
 		{
 			ft_strdel(&file);
@@ -111,11 +112,11 @@ char	*exec_create_heredoc(char *eof)
 	char	*key;
 	int		fd;
 
+	if (!eof || g_tracking.interactive != 1)
+		return (eof);
 	file = filename();
 	fd = 0;
 	g_tracking.herexpnd = 0;
-	if (!eof)
-		return (NULL);
 	key = unquote(eof);
 	if ((fd = open(file, O_CREAT | O_RDWR, 0644)) == -1)
 	{
