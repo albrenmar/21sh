@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 09:21:48 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/29 05:29:40 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 08:43:16 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*home_dir(void)
 	path = ft_strdup(get_env_string("HOME"));
 	if (!path)
 	{
-		ft_putendl("No HOME set in env");
+		ft_putendl_fd("No HOME set in env", 2);
 		return (NULL);
 	}
 	return (path);
@@ -48,7 +48,7 @@ char	*prev_dir(void)
 	path = ft_strdup(get_env_string("OLDPWD"));
 	if (!path)
 	{
-		ft_putendl("No Old PWD in env");
+		ft_putendl_fd("No Old PWD in env", 2);
 		return (NULL);
 	}
 	return (path);
