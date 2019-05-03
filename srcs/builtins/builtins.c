@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/03 05:01:39 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 05:22:02 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int			builtin_exec_cont(void)
 	else if (ft_builtin_search("cd"))
 		return (ft_cd(0));
 	else if (ft_builtin_search("alias"))
-		return (add_alias(0));
+		return (add_alias(0, g_tracking.g_tab_exec));
 	else if (ft_builtin_search("unalias"))
 		return (unalias_blt());
 	else if (ft_builtin_search("type"))

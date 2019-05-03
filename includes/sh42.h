@@ -6,7 +6,7 @@
 /*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 06:02:09 by abguimba          #+#    #+#             */
-/*   Updated: 2019/05/03 03:07:38 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/03 05:21:57 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,7 +354,7 @@ int				init_alias(int fd, t_lstcontainer *alias_lst);
 void			init_new_tmp_env(t_env *tmp, char *str);
 int				verify_path_is_valid(char *path);
 char			*recursive_alias(char *str);
-int				add_alias(int count);
+int				add_alias(int count, char **av);
 t_keyval		*parse_alias(char *alias);
 int				check_alias_exists(t_keyval *tmp);
 char			*return_alias(char *name);
