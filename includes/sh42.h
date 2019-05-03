@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh42.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 06:02:09 by abguimba          #+#    #+#             */
-/*   Updated: 2019/05/03 08:07:41 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 23:52:29 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -507,7 +507,7 @@ void			show_job_info_helper(t_jobs *job, int mode);
 void			jobs_notifications_output(t_jobs *job);
 void			jobs_notif_h(t_jobs *job, t_jobs *last, t_jobs *next, int stat);
 void			reset_all(void);
-int				main_test(int flag, int i, int argc);
+int				main_test(int flag, int i, int argc, char **n);
 char			**init_envp(t_lstcontainer *env);
 int				exist_builtin(char *cmd);
 t_last			*check_exp_error(t_last *cmd);
