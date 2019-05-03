@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:52:33 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/03 08:14:25 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 08:22:49 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*unquote(char *eof)
 	char	*new;
 
 	if (!eof)
-		return (eof);
+		return (ft_strdup(eof));
 	if (ft_strlen(eof) < 2)
 		return (ft_strdup(eof));
 	new = NULL;

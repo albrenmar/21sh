@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 16:42:28 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/02 04:22:10 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/03 08:23:22 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int		return_success(int i, char *file, char *key, int fd)
 	if (i == 0)
 	{
 		if (g_tracking.cmd)
-			ft_free(g_tracking.cmd);
-		ft_free(g_tracking.str);
+			ft_strdel(&g_tracking.cmd);
+		ft_strdel(&g_tracking.str);
 		if (g_tracking.herexpnd == 2)
 		{
 			ft_strdel(&file);
