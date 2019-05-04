@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 13:23:11 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/04 02:28:55 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 03:20:21 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,25 @@ void	rev_list(t_fcparse *opt)
 		opt->r = 1;
 }
 
+int		transform_nbr(char *nbr)
+{
+	int		nb;
+
+	if (!nbr)
+		return (-1);
+	nb = ft_atoi(nbr);
+	if (nb > 0)
+		nb--;
+	return(nb);
+}
+
 void	char_to_index(t_fcparse *opt)
 {
 	int		tmp;
 
 	tmp = 0;
 	if (digit_or_str(opt->first) == 0)
-		opt->low = ft_atoi(opt->first) - 1;
+		opt->low = transform_nbr(opt->first);
 	else
 	{
 		if (eq_sign(opt->first) == 1)
@@ -91,7 +103,7 @@ void	char_to_index(t_fcparse *opt)
 			opt->low = fc_get_index(opt->first);
 	}
 	if (digit_or_str(opt->last) == 0)
-		opt->max = ft_atoi(opt->last) - 1;
+		opt->max = transform_nbr(opt->last);
 	else
 		opt->max = fc_get_index(opt->last);
 	if (opt->low > opt->max && opt->s != 1)

@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 01:28:13 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 06:54:24 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 03:21:19 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int		create_fc_oldnew(t_fcparse *opt)
 			fc_error(5, NULL);
 		cmd = ft_swap_fc(cmd, opt);
 	}
-	ft_putendl(cmd);
+	ft_putendl_fd(cmd, 2);
 	main_loop(cmd);
 	ft_strdel(&cmd);
 	return (0);
