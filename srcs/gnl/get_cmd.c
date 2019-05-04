@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 03:05:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/20 01:04:39 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 02:02:15 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	ft_return(void)
 {
 	g_tracking.cmd = ft_strdup(g_tracking.str);
-	ft_free(g_tracking.str);
-	ft_free(g_tracking.cpaste->line);
+	ft_strdel(&g_tracking.str);
+	ft_strdel(&g_tracking.cpaste->line);
 	g_tracking.str = NULL;
 	if (g_tracking.tmp_hist)
 		ft_strdel(&g_tracking.tmp_hist);
