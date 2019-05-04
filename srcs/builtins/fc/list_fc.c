@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_fc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 13:23:11 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/04 03:20:21 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 03:39:01 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		transform_nbr(char *nbr)
 	nb = ft_atoi(nbr);
 	if (nb > 0)
 		nb--;
-	return(nb);
+	return (nb);
 }
 
 void	char_to_index(t_fcparse *opt)
