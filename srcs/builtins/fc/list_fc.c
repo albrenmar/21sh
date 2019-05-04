@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 13:23:11 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/01 06:52:50 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 02:28:55 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	char_to_index(t_fcparse *opt)
 
 	tmp = 0;
 	if (digit_or_str(opt->first) == 0)
-		opt->low = ft_atoi(opt->first);
+		opt->low = ft_atoi(opt->first) - 1;
 	else
 	{
 		if (eq_sign(opt->first) == 1)
@@ -91,7 +91,7 @@ void	char_to_index(t_fcparse *opt)
 			opt->low = fc_get_index(opt->first);
 	}
 	if (digit_or_str(opt->last) == 0)
-		opt->max = ft_atoi(opt->last);
+		opt->max = ft_atoi(opt->last) - 1;
 	else
 		opt->max = fc_get_index(opt->last);
 	if (opt->low > opt->max && opt->s != 1)
