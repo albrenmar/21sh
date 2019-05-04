@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fc_mode.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 22:12:59 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/04 03:20:51 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 03:48:01 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,6 @@ int		editor_mode(t_fcparse *opt)
 
 int		no_edit_mode(t_fcparse *opt)
 {
-	ft_putendl("LOL");
-	ft_putnbr(opt->low);
-	ft_putendl("\n");
-	ft_putnbr(opt->max);
-	ft_putendl("\n");
 	if (opt->low == -5 && opt->max == -42)
 		opt->max = -1;
 	if (opt->low == -42 && opt->max == -42)
@@ -56,11 +51,6 @@ int		no_edit_mode(t_fcparse *opt)
 		opt->low = -1;
 		opt->max = -1;
 	}
-	ft_putendl("LOL");
-	ft_putnbr(opt->low);
-	ft_putendl("\n");
-	ft_putnbr(opt->max);
-	ft_putendl("\n");
 	create_fc_oldnew(opt);
 	restore_fd_fc();
 	return (0);
