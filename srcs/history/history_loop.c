@@ -6,7 +6,7 @@
 /*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 20:41:21 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/02 07:30:28 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 02:01:55 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int		replace_str(size_t i)
 			{
 				clear_screen3();
 				print_prompt();
-				ft_free(g_tracking.str);
+				ft_strdel(&g_tracking.cpaste->line);
+				ft_strdel(&g_tracking.str);
 				g_tracking.str = NULL;
 				cursor_reset();
 				add_to_str(ft_strdup(history->content));

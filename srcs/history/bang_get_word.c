@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bang_get_word.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 02:32:26 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/26 01:21:07 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/04 01:27:51 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*get_index(char *word)
 	tmp = ft_lstgetlast(g_tracking.mysh->hist->firstelement);
 	if (!tmp || !word || ft_isinteg(word) != 0)
 		return (return_error_bang());
-	i = ft_atoi(word);
+	i = ft_atoi(word) - 1;
 	while (tmp)
 	{
 		buf = tmp->content;
