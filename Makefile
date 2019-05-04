@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+         #
+#    By: mjose <mjose@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 17:04:04 by mjose             #+#    #+#              #
-#    Updated: 2019/05/04 02:28:59 by bsiche           ###   ########.fr        #
+#    Updated: 2019/05/04 02:08:58 by mjose            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,7 @@ SRC = main.c \
 	  builtins/export/export_tools.c \
 	  builtins/cd/ft_cd.c \
 	  builtins/cd/sanitize_path.c \
+	  builtins/cd/sanitize_path_helper.c \
 	  builtins/cd/cd_path_var.c \
 	  builtins/cd/chdir.c \
 	  builtins/hash/hash_builtin.c \

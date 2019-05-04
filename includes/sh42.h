@@ -6,7 +6,7 @@
 /*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 06:02:09 by abguimba          #+#    #+#             */
-/*   Updated: 2019/05/04 00:09:01 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/04 02:07:38 by mjose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -547,4 +547,5 @@ int				tab_exec_arg(char ***tab_exec, char ***tab_farg, int i_arg,
 					int i);
 char			**end_exec_tab(char **tab_exec);
 char			*assign_reddir(char *orig);
+char			*check_multi_slash(char	*path);
 #endif
