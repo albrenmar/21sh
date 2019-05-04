@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_ast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 00:59:46 by mjose             #+#    #+#             */
-/*   Updated: 2019/05/03 08:42:52 by bsiche           ###   ########.fr       */
+/*   Updated: 2019/05/04 02:38:00 by abguimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	execute_ast(t_tree *tree, t_jobs *job)
 			execute_ast(tree->left, job);
 		if (ft_strlen(tree->cmd) > 1)
 		{
-			if (tree->cmd[0] == '&' && g_tracking.lastreturn == 1)
+			if (tree->cmd[0] == '&' && g_tracking.lastreturn != 0)
 				return ;
 			if (tree->cmd[0] == '|' && g_tracking.lastreturn == 0)
 				return ;
