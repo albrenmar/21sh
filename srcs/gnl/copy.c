@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 19:41:54 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/26 01:15:37 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/04 03:03:34 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,10 @@ void	begin_cpy(void)
 	int		i;
 
 	i = 0;
+	if (!g_tracking.cpaste || !g_tracking.str)
+		return ;
+	if (ft_strlen(g_tracking.str) == 0)
+		return ;
 	g_tracking.cpaste->b1 = g_tracking.pos->abs;
 	while (i == 0)
 	{
