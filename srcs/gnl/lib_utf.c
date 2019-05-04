@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_utf.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjose <mjose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 15:24:45 by bsiche            #+#    #+#             */
-/*   Updated: 2019/04/18 02:10:31 by mjose            ###   ########.fr       */
+/*   Updated: 2019/05/04 02:54:18 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int			utf_goto(char *str, int j)
 
 	i = 0;
 	a = 0;
+	if (!str)
+		return (0);
 	while (a != j && str[i])
 	{
 		i += get_nb_char(str[i]);
