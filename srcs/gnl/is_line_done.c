@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_line_done.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abguimba <abguimba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsiche <bsiche@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 22:47:40 by bsiche            #+#    #+#             */
-/*   Updated: 2019/05/03 23:47:41 by abguimba         ###   ########.fr       */
+/*   Updated: 2019/05/04 03:26:39 by bsiche           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ char	*end_line(char *line)
 	}
 	if (flag == 1)
 		line = ft_strjoinfree(line, "\\\n", 1);
-	if (ft_strlen(g_tracking.cmd) == 0)
+	if (ft_strlen(g_tracking.cmd) == 0
+		|| ft_strcmp(g_tracking.cmd, "\\") == 0)
 		line = remove_back(line, 0);
 	line = ft_strjoinfree(line, g_tracking.cmd, 1);
 	return (clean_and_return(line));
